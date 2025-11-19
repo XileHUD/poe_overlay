@@ -1,7 +1,18 @@
 {
   "name": "Double Strike of Momentum",
   "slug": "Double_Strike_of_Momentum",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Melee, Strike",
+    "Level": "(1-20)",
+    "Cost": "(7-13) Mana",
+    "Attack Speed": "80% of base",
+    "Attack Damage": "(69-196)% of base",
+    "Effectiveness of Added Damage": "(69-196)%",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "5",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -285,73 +296,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Performs two fast strikes with a melee weapon, gaining stages which cause this skill to attack faster. All stages are lost when you move.",
-  "explicitMods": [
-    {
-      "text": "10% more Attack Speed for each Stage",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Gain a Stage at the start of each pair of swingsMaximum 10 Stages",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "10% more Attack Speed for each Stage",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Gain a Stage at the start of each pair of swingsMaximum 10 Stages",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "base skill number of additional hits [1]",
-      "values": []
-    },
-    {
-      "text": "10% more Attack Speed for each Stage",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Gain a Stage at the start of each pair of swingsMaximum 10 Stages",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "base skill number of additional hits [1]",
-      "values": []
-    }
+  "stats": [
+    "10% more Attack Speed for each Stage",
+    "Gain a Stage at the start of each pair of swings",
+    "Maximum 10 Stages"
   ],
+  "gemDescription": "Performs two fast strikes with a melee weapon, gaining stages which cause this skill to attack faster. All stages are lost when you move.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–4)% more Attack Speed for each Stage",
-      "values": [
-        "(0–4)"
-      ]
-    },
-    {
-      "text": "(0–4)% more Attack Speed for each Stage",
-      "values": [
-        "(0–4)"
-      ]
-    },
-    {
-      "text": "(0–4)% more Attack Speed for each Stage",
-      "values": [
-        "(0–4)"
-      ]
+      "text": "(0.2-4)% more Attack Speed for each Stage",
+      "values": []
     }
   ]
 }

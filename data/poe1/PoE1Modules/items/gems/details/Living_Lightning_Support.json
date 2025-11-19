@@ -1,7 +1,20 @@
 {
   "name": "Living Lightning Support",
   "slug": "Living_Lightning_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Lightning, Support, Spell, Minion, Duration, Trigger",
+    "Icon": "?",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "120%",
+    "Cooldown Time": "0.20 sec",
+    "Can Store": "5 Use(s)",
+    "Cast Time": "1.00 sec",
+    "Requires Level": "18",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "18",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemLivingLightning"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -285,165 +298,24 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports Skills which cause Damaging Hits, causing them to trigger Summon Living Lightning when dealing lightning damage. Cannot support skills used by totems, traps, or mines. Cannot modify the skills of Minions.",
-  "explicitMods": [
-    {
-      "text": "Trigger Summon Living Lightning when a SupportedSkill deals Lightning Damage with a Hit",
-      "values": []
-    },
-    {
-      "text": "Minions convert 100% of Physical Damage to Lightning Damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Base duration is 5 seconds",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Maximum (5–8) Living Lightning Minions",
-      "values": [
-        "(5–8)"
-      ]
-    },
-    {
-      "text": "Summons 1 Living Lightning Minion",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Living Lightning Minions Attack 3 times before dissipating",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "This Skill is Triggered when a Supported Skill deals Lightning Damage with a Hit",
-      "values": []
-    },
-    {
-      "text": "Minions' Skills Chain +3 Times",
-      "values": [
-        "+3"
-      ]
-    },
-    {
-      "text": "Trigger Summon Living Lightning when a SupportedSkill deals Lightning Damage with a Hit",
-      "values": []
-    },
-    {
-      "text": "Minions convert 100% of Physical Damage to Lightning Damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Base duration is 5 seconds",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Maximum (5–8) Living Lightning Minions",
-      "values": [
-        "(5–8)"
-      ]
-    },
-    {
-      "text": "Summons 1 Living Lightning Minion",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Living Lightning Minions Attack 3 times before dissipating",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "This Skill is Triggered when a Supported Skill deals Lightning Damage with a Hit",
-      "values": []
-    },
-    {
-      "text": "Minions' Skills Chain +3 Times",
-      "values": [
-        "+3"
-      ]
-    },
-    {
-      "text": "living lightning beam attack time ms [140]",
-      "values": []
-    },
-    {
-      "text": "Minions convert 100% of Physical Damage to Lightning Damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Base duration is 5 seconds",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Maximum (5–11) Living Lightning Minions",
-      "values": [
-        "(5–11)"
-      ]
-    },
-    {
-      "text": "Summons 1 Living Lightning Minion",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Living Lightning Minions Attack 3 times before dissipating",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "This Skill is Triggered when a Supported Skill deals Lightning Damage with a Hit",
-      "values": []
-    },
-    {
-      "text": "Minions' Skills Chain +3 Times",
-      "values": [
-        "+3"
-      ]
-    },
-    {
-      "text": "living lightning beam attack time ms [140]",
-      "values": []
-    }
+  "stats": [
+    "Trigger Summon Living Lightning when a Supported",
+    "Skill deals Lightning Damage with a Hit",
+    "Minions convert 100% of Physical Damage to Lightning Damage",
+    "Base duration is 5.00 seconds",
+    "Maximum (5-8) Living Lightning Minions",
+    "Summons 1 Living Lightning Minion",
+    "Living Lightning Minions Attack 3 times before dissipating",
+    "This Skill is Triggered when a Supported Skill deals Lightning Damage with a Hit",
+    "Minions' Skills Chain +3 Times"
   ],
+  "gemDescription": "Supports Skills which cause Damaging Hits, causing them to trigger Summon Living Lightning when dealing lightning damage. Cannot support skills used by totems, traps, or mines. Cannot modify the skills of Minions.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Living Lightning Minions Attack +(0–2) times before dissipating",
-      "values": [
-        "+(0–2)"
-      ]
-    },
-    {
-      "text": "Living Lightning Minions Attack +(0–2) times before dissipating",
-      "values": [
-        "+(0–2)"
-      ]
-    },
-    {
-      "text": "Living Lightning Minions Attack +(0–2) times before dissipating",
-      "values": [
-        "+(0–2)"
-      ]
+      "text": "Living Lightning Minions Attack +(0.1-2) times before dissipating",
+      "values": []
     }
   ]
 }

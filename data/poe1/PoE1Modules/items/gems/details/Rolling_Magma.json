@@ -1,7 +1,18 @@
 {
   "name": "Rolling Magma",
   "slug": "Rolling_Magma",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Fire, Projectile, Chaining",
+    "Level": "(1-20)",
+    "Cost": "(6-23) Mana",
+    "Cast Time": "0.70 sec",
+    "Critical Strike Chance": "5.00%",
+    "Effectiveness of Added Damage": "(230-280)%",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "5",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemMagmaOrb"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -445,109 +456,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Lob a fiery orb that deals area damage as it hits the ground. The skill chains, bouncing forward to deal damage multiple times.",
-  "explicitMods": [
-    {
-      "text": "Deals (9–1245) to (12–1868) Fire Damage",
-      "values": [
-        "(9–1245)",
-        "(12–1868)"
-      ]
-    },
-    {
-      "text": "Chains +(2–3) Times",
-      "values": [
-        "+(2–3)"
-      ]
-    },
-    {
-      "text": "+(0–0.4) metres to radius",
-      "values": [
-        "+(0–0.4)"
-      ]
-    },
-    {
-      "text": "Projectiles can Chain when impacting the groundProjectiles do not change direction when Chaining",
-      "values": []
-    },
-    {
-      "text": "Deals (9–1245) to (12–1868) Fire Damage",
-      "values": [
-        "(9–1245)",
-        "(12–1868)"
-      ]
-    },
-    {
-      "text": "Chains +(2–3) Times",
-      "values": [
-        "+(2–3)"
-      ]
-    },
-    {
-      "text": "+(0–0.4) metres to radius",
-      "values": [
-        "+(0–0.4)"
-      ]
-    },
-    {
-      "text": "Projectiles can Chain when impacting the groundProjectiles do not change direction when Chaining",
-      "values": []
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "monster projectile variation [1]",
-      "values": []
-    },
-    {
-      "text": "(10–15)% increased Fire Damage",
-      "values": [
-        "(10–15)"
-      ]
-    },
-    {
-      "text": "With at least 40 Intelligence in Radius, Rolling Magma deals 50% less Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "With at least 40 Intelligence in Radius, Rolling Magma deals 40% more Damage per Chain",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "With at least 40 Intelligence in Radius, Rolling Magmahas 10% increased Area of Effect per Chain",
-      "values": [
-        "10"
-      ]
-    }
+  "stats": [
+    "Deals (9-1245) to (12-1868) Fire Damage",
+    "+(0-0.4) metres to radius",
+    "Chains +(2-3) Times",
+    "Projectiles can Chain when impacting the ground",
+    "Projectiles do not change direction when Chaining"
   ],
+  "gemDescription": "Lob a fiery orb that deals area damage as it hits the ground. The skill chains, bouncing forward to deal damage multiple times.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Chains +(0–2) Times",
-      "values": [
-        "+(0–2)"
-      ]
-    },
-    {
-      "text": "Chains +(0–2) Times",
-      "values": [
-        "+(0–2)"
-      ]
+      "text": "Chains +(0.1-2) Times",
+      "values": []
     }
   ]
 }

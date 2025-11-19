@@ -1,7 +1,19 @@
 {
   "name": "Barrage",
   "slug": "Barrage",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Projectile, Bow",
+    "Level": "(1-20)",
+    "Cost": "(5-9) Mana",
+    "Attack Speed": "115% of base",
+    "Attack Damage": "(47-54)% of base",
+    "Effectiveness of Added Damage": "(47-55)%",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "12",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemBarrage"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,63 +337,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "After a short preparation time, you fire individual projectiles repeatedly with a Bow or Wand. These projectiles have a small randomised spread. This skill cannot be Triggered.",
-  "explicitMods": [
-    {
-      "text": "Fires 5 Projectiles",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Fires Projectiles sequentially",
-      "values": []
-    },
-    {
-      "text": "Fires 5 Projectiles",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Fires Projectiles sequentially",
-      "values": []
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire wand projectiles [1]",
-      "values": []
-    },
-    {
-      "text": "(7–10)% increased Projectile Damage",
-      "values": [
-        "(7–10)"
-      ]
-    },
-    {
-      "text": "With at least 40 Dexterity in Radius, Barrage fires an additional 6 projectiles simultaneously on the first and final attacks",
-      "values": [
-        "6"
-      ]
-    }
+  "stats": [
+    "Fires 5 Projectiles",
+    "Fires Projectiles sequentially"
   ],
+  "gemDescription": "After a short preparation time, you fire individual projectiles repeatedly with a Bow or Wand. These projectiles have a small randomised spread. This skill cannot be Triggered.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Fires +(0–1) Projectile",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Fires +(0–1) Projectile",
-      "values": [
-        "+(0–1)"
-      ]
+      "text": "Fires +(0.05-1) Projectiles",
+      "values": []
     }
   ]
 }

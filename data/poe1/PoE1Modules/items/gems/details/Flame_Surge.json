@@ -1,7 +1,20 @@
 {
   "name": "Flame Surge",
   "slug": "Flame_Surge",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Fire, Duration",
+    "Level": "(1-20)",
+    "Cost": "(6-16) Mana",
+    "Cast Time": "0.50 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "190%",
+    "AoE Radius": "30",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "12",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemFlameWhip"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -445,109 +458,22 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Strikes enemies in front of you with a surge of flame. Burning enemies are dealt more damage. If you hit an ignited enemy, will create burning ground under them. Your damage modifiers don't apply to this burning ground.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Deals (26–832) to (40–1247) Fire Damage",
-      "values": [
-        "(26–832)",
-        "(40–1247)"
-      ]
-    },
-    {
-      "text": "(50–88)% more Damage with Hits against Burning enemies",
-      "values": [
-        "(50–88)"
-      ]
-    },
-    {
-      "text": "Cannot Ignite",
-      "values": []
-    },
-    {
-      "text": "+(0–9) to Area of Effect length",
-      "values": [
-        "+(0–9)"
-      ]
-    },
-    {
-      "text": "Hits on Ignited Enemies create Burning Ground, no more than once every 2 seconds",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Burning Ground deals 25% of Fire Damage per second of Ignite affecting Enemy",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Deals (26–832) to (40–1247) Fire Damage",
-      "values": [
-        "(26–832)",
-        "(40–1247)"
-      ]
-    },
-    {
-      "text": "(50–88)% more Damage with Hits against Burning enemies",
-      "values": [
-        "(50–88)"
-      ]
-    },
-    {
-      "text": "Cannot Ignite",
-      "values": []
-    },
-    {
-      "text": "+(0–9) to Area of Effect length",
-      "values": [
-        "+(0–9)"
-      ]
-    },
-    {
-      "text": "Hits on Ignited Enemies create Burning Ground, no more than once every 2 seconds",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Burning Ground deals 25% of Fire Damage per second of Ignite affecting Enemy",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Base duration is 4.00 seconds",
+    "Deals (26-832) to (40-1247) Fire Damage",
+    "(50-88)% more Damage with Hits against Burning enemies",
+    "Cannot Ignite",
+    "+(0-9) to Area of Effect length",
+    "Hits on Ignited Enemies create Burning Ground, no more than once every 2 seconds",
+    "Burning Ground deals 25% of Fire Damage per second of Ignite affecting Enemy"
   ],
+  "gemDescription": "Strikes enemies in front of you with a surge of flame. Burning enemies are dealt more damage. If you hit an ignited enemy, will create burning ground under them. Your damage modifiers don't apply to this burning ground.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–20)% more Damage with Hits against Burning enemies",
-      "values": [
-        "+(0–20)"
-      ]
-    },
-    {
-      "text": "+(0–20)% more Damage with Hits against Burning enemies",
-      "values": [
-        "+(0–20)"
-      ]
+      "text": "+(1-20)% more Damage with Hits against Burning enemies",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,23 @@
 {
   "name": "Vaal Detonate Dead",
   "slug": "Vaal_Detonate_Dead",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Vaal, Fire",
+    "Level": "(1-20)",
+    "Souls Per Use": "30",
+    "Can Store": "1 Use(s)",
+    "Soul Gain Prevention": "8 sec",
+    "Cast Time": "0.60 sec",
+    "Critical Strike Chance": "5.00%",
+    "Effectiveness of Added Damage": "200%",
+    "Requires Level": "4",
+    "Info 10": "Corrupted",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Vaal Detonate Dead can drop from the Vaal Vessels found in Vaal side areas .",
+    "Drop level": "4",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVaalDetonateDead"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,98 +421,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Targets a corpse, and deals spell damage to enemies around the corpse, as well as causing the corpse to explode, dealing fire damage. The explosion is not affected by modifiers to spell damage and cannot be reflected. This will continue to target other corpses in the area, with an increasing delay between each one, until it runs out of corpses or has destroyed 22 corpses.",
-  "explicitMods": [
-    {
-      "text": "Deals (23–1395) to (33–2092) Fire Damage",
-      "values": [
-        "(23–1395)",
-        "(33–2092)"
-      ]
-    },
-    {
-      "text": "Explosion deals base Fire Damage equal to (6–7.9)% of the corpse's Maximum Life",
-      "values": [
-        "(6–7.9)"
-      ]
-    },
-    {
-      "text": "Base radius is (2.4–2.8) metres",
-      "values": [
-        "(2.4–2.8)"
-      ]
-    },
-    {
-      "text": "Deals (23–1395) to (33–2092) Fire Damage",
-      "values": [
-        "(23–1395)",
-        "(33–2092)"
-      ]
-    },
-    {
-      "text": "Explosion deals base Fire Damage equal to (6–7.9)% of the corpse's Maximum Life",
-      "values": [
-        "(6–7.9)"
-      ]
-    },
-    {
-      "text": "Base radius is (2.4–2.8) metres",
-      "values": [
-        "(2.4–2.8)"
-      ]
-    },
-    {
-      "text": "cannot cancel skill before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "skill cannot be stunned before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "Deals (15–2801) to (22–4202) Fire Damage",
-      "values": [
-        "(15–2801)",
-        "(22–4202)"
-      ]
-    },
-    {
-      "text": "Explosion deals base Fire Damage equal to (6–9.4)% of the corpse's Maximum Life",
-      "values": [
-        "(6–9.4)"
-      ]
-    },
-    {
-      "text": "Base radius is (2.2–3) metres",
-      "values": [
-        "(2.2–3)"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (23-1395) to (33-2092) Fire Damage",
+    "Explosion deals base Fire Damage equal to (6-7.9)% of the corpse's Maximum Life",
+    "Base radius is (2.4-2.8) metres"
   ],
+  "gemDescription": "Targets a corpse, and deals spell damage to enemies around the corpse, as well as causing the corpse to explode, dealing fire damage. The explosion is not affected by modifiers to spell damage and cannot be reflected. This will continue to target other corpses in the area, with an increasing delay between each one, until it runs out of corpses or has destroyed 22 corpses.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–30)% chance to detonate an additional corpse",
-      "values": [
-        "(0–30)"
-      ]
-    },
-    {
-      "text": "(0–30)% chance to detonate an additional corpse",
-      "values": [
-        "(0–30)"
-      ]
-    },
-    {
-      "text": "(0–15)% chance to detonate an additional corpse",
-      "values": [
-        "(0–15)"
-      ]
+      "text": "(1.5-30)% chance to detonate an additional corpse",
+      "values": []
     }
   ]
 }

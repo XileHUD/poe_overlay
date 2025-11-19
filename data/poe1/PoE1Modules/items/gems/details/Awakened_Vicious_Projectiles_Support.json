@@ -1,7 +1,18 @@
 {
   "name": "Awakened Vicious Projectiles Support",
   "slug": "Awakened_Vicious_Projectiles_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Projectile, Attack, Physical, Chaos, Support",
+    "Icon": "d",
+    "Level": "(1-5)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "72",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; The Maven's Crucible; Can drop from either version of the Maven , from Maven's Invitations , or from Maven-witnessed map bosses.",
+    "Drop level": "72",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemViciousProjectilesPlus"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -205,71 +216,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports projectile attack skills.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills deal (50–59)% more Chaos Damage over Time",
-      "values": [
-        "(50–59)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (50–59)% more Physical Damage over Time",
-      "values": [
-        "(50–59)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (50–59)% more Physical Projectile Attack Damage",
-      "values": [
-        "(50–59)"
-      ]
-    },
-    {
-      "text": "Supported Skills have 10% less Projectile Attack Speed",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (50–59)% more Chaos Damage over Time",
-      "values": [
-        "(50–59)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (50–59)% more Physical Damage over Time",
-      "values": [
-        "(50–59)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (50–59)% more Physical Projectile Attack Damage",
-      "values": [
-        "(50–59)"
-      ]
-    },
-    {
-      "text": "Supported Skills have 10% less Projectile Attack Speed",
-      "values": [
-        "10"
-      ]
-    }
+  "stats": [
+    "Supported Skills deal (50-59)% more Chaos Damage over Time",
+    "Supported Skills deal (50-59)% more Physical Damage over Time",
+    "Supported Skills deal (50-59)% more Physical Projectile Attack Damage",
+    "Supported Skills have 10% less Projectile Attack Speed"
   ],
+  "gemDescription": "Supports projectile attack skills.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Physical Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Physical Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Physical Damage",
+      "values": []
     }
   ]
 }

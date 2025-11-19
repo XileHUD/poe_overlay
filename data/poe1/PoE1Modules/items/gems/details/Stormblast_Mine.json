@@ -1,7 +1,19 @@
 {
   "name": "Stormblast Mine",
   "slug": "Stormblast_Mine",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Mine, Spell, AoE, Lightning, Aura, Nova",
+    "Level": "(1-20)",
+    "Cost": "(2-6) Mana",
+    "Reservation": "(2-6) Mana",
+    "Cast Time": "0.75 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "(120-130)%",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "5",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemStormblastMine"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -445,97 +457,21 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Throws a mine that deals damage in an area when detonated.",
-  "explicitMods": [
-    {
-      "text": "Deals (3–367) to (8–1102) Lightning Damage",
-      "values": [
-        "(3–367)",
-        "(8–1102)"
-      ]
-    },
-    {
-      "text": "Mine lasts 5 seconds",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Base Mine Detonation Time is 0.25 seconds",
-      "values": [
-        "0.25"
-      ]
-    },
-    {
-      "text": "+(0–0.5) metres to radius",
-      "values": [
-        "+(0–0.5)"
-      ]
-    },
-    {
-      "text": "Each Mine applies 3% increased Damage Taken to Enemies near it, upto a maximum of 150%",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Deals (3–367) to (8–1102) Lightning Damage",
-      "values": [
-        "(3–367)",
-        "(8–1102)"
-      ]
-    },
-    {
-      "text": "Mine lasts 5 seconds",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Base Mine Detonation Time is 0.25 seconds",
-      "values": [
-        "0.25"
-      ]
-    },
-    {
-      "text": "+(0–0.5) metres to radius",
-      "values": [
-        "+(0–0.5)"
-      ]
-    },
-    {
-      "text": "Each Mine applies 3% increased Damage Taken to Enemies near it, upto a maximum of 150%",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "base skill is mined [1]",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (3-367) to (8-1102) Lightning Damage",
+    "Mine lasts 5 seconds",
+    "Base Mine Detonation Time is 0.25 seconds",
+    "+(0-0.5) metres to radius",
+    "Each Mine applies 3% increased Damage Taken to Enemies near it, up",
+    "to a maximum of 150%"
   ],
+  "gemDescription": "Throws a mine that deals damage in an area when detonated.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Each mine applies +(0–1)% increased Damage Taken to Enemies near it, upto a maximum of 150%",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Each mine applies +(0–1)% increased Damage Taken to Enemies near it, upto a maximum of 150%",
-      "values": [
-        "+(0–1)"
-      ]
+      "text": "Each mine applies +(0.05-1)% increased Damage Taken to Enemies near it, upto a maximum of 150%",
+      "values": []
     }
   ]
 }

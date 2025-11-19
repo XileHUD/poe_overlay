@@ -1,7 +1,19 @@
 {
   "name": "Charged Dash",
   "slug": "Charged_Dash",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Movement, AoE, Channelling, Attack, Lightning, Melee",
+    "Level": "(1-20)",
+    "Cost": "(5-6) Mana",
+    "Attack Speed": "160% of base",
+    "Attack Damage": "(143-264)% of base",
+    "Effectiveness of Added Damage": "(143-264)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "28",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemChargedDash"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,91 +337,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Channel to project an illusion which you steer. You gain stages while it moves, until it stops at a maximum total distance. Waves of area damage frequently pulse along its path, based on your attack speed. Stop channelling to teleport to the illusion, dealing a final wave of damage. Requires a Melee Weapon.",
-  "explicitMods": [
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Deals 150% more Damage while Channelling if Illusion has finished moving",
-      "values": [
-        "150"
-      ]
-    },
-    {
-      "text": "Hits from Final wave deal 75% of Damage per stage",
-      "values": [
-        "75"
-      ]
-    },
-    {
-      "text": "Illusion moves at 130% of your Movement Speed",
-      "values": [
-        "130"
-      ]
-    },
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Deals 150% more Damage while Channelling if Illusion has finished moving",
-      "values": [
-        "150"
-      ]
-    },
-    {
-      "text": "Hits from Final wave deal 75% of Damage per stage",
-      "values": [
-        "75"
-      ]
-    },
-    {
-      "text": "Illusion moves at 130% of your Movement Speed",
-      "values": [
-        "130"
-      ]
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "charged dash damage +% final [-100]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    },
-    {
-      "text": "charged_dash_damage_+%_final",
-      "values": []
-    }
+  "stats": [
+    "50% of Physical Damage Converted to Lightning Damage",
+    "Deals 150% more Damage while Channelling if Illusion has finished moving",
+    "Hits from Final wave deal 75% of Damage per stage",
+    "Illusion moves at 130% of your Movement Speed"
   ],
+  "gemDescription": "Channel to project an illusion which you steer. You gain stages while it moves, until it stops at a maximum total distance. Waves of area damage frequently pulse along its path, based on your attack speed. Stop channelling to teleport to the illusion, dealing a final wave of damage. Requires a Melee Weapon.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Illusion moves at an additional +(0–20)% of your Movement Speed",
-      "values": [
-        "+(0–20)"
-      ]
-    },
-    {
-      "text": "Illusion moves at an additional +(0–20)% of your Movement Speed",
-      "values": [
-        "+(0–20)"
-      ]
+      "text": "Illusion moves at an additional +(1-20)% of your Movement Speed",
+      "values": []
     }
   ]
 }

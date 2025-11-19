@@ -1,7 +1,18 @@
 {
   "name": "Contagion",
   "slug": "Contagion",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Duration, Chaos",
+    "Level": "(1-20)",
+    "Cost": "(5-20) Mana",
+    "Cast Time": "0.60 sec",
+    "AoE Radius": "20",
+    "Requires Level": "4",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "5",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemContagion"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,83 +416,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Unleashes a vile contagion on enemies, dealing chaos damage over time. If an enemy dies while affected by Contagion, the debuff spreads to other enemies.",
-  "explicitMods": [
-    {
-      "text": "Deals (3.4–281.5) Base Chaos Damage per second",
-      "values": [
-        "(3.4–281.5)"
-      ]
-    },
-    {
-      "text": "Base duration is 5 seconds",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Base radius is 1.7 metres",
-      "values": [
-        "1.7"
-      ]
-    },
-    {
-      "text": "Spreads when affected Enemy dies",
-      "values": []
-    },
-    {
-      "text": "Deals (3.4–281.5) Base Chaos Damage per second",
-      "values": [
-        "(3.4–281.5)"
-      ]
-    },
-    {
-      "text": "Base duration is 5 seconds",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Base radius is 1.7 metres",
-      "values": [
-        "1.7"
-      ]
-    },
-    {
-      "text": "Spreads when affected Enemy dies",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "base_chaos_damage_taken_per_minute",
-      "values": []
-    }
+  "stats": [
+    "Deals (3.4-281.4) Base Chaos Damage per second",
+    "Base duration is 5.00 seconds",
+    "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+    "Base radius is 1.7 metres",
+    "Spreads when affected Enemy dies"
   ],
+  "gemDescription": "Unleashes a vile contagion on enemies, dealing chaos damage over time. If an enemy dies while affected by Contagion, the debuff spreads to other enemies.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
-    },
-    {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
+      "text": "Base radius is (0.01-0.2) metres",
+      "values": []
     }
   ]
 }

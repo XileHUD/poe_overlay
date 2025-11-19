@@ -1,7 +1,18 @@
 {
   "name": "Explosive Trap of Magnitude",
   "slug": "Explosive_Trap_of_Magnitude",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Trap, Spell, AoE, Physical",
+    "Level": "(1-20)",
+    "Cost": "(8-28) Mana",
+    "Cast Time": "1.00 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "330%",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "5",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,146 +376,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Throws a trap that creates a large explosion when triggered, dealing spell damage in an area around it.",
-  "explicitMods": [
-    {
-      "text": "Deals (13–1478) to (19–2216) Physical Damage",
-      "values": [
-        "(13–1478)",
-        "(19–2216)"
-      ]
-    },
-    {
-      "text": "Trap lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "50% increased Stun Duration on enemies",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "30% less Trap Throwing Speed",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "Base explosion radius is (1.8–2.4) metres",
-      "values": [
-        "(1.8–2.4)"
-      ]
-    },
-    {
-      "text": "Deals (13–1478) to (19–2216) Physical Damage",
-      "values": [
-        "(13–1478)",
-        "(19–2216)"
-      ]
-    },
-    {
-      "text": "Trap lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "50% increased Stun Duration on enemies",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "30% less Trap Throwing Speed",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "Base explosion radius is (1.8–2.4) metres",
-      "values": [
-        "(1.8–2.4)"
-      ]
-    },
-    {
-      "text": "base skill is trapped [1]",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "Deals (13–5806) to (19–8710) Physical Damage",
-      "values": [
-        "(13–5806)",
-        "(19–8710)"
-      ]
-    },
-    {
-      "text": "Trap lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "50% increased Stun Duration on enemies",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "30% less Trap Throwing Speed",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "Base explosion radius is (1.8–2.9) metres",
-      "values": [
-        "(1.8–2.9)"
-      ]
-    },
-    {
-      "text": "base skill is trapped [1]",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (13-1478) to (19-2216) Physical Damage",
+    "Trap lasts 4 seconds",
+    "50% increased Stun Duration on enemies",
+    "Base explosion radius is (1.8-2.4) metres",
+    "30% less Trap Throwing Speed"
   ],
+  "gemDescription": "Throws a trap that creates a large explosion when triggered, dealing spell damage in an area around it.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base radius is (0–0.3) metres",
-      "values": [
-        "(0–0.3)"
-      ]
-    },
-    {
-      "text": "Base radius is (0–0.3) metres",
-      "values": [
-        "(0–0.3)"
-      ]
-    },
-    {
-      "text": "Base radius is (0–0.3) metres",
-      "values": [
-        "(0–0.3)"
-      ]
+      "text": "Base radius is (0.015-0.3) metres",
+      "values": []
     }
   ]
 }

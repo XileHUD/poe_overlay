@@ -1,7 +1,17 @@
 {
   "name": "Unbound Ailments Support",
   "slug": "Unbound_Ailments_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support",
+    "Icon": "U",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "120%",
+    "Requires Level": "8",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "8",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemUnboundAilments"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -445,105 +455,18 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "(35-54)% increased Duration of Ailments inflicted with Supported Skills",
+    "Supported Skills have (35-54)% increased Effect of non-Damaging Ailments on Enemies",
+    "Supported Skills deal (10-19)% more Damage with Ailments"
+  ],
   "gemDescription": "Supports any skill that hits enemies or inflicts ailments",
-  "explicitMods": [
-    {
-      "text": "(35–54)% increased Duration of Ailments inflicted with Supported Skills",
-      "values": [
-        "(35–54)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (35–54)% increased Effect of non-Damaging Ailments on Enemies",
-      "values": [
-        "(35–54)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (10–19)% more Damage with Ailments",
-      "values": [
-        "(10–19)"
-      ]
-    },
-    {
-      "text": "(35–54)% increased Duration of Ailments inflicted with Supported Skills",
-      "values": [
-        "(35–54)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (35–54)% increased Effect of non-Damaging Ailments on Enemies",
-      "values": [
-        "(35–54)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (10–19)% more Damage with Ailments",
-      "values": [
-        "(10–19)"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Elemental Penetration",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Immolate",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Unbound Ailments",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Inspiration",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Innervate",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Ice Bite",
-      "values": [
-        "15"
-      ]
-    }
-  ],
-  "modDescriptions": [
-    "(Ailments are Bleeding, Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, Sapped, and Poisoned)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(Ailments that do not deal Damage are Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)",
-    "(Ailments are Bleeding, Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, Sapped, and Poisoned)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(Ailments that do not deal Damage are Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)",
-    "(Ailments are Bleeding, Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, Sapped, and Poisoned)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(Ailments that do not deal Damage are Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–10)% increased Duration of Ailments inflicted with Supported Skills",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "(0–10)% increased Duration of Ailments inflicted with Supported Skills",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "(0.5-10)% increased Duration of Ailments inflicted with Supported Skills",
+      "values": []
     }
   ]
 }

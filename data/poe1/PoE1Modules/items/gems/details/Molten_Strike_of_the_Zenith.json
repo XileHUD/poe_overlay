@@ -1,7 +1,18 @@
 {
   "name": "Molten Strike of the Zenith",
   "slug": "Molten_Strike_of_the_Zenith",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Projectile, AoE, Melee, Strike, Fire",
+    "Level": "(1-20)",
+    "Cost": "(7-13) Mana",
+    "Attack Speed": "80% of base",
+    "Attack Damage": "(92-239)% of base",
+    "Effectiveness of Added Damage": "(92-239)%",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "5",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -285,127 +296,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Infuses your two-handed melee weapon with molten energies to attack with physical and fire damage. This attack causes balls of molten magma to launch forth from the enemies you hit, divided amongst all enemies hit by the strike. These will deal area attack damage to enemies where they land. Every fifth time you attack with this skill it fires more, high-damage projectiles.",
-  "explicitMods": [
-    {
-      "text": "Fires 3 Projectiles",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Projectiles deal 60% less Damage with Hits and Ailments",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Every fifth Attack fires 5 additional Projectiles",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Every fifth Attack, Projectiles deal 600% more Damage with Hits and Ailments",
-      "values": [
-        "600"
-      ]
-    },
-    {
-      "text": "Fires 3 Projectiles",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Projectiles deal 60% less Damage with Hits and Ailments",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Every fifth Attack fires 5 additional Projectiles",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Every fifth Attack, Projectiles deal 600% more Damage with Hits and Ailments",
-      "values": [
-        "600"
-      ]
-    },
-    {
-      "text": "show number of projectiles [1]",
-      "values": []
-    },
-    {
-      "text": "Fires 3 Projectiles",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Projectiles deal 60% less Damage with Hits and Ailments",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Every fifth Attack fires 5 additional Projectiles",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Every fifth Attack, Projectiles deal 600% more Damage with Hits and Ailments",
-      "values": [
-        "600"
-      ]
-    },
-    {
-      "text": "show number of projectiles [1]",
-      "values": []
-    }
+  "stats": [
+    "Fires 3 Projectiles",
+    "60% of Physical Damage Converted to Fire Damage",
+    "Projectiles deal 60% less Damage with Hits and Ailments",
+    "Every fifth Attack fires 5 additional Projectiles",
+    "Every fifth Attack, Projectiles deal 600% more Damage with Hits and Ailments"
   ],
+  "gemDescription": "Infuses your two-handed melee weapon with molten energies to attack with physical and fire damage. This attack causes balls of molten magma to launch forth from the enemies you hit, divided amongst all enemies hit by the strike. These will deal area attack damage to enemies where they land. Every fifth time you attack with this skill it fires more, high-damage projectiles.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Every fifth Attack, Projectiles deal (0–200)% more Damage with Hits and Ailments",
-      "values": [
-        "(0–200)"
-      ]
-    },
-    {
-      "text": "Every fifth Attack, Projectiles deal (0–200)% more Damage with Hits and Ailments",
-      "values": [
-        "(0–200)"
-      ]
-    },
-    {
-      "text": "Every fifth Attack, Projectiles deal (0–200)% more Damage with Hits and Ailments",
-      "values": [
-        "(0–200)"
-      ]
+      "text": "Every fifth Attack, Projectiles deal (10-200)% more Damage with Hits and Ailments",
+      "values": []
     }
   ]
 }

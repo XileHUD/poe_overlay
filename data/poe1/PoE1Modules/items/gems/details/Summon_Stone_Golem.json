@@ -1,7 +1,19 @@
 {
   "name": "Summon Stone Golem",
   "slug": "Summon_Stone_Golem",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Minion, Spell, Golem, Physical",
+    "Level": "(1-20)",
+    "Cost": "(30-54) Mana",
+    "Cooldown Time": "6.00 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "1.00 sec",
+    "Requires Level": "34",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "34",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemSummonRockGolem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -485,175 +497,18 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Maximum 1 Summoned Golem",
+    "Golems grant (33-105) Life Regenerated per second",
+    "Golems grant 20% increased Defences"
+  ],
   "gemDescription": "Summons a Stone Golem that grants you life regeneration and defences. In addition to its melee attack, the Stone Golem uses a rolling charge and a powerful slam that can taunt enemies.",
-  "explicitMods": [
-    {
-      "text": "(0–10)% increased Character Size",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Maximum 1 Summoned Golem",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Golems grant (33–105) Life Regenerated per second",
-      "values": [
-        "(33–105)"
-      ]
-    },
-    {
-      "text": "Golems grant 20% increased Defences",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "(0–10)% increased Character Size",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Maximum 1 Summoned Golem",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Golems grant (33–105) Life Regenerated per second",
-      "values": [
-        "(33–105)"
-      ]
-    },
-    {
-      "text": "Golems grant 20% increased Defences",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "base display minion actor level [34,70]",
-      "values": []
-    },
-    {
-      "text": "display minion monster type [10]",
-      "values": []
-    },
-    {
-      "text": "infinite minion duration [1]",
-      "values": []
-    },
-    {
-      "text": "Grants Level 12 Summon Stone Golem Skill",
-      "values": [
-        "12"
-      ]
-    },
-    {
-      "text": "Adds (24–30) to (34–40) Physical Damage",
-      "values": [
-        "(24–30)",
-        "(34–40)"
-      ]
-    },
-    {
-      "text": "(8–10)% increased Attack Speed",
-      "values": [
-        "(8–10)"
-      ]
-    },
-    {
-      "text": "+1 to maximum number of Summoned Golems",
-      "values": [
-        "+1"
-      ]
-    },
-    {
-      "text": "Golems have (96–120) to (132–160) Added Attack Physical Damage",
-      "values": [
-        "(96–120)",
-        "(132–160)"
-      ]
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire wand projectiles [1]",
-      "values": []
-    },
-    {
-      "text": "33% chance to Taunt on Hit",
-      "values": [
-        "33"
-      ]
-    },
-    {
-      "text": "Deals 100% more Attack Damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "20% less Attack Speed",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "active skill area of effect radius +% final [200]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "25% less Attack Speed",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "cast time overrides attack duration [1]",
-      "values": []
-    },
-    {
-      "text": "ignores proximity shield [1]",
-      "values": []
-    },
-    {
-      "text": "monster flurry [1]",
-      "values": []
-    },
-    {
-      "text": "skill sound variation [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Armour, Evasion Rating and Energy Shield are the standard Defences)",
-    "(Armour, Evasion Rating and Energy Shield are the standard Defences)",
-    "(Armour, Evasion Rating and Energy Shield are the standard Defences)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–20)% increased Buff Effect",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% increased Buff Effect",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "(1-20)% increased Buff Effect",
+      "values": []
     }
   ]
 }

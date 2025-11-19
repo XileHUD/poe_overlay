@@ -1,7 +1,17 @@
 {
   "name": "Infused Channelling Support",
   "slug": "Infused_Channelling_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Channelling",
+    "Icon": "b",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "4",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "5",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemStormBarrier"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,47 +375,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports any channelling skill, protecting you from damage while you channel it. Cannot modify the skills of minions.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills deal (20–29)% more Damage",
-      "values": [
-        "(20–29)"
-      ]
-    },
-    {
-      "text": "While Channelling a Supported Skill, take 12% less Damage from Hits",
-      "values": [
-        "12"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (20–29)% more Damage",
-      "values": [
-        "(20–29)"
-      ]
-    },
-    {
-      "text": "While Channelling a Supported Skill, take 12% less Damage from Hits",
-      "values": [
-        "12"
-      ]
-    }
+  "stats": [
+    "Supported Skills deal (20-29)% more Damage",
+    "While Channelling a Supported Skill, take 12% less Damage from Hits"
   ],
+  "gemDescription": "Supports any channelling skill, protecting you from damage while you channel it. Cannot modify the skills of minions.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "While Channelling a Supported Skill, take (0–2)% less Damage from Hits",
-      "values": [
-        "(0–2)"
-      ]
-    },
-    {
-      "text": "While Channelling a Supported Skill, take (0–2)% less Damage from Hits",
-      "values": [
-        "(0–2)"
-      ]
+      "text": "While Channelling a Supported Skill, take (0.1-2)% less Damage from Hits",
+      "values": []
     }
   ]
 }

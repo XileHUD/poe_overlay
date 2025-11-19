@@ -1,7 +1,19 @@
 {
   "name": "Volcanic Fissure of Snaking",
   "slug": "Volcanic_Fissure_of_Snaking",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Melee, Attack, AoE, Slam, Fire",
+    "Level": "(1-20)",
+    "Cost": "(9-14) Mana",
+    "Attack Speed": "70% of base",
+    "Attack Damage": "(164-318)% of base",
+    "Effectiveness of Added Damage": "(164-318)%",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "12",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -285,73 +297,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Slam the ground, creating a winding fissure that deals area damage while travelling outwards. When it reaches the target location it erupts dealing damage in an area. After erupting, the fissure continues moving towards enemies to cause further eruptions. Requires an Axe, Mace, Sceptre, Staff or Unarmed.",
-  "explicitMods": [
-    {
-      "text": "60% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Fissure erupts 2 additional times",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Fissure erupts 2 additional times",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "60% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Fissure erupts 2 additional times",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "60% of Physical Damage Converted to Fire Damage",
+    "Fissure erupts 2 additional times"
   ],
+  "gemDescription": "Slam the ground, creating a winding fissure that deals area damage while travelling outwards. When it reaches the target location it erupts dealing damage in an area. After erupting, the fissure continues moving towards enemies to cause further eruptions. Requires an Axe, Mace, Sceptre, Staff or Unarmed.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Fissure erupts (0–1) additional times",
-      "values": [
-        "(0–1)"
-      ]
-    },
-    {
-      "text": "Fissure erupts (0–1) additional times",
-      "values": [
-        "(0–1)"
-      ]
-    },
-    {
-      "text": "Fissure erupts (0–1) additional times",
-      "values": [
-        "(0–1)"
-      ]
+      "text": "Fissure erupts (0.05-1) additional times",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,21 @@
 {
   "name": "Hexblast",
   "slug": "Hexblast",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Chaos, Hex",
+    "Level": "(1-20)",
+    "Cost": "(16-30) Mana",
+    "Cooldown Time": "2.00 sec",
+    "Can Store": "3 Use(s)",
+    "Cast Time": "1.00 sec",
+    "Critical Strike Chance": "4.00%",
+    "Effectiveness of Added Damage": "(300-340)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "28",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemHexblast"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,107 +379,22 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Deals (111-1514) to (166-2271) Chaos Damage",
+    "Base radius is 3.2 metres",
+    "All Damage can Ignite, Freeze, and Shock",
+    "Chaos Damage with Hits is Resisted by lowest Resistance instead",
+    "90% more Damage with Ailments if Enemy is Hexed",
+    "200% more Damage with Hits if Enemy is Hexed",
+    "100% chance to remove a Hex after Damaging"
+  ],
   "gemDescription": "Deals chaos damage to a single enemy, dealing more damage if they are Hexed, then removing the Hex. If the enemy was Hexed, also deals area damage to other enemies around the target, boosting damage and removing Hexes from those enemies in the same way.",
-  "explicitMods": [
-    {
-      "text": "Deals (111–1514) to (166–2271) Chaos Damage",
-      "values": [
-        "(111–1514)",
-        "(166–2271)"
-      ]
-    },
-    {
-      "text": "Base radius is 3.2 metres",
-      "values": [
-        "3.2"
-      ]
-    },
-    {
-      "text": "All Damage can Ignite, Freeze, and Shock",
-      "values": []
-    },
-    {
-      "text": "Chaos Damage with Hits is Resisted by lowest Resistance instead",
-      "values": []
-    },
-    {
-      "text": "90% more Damage with Ailments if Enemy is Hexed",
-      "values": [
-        "90"
-      ]
-    },
-    {
-      "text": "200% more Damage with Hits if Enemy is Hexed",
-      "values": [
-        "200"
-      ]
-    },
-    {
-      "text": "% chance to remove a Hex after Damaging",
-      "values": []
-    },
-    {
-      "text": "Deals (111–1514) to (166–2271) Chaos Damage",
-      "values": [
-        "(111–1514)",
-        "(166–2271)"
-      ]
-    },
-    {
-      "text": "Base radius is 3.2 metres",
-      "values": [
-        "3.2"
-      ]
-    },
-    {
-      "text": "All Damage can Ignite, Freeze, and Shock",
-      "values": []
-    },
-    {
-      "text": "Chaos Damage with Hits is Resisted by lowest Resistance instead",
-      "values": []
-    },
-    {
-      "text": "90% more Damage with Ailments if Enemy is Hexed",
-      "values": [
-        "90"
-      ]
-    },
-    {
-      "text": "200% more Damage with Hits if Enemy is Hexed",
-      "values": [
-        "200"
-      ]
-    },
-    {
-      "text": "% chance to remove a Hex after Damaging",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
-    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
-    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
-    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
-    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
-    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
-    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
-    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
-    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(-10–0)% chance to remove a Hex after Damaging",
-      "values": [
-        "(-10–0)"
-      ]
-    },
-    {
-      "text": "(-10–0)% chance to remove a Hex after Damaging",
-      "values": [
-        "(-10–0)"
-      ]
+      "text": "-(0.5-10)% chance to remove a Hex after Damaging",
+      "values": []
     }
   ]
 }

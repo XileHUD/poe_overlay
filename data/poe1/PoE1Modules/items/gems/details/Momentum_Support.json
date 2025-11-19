@@ -1,7 +1,16 @@
 {
   "name": "Momentum Support",
   "slug": "Momentum_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Support, Duration",
+    "Icon": "n",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "110%",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "5",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemOnslaught"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -445,77 +454,22 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports attack skills that aren't triggered.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills have (15–20)% increased Attack Speed per Momentum",
-      "values": [
-        "(15–20)"
-      ]
-    },
-    {
-      "text": "When you reach (3–5) Momentum, lose all Momentum and gainSwiftness for 1.5 seconds",
-      "values": [
-        "(3–5)",
-        "1.5"
-      ]
-    },
-    {
-      "text": "Swiftness grants 15% increased Movement Speed per Momentum lost",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Gain 1 Momentum when you Use a Supported SkillGain 1 Momentum every (0.51–0.7) seconds while Channelling a Supported SkillLose all Momentum if you Move",
-      "values": [
-        "(0.51–0.7)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (15–20)% increased Attack Speed per Momentum",
-      "values": [
-        "(15–20)"
-      ]
-    },
-    {
-      "text": "When you reach (3–5) Momentum, lose all Momentum and gainSwiftness for 1.5 seconds",
-      "values": [
-        "(3–5)",
-        "1.5"
-      ]
-    },
-    {
-      "text": "Swiftness grants 15% increased Movement Speed per Momentum lost",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Gain 1 Momentum when you Use a Supported SkillGain 1 Momentum every (0.51–0.7) seconds while Channelling a Supported SkillLose all Momentum if you Move",
-      "values": [
-        "(0.51–0.7)"
-      ]
-    },
-    {
-      "text": "count as momentum + if not channelled [1]",
-      "values": []
-    }
+  "stats": [
+    "Gain 1 Momentum when you Use a Supported Skill",
+    "Gain 1 Momentum every (0.70-0.51) seconds while Channelling a Supported Skill",
+    "Lose all Momentum if you Move",
+    "Supported Skills have (15-20)% increased Attack Speed per Momentum",
+    "When you reach (3-5) Momentum, lose all Momentum and gain",
+    "Swiftness for 1.5 seconds",
+    "Swiftness grants 15% increased Movement Speed per Momentum lost"
   ],
+  "gemDescription": "Supports attack skills that aren't triggered.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Swiftness lasts +(0–0.5) seconds",
-      "values": [
-        "+(0–0.5)"
-      ]
-    },
-    {
-      "text": "Swiftness lasts +(0–0.5) seconds",
-      "values": [
-        "+(0–0.5)"
-      ]
+      "text": "Swiftness lasts +(0.025-0.5) seconds",
+      "values": []
     }
   ]
 }

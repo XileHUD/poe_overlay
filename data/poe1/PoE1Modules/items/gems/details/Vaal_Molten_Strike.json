@@ -1,7 +1,32 @@
 {
   "name": "Vaal Molten Strike",
   "slug": "Vaal_Molten_Strike",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Projectile, AoE, Melee, Strike, Fire, Chaining, Vaal",
+    "Level": "(1-20)",
+    "Souls Per Use": "15",
+    "Can Store": "3 Use(s)",
+    "Soul Gain Prevention": "3 sec",
+    "Attack Speed": "70% of base",
+    "Attack Damage": "(126-329)% of base",
+    "Effectiveness of Added Damage": "(126-329)%",
+    "Info 9": "Corrupted",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted",
+    "Drop level": "1",
+    "Vaal Molten Strike can drop from the Vaal Vessels found in Vaal side areas , or by corrupting Molten StrikeMolten StrikeAttack, Projectile, AoE, Melee, Strike, FireLevel": "(1-20)Cost: (6-10) ManaAttack Damage: (126-329)% of baseEffectiveness of Added Damage: (126-329)%Projectile Speed: 750Infuses your melee weapon with molten energies to attack with physical and fire damage. This attack causes balls of molten magma to launch forth from the enemies you hit, divided amongst all enemies hit by the strike. These will deal area attack damage to enemies where they land.Fires 4 Projectiles60% of Physical Damage Converted to Fire DamageProjectiles deal 60% less Damage with Hits and Ailments Additional Effects From 1-20% Quality: Projectiles deal (0.5-10)% more Damage with Hits and AilmentsPlace into an item socket of the right colour to gain this skill. Right click to remove from a socket. .",
+    "Info 14": "Attack , Projectile , AoE , Melee , Strike , Fire",
+    "Cost": "(6-10) Mana",
+    "Projectile Speed": "750",
+    "Info 17": "Infuses your melee weapon with molten energies to attack with physical and fire damage. This attack causes balls of molten magma to launch forth from the enemies you hit, divided amongst all enemies hit by the strike. These will deal area attack damage to enemies where they land.",
+    "Info 18": "Fires 4 Projectiles",
+    "Info 19": "60% of Physical Damage Converted to Fire Damage",
+    "Info 20": "Projectiles deal 60% less Damage with Hits and Ailments",
+    "Additional Effects From 1-20% Quality": "Projectiles deal (0.5-10)% more Damage with Hits and Ailments",
+    "Info 22": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVaalMoltenStrike"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -245,125 +270,22 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Infuses your melee weapon with molten energies to attack with physical and fire damage. This attack causes balls of molten magma to launch forth causing area attack damage to enemies where they land.",
-  "explicitMods": [
-    {
-      "text": "Fires 9 Projectiles",
-      "values": [
-        "9"
-      ]
-    },
-    {
-      "text": "Chains +8 Times",
-      "values": [
-        "+8"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "+0.4 metres to radius",
-      "values": [
-        "+0.4"
-      ]
-    },
-    {
-      "text": "Can't be Evaded",
-      "values": []
-    },
-    {
-      "text": "Projectiles can Chain when impacting the groundProjectiles do not change direction when Chaining",
-      "values": []
-    },
-    {
-      "text": "Fires 9 Projectiles",
-      "values": [
-        "9"
-      ]
-    },
-    {
-      "text": "Chains +8 Times",
-      "values": [
-        "+8"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "+0.4 metres to radius",
-      "values": [
-        "+0.4"
-      ]
-    },
-    {
-      "text": "Can't be Evaded",
-      "values": []
-    },
-    {
-      "text": "Projectiles can Chain when impacting the groundProjectiles do not change direction when Chaining",
-      "values": []
-    },
-    {
-      "text": "active skill projectile speed +% variation final [20]",
-      "values": []
-    },
-    {
-      "text": "cannot cancel skill before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "show number of projectiles [1]",
-      "values": []
-    },
-    {
-      "text": "skill cannot be stunned before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "60% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Fires +4 Projectiles",
-      "values": [
-        "+4"
-      ]
-    },
-    {
-      "text": "Projectiles deal 60% less Damage with Hits and Ailments",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "show number of projectiles [1]",
-      "values": []
-    }
+  "stats": [
+    "Fires 9 Projectiles",
+    "+0.4 metres to radius",
+    "Chains +8 Times",
+    "60% of Physical Damage Converted to Fire Damage",
+    "Can't be Evaded",
+    "Projectiles can Chain when impacting the ground",
+    "Projectiles do not change direction when Chaining"
   ],
+  "gemDescription": "Infuses your melee weapon with molten energies to attack with physical and fire damage. This attack causes balls of molten magma to launch forth causing area attack damage to enemies where they land.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Projectiles deal (0–10)% more Damage with Hits and Ailments",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Projectiles deal (0–10)% more Damage with Hits and Ailments",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Projectiles deal (0.5-10)% more Damage with Hits and Ailments",
+      "values": []
     }
   ]
 }

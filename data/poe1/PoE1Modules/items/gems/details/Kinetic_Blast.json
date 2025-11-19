@@ -1,7 +1,20 @@
 {
   "name": "Kinetic Blast",
   "slug": "Kinetic_Blast",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Projectile, AoE",
+    "Level": "(1-20)",
+    "Cost": "(6-9) Mana",
+    "Attack Speed": "115% of base",
+    "Attack Damage": "(140-155)% of base",
+    "Effectiveness of Added Damage": "(140-155)%",
+    "AoE Radius": "14",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "28",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemKineticBlast"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,91 +338,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Fires a projectile from a Wand that causes a series of area explosions in a secondary radius around its point of impact, each damaging enemies.",
-  "explicitMods": [
-    {
-      "text": "Kinetic Blast creates 4 additional explosions",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 200% of their value",
-      "values": [
-        "200"
-      ]
-    },
-    {
-      "text": "35% less Area Damage",
-      "values": [
-        "35"
-      ]
-    },
-    {
-      "text": "Base explosion radius is 1.4 metres",
-      "values": [
-        "1.4"
-      ]
-    },
-    {
-      "text": "Base secondary radius is 2 metres",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Kinetic Blast creates 4 additional explosions",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 200% of their value",
-      "values": [
-        "200"
-      ]
-    },
-    {
-      "text": "35% less Area Damage",
-      "values": [
-        "35"
-      ]
-    },
-    {
-      "text": "Base explosion radius is 1.4 metres",
-      "values": [
-        "1.4"
-      ]
-    },
-    {
-      "text": "Base secondary radius is 2 metres",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire wand projectiles [1]",
-      "values": []
-    }
+  "stats": [
+    "Kinetic Blast creates 4 additional explosions",
+    "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 200% of their value",
+    "35% less Area Damage",
+    "Base explosion radius is 1.4 metres",
+    "Base secondary radius is 2 metres"
   ],
+  "gemDescription": "Fires a projectile from a Wand that causes a series of area explosions in a secondary radius around its point of impact, each damaging enemies.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Kinetic Blast creates (0–1) additional explosion",
-      "values": [
-        "(0–1)"
-      ]
-    },
-    {
-      "text": "Kinetic Blast creates (0–1) additional explosion",
-      "values": [
-        "(0–1)"
-      ]
+      "text": "Kinetic Blast creates (0.05-1) additional explosions",
+      "values": []
     }
   ]
 }

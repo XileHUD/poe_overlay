@@ -1,7 +1,18 @@
 {
   "name": "Dominating Blow of Inspiring",
   "slug": "Dominating_Blow_of_Inspiring",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Minion, Duration, Melee, Strike",
+    "Level": "(1-20)",
+    "Cost": "(7-10) Mana",
+    "Attack Damage": "(249-458)% of base",
+    "Effectiveness of Added Damage": "(249-458)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -285,171 +296,23 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Attacks enemies with a melee strike, applying a debuff for a short duration. If a non-unique enemy dies while affected by the debuff, the enemy's corpse will be consumed and a Sentinel of Dominance with the same rarity, prefix and suffix modifiers will be summoned for a longer secondary duration.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 1 seconds",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Base secondary duration is 20 seconds",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "Increases and Reductions to Minion Damage also applyto this Skill's Damage at 250% of their value",
-      "values": [
-        "250"
-      ]
-    },
-    {
-      "text": "Maximum 3 Summoned Magic Sentinels of Dominance",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Maximum 6 Summoned Normal Sentinels of Dominance",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Maximum 1 Summoned Rare Sentinel of Dominance",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "25% Chance to Summon a Normal Sentinel of Dominance on Hitting a Unique Monster",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Base duration is 1 seconds",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Base secondary duration is 20 seconds",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "Increases and Reductions to Minion Damage also applyto this Skill's Damage at 250% of their value",
-      "values": [
-        "250"
-      ]
-    },
-    {
-      "text": "Maximum 3 Summoned Magic Sentinels of Dominance",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Maximum 6 Summoned Normal Sentinels of Dominance",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Maximum 1 Summoned Rare Sentinel of Dominance",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "25% Chance to Summon a Normal Sentinel of Dominance on Hitting a Unique Monster",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "base max number of vaal dominated monsters [3]",
-      "values": []
-    },
-    {
-      "text": "is dominated [1]",
-      "values": []
-    },
-    {
-      "text": "Base duration is 1 seconds",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Base secondary duration is 20 seconds",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "Increases and Reductions to Minion Damage also applyto this Skill's Damage at 250% of their value",
-      "values": [
-        "250"
-      ]
-    },
-    {
-      "text": "Maximum 3 Summoned Magic Sentinels of Dominance",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Maximum 6 Summoned Normal Sentinels of Dominance",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Maximum 1 Summoned Rare Sentinel of Dominance",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "25% Chance to Summon a Normal Sentinel of Dominance on Hitting a Unique Monster",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "base max number of vaal dominated monsters [3]",
-      "values": []
-    },
-    {
-      "text": "is dominated [1]",
-      "values": []
-    }
+  "stats": [
+    "Base duration is 1.00 seconds",
+    "Base secondary duration is 20.00 seconds",
+    "Increases and Reductions to Minion Damage also apply",
+    "to this Skill's Damage at 250% of their value",
+    "Maximum 3 Summoned Magic Sentinels of Dominance",
+    "Maximum 6 Summoned Normal Sentinels of Dominance",
+    "Maximum 1 Summoned Rare Sentinel of Dominance",
+    "25% Chance to Summon a Normal Sentinel of Dominance on Hitting a Unique Monster"
   ],
+  "gemDescription": "Attacks enemies with a melee strike, applying a debuff for a short duration. If a non-unique enemy dies while affected by the debuff, the enemy's corpse will be consumed and a Sentinel of Dominance with the same rarity, prefix and suffix modifiers will be summoned for a longer secondary duration.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Increases and Reductions to Minion Damage also applyto this Skill's Damage at (0–50)% of their value",
-      "values": [
-        "(0–50)"
-      ]
-    },
-    {
-      "text": "Increases and Reductions to Minion Damage also applyto this Skill's Damage at (0–50)% of their value",
-      "values": [
-        "(0–50)"
-      ]
-    },
-    {
-      "text": "Increases and Reductions to Minion Damage also applyto this Skill's Damage at (0–50)% of their value",
-      "values": [
-        "(0–50)"
-      ]
+      "text": "Increases and Reductions to Minion Damage also applyto this Skill's Damage at (2.5-50)% of their value",
+      "values": []
     }
   ]
 }

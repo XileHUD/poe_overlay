@@ -1,7 +1,16 @@
 {
   "name": "Chance to Flee Support",
   "slug": "Chance_to_Flee_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support",
+    "Icon": "z",
+    "Level": "(1-20)",
+    "Requires Level": "8",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "8",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemChanceToFlee"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -366,116 +375,15 @@
   ],
   "description": "This gem is basically a relic from when the game was much different. Currently the unreliable effect of what fleeing does and it not working when it would be useful, namely on bosses or scary rares, cause this gem to be obsolete in most cases.",
   "stats": [
-    "This gem is basically a relic from when the game was much different. Currently the unreliable effect of what fleeing does and it not working when it would be useful, namely on bosses or scary rares, cause this gem to be obsolete in most cases."
+    "Supported Skills have (25-44)% chance to Cause Monsters to Flee"
   ],
   "gemDescription": "Supports any skill that hits enemies.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills have (25–44)% chance to Cause Monsters to Flee",
-      "values": [
-        "(25–44)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (25–44)% chance to Cause Monsters to Flee",
-      "values": [
-        "(25–44)"
-      ]
-    },
-    {
-      "text": "Socketed Gems are supported by Level 2 Chance to Flee",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "(170–190)% increased Physical Damage",
-      "values": [
-        "(170–190)"
-      ]
-    },
-    {
-      "text": "Adds (10–15) to (25–30) Physical Damage",
-      "values": [
-        "(10–15)",
-        "(25–30)"
-      ]
-    },
-    {
-      "text": "+(10–15) to maximum Life",
-      "values": [
-        "+(10–15)"
-      ]
-    },
-    {
-      "text": "Gain (5–7) Life per Enemy Killed",
-      "values": [
-        "(5–7)"
-      ]
-    },
-    {
-      "text": "10% increased Movement Speed",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "15% increased Movement Speed if you've Killed Recently",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "(Recently refers to the past 4 seconds)",
-      "values": []
-    },
-    {
-      "text": "Socketed Gems are supported by Level 2 Chance to Flee",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Adds (10–15) to (25–30) Physical Damage",
-      "values": [
-        "(10–15)",
-        "(25–30)"
-      ]
-    },
-    {
-      "text": "+(10–15) to maximum Life",
-      "values": [
-        "+(10–15)"
-      ]
-    },
-    {
-      "text": "Gain (5–7) Life per Enemy Killed",
-      "values": [
-        "(5–7)"
-      ]
-    },
-    {
-      "text": "10% increased Movement Speed",
-      "values": [
-        "10"
-      ]
-    }
-  ],
-  "modDescriptions": [
-    "(Recently refers to the past 4 seconds)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–20)% chance to Cause Monsters to Flee",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–20)% chance to Cause Monsters to Flee",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "Supported Skills have (1-20)% chance to Cause Monsters to Flee",
+      "values": []
     }
   ]
 }

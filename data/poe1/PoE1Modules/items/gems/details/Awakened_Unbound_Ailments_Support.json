@@ -1,7 +1,18 @@
 {
   "name": "Awakened Unbound Ailments Support",
   "slug": "Awakened_Unbound_Ailments_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support",
+    "Icon": "U",
+    "Level": "(1-5)",
+    "Cost & Reservation Multiplier": "120%",
+    "Requires Level": "72",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; The Maven's Crucible; Can drop from either version of the Maven , from Maven's Invitations , or from Maven-witnessed map bosses.",
+    "Drop level": "72",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemUnboundAilmentsPlus"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -225,69 +236,18 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "(55-69)% increased Duration of Ailments inflicted with Supported Skills",
+    "Supported Skills have (55-69)% increased Effect of non-Damaging Ailments on Enemies",
+    "Supported Skills deal (20-22)% more Damage with Ailments"
+  ],
   "gemDescription": "Supports any skill that hits enemies or inflicts ailments",
-  "explicitMods": [
-    {
-      "text": "(55–69)% increased Duration of Ailments inflicted with Supported Skills",
-      "values": [
-        "(55–69)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (55–69)% increased Effect of non-Damaging Ailments on Enemies",
-      "values": [
-        "(55–69)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (20–22)% more Damage with Ailments",
-      "values": [
-        "(20–22)"
-      ]
-    },
-    {
-      "text": "(55–69)% increased Duration of Ailments inflicted with Supported Skills",
-      "values": [
-        "(55–69)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (55–69)% increased Effect of non-Damaging Ailments on Enemies",
-      "values": [
-        "(55–69)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (20–22)% more Damage with Ailments",
-      "values": [
-        "(20–22)"
-      ]
-    }
-  ],
-  "modDescriptions": [
-    "(Ailments are Bleeding, Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, Sapped, and Poisoned)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(Ailments that do not deal Damage are Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)",
-    "(Ailments are Bleeding, Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, Sapped, and Poisoned)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(Ailments that do not deal Damage are Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)",
-    "(Ailments are Bleeding, Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, Sapped, and Poisoned)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(Ailments that do not deal Damage are Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–10)% increased Duration of Ailments inflicted with Supported Skills",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "(0–10)% increased Duration of Ailments inflicted with Supported Skills",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "(0.5-10)% increased Duration of Ailments inflicted with Supported Skills",
+      "values": []
     }
   ]
 }

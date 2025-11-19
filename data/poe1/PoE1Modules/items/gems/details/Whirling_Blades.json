@@ -1,7 +1,18 @@
 {
   "name": "Whirling Blades",
   "slug": "Whirling_Blades",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Movement, Travel, Melee",
+    "Level": "(1-20)",
+    "Cost": "(6-10) Mana",
+    "Attack Damage": "(136-314)% of base",
+    "Effectiveness of Added Damage": "(136-314)%",
+    "Requires Level": "10",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "10",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemWhirlingBlades"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,63 +376,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Dive through enemies, dealing weapon damage. If dual wielding attacks with both weapons, dealing the damage of both in one hit. Only works with Daggers, Claws, and One-Handed Swords.",
-  "explicitMods": [
-    {
-      "text": "When Dual Wielding, Deals 75% Damage from each Weapon combined",
-      "values": [
-        "75"
-      ]
-    },
-    {
-      "text": "+0.6 seconds to Attack Time",
-      "values": [
-        "+0.6"
-      ]
-    },
-    {
-      "text": "When Dual Wielding, Deals 75% Damage from each Weapon combined",
-      "values": [
-        "75"
-      ]
-    },
-    {
-      "text": "+0.6 seconds to Attack Time",
-      "values": [
-        "+0.6"
-      ]
-    },
-    {
-      "text": "animation effect variation [-1]",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "ignores proximity shield [1]",
-      "values": []
-    },
-    {
-      "text": "skill double hits when dual wielding [1]",
-      "values": []
-    }
+  "stats": [
+    "When Dual Wielding, Deals 75% Damage from each Weapon combined",
+    "+0.6 seconds to Attack Time"
   ],
+  "gemDescription": "Dive through enemies, dealing weapon damage. If dual wielding attacks with both weapons, dealing the damage of both in one hit. Only works with Daggers, Claws, and One-Handed Swords.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–10)% increased Attack Speed",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "(0–10)% increased Attack Speed",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "(0.5-10)% increased Attack Speed",
+      "values": []
     }
   ]
 }

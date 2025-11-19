@@ -1,7 +1,17 @@
 {
   "name": "Behead Support",
   "slug": "Behead_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Melee, Attack, Strike",
+    "Icon": "H",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "38",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "38",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemBehead"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,75 +375,19 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Supported Skills have +(0.2-0.3) metres to Melee Strike Range",
+    "Supported Skills deal (30-49)% more Damage with Hits and Ailments against Enemies on Low Life",
+    "Killing Blows from Supported Strike Skills with Melee Weapons against Rare Monsters grant one of their Modifiers for 20 seconds",
+    "20% chance to refresh Duration of granted Modifier by up to 5 seconds when you Hit a Rare or Unique Enemy with Supported Skills"
+  ],
   "gemDescription": "Supports strike skills.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills have +(0.2–0.3) metres to Melee Strike Range",
-      "values": [
-        "+(0.2–0.3)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (30–49)% more Damage with Hits and Ailments against Enemies on Low Life",
-      "values": [
-        "(30–49)"
-      ]
-    },
-    {
-      "text": "Killing Blows from Supported Strike Skills with Melee Weapons against Rare Monsters grant one of their Modifiers for 20 seconds",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "20% chance to refresh Duration of granted Modifier by up to 5 seconds when you Hit a Rare or Unique Enemy with Supported Skills",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "Supported Skills have +(0.2–0.3) metres to Melee Strike Range",
-      "values": [
-        "+(0.2–0.3)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (30–49)% more Damage with Hits and Ailments against Enemies on Low Life",
-      "values": [
-        "(30–49)"
-      ]
-    },
-    {
-      "text": "Killing Blows from Supported Strike Skills with Melee Weapons against Rare Monsters grant one of their Modifiers for 20 seconds",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "20% chance to refresh Duration of granted Modifier by up to 5 seconds when you Hit a Rare or Unique Enemy with Supported Skills",
-      "values": [
-        "20"
-      ]
-    }
-  ],
-  "modDescriptions": [
-    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)",
-    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)",
-    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–20)% increased Damage with Hits against Enemies that are on Low Life",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–20)% increased Damage with Hits against Enemies that are on Low Life",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "Supported Skills deal (1-20)% increased Damage with Hits against Enemies that are on Low Life",
+      "values": []
     }
   ]
 }

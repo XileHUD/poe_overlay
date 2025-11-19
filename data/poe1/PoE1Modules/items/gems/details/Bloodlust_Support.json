@@ -1,7 +1,17 @@
 {
   "name": "Bloodlust Support",
   "slug": "Bloodlust_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Physical, Support, Melee",
+    "Icon": "L",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "140%",
+    "Requires Level": "18",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "18",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemBloodlust"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,43 +335,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports melee attack skills, causing them to deal more damage against bleeding enemies, but preventing those skills from inflicting bleeding on enemies in any way.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills deal (25–39)% more Melee Physical Damage against Bleeding enemies",
-      "values": [
-        "(25–39)"
-      ]
-    },
-    {
-      "text": "Supported Attacks cannot cause Bleeding",
-      "values": []
-    },
-    {
-      "text": "Supported Skills deal (25–39)% more Melee Physical Damage against Bleeding enemies",
-      "values": [
-        "(25–39)"
-      ]
-    },
-    {
-      "text": "Supported Attacks cannot cause Bleeding",
-      "values": []
-    }
+  "stats": [
+    "Supported Skills deal (25-39)% more Melee Physical Damage against Bleeding enemies",
+    "Supported Attacks cannot cause Bleeding"
   ],
+  "gemDescription": "Supports melee attack skills, causing them to deal more damage against bleeding enemies, but preventing those skills from inflicting bleeding on enemies in any way.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Melee Damage against Bleeding Enemies",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Melee Damage against Bleeding Enemies",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Melee Damage against Bleeding Enemies",
+      "values": []
     }
   ]
 }

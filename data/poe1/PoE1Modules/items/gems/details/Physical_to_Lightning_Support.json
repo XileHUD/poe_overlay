@@ -1,7 +1,17 @@
 {
   "name": "Physical to Lightning Support",
   "slug": "Physical_to_Lightning_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Lightning, Physical, Support",
+    "Icon": "x",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "120%",
+    "Requires Level": "18",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "18",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemPhysicalToLightning"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,47 +375,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports any skill that hits enemies.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills gain (10–29)% of Physical Damage as Extra Lightning Damage",
-      "values": [
-        "(10–29)"
-      ]
-    },
-    {
-      "text": "Supported Skills have 50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Supported Skills gain (10–29)% of Physical Damage as Extra Lightning Damage",
-      "values": [
-        "(10–29)"
-      ]
-    },
-    {
-      "text": "Supported Skills have 50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    }
+  "stats": [
+    "Supported Skills gain (10-29)% of Physical Damage as Extra Lightning Damage",
+    "Supported Skills have 50% of Physical Damage Converted to Lightning Damage"
   ],
+  "gemDescription": "Supports any skill that hits enemies.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Physical Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Physical Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Physical Damage",
+      "values": []
     }
   ]
 }

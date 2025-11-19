@@ -1,7 +1,17 @@
 {
   "name": "Cruelty Support",
   "slug": "Cruelty_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Duration",
+    "Icon": "Y",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "140%",
+    "Requires Level": "18",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "18",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemCruelty"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,75 +415,19 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Supported Skills deal (15-24)% more Damage with Hits",
+    "Cruelty has a Base Duration of 4 seconds",
+    "Hits from Supported Skills grant Cruelty",
+    "(0-19)% increased Effect of Cruelty granted by Supported Skills"
+  ],
   "gemDescription": "Supports any skill that hits enemies. Minions cannot gain Cruelty.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills deal (15–24)% more Damage with Hits",
-      "values": [
-        "(15–24)"
-      ]
-    },
-    {
-      "text": "Cruelty has a Base Duration of 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Hits from Supported Skills grant Cruelty",
-      "values": []
-    },
-    {
-      "text": "(0–19)% increased Effect of Cruelty granted by Supported Skills",
-      "values": [
-        "(0–19)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (15–24)% more Damage with Hits",
-      "values": [
-        "(15–24)"
-      ]
-    },
-    {
-      "text": "Cruelty has a Base Duration of 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Hits from Supported Skills grant Cruelty",
-      "values": []
-    },
-    {
-      "text": "(0–19)% increased Effect of Cruelty granted by Supported Skills",
-      "values": [
-        "(0–19)"
-      ]
-    },
-    {
-      "text": "supported by cruelty [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Cruelty makes all Skills Supported by Cruelty Support deal up to 40% more Damage over Time, based on the amount of Damage in the Hit which grants it)",
-    "(Cruelty makes all Skills Supported by Cruelty Support deal up to 40% more Damage over Time, based on the amount of Damage in the Hit which grants it)",
-    "(Cruelty makes all Skills Supported by Cruelty Support deal up to 40% more Damage over Time, based on the amount of Damage in the Hit which grants it)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–5)% increased Effect of Cruelty granted by Supported Skills",
-      "values": [
-        "(0–5)"
-      ]
-    },
-    {
-      "text": "(0–5)% increased Effect of Cruelty granted by Supported Skills",
-      "values": [
-        "(0–5)"
-      ]
+      "text": "(0.25-5)% increased Effect of Cruelty granted by Supported Skills",
+      "values": []
     }
   ]
 }

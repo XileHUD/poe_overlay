@@ -1,7 +1,18 @@
 {
   "name": "Frost Blades",
   "slug": "Frost_Blades",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Projectile, Melee, Strike, Cold",
+    "Level": "(1-20)",
+    "Cost": "(6-10) Mana",
+    "Attack Damage": "(143-409)% of base",
+    "Effectiveness of Added Damage": "(143-409)%",
+    "Projectile Speed": "2250",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "5",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemFrostBlades"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,105 +416,19 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Fires (5-8) Projectiles",
+    "60% of Physical Damage Converted to Cold Damage",
+    "+(1.8-2.1) metres to Melee Strike Range",
+    "Projectiles deal 30% less Damage with Hits and Ailments"
+  ],
   "gemDescription": "Attack enemies with increased range, releasing icy blades from the first enemy hit which fly at other enemies. Requires a Melee Weapon.",
-  "explicitMods": [
-    {
-      "text": "Fires (5–8) Projectiles",
-      "values": [
-        "(5–8)"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Cold Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "+(1.8–2.1) metres to Melee Strike Range",
-      "values": [
-        "+(1.8–2.1)"
-      ]
-    },
-    {
-      "text": "Projectiles deal 30% less Damage with Hits and Ailments",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "Fires (5–8) Projectiles",
-      "values": [
-        "(5–8)"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Cold Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "+(1.8–2.1) metres to Melee Strike Range",
-      "values": [
-        "+(1.8–2.1)"
-      ]
-    },
-    {
-      "text": "Projectiles deal 30% less Damage with Hits and Ailments",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "show number of projectiles [1]",
-      "values": []
-    },
-    {
-      "text": "total projectile spread angle override [110]",
-      "values": []
-    },
-    {
-      "text": "(10–15)% increased Cold Damage",
-      "values": [
-        "(10–15)"
-      ]
-    },
-    {
-      "text": "With at least 40 Dexterity in Radius, Frost Blades has 25% increased Projectile Speed",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "With at least 40 Dexterity in Radius, Melee Damagedealt by Frost Blades Penetrates 15% Cold Resistance",
-      "values": [
-        "15"
-      ]
-    }
-  ],
-  "modDescriptions": [
-    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)",
-    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)",
-    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Fires +(0–2) Projectiles",
-      "values": [
-        "+(0–2)"
-      ]
-    },
-    {
-      "text": "Fires +(0–2) Projectiles",
-      "values": [
-        "+(0–2)"
-      ]
+      "text": "Fires +(0.1-2) Projectiles",
+      "values": []
     }
   ]
 }

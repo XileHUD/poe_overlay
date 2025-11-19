@@ -1,7 +1,19 @@
 {
   "name": "Summon Carrion Golem of Scavenging",
   "slug": "Summon_Carrion_Golem_of_Scavenging",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Physical, Minion, Spell, Golem",
+    "Level": "(1-20)",
+    "Cost": "(30-54) Mana",
+    "Cooldown Time": "6.00 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "1.00 sec",
+    "Requires Level": "34",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "34",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,126 +337,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Summons a Carrion Golem. The Carrion Golem attacks with a series of slashes that increase in speed and damage, can consume corpses to heal itself and gain the ability to unleash a devastating cascade of bone spikes, and deals more damage for each of your non-golem minions near it.",
-  "explicitMods": [
-    {
-      "text": "(0–10)% increased Character Size",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Maximum 1 Summoned Golem",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Golems deal 5% more Damage per Non-Golem Minion near them, up to 50%",
-      "values": [
-        "5",
-        "50"
-      ]
-    },
-    {
-      "text": "(0–10)% increased Character Size",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Maximum 1 Summoned Golem",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Golems deal 5% more Damage per Non-Golem Minion near them, up to 50%",
-      "values": [
-        "5",
-        "50"
-      ]
-    },
-    {
-      "text": "active skill minion from alternate gem index [2]",
-      "values": []
-    },
-    {
-      "text": "active skill no golem aura [1]",
-      "values": []
-    },
-    {
-      "text": "base display minion actor level [34,70]",
-      "values": []
-    },
-    {
-      "text": "display minion monster type [7]",
-      "values": []
-    },
-    {
-      "text": "infinite minion duration [1]",
-      "values": []
-    },
-    {
-      "text": "(0–17)% increased Character Size",
-      "values": [
-        "(0–17)"
-      ]
-    },
-    {
-      "text": "Maximum 1 Summoned Golem",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Golems deal 5% more Damage per Non-Golem Minion near them, up to 50%",
-      "values": [
-        "5",
-        "50"
-      ]
-    },
-    {
-      "text": "active skill minion from alternate gem index [2]",
-      "values": []
-    },
-    {
-      "text": "active skill no golem aura [1]",
-      "values": []
-    },
-    {
-      "text": "base display minion actor level [34,100]",
-      "values": []
-    },
-    {
-      "text": "display minion monster type [7]",
-      "values": []
-    },
-    {
-      "text": "infinite minion duration [1]",
-      "values": []
-    }
+  "stats": [
+    "Maximum 1 Summoned Golem",
+    "Golems deal 5% more Damage per Non-Golem Minion near them, up to 50%"
   ],
+  "gemDescription": "Summons a Carrion Golem. The Carrion Golem attacks with a series of slashes that increase in speed and damage, can consume corpses to heal itself and gain the ability to unleash a devastating cascade of bone spikes, and deals more damage for each of your non-golem minions near it.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Minions Regenerate (0–3)% of Life per second",
-      "values": [
-        "(0–3)"
-      ]
-    },
-    {
-      "text": "Minions Regenerate (0–3)% of Life per second",
-      "values": [
-        "(0–3)"
-      ]
-    },
-    {
-      "text": "Minions Regenerate (0–3)% of Life per second",
-      "values": [
-        "(0–3)"
-      ]
+      "text": "Minions Regenerate (0.15-3)% of Life per second",
+      "values": []
     }
   ]
 }

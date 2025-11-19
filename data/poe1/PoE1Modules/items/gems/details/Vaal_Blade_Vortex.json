@@ -1,7 +1,23 @@
 {
   "name": "Vaal Blade Vortex",
   "slug": "Vaal_Blade_Vortex",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Critical, Spell, AoE, Duration, Vaal, Physical",
+    "Level": "(1-20)",
+    "Souls Per Use": "30",
+    "Can Store": "2 Use(s)",
+    "Soul Gain Prevention": "6 sec",
+    "Cast Time": "0.80 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "60%",
+    "Requires Level": "12",
+    "Info 10": "Corrupted",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Vaal Blade Vortex can drop from the Vaal Vessels found in Vaal side areas .",
+    "Drop level": "12",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVaalBladeVortex"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,182 +341,22 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Creates an independently-moving vortex of ethereal blades which lasts for a duration. The vortex moves toward nearby enemies, repeatedly damaging enemies that it passes through.",
-  "explicitMods": [
-    {
-      "text": "Deals (11–276) to (17–413) Physical Damage",
-      "values": [
-        "(11–276)",
-        "(17–413)"
-      ]
-    },
-    {
-      "text": "Base duration is 5 seconds",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Hits Enemies every 0.2 Seconds",
-      "values": [
-        "0.2"
-      ]
-    },
-    {
-      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "+(0.8–1.2) metres to radius",
-      "values": [
-        "+(0.8–1.2)"
-      ]
-    },
-    {
-      "text": "100% increased Critical Strike Chance",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Has 10 blades",
-      "values": []
-    },
-    {
-      "text": "Deals (11–276) to (17–413) Physical Damage",
-      "values": [
-        "(11–276)",
-        "(17–413)"
-      ]
-    },
-    {
-      "text": "Base duration is 5 seconds",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Hits Enemies every 0.2 Seconds",
-      "values": [
-        "0.2"
-      ]
-    },
-    {
-      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "+(0.8–1.2) metres to radius",
-      "values": [
-        "+(0.8–1.2)"
-      ]
-    },
-    {
-      "text": "100% increased Critical Strike Chance",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Has 10 blades",
-      "values": []
-    },
-    {
-      "text": "cannot cancel skill before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "extra gore chance override % [15]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    },
-    {
-      "text": "skill cannot be stunned before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "Deals (3–681) to (5–1022) Physical Damage",
-      "values": [
-        "(3–681)",
-        "(5–1022)"
-      ]
-    },
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "+(0–0.4) metres to radius",
-      "values": [
-        "+(0–0.4)"
-      ]
-    },
-    {
-      "text": "+35% increased Hit Rate for each blade",
-      "values": [
-        "+35"
-      ]
-    },
-    {
-      "text": "35% more Damage for each blade",
-      "values": [
-        "35"
-      ]
-    },
-    {
-      "text": "Can have up to 10 active spinning blades",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "action ignores crit tracking [1]",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "damage originates from initiator location [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    },
-    {
-      "text": "skill cannot gain repeat bonuses [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (11-276) to (17-413) Physical Damage",
+    "Base duration is 5.00 seconds",
+    "Hits Enemies every 0.20 Seconds",
+    "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+    "+(0.8-1.2) metres to radius",
+    "100% increased Critical Strike Chance",
+    "Has 10 blades"
   ],
+  "gemDescription": "Creates an independently-moving vortex of ethereal blades which lasts for a duration. The vortex moves toward nearby enemies, repeatedly damaging enemies that it passes through.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–5)% increased Hit Rate for each blade",
-      "values": [
-        "+(0–5)"
-      ]
-    },
-    {
-      "text": "+(0–5)% increased Hit Rate for each blade",
-      "values": [
-        "+(0–5)"
-      ]
+      "text": "+(0.25-5)% increased Hit Rate for each blade",
+      "values": []
     }
   ]
 }

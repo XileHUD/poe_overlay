@@ -1,7 +1,19 @@
 {
   "name": "Ice Shot",
   "slug": "Ice_Shot",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Projectile, AoE, Cold, Bow",
+    "Level": "(1-20)",
+    "Cost": "(6-10) Mana",
+    "Attack Damage": "(149-200)% of base",
+    "Effectiveness of Added Damage": "(149-200)%",
+    "Projectile Speed": "3260",
+    "AoE Radius": "23 / 10",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "5",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemIceShot"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,81 +377,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Fires an arrow that converts some physical damage to cold on its target and converts all physical damage to cold in a cone behind that target.",
-  "explicitMods": [
-    {
-      "text": "60% of Physical Damage Converted to Cold Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Chills Enemies as though dealing (100–195)% more Damage",
-      "values": [
-        "(100–195)"
-      ]
-    },
-    {
-      "text": "Base radius is 2.4 metres",
-      "values": [
-        "2.4"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Cold Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Chills Enemies as though dealing (100–195)% more Damage",
-      "values": [
-        "(100–195)"
-      ]
-    },
-    {
-      "text": "Base radius is 2.4 metres",
-      "values": [
-        "2.4"
-      ]
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    },
-    {
-      "text": "(15–20)% increased Damage with Hits against Chilled Enemies",
-      "values": [
-        "(15–20)"
-      ]
-    },
-    {
-      "text": "With at least 40 Dexterity in Radius, Ice Shot has 25% increased Area of Effect",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "With at least 40 Dexterity in Radius, Ice Shot Pierces 3 additional Targets",
-      "values": [
-        "3"
-      ]
-    }
+  "stats": [
+    "60% of Physical Damage Converted to Cold Damage",
+    "Base radius is 2.4 metres",
+    "Chills Enemies as though dealing (100-195)% more Damage"
   ],
+  "gemDescription": "Fires an arrow that converts some physical damage to cold on its target and converts all physical damage to cold in a cone behind that target.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–80)% increased Area of Effect angle",
-      "values": [
-        "(0–80)"
-      ]
-    },
-    {
-      "text": "(0–80)% increased Area of Effect angle",
-      "values": [
-        "(0–80)"
-      ]
+      "text": "(4-80)% increased Area of Effect angle",
+      "values": []
     }
   ]
 }

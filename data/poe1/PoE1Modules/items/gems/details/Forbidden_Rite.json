@@ -1,7 +1,19 @@
 {
   "name": "Forbidden Rite",
   "slug": "Forbidden_Rite",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Chaos, Projectile",
+    "Level": "(1-20)",
+    "Cost": "(8-21) Mana",
+    "Cast Time": "0.75 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "110%",
+    "Requires Level": "16",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "16",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemForbiddenRite"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,107 +417,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Lobs an exploding projectile near the targeted location, and extra projectiles toward enemies around you. The projectiles deal chaos damage based on your life and energy shield. Casting this spell damages you.",
-  "explicitMods": [
-    {
-      "text": "Deals (15–498) to (22–747) Chaos Damage",
-      "values": [
-        "(15–498)",
-        "(22–747)"
-      ]
-    },
-    {
-      "text": "Deals 5% of your maximum Energy Shield as base Chaos Damage",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Deals 12% of your maximum Life as base Chaos Damage",
-      "values": [
-        "12"
-      ]
-    },
-    {
-      "text": "Take 40% of maximum Life and 25% of maximum Energy Shield as Chaos Damage",
-      "values": [
-        "40",
-        "25"
-      ]
-    },
-    {
-      "text": "Fires extra Projectiles at up to (6–7) surrounding Enemies",
-      "values": [
-        "(6–7)"
-      ]
-    },
-    {
-      "text": "Deals (15–498) to (22–747) Chaos Damage",
-      "values": [
-        "(15–498)",
-        "(22–747)"
-      ]
-    },
-    {
-      "text": "Deals 5% of your maximum Energy Shield as base Chaos Damage",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Deals 12% of your maximum Life as base Chaos Damage",
-      "values": [
-        "12"
-      ]
-    },
-    {
-      "text": "Take 40% of maximum Life and 25% of maximum Energy Shield as Chaos Damage",
-      "values": [
-        "40",
-        "25"
-      ]
-    },
-    {
-      "text": "Fires extra Projectiles at up to (6–7) surrounding Enemies",
-      "values": [
-        "(6–7)"
-      ]
-    },
-    {
-      "text": "active skill projectile speed +% variation final [20]",
-      "values": []
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "projectile behaviour only explode [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (15-498) to (22-747) Chaos Damage",
+    "Deals 5% of your maximum Energy Shield as base Chaos Damage",
+    "Deals 12% of your maximum Life as base Chaos Damage",
+    "Take 40% of maximum Life and 25% of maximum Energy Shield as Chaos Damage",
+    "Fires extra Projectiles at up to (6-7) surrounding Enemies"
   ],
+  "gemDescription": "Lobs an exploding projectile near the targeted location, and extra projectiles toward enemies around you. The projectiles deal chaos damage based on your life and energy shield. Casting this spell damages you.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Fires extra Projectiles at up to +(0–2) surrounding Enemies",
-      "values": [
-        "+(0–2)"
-      ]
-    },
-    {
-      "text": "Fires extra Projectiles at up to +(0–2) surrounding Enemies",
-      "values": [
-        "+(0–2)"
-      ]
+      "text": "Fires extra Projectiles at up to +(0.1-2) surrounding Enemies",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,19 @@
 {
   "name": "Flesh and Stone",
   "slug": "Flesh_and_Stone",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Aura, AoE, Stance, Physical",
+    "Level": "(1-20)",
+    "Reservation": "25% Mana",
+    "Cooldown Time": "2.00 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "Instant",
+    "Requires Level": "16",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "16",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemFleshAndStone"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -445,71 +457,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Buffs you, and affects nearby enemies with an aura, differently depending on your stance. Both stances are more impactful against enemies closer to you. Using the skill again alternates between Blood Stance and Sand Stance.",
-  "explicitMods": [
-    {
-      "text": "Base Aura radius is 2.8 metres",
-      "values": [
-        "2.8"
-      ]
-    },
-    {
-      "text": "(0–50)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–50)"
-      ]
-    },
-    {
-      "text": "While in Blood Stance, Aura makes Enemies take up to (10–20)% more Physical Damage from Hits",
-      "values": [
-        "(10–20)"
-      ]
-    },
-    {
-      "text": "While in Sand Stance, Buff makes you take up to (10–19)% less Damage from Enemies in Aura",
-      "values": [
-        "(10–19)"
-      ]
-    },
-    {
-      "text": "Base Aura radius is 2.8 metres",
-      "values": [
-        "2.8"
-      ]
-    },
-    {
-      "text": "(0–50)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–50)"
-      ]
-    },
-    {
-      "text": "While in Blood Stance, Aura makes Enemies take up to (10–20)% more Physical Damage from Hits",
-      "values": [
-        "(10–20)"
-      ]
-    },
-    {
-      "text": "While in Sand Stance, Buff makes you take up to (10–19)% less Damage from Enemies in Aura",
-      "values": [
-        "(10–19)"
-      ]
-    }
+  "stats": [
+    "Base Aura radius is 2.8 metres",
+    "(0-50)% increased Cooldown Recovery Rate",
+    "While in Blood Stance, Aura makes Enemies take up to (10-20)% more Physical Damage from Hits",
+    "While in Sand Stance, Buff makes you take up to (10-19)% less Damage from Enemies in Aura"
   ],
+  "gemDescription": "Buffs you, and affects nearby enemies with an aura, differently depending on your stance. Both stances are more impactful against enemies closer to you. Using the skill again alternates between Blood Stance and Sand Stance.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–10)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "(0–10)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "(0.5-10)% increased Cooldown Recovery Rate",
+      "values": []
     }
   ]
 }

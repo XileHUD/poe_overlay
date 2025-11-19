@@ -1,7 +1,19 @@
 {
   "name": "Blade Vortex of the Scythe",
   "slug": "Blade_Vortex_of_the_Scythe",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Duration, Physical",
+    "Level": "(1-20)",
+    "Cost": "(14-36) Mana",
+    "Cast Time": "1.20 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "300%",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "12",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,142 +337,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "This spell creates a swarm of ethereal blades which briefly orbit in an area around you, dealing damage every 0.6 seconds to all enemies in their radius.",
-  "explicitMods": [
-    {
-      "text": "Deals (32–1353) to (48–2030) Physical Damage",
-      "values": [
-        "(32–1353)",
-        "(48–2030)"
-      ]
-    },
-    {
-      "text": "Base duration is 0.8 seconds",
-      "values": [
-        "0.8"
-      ]
-    },
-    {
-      "text": "+(1–1.9) metre to radius",
-      "values": [
-        "+(1–1.9)"
-      ]
-    },
-    {
-      "text": "Can have up to 1 active spinning blade",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Deals (32–1353) to (48–2030) Physical Damage",
-      "values": [
-        "(32–1353)",
-        "(48–2030)"
-      ]
-    },
-    {
-      "text": "Base duration is 0.8 seconds",
-      "values": [
-        "0.8"
-      ]
-    },
-    {
-      "text": "+(1–1.9) metre to radius",
-      "values": [
-        "+(1–1.9)"
-      ]
-    },
-    {
-      "text": "Can have up to 1 active spinning blade",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "action ignores crit tracking [1]",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "damage originates from initiator location [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    },
-    {
-      "text": "skill cannot gain repeat bonuses [1]",
-      "values": []
-    },
-    {
-      "text": "Deals (22–4377) to (32–6566) Physical Damage",
-      "values": [
-        "(22–4377)",
-        "(32–6566)"
-      ]
-    },
-    {
-      "text": "Base duration is 1.5 seconds",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "+(1–2.7) metre to radius",
-      "values": [
-        "+(1–2.7)"
-      ]
-    },
-    {
-      "text": "Can have up to 1 active spinning blade",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "corrupted blood on hit % average damage to deal per minute per stack [150,618]",
-      "values": []
-    },
-    {
-      "text": "corrupted blood on hit duration [3000]",
-      "values": []
-    },
-    {
-      "text": "corrupted blood on hit num stacks [1]",
-      "values": []
-    },
-    {
-      "text": "damage originates from initiator location [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (32-1353) to (48-2030) Physical Damage",
+    "Base duration is 0.80 seconds",
+    "+(1-1.9) metres to radius",
+    "Can have up to 1 active spinning blade"
   ],
+  "gemDescription": "This spell creates a swarm of ethereal blades which briefly orbit in an area around you, dealing damage every 0.6 seconds to all enemies in their radius.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Deals (0–20)% more Physical Damage",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "Deals (0–20)% more Physical Damage",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "Deals (1-20)% more Physical Damage",
+      "values": []
     }
   ]
 }

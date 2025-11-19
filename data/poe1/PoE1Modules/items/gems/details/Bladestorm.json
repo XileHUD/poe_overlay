@@ -1,7 +1,19 @@
 {
   "name": "Bladestorm",
   "slug": "Bladestorm",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, AoE, Duration, Melee",
+    "Level": "(1-20)",
+    "Cost": "(10-14) Mana",
+    "Attack Speed": "70% of base",
+    "Attack Damage": "(159-291)% of base",
+    "Effectiveness of Added Damage": "(159-291)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "28",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemBladestorm"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -485,118 +497,21 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Base duration is 3.00 seconds",
+    "(70-108)% more Damage with Bleeding while in Blood Stance",
+    "(10-12)% more Attack Speed while you're in a Blood Bladestorm",
+    "Maximum of 3 Bladestorms at a time",
+    "Sand Bladestorms grant (30-38)% increased Movement Speed to you",
+    "Bladestorm deals 50% less Damage with Hits and Ailments"
+  ],
   "gemDescription": "Perform a spinning attack, damaging enemies around you and creating a bladestorm matching your stance. The bladestorm repeatedly damages enemies, based on your weapon damage and attack time, for a duration. Blood bladestorms are stationary and cause Bleeding, while Sand bladestorms move slowly forwards and Blind enemies. Requires a Sword or Axe. You are in Blood Stance by default.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 3 seconds",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "(70–108)% more Damage with Bleeding while in Blood Stance",
-      "values": [
-        "(70–108)"
-      ]
-    },
-    {
-      "text": "(10–12)% more Attack Speed while you're in a Blood Bladestorm",
-      "values": [
-        "(10–12)"
-      ]
-    },
-    {
-      "text": "Sand Bladestorms grant (30–38)% increased Movement Speed to you",
-      "values": [
-        "(30–38)"
-      ]
-    },
-    {
-      "text": "Bladestorm deals 50% less Damage with Hits and Ailments",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Maximum of 3 Bladestorms at a time",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Base duration is 3 seconds",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "(70–108)% more Damage with Bleeding while in Blood Stance",
-      "values": [
-        "(70–108)"
-      ]
-    },
-    {
-      "text": "(10–12)% more Attack Speed while you're in a Blood Bladestorm",
-      "values": [
-        "(10–12)"
-      ]
-    },
-    {
-      "text": "Sand Bladestorms grant (30–38)% increased Movement Speed to you",
-      "values": [
-        "(30–38)"
-      ]
-    },
-    {
-      "text": "Bladestorm deals 50% less Damage with Hits and Ailments",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Maximum of 3 Bladestorms at a time",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "blind art variation [1]",
-      "values": []
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(You are in Blood Stance by default)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(You are in Blood Stance by default)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(You are in Blood Stance by default)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–1) to Maximum number of Bladestorms at a time",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "+(0–1) to Maximum number of Bladestorms at a time",
-      "values": [
-        "+(0–1)"
-      ]
+      "text": "+(0.05-1) to Maximum number of Bladestorms at a time",
+      "values": []
     }
   ]
 }

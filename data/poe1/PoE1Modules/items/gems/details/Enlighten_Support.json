@@ -1,7 +1,16 @@
 {
   "name": "Enlighten Support",
   "slug": "Enlighten_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Exceptional, Support",
+    "Icon": "+",
+    "Level": "(1-3)",
+    "Cost & Reservation Multiplier": "(100-92)%",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "38",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemAdditionalXP"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -91,16 +100,8 @@
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "This Gem gains (0–100)% increased Experience",
-      "values": [
-        "(0–100)"
-      ]
-    },
-    {
-      "text": "This Gem gains (0–100)% increased Experience",
-      "values": [
-        "(0–100)"
-      ]
+      "text": "This Gem gains (5-100)% increased Experience",
+      "values": []
     }
   ]
 }

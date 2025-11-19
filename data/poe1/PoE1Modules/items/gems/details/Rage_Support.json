@@ -1,7 +1,17 @@
 {
   "name": "Rage Support",
   "slug": "Rage_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Melee, Attack",
+    "Icon": "g",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "18",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "18",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemRage"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,80 +335,17 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Gain 3 Rage on Attack Hit",
+    "Supported Skills have (10-19)% increased Attack Speed while you have at least 10 Rage"
+  ],
   "gemDescription": "Supports melee attack skills. Minions cannot gain rage.",
-  "explicitMods": [
-    {
-      "text": "Gain 3 Rage on Attack Hit",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Supported Skills have (10–19)% increased Attack Speed while you have at least 10 Rage",
-      "values": [
-        "(10–19)"
-      ]
-    },
-    {
-      "text": "Gain 3 Rage on Attack Hit",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Supported Skills have (10–19)% increased Attack Speed while you have at least 10 Rage",
-      "values": [
-        "(10–19)"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 30 Rage",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "(120–150)% increased Armour",
-      "values": [
-        "(120–150)"
-      ]
-    },
-    {
-      "text": "(10–25)% reduced Rage Cost of Skills",
-      "values": [
-        "(10–25)"
-      ]
-    },
-    {
-      "text": "Vaal Attack Skills you Use yourself Cost Rage instead of requiring Souls",
-      "values": []
-    },
-    {
-      "text": "You cannot gain Rage during Soul Gain Prevention",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Every Rage grants 1% more Attack Damage. Maximum Rage is 30. Lose 10 Rage per second if you have not been Hit or gained Rage in the last 2 seconds)",
-    "(Only one Hit every 0.5 seconds can cause you to gain Rage)",
-    "(Every Rage grants 1% more Attack Damage. Maximum Rage is 30. Lose 10 Rage per second if you have not been Hit or gained Rage in the last 2 seconds)",
-    "(Only one Hit every 0.5 seconds can cause you to gain Rage)",
-    "(Every Rage grants 1% more Attack Damage. Maximum Rage is 30. Lose 10 Rage per second if you have not been Hit or gained Rage in the last 2 seconds)",
-    "(Only one Hit every 0.5 seconds can cause you to gain Rage)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Attack Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Attack Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Attack Damage",
+      "values": []
     }
   ]
 }

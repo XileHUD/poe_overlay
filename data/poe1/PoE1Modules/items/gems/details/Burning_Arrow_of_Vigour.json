@@ -1,7 +1,16 @@
 {
   "name": "Burning Arrow of Vigour",
   "slug": "Burning_Arrow_of_Vigour",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Projectile, Fire, Bow",
+    "Level": "(1-20)",
+    "Cost": "(7-13) Mana",
+    "Attack Speed": "75% of base",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "5",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,96 +334,18 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Deals Added Fire Damage equal to (21-32)% of Maximum Life",
+    "25% chance to Ignite enemies",
+    "100% of Physical Damage Converted to Fire Damage"
+  ],
   "gemDescription": "Fires a burning arrow that deals fire damage and has a chance to ignite.",
-  "explicitMods": [
-    {
-      "text": "Deals Added Fire Damage equal to (21–32)% of Maximum Life",
-      "values": [
-        "(21–32)"
-      ]
-    },
-    {
-      "text": "100% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "25% chance to Ignite enemies",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Deals Added Fire Damage equal to (21–32)% of Maximum Life",
-      "values": [
-        "(21–32)"
-      ]
-    },
-    {
-      "text": "100% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "25% chance to Ignite enemies",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    },
-    {
-      "text": "Deals Added Fire Damage equal to (21–40)% of Maximum Life",
-      "values": [
-        "(21–40)"
-      ]
-    },
-    {
-      "text": "100% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "25% chance to Ignite enemies",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
-    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
-    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
-    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–20)% more Damage with Ignite",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% more Damage with Ignite",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% more Damage with Ignite",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "(1-20)% more Damage with Ignite",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,18 @@
 {
   "name": "Tornado Shot of Cloudburst",
   "slug": "Tornado_Shot_of_Cloudburst",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Projectile, Bow",
+    "Level": "(1-20)",
+    "Cost": "(7-10) Mana",
+    "Attack Damage": "(175-210)% of base",
+    "Effectiveness of Added Damage": "(175-210)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -285,87 +296,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Fires a single payload arrow into the air to land at a targeted location. It will then fire arrows out in all directions from that point.",
-  "explicitMods": [
-    {
-      "text": "Fires 9 Arrows",
-      "values": [
-        "9"
-      ]
-    },
-    {
-      "text": "Fires Projectiles in a circle",
-      "values": []
-    },
-    {
-      "text": "Fires a Payload Arrow into the airProjectiles Fire from where the Payload Arrow lands",
-      "values": []
-    },
-    {
-      "text": "Fires 9 Arrows",
-      "values": [
-        "9"
-      ]
-    },
-    {
-      "text": "Fires Projectiles in a circle",
-      "values": []
-    },
-    {
-      "text": "Fires a Payload Arrow into the airProjectiles Fire from where the Payload Arrow lands",
-      "values": []
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    },
-    {
-      "text": "Fires 9 Arrows",
-      "values": [
-        "9"
-      ]
-    },
-    {
-      "text": "Fires Projectiles in a circle",
-      "values": []
-    },
-    {
-      "text": "Fires a Payload Arrow into the airProjectiles Fire from where the Payload Arrow lands",
-      "values": []
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    }
+  "stats": [
+    "Fires 9 Arrows",
+    "Fires Projectiles in a circle",
+    "Fires a Payload Arrow into the air",
+    "Projectiles Fire from where the Payload Arrow lands"
   ],
+  "gemDescription": "Fires a single payload arrow into the air to land at a targeted location. It will then fire arrows out in all directions from that point.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Fires +(0–4) Arrows",
-      "values": [
-        "+(0–4)"
-      ]
-    },
-    {
-      "text": "Fires +(0–4) Arrows",
-      "values": [
-        "+(0–4)"
-      ]
-    },
-    {
-      "text": "Fires +(0–4) Arrows",
-      "values": [
-        "+(0–4)"
-      ]
+      "text": "Fires +(0.2-4) Arrows",
+      "values": []
     }
   ]
 }

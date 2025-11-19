@@ -1,7 +1,21 @@
 {
   "name": "Lightning Spire Trap",
   "slug": "Lightning_Spire_Trap",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Trap, Critical, Spell, Duration, AoE, Lightning",
+    "Level": "(1-20)",
+    "Cost": "(13-25) Mana",
+    "Cooldown Time": "8.00 sec",
+    "Can Store": "3 Use(s)",
+    "Cast Time": "1.00 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "(65-85)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "28",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemLightningTowerTrap"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -485,117 +499,22 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Throws a trap which, once triggered, will repeatedly strike multiple areas around it for a duration, dealing lightning damage.",
-  "explicitMods": [
-    {
-      "text": "Deals (15–238) to (45–713) Lightning Damage",
-      "values": [
-        "(15–238)",
-        "(45–713)"
-      ]
-    },
-    {
-      "text": "Trap lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Base duration is 3.5 seconds",
-      "values": [
-        "3.5"
-      ]
-    },
-    {
-      "text": "Strikes every (0.36–0.55) seconds",
-      "values": [
-        "(0.36–0.55)"
-      ]
-    },
-    {
-      "text": "Modifiers to Trap Throwing Speed also apply to strike Frequency",
-      "values": []
-    },
-    {
-      "text": "(100–138)% increased Critical Strike Chance against Shocked Enemies",
-      "values": [
-        "(100–138)"
-      ]
-    },
-    {
-      "text": "Strikes 3 Areas",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Deals (15–238) to (45–713) Lightning Damage",
-      "values": [
-        "(15–238)",
-        "(45–713)"
-      ]
-    },
-    {
-      "text": "Trap lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Base duration is 3.5 seconds",
-      "values": [
-        "3.5"
-      ]
-    },
-    {
-      "text": "Strikes every (0.36–0.55) seconds",
-      "values": [
-        "(0.36–0.55)"
-      ]
-    },
-    {
-      "text": "Modifiers to Trap Throwing Speed also apply to strike Frequency",
-      "values": []
-    },
-    {
-      "text": "(100–138)% increased Critical Strike Chance against Shocked Enemies",
-      "values": [
-        "(100–138)"
-      ]
-    },
-    {
-      "text": "Strikes 3 Areas",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "base skill is trapped [1]",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (15-238) to (45-713) Lightning Damage",
+    "Trap lasts 4 seconds",
+    "Base duration is 3.50 seconds",
+    "Strikes every (0.55-0.36) seconds",
+    "Modifiers to Trap Throwing Speed also apply to strike Frequency",
+    "(100-138)% increased Critical Strike Chance against Shocked Enemies",
+    "Strikes 3 Areas"
   ],
+  "gemDescription": "Throws a trap which, once triggered, will repeatedly strike multiple areas around it for a duration, dealing lightning damage.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Strikes +(0–1) additional Area",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Strikes +(0–1) additional Area",
-      "values": [
-        "+(0–1)"
-      ]
+      "text": "Strikes +(0.05-1) Areas",
+      "values": []
     }
   ]
 }

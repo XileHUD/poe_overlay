@@ -1,7 +1,19 @@
 {
   "name": "Soulrend",
   "slug": "Soulrend",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Chaos, Spell, AoE, Duration, Projectile",
+    "Level": "(1-20)",
+    "Cost": "(14-26) Mana",
+    "Cast Time": "0.80 sec",
+    "Critical Strike Chance": "5.00%",
+    "Effectiveness of Added Damage": "170%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "28",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemSoulrend"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,109 +417,21 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Deals (21-885) to (31-1327) Chaos Damage",
+    "Projectiles Pierce all Targets",
+    "Deals (180.8-3149.4) Base Chaos Damage per second",
+    "Base duration is 0.60 seconds",
+    "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+    "4% of Spell Damage Leeched as Energy Shield"
+  ],
   "gemDescription": "Fires a projectile that turns towards enemies in front of it, damaging and piercing through those it hits, and leeching some of that damage as energy shield. As the projectile travels, it repeatedly applies a short but powerful chaos damage over time debuff to each enemy in an area around it.",
-  "explicitMods": [
-    {
-      "text": "Deals (21–885) to (31–1327) Chaos Damage",
-      "values": [
-        "(21–885)",
-        "(31–1327)"
-      ]
-    },
-    {
-      "text": "Projectiles Pierce all Targets",
-      "values": []
-    },
-    {
-      "text": "Deals (180.9–3149.5) Base Chaos Damage per second",
-      "values": [
-        "(180.9–3149.5)"
-      ]
-    },
-    {
-      "text": "Base duration is 0.6 seconds",
-      "values": [
-        "0.6"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "4% of Spell Damage Leeched as Energy Shield",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Deals (21–885) to (31–1327) Chaos Damage",
-      "values": [
-        "(21–885)",
-        "(31–1327)"
-      ]
-    },
-    {
-      "text": "Projectiles Pierce all Targets",
-      "values": []
-    },
-    {
-      "text": "Deals (180.9–3149.5) Base Chaos Damage per second",
-      "values": [
-        "(180.9–3149.5)"
-      ]
-    },
-    {
-      "text": "Base duration is 0.6 seconds",
-      "values": [
-        "0.6"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "4% of Spell Damage Leeched as Energy Shield",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "active skill projectile speed +% variation final [25]",
-      "values": []
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "base_chaos_damage_taken_per_minute",
-      "values": []
-    },
-    {
-      "text": "base_physical_damage_taken_per_minute",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Leeched Energy Shield is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
-    "(Leeched Energy Shield is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
-    "(Leeched Energy Shield is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base duration is (0–0.2) seconds",
-      "values": [
-        "(0–0.2)"
-      ]
-    },
-    {
-      "text": "Base duration is (0–0.2) seconds",
-      "values": [
-        "(0–0.2)"
-      ]
+      "text": "Base duration is (0.01-0.2) seconds",
+      "values": []
     }
   ]
 }

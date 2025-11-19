@@ -1,7 +1,18 @@
 {
   "name": "Blink Arrow",
   "slug": "Blink_Arrow",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Minion, Duration, Movement, Travel, Bow",
+    "Level": "(1-20)",
+    "Cost": "(14-20) Mana",
+    "Cooldown Time": "3.00 sec",
+    "Can Store": "1 Use(s)",
+    "Requires Level": "10",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "10",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemBlinkArrow"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -445,87 +456,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Fires an arrow at the target destination. When the arrow lands, you are teleported to it and a clone is summoned at your old location. The clone is a minion that uses your bow and quiver.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 3 seconds",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "(0–47)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–47)"
-      ]
-    },
-    {
-      "text": "Minions deal (0–57)% more Damage",
-      "values": [
-        "(0–57)"
-      ]
-    },
-    {
-      "text": "Base duration is 3 seconds",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "(0–47)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–47)"
-      ]
-    },
-    {
-      "text": "Minions deal (0–57)% more Damage",
-      "values": [
-        "(0–57)"
-      ]
-    },
-    {
-      "text": "base display minion actor level [10,70]",
-      "values": []
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "display minion monster type [25]",
-      "values": []
-    },
-    {
-      "text": "number of monsters to summon [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire wand projectiles [1]",
-      "values": []
-    }
+  "stats": [
+    "Base duration is 3.00 seconds",
+    "(0-47)% increased Cooldown Recovery Rate",
+    "Minions deal (0-57)% more Damage"
   ],
+  "gemDescription": "Fires an arrow at the target destination. When the arrow lands, you are teleported to it and a clone is summoned at your old location. The clone is a minion that uses your bow and quiver.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–40)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "(0–40)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–40)"
-      ]
+      "text": "(2-40)% increased Cooldown Recovery Rate",
+      "values": []
     }
   ]
 }

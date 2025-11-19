@@ -1,7 +1,33 @@
 {
   "name": "Vaal Blade Flurry",
   "slug": "Vaal_Blade_Flurry",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, AoE, Channelling, Vaal, Melee",
+    "Level": "(1-20)",
+    "Cooldown Time": "0.50 sec",
+    "Can Store": "1 Use(s)",
+    "Souls Per Use": "30",
+    "Soul Gain Prevention": "3 sec",
+    "Attack Speed": "160% of base",
+    "Attack Damage": "(68-125)% of base",
+    "Effectiveness of Added Damage": "(68-125)%",
+    "Requires Level": "28",
+    "Info 11": "Corrupted",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted",
+    "Drop level": "28",
+    "Vaal Blade Flurry can drop from the Vaal Vessels found in Vaal side areas , or by corrupting Blade FlurryBlade FlurryAttack, AoE, Channelling, MeleeLevel": "(1-20)Cost: (5-6) ManaAttack Speed: 160% of baseAttack Damage: (68-125)% of baseEffectiveness of Added Damage: (68-125)%AoE Radius: 14 / 17 / 19Requires Level 28Repeatedly hit enemies in a circle in front of you while channelling, dealing damage to and around the enemy. The damage is continually boosted while channelling. You unleash an additional hit for each stage reached once the channelling ends. Requires a Dagger, Claw or One-Handed Sword.25% more Damage with Hits and Ailments for each stageMaximum 6 Stages Additional Effects From 1-20% Quality: (1-20)% more Damage while at maximum StagesPlace into an item socket of the right colour to gain this skill. Right click to remove from a socket. .",
+    "Info 16": "Attack , AoE , Channelling , Melee",
+    "Cost": "(5-6) Mana",
+    "AoE Radius": "14 / 17 / 19",
+    "Info 19": "Repeatedly hit enemies in a circle in front of you while channelling, dealing damage to and around the enemy. The damage is continually boosted while channelling. You unleash an additional hit for each stage reached once the channelling ends. Requires a Dagger, Claw or One-Handed Sword.",
+    "Info 20": "25% more Damage with Hits and Ailments for each stage",
+    "Info 21": "Maximum 6 Stages",
+    "Additional Effects From 1-20% Quality": "(1-20)% more Damage while at maximum Stages",
+    "Info 23": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVaalChargedAttack"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -285,138 +311,22 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "100% chance to Blind enemies on hit",
+    "Can't be Evaded",
+    "(30-68)% increased Blind Effect",
+    "50% less Damage Taken while Channelling",
+    "Base Circle Radius is 1 metre",
+    "+0.5 metres to Circle Radius per Stage",
+    "Channelling stops when Total Circle Radius reaches 9 metres"
+  ],
   "gemDescription": "Channel to create an expanding circle area around you that blinds enemies within it. When you stop channelling, deals damage in a smaller area around each enemy in the circle. Requires a Dagger, Claw or One-Handed Sword.",
-  "explicitMods": [
-    {
-      "text": "Blind enemies on hit",
-      "values": []
-    },
-    {
-      "text": "Can't be Evaded",
-      "values": []
-    },
-    {
-      "text": "(30–68)% increased Blind Effect",
-      "values": [
-        "(30–68)"
-      ]
-    },
-    {
-      "text": "50% less Damage Taken while Channelling",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Base Circle Radius is 1 metre+0.5 metres to Circle Radius per StageChannelling stops when Total Circle Radius reaches 9 metres",
-      "values": [
-        "+0.5"
-      ]
-    },
-    {
-      "text": "Blind enemies on hit",
-      "values": []
-    },
-    {
-      "text": "Can't be Evaded",
-      "values": []
-    },
-    {
-      "text": "(30–68)% increased Blind Effect",
-      "values": [
-        "(30–68)"
-      ]
-    },
-    {
-      "text": "50% less Damage Taken while Channelling",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Base Circle Radius is 1 metre+0.5 metres to Circle Radius per StageChannelling stops when Total Circle Radius reaches 9 metres",
-      "values": [
-        "+0.5"
-      ]
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "cannot cancel skill before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill cannot be stunned before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "current_charged_attack_stacks",
-      "values": []
-    },
-    {
-      "text": "has_soul_gain_prevention",
-      "values": []
-    },
-    {
-      "text": "damage_taken_+%_final_from_vaal_charged_attack",
-      "values": []
-    },
-    {
-      "text": "25% more Damage with Hits and Ailments for each stage",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Maximum 6 Stages",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Being Blinded causes 20% less Accuracy Rating and Evasion Rating, for 4 seconds)",
-    "(Being Blinded causes 20% less Accuracy Rating and Evasion Rating, for 4 seconds)",
-    "(Being Blinded causes 20% less Accuracy Rating and Evasion Rating, for 4 seconds)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–5)% more Damage with Hits and Ailments for each stage",
-      "values": [
-        "+(0–5)"
-      ]
-    },
-    {
-      "text": "+(0–5)% more Damage with Hits and Ailments for each stage",
-      "values": [
-        "+(0–5)"
-      ]
-    },
-    {
-      "text": "(0–20)% more Damage while at maximum Stages",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "+(0.25-5)% more Damage with Hits and Ailments for each stage",
+      "values": []
     }
   ]
 }

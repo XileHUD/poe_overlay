@@ -1,7 +1,21 @@
 {
   "name": "Consecrated Path of Endurance",
   "slug": "Consecrated_Path_of_Endurance",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Fire, Attack, AoE, Movement, Duration, Slam, Melee",
+    "Level": "(1-20)",
+    "Cost": "(9-13) Mana",
+    "Cooldown Time": "2.00 sec",
+    "Can Store": "1 Use(s)",
+    "Attack Speed": "80% of base",
+    "Attack Damage": "(166-305)% of base",
+    "Effectiveness of Added Damage": "(166-305)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -285,151 +299,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Slams the ground at a targeted location. If an enemy is near where you target, you'll teleport to it from a short distance away, slam, and create an area of consecrated ground. The cooldown can be bypassed by expending an Endurance Charge. Can't be supported by Multistrike, and requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "50% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Deals up to 20% more Damage with Hits to closer targets",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "10% more Area of Effect per Endurance Charge",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "10% more Attack Damage per Endurance Charge",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "50% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Deals up to 20% more Damage with Hits to closer targets",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "10% more Area of Effect per Endurance Charge",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "10% more Attack Damage per Endurance Charge",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "ignite art variation [7]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "visual hit effect elemental is holy [1]",
-      "values": []
-    },
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "50% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Deals up to 20% more Damage with Hits to closer targets",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "10% more Area of Effect per Endurance Charge",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "10% more Attack Damage per Endurance Charge",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "ignite art variation [7]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "visual hit effect elemental is holy [1]",
-      "values": []
-    }
+  "stats": [
+    "Base duration is 4.00 seconds",
+    "50% of Physical Damage Converted to Fire Damage",
+    "Deals up to 20% more Damage with Hits to closer targets",
+    "10% more Area of Effect per Endurance Charge",
+    "10% more Attack Damage per Endurance Charge"
   ],
+  "gemDescription": "Slams the ground at a targeted location. If an enemy is near where you target, you'll teleport to it from a short distance away, slam, and create an area of consecrated ground. The cooldown can be bypassed by expending an Endurance Charge. Can't be supported by Multistrike, and requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Deals up to +(0–10)% more Damage with Hits to closer targets",
-      "values": [
-        "+(0–10)"
-      ]
-    },
-    {
-      "text": "Deals up to +(0–10)% more Damage with Hits to closer targets",
-      "values": [
-        "+(0–10)"
-      ]
-    },
-    {
-      "text": "Deals up to +(0–10)% more Damage with Hits to closer targets",
-      "values": [
-        "+(0–10)"
-      ]
+      "text": "Deals up to +(0.5-10)% more Damage with Hits to closer targets",
+      "values": []
     }
   ]
 }

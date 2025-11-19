@@ -1,7 +1,17 @@
 {
   "name": "Intensify Support",
   "slug": "Intensify_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "AoE, Spell, Support",
+    "Icon": "T",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "31",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "31",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemHandcastSpellBoost"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -366,88 +376,19 @@
   ],
   "description": "Maximum intensity can be increased by one stack by allocating the notable passive skill Intensity",
   "stats": [
-    "Maximum intensity can be increased by one stack by allocating the notable passive skill Intensity"
+    "Supported Skills have (30-49)% increased Area of Effect",
+    "Supported Spells lose 1 Intensity every 0.5 seconds while moving, or immediately if you teleport",
+    "Supported Spells gain Intensity when you Cast them, to a maximum of 3",
+    "Supported Skills deal (12-16)% more Area Damage with Hits per Intensity",
+    "Supported Skills have 15% less Area of Effect per Intensity"
   ],
   "gemDescription": "Supports spell skills that you cast yourself. Cannot support triggered skills, Vaal skills, instant skills, channelling skills, skills with a reservation or which create minions, or skills used by totems, traps, or mines.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills have (30–49)% increased Area of Effect",
-      "values": [
-        "(30–49)"
-      ]
-    },
-    {
-      "text": "Supported Spells lose 1 Intensity every 0.5 seconds while moving, or immediately if you teleport",
-      "values": []
-    },
-    {
-      "text": "Supported Spells gain Intensity when you Cast them, to a maximum of 3Supported Skills deal (12–16)% more Area Damage with Hits per IntensitySupported Skills have 15% less Area of Effect per Intensity",
-      "values": [
-        "(12–16)",
-        "15"
-      ]
-    },
-    {
-      "text": "Supported Skills have (30–49)% increased Area of Effect",
-      "values": [
-        "(30–49)"
-      ]
-    },
-    {
-      "text": "Supported Spells lose 1 Intensity every 0.5 seconds while moving, or immediately if you teleport",
-      "values": []
-    },
-    {
-      "text": "Supported Spells gain Intensity when you Cast them, to a maximum of 3Supported Skills deal (12–16)% more Area Damage with Hits per IntensitySupported Skills have 15% less Area of Effect per Intensity",
-      "values": [
-        "(12–16)",
-        "15"
-      ]
-    },
-    {
-      "text": "+2 to Level of Socketed Gems",
-      "values": [
-        "+2"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 10 Intensify",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 10 Spell Echo",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 10 Controlled Destruction",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "+(10–30) to Intelligence",
-      "values": [
-        "+(10–30)"
-      ]
-    }
-  ],
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Area Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Area Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Area Damage",
+      "values": []
     }
   ]
 }

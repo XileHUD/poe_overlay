@@ -1,7 +1,18 @@
 {
   "name": "Quickstep",
   "slug": "Quickstep",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Movement, Travel, Blink",
+    "Level": "1",
+    "Cooldown Time": "10.00 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "0.15 sec",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop disabled; Guaranteed drop from Hillock in Ruthless mode ; it is drop-disabled in normal game mode.",
+    "Drop level": "1",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemQuickstep"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -65,63 +76,15 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "200% increased Cooldown Recovery Rate if used while a Unique Enemy is in your Presence",
+    "Quality has no effect",
+    "This Spell's Cast Speed cannot be modified"
+  ],
   "gemDescription": "Performs a series of quick teleports towards a targeted location, stopping if you would overlap with monsters or terrain. If using the \"Attack in Place\" option, the direction is reversed. Shares a cooldown with other Blink skills. Cannot be supported.",
-  "explicitMods": [
-    {
-      "text": "200% increased Cooldown Recovery Rate if used while a Unique Enemy is in your Presence",
-      "values": [
-        "200"
-      ]
-    },
-    {
-      "text": "Quality has no effect",
-      "values": []
-    },
-    {
-      "text": "This Spell's Cast Speed cannot be modified",
-      "values": []
-    },
-    {
-      "text": "200% increased Cooldown Recovery Rate if used while a Unique Enemy is in your Presence",
-      "values": [
-        "200"
-      ]
-    },
-    {
-      "text": "Quality has no effect",
-      "values": []
-    },
-    {
-      "text": "This Spell's Cast Speed cannot be modified",
-      "values": []
-    },
-    {
-      "text": "base deal no damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill cannot be interrupted [1]",
-      "values": []
-    },
-    {
-      "text": "skill cannot be knocked back [1]",
-      "values": []
-    },
-    {
-      "text": "skill cannot be stunned [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)",
-    "(40% of Damage from Suppressed Hits and Ailments they inflict is prevented)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
-    {
-      "text": "Quality has no effect",
-      "values": []
-    },
     {
       "text": "Quality has no effect",
       "values": []

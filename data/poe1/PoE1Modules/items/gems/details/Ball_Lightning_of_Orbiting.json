@@ -1,7 +1,19 @@
 {
   "name": "Ball Lightning of Orbiting",
   "slug": "Ball_Lightning_of_Orbiting",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Projectile, AoE, Lightning",
+    "Level": "(1-20)",
+    "Cost": "(11-19) Mana",
+    "Cast Time": "0.60 sec",
+    "Critical Strike Chance": "5.00%",
+    "Effectiveness of Added Damage": "50%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -285,130 +297,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Fires a single projectile which moves in a spiral while damaging each enemy in an area around it repeatedly with bolts of lightning.",
-  "explicitMods": [
-    {
-      "text": "Deals (2–27) to (39–511) Lightning Damage",
-      "values": [
-        "(2–27)",
-        "(39–511)"
-      ]
-    },
-    {
-      "text": "Modifiers to number of Projectiles do not apply to this Skill",
-      "values": []
-    },
-    {
-      "text": "Base radius is 2 metres",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "100% more Projectile Speed",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Deals (2–27) to (39–511) Lightning Damage",
-      "values": [
-        "(2–27)",
-        "(39–511)"
-      ]
-    },
-    {
-      "text": "Modifiers to number of Projectiles do not apply to this Skill",
-      "values": []
-    },
-    {
-      "text": "Base radius is 2 metres",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "100% more Projectile Speed",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "active skill projectile speed +% variation final [30]",
-      "values": []
-    },
-    {
-      "text": "ball lightning projectile speed and hit frequency +% final [33]",
-      "values": []
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "Deals (2–136) to (39–2580) Lightning Damage",
-      "values": [
-        "(2–136)",
-        "(39–2580)"
-      ]
-    },
-    {
-      "text": "Trap lasts +4 seconds",
-      "values": [
-        "+4"
-      ]
-    },
-    {
-      "text": "Modifiers to number of Projectiles do not apply to this Skill",
-      "values": []
-    },
-    {
-      "text": "Base radius is 2 metres",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "100% more Projectile Speed",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "active skill projectile speed +% variation final [30]",
-      "values": []
-    },
-    {
-      "text": "ball lightning projectile speed and hit frequency +% final [33]",
-      "values": []
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "base skill is trapped [1]",
-      "values": []
-    },
-    {
-      "text": "ignores trap and mine cooldown limit [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (2-27) to (39-511) Lightning Damage",
+    "Modifiers to number of Projectiles do not apply to this Skill",
+    "Base radius is 2 metres",
+    "100% more Projectile Speed"
   ],
+  "gemDescription": "Fires a single projectile which moves in a spiral while damaging each enemy in an area around it repeatedly with bolts of lightning.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
-    },
-    {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
+      "text": "Base radius is (0.01-0.2) metres",
+      "values": []
     }
   ]
 }

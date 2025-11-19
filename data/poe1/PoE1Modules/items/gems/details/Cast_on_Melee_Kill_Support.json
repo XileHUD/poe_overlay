@@ -1,7 +1,19 @@
 {
   "name": "Cast on Melee Kill Support",
   "slug": "Cast_on_Melee_Kill_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Melee, Attack, Spell, Trigger",
+    "Icon": "&",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "120%",
+    "Cooldown Time": "0.15 sec",
+    "Can Store": "1 Use(s)",
+    "Requires Level": "38",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "38",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemCastOnKill"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -366,86 +378,16 @@
   ],
   "description": "Cast on Melee Kill Support\nSupport, Melee, Attack, Spell, TriggerLevel: (1–20)Cost & Reservation Multiplier: 120%Requires Level (38–70), (39–70) Str, (27–48) IntMust support both a melee attack skill and a spell skill to work. The attack skill will trigger a spell when it kills an enemy. Cannot support totems, traps, or mines. Vaal skills, channelling skills, and skills with a reservation cannot be triggered.Supported Melee Attacks will Trigger a Supported Spell on Kill\nAdditional Effects From Quality:Supported Skills deal (0–10)% increased Attack Damage\nSupport\nCost & Reservation Multiplier: 120%Cooldown Time: 0.15 secSupported Spells have (20–39)% more Spell Damage\nAdditional Effects From Quality:Supported Skills deal (0–10)% increased Spell Damage\nThis is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.\nCast on Melee Kill Support\nCast on Melee Kill Support\nCast on Melee Kill Support\nSupport, Melee, Attack, Spell, TriggerLevel: (1–20)Cost & Reservation Multiplier: 120%Requires Level (38–70), (39–70) Str, (27–48) IntMust support both a melee attack skill and a spell skill to work. The attack skill will trigger a spell when it kills an enemy. Cannot support totems, traps, or mines. Vaal skills, channelling skills, and skills with a reservation cannot be triggered.Supported Melee Attacks will Trigger a Supported Spell on Kill\nAdditional Effects From Quality:Supported Skills deal (0–10)% increased Attack Damage\nSupport\nCost & Reservation Multiplier: 120%Cooldown Time: 0.15 secSupported Spells have (20–39)% more Spell Damagecast spell on linked melee kill [1]spell uncastable if triggerable [1]triggered skill uses main hand or averaged attack time for pvp scaling [1]\nAdditional Effects From Quality:Supported Skills deal (0–10)% increased Spell Damage\nThis is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.\nCast on Melee Kill Support\nCast on Melee Kill Support\nCast on Melee Kill Support is a Support gem. It causes linked Spell to trigger when the player kills an enemy with the melee Attack portion of a supported melee skill.",
   "stats": [
-    "Cast on Melee Kill Support",
-    "Support, Melee, Attack, Spell, TriggerLevel: (1–20)Cost & Reservation Multiplier: 120%Requires Level (38–70), (39–70) Str, (27–48) IntMust support both a melee attack skill and a spell skill to work. The attack skill will trigger a spell when it kills an enemy. Cannot support totems, traps, or mines. Vaal skills, channelling skills, and skills with a reservation cannot be triggered.Supported Melee Attacks will Trigger a Supported Spell on Kill",
-    "Additional Effects From Quality:Supported Skills deal (0–10)% increased Attack Damage",
-    "Support",
-    "Cost & Reservation Multiplier: 120%Cooldown Time: 0.15 secSupported Spells have (20–39)% more Spell Damage",
-    "Additional Effects From Quality:Supported Skills deal (0–10)% increased Spell Damage",
-    "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
-    "Cast on Melee Kill Support",
-    "Cast on Melee Kill Support",
-    "Cast on Melee Kill Support",
-    "Support, Melee, Attack, Spell, TriggerLevel: (1–20)Cost & Reservation Multiplier: 120%Requires Level (38–70), (39–70) Str, (27–48) IntMust support both a melee attack skill and a spell skill to work. The attack skill will trigger a spell when it kills an enemy. Cannot support totems, traps, or mines. Vaal skills, channelling skills, and skills with a reservation cannot be triggered.Supported Melee Attacks will Trigger a Supported Spell on Kill",
-    "Additional Effects From Quality:Supported Skills deal (0–10)% increased Attack Damage",
-    "Support",
-    "Cost & Reservation Multiplier: 120%Cooldown Time: 0.15 secSupported Spells have (20–39)% more Spell Damagecast spell on linked melee kill [1]spell uncastable if triggerable [1]triggered skill uses main hand or averaged attack time for pvp scaling [1]",
-    "Additional Effects From Quality:Supported Skills deal (0–10)% increased Spell Damage",
-    "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
-    "Cast on Melee Kill Support",
-    "Cast on Melee Kill Support",
-    "Cast on Melee Kill Support is a Support gem. It causes linked Spell to trigger when the player kills an enemy with the melee Attack portion of a supported melee skill."
+    "Supported Melee Attacks will Trigger a Supported Spell on Kill",
+    "Supported Spells have (20-39)% more Spell Damage"
   ],
   "gemDescription": "Must support both a melee attack skill and a spell skill to work. The attack skill will trigger a spell when it kills an enemy. Cannot support totems, traps, or mines. Vaal skills, channelling skills, and skills with a reservation cannot be triggered.",
-  "explicitMods": [
-    {
-      "text": "Supported Melee Attacks will Trigger a Supported Spell on Kill",
-      "values": []
-    },
-    {
-      "text": "Supported Spells have (20–39)% more Spell Damage",
-      "values": [
-        "(20–39)"
-      ]
-    },
-    {
-      "text": "Supported Melee Attacks will Trigger a Supported Spell on Kill",
-      "values": []
-    },
-    {
-      "text": "Supported Spells have (20–39)% more Spell Damage",
-      "values": [
-        "(20–39)"
-      ]
-    },
-    {
-      "text": "cast spell on linked melee kill [1]",
-      "values": []
-    },
-    {
-      "text": "spell uncastable if triggerable [1]",
-      "values": []
-    },
-    {
-      "text": "triggered skill uses main hand or averaged attack time for pvp scaling [1]",
-      "values": []
-    }
-  ],
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Attack Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Spell Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Attack Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Spell Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Attack DamageSupported Skills deal (0.5-10)% increased Spell Damage",
+      "values": []
     }
   ]
 }

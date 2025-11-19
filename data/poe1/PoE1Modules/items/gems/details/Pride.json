@@ -1,7 +1,19 @@
 {
   "name": "Pride",
   "slug": "Pride",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Aura, Physical",
+    "Level": "(1-20)",
+    "Reservation": "50% Mana",
+    "Cooldown Time": "1.20 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "Instant",
+    "Requires Level": "24",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "24",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemPride"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,69 +377,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Casts an aura that causes nearby enemies to take more physical damage.",
-  "explicitMods": [
-    {
-      "text": "+(0–1) metre to radius",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Nearby Enemies take at least (15–19)% more Physical Damage, raising up to (30–39)% as they stay in the Aura for 4 seconds",
-      "values": [
-        "(15–19)",
-        "(30–39)"
-      ]
-    },
-    {
-      "text": "+(0–1) metre to radius",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Nearby Enemies take at least (15–19)% more Physical Damage, raising up to (30–39)% as they stay in the Aura for 4 seconds",
-      "values": [
-        "(15–19)",
-        "(30–39)"
-      ]
-    },
-    {
-      "text": "base deal no damage [1]",
-      "values": []
-    },
-    {
-      "text": "base_additional_physical_damage_reduction_%",
-      "values": []
-    },
-    {
-      "text": "receive_bleeding_chance_%_when_hit_by_attack",
-      "values": []
-    },
-    {
-      "text": "pride_physical_damage_taken_+%_final",
-      "values": []
-    },
-    {
-      "text": "using_pride",
-      "values": []
-    }
+  "stats": [
+    "+(0-1) metre to radius",
+    "Nearby Enemies take at least (15-19)% more Physical Damage,",
+    "raising up to (30-39)% as they stay in the Aura for 4 seconds"
   ],
+  "gemDescription": "Casts an aura that causes nearby enemies to take more physical damage.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–40)% increased Area of Effect",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "(0–40)% increased Area of Effect",
-      "values": [
-        "(0–40)"
-      ]
+      "text": "(2-40)% increased Area of Effect",
+      "values": []
     }
   ]
 }

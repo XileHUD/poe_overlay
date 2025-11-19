@@ -1,7 +1,21 @@
 {
   "name": "Tempest Shield",
   "slug": "Tempest_Shield",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Lightning, Chaining",
+    "Level": "(1-20)",
+    "Reservation": "25% Mana",
+    "Cooldown Time": "1.00 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "Instant",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "220%",
+    "Requires Level": "16",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "16",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemTempestShield"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,85 +419,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Enchants your shield with the power of storms, which lashes out to deal arcing lightning damage to attackers when you block them.",
-  "explicitMods": [
-    {
-      "text": "Deals (38–896) to (115–2688) Lightning Damage",
-      "values": [
-        "(38–896)",
-        "(115–2688)"
-      ]
-    },
-    {
-      "text": "Chains +1 Times",
-      "values": [
-        "+1"
-      ]
-    },
-    {
-      "text": "Buff grants +(18–25)% Chance to Block Spell Damage while holding a Shield",
-      "values": [
-        "+(18–25)"
-      ]
-    },
-    {
-      "text": "Buff grants Immunity to Shock",
-      "values": []
-    },
-    {
-      "text": "Deals (38–896) to (115–2688) Lightning Damage",
-      "values": [
-        "(38–896)",
-        "(115–2688)"
-      ]
-    },
-    {
-      "text": "Chains +1 Times",
-      "values": [
-        "+1"
-      ]
-    },
-    {
-      "text": "Buff grants +(18–25)% Chance to Block Spell Damage while holding a Shield",
-      "values": [
-        "+(18–25)"
-      ]
-    },
-    {
-      "text": "Buff grants Immunity to Shock",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    },
-    {
-      "text": "skill override pvp scaling time ms [700]",
-      "values": []
-    },
-    {
-      "text": "shield_spell_block_%",
-      "values": []
-    }
+  "stats": [
+    "Deals (38-896) to (115-2688) Lightning Damage",
+    "Chains +1 Times",
+    "Buff grants +(18-25)% Chance to Block Spell Damage while holding a Shield",
+    "Buff grants Immunity to Shock"
   ],
+  "gemDescription": "Enchants your shield with the power of storms, which lashes out to deal arcing lightning damage to attackers when you block them.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–40)% chance to Shock enemies",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "(0–40)% chance to Shock enemies",
-      "values": [
-        "(0–40)"
-      ]
+      "text": "(2-40)% chance to Shock enemies",
+      "values": []
     }
   ]
 }

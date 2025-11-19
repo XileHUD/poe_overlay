@@ -1,7 +1,19 @@
 {
   "name": "Frost Shield",
   "slug": "Frost_Shield",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Critical, Spell, AoE, Duration, Cold",
+    "Level": "(1-20)",
+    "Cost": "(30-54) Mana",
+    "Cooldown Time": "5.00 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "0.50 sec",
+    "Requires Level": "34",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "34",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemFrostShield"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -485,119 +497,23 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Place a Frost Shield that drains your energy shield for one second or until you run out, gaining stages while this drain occurs. The Frost Shield takes some damage from hits in place of you and allies while in its area. Enemies in the area are Chilled. You can only have one Frost Shield active at once.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 10 seconds",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "20% of Damage dealt to you or Allies in Area with Hits by Enemies in Area is taken from Frost Shield's Life before your Life or Energy Shield",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "60% of Damage dealt to you or Allies in Area with Hits by Enemies outside Area is taken from Frost Shield's Life before your Life or Energy Shield",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "You gain +(0.1–0.38)% to Spell Critical Strike Chance per Stage while in Area",
-      "values": [
-        "+(0.1–0.38)"
-      ]
-    },
-    {
-      "text": "Frost Shield has (190–910) maximum Life per Stage",
-      "values": [
-        "(190–910)"
-      ]
-    },
-    {
-      "text": "Gains 1 Stage every 0.3 seconds while you are losing Energy Shield",
-      "values": [
-        "0.3"
-      ]
-    },
-    {
-      "text": "Maximum 4 Stages",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "You lose (150–730) Energy Shield per second",
-      "values": [
-        "(150–730)"
-      ]
-    },
-    {
-      "text": "Base duration is 10 seconds",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "20% of Damage dealt to you or Allies in Area with Hits by Enemies in Area is taken from Frost Shield's Life before your Life or Energy Shield",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "60% of Damage dealt to you or Allies in Area with Hits by Enemies outside Area is taken from Frost Shield's Life before your Life or Energy Shield",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "You gain +(0.1–0.38)% to Spell Critical Strike Chance per Stage while in Area",
-      "values": [
-        "+(0.1–0.38)"
-      ]
-    },
-    {
-      "text": "Frost Shield has (190–910) maximum Life per Stage",
-      "values": [
-        "(190–910)"
-      ]
-    },
-    {
-      "text": "Gains 1 Stage every 0.3 seconds while you are losing Energy Shield",
-      "values": [
-        "0.3"
-      ]
-    },
-    {
-      "text": "Maximum 4 Stages",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "You lose (150–730) Energy Shield per second",
-      "values": [
-        "(150–730)"
-      ]
-    }
+  "stats": [
+    "Base duration is 10.00 seconds",
+    "20% of Damage dealt to you or Allies in Area with Hits by Enemies in Area is taken from Frost Shield's Life before your Life or Energy Shield",
+    "60% of Damage dealt to you or Allies in Area with Hits by Enemies outside Area is taken from Frost Shield's Life before your Life or Energy Shield",
+    "You gain +(0.1-0.38)% to Spell Critical Strike Chance per Stage while in Area",
+    "Frost Shield has (190-910) maximum Life per Stage",
+    "Maximum 4 Stages",
+    "Gains 1 Stage every 0.3 seconds while you are losing Energy Shield",
+    "You lose (150-730) Energy Shield per second"
   ],
+  "gemDescription": "Place a Frost Shield that drains your energy shield for one second or until you run out, gaining stages while this drain occurs. The Frost Shield takes some damage from hits in place of you and allies while in its area. Enemies in the area are Chilled. You can only have one Frost Shield active at once.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–20)% increased Effect of Cold Ailments",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% increased Effect of Cold Ailments",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "(1-20)% increased Effect of Cold Ailments",
+      "values": []
     }
   ]
 }

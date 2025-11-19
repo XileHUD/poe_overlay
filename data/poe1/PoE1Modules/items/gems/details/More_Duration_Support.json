@@ -1,7 +1,17 @@
 {
   "name": "More Duration Support",
   "slug": "More_Duration_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Duration",
+    "Icon": "D",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "31",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "31",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemIncreasedDuration"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,35 +335,16 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports any skill with a duration.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills have (30–39)% more Skill Effect Duration",
-      "values": [
-        "(30–39)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (30–39)% more Skill Effect Duration",
-      "values": [
-        "(30–39)"
-      ]
-    }
+  "stats": [
+    "Supported Skills have (30-39)% more Skill Effect Duration"
   ],
+  "gemDescription": "Supports any skill with a duration.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–10)% more Skill Effect Duration",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–10)% more Skill Effect Duration",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills have (0.5-10)% more Skill Effect Duration",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,18 @@
 {
   "name": "Heavy Strike of Trarthus",
   "slug": "Heavy_Strike_of_Trarthus",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Melee, Strike",
+    "Level": "(1-20)",
+    "Cost": "(7-12) Mana",
+    "Attack Speed": "85% of base",
+    "Attack Damage": "(224-552)% of base",
+    "Effectiveness of Added Damage": "(224-552)%",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Mercenaries; Can be obtained from reward chests that contain gems in Heist .",
+    "Drop level": "5",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -245,59 +256,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Attacks enemies with a forceful blow. Requires a Staff.",
-  "explicitMods": [
-    {
-      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
-      "values": [
-        "150"
-      ]
-    },
-    {
-      "text": "2% chance to deal Double Damage per 10 Intelligence",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
-      "values": [
-        "150"
-      ]
-    },
-    {
-      "text": "2% chance to deal Double Damage per 10 Intelligence",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at +150% of their value",
-      "values": [
-        "+150"
-      ]
-    },
-    {
-      "text": "2% chance to deal Double Damage per 10 Intelligence",
-      "values": [
-        "2"
-      ]
-    }
+  "stats": [
+    "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
+    "2% chance to deal Double Damage per 10 Intelligence"
   ],
+  "gemDescription": "Attacks enemies with a forceful blow. Requires a Staff.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at +(0–20)% of their value",
-      "values": [
-        "+(0–20)"
-      ]
-    },
-    {
-      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at +(0–20)% of their value",
-      "values": [
-        "+(0–20)"
-      ]
+      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at +(1-20)% of their value",
+      "values": []
     }
   ]
 }

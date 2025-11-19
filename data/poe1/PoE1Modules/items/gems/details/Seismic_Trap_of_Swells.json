@@ -1,7 +1,21 @@
 {
   "name": "Seismic Trap of Swells",
   "slug": "Seismic_Trap_of_Swells",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Trap, Spell, AoE, Physical",
+    "Level": "(1-20)",
+    "Cost": "(13-22) Mana",
+    "Cooldown Time": "0.75 sec",
+    "Can Store": "6 Use(s)",
+    "Cast Time": "1.00 sec",
+    "Critical Strike Chance": "5.00%",
+    "Effectiveness of Added Damage": "(220-240)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,110 +339,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Throws a trap which, once triggered, releases a number of waves. Each wave deals damage in a series of small bursts in a line, ending with a larger burst.",
-  "explicitMods": [
-    {
-      "text": "Deals (81–1060) to (121–1589) Physical Damage",
-      "values": [
-        "(81–1060)",
-        "(121–1589)"
-      ]
-    },
-    {
-      "text": "Trap lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Releases 3 waves",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Deals (81–1060) to (121–1589) Physical Damage",
-      "values": [
-        "(81–1060)",
-        "(121–1589)"
-      ]
-    },
-    {
-      "text": "Trap lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Releases 3 waves",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "base skill is trapped [1]",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "Deals (81–5368) to (121–8051) Physical Damage",
-      "values": [
-        "(81–5368)",
-        "(121–8051)"
-      ]
-    },
-    {
-      "text": "Trap lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Releases 3 waves",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "base skill is trapped [1]",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (81-1060) to (121-1589) Physical Damage",
+    "Trap lasts 4 seconds",
+    "Releases 3 waves"
   ],
+  "gemDescription": "Throws a trap which, once triggered, releases a number of waves. Each wave deals damage in a series of small bursts in a line, ending with a larger burst.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Releases +(0–1) wave",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Releases +(0–1) wave",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Releases +(0–1) wave",
-      "values": [
-        "+(0–1)"
-      ]
+      "text": "Releases +(0.05-1) waves",
+      "values": []
     }
   ]
 }

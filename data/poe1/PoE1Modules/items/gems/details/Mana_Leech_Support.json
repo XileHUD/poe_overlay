@@ -1,7 +1,16 @@
 {
   "name": "Mana Leech Support",
   "slug": "Mana_Leech_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support",
+    "Icon": "m",
+    "Level": "(1-20)",
+    "Requires Level": "31",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "31",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemManaLeech"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -326,40 +335,15 @@
   ],
   "description": "This gem is one of the few ways to get mana leech on a skill that deals no physical damage. Other sources are Warlord's Mark and Defy Pain.",
   "stats": [
-    "This gem is one of the few ways to get mana leech on a skill that deals no physical damage. Other sources are Warlord's Mark and Defy Pain."
+    "Supported Attacks have (2-3.9)% of Damage Leeched as Mana"
   ],
   "gemDescription": "Supports attack skills that hit enemies, causing those hits to leech mana based on damage dealt.",
-  "explicitMods": [
-    {
-      "text": "Supported Attacks have (2–3.9)% of Damage Leeched as Mana",
-      "values": [
-        "(2–3.9)"
-      ]
-    },
-    {
-      "text": "Supported Attacks have (2–3.9)% of Damage Leeched as Mana",
-      "values": [
-        "(2–3.9)"
-      ]
-    }
-  ],
-  "modDescriptions": [
-    "(Leeched Mana is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
-    "(Leeched Mana is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
-    "(Leeched Mana is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Damage while Leeching Mana",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Damage while Leeching Mana",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Damage while Leeching Mana",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,18 @@
 {
   "name": "Rain of Arrows of Saturation",
   "slug": "Rain_of_Arrows_of_Saturation",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, AoE, Projectile, Bow",
+    "Level": "(1-20)",
+    "Cost": "(6-10) Mana",
+    "Attack Damage": "(25-35)% of base",
+    "Effectiveness of Added Damage": "(25-35)%",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "12",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -285,73 +296,16 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Fires multiple arrows into the air, to slowly land in sequence after a delay, starting at the targeted location and spreading outwards in all directions. Each arrow deals damage in an area around it. Half of the arrows will land directly on targets if there are targets in their range.",
-  "explicitMods": [
-    {
-      "text": "Fires (27–33) Arrows",
-      "values": [
-        "(27–33)"
-      ]
-    },
-    {
-      "text": "Fires (27–33) Arrows",
-      "values": [
-        "(27–33)"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "cannot pierce [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    },
-    {
-      "text": "Fires +(27–39) Arrows",
-      "values": [
-        "+(27–39)"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "cannot pierce [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    }
+  "stats": [
+    "Fires (27-33) Arrows"
   ],
+  "gemDescription": "Fires multiple arrows into the air, to slowly land in sequence after a delay, starting at the targeted location and spreading outwards in all directions. Each arrow deals damage in an area around it. Half of the arrows will land directly on targets if there are targets in their range.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Fires +(0–8) Arrows",
-      "values": [
-        "+(0–8)"
-      ]
-    },
-    {
-      "text": "Fires +(0–8) Arrows",
-      "values": [
-        "+(0–8)"
-      ]
+      "text": "Fires +(0.4-8) Arrows",
+      "values": []
     }
   ]
 }

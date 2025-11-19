@@ -1,7 +1,19 @@
 {
   "name": "Firestorm of Meteors",
   "slug": "Firestorm_of_Meteors",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Fire",
+    "Level": "(1-20)",
+    "Cost": "(13-25) Mana",
+    "Cast Time": "0.75 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "(310-410)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,76 +337,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "A large flaming bolt falls towards the targeted area. The bolt explodes when landing, dealing damage to nearby enemies.",
-  "explicitMods": [
-    {
-      "text": "Deals (117–1824) to (176–2735) Fire Damage",
-      "values": [
-        "(117–1824)",
-        "(176–2735)"
-      ]
-    },
-    {
-      "text": "Base radius is 2.3 metres",
-      "values": [
-        "2.3"
-      ]
-    },
-    {
-      "text": "Deals (117–1824) to (176–2735) Fire Damage",
-      "values": [
-        "(117–1824)",
-        "(176–2735)"
-      ]
-    },
-    {
-      "text": "Base radius is 2.3 metres",
-      "values": [
-        "2.3"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "Deals (117–10449) to (176–15673) Fire Damage",
-      "values": [
-        "(117–10449)",
-        "(176–15673)"
-      ]
-    },
-    {
-      "text": "Base radius is 2.3 metres",
-      "values": [
-        "2.3"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (117-1824) to (176-2735) Fire Damage",
+    "Base radius is 2.3 metres"
   ],
+  "gemDescription": "A large flaming bolt falls towards the targeted area. The bolt explodes when landing, dealing damage to nearby enemies.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
-    },
-    {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
-    },
-    {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
+      "text": "Base radius is (0.01-0.2) metres",
+      "values": []
     }
   ]
 }

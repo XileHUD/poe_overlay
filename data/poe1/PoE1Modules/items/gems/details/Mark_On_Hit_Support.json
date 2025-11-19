@@ -1,7 +1,19 @@
 {
   "name": "Mark On Hit Support",
   "slug": "Mark_On_Hit_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Mark, Trigger",
+    "Icon": "k",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "200%",
+    "Cooldown Time": "4.00 sec",
+    "Can Store": "1 Use(s)",
+    "Requires Level": "38",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "38",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemMarkOnHit"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,43 +337,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports mark curse skills.",
-  "explicitMods": [
-    {
-      "text": "(21–30)% reduced Effect of Marks from Supported Skills",
-      "values": [
-        "(21–30)"
-      ]
-    },
-    {
-      "text": "Trigger Supported Skill when you Hit a Rare or Unique Enemy with an Attack",
-      "values": []
-    },
-    {
-      "text": "(21–30)% reduced Effect of Marks from Supported Skills",
-      "values": [
-        "(21–30)"
-      ]
-    },
-    {
-      "text": "Trigger Supported Skill when you Hit a Rare or Unique Enemy with an Attack",
-      "values": []
-    }
+  "stats": [
+    "(30-21)% reduced Effect of Marks from Supported Skills",
+    "Trigger Supported Skill when you Hit a Rare or Unique Enemy with an Attack"
   ],
+  "gemDescription": "Supports mark curse skills.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–5)% increased Effect of Marks from Supported Skills",
-      "values": [
-        "(0–5)"
-      ]
-    },
-    {
-      "text": "(0–5)% increased Effect of Marks from Supported Skills",
-      "values": [
-        "(0–5)"
-      ]
+      "text": "(0.25-5)% increased Effect of Marks from Supported Skills",
+      "values": []
     }
   ]
 }

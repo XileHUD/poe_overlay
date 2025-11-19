@@ -1,7 +1,19 @@
 {
   "name": "Automation",
   "slug": "Automation",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Trigger, Spell",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "150%",
+    "Cooldown Time": "0.60 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "Instant",
+    "Requires Level": "24",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "24",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemAutomation"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,55 +377,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "While this skill is active, supported spells will be repeatedly triggered.",
-  "explicitMods": [
-    {
-      "text": "Each Supported Spell will Trigger when its Cooldown is over",
-      "values": []
-    },
-    {
-      "text": "Supported Skills have (5–24)% reduced Cooldown Recovery Rate",
-      "values": [
-        "(5–24)"
-      ]
-    },
-    {
-      "text": "Supported Spells are Triggered when their Cooldowns are over",
-      "values": []
-    },
-    {
-      "text": "Each Supported Spell will Trigger when its Cooldown is over",
-      "values": []
-    },
-    {
-      "text": "Supported Skills have (5–24)% reduced Cooldown Recovery Rate",
-      "values": [
-        "(5–24)"
-      ]
-    },
-    {
-      "text": "Supported Spells are Triggered when their Cooldowns are over",
-      "values": []
-    },
-    {
-      "text": "spell uncastable if triggerable [1]",
-      "values": []
-    }
+  "stats": [
+    "Each Supported Spell will Trigger when its Cooldown is over",
+    "Supported Skills have (24-5)% reduced Cooldown Recovery Rate",
+    "Supported Spells are Triggered when their Cooldowns are over"
   ],
+  "gemDescription": "While this skill is active, supported spells will be repeatedly triggered.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–5)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–5)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–5)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–5)"
-      ]
+      "text": "Supported Skills have (0.25-5)% increased Cooldown Recovery Rate",
+      "values": []
     }
   ]
 }

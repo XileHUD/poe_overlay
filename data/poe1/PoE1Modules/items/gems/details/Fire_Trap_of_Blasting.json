@@ -1,7 +1,19 @@
 {
   "name": "Fire Trap of Blasting",
   "slug": "Fire_Trap_of_Blasting",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Trap, Spell, Duration, AoE, Fire",
+    "Level": "(1-20)",
+    "Cost": "(8-20) Mana",
+    "Cast Time": "1.00 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "260%",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "12",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,157 +417,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Throws a trap that explodes when triggered, dealing fire damage to surrounding enemies.",
-  "explicitMods": [
-    {
-      "text": "Trap lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Deals (4–366) to (6–549) Fire Damage",
-      "values": [
-        "(4–366)",
-        "(6–549)"
-      ]
-    },
-    {
-      "text": "+(0–0.8) metres to radius",
-      "values": [
-        "+(0–0.8)"
-      ]
-    },
-    {
-      "text": "50% Chance for Trap to Trigger an additional time",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "(9–881) to (14–1316) added Fire Damage against Burning Enemies",
-      "values": [
-        "(9–881)",
-        "(14–1316)"
-      ]
-    },
-    {
-      "text": "Trap lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Deals (4–366) to (6–549) Fire Damage",
-      "values": [
-        "(4–366)",
-        "(6–549)"
-      ]
-    },
-    {
-      "text": "+(0–0.8) metres to radius",
-      "values": [
-        "+(0–0.8)"
-      ]
-    },
-    {
-      "text": "50% Chance for Trap to Trigger an additional time",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "(9–881) to (14–1316) added Fire Damage against Burning Enemies",
-      "values": [
-        "(9–881)",
-        "(14–1316)"
-      ]
-    },
-    {
-      "text": "base skill is trapped [1]",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "trap variation [22]",
-      "values": []
-    },
-    {
-      "text": "Trap lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Deals (4–2680) to (6–4020) Fire Damage",
-      "values": [
-        "(4–2680)",
-        "(6–4020)"
-      ]
-    },
-    {
-      "text": "+(0–1.5) metres to radius",
-      "values": [
-        "+(0–1.5)"
-      ]
-    },
-    {
-      "text": "50% Chance for Trap to Trigger an additional time",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "(9–6449) to (14–9632) added Fire Damage against Burning Enemies",
-      "values": [
-        "(9–6449)",
-        "(14–9632)"
-      ]
-    },
-    {
-      "text": "base skill is trapped [1]",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "trap variation [22]",
-      "values": []
-    }
+  "stats": [
+    "Trap lasts 4 seconds",
+    "Deals (4-366) to (6-549) Fire Damage",
+    "+(0-0.8) metres to radius",
+    "50% Chance for Trap to Trigger an additional time",
+    "(9-881) to (14-1316) added Fire Damage against Burning Enemies"
   ],
+  "gemDescription": "Throws a trap that explodes when triggered, dealing fire damage to surrounding enemies.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–80)% increased Trap Trigger Area of Effect",
-      "values": [
-        "(0–80)"
-      ]
-    },
-    {
-      "text": "(0–80)% increased Trap Trigger Area of Effect",
-      "values": [
-        "(0–80)"
-      ]
-    },
-    {
-      "text": "(0–80)% increased Trap Trigger Area of Effect",
-      "values": [
-        "(0–80)"
-      ]
+      "text": "(4-80)% increased Trap Trigger Area of Effect",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,17 @@
 {
   "name": "Greater Multiple Projectiles Support",
   "slug": "Greater_Multiple_Projectiles_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Projectile",
+    "Icon": "P",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "150%",
+    "Requires Level": "38",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "38",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemGreaterMultipleProjectiles"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -326,53 +336,16 @@
   ],
   "description": "This gem can be combined with Lesser Multiple Projectiles for a total of  6 additional Projectiles\n. Poison: The \"less projectile damage\" on the gem doesn't decrease the damage poison does, so gmp can be very useful if you use a skill that hits the same enemy multiple times, like Barrage and Tornado Shot.",
   "stats": [
-    "This gem can be combined with Lesser Multiple Projectiles for a total of  6 additional Projectiles",
-    ". Poison: The \"less projectile damage\" on the gem doesn't decrease the damage poison does, so gmp can be very useful if you use a skill that hits the same enemy multiple times, like Barrage and Tornado Shot."
+    "Supported Skills deal (35-26)% less Projectile Damage",
+    "Supported Skills fire 4 additional Projectiles"
   ],
   "gemDescription": "Supports projectile skills.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills deal (26–35)% less Projectile Damage",
-      "values": [
-        "(26–35)"
-      ]
-    },
-    {
-      "text": "Supported Skills fire 4 additional Projectiles",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (26–35)% less Projectile Damage",
-      "values": [
-        "(26–35)"
-      ]
-    },
-    {
-      "text": "Supported Skills fire 4 additional Projectiles",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "terrain arrow attachment chance reduction +% [200]",
-      "values": []
-    }
-  ],
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Projectile Damage",
+      "values": []
     }
   ]
 }

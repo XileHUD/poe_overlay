@@ -1,7 +1,19 @@
 {
   "name": "Wave of Conviction",
   "slug": "Wave_of_Conviction",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Duration, Fire, Lightning, Physical",
+    "Level": "(1-20)",
+    "Cost": "(9-23) Mana",
+    "Cast Time": "0.70 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "(220-330)%",
+    "Requires Level": "16",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "16",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemPurge"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -445,113 +457,21 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "An expanding wave of energy surges forward, damaging enemies in a cone-shaped area over a duration. Each enemy hit is inflicted with Exposure matching the element of which they took the highest damage. Only one Wave of Conviction can be active at a time",
-  "explicitMods": [
-    {
-      "text": "Deals (35–1476) to (52–2214) Physical Damage",
-      "values": [
-        "(35–1476)",
-        "(52–2214)"
-      ]
-    },
-    {
-      "text": "25% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Base duration is (0.5–0.69) seconds",
-      "values": [
-        "(0.5–0.69)"
-      ]
-    },
-    {
-      "text": "Base secondary duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "25% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Exposure applies -15% to Elemental Resistance matching highest Damage taken",
-      "values": [
-        "-15"
-      ]
-    },
-    {
-      "text": "Deals (35–1476) to (52–2214) Physical Damage",
-      "values": [
-        "(35–1476)",
-        "(52–2214)"
-      ]
-    },
-    {
-      "text": "25% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Base duration is (0.5–0.69) seconds",
-      "values": [
-        "(0.5–0.69)"
-      ]
-    },
-    {
-      "text": "Base secondary duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "25% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Exposure applies -15% to Elemental Resistance matching highest Damage taken",
-      "values": [
-        "-15"
-      ]
-    },
-    {
-      "text": "ignite art variation [7]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "shock art variation [2]",
-      "values": []
-    },
-    {
-      "text": "visual hit effect elemental is holy [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (35-1476) to (52-2214) Physical Damage",
+    "25% of Physical Damage Converted to Lightning Damage",
+    "Base duration is (0.50-0.69) seconds",
+    "Base secondary duration is 4.00 seconds",
+    "25% of Physical Damage Converted to Fire Damage",
+    "Exposure applies -15% to Elemental Resistance matching highest Damage taken"
   ],
+  "gemDescription": "An expanding wave of energy surges forward, damaging enemies in a cone-shaped area over a duration. Each enemy hit is inflicted with Exposure matching the element of which they took the highest damage. Only one Wave of Conviction can be active at a time",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Damage Penetrates (0–15)% of Enemy Elemental Resistances",
-      "values": [
-        "(0–15)"
-      ]
-    },
-    {
-      "text": "Damage Penetrates (0–15)% of Enemy Elemental Resistances",
-      "values": [
-        "(0–15)"
-      ]
+      "text": "Damage Penetrates (0.75-15)% of Enemy Elemental Resistances",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,18 @@
 {
   "name": "Lightning Tendrils of Escalation",
   "slug": "Lightning_Tendrils_of_Escalation",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Lightning, Channelling",
+    "Level": "(1-20)",
+    "Cost": "(1-7) Mana",
+    "Cast Time": "0.35 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "(140-260)%",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "5",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,102 +376,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "While you channel this skill, it releases pulses of electrical energy, dealing lightning damage in a growing semicircular area in front of you.",
-  "explicitMods": [
-    {
-      "text": "Deals (1–150) to (11–2858) Lightning Damage",
-      "values": [
-        "(1–150)",
-        "(11–2858)"
-      ]
-    },
-    {
-      "text": "Base radius is (2.4–3.1) metres",
-      "values": [
-        "(2.4–3.1)"
-      ]
-    },
-    {
-      "text": "Gains +1 metre to radius per second while Channelling, up to a maximum of +2 metres",
-      "values": [
-        "+1"
-      ]
-    },
-    {
-      "text": "Deals (1–150) to (11–2858) Lightning Damage",
-      "values": [
-        "(1–150)",
-        "(11–2858)"
-      ]
-    },
-    {
-      "text": "Base radius is (2.4–3.1) metres",
-      "values": [
-        "(2.4–3.1)"
-      ]
-    },
-    {
-      "text": "Gains +1 metre to radius per second while Channelling, up to a maximum of +2 metres",
-      "values": [
-        "+1"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    },
-    {
-      "text": "Deals (1–923) to (11–17537) Lightning Damage",
-      "values": [
-        "(1–923)",
-        "(11–17537)"
-      ]
-    },
-    {
-      "text": "Base radius is (2.4–3.7) metres",
-      "values": [
-        "(2.4–3.7)"
-      ]
-    },
-    {
-      "text": "Gains +1 metre to radius per second while Channelling, up to a maximum of +2 metres",
-      "values": [
-        "+1"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (1-150) to (11-2858) Lightning Damage",
+    "Base radius is (2.4-3.1) metres",
+    "Gains +1 metre to radius per second while Channelling, up to a maximum of +2 metres"
   ],
+  "gemDescription": "While you channel this skill, it releases pulses of electrical energy, dealing lightning damage in a growing semicircular area in front of you.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
-    },
-    {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
-    },
-    {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
+      "text": "Base radius is (0.01-0.2) metres",
+      "values": []
     }
   ]
 }

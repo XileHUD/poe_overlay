@@ -1,7 +1,18 @@
 {
   "name": "Conflagration",
   "slug": "Conflagration",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Fire, AoE, Projectile, Duration, Bow",
+    "Level": "(1-20)",
+    "Cost": "(9-13) Mana",
+    "Attack Damage": "(30-35)% of base",
+    "Effectiveness of Added Damage": "(30-36)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "28",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemConflagration"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,171 +416,26 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Fire arrows into the air that rain down around the targeted area, dealing area damage on impact and leaving the arrows stuck in the ground for a duration. If you move close to a stuck arrow, it will explode, dealing area damage and applying a fire damage over time debuff, as well as causing other stuck arrows in range to also explode.",
-  "explicitMods": [
-    {
-      "text": "Deals (157.2–3022.8) Base Fire Damage per second",
-      "values": [
-        "(157.2–3022.8)"
-      ]
-    },
-    {
-      "text": "Base duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Fires 3 Projectiles",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "100% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Modifiers to Projectile Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Arrows after the first fall within a Base radius of 3 metres",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Base explosion radius is (1.5–2) metres",
-      "values": [
-        "(1.5–2)"
-      ]
-    },
-    {
-      "text": "Impact Base radius is 1 metre",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Explosion deals 50% more Damage with Hits and Ailments",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Maximum 20 stuck arrows",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "Base Debuff Duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Deals (157.2–3022.8) Base Fire Damage per second",
-      "values": [
-        "(157.2–3022.8)"
-      ]
-    },
-    {
-      "text": "Base duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Fires 3 Projectiles",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "100% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Modifiers to Projectile Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Arrows after the first fall within a Base radius of 3 metres",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Base explosion radius is (1.5–2) metres",
-      "values": [
-        "(1.5–2)"
-      ]
-    },
-    {
-      "text": "Impact Base radius is 1 metre",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Explosion deals 50% more Damage with Hits and Ailments",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Maximum 20 stuck arrows",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "Base Debuff Duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "blast rain arrow delay ms [90]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (157.2-3022.8) Base Fire Damage per second",
+    "Base duration is 6.00 seconds",
+    "Fires 3 Projectiles",
+    "Modifiers to Projectile Damage apply to this Skill's Damage Over Time effect",
+    "100% of Physical Damage Converted to Fire Damage",
+    "Arrows after the first fall within a Base radius of 3 metres",
+    "Impact Base radius is 1 metre",
+    "Base explosion radius is (1.5-2) metres",
+    "Base Debuff Duration is 4.00 seconds",
+    "Explosion deals 50% more Damage with Hits and Ailments",
+    "Maximum 20 stuck arrows"
   ],
+  "gemDescription": "Fire arrows into the air that rain down around the targeted area, dealing area damage on impact and leaving the arrows stuck in the ground for a duration. If you move close to a stuck arrow, it will explode, dealing area damage and applying a fire damage over time debuff, as well as causing other stuck arrows in range to also explode.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Explosion deals (0–30)% more Damage with Hits and Ailments",
-      "values": [
-        "(0–30)"
-      ]
-    },
-    {
-      "text": "Explosion deals (0–30)% more Damage with Hits and Ailments",
-      "values": [
-        "(0–30)"
-      ]
+      "text": "Explosion deals (1.5-30)% more Damage with Hits and Ailments",
+      "values": []
     }
   ]
 }

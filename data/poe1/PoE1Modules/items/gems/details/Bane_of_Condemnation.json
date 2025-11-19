@@ -1,7 +1,17 @@
 {
   "name": "Bane of Condemnation",
   "slug": "Bane_of_Condemnation",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Chaos, Trigger, Spell, AoE, Duration, Hex",
+    "Level": "(1-20)",
+    "Cost": "(14-27) Mana",
+    "Cast Time": "0.80 sec",
+    "Requires Level": "24",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "24",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,185 +375,25 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Applies a debuff to enemies in a small area, which deals chaos damage over Time. Linked hex curses are also applied to those enemies. The debuff deals more damage and lasts longer for each hex applied this way.  This skill cannot be used by Totems, Traps, or Mines.",
-  "explicitMods": [
-    {
-      "text": "Only applies Hexes from Curse Skill Gems requiring Level (24–70) or lower",
-      "values": [
-        "(24–70)"
-      ]
-    },
-    {
-      "text": "Deals (70.8–1341.7) Base Chaos Damage per second",
-      "values": [
-        "(70.8–1341.7)"
-      ]
-    },
-    {
-      "text": "Base duration is 1 seconds",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Base radius is 0.8 metres",
-      "values": [
-        "0.8"
-      ]
-    },
-    {
-      "text": "60% more Damage per Curse applied",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "100% increased Debuff Duration per Curse applied",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "This Gem can only Support Skill Gems requiring Level (24–70) or lower",
-      "values": [
-        "(24–70)"
-      ]
-    },
-    {
-      "text": "You cannot Cast Supported Curse Spells",
-      "values": []
-    },
-    {
-      "text": "25% less Effect of Supported Curses",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Only applies Hexes from Curse Skill Gems requiring Level (24–70) or lower",
-      "values": [
-        "(24–70)"
-      ]
-    },
-    {
-      "text": "Deals (70.8–1341.7) Base Chaos Damage per second",
-      "values": [
-        "(70.8–1341.7)"
-      ]
-    },
-    {
-      "text": "Base duration is 1 seconds",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Base radius is 0.8 metres",
-      "values": [
-        "0.8"
-      ]
-    },
-    {
-      "text": "60% more Damage per Curse applied",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "100% increased Debuff Duration per Curse applied",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "This Gem can only Support Skill Gems requiring Level (24–70) or lower",
-      "values": [
-        "(24–70)"
-      ]
-    },
-    {
-      "text": "You cannot Cast Supported Curse Spells",
-      "values": []
-    },
-    {
-      "text": "25% less Effect of Supported Curses",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "apply linked curses with dark ritual [1]",
-      "values": []
-    },
-    {
-      "text": "Only applies Hexes from Curse Skill Gems requiring Level (24–100) or lower",
-      "values": [
-        "(24–100)"
-      ]
-    },
-    {
-      "text": "Deals (70.8–7177.1) Base Chaos Damage per second",
-      "values": [
-        "(70.8–7177.1)"
-      ]
-    },
-    {
-      "text": "Base duration is 1 seconds",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Base radius is 0.8 metres",
-      "values": [
-        "0.8"
-      ]
-    },
-    {
-      "text": "60% more Damage per Curse applied",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "100% increased Debuff Duration per Curse applied",
-      "values": [
-        "100"
-      ]
-    }
+  "stats": [
+    "Only applies Hexes from Curse Skill Gems requiring Level (24-70) or lower",
+    "Deals (70.8-1341.7) Base Chaos Damage per second",
+    "Base duration is 1.00 seconds",
+    "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+    "Base radius is 0.8 metres",
+    "60% more Damage per Curse applied",
+    "100% increased Debuff Duration per Curse applied",
+    "This Gem can only Support Skill Gems requiring Level (24-70) or lower",
+    "You cannot Cast Supported Curse Spells",
+    "25% less Effect of Supported Curses"
   ],
+  "gemDescription": "Applies a debuff to enemies in a small area, which deals chaos damage over Time. Linked hex curses are also applied to those enemies. The debuff deals more damage and lasts longer for each hex applied this way.  This skill cannot be used by Totems, Traps, or Mines.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base duration is (0–0.2) seconds",
-      "values": [
-        "(0–0.2)"
-      ]
-    },
-    {
-      "text": "Base duration is (0–0.2) seconds",
-      "values": [
-        "(0–0.2)"
-      ]
-    },
-    {
-      "text": "Base duration is (0–0.2) seconds",
-      "values": [
-        "(0–0.2)"
-      ]
+      "text": "Base duration is (0.01-0.2) seconds",
+      "values": []
     }
   ]
 }

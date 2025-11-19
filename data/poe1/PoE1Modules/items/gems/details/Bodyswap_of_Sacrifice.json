@@ -1,7 +1,18 @@
 {
   "name": "Bodyswap of Sacrifice",
   "slug": "Bodyswap_of_Sacrifice",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Movement, Spell, AoE, Fire, Travel, Minion",
+    "Level": "(1-20)",
+    "Cost": "(8-23) Mana",
+    "Cast Time": "0.70 sec",
+    "Critical Strike Chance": "6.00%",
+    "Requires Level": "10",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "10",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,138 +416,20 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "This Spell deals (3-210) to (5-315), plus 4% of your maximum Life, as base Fire Damage",
+    "Explosion deals base Fire Damage equal to (19-29)% of the Minion's maximum Life",
+    "+(0-0.2) metres to radius",
+    "50% less Damage with Ailments",
+    "200% more Area of Effect if Consuming a Minion"
+  ],
   "gemDescription": "Violently destroys your body and recreates it at the location of a targeted enemy or damageable minion, dealing spell damage in an area at both locations. If there is no specific target, it will prioritise minions over enemies. If targeting a minion, the minion will also be destroyed in an explosion which deals damage around it that is not affected by modifiers to spell damage, and cannot be reflected. This spell cannot be repeated.",
-  "explicitMods": [
-    {
-      "text": "This Spell deals (3–210) to (5–315), plus 4% of your maximum Life, as base Fire Damage",
-      "values": [
-        "(3–210)",
-        "(5–315)",
-        "4"
-      ]
-    },
-    {
-      "text": "Explosion deals base Fire Damage equal to (19–29)% of the Minion's maximum Life",
-      "values": [
-        "(19–29)"
-      ]
-    },
-    {
-      "text": "+(0–0.2) metres to radius",
-      "values": [
-        "+(0–0.2)"
-      ]
-    },
-    {
-      "text": "50% less Damage with Ailments",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "200% more Area of Effect if Consuming a Minion",
-      "values": [
-        "200"
-      ]
-    },
-    {
-      "text": "This Spell deals (3–210) to (5–315), plus 4% of your maximum Life, as base Fire Damage",
-      "values": [
-        "(3–210)",
-        "(5–315)",
-        "4"
-      ]
-    },
-    {
-      "text": "Explosion deals base Fire Damage equal to (19–29)% of the Minion's maximum Life",
-      "values": [
-        "(19–29)"
-      ]
-    },
-    {
-      "text": "+(0–0.2) metres to radius",
-      "values": [
-        "+(0–0.2)"
-      ]
-    },
-    {
-      "text": "50% less Damage with Ailments",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "200% more Area of Effect if Consuming a Minion",
-      "values": [
-        "200"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "This Spell deals (3–1125) to (5–1687), plus 4% of your maximum Life, as base Fire Damage",
-      "values": [
-        "(3–1125)",
-        "(5–1687)",
-        "4"
-      ]
-    },
-    {
-      "text": "Explosion deals base Fire Damage equal to (19–39)% of the Minion's maximum Life",
-      "values": [
-        "(19–39)"
-      ]
-    },
-    {
-      "text": "+(0–0.4) metres to radius",
-      "values": [
-        "+(0–0.4)"
-      ]
-    },
-    {
-      "text": "50% less Damage with Ailments",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "200% more Area of Effect if Consuming a Minion",
-      "values": [
-        "200"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Explosion deals base Fire Damage equal to (0–5)% of the Minion's maximum Life",
-      "values": [
-        "(0–5)"
-      ]
-    },
-    {
-      "text": "Explosion deals base Fire Damage equal to (0–5)% of the Minion's maximum Life",
-      "values": [
-        "(0–5)"
-      ]
-    },
-    {
-      "text": "Explosion deals base Fire Damage equal to (0–5)% of the Minion's maximum Life",
-      "values": [
-        "(0–5)"
-      ]
+      "text": "Explosion deals base Fire Damage equal to (0.25-5)% of the Minion's maximum Life",
+      "values": []
     }
   ]
 }

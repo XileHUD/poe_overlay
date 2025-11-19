@@ -1,7 +1,19 @@
 {
   "name": "Divine Ire",
   "slug": "Divine_Ire",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Lightning, Spell, AoE, Channelling, Physical",
+    "Level": "(1-20)",
+    "Cost": "(3-5) Mana",
+    "Cast Time": "0.22 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "50%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "28",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemDivineTempest"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,95 +417,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Channelling draws in energy around you to repeatedly build up stages, damaging a number of nearby enemies when you do so. Release to unleash this energy in a burst around you and a beam in front of you. Modifiers to area of effect do not affect the beam. Maximum of 10 Stages.",
-  "explicitMods": [
-    {
-      "text": "Deals (19–253) to (29–380) Physical Damage",
-      "values": [
-        "(19–253)",
-        "(29–380)"
-      ]
-    },
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Damages 5 nearby Enemies when you gain Stages",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Beam deals 250% more Damage with Hits per Stage after the firstBeam deals 105% more Damage with Ailments per Stage after the first",
-      "values": [
-        "250",
-        "105"
-      ]
-    },
-    {
-      "text": "Deals (19–253) to (29–380) Physical Damage",
-      "values": [
-        "(19–253)",
-        "(29–380)"
-      ]
-    },
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Damages 5 nearby Enemies when you gain Stages",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Beam deals 250% more Damage with Hits per Stage after the firstBeam deals 105% more Damage with Ailments per Stage after the first",
-      "values": [
-        "250",
-        "105"
-      ]
-    },
-    {
-      "text": "divine tempest beam width + [0,4]",
-      "values": []
-    },
-    {
-      "text": "shock art variation [2]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    },
-    {
-      "text": "visual hit effect elemental is holy [1]",
-      "values": []
-    },
-    {
-      "text": "divine_tempest_current_number_of_stages",
-      "values": []
-    }
+  "stats": [
+    "Deals (19-253) to (29-380) Physical Damage",
+    "50% of Physical Damage Converted to Lightning Damage",
+    "Damages 5 nearby Enemies when you gain Stages",
+    "Beam deals 250% more Damage with Hits per Stage after the first",
+    "Beam deals 105% more Damage with Ailments per Stage after the first"
   ],
+  "gemDescription": "Channelling draws in energy around you to repeatedly build up stages, damaging a number of nearby enemies when you do so. Release to unleash this energy in a burst around you and a beam in front of you. Modifiers to area of effect do not affect the beam. Maximum of 10 Stages.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–20)% increased beam width",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% increased beam width",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "(1-20)% increased beam width",
+      "values": []
     }
   ]
 }

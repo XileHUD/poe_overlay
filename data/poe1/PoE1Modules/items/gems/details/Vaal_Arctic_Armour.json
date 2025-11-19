@@ -1,7 +1,33 @@
 {
   "name": "Vaal Arctic Armour",
   "slug": "Vaal_Arctic_Armour",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Duration, Cold, Vaal",
+    "Level": "(1-20)",
+    "Souls Per Use": "50",
+    "Can Store": "1 Use(s)",
+    "Soul Gain Prevention": "24 sec",
+    "Cast Time": "Instant",
+    "Requires Level": "16",
+    "Info 8": "Corrupted",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted",
+    "Drop level": "16",
+    "Vaal Arctic Armour can drop from the Vaal Vessels found in Vaal side areas , or by corrupting Arctic ArmourArctic ArmourSpell, Duration, ColdLevel": "(1-20)Reservation: 25% ManaCooldown Time: 1.00 secCan Store 1 Use(s)Cast Time: InstantRequires Level 16Conjures an icy barrier that chills enemies when they hit you. You drop chilled ground while moving, and take less Fire and Physical damage while stationary.Base duration is (2.50-4.40) secondsBuff grants (11-21)% less Physical Damage taken from Hits while stationaryBuff grants (11-20)% less Fire Damage taken from Hits while stationaryChill Enemy for 0.5 seconds when Hit, reducing their Action Speed by 30%Buff grants Immunity to Freeze Additional Effects From 1-20% Quality: (1-20)% increased Skill Effect DurationPlace into an item socket of the right colour to gain this skill. Right click to remove from a socket. .",
+    "Info 13": "Spell , Duration , Cold",
+    "Reservation": "25% Mana",
+    "Cooldown Time": "1.00 sec",
+    "Info 16": "Conjures an icy barrier that chills enemies when they hit you. You drop chilled ground while moving, and take less Fire and Physical damage while stationary.",
+    "Info 17": "Base duration is (2.50-4.40) seconds",
+    "Info 18": "Buff grants (11-21)% less Physical Damage taken from Hits while stationary",
+    "Info 19": "Buff grants (11-20)% less Fire Damage taken from Hits while stationary",
+    "Info 20": "Chill Enemy for 0.5 seconds when Hit, reducing their Action Speed by 30%",
+    "Info 21": "Buff grants Immunity to Freeze",
+    "Additional Effects From 1-20% Quality": "(1-20)% increased Skill Effect Duration",
+    "Info 23": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVaalArcticArmour"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,131 +391,21 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Immediately encases you in ice, protecting you for a duration or until you take damage from a number of hits, and also grants a buff once the cast time has finished. You cannot move or perform non-instant actions while in the ice. When the ice breaks, the buff is also removed.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 5 seconds",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "You take 90% less Damage from Hits and count as Frozen",
-      "values": [
-        "90"
-      ]
-    },
-    {
-      "text": "Ice breaks after you take 3 Damaging Hits or Duration expires",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Buff grants (5–30.6) Mana Regeneration per second",
-      "values": [
-        "(5–30.6)"
-      ]
-    },
-    {
-      "text": "Buff grants (20–395) Energy Shield Regeneration per second",
-      "values": [
-        "(20–395)"
-      ]
-    },
-    {
-      "text": "Base duration is 5 seconds",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "You take 90% less Damage from Hits and count as Frozen",
-      "values": [
-        "90"
-      ]
-    },
-    {
-      "text": "Ice breaks after you take 3 Damaging Hits or Duration expires",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Buff grants (5–30.6) Mana Regeneration per second",
-      "values": [
-        "(5–30.6)"
-      ]
-    },
-    {
-      "text": "Buff grants (20–395) Energy Shield Regeneration per second",
-      "values": [
-        "(20–395)"
-      ]
-    },
-    {
-      "text": "skill cannot be stunned before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "vaal_arctic_armour_damage_taken_+%_final_from_hits",
-      "values": []
-    },
-    {
-      "text": "Base duration is (2.5–5.9) seconds",
-      "values": [
-        "(2.5–5.9)"
-      ]
-    },
-    {
-      "text": "Buff grants (11–28)% less Physical Damage taken from Hits while stationary",
-      "values": [
-        "(11–28)"
-      ]
-    },
-    {
-      "text": "Buff grants (11–28)% less Fire Damage taken from Hits while stationary",
-      "values": [
-        "(11–28)"
-      ]
-    },
-    {
-      "text": "Chill Enemy for 0.5 seconds when Hit, reducing their Action Speed by 30%",
-      "values": [
-        "0.5"
-      ]
-    },
-    {
-      "text": "Buff grants Immunity to Freeze",
-      "values": []
-    },
-    {
-      "text": "ground ice art variation [6]",
-      "values": []
-    }
+  "stats": [
+    "Base duration is 5.00 seconds",
+    "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+    "Buff grants (5-30.6) Mana Regeneration per second",
+    "Buff grants (20-395) Energy Shield Regeneration per second",
+    "You take 90% less Damage from Hits and count as Frozen",
+    "Ice breaks after you take 3 Damaging Hits or Duration expires"
   ],
+  "gemDescription": "Immediately encases you in ice, protecting you for a duration or until you take damage from a number of hits, and also grants a buff once the cast time has finished. You cannot move or perform non-instant actions while in the ice. When the ice breaks, the buff is also removed.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–20)% increased Skill Effect Duration",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% increased Skill Effect Duration",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "(1-20)% increased Skill Effect Duration",
+      "values": []
     }
   ]
 }

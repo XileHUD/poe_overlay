@@ -1,7 +1,18 @@
 {
   "name": "Awakened Burning Damage Support",
   "slug": "Awakened_Burning_Damage_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Fire, Support",
+    "Icon": "b",
+    "Level": "(1-5)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "72",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; The Maven's Crucible; Can drop from either version of the Maven , from Maven's Invitations , or from Maven-witnessed map bosses.",
+    "Drop level": "72",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemBurningDamagePlus"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -205,47 +216,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports any skill that hits enemies, or can deal burning damage directly.",
-  "explicitMods": [
-    {
-      "text": "+(0–1) to Level of Supported Fire Skill Gems",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (35–39)% more Burning Damage",
-      "values": [
-        "(35–39)"
-      ]
-    },
-    {
-      "text": "+(0–1) to Level of Supported Fire Skill Gems",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (35–39)% more Burning Damage",
-      "values": [
-        "(35–39)"
-      ]
-    }
+  "stats": [
+    "+(0-1) to Level of Supported Fire Skill Gems",
+    "Supported Skills deal (35-39)% more Burning Damage"
   ],
+  "gemDescription": "Supports any skill that hits enemies, or can deal burning damage directly.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Burning Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Burning Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Burning Damage",
+      "values": []
     }
   ]
 }

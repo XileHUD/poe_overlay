@@ -1,7 +1,19 @@
 {
   "name": "Wall of Force",
   "slug": "Wall_of_Force",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Duration",
+    "Level": "(1-20)",
+    "Cost": "(9-33) Mana",
+    "Cooldown Time": "9.00 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "0.50 sec",
+    "Requires Level": "16",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "16",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemWallOfForce"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -485,83 +497,22 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Creates a wall of force which allies and enemies can pass through, but allied projectiles which can collide with enemies will also collide with this wall, and can chain from it to other targets. Projectiles can only collide with a single Wall of Force, and no more than once.",
-  "explicitMods": [
-    {
-      "text": "Base duration is (5.1–7) seconds",
-      "values": [
-        "(5.1–7)"
-      ]
-    },
-    {
-      "text": "Wall will be (4.5–6) meters long",
-      "values": [
-        "(4.5–6)"
-      ]
-    },
-    {
-      "text": "Projectiles cannot Split, Pierce, or Fork when colliding with the wallProjectiles can Chain an additional time when colliding with the wallProjectiles can only chain to targets on the same side of the wall",
-      "values": []
-    },
-    {
-      "text": "Projectiles which have collided with the wall deal (20–30)% less Damage",
-      "values": [
-        "(20–30)"
-      ]
-    },
-    {
-      "text": "Wall is destroyed after (11–17) Projectile collisions",
-      "values": [
-        "(11–17)"
-      ]
-    },
-    {
-      "text": "Base duration is (5.1–7) seconds",
-      "values": [
-        "(5.1–7)"
-      ]
-    },
-    {
-      "text": "Wall will be (4.5–6) meters long",
-      "values": [
-        "(4.5–6)"
-      ]
-    },
-    {
-      "text": "Projectiles cannot Split, Pierce, or Fork when colliding with the wallProjectiles can Chain an additional time when colliding with the wallProjectiles can only chain to targets on the same side of the wall",
-      "values": []
-    },
-    {
-      "text": "Projectiles which have collided with the wall deal (20–30)% less Damage",
-      "values": [
-        "(20–30)"
-      ]
-    },
-    {
-      "text": "Wall is destroyed after (11–17) Projectile collisions",
-      "values": [
-        "(11–17)"
-      ]
-    },
-    {
-      "text": "base deal no damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Base duration is (5.10-7.00) seconds",
+    "Wall will be (4.5-6) meters long",
+    "Projectiles cannot Split, Pierce, or Fork when colliding with the wall",
+    "Projectiles can Chain an additional time when colliding with the wall",
+    "Projectiles can only chain to targets on the same side of the wall",
+    "Projectiles which have collided with the wall deal (30-20)% less Damage",
+    "Wall is destroyed after (11-17) Projectile collisions"
   ],
+  "gemDescription": "Creates a wall of force which allies and enemies can pass through, but allied projectiles which can collide with enemies will also collide with this wall, and can chain from it to other targets. Projectiles can only collide with a single Wall of Force, and no more than once.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–20)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "(1-20)% increased Cooldown Recovery Rate",
+      "values": []
     }
   ]
 }

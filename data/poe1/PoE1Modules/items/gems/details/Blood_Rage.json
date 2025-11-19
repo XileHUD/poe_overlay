@@ -1,7 +1,19 @@
 {
   "name": "Blood Rage",
   "slug": "Blood_Rage",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Duration, Physical",
+    "Level": "(1-20)",
+    "Cost": "(12-29) Life",
+    "Cooldown Time": "1.00 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "Instant",
+    "Requires Level": "16",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "16",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemBloodRage"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,151 +417,21 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Base duration is (7.00-10.80) seconds",
+    "Grants (5-15)% increased Attack Speed",
+    "1.2% of Attack Physical Damage Leeched as Life",
+    "You take 4% of your Maximum Life per second as Physical Damage",
+    "You take 4% of your Maximum Energy Shield per second as Physical Damage",
+    "25% chance to gain a Frenzy Charge on Kill"
+  ],
   "gemDescription": "Adds a buff that deals Physical Damage over time, while increasing Attack Speed and Life Leech. Killing an enemy while this buff is active refreshes the buff duration, and can grant a Frenzy Charge.",
-  "explicitMods": [
-    {
-      "text": "Base duration is (7–10.8) seconds",
-      "values": [
-        "(7–10.8)"
-      ]
-    },
-    {
-      "text": "Grants (5–15)% increased Attack Speed",
-      "values": [
-        "(5–15)"
-      ]
-    },
-    {
-      "text": "1.2% of Attack Physical Damage Leeched as Life",
-      "values": [
-        "1.2"
-      ]
-    },
-    {
-      "text": "You take 4% of your Maximum Life per second as Physical Damage",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "You take 4% of your Maximum Energy Shield per second as Physical Damage",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "25% chance to gain a Frenzy Charge on Kill",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Base duration is (7–10.8) seconds",
-      "values": [
-        "(7–10.8)"
-      ]
-    },
-    {
-      "text": "Grants (5–15)% increased Attack Speed",
-      "values": [
-        "(5–15)"
-      ]
-    },
-    {
-      "text": "1.2% of Attack Physical Damage Leeched as Life",
-      "values": [
-        "1.2"
-      ]
-    },
-    {
-      "text": "You take 4% of your Maximum Life per second as Physical Damage",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "You take 4% of your Maximum Energy Shield per second as Physical Damage",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "25% chance to gain a Frenzy Charge on Kill",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "skill level [1,20]",
-      "values": []
-    },
-    {
-      "text": "attack_speed_+%",
-      "values": []
-    },
-    {
-      "text": "add_frenzy_charge_on_kill_%_chance",
-      "values": []
-    },
-    {
-      "text": "base_physical_damage_%_of_maximum_life_taken_per_minute",
-      "values": []
-    },
-    {
-      "text": "base_physical_damage_%_of_maximum_energy_shield_taken_per_minute",
-      "values": []
-    },
-    {
-      "text": "life_leech_from_physical_attack_damage_permyriad",
-      "values": []
-    },
-    {
-      "text": "base_life_leech_from_elemental_damage_permyriad",
-      "values": []
-    },
-    {
-      "text": "gain_frenzy_charge_on_hitting_unique_enemy_%",
-      "values": []
-    },
-    {
-      "text": "attack_speed_+%",
-      "values": []
-    },
-    {
-      "text": "add_frenzy_charge_on_kill",
-      "values": []
-    },
-    {
-      "text": "base_physical_damage_%_of_maximum_life_taken_per_minute",
-      "values": []
-    },
-    {
-      "text": "base_physical_damage_%_of_maximum_energy_shield_taken_per_minute",
-      "values": []
-    },
-    {
-      "text": "life_leech_from_physical_attack_damage_permyriad",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Leeched Life is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
-    "(Leeched Life is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
-    "(Leeched Life is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Grants (0–5)% increased Attack Speed",
-      "values": [
-        "(0–5)"
-      ]
-    },
-    {
-      "text": "Grants (0–5)% increased Attack Speed",
-      "values": [
-        "(0–5)"
-      ]
+      "text": "Grants (0.25-5)% increased Attack Speed",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,20 @@
 {
   "name": "Ice Spear",
   "slug": "Ice_Spear",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Critical, Spell, Projectile, Cold",
+    "Level": "(1-20)",
+    "Cost": "(8-23) Mana",
+    "Cast Time": "0.70 sec",
+    "Critical Strike Chance": "7.00%",
+    "Effectiveness of Added Damage": "130%",
+    "Projectile Speed": "1000",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "12",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemIceSpear"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,93 +418,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Launches shards of ice in rapid succession. After travelling a short distance they change to a second form, which moves much faster and pierces through enemies.",
-  "explicitMods": [
-    {
-      "text": "Deals (22–568) to (33–852) Cold Damage",
-      "values": [
-        "(22–568)",
-        "(33–852)"
-      ]
-    },
-    {
-      "text": "Fires 2 Projectiles",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Second form has 600% increased Critical Strike Chance",
-      "values": [
-        "600"
-      ]
-    },
-    {
-      "text": "Second form has +(30–49)% to Critical Strike Multiplier",
-      "values": [
-        "+(30–49)"
-      ]
-    },
-    {
-      "text": "Second form has 300% more Projectile Speed",
-      "values": [
-        "300"
-      ]
-    },
-    {
-      "text": "Deals (22–568) to (33–852) Cold Damage",
-      "values": [
-        "(22–568)",
-        "(33–852)"
-      ]
-    },
-    {
-      "text": "Fires 2 Projectiles",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Second form has 600% increased Critical Strike Chance",
-      "values": [
-        "600"
-      ]
-    },
-    {
-      "text": "Second form has +(30–49)% to Critical Strike Multiplier",
-      "values": [
-        "+(30–49)"
-      ]
-    },
-    {
-      "text": "Second form has 300% more Projectile Speed",
-      "values": [
-        "300"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "projectile random angle based on distance to target location % [35]",
-      "values": []
-    }
+  "stats": [
+    "Deals (22-568) to (33-852) Cold Damage",
+    "Fires 2 Projectiles",
+    "Second form has 600% increased Critical Strike Chance",
+    "Second form has +(30-49)% to Critical Strike Multiplier",
+    "Second form has 300% more Projectile Speed"
   ],
+  "gemDescription": "Launches shards of ice in rapid succession. After travelling a short distance they change to a second form, which moves much faster and pierces through enemies.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Second form has +(0–40)% to Critical Strike Multiplier",
-      "values": [
-        "+(0–40)"
-      ]
-    },
-    {
-      "text": "Second form has +(0–40)% to Critical Strike Multiplier",
-      "values": [
-        "+(0–40)"
-      ]
+      "text": "Second form has +(2-40)% to Critical Strike Multiplier",
+      "values": []
     }
   ]
 }

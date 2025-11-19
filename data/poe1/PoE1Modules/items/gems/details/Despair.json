@@ -1,7 +1,18 @@
 {
   "name": "Despair",
   "slug": "Despair",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Duration, Chaos, Curse, Hex",
+    "Level": "(1-20)",
+    "Cost": "(16-33) Mana",
+    "Cast Time": "0.50 sec",
+    "AoE Radius": "22",
+    "Requires Level": "24",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "24",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVulnerability"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -485,95 +496,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Curses all targets in an area, lowering their chaos resistance.",
-  "explicitMods": [
-    {
-      "text": "Base duration is (8–11.8) seconds",
-      "values": [
-        "(8–11.8)"
-      ]
-    },
-    {
-      "text": "+(0–1) metre to radius",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Cursed enemies have (-30–-15)% to Chaos Resistance",
-      "values": [
-        "(-30–-15)"
-      ]
-    },
-    {
-      "text": "Base duration is (8–11.8) seconds",
-      "values": [
-        "(8–11.8)"
-      ]
-    },
-    {
-      "text": "+(0–1) metre to radius",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Cursed enemies have (-30–-15)% to Chaos Resistance",
-      "values": [
-        "(-30–-15)"
-      ]
-    },
-    {
-      "text": "base deal no damage [1]",
-      "values": []
-    },
-    {
-      "text": "(-10–10)% reduced Charges per use",
-      "values": [
-        "(-10–10)"
-      ]
-    },
-    {
-      "text": "Grants Level 21 Despair Curse Aura during Effect",
-      "values": [
-        "21"
-      ]
-    },
-    {
-      "text": "base_chaos_damage_resistance_%",
-      "values": []
-    },
-    {
-      "text": "degen_effect_+%",
-      "values": []
-    },
-    {
-      "text": "minimum_added_chaos_damage_taken",
-      "values": []
-    },
-    {
-      "text": "maximum_added_chaos_damage_taken",
-      "values": []
-    },
-    {
-      "text": "chance_to_be_hindered_when_hit_by_spells_%",
-      "values": []
-    }
+  "stats": [
+    "Base duration is (8.00-11.80) seconds",
+    "+(0-1) metre to radius",
+    "Cursed enemies have -(15-30)% to Chaos Resistance"
   ],
+  "gemDescription": "Curses all targets in an area, lowering their chaos resistance.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–10)% increased Effect of Curse",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "(0–10)% increased Effect of Curse",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "(0.5-10)% increased Effect of Curse",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,17 @@
 {
   "name": "Maim Support",
   "slug": "Maim_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Physical, Support",
+    "Icon": "m",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "8",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "8",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemMaim"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,63 +335,18 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Supported Skills deal (10-19)% more Physical Damage",
+    "Supported Attacks have 30% chance to Maim on Hit",
+    "Enemies Maimed by Supported Skills take 10% increased Physical Damage"
+  ],
   "gemDescription": "Supports attack skills, or other skills that can maim enemies.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills deal (10–19)% more Physical Damage",
-      "values": [
-        "(10–19)"
-      ]
-    },
-    {
-      "text": "Supported Attacks have 30% chance to Maim on Hit",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "Enemies Maimed by Supported Skills take 10% increased Physical Damage",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (10–19)% more Physical Damage",
-      "values": [
-        "(10–19)"
-      ]
-    },
-    {
-      "text": "Supported Attacks have 30% chance to Maim on Hit",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "Enemies Maimed by Supported Skills take 10% increased Physical Damage",
-      "values": [
-        "10"
-      ]
-    }
-  ],
-  "modDescriptions": [
-    "(Maimed enemies have 30% reduced Movement Speed)",
-    "(Maimed enemies have 30% reduced Movement Speed)",
-    "(Maimed enemies have 30% reduced Movement Speed)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–20)% increased Effect of Maim",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–20)% increased Effect of Maim",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "Supported Skills have (1-20)% increased Effect of Maim",
+      "values": []
     }
   ]
 }

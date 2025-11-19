@@ -1,7 +1,18 @@
 {
   "name": "Infernal Blow of Immolation",
   "slug": "Infernal_Blow_of_Immolation",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, AoE, Melee, Strike, Fire, Duration",
+    "Level": "(1-20)",
+    "Cost": "(6-10) Mana",
+    "Attack Damage": "(164-377)% of base",
+    "Effectiveness of Added Damage": "(164-377)%",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "12",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -245,95 +256,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Attacks with your weapon, applying a charged debuff to you the first time you hit an enemy with this skill. Upon reaching 6 charges, or charges expiring, the charged debuff is removed to damage nearby enemies. Requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 3 seconds",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Base radius is (2.6–2.9) metres",
-      "values": [
-        "(2.6–2.9)"
-      ]
-    },
-    {
-      "text": "Debuff deals 80% of Damage per Charge",
-      "values": [
-        "80"
-      ]
-    },
-    {
-      "text": "Base duration is 3 seconds",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Base radius is (2.6–2.9) metres",
-      "values": [
-        "(2.6–2.9)"
-      ]
-    },
-    {
-      "text": "Debuff deals 80% of Damage per Charge",
-      "values": [
-        "80"
-      ]
-    },
-    {
-      "text": "Base duration is 2.2 seconds",
-      "values": [
-        "2.2"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Base radius is 2.4 metres",
-      "values": [
-        "2.4"
-      ]
-    },
-    {
-      "text": "Debuff deals +80% of Damage per Charge",
-      "values": [
-        "+80"
-      ]
-    }
+  "stats": [
+    "Base duration is 3.00 seconds",
+    "60% of Physical Damage Converted to Fire Damage",
+    "Base radius is (2.6-2.9) metres",
+    "Debuff deals 80% of Damage per Charge"
   ],
+  "gemDescription": "Attacks with your weapon, applying a charged debuff to you the first time you hit an enemy with this skill. Upon reaching 6 charges, or charges expiring, the charged debuff is removed to damage nearby enemies. Requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Debuff deals +(0–10)% of Damage per Charge",
-      "values": [
-        "+(0–10)"
-      ]
-    },
-    {
-      "text": "Debuff deals +(0–10)% of Damage per Charge",
-      "values": [
-        "+(0–10)"
-      ]
+      "text": "Debuff deals +(0.5-10)% of Damage per Charge",
+      "values": []
     }
   ]
 }

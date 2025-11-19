@@ -1,7 +1,19 @@
 {
   "name": "Flame Surge of Combusting",
   "slug": "Flame_Surge_of_Combusting",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Fire, Duration",
+    "Level": "(1-20)",
+    "Cost": "(10-26) Mana",
+    "Cast Time": "0.80 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "310%",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "12",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,135 +377,21 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Base duration is 4.00 seconds",
+    "Deals (44-1374) to (65-2062) Fire Damage",
+    "25% chance to Ignite enemies",
+    "+(0-9) to Area of Effect length",
+    "Igniting Enemies creates Burning Ground, no more than once per second",
+    "Burning Ground deals 50% of Fire Damage per second of inflicted Ignite"
+  ],
   "gemDescription": "Strikes enemies in front of you with a surge of flame. If this ignites an enemy a large area of burning ground will be created under them. Your damage modifiers don't apply to this burning ground.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Deals (44–1374) to (65–2062) Fire Damage",
-      "values": [
-        "(44–1374)",
-        "(65–2062)"
-      ]
-    },
-    {
-      "text": "25% chance to Ignite enemies",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "+(0–9) to Area of Effect length",
-      "values": [
-        "+(0–9)"
-      ]
-    },
-    {
-      "text": "Igniting Enemies creates Burning Ground, no more than once per secondBurning Ground deals 50% of Fire Damage per second of inflicted Ignite",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Deals (44–1374) to (65–2062) Fire Damage",
-      "values": [
-        "(44–1374)",
-        "(65–2062)"
-      ]
-    },
-    {
-      "text": "25% chance to Ignite enemies",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "+(0–9) to Area of Effect length",
-      "values": [
-        "+(0–9)"
-      ]
-    },
-    {
-      "text": "Igniting Enemies creates Burning Ground, no more than once per secondBurning Ground deals 50% of Fire Damage per second of inflicted Ignite",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Deals (44–5756) to (65–8634) Fire Damage",
-      "values": [
-        "(44–5756)",
-        "(65–8634)"
-      ]
-    },
-    {
-      "text": "25% chance to Ignite enemies",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "+(0–17) to Area of Effect length",
-      "values": [
-        "+(0–17)"
-      ]
-    },
-    {
-      "text": "Igniting Enemies creates Burning Ground, no more than once per secondBurning Ground deals 50% of Fire Damage per second of inflicted Ignite",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
-    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
-    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
-    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Burning ground deals +(0–15)% of Fire Damage per second of inflicted Ignite",
-      "values": [
-        "+(0–15)"
-      ]
-    },
-    {
-      "text": "Burning ground deals +(0–15)% of Fire Damage per second of inflicted Ignite",
-      "values": [
-        "+(0–15)"
-      ]
-    },
-    {
-      "text": "Burning ground deals +(0–15)% of Fire Damage per second of inflicted Ignite",
-      "values": [
-        "+(0–15)"
-      ]
+      "text": "Burning ground deals +(0.75-15)% of Fire Damage per second of inflicted Ignite",
+      "values": []
     }
   ]
 }

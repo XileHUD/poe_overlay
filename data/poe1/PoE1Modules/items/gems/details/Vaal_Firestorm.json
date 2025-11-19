@@ -1,7 +1,36 @@
 {
   "name": "Vaal Firestorm",
   "slug": "Vaal_Firestorm",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Duration, Fire, Vaal",
+    "Level": "(1-20)",
+    "Souls Per Use": "35",
+    "Can Store": "1 Use(s)",
+    "Soul Gain Prevention": "7 sec",
+    "Cast Time": "0.75 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "(60-80)%",
+    "Requires Level": "28",
+    "Info 10": "Corrupted",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted",
+    "Drop level": "28",
+    "Vaal Firestorm can drop from the Vaal Vessels found in Vaal side areas , or by corrupting FirestormFirestormSpell, AoE, Duration, FireLevel": "(1-20)Cost: (13-25) ManaCast Time: 0.75 secCritical Strike Chance: 6.00%Effectiveness of Added Damage: (60-80)%Requires Level 28Flaming bolts rain down over the targeted area. They explode when landing, dealing damage to nearby enemies.Base duration is 1.40 secondsDeals (23-361) to (35-541) Fire DamageOne impact every 0.15 secondsBase radius is 1.3 metresFirst Impact has 100% more Area of EffectFirst Impact deals 325% more Damage with Hits and AilmentsMaximum 3 Firestorms at a time Additional Effects From 1-20% Quality: Base radius is (0.01-0.2) metresPlace into an item socket of the right colour to gain this skill. Right click to remove from a socket. .",
+    "Info 15": "Spell , AoE , Duration , Fire",
+    "Cost": "(13-25) Mana",
+    "Info 17": "Flaming bolts rain down over the targeted area. They explode when landing, dealing damage to nearby enemies.",
+    "Info 18": "Base duration is 1.40 seconds",
+    "Info 19": "Deals (23-361) to (35-541) Fire Damage",
+    "Info 20": "One impact every 0.15 seconds",
+    "Info 21": "Base radius is 1.3 metres",
+    "Info 22": "First Impact has 100% more Area of Effect",
+    "Info 23": "First Impact deals 325% more Damage with Hits and Ailments",
+    "Info 24": "Maximum 3 Firestorms at a time",
+    "Additional Effects From 1-20% Quality": "Base radius is (0.01-0.2) metres",
+    "Info 26": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVaalFirestorm"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,162 +394,22 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "A fixed number of flaming bolts rain down in a spiral, culminating in the central one impacting the targeted location. They explode when landing, dealing damage to nearby enemies and leaving burning ground, which deals fire damage over time.",
-  "explicitMods": [
-    {
-      "text": "Deals (256.8–3995.3) Base Fire Damage per second",
-      "values": [
-        "(256.8–3995.3)"
-      ]
-    },
-    {
-      "text": "Burning Ground lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Deals (224–3487) to (336–5230) Fire Damage",
-      "values": [
-        "(224–3487)",
-        "(336–5230)"
-      ]
-    },
-    {
-      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "16 Bolts",
-      "values": [
-        "16"
-      ]
-    },
-    {
-      "text": "Impacts have 20% more Area of Effect",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "Base radius is 1.3 metres",
-      "values": [
-        "1.3"
-      ]
-    },
-    {
-      "text": "Deals (256.8–3995.3) Base Fire Damage per second",
-      "values": [
-        "(256.8–3995.3)"
-      ]
-    },
-    {
-      "text": "Burning Ground lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Deals (224–3487) to (336–5230) Fire Damage",
-      "values": [
-        "(224–3487)",
-        "(336–5230)"
-      ]
-    },
-    {
-      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "16 Bolts",
-      "values": [
-        "16"
-      ]
-    },
-    {
-      "text": "Impacts have 20% more Area of Effect",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "Base radius is 1.3 metres",
-      "values": [
-        "1.3"
-      ]
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "cannot cancel skill before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    },
-    {
-      "text": "skill cannot be stunned before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "Deals (22–295) to (34–442) Physical Damage",
-      "values": [
-        "(22–295)",
-        "(34–442)"
-      ]
-    },
-    {
-      "text": "Base duration is 0.9 seconds",
-      "values": [
-        "0.9"
-      ]
-    },
-    {
-      "text": "One impact every 0.3 seconds",
-      "values": [
-        "0.3"
-      ]
-    },
-    {
-      "text": "Base radius is 1 metre",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "firestorm base area of effect +% [-50]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "monster penalty against minions damage +% final vs player minions [-25]",
-      "values": []
-    }
+  "stats": [
+    "Deals (256.8-3995.2) Base Fire Damage per second",
+    "Burning Ground lasts 4.00 seconds",
+    "Deals (224-3487) to (336-5230) Fire Damage",
+    "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+    "16 Bolts",
+    "Impacts have 20% more Area of Effect",
+    "Base radius is 1.3 metres"
   ],
+  "gemDescription": "A fixed number of flaming bolts rain down in a spiral, culminating in the central one impacting the targeted location. They explode when landing, dealing damage to nearby enemies and leaving burning ground, which deals fire damage over time.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
-    },
-    {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
+      "text": "Base radius is (0.01-0.2) metres",
+      "values": []
     }
   ]
 }

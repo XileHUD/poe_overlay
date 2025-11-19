@@ -1,7 +1,21 @@
 {
   "name": "Lightning Spire Trap of Overloading",
   "slug": "Lightning_Spire_Trap_of_Overloading",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Trap, Spell, Duration, AoE, Lightning",
+    "Level": "(1-20)",
+    "Cost": "(25-48) Mana",
+    "Cooldown Time": "10.00 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "1.00 sec",
+    "Critical Strike Chance": "100.00%",
+    "Effectiveness of Added Damage": "170%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,146 +339,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Throws a trap which, once triggered, will repeatedly strike multiple areas around it for a duration, dealing lightning damage.",
-  "explicitMods": [
-    {
-      "text": "Deals (31–484) to (93–1453) Lightning Damage",
-      "values": [
-        "(31–484)",
-        "(93–1453)"
-      ]
-    },
-    {
-      "text": "Trap lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Base duration is 3.5 seconds",
-      "values": [
-        "3.5"
-      ]
-    },
-    {
-      "text": "Strikes every 1 seconds",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Strikes 8 Areas",
-      "values": [
-        "8"
-      ]
-    },
-    {
-      "text": "Deals (31–484) to (93–1453) Lightning Damage",
-      "values": [
-        "(31–484)",
-        "(93–1453)"
-      ]
-    },
-    {
-      "text": "Trap lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Base duration is 3.5 seconds",
-      "values": [
-        "3.5"
-      ]
-    },
-    {
-      "text": "Strikes every 1 seconds",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Strikes 8 Areas",
-      "values": [
-        "8"
-      ]
-    },
-    {
-      "text": "base skill is trapped [1]",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "Deals (31–2791) to (93–8372) Lightning Damage",
-      "values": [
-        "(31–2791)",
-        "(93–8372)"
-      ]
-    },
-    {
-      "text": "Trap lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Base duration is 3.5 seconds",
-      "values": [
-        "3.5"
-      ]
-    },
-    {
-      "text": "Strikes every 1 seconds",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Strikes 8 Areas",
-      "values": [
-        "8"
-      ]
-    },
-    {
-      "text": "base skill is trapped [1]",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (31-484) to (93-1453) Lightning Damage",
+    "Trap lasts 4 seconds",
+    "Base duration is 3.50 seconds",
+    "Strikes every 1.00 seconds",
+    "Strikes 8 Areas"
   ],
+  "gemDescription": "Throws a trap which, once triggered, will repeatedly strike multiple areas around it for a duration, dealing lightning damage.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Strikes +(0–2) Areas",
-      "values": [
-        "+(0–2)"
-      ]
-    },
-    {
-      "text": "Strikes +(0–2) Areas",
-      "values": [
-        "+(0–2)"
-      ]
-    },
-    {
-      "text": "Strikes +(0–2) Areas",
-      "values": [
-        "+(0–2)"
-      ]
+      "text": "Strikes +(0.1-2) Areas",
+      "values": []
     }
   ]
 }

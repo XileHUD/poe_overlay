@@ -1,7 +1,24 @@
 {
   "name": "Vaal Reave",
   "slug": "Vaal_Reave",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, AoE, Vaal, Melee",
+    "Level": "(1-20)",
+    "Souls Per Use": "25",
+    "Can Store": "3 Use(s)",
+    "Soul Gain Prevention": "2 sec",
+    "Attack Speed": "250% of base",
+    "Attack Damage": "(295-613)% of base",
+    "Effectiveness of Added Damage": "(295-613)%",
+    "AoE Radius": "12",
+    "Requires Level": "12",
+    "Info 11": "Corrupted",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Vaal Reave can drop from the Vaal Vessels found in Vaal side areas .",
+    "Drop level": "12",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVaalReave"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,123 +342,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Repeatedly attacks a large area in different directions. Each Vaal Reave that hits an enemy grants stages, which you will begin to lose after a short period without hitting anything. Only works with Daggers, Claws, and One-Handed Swords.",
-  "explicitMods": [
-    {
-      "text": "+(0–0.2) metres to radius",
-      "values": [
-        "+(0–0.2)"
-      ]
-    },
-    {
-      "text": "50% more Area of Effect for each stage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Can't be Evaded",
-      "values": []
-    },
-    {
-      "text": "+4 to maximum Stages",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "+(0–0.2) metres to radius",
-      "values": [
-        "+(0–0.2)"
-      ]
-    },
-    {
-      "text": "50% more Area of Effect for each stage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Can't be Evaded",
-      "values": []
-    },
-    {
-      "text": "+4 to maximum Stages",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "base attack repeat count [7]",
-      "values": []
-    },
-    {
-      "text": "cannot cancel skill before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "reave additional starting stacks [4]",
-      "values": []
-    },
-    {
-      "text": "reave rotation on repeat [135]",
-      "values": []
-    },
-    {
-      "text": "skill cannot be stunned before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "4 Maximum Stages",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "+(0–0.3) metres to radius",
-      "values": [
-        "+(0–0.3)"
-      ]
-    },
-    {
-      "text": "50% more Area of Effect for each stage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "+(0-0.2) metres to radius",
+    "50% more Area of Effect for each stage",
+    "Can't be Evaded",
+    "+4 to maximum Stages"
   ],
+  "gemDescription": "Repeatedly attacks a large area in different directions. Each Vaal Reave that hits an enemy grants stages, which you will begin to lose after a short period without hitting anything. Only works with Daggers, Claws, and One-Handed Swords.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–2) to maximum Stages",
-      "values": [
-        "(0–2)"
-      ]
-    },
-    {
-      "text": "+(0–2) to maximum Stages",
-      "values": [
-        "(0–2)"
-      ]
-    },
-    {
-      "text": "+(0–2) to maximum Stages",
-      "values": [
-        "(0–2)"
-      ]
+      "text": "+(0.1-2) to maximum Stages",
+      "values": []
     }
   ]
 }

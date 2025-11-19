@@ -1,7 +1,18 @@
 {
   "name": "Righteous Fire of Arcane Devotion",
   "slug": "Righteous_Fire_of_Arcane_Devotion",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Fire",
+    "Level": "(1-20)",
+    "Cooldown Time": "0.30 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "Instant",
+    "Requires Level": "16",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "16",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,113 +336,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Engulfs you in magical fire that rapidly burns you and nearby enemies. Your cast speed is substantially increased while under this effect. The effect ends when you have 1 life remaining. Requires mana.",
-  "explicitMods": [
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Deals 70% of your Maximum Mana as Base Fire Damage per second",
-      "values": [
-        "70"
-      ]
-    },
-    {
-      "text": "You Burn for 90% of your Maximum Mana per second as Fire Damage",
-      "values": [
-        "90"
-      ]
-    },
-    {
-      "text": "Grants (10–24)% more Cast Speed",
-      "values": [
-        "(10–24)"
-      ]
-    },
-    {
-      "text": "Base radius is (1.8–2.3) metres",
-      "values": [
-        "(1.8–2.3)"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Deals 70% of your Maximum Mana as Base Fire Damage per second",
-      "values": [
-        "70"
-      ]
-    },
-    {
-      "text": "You Burn for 90% of your Maximum Mana per second as Fire Damage",
-      "values": [
-        "90"
-      ]
-    },
-    {
-      "text": "Grants (10–24)% more Cast Speed",
-      "values": [
-        "(10–24)"
-      ]
-    },
-    {
-      "text": "Base radius is (1.8–2.3) metres",
-      "values": [
-        "(1.8–2.3)"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Deals 70% of your Maximum Mana as Base Fire Damage per second",
-      "values": [
-        "70"
-      ]
-    },
-    {
-      "text": "You Burn for 90% of your Maximum Mana per second as Fire Damage",
-      "values": [
-        "90"
-      ]
-    },
-    {
-      "text": "Grants (10–38)% more Cast Speed",
-      "values": [
-        "(10–38)"
-      ]
-    },
-    {
-      "text": "Base radius is (1.8–2.8) metres",
-      "values": [
-        "(1.8–2.8)"
-      ]
-    }
+  "stats": [
+    "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+    "Deals 70% of your Maximum Mana as Base Fire Damage per second",
+    "You Burn for 90% of your Maximum Mana per second as Fire Damage",
+    "Grants (10-24)% more Cast Speed",
+    "Base radius is (1.8-2.3) metres"
   ],
+  "gemDescription": "Engulfs you in magical fire that rapidly burns you and nearby enemies. Your cast speed is substantially increased while under this effect. The effect ends when you have 1 life remaining. Requires mana.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base radius is (0–0.3) metres",
-      "values": [
-        "(0–0.3)"
-      ]
-    },
-    {
-      "text": "Base radius is (0–0.3) metres",
-      "values": [
-        "(0–0.3)"
-      ]
-    },
-    {
-      "text": "Base radius is (0–0.3) metres",
-      "values": [
-        "(0–0.3)"
-      ]
+      "text": "Base radius is (0.015-0.3) metres",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,22 @@
 {
   "name": "Vaal Molten Shell",
   "slug": "Vaal_Molten_Shell",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Duration, Fire, Physical, Vaal, Guard",
+    "Level": "(1-20)",
+    "Cooldown Time": "0.50 sec",
+    "Can Store": "1 Use(s)",
+    "Souls Per Use": "50",
+    "Soul Gain Prevention": "14 sec",
+    "Cast Time": "Instant",
+    "Requires Level": "16",
+    "Info 9": "Corrupted",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Vaal Molten Shell can drop from the Vaal Vessels found in Vaal side areas .",
+    "Drop level": "16",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVaalMoltenShell"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -285,131 +300,22 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Applies a buff that raises your armour, and takes some of the damage from hits for you before being depleted. Each second, the skill deals reflected damage to surrounding enemies based on the damage taken by the buff in that second. When the buff is removed, the skill deals reflected damage to enemies around you based on the total damage that was taken by the buff. You cannot have the buff at the same time as any other Guard skill.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 9 seconds",
-      "values": [
-        "9"
-      ]
-    },
-    {
-      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "(35–39)% of Damage from Hits is taken from the Buff before your Life or Energy ShieldBuff can take Damage equal to 20% of your Armour, up to a maximum of 10000",
-      "values": [
-        "(35–39)",
-        "20",
-        "10000"
-      ]
-    },
-    {
-      "text": "Reflects (300–9000)% of Damage taken from Buff as Fire Damage each second,or when Buff expires or is depleted",
-      "values": [
-        "(300–9000)"
-      ]
-    },
-    {
-      "text": "Buff grants +(115–858) to Armour",
-      "values": [
-        "+(115–858)"
-      ]
-    },
-    {
-      "text": "Base duration is 9 seconds",
-      "values": [
-        "9"
-      ]
-    },
-    {
-      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "(35–39)% of Damage from Hits is taken from the Buff before your Life or Energy ShieldBuff can take Damage equal to 20% of your Armour, up to a maximum of 10000",
-      "values": [
-        "(35–39)",
-        "20",
-        "10000"
-      ]
-    },
-    {
-      "text": "Reflects (300–9000)% of Damage taken from Buff as Fire Damage each second,or when Buff expires or is depleted",
-      "values": [
-        "(300–9000)"
-      ]
-    },
-    {
-      "text": "Buff grants +(115–858) to Armour",
-      "values": [
-        "+(115–858)"
-      ]
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "damage originates from initiator location [1]",
-      "values": []
-    },
-    {
-      "text": "molten shell explode each hit [1]",
-      "values": []
-    },
-    {
-      "text": "skill override pvp scaling time ms [1400]",
-      "values": []
-    },
-    {
-      "text": "Base duration is 3 seconds",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "75% of Damage from Hits is taken from the Buff before your Life or Energy ShieldBuff can take Damage equal to 10% of your Armour, up to a maximum of 5000",
-      "values": [
-        "75",
-        "10",
-        "5000"
-      ]
-    },
-    {
-      "text": "Buff grants +(115–1929) to Armour",
-      "values": [
-        "+(115–1929)"
-      ]
-    },
-    {
-      "text": "damage originates from initiator location [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill override pvp scaling time ms [200]",
-      "values": []
-    }
+  "stats": [
+    "Base duration is 9.00 seconds",
+    "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+    "Buff grants +(115-858) to Armour",
+    "(35-39)% of Damage from Hits is taken from the Buff before your Life or Energy Shield",
+    "Buff can take Damage equal to 20% of your Armour, up to a maximum of 10000",
+    "Reflects (300-9000)% of Damage taken from Buff as Fire Damage each second,",
+    "or when Buff expires or is depleted"
   ],
+  "gemDescription": "Applies a buff that raises your armour, and takes some of the damage from hits for you before being depleted. Each second, the skill deals reflected damage to surrounding enemies based on the damage taken by the buff in that second. When the buff is removed, the skill deals reflected damage to enemies around you based on the total damage that was taken by the buff. You cannot have the buff at the same time as any other Guard skill.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–20)% increased Skill Effect Duration",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% increased Skill Effect Duration",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "(1-20)% increased Skill Effect Duration",
+      "values": []
     }
   ]
 }

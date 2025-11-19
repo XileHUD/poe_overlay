@@ -1,7 +1,17 @@
 {
   "name": "Elemental Damage with Attacks Support",
   "slug": "Elemental_Damage_with_Attacks_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Support",
+    "Icon": "W",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "18",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "18",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemWeaponElementalDamage"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -366,37 +376,15 @@
   ],
   "description": "This support gem will multiply the elemental damage dealt attacks skills, including the damage added by auras and equipment. It also includes unarmed attacks as well as ignites and  Secondary damage\ncaused by supported attacks.",
   "stats": [
-    "This support gem will multiply the elemental damage dealt attacks skills, including the damage added by auras and equipment. It also includes unarmed attacks as well as ignites and  Secondary damage",
-    "caused by supported attacks."
+    "Supported Attack Skills deal (20-34)% more Elemental Damage"
   ],
   "gemDescription": "Supports attack skills.",
-  "explicitMods": [
-    {
-      "text": "Supported Attack Skills deal (20–34)% more Elemental Damage",
-      "values": [
-        "(20–34)"
-      ]
-    },
-    {
-      "text": "Supported Attack Skills deal (20–34)% more Elemental Damage",
-      "values": [
-        "(20–34)"
-      ]
-    }
-  ],
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–10)% increased Elemental Damage with Attack Skills",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "(0–10)% increased Elemental Damage with Attack Skills",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "(0.5-10)% increased Elemental Damage with Attack Skills",
+      "values": []
     }
   ]
 }

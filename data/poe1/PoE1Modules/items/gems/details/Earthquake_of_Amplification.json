@@ -1,7 +1,19 @@
 {
   "name": "Earthquake of Amplification",
   "slug": "Earthquake_of_Amplification",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, AoE, Duration, Slam, Melee",
+    "Level": "(1-20)",
+    "Cost": "(10-13) Mana",
+    "Attack Speed": "75% of base",
+    "Attack Damage": "(143-229)% of base",
+    "Effectiveness of Added Damage": "(143-229)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -245,111 +257,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Smashes the ground, dealing damage in an area and cracking the earth. The crack will erupt in a powerful aftershock after a duration. Cracks created before the first one has erupted will not generate their own aftershocks. Requires an Axe, Mace, Sceptre, Staff or Unarmed.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 2.5 seconds",
-      "values": [
-        "2.5"
-      ]
-    },
-    {
-      "text": "Aftershock deals 15% more Damage with Hits per 0.1 seconds Duration",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Aftershock deals 5% more Damage with Ailments per 0.1 seconds Duration",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Aftershock has 2% more Area of Effect per 0.1 seconds Duration",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Base duration is 2.5 seconds",
-      "values": [
-        "2.5"
-      ]
-    },
-    {
-      "text": "Aftershock deals 15% more Damage with Hits per 0.1 seconds Duration",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Aftershock deals 5% more Damage with Ailments per 0.1 seconds Duration",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Aftershock has 2% more Area of Effect per 0.1 seconds Duration",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "is player earthquake [1]",
-      "values": []
-    },
-    {
-      "text": "Base duration is 1.5 seconds",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "Aftershock deals 15% more Damage with Hits per 0.1 seconds Duration",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Aftershock deals 5% more Damage with Ailments per 0.1 seconds Duration",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Aftershock has 2% more Area of Effect per 0.1 seconds Duration",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Base duration is 2.50 seconds",
+    "Aftershock deals 15% more Damage with Hits per 0.1 seconds Duration",
+    "Aftershock deals 5% more Damage with Ailments per 0.1 seconds Duration",
+    "Aftershock has 2% more Area of Effect per 0.1 seconds Duration"
   ],
+  "gemDescription": "Smashes the ground, dealing damage in an area and cracking the earth. The crack will erupt in a powerful aftershock after a duration. Cracks created before the first one has erupted will not generate their own aftershocks. Requires an Axe, Mace, Sceptre, Staff or Unarmed.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base duration is (0–0.5) seconds",
-      "values": [
-        "(0–0.5)"
-      ]
-    },
-    {
-      "text": "Base duration is (0–0.5) seconds",
-      "values": [
-        "(0–0.5)"
-      ]
+      "text": "Base duration is (0.025-0.5) seconds",
+      "values": []
     }
   ]
 }

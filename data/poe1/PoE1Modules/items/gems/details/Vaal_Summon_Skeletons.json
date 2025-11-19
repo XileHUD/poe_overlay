@@ -1,7 +1,21 @@
 {
   "name": "Vaal Summon Skeletons",
   "slug": "Vaal_Summon_Skeletons",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Minion, Duration, Vaal",
+    "Level": "(1-20)",
+    "Souls Per Use": "50",
+    "Can Store": "1 Use(s)",
+    "Soul Gain Prevention": "10 sec",
+    "Cast Time": "0.80 sec",
+    "Requires Level": "10",
+    "Info 8": "Corrupted",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Vaal Summon Skeletons can drop from the Vaal Vessels found in Vaal side areas ; for Vaal Summon Skeletons gems that grant \"of Archers\" and \"of Mages\" skills, the gems are acquired from Eternal Labyrinth of Potential",
+    "Drop level": "10",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVaalSummonSkeletons"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -326,138 +340,20 @@
   ],
   "description": "This skill works with the passive skills that increase the maximum number of skeletons. But like Summon Skeletons it does not gain an increase in the amount spawned at each use. If one were to cast the ability while it is still in effect its behavior is similar to Summon Skeletons; first it spawns new skeletons up to the cap, then it start replacing the oldest one. When replacing, no consideration is taken to what kind of skeleton is summoned or replaced. Hence it's possible to have two generals at a (short) time. At gem level 20 with all passives and no unique items the chance is 6/(36+6).",
   "stats": [
-    "This skill works with the passive skills that increase the maximum number of skeletons. But like Summon Skeletons it does not gain an increase in the amount spawned at each use. If one were to cast the ability while it is still in effect its behavior is similar to Summon Skeletons; first it spawns new skeletons up to the cap, then it start replacing the oldest one. When replacing, no consideration is taken to what kind of skeleton is summoned or replaced. Hence it's possible to have two generals at a (short) time. At gem level 20 with all passives and no unique items the chance is 6/(36+6)."
+    "Maximum (18-36) Summoned Skeletons",
+    "Base duration is 20.00 seconds",
+    "Summons (14-21) Skeleton Soldiers",
+    "Summons (2-9) Skeleton Archers",
+    "Summons (1-5) Skeleton Mages",
+    "Summons 1 Skeleton General"
   ],
   "gemDescription": "Summons an army of skeletal soldiers, archers and mages, led by a powerful general.",
-  "explicitMods": [
-    {
-      "text": "Maximum (18–36) Summoned Skeletons",
-      "values": [
-        "(18–36)"
-      ]
-    },
-    {
-      "text": "Base duration is 20 seconds",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "Summons (14–21) Skeleton Soldiers",
-      "values": [
-        "(14–21)"
-      ]
-    },
-    {
-      "text": "Summons (2–9) Skeleton Archers",
-      "values": [
-        "(2–9)"
-      ]
-    },
-    {
-      "text": "Summons (1–5) Skeleton Mage",
-      "values": [
-        "(1–5)"
-      ]
-    },
-    {
-      "text": "Summons 1 Skeleton General",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Maximum (18–36) Summoned Skeletons",
-      "values": [
-        "(18–36)"
-      ]
-    },
-    {
-      "text": "Base duration is 20 seconds",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "Summons (14–21) Skeleton Soldiers",
-      "values": [
-        "(14–21)"
-      ]
-    },
-    {
-      "text": "Summons (2–9) Skeleton Archers",
-      "values": [
-        "(2–9)"
-      ]
-    },
-    {
-      "text": "Summons (1–5) Skeleton Mage",
-      "values": [
-        "(1–5)"
-      ]
-    },
-    {
-      "text": "Summons 1 Skeleton General",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "base display minion actor level [10,68]",
-      "values": []
-    },
-    {
-      "text": "cannot cancel skill before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "display minion monster type [2]",
-      "values": []
-    },
-    {
-      "text": "skill cannot be stunned before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "+(5–9) to Maximum Summoned Skeletons",
-      "values": [
-        "+(5–9)"
-      ]
-    },
-    {
-      "text": "Base duration is 20 seconds",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "Summons (2–5) Skeleton Warriors",
-      "values": [
-        "(2–5)"
-      ]
-    },
-    {
-      "text": "base display minion actor level [10,100]",
-      "values": []
-    },
-    {
-      "text": "display minion monster type [2]",
-      "values": []
-    }
-  ],
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–1) to Maximum Summoned Skeletons",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "+(0–1) to Maximum Summoned Skeletons",
-      "values": [
-        "+(0–1)"
-      ]
+      "text": "+(0.05-1) to Maximum Summoned Skeletons",
+      "values": []
     }
   ]
 }

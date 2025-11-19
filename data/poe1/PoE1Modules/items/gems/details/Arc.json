@@ -1,7 +1,19 @@
 {
   "name": "Arc",
   "slug": "Arc",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Chaining, Lightning",
+    "Level": "(1-20)",
+    "Cost": "(8-23) Mana",
+    "Cast Time": "0.70 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "120%",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "12",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemArc"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,73 +417,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "An arc of lightning reaches from the caster to a targeted enemy and chains to other enemies, but not immediately back. Each time the arc chains, it will also chain a secondary arc to another enemy that the main arc has not already hit, which cannot chain further.",
-  "explicitMods": [
-    {
-      "text": "Deals (6–198) to (32–1122) Lightning Damage",
-      "values": [
-        "(6–198)",
-        "(32–1122)"
-      ]
-    },
-    {
-      "text": "Chains +(4–7) Times",
-      "values": [
-        "+(4–7)"
-      ]
-    },
-    {
-      "text": "15% more Damage with Hits and Ailments for each remaining Chain",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Deals (6–198) to (32–1122) Lightning Damage",
-      "values": [
-        "(6–198)",
-        "(32–1122)"
-      ]
-    },
-    {
-      "text": "Chains +(4–7) Times",
-      "values": [
-        "+(4–7)"
-      ]
-    },
-    {
-      "text": "15% more Damage with Hits and Ailments for each remaining Chain",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "arc chain distance [35]",
-      "values": []
-    },
-    {
-      "text": "arc enhanced behaviour [1]",
-      "values": []
-    },
-    {
-      "text": "disable visual hit effect [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (6-198) to (32-1122) Lightning Damage",
+    "Chains +(4-7) Times",
+    "15% more Damage with Hits and Ailments for each remaining Chain"
   ],
+  "gemDescription": "An arc of lightning reaches from the caster to a targeted enemy and chains to other enemies, but not immediately back. Each time the arc chains, it will also chain a secondary arc to another enemy that the main arc has not already hit, which cannot chain further.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Chains +(0–1) Times",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Chains +(0–1) Times",
-      "values": [
-        "+(0–1)"
-      ]
+      "text": "Chains +(0.05-1) Times",
+      "values": []
     }
   ]
 }

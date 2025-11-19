@@ -1,7 +1,21 @@
 {
   "name": "Seismic Trap",
   "slug": "Seismic_Trap",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Trap, Spell, Duration, AoE, Physical",
+    "Level": "(1-20)",
+    "Cost": "(13-25) Mana",
+    "Cooldown Time": "8.00 sec",
+    "Can Store": "3 Use(s)",
+    "Cast Time": "1.00 sec",
+    "Critical Strike Chance": "5.00%",
+    "Effectiveness of Added Damage": "140%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "28",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemPhysCascadeTrap"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,105 +419,21 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Throws a trap which, once triggered, repeatedly releases a number of waves for a duration. Each wave deals damage in a series of small bursts in a line, ending with a larger burst.",
-  "explicitMods": [
-    {
-      "text": "Deals (49–645) to (74–967) Physical Damage",
-      "values": [
-        "(49–645)",
-        "(74–967)"
-      ]
-    },
-    {
-      "text": "Trap lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Base duration is 3.5 seconds",
-      "values": [
-        "3.5"
-      ]
-    },
-    {
-      "text": "Modifiers to Trap Throwing Speed also apply to wave release Frequency",
-      "values": []
-    },
-    {
-      "text": "Releases waves every 0.9 seconds",
-      "values": [
-        "0.9"
-      ]
-    },
-    {
-      "text": "Releases 5 waves",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Deals (49–645) to (74–967) Physical Damage",
-      "values": [
-        "(49–645)",
-        "(74–967)"
-      ]
-    },
-    {
-      "text": "Trap lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Base duration is 3.5 seconds",
-      "values": [
-        "3.5"
-      ]
-    },
-    {
-      "text": "Modifiers to Trap Throwing Speed also apply to wave release Frequency",
-      "values": []
-    },
-    {
-      "text": "Releases waves every 0.9 seconds",
-      "values": [
-        "0.9"
-      ]
-    },
-    {
-      "text": "Releases 5 waves",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "base skill is trapped [1]",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (49-645) to (74-967) Physical Damage",
+    "Trap lasts 4 seconds",
+    "Base duration is 3.50 seconds",
+    "Modifiers to Trap Throwing Speed also apply to wave release Frequency",
+    "Releases waves every 0.9 seconds",
+    "Releases 5 waves"
   ],
+  "gemDescription": "Throws a trap which, once triggered, repeatedly releases a number of waves for a duration. Each wave deals damage in a series of small bursts in a line, ending with a larger burst.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Releases +(0–1) wave",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Releases +(0–1) wave",
-      "values": [
-        "+(0–1)"
-      ]
+      "text": "Releases +(0.05-1) waves",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,19 @@
 {
   "name": "Boneshatter",
   "slug": "Boneshatter",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Melee, Strike, AoE, Duration, Physical",
+    "Level": "(1-20)",
+    "Cost": "(9-12) Mana",
+    "Attack Speed": "85% of base",
+    "Attack Damage": "(231-338)% of base",
+    "Effectiveness of Added Damage": "(231-338)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "28",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemBoneshatter"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -445,75 +457,21 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Attack enemies with a forceful melee strike that also hurts you. Successive uses will raise the damage dealt both to enemies and you. Stunning an enemy with the strike releases a damaging pulse. Requires a Mace, Sceptre, Axe or Staff.",
-  "explicitMods": [
-    {
-      "text": "(11–158) to (17–238) Physical Damage",
-      "values": [
-        "(11–158)",
-        "(17–238)"
-      ]
-    },
-    {
-      "text": "Pulse has 15% increased Area of Effect per 0.1s of Stun Duration, up to 400%",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Gain 1 Trauma the first time this Attack Hits an EnemyTake (6–194) Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds",
-      "values": [
-        "(6–194)",
-        "6"
-      ]
-    },
-    {
-      "text": "(3–6)% more Damage per Trauma",
-      "values": [
-        "(3–6)"
-      ]
-    },
-    {
-      "text": "(11–158) to (17–238) Physical Damage",
-      "values": [
-        "(11–158)",
-        "(17–238)"
-      ]
-    },
-    {
-      "text": "Pulse has 15% increased Area of Effect per 0.1s of Stun Duration, up to 400%",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Gain 1 Trauma the first time this Attack Hits an EnemyTake (6–194) Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds",
-      "values": [
-        "(6–194)",
-        "6"
-      ]
-    },
-    {
-      "text": "(3–6)% more Damage per Trauma",
-      "values": [
-        "(3–6)"
-      ]
-    }
+  "stats": [
+    "(11-158) to (17-238) Physical Damage",
+    "Gain 1 Trauma the first time this Attack Hits an Enemy",
+    "Take (6-194) Physical Damage per Trauma when you gain Trauma",
+    "Trauma lasts 6.0 seconds",
+    "(3-6)% more Damage per Trauma",
+    "Pulse has 15% increased Area of Effect per 0.1s of Stun Duration, up to 400%"
   ],
+  "gemDescription": "Attack enemies with a forceful melee strike that also hurts you. Successive uses will raise the damage dealt both to enemies and you. Stunning an enemy with the strike releases a damaging pulse. Requires a Mace, Sceptre, Axe or Staff.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–1)% more Damage per Trauma",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "+(0–1)% more Damage per Trauma",
-      "values": [
-        "+(0–1)"
-      ]
+      "text": "+(0.05-1)% more Damage per Trauma",
+      "values": []
     }
   ]
 }

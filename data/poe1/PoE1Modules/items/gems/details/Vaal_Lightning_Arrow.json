@@ -1,7 +1,32 @@
 {
   "name": "Vaal Lightning Arrow",
   "slug": "Vaal_Lightning_Arrow",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, AoE, Projectile, Lightning, Vaal, Bow",
+    "Level": "(1-20)",
+    "Souls Per Use": "20",
+    "Can Store": "2 Use(s)",
+    "Soul Gain Prevention": "8 sec",
+    "Attack Damage": "(149-177)% of base",
+    "Effectiveness of Added Damage": "(149-177)%",
+    "Requires Level": "12",
+    "Info 9": "Corrupted",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted",
+    "Drop level": "12",
+    "Vaal Lightning Arrow can drop from the Vaal Vessels found in Vaal side areas , or by corrupting Lightning ArrowLightning ArrowAttack, AoE, Projectile, Lightning, BowLevel": "(1-20)Cost: (6-10) ManaAttack Damage: (149-177)% of baseEffectiveness of Added Damage: (149-177)%Projectile Speed: 3260Requires Level 12Fires a charged arrow which damages enemies by causing them to be struck by a bolt of lightning, which also damages a number of surrounding enemies.50% of Physical Damage Converted to Lightning DamageHits up to 3 additional enemies near the targetShocks Enemies as though dealing (100-290)% more Damage Additional Effects From 1-20% Quality: Hits up to (0.1-2) additional enemies near the targetPlace into an item socket of the right colour to gain this skill. Right click to remove from a socket. .",
+    "Info 14": "Attack , AoE , Projectile , Lightning , Bow",
+    "Cost": "(6-10) Mana",
+    "Projectile Speed": "3260",
+    "Info 17": "Fires a charged arrow which damages enemies by causing them to be struck by a bolt of lightning, which also damages a number of surrounding enemies.",
+    "Info 18": "50% of Physical Damage Converted to Lightning Damage",
+    "Info 19": "Hits up to 3 additional enemies near the target",
+    "Info 20": "Shocks Enemies as though dealing (100-290)% more Damage",
+    "Additional Effects From 1-20% Quality": "Hits up to (0.1-2) additional enemies near the target",
+    "Info 22": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVaalLightningArrow"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -285,157 +310,25 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Projectiles Pierce all Targets",
+    "50% of Physical Damage Converted to Lightning Damage",
+    "Fires 5 Arrows",
+    "Fires Projectiles sequentially",
+    "Projectiles change direction 9 times",
+    "Projectiles can Hit targets each time they change direction",
+    "Modifiers which would cause Projectiles to Fork or",
+    "Chain instead cause them to change direction additional times",
+    "Hits up to 3 additional enemies near the target",
+    "Projectiles cannot Split"
+  ],
   "gemDescription": "Fires charged arrows, which repeatedly travel for a short time before changing direction. When they hit enemies, they are struck by a bolt of lightning which damages a number of surrounding enemies.",
-  "explicitMods": [
-    {
-      "text": "Projectiles Pierce all Targets",
-      "values": []
-    },
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Fires 5 Arrows",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Projectiles change direction 9 timesProjectiles can Hit targets each time they change direction",
-      "values": [
-        "9"
-      ]
-    },
-    {
-      "text": "Modifiers which would cause Projectiles to Fork orChain instead cause them to change direction additional times",
-      "values": []
-    },
-    {
-      "text": "Fires Projectiles sequentially",
-      "values": []
-    },
-    {
-      "text": "Hits up to 3 additional enemies near the target",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Projectiles cannot Split",
-      "values": []
-    },
-    {
-      "text": "Projectiles Pierce all Targets",
-      "values": []
-    },
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Fires 5 Arrows",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Projectiles change direction 9 timesProjectiles can Hit targets each time they change direction",
-      "values": [
-        "9"
-      ]
-    },
-    {
-      "text": "Modifiers which would cause Projectiles to Fork orChain instead cause them to change direction additional times",
-      "values": []
-    },
-    {
-      "text": "Fires Projectiles sequentially",
-      "values": []
-    },
-    {
-      "text": "Hits up to 3 additional enemies near the target",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Projectiles cannot Split",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "cannot cancel skill before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "projectile random angle based on distance to target location % [35]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    },
-    {
-      "text": "skill cannot be stunned before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "50% chance to Sap Enemies",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Fires (2–10) additional Projectiles",
-      "values": [
-        "(2–10)"
-      ]
-    },
-    {
-      "text": "Hits up to 3 additional enemies near the target",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Sapped Enemies deal up to 20% less Damage, based on the Lightning Damage of the Hit, for 4 seconds)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Hits up to (0–2) additional enemies near the target",
-      "values": [
-        "(0–2)"
-      ]
-    },
-    {
-      "text": "Hits up to (0–2) additional enemies near the target",
-      "values": [
-        "(0–2)"
-      ]
+      "text": "Hits up to (0.1-2) additional enemies near the target",
+      "values": []
     }
   ]
 }

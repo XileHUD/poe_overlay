@@ -1,7 +1,18 @@
 {
   "name": "Awakened Spell Echo Support",
   "slug": "Awakened_Spell_Echo_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Support",
+    "Icon": "k",
+    "Level": "(1-5)",
+    "Cost & Reservation Multiplier": "140%",
+    "Requires Level": "72",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Can drop from either version of the Maven or from Maven-witnessed map bosses.",
+    "Drop level": "72",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemSpellEchoPlus"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -165,55 +176,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports spell skills, making them repeat when cast. Cannot support Vaal skills, totem skills, channelling skills, triggered skills, instant skills, retaliation skills, blink skills, or skills with a reservation.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills Repeat an additional time",
-      "values": []
-    },
-    {
-      "text": "Supported Skills have (55–59)% more Cast Speed",
-      "values": [
-        "(55–59)"
-      ]
-    },
-    {
-      "text": "Final Repeat of Supported Skills has 20% chance to deal Double Damage",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "Supported Skills Repeat an additional time",
-      "values": []
-    },
-    {
-      "text": "Supported Skills have (55–59)% more Cast Speed",
-      "values": [
-        "(55–59)"
-      ]
-    },
-    {
-      "text": "Final Repeat of Supported Skills has 20% chance to deal Double Damage",
-      "values": [
-        "20"
-      ]
-    }
+  "stats": [
+    "Supported Skills Repeat an additional time",
+    "Supported Skills have (55-59)% more Cast Speed",
+    "Final Repeat of Supported Skills has 20% chance to deal Double Damage"
   ],
+  "gemDescription": "Supports spell skills, making them repeat when cast. Cannot support Vaal skills, totem skills, channelling skills, triggered skills, instant skills, retaliation skills, blink skills, or skills with a reservation.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Spell Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Spell Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Spell Damage",
+      "values": []
     }
   ]
 }

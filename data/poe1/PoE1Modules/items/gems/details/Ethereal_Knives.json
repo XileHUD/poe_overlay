@@ -1,7 +1,19 @@
 {
   "name": "Ethereal Knives",
   "slug": "Ethereal_Knives",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Projectile, Physical",
+    "Level": "(1-20)",
+    "Cost": "(5-20) Mana",
+    "Cast Time": "0.60 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "(190-220)%",
+    "Projectile Speed": "1300",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "5",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemEtherealKnives"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -445,75 +457,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Fires an arc of knives outwards in front of the caster which deal physical damage.",
-  "explicitMods": [
-    {
-      "text": "Deals (7–949) to (10–1423) Physical Damage",
-      "values": [
-        "(7–949)",
-        "(10–1423)"
-      ]
-    },
-    {
-      "text": "Fires (10–13) Projectiles",
-      "values": [
-        "(10–13)"
-      ]
-    },
-    {
-      "text": "Deals (7–949) to (10–1423) Physical Damage",
-      "values": [
-        "(7–949)",
-        "(10–1423)"
-      ]
-    },
-    {
-      "text": "Fires (10–13) Projectiles",
-      "values": [
-        "(10–13)"
-      ]
-    },
-    {
-      "text": "active skill projectile speed +% variation final [50]",
-      "values": []
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "(10–15)% increased Global Physical Damage",
-      "values": [
-        "(10–15)"
-      ]
-    },
-    {
-      "text": "With at least 40 Dexterity in Radius, Ethereal Knives fires  additional Projectiles",
-      "values": []
-    },
-    {
-      "text": "With at least 40 Dexterity in Radius, Ethereal Knives fires Projectiles in a circle",
-      "values": []
-    }
+  "stats": [
+    "Deals (7-949) to (10-1423) Physical Damage",
+    "Fires (10-13) Projectiles"
   ],
+  "gemDescription": "Fires an arc of knives outwards in front of the caster which deal physical damage.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Fires +(0–2) Projectiles",
-      "values": [
-        "+(0–2)"
-      ]
-    },
-    {
-      "text": "Fires +(0–2) Projectiles",
-      "values": [
-        "+(0–2)"
-      ]
+      "text": "Fires +(0.1-2) Projectiles",
+      "values": []
     }
   ]
 }

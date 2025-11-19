@@ -1,7 +1,16 @@
 {
   "name": "Focused Channelling Support",
   "slug": "Focused_Channelling_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Channelling, Spell, Support",
+    "Icon": "u",
+    "Level": "(1-20)",
+    "Requires Level": "31",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "31",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemFocusedChannelling"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,47 +374,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports channelling spells you cast yourself, significantly empowering their damage the longer they are channelled for, while also raising their cost. Cannot modify the skills of minions.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills deal (9–24)% more Damage per second Channelled, up to a maximum of 60%",
-      "values": [
-        "(9–24)"
-      ]
-    },
-    {
-      "text": "Supported Skills have 20% more Cost per second Channelled, up to a maximum of 100%",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (9–24)% more Damage per second Channelled, up to a maximum of 60%",
-      "values": [
-        "(9–24)"
-      ]
-    },
-    {
-      "text": "Supported Skills have 20% more Cost per second Channelled, up to a maximum of 100%",
-      "values": [
-        "20"
-      ]
-    }
+  "stats": [
+    "Supported Skills deal (9-24)% more Damage per second Channelled, up to a maximum of 60%",
+    "Supported Skills have 20% more Cost per second Channelled, up to a maximum of 100%"
   ],
+  "gemDescription": "Supports channelling spells you cast yourself, significantly empowering their damage the longer they are channelled for, while also raising their cost. Cannot modify the skills of minions.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–10)% increased Cast Speed",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–10)% increased Cast Speed",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills have (0.5-10)% increased Cast Speed",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,17 @@
 {
   "name": "Contagion of Subsiding",
   "slug": "Contagion_of_Subsiding",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Duration, Chaos",
+    "Level": "(1-20)",
+    "Cost": "(7-27) Mana",
+    "Cast Time": "0.85 sec",
+    "Requires Level": "4",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "5",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,115 +335,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Unleashes a vile contagion on enemies, dealing chaos damage over time. If an enemy dies while affected by Contagion, the debuff spreads to other enemies, but each time it spreads, it only deals three quarters as much damage as before.",
-  "explicitMods": [
-    {
-      "text": "Deals (10.1–1531.3) Base Chaos Damage per second",
-      "values": [
-        "(10.1–1531.3)"
-      ]
-    },
-    {
-      "text": "Base duration is 5 seconds",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Base radius is 1.7 metres",
-      "values": [
-        "1.7"
-      ]
-    },
-    {
-      "text": "Spreads when affected Enemy dies",
-      "values": []
-    },
-    {
-      "text": "Deals (10.1–1531.3) Base Chaos Damage per second",
-      "values": [
-        "(10.1–1531.3)"
-      ]
-    },
-    {
-      "text": "Base duration is 5 seconds",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Base radius is 1.7 metres",
-      "values": [
-        "1.7"
-      ]
-    },
-    {
-      "text": "Spreads when affected Enemy dies",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "Deals (10.1–9317.2) Base Chaos Damage per second",
-      "values": [
-        "(10.1–9317.2)"
-      ]
-    },
-    {
-      "text": "Base duration is 5 seconds",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Base radius is 1.7 metres",
-      "values": [
-        "1.7"
-      ]
-    },
-    {
-      "text": "Spreads when affected Enemy dies",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (10.1-1531.3) Base Chaos Damage per second",
+    "Base duration is 5.00 seconds",
+    "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+    "Base radius is 1.7 metres",
+    "Spreads when affected Enemy dies"
   ],
+  "gemDescription": "Unleashes a vile contagion on enemies, dealing chaos damage over time. If an enemy dies while affected by Contagion, the debuff spreads to other enemies, but each time it spreads, it only deals three quarters as much damage as before.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
-    },
-    {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
-    },
-    {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
+      "text": "Base radius is (0.01-0.2) metres",
+      "values": []
     }
   ]
 }

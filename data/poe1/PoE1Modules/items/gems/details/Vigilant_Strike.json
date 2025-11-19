@@ -1,7 +1,21 @@
 {
   "name": "Vigilant Strike",
   "slug": "Vigilant_Strike",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Melee, Strike",
+    "Level": "(1-20)",
+    "Cost": "(7-12) Mana",
+    "Cooldown Time": "4.00 sec",
+    "Can Store": "1 Use(s)",
+    "Attack Speed": "85% of base",
+    "Attack Damage": "(290-745)% of base",
+    "Effectiveness of Added Damage": "(290-745)%",
+    "Requires Level": "4",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "5",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVigilantStrike"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,64 +379,16 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Melee Hits Fortify for 8 seconds"
+  ],
   "gemDescription": "Attacks enemies with a powerful melee strike which grants Fortification, reducing damage you take from hits. The cooldown can be bypassed by expending an Endurance Charge. Requires a Melee Weapon.",
-  "explicitMods": [
-    {
-      "text": "Melee Hits Fortify for 8 seconds",
-      "values": [
-        "8"
-      ]
-    },
-    {
-      "text": "Melee Hits Fortify for 8 seconds",
-      "values": [
-        "8"
-      ]
-    },
-    {
-      "text": "(10–15)% increased Armour",
-      "values": [
-        "(10–15)"
-      ]
-    },
-    {
-      "text": "With at least 40 Strength in Radius, Hits with Vigilant Strike Fortify you and Nearby Allies for 8 seconds",
-      "values": [
-        "8"
-      ]
-    },
-    {
-      "text": "(Fortifying grants an amount of Fortification based on the Damage of the Hit)",
-      "values": []
-    },
-    {
-      "text": "(Take 1% less Damage from Hits per Fortification. Maximum 20 Fortification)",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Fortifying grants an amount of Fortification based on the Damage of the Hit)",
-    "(Take 1% less Damage from Hits per Fortification. Maximum 20 Fortification)",
-    "(Fortifying grants an amount of Fortification based on the Damage of the Hit)",
-    "(Take 1% less Damage from Hits per Fortification. Maximum 20 Fortification)",
-    "(Fortifying grants an amount of Fortification based on the Damage of the Hit)",
-    "(Take 1% less Damage from Hits per Fortification. Maximum 20 Fortification)",
-    "(Fortifying grants an amount of Fortification based on the Damage of the Hit)",
-    "(Take 1% less Damage from Hits per Fortification. Maximum 20 Fortification)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–4)% more Attack Damage per Endurance Charge",
-      "values": [
-        "(0–4)"
-      ]
-    },
-    {
-      "text": "(0–4)% more Attack Damage per Endurance Charge",
-      "values": [
-        "(0–4)"
-      ]
+      "text": "(0.2-4)% more Attack Damage per Endurance Charge",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,17 @@
 {
   "name": "Frost Blades of Katabasis",
   "slug": "Frost_Blades_of_Katabasis",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Melee, Strike, Cold, AoE, Duration",
+    "Level": "(1-20)",
+    "Cost": "(6-10) Mana",
+    "Attack Damage": "(86-240)% of base",
+    "Effectiveness of Added Damage": "(86-240)%",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "5",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,150 +335,20 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Base duration is 3.00 seconds",
+    "Deals (9.6-3344.4) Base Cold Damage per second",
+    "This Skill's Area of Effect cannot be modified",
+    "60% of Physical Damage Converted to Cold Damage",
+    "+5 metres to Melee Strike Range"
+  ],
   "gemDescription": "Attack enemies with greatly increased range, creating a chilling area that deals cold damage over time if it hits. Requires a Melee Weapon.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 3 seconds",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Deals (9.6–3344.4) Base Cold Damage per second",
-      "values": [
-        "(9.6–3344.4)"
-      ]
-    },
-    {
-      "text": "This Skill's Area of Effect cannot be modified",
-      "values": []
-    },
-    {
-      "text": "60% of Physical Damage Converted to Cold Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "+5 metres to Melee Strike Range",
-      "values": [
-        "+5"
-      ]
-    },
-    {
-      "text": "Base duration is 3 seconds",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Deals (9.6–3344.4) Base Cold Damage per second",
-      "values": [
-        "(9.6–3344.4)"
-      ]
-    },
-    {
-      "text": "This Skill's Area of Effect cannot be modified",
-      "values": []
-    },
-    {
-      "text": "60% of Physical Damage Converted to Cold Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "+5 metres to Melee Strike Range",
-      "values": [
-        "+5"
-      ]
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "ground ice art variation [7]",
-      "values": []
-    },
-    {
-      "text": "show number of projectiles [1]",
-      "values": []
-    },
-    {
-      "text": "total projectile spread angle override [110]",
-      "values": []
-    },
-    {
-      "text": "Base duration is 3 seconds",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Deals (9.6–24623.8) Base Cold Damage per second",
-      "values": [
-        "(9.6–24623.8)"
-      ]
-    },
-    {
-      "text": "This Skill's Area of Effect cannot be modified",
-      "values": []
-    },
-    {
-      "text": "60% of Physical Damage Converted to Cold Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "+5 metres to Melee Strike Range",
-      "values": [
-        "+5"
-      ]
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "ground ice art variation [7]",
-      "values": []
-    },
-    {
-      "text": "show number of projectiles [1]",
-      "values": []
-    },
-    {
-      "text": "total projectile spread angle override [110]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)",
-    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)",
-    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)",
-    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–1) metre to Melee Strike Range",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "+(0–1) metre to Melee Strike Range",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "+(0–1) metre to Melee Strike Range",
-      "values": [
-        "+(0–1)"
-      ]
+      "text": "+(0.05-1) metres to Melee Strike Range",
+      "values": []
     }
   ]
 }

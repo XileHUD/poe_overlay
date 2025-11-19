@@ -1,7 +1,19 @@
 {
   "name": "Cast when Damage Taken Support",
   "slug": "Cast_when_Damage_Taken_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Spell, Trigger",
+    "Icon": "!",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "250%",
+    "Cooldown Time": "0.25 sec",
+    "Can Store": "1 Use(s)",
+    "Requires Level": "38",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "38",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemCastOnDamageTaken"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -446,129 +458,17 @@
   ],
   "description": "Cast when Damage Taken Support\nSupport, Spell, TriggerLevel: (1–20)Cost & Reservation Multiplier: 250%Cooldown Time: 0.25 secRequires Level (38–70), (39–70) Str, (27–48) IntEach supported spell skill will track damage you take, and be triggered when the total damage taken reaches a threshold. Cannot support skills used by totems, traps, or mines. Vaal skills, channelling skills, and skills with a reservation cannot be triggered.This Gem can only Support Skill Gems requiring Level (38–70) or lowerSupported Skills deal (27–65)% less DamageTrigger Supported Spells when you take (528–3272) total Damage from Hits\nAdditional Effects From Quality:Supported Skills require (0–10)% reduced amount of Damage taken to Trigger\nThis is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.\nCast when Damage Taken Support\nCast when Damage Taken Support\nCast when Damage Taken Support\nSupport, Spell, TriggerLevel: (1–20)Cost & Reservation Multiplier: 250%Cooldown Time: 0.25 secRequires Level (38–70), (39–70) Str, (27–48) IntEach supported spell skill will track damage you take, and be triggered when the total damage taken reaches a threshold. Cannot support skills used by totems, traps, or mines. Vaal skills, channelling skills, and skills with a reservation cannot be triggered.This Gem can only Support Skill Gems requiring Level (38–70) or lowerSupported Skills deal (27–65)% less DamageTrigger Supported Spells when you take (528–3272) total Damage from Hitsbase skill show average damage instead of dps [1]spell uncastable if triggerable [1]\nAdditional Effects From Quality:Supported Skills require (0–10)% reduced amount of Damage taken to Trigger\nThis is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.\nCast when Damage Taken Support\nCast when Damage Taken Support\nCast when Damage Taken Support is a Support gem. It causes a linked Spell to trigger when the player takes a certain amount of damage.\nMaximum level of supported skills: Cast when Damage Taken cannot support skills with a higher player level requirement than that of Cast when Damage Taken itself. Note that this restriction only applies to active skills; any level of other support gems may be used.",
   "stats": [
-    "Cast when Damage Taken Support",
-    "Support, Spell, TriggerLevel: (1–20)Cost & Reservation Multiplier: 250%Cooldown Time: 0.25 secRequires Level (38–70), (39–70) Str, (27–48) IntEach supported spell skill will track damage you take, and be triggered when the total damage taken reaches a threshold. Cannot support skills used by totems, traps, or mines. Vaal skills, channelling skills, and skills with a reservation cannot be triggered.This Gem can only Support Skill Gems requiring Level (38–70) or lowerSupported Skills deal (27–65)% less DamageTrigger Supported Spells when you take (528–3272) total Damage from Hits",
-    "Additional Effects From Quality:Supported Skills require (0–10)% reduced amount of Damage taken to Trigger",
-    "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
-    "Cast when Damage Taken Support",
-    "Cast when Damage Taken Support",
-    "Cast when Damage Taken Support",
-    "Support, Spell, TriggerLevel: (1–20)Cost & Reservation Multiplier: 250%Cooldown Time: 0.25 secRequires Level (38–70), (39–70) Str, (27–48) IntEach supported spell skill will track damage you take, and be triggered when the total damage taken reaches a threshold. Cannot support skills used by totems, traps, or mines. Vaal skills, channelling skills, and skills with a reservation cannot be triggered.This Gem can only Support Skill Gems requiring Level (38–70) or lowerSupported Skills deal (27–65)% less DamageTrigger Supported Spells when you take (528–3272) total Damage from Hitsbase skill show average damage instead of dps [1]spell uncastable if triggerable [1]",
-    "Additional Effects From Quality:Supported Skills require (0–10)% reduced amount of Damage taken to Trigger",
-    "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
-    "Cast when Damage Taken Support",
-    "Cast when Damage Taken Support",
-    "Cast when Damage Taken Support is a Support gem. It causes a linked Spell to trigger when the player takes a certain amount of damage.",
-    "Maximum level of supported skills: Cast when Damage Taken cannot support skills with a higher player level requirement than that of Cast when Damage Taken itself. Note that this restriction only applies to active skills; any level of other support gems may be used."
+    "This Gem can only Support Skill Gems requiring Level (38-70) or lower",
+    "Supported Skills deal (65-27)% less Damage",
+    "Trigger Supported Spells when you take (528-3272) total Damage from Hits"
   ],
   "gemDescription": "Each supported spell skill will track damage you take, and be triggered when the total damage taken reaches a threshold. Cannot support skills used by totems, traps, or mines. Vaal skills, channelling skills, and skills with a reservation cannot be triggered.",
-  "explicitMods": [
-    {
-      "text": "This Gem can only Support Skill Gems requiring Level (38–70) or lower",
-      "values": [
-        "(38–70)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (27–65)% less Damage",
-      "values": [
-        "(27–65)"
-      ]
-    },
-    {
-      "text": "Trigger Supported Spells when you take (528–3272) total Damage from Hits",
-      "values": [
-        "(528–3272)"
-      ]
-    },
-    {
-      "text": "This Gem can only Support Skill Gems requiring Level (38–70) or lower",
-      "values": [
-        "(38–70)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (27–65)% less Damage",
-      "values": [
-        "(27–65)"
-      ]
-    },
-    {
-      "text": "Trigger Supported Spells when you take (528–3272) total Damage from Hits",
-      "values": [
-        "(528–3272)"
-      ]
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "spell uncastable if triggerable [1]",
-      "values": []
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 12 Cast when Damage Taken",
-      "values": [
-        "12"
-      ]
-    },
-    {
-      "text": "15% Chance to Block Attack Damage",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "(100–120)% increased Physical Damage",
-      "values": [
-        "(100–120)"
-      ]
-    },
-    {
-      "text": "+(30–50) to maximum Life",
-      "values": [
-        "+(30–50)"
-      ]
-    },
-    {
-      "text": "50% increased Defences from Equipped Shield",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Adds 45 to 75 Fire Damage if you've Blocked Recently",
-      "values": [
-        "45",
-        "75"
-      ]
-    },
-    {
-      "text": "(Armour, Evasion Rating and Energy Shield are the standard Defences)",
-      "values": []
-    },
-    {
-      "text": "(Recently refers to the past 4 seconds)",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Armour, Evasion Rating and Energy Shield are the standard Defences)",
-    "(Recently refers to the past 4 seconds)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills require (0–10)% reduced amount of Damage taken to Trigger",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills require (0–10)% reduced amount of Damage taken to Trigger",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills require (0.5-10)% reduced amount of Damage taken to Trigger",
+      "values": []
     }
   ]
 }

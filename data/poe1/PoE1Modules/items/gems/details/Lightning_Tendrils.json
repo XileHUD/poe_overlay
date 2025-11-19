@@ -1,7 +1,19 @@
 {
   "name": "Lightning Tendrils",
   "slug": "Lightning_Tendrils",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Critical, Spell, AoE, Lightning, Channelling",
+    "Level": "(1-20)",
+    "Cost": "(1-5) Mana",
+    "Cast Time": "0.23 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "(70-130)%",
+    "AoE Radius": "22",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "5",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemLightningTendrils"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,81 +417,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "While you channel this skill, it releases pulses of electrical energy, dealing lightning damage in a semicircular area in front of you.",
-  "explicitMods": [
-    {
-      "text": "Deals (1–75) to (6–1420) Lightning Damage",
-      "values": [
-        "(1–75)",
-        "(6–1420)"
-      ]
-    },
-    {
-      "text": "Releases a Stronger Pulse every 3 PulsesStronger Pulses always Critically Strike",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Base radius is (2.4–3.1) metres",
-      "values": [
-        "(2.4–3.1)"
-      ]
-    },
-    {
-      "text": "Deals (1–75) to (6–1420) Lightning Damage",
-      "values": [
-        "(1–75)",
-        "(6–1420)"
-      ]
-    },
-    {
-      "text": "Releases a Stronger Pulse every 3 PulsesStronger Pulses always Critically Strike",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Base radius is (2.4–3.1) metres",
-      "values": [
-        "(2.4–3.1)"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    },
-    {
-      "text": "(10–15)% increased Lightning Damage",
-      "values": [
-        "(10–15)"
-      ]
-    },
-    {
-      "text": "With at least 40 Intelligence in Radius, each Lightning Tendrils Repeat has 4% increased Area of Effect per Enemy Hit",
-      "values": [
-        "4"
-      ]
-    }
+  "stats": [
+    "Deals (1-75) to (6-1420) Lightning Damage",
+    "Releases a Stronger Pulse every 3 Pulses",
+    "Stronger Pulses always Critically Strike",
+    "Base radius is (2.4-3.1) metres"
   ],
+  "gemDescription": "While you channel this skill, it releases pulses of electrical energy, dealing lightning damage in a semicircular area in front of you.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–40)% to Critical Strike Multiplier",
-      "values": [
-        "+(0–40)"
-      ]
-    },
-    {
-      "text": "+(0–40)% to Critical Strike Multiplier",
-      "values": [
-        "+(0–40)"
-      ]
+      "text": "+(2-40)% to Critical Strike Multiplier",
+      "values": []
     }
   ]
 }

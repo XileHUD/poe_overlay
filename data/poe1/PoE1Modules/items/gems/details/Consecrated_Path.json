@@ -1,7 +1,19 @@
 {
   "name": "Consecrated Path",
   "slug": "Consecrated_Path",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Fire, Attack, AoE, Movement, Duration, Slam, Melee",
+    "Level": "(1-20)",
+    "Cost": "(9-13) Mana",
+    "Attack Speed": "80% of base",
+    "Attack Damage": "(227-417)% of base",
+    "Effectiveness of Added Damage": "(227-417)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "28",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemConsecratedPath"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,71 +377,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Slams the ground at a targeted location. If an enemy is near where you target, you'll teleport to it from a short distance away, slam, and create an area of consecrated ground. Can't be supported by Multistrike, and requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "50% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Deals up to 20% more Damage with Hits to closer targets",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "50% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Deals up to 20% more Damage with Hits to closer targets",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "ignite art variation [7]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "visual hit effect elemental is holy [1]",
-      "values": []
-    }
+  "stats": [
+    "Base duration is 4.00 seconds",
+    "50% of Physical Damage Converted to Fire Damage",
+    "Deals up to 20% more Damage with Hits to closer targets"
   ],
+  "gemDescription": "Slams the ground at a targeted location. If an enemy is near where you target, you'll teleport to it from a short distance away, slam, and create an area of consecrated ground. Can't be supported by Multistrike, and requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Deals up to +(0–10)% more Damage with Hits to closer targets",
-      "values": [
-        "+(0–10)"
-      ]
-    },
-    {
-      "text": "Deals up to +(0–10)% more Damage with Hits to closer targets",
-      "values": [
-        "+(0–10)"
-      ]
+      "text": "Deals up to +(0.5-10)% more Damage with Hits to closer targets",
+      "values": []
     }
   ]
 }

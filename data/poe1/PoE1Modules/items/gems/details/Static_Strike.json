@@ -1,7 +1,19 @@
 {
   "name": "Static Strike",
   "slug": "Static_Strike",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Melee, Strike, AoE, Duration, Lightning, Chaining",
+    "Level": "(1-20)",
+    "Cost": "(6-10) Mana",
+    "Attack Damage": "(150-346)% of base",
+    "Effectiveness of Added Damage": "(150-346)%",
+    "AoE Radius": "19",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "12",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemStaticStrike"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -445,95 +457,21 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Attack with a melee weapon, gaining static energy for a duration if you hit an enemy. While you have static energy, you'll frequently hit a number of nearby enemies with beams, dealing attack damage.",
-  "explicitMods": [
-    {
-      "text": "Beams Hit Enemies every (0.32–0.4) seconds",
-      "values": [
-        "(0.32–0.4)"
-      ]
-    },
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Base duration is 3 seconds",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Chains +1 Times",
-      "values": [
-        "+1"
-      ]
-    },
-    {
-      "text": "Beams deal 40% less Damage",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "(4–6) maximum Beam Targets",
-      "values": [
-        "(4–6)"
-      ]
-    },
-    {
-      "text": "Beams Hit Enemies every (0.32–0.4) seconds",
-      "values": [
-        "(0.32–0.4)"
-      ]
-    },
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Base duration is 3 seconds",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Chains +1 Times",
-      "values": [
-        "+1"
-      ]
-    },
-    {
-      "text": "Beams deal 40% less Damage",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "(4–6) maximum Beam Targets",
-      "values": [
-        "(4–6)"
-      ]
-    }
+  "stats": [
+    "50% of Physical Damage Converted to Lightning Damage",
+    "Base duration is 3.00 seconds",
+    "Beams Hit Enemies every (0.40-0.32) seconds",
+    "Chains +1 Times",
+    "Beams deal 40% less Damage",
+    "(4-6) maximum Beam Targets"
   ],
+  "gemDescription": "Attack with a melee weapon, gaining static energy for a duration if you hit an enemy. While you have static energy, you'll frequently hit a number of nearby enemies with beams, dealing attack damage.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–20)% increased Beam frequency",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% increased Beam frequency",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "(1-20)% increased Beam frequency",
+      "values": []
     }
   ]
 }

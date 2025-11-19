@@ -1,7 +1,17 @@
 {
   "name": "Endurance Charge on Melee Stun Support",
   "slug": "Endurance_Charge_on_Melee_Stun_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Melee, Attack",
+    "Icon": "e",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "120%",
+    "Requires Level": "18",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "18",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemEnduranceChargeOnMeleeStun"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,94 +335,18 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "4% more Damage per Endurance Charge",
+    "Supported Skills have (0-19)% reduced Enemy Stun Threshold",
+    "Gain an Endurance Charge when you Stun an Enemy with a Melee Hit from Supported Skills"
+  ],
   "gemDescription": "Supports melee attack skills.",
-  "explicitMods": [
-    {
-      "text": "4% more Damage per Endurance Charge",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–19)% reduced Enemy Stun Threshold",
-      "values": [
-        "(0–19)"
-      ]
-    },
-    {
-      "text": "Gain an Endurance Charge when you Stun an Enemy with a Melee Hit from Supported Skills",
-      "values": []
-    },
-    {
-      "text": "4% more Damage per Endurance Charge",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–19)% reduced Enemy Stun Threshold",
-      "values": [
-        "(0–19)"
-      ]
-    },
-    {
-      "text": "Gain an Endurance Charge when you Stun an Enemy with a Melee Hit from Supported Skills",
-      "values": []
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 20 Endurance Charge on Melee Stun",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "+40 to Intelligence",
-      "values": [
-        "+40"
-      ]
-    },
-    {
-      "text": "Adds (70–80) to (340–375) Physical Damage",
-      "values": [
-        "(70–80)",
-        "(340–375)"
-      ]
-    },
-    {
-      "text": "10% increased Physical Damage per Endurance Charge",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "(20–30)% reduced Enemy Stun Threshold with this Weapon",
-      "values": [
-        "(20–30)"
-      ]
-    },
-    {
-      "text": "(The Stun Threshold determines how much Damage can Stun something)",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(The Stun Threshold determines how much Damage can Stun something)",
-    "(The Stun Threshold determines how much Damage can Stun something)",
-    "(The Stun Threshold determines how much Damage can Stun something)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–20)% increased Stun Duration on Enemies",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–20)% increased Stun Duration on Enemies",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "Supported Skills have (1-20)% increased Stun Duration on Enemies",
+      "values": []
     }
   ]
 }

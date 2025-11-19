@@ -1,7 +1,19 @@
 {
   "name": "Cast On Critical Strike Support",
   "slug": "Cast_On_Critical_Strike_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Critical, Support, Spell, Trigger",
+    "Icon": "&",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "120%",
+    "Cooldown Time": "0.15 sec",
+    "Can Store": "1 Use(s)",
+    "Requires Level": "38",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "38",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemCastOnCrit"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -366,86 +378,16 @@
   ],
   "description": "Cast On Critical Strike Support\nCritical, Support, Spell, TriggerLevel: (1–20)Cost & Reservation Multiplier: 120%Requires Level (38–70), (39–70) Dex, (27–48) IntMust support both an attack skill and a spell skill to work. The attack skill will trigger a spell when it critically strikes an enemy. Cannot support totems, traps, or mines. Vaal skills, channelling skills, and skills with a reservation cannot be triggered.Supported Attacks will Trigger a Supported Spell when you Crit an Enemy\nAdditional Effects From Quality:Supported Skills have (0–20)% increased Attack Critical Strike Chance\nSupport\nCost & Reservation Multiplier: 120%Cooldown Time: 0.15 secSupported Skills deal (10–19)% less Spell Damage\nAdditional Effects From Quality:Supported Skills have (0–20)% increased Spell Critical Strike Chance\nThis is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.\nCast On Critical Strike Support\nCast On Critical Strike Support\nCast On Critical Strike Support\nCritical, Support, Spell, TriggerLevel: (1–20)Cost & Reservation Multiplier: 120%Requires Level (38–70), (39–70) Dex, (27–48) IntMust support both an attack skill and a spell skill to work. The attack skill will trigger a spell when it critically strikes an enemy. Cannot support totems, traps, or mines. Vaal skills, channelling skills, and skills with a reservation cannot be triggered.Supported Attacks will Trigger a Supported Spell when you Crit an Enemy\nAdditional Effects From Quality:Supported Skills have (0–20)% increased Attack Critical Strike Chance\nSupport\nCost & Reservation Multiplier: 120%Cooldown Time: 0.15 secSupported Skills deal (10–19)% less Spell Damagecast spell on linked attack crit [1]spell uncastable if triggerable [1]triggered skill uses main hand or averaged attack time for pvp scaling [1]\nAdditional Effects From Quality:Supported Skills have (0–20)% increased Spell Critical Strike Chance\nThis is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.\nCast On Critical Strike Support\nCast On Critical Strike Support\nCast On Critical Strike Support (commonly referred to as CoC) is a Support gem that causes linked Spell to trigger when the player scores a critical strike with the Attack skill it is linked to.",
   "stats": [
-    "Cast On Critical Strike Support",
-    "Critical, Support, Spell, TriggerLevel: (1–20)Cost & Reservation Multiplier: 120%Requires Level (38–70), (39–70) Dex, (27–48) IntMust support both an attack skill and a spell skill to work. The attack skill will trigger a spell when it critically strikes an enemy. Cannot support totems, traps, or mines. Vaal skills, channelling skills, and skills with a reservation cannot be triggered.Supported Attacks will Trigger a Supported Spell when you Crit an Enemy",
-    "Additional Effects From Quality:Supported Skills have (0–20)% increased Attack Critical Strike Chance",
-    "Support",
-    "Cost & Reservation Multiplier: 120%Cooldown Time: 0.15 secSupported Skills deal (10–19)% less Spell Damage",
-    "Additional Effects From Quality:Supported Skills have (0–20)% increased Spell Critical Strike Chance",
-    "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
-    "Cast On Critical Strike Support",
-    "Cast On Critical Strike Support",
-    "Cast On Critical Strike Support",
-    "Critical, Support, Spell, TriggerLevel: (1–20)Cost & Reservation Multiplier: 120%Requires Level (38–70), (39–70) Dex, (27–48) IntMust support both an attack skill and a spell skill to work. The attack skill will trigger a spell when it critically strikes an enemy. Cannot support totems, traps, or mines. Vaal skills, channelling skills, and skills with a reservation cannot be triggered.Supported Attacks will Trigger a Supported Spell when you Crit an Enemy",
-    "Additional Effects From Quality:Supported Skills have (0–20)% increased Attack Critical Strike Chance",
-    "Support",
-    "Cost & Reservation Multiplier: 120%Cooldown Time: 0.15 secSupported Skills deal (10–19)% less Spell Damagecast spell on linked attack crit [1]spell uncastable if triggerable [1]triggered skill uses main hand or averaged attack time for pvp scaling [1]",
-    "Additional Effects From Quality:Supported Skills have (0–20)% increased Spell Critical Strike Chance",
-    "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
-    "Cast On Critical Strike Support",
-    "Cast On Critical Strike Support",
-    "Cast On Critical Strike Support (commonly referred to as CoC) is a Support gem that causes linked Spell to trigger when the player scores a critical strike with the Attack skill it is linked to."
+    "Supported Attacks will Trigger a Supported Spell when you Crit an Enemy",
+    "Supported Skills deal (19-10)% less Spell Damage"
   ],
   "gemDescription": "Must support both an attack skill and a spell skill to work. The attack skill will trigger a spell when it critically strikes an enemy. Cannot support totems, traps, or mines. Vaal skills, channelling skills, and skills with a reservation cannot be triggered.",
-  "explicitMods": [
-    {
-      "text": "Supported Attacks will Trigger a Supported Spell when you Crit an Enemy",
-      "values": []
-    },
-    {
-      "text": "Supported Skills deal (10–19)% less Spell Damage",
-      "values": [
-        "(10–19)"
-      ]
-    },
-    {
-      "text": "Supported Attacks will Trigger a Supported Spell when you Crit an Enemy",
-      "values": []
-    },
-    {
-      "text": "Supported Skills deal (10–19)% less Spell Damage",
-      "values": [
-        "(10–19)"
-      ]
-    },
-    {
-      "text": "cast spell on linked attack crit [1]",
-      "values": []
-    },
-    {
-      "text": "spell uncastable if triggerable [1]",
-      "values": []
-    },
-    {
-      "text": "triggered skill uses main hand or averaged attack time for pvp scaling [1]",
-      "values": []
-    }
-  ],
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–20)% increased Attack Critical Strike Chance",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–20)% increased Spell Critical Strike Chance",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–20)% increased Attack Critical Strike Chance",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–20)% increased Spell Critical Strike Chance",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "Supported Skills have (1-20)% increased Attack Critical Strike ChanceSupported Skills have (1-20)% increased Spell Critical Strike Chance",
+      "values": []
     }
   ]
 }

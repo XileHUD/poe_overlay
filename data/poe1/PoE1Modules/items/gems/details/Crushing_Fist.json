@@ -1,7 +1,21 @@
 {
   "name": "Crushing Fist",
   "slug": "Crushing_Fist",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Slam, AoE, Retaliation, Melee",
+    "Level": "(1-20)",
+    "Cost": "(8-14) Mana",
+    "Cooldown Time": "4.00 sec",
+    "Can Store": "1 Use(s)",
+    "Attack Speed": "70% of base",
+    "Attack Damage": "(1003-2193)% of base",
+    "Effectiveness of Added Damage": "(1003-2193)%",
+    "Requires Level": "4",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "5",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVengeance"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,115 +379,20 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Cannot be used by default",
+    "Becomes Usable once for 2 seconds when you Block a Hit",
+    "Can't be Evaded",
+    "60% less Damage with Ailments",
+    "Base radius is (2-2.8) metres"
+  ],
   "gemDescription": "Retaliate against a blocked hit by calling forth a huge armoured fist to slam into the ground in front of you as you do the same, dealing weapon damage in an area.",
-  "explicitMods": [
-    {
-      "text": "Cannot be used by defaultBecomes Usable once for 2 seconds when you Block a Hit",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Can't be Evaded",
-      "values": []
-    },
-    {
-      "text": "60% less Damage with Ailments",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Base radius is (2–2.8) metres",
-      "values": [
-        "(2–2.8)"
-      ]
-    },
-    {
-      "text": "Cannot be used by defaultBecomes Usable once for 2 seconds when you Block a Hit",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Can't be Evaded",
-      "values": []
-    },
-    {
-      "text": "60% less Damage with Ailments",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Base radius is (2–2.8) metres",
-      "values": [
-        "(2–2.8)"
-      ]
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "cannot cancel skill before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill cannot be exerted [1]",
-      "values": []
-    },
-    {
-      "text": "skill cannot be stunned before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "(165–205)% increased Armour",
-      "values": [
-        "(165–205)"
-      ]
-    },
-    {
-      "text": "+(65–80) to maximum Life",
-      "values": [
-        "+(65–80)"
-      ]
-    },
-    {
-      "text": "Recover (250–500) Life when you Block",
-      "values": [
-        "(250–500)"
-      ]
-    },
-    {
-      "text": "+6% Chance to Block",
-      "values": [
-        "+6"
-      ]
-    }
-  ],
-  "modDescriptions": [
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–20)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "(1-20)% increased Cooldown Recovery Rate",
+      "values": []
     }
   ]
 }

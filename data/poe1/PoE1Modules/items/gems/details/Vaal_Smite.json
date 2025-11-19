@@ -1,7 +1,36 @@
 {
   "name": "Vaal Smite",
   "slug": "Vaal_Smite",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Lightning, Attack, AoE, Duration, Melee, Strike, Aura, Vaal",
+    "Level": "(1-20)",
+    "Souls Per Use": "20",
+    "Can Store": "2 Use(s)",
+    "Soul Gain Prevention": "6 sec",
+    "Attack Speed": "85% of base",
+    "Attack Damage": "(225-488)% of base",
+    "Effectiveness of Added Damage": "(225-488)%",
+    "Info 9": "Corrupted",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted",
+    "Drop level": "1",
+    "Vaal Smite can drop from the Vaal Vessels found in Vaal side areas , or by corrupting SmiteSmiteLightning, Attack, AoE, Duration, Melee, Strike, AuraLevel": "(1-20)Cost: (7-12) ManaAttack Speed: 85% of baseAttack Damage: (225-488)% of baseEffectiveness of Added Damage: (225-488)%Performs a melee attack, and causes lightning to strike a nearby enemy, dealing damage in an area. Each target can only be hit once by this skill. Hitting an enemy grants an aura for a duration. Requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed.50% of Physical Damage Converted to Lightning DamageBase duration is 4.00 seconds(30-20)% less Area DamageBase radius is (1.5-2.1) metresBase Aura radius is (3.6-4.2) metresLightning strikes 1 target within 5 metresAura grants (1-12) to (4-220) added Lightning DamageAura grants (10-19)% chance to Shock Additional Effects From 1-20% Quality: -(0.5-10)% less Area DamagePlace into an item socket of the right colour to gain this skill. Right click to remove from a socket. .",
+    "Info 14": "Lightning , Attack , AoE , Duration , Melee , Strike , Aura",
+    "Cost": "(7-12) Mana",
+    "Info 16": "Performs a melee attack, and causes lightning to strike a nearby enemy, dealing damage in an area. Each target can only be hit once by this skill. Hitting an enemy grants an aura for a duration. Requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed.",
+    "Info 17": "50% of Physical Damage Converted to Lightning Damage",
+    "Info 18": "Base duration is 4.00 seconds",
+    "Info 19": "(30-20)% less Area Damage",
+    "Info 20": "Base radius is (1.5-2.1) metres",
+    "Info 21": "Base Aura radius is (3.6-4.2) metres",
+    "Info 22": "Lightning strikes 1 target within 5 metres",
+    "Info 23": "Aura grants (1-12) to (4-220) added Lightning Damage",
+    "Info 24": "Aura grants (10-19)% chance to Shock",
+    "Additional Effects From 1-20% Quality": "-(0.5-10)% less Area Damage",
+    "Info 26": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVaalSmite"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -445,218 +474,25 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "50% of Physical Damage Converted to Lightning Damage",
+    "Base duration is 8.00 seconds",
+    "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+    "Can't be Evaded",
+    "Base radius is (1.5-2.1) metres",
+    "Base Aura radius is (3.6-4.2) metres",
+    "Lightning strikes 30 targets within 10 metres",
+    "Aura makes Smite strike +1 target with lightning",
+    "Aura grants (1-17) to (7-330) added Lightning Damage",
+    "Aura grants (10-19)% chance to Shock"
+  ],
   "gemDescription": "Calls lightning down to infuse your weapon, then performs a melee attack and causes lightning to strike nearby enemies, dealing damage in an area. Hitting an enemy grants an aura for a duration. Requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed.",
-  "explicitMods": [
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Base duration is 8 seconds",
-      "values": [
-        "8"
-      ]
-    },
-    {
-      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "Can't be Evaded",
-      "values": []
-    },
-    {
-      "text": "Base radius is (1.5–2.1) metres",
-      "values": [
-        "(1.5–2.1)"
-      ]
-    },
-    {
-      "text": "Base Aura radius is (3.6–4.2) metres",
-      "values": [
-        "(3.6–4.2)"
-      ]
-    },
-    {
-      "text": "Lightning strikes 30 targets within 10 metres",
-      "values": [
-        "30",
-        "10"
-      ]
-    },
-    {
-      "text": "Aura makes Smite strike +1 target with lightning",
-      "values": [
-        "+1"
-      ]
-    },
-    {
-      "text": "Aura grants (1–17) to (7–330) added Lightning Damage",
-      "values": [
-        "(1–17)",
-        "(7–330)"
-      ]
-    },
-    {
-      "text": "Aura grants (10–19)% chance to Shock",
-      "values": [
-        "(10–19)"
-      ]
-    },
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Base duration is 8 seconds",
-      "values": [
-        "8"
-      ]
-    },
-    {
-      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "Can't be Evaded",
-      "values": []
-    },
-    {
-      "text": "Base radius is (1.5–2.1) metres",
-      "values": [
-        "(1.5–2.1)"
-      ]
-    },
-    {
-      "text": "Base Aura radius is (3.6–4.2) metres",
-      "values": [
-        "(3.6–4.2)"
-      ]
-    },
-    {
-      "text": "Lightning strikes 30 targets within 10 metres",
-      "values": [
-        "30",
-        "10"
-      ]
-    },
-    {
-      "text": "Aura makes Smite strike +1 target with lightning",
-      "values": [
-        "+1"
-      ]
-    },
-    {
-      "text": "Aura grants (1–17) to (7–330) added Lightning Damage",
-      "values": [
-        "(1–17)",
-        "(7–330)"
-      ]
-    },
-    {
-      "text": "Aura grants (10–19)% chance to Shock",
-      "values": [
-        "(10–19)"
-      ]
-    },
-    {
-      "text": "cannot cancel skill before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "has vaal smite behaviour [1]",
-      "values": []
-    },
-    {
-      "text": "skill cannot be stunned before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "visual hit effect elemental is holy [1]",
-      "values": []
-    },
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "+(13–30)% less Area Damage",
-      "values": [
-        "+(13–30)"
-      ]
-    },
-    {
-      "text": "Base radius is (1.5–2.6) metres",
-      "values": [
-        "(1.5–2.6)"
-      ]
-    },
-    {
-      "text": "Base Aura radius is (3.6–4.7) metres",
-      "values": [
-        "(3.6–4.7)"
-      ]
-    },
-    {
-      "text": "Lightning strikes 1 target within 5 metres",
-      "values": [
-        "1",
-        "5"
-      ]
-    },
-    {
-      "text": "Aura grants (1–37) to (4–694) added Lightning Damage",
-      "values": [
-        "(1–37)",
-        "(4–694)"
-      ]
-    },
-    {
-      "text": "Aura grants (10–27)% chance to Shock",
-      "values": [
-        "(10–27)"
-      ]
-    },
-    {
-      "text": "visual hit effect elemental is holy [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
-    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
-    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
-    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–10)% more Area Damage",
-      "values": [
-        "+(0–10)"
-      ]
-    },
-    {
-      "text": "+(0–10)% more Area Damage",
-      "values": [
-        "+(0–10)"
-      ]
+      "text": "+(0.5-10)% more Area Damage",
+      "values": []
     }
   ]
 }

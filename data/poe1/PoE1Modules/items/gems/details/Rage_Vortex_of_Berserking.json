@@ -1,7 +1,19 @@
 {
   "name": "Rage Vortex of Berserking",
   "slug": "Rage_Vortex_of_Berserking",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, AoE, Melee",
+    "Level": "(1-20)",
+    "Cost": "(25-46) Life",
+    "Attack Speed": "70% of base",
+    "Attack Damage": "(42-69)% of base",
+    "Effectiveness of Added Damage": "(42-69)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -285,143 +297,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Spin with a sword or axe to deal damage in an area around you. If you have at least 10 rage, create a ragestorm attached to you that repeatedly deals attack damage to enemies inside based on your attack speed. The ragestorm consumes rage at an accelerating rate, and ends if you run out.",
-  "explicitMods": [
-    {
-      "text": "Base radius is 2.2 metres",
-      "values": [
-        "2.2"
-      ]
-    },
-    {
-      "text": "Ragestorm Hits 250% more Frequently",
-      "values": [
-        "250"
-      ]
-    },
-    {
-      "text": "Maximum 1 Ragestorm",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Lose 3 Rage per second",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Each second, 20% more Rage loss Rate",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "Base radius is 2.2 metres",
-      "values": [
-        "2.2"
-      ]
-    },
-    {
-      "text": "Ragestorm Hits 250% more Frequently",
-      "values": [
-        "250"
-      ]
-    },
-    {
-      "text": "Maximum 1 Ragestorm",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Lose 3 Rage per second",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Each second, 20% more Rage loss Rate",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    },
-    {
-      "text": "Base radius is 2.2 metres",
-      "values": [
-        "2.2"
-      ]
-    },
-    {
-      "text": "Ragestorm Hits 250% more Frequently",
-      "values": [
-        "250"
-      ]
-    },
-    {
-      "text": "Maximum 1 Ragestorm",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Lose 3 Rage per second",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Each second, 20% more Rage loss Rate",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    }
+  "stats": [
+    "Base radius is 2.2 metres",
+    "Ragestorm Hits 250% more Frequently",
+    "Maximum 1 Ragestorm",
+    "Lose 3 Rage per second",
+    "Each second, 20% more Rage loss Rate"
   ],
+  "gemDescription": "Spin with a sword or axe to deal damage in an area around you. If you have at least 10 rage, create a ragestorm attached to you that repeatedly deals attack damage to enemies inside based on your attack speed. The ragestorm consumes rage at an accelerating rate, and ends if you run out.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
-    },
-    {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
-    },
-    {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
+      "text": "Base radius is (0.01-0.2) metres",
+      "values": []
     }
   ]
 }

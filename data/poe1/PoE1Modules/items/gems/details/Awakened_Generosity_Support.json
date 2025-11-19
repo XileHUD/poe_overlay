@@ -1,7 +1,17 @@
 {
   "name": "Awakened Generosity Support",
   "slug": "Awakened_Generosity_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Aura",
+    "Icon": "G",
+    "Level": "(1-5)",
+    "Requires Level": "72",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Can drop from either version of the Maven or from Maven-witnessed map bosses.",
+    "Drop level": "72",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemGenerosityPlus"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -205,55 +215,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports aura skills that affect you and allies, increasing the aura's effect on allies, but preventing it from affecting you at all. Cannot support curse auras, or other auras that only affect enemies. Cannot support skills used by totems. Cannot modify the skills of minions.",
-  "explicitMods": [
-    {
-      "text": "+(0–1) to Level of Supported Aura Skill Gems",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Supported Auras do not affect you",
-      "values": []
-    },
-    {
-      "text": "Non-Curse Auras from Supported Skills have (40–44)% increased Effect",
-      "values": [
-        "(40–44)"
-      ]
-    },
-    {
-      "text": "+(0–1) to Level of Supported Aura Skill Gems",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Supported Auras do not affect you",
-      "values": []
-    },
-    {
-      "text": "Non-Curse Auras from Supported Skills have (40–44)% increased Effect",
-      "values": [
-        "(40–44)"
-      ]
-    }
+  "stats": [
+    "+(0-1) to Level of Supported Aura Skill Gems",
+    "Supported Auras do not affect you",
+    "Non-Curse Auras from Supported Skills have (40-44)% increased Effect"
   ],
+  "gemDescription": "Supports aura skills that affect you and allies, increasing the aura's effect on allies, but preventing it from affecting you at all. Cannot support curse auras, or other auras that only affect enemies. Cannot support skills used by totems. Cannot modify the skills of minions.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–40)% increased Aura Area of Effect",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–40)% increased Aura Area of Effect",
-      "values": [
-        "(0–40)"
-      ]
+      "text": "Supported Skills have (2-40)% increased Aura Area of Effect",
+      "values": []
     }
   ]
 }

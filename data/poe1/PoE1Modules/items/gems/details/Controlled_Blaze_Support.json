@@ -1,7 +1,17 @@
 {
   "name": "Controlled Blaze Support",
   "slug": "Controlled_Blaze_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Fire, Support, Melee, Attack",
+    "Icon": "Z",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "31",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "31",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemControlledBlaze"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,70 +415,18 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Supported Skills have (10-19)% chance to Ignite",
+    "Each Supported Skill deals (10-14)% more Damage with Ignite for each Ignite inflicted with it Recently, up to a maximum of (230-364)%",
+    "Each Supported Skill deals 3% less Damage for each Ignite inflicted with it Recently, up to a maximum of (69-78)%"
+  ],
   "gemDescription": "Supports melee attack skills.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills have (10–19)% chance to Ignite",
-      "values": [
-        "(10–19)"
-      ]
-    },
-    {
-      "text": "Each Supported Skill deals (10–14)% more Damage with Ignite for each Ignite inflicted with it Recently, up to a maximum of (230–364)%",
-      "values": [
-        "(10–14)",
-        "(230–364)"
-      ]
-    },
-    {
-      "text": "Each Supported Skill deals 3% less Damage for each Ignite inflicted with it Recently, up to a maximum of (69–78)%",
-      "values": [
-        "3",
-        "(69–78)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (10–19)% chance to Ignite",
-      "values": [
-        "(10–19)"
-      ]
-    },
-    {
-      "text": "Each Supported Skill deals (10–14)% more Damage with Ignite for each Ignite inflicted with it Recently, up to a maximum of (230–364)%",
-      "values": [
-        "(10–14)",
-        "(230–364)"
-      ]
-    },
-    {
-      "text": "Each Supported Skill deals 3% less Damage for each Ignite inflicted with it Recently, up to a maximum of (69–78)%",
-      "values": [
-        "3",
-        "(69–78)"
-      ]
-    }
-  ],
-  "modDescriptions": [
-    "(Recently refers to the past 4 seconds)",
-    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
-    "(Recently refers to the past 4 seconds)",
-    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
-    "(Recently refers to the past 4 seconds)",
-    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–10)% chance to Ignite",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–10)% chance to Ignite",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills have (0.5-10)% chance to Ignite",
+      "values": []
     }
   ]
 }

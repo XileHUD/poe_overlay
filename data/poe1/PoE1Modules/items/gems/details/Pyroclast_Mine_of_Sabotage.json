@@ -1,7 +1,19 @@
 {
   "name": "Pyroclast Mine of Sabotage",
   "slug": "Pyroclast_Mine_of_Sabotage",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Mine, Spell, Projectile, Fire, AoE, Aura, Nova",
+    "Level": "(1-20)",
+    "Cost": "(4-6) Mana",
+    "Reservation": "(16-24) Mana",
+    "Cast Time": "0.18 sec",
+    "Critical Strike Chance": "5.50%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,182 +337,21 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Throws a mine that deals damage in an area when detonated, then launches fiery projectiles that rain down around it, each exploding to deal damage in a smaller area. Placed mines apply a fire exposure aura to nearby enemies.",
-  "explicitMods": [
-    {
-      "text": "Mine lasts 5 seconds",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Deals (14–135) to (22–202) Fire Damage",
-      "values": [
-        "(14–135)",
-        "(22–202)"
-      ]
-    },
-    {
-      "text": "Base Mine Detonation Time is 0.35 seconds",
-      "values": [
-        "0.35"
-      ]
-    },
-    {
-      "text": "Fires 3 Projectiles",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Fires an additional Projectile for every 3 prior Mines in Detonation Sequence",
-      "values": []
-    },
-    {
-      "text": "Fire Exposure Aura applies -25% to Fire Resistance",
-      "values": [
-        "-25"
-      ]
-    },
-    {
-      "text": "Mine lasts 5 seconds",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Deals (14–135) to (22–202) Fire Damage",
-      "values": [
-        "(14–135)",
-        "(22–202)"
-      ]
-    },
-    {
-      "text": "Base Mine Detonation Time is 0.35 seconds",
-      "values": [
-        "0.35"
-      ]
-    },
-    {
-      "text": "Fires 3 Projectiles",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Fires an additional Projectile for every 3 prior Mines in Detonation Sequence",
-      "values": []
-    },
-    {
-      "text": "Fire Exposure Aura applies -25% to Fire Resistance",
-      "values": [
-        "-25"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "base skill is mined [1]",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "exposure uses aura effect +% instead of effect +% [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "projectile behaviour only explode [1]",
-      "values": []
-    },
-    {
-      "text": "Mine lasts 5 seconds",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Deals (14–538) to (22–806) Fire Damage",
-      "values": [
-        "(14–538)",
-        "(22–806)"
-      ]
-    },
-    {
-      "text": "Base Mine Detonation Time is 0.35 seconds",
-      "values": [
-        "0.35"
-      ]
-    },
-    {
-      "text": "Fires 3 Projectiles",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Fires an additional Projectile for every 3 prior Mines in Detonation Sequence",
-      "values": []
-    },
-    {
-      "text": "Fire Exposure Aura applies -25% to Fire Resistance",
-      "values": [
-        "-25"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "base skill is mined [1]",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "exposure uses aura effect +% instead of effect +% [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "projectile behaviour only explode [1]",
-      "values": []
-    }
+  "stats": [
+    "Mine lasts 5 seconds",
+    "Deals (14-135) to (22-202) Fire Damage",
+    "Base Mine Detonation Time is 0.35 seconds",
+    "Fires 3 Projectiles",
+    "Fires an additional Projectile for every 3 prior Mines in Detonation Sequence",
+    "Fire Exposure Aura applies -25% to Fire Resistance"
   ],
+  "gemDescription": "Throws a mine that deals damage in an area when detonated, then launches fiery projectiles that rain down around it, each exploding to deal damage in a smaller area. Placed mines apply a fire exposure aura to nearby enemies.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Fires +(0–1) Projectile",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Fires +(0–1) Projectile",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Fires +(0–1) Projectile",
-      "values": [
-        "+(0–1)"
-      ]
+      "text": "Fires +(0.05-1) Projectiles",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,19 @@
 {
   "name": "Summon Holy Relic",
   "slug": "Summon_Holy_Relic",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Minion, Spell",
+    "Level": "(1-20)",
+    "Cost": "(11-28) Mana",
+    "Cooldown Time": "2.00 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "1.00 sec",
+    "Requires Level": "4",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "5",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemSummonRelic"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -525,112 +537,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Summon a Holy Relic that stays near you. When you hit an enemy with an attack, the Holy Relic triggers a nova spell with a short cooldown, that deals physical damage to enemies and grants life regeneration to allies in an area around it. This life regeneration is higher when applied to minions.",
-  "explicitMods": [
-    {
-      "text": "Maximum 1 Summoned Holy Relic",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "(0–76)% more Minion Movement Speed",
-      "values": [
-        "(0–76)"
-      ]
-    },
-    {
-      "text": "Holy Relic's Nova Skill grants (5.2–154.6) Life regenerated per second to Allies",
-      "values": [
-        "(5.2–154.6)"
-      ]
-    },
-    {
-      "text": "Holy Relic's Nova Skill grants (9–464) Life regenerated per second to Minions",
-      "values": [
-        "(9–464)"
-      ]
-    },
-    {
-      "text": "Minions cannot Taunt Enemies",
-      "values": []
-    },
-    {
-      "text": "Maximum 1 Summoned Holy Relic",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "(0–76)% more Minion Movement Speed",
-      "values": [
-        "(0–76)"
-      ]
-    },
-    {
-      "text": "Holy Relic's Nova Skill grants (5.2–154.6) Life regenerated per second to Allies",
-      "values": [
-        "(5.2–154.6)"
-      ]
-    },
-    {
-      "text": "Holy Relic's Nova Skill grants (9–464) Life regenerated per second to Minions",
-      "values": [
-        "(9–464)"
-      ]
-    },
-    {
-      "text": "Minions cannot Taunt Enemies",
-      "values": []
-    },
-    {
-      "text": "base display minion actor level [4,70]",
-      "values": []
-    },
-    {
-      "text": "display minion monster type [16]",
-      "values": []
-    },
-    {
-      "text": "infinite minion duration [1]",
-      "values": []
-    },
-    {
-      "text": "Deals 1076 to 1614 Physical Damage",
-      "values": [
-        "1076",
-        "1614"
-      ]
-    },
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "active skill area of effect radius +% final [-2]",
-      "values": []
-    },
-    {
-      "text": "holy relic trigger on parent attack % [100]",
-      "values": []
-    }
+  "stats": [
+    "Maximum 1 Summoned Holy Relic",
+    "(0-76)% more Minion Movement Speed",
+    "Holy Relic's Nova Skill grants (5.2-154.6) Life regenerated per second to Allies",
+    "Holy Relic's Nova Skill grants (9-464) Life regenerated per second to Minions",
+    "Minions cannot Taunt Enemies"
   ],
+  "gemDescription": "Summon a Holy Relic that stays near you. When you hit an enemy with an attack, the Holy Relic triggers a nova spell with a short cooldown, that deals physical damage to enemies and grants life regeneration to allies in an area around it. This life regeneration is higher when applied to minions.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–40)% increased Buff Effect",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "(0–40)% increased Buff Effect",
-      "values": [
-        "(0–40)"
-      ]
+      "text": "(2-40)% increased Buff Effect",
+      "values": []
     }
   ]
 }

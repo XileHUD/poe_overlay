@@ -1,7 +1,18 @@
 {
   "name": "Bodyswap",
   "slug": "Bodyswap",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Movement, Spell, AoE, Fire, Travel",
+    "Level": "(1-20)",
+    "Cost": "(8-23) Mana",
+    "Cast Time": "0.70 sec",
+    "Critical Strike Chance": "6.00%",
+    "Requires Level": "10",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "10",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemCorpseWarp"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -485,79 +496,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Violently destroys your body and recreates it at the location of a targeted enemy or corpse, dealing spell damage in an area at both locations. If there is no specific target, it will prioritise corpses over enemies. If targeting a corpse, the corpse will also explode, dealing damage around it that is not affected by modifiers to spell damage, and cannot be reflected. This spell cannot be repeated.",
-  "explicitMods": [
-    {
-      "text": "This Spell deals (3–210) to (5–315), plus 4% of your maximum Life, as base Fire Damage",
-      "values": [
-        "(3–210)",
-        "(5–315)",
-        "4"
-      ]
-    },
-    {
-      "text": "Explosion deals base Fire Damage equal to (6–7.9)% of the corpse's Maximum Life",
-      "values": [
-        "(6–7.9)"
-      ]
-    },
-    {
-      "text": "+(0–0.2) metres to radius",
-      "values": [
-        "+(0–0.2)"
-      ]
-    },
-    {
-      "text": "200% more Area of Effect if Consuming a corpse",
-      "values": [
-        "200"
-      ]
-    },
-    {
-      "text": "This Spell deals (3–210) to (5–315), plus 4% of your maximum Life, as base Fire Damage",
-      "values": [
-        "(3–210)",
-        "(5–315)",
-        "4"
-      ]
-    },
-    {
-      "text": "Explosion deals base Fire Damage equal to (6–7.9)% of the corpse's Maximum Life",
-      "values": [
-        "(6–7.9)"
-      ]
-    },
-    {
-      "text": "+(0–0.2) metres to radius",
-      "values": [
-        "+(0–0.2)"
-      ]
-    },
-    {
-      "text": "200% more Area of Effect if Consuming a corpse",
-      "values": [
-        "200"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "This Spell deals (3-210) to (5-315), plus 4% of your maximum Life, as base Fire Damage",
+    "Explosion deals base Fire Damage equal to (6-7.9)% of the corpse's Maximum Life",
+    "+(0-0.2) metres to radius",
+    "200% more Area of Effect if Consuming a corpse"
   ],
+  "gemDescription": "Violently destroys your body and recreates it at the location of a targeted enemy or corpse, dealing spell damage in an area at both locations. If there is no specific target, it will prioritise corpses over enemies. If targeting a corpse, the corpse will also explode, dealing damage around it that is not affected by modifiers to spell damage, and cannot be reflected. This spell cannot be repeated.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Deals +(0–4)% of your maximum Life, as base Fire Damage",
-      "values": [
-        "+(0–4)"
-      ]
-    },
-    {
-      "text": "Deals +(0–4)% of your maximum Life, as base Fire Damage",
-      "values": [
-        "+(0–4)"
-      ]
+      "text": "Deals +(0.2-4)% of your maximum Life, as base Fire Damage",
+      "values": []
     }
   ]
 }

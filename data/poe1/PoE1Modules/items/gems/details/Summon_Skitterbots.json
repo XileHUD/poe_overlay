@@ -1,7 +1,19 @@
 {
   "name": "Summon Skitterbots",
   "slug": "Summon_Skitterbots",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Trap, Mine, Spell, Minion, Cold, Lightning, AoE, Aura",
+    "Level": "(1-20)",
+    "Reservation": "35% Mana",
+    "Cooldown Time": "1.00 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "Instant",
+    "Requires Level": "16",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "16",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemSummonSkitterbots"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -485,136 +497,22 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "(0-76)% increased Minion Movement Speed",
+    "Minions have (0-19)% increased Chill Effect",
+    "Minions have (0-19)% increased Shock Effect",
+    "Maximum 1 Summoned Skitterbot of each type",
+    "Chilling Skitterbot's Aura Chills Enemies near it",
+    "Shocking Skitterbot's Aura Shocks Enemies near it",
+    "Skitterbots grant 10% more Trap and Mine Damage"
+  ],
   "gemDescription": "Summon a Chilling Skitterbot and a Shocking Skitterbot, which will trigger your traps and detonate your mines. Mines detonated by Skitterbots will re-arm and can then be detonated again. The Skitterbots grant you more trap and mine damage, and cannot be targeted or damaged.",
-  "explicitMods": [
-    {
-      "text": "(0–76)% increased Minion Movement Speed",
-      "values": [
-        "(0–76)"
-      ]
-    },
-    {
-      "text": "Minions have (0–19)% increased Chill Effect",
-      "values": [
-        "(0–19)"
-      ]
-    },
-    {
-      "text": "Minions have (0–19)% increased Shock Effect",
-      "values": [
-        "(0–19)"
-      ]
-    },
-    {
-      "text": "Maximum 1 Summoned Skitterbot of each type",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Chilling Skitterbot's Aura Chills Enemies near it",
-      "values": []
-    },
-    {
-      "text": "Shocking Skitterbot's Aura Shocks Enemies near it",
-      "values": []
-    },
-    {
-      "text": "Skitterbots grant 10% more Trap and Mine Damage",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "(0–76)% increased Minion Movement Speed",
-      "values": [
-        "(0–76)"
-      ]
-    },
-    {
-      "text": "Minions have (0–19)% increased Chill Effect",
-      "values": [
-        "(0–19)"
-      ]
-    },
-    {
-      "text": "Minions have (0–19)% increased Shock Effect",
-      "values": [
-        "(0–19)"
-      ]
-    },
-    {
-      "text": "Maximum 1 Summoned Skitterbot of each type",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Chilling Skitterbot's Aura Chills Enemies near it",
-      "values": []
-    },
-    {
-      "text": "Shocking Skitterbot's Aura Shocks Enemies near it",
-      "values": []
-    },
-    {
-      "text": "Skitterbots grant 10% more Trap and Mine Damage",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "infinite minion duration [1]",
-      "values": []
-    },
-    {
-      "text": "+3 to Level of Socketed Curse Gems",
-      "values": [
-        "+3"
-      ]
-    },
-    {
-      "text": "+(20–30)% to Cold Resistance",
-      "values": [
-        "+(20–30)"
-      ]
-    },
-    {
-      "text": "+(20–30)% to Lightning Resistance",
-      "values": [
-        "+(20–30)"
-      ]
-    },
-    {
-      "text": "Left Ring Slot: Your Chilling Skitterbot's Aura applies Socketed Hex Curse instead",
-      "values": []
-    },
-    {
-      "text": "Right Ring Slot: Your Shocking Skitterbot's Aura applies Socketed Hex Curse instead",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Shock increases Damage taken by 15%)",
-    "(Chill reduces Enemy Action Speed by 10%)",
-    "(Shock increases Damage taken by 15%)",
-    "(Chill reduces Enemy Action Speed by 10%)",
-    "(Shock increases Damage taken by 15%)",
-    "(Chill reduces Enemy Action Speed by 10%)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–40)% increased Minion Movement Speed",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "(0–40)% increased Minion Movement Speed",
-      "values": [
-        "(0–40)"
-      ]
+      "text": "(2-40)% increased Minion Movement Speed",
+      "values": []
     }
   ]
 }

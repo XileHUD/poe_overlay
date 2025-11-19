@@ -1,7 +1,19 @@
 {
   "name": "Steelskin",
   "slug": "Steelskin",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Duration, Guard",
+    "Level": "(1-20)",
+    "Cost": "(4-16) Mana",
+    "Cooldown Time": "3.00 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "Instant",
+    "Requires Level": "4",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "5",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemSteelskin"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,81 +377,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Applies a buff which can take some of the damage from hits for you before being depleted. Shares a cooldown with other Guard skills.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 1.5 seconds",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "This Skill's Cooldown does not recover during its effect",
-      "values": []
-    },
-    {
-      "text": "70% of Damage from Hits is taken from the Buff before Life or Energy ShieldBuff can take (54–2209) Damage",
-      "values": [
-        "70",
-        "(54–2209)"
-      ]
-    },
-    {
-      "text": "Buff grants Immunity to Bleeding",
-      "values": []
-    },
-    {
-      "text": "Base duration is 1.5 seconds",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "This Skill's Cooldown does not recover during its effect",
-      "values": []
-    },
-    {
-      "text": "70% of Damage from Hits is taken from the Buff before Life or Energy ShieldBuff can take (54–2209) Damage",
-      "values": [
-        "70",
-        "(54–2209)"
-      ]
-    },
-    {
-      "text": "Buff grants Immunity to Bleeding",
-      "values": []
-    },
-    {
-      "text": "base deal no damage [1]",
-      "values": []
-    },
-    {
-      "text": "base_additional_physical_damage_reduction_%",
-      "values": []
-    },
-    {
-      "text": "resist_all_%",
-      "values": []
-    },
-    {
-      "text": "affected_by_guard_skill",
-      "values": []
-    }
+  "stats": [
+    "Base duration is 1.50 seconds",
+    "This Skill's Cooldown does not recover during its effect",
+    "Buff grants Immunity to Bleeding",
+    "70% of Damage from Hits is taken from the Buff before Life or Energy Shield",
+    "Buff can take (54-2209) Damage"
   ],
+  "gemDescription": "Applies a buff which can take some of the damage from hits for you before being depleted. Shares a cooldown with other Guard skills.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–10)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "(0–10)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "(0.5-10)% increased Cooldown Recovery Rate",
+      "values": []
     }
   ]
 }

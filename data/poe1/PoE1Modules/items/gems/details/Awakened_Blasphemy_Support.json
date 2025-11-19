@@ -1,7 +1,20 @@
 {
   "name": "Awakened Blasphemy Support",
   "slug": "Awakened_Blasphemy_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Hex, Aura",
+    "Icon": "A",
+    "Level": "(1-5)",
+    "Reservation": "(34-32)% Mana",
+    "Cooldown Time": "1.20 sec",
+    "Can Store": "1 Use(s)",
+    "Requires Level": "72",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Can drop from either version of the Maven or from Maven-witnessed map bosses.",
+    "Drop level": "72",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemBlasphemyPlus"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -205,75 +218,21 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports hex curse skills, turning them into auras that will apply their effect to all enemies in an area around you.",
-  "explicitMods": [
-    {
-      "text": "Supported Curse Skills apply their Curses as AurasSupported Curse Skills also count as Aura Skills",
-      "values": []
-    },
-    {
-      "text": "Using Supported Skills is Instant",
-      "values": []
-    },
-    {
-      "text": "25% less Effect of Supported Curses",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "(80–88)% increased Area of Effect of Supported Curse Skills",
-      "values": [
-        "(80–88)"
-      ]
-    },
-    {
-      "text": "+(0–1) to Level of Supported Curse Skill Gems",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Supported Curse Skills apply their Curses as AurasSupported Curse Skills also count as Aura Skills",
-      "values": []
-    },
-    {
-      "text": "Using Supported Skills is Instant",
-      "values": []
-    },
-    {
-      "text": "25% less Effect of Supported Curses",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "(80–88)% increased Area of Effect of Supported Curse Skills",
-      "values": [
-        "(80–88)"
-      ]
-    },
-    {
-      "text": "+(0–1) to Level of Supported Curse Skill Gems",
-      "values": [
-        "+(0–1)"
-      ]
-    }
+  "stats": [
+    "Supported Curse Skills apply their Curses as Auras",
+    "Supported Curse Skills also count as Aura Skills",
+    "Using Supported Skills is Instant",
+    "25% less Effect of Supported Curses",
+    "(80-88)% increased Area of Effect of Supported Curse Skills",
+    "+(0-1) to Level of Supported Curse Skill Gems"
   ],
+  "gemDescription": "Supports hex curse skills, turning them into auras that will apply their effect to all enemies in an area around you.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–20)% increased Area of Effect of Supported Curse Skills",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% increased Area of Effect of Supported Curse Skills",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "(1-20)% increased Area of Effect of Supported Curse Skills",
+      "values": []
     }
   ]
 }

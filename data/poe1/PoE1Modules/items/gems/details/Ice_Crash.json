@@ -1,7 +1,20 @@
 {
   "name": "Ice Crash",
   "slug": "Ice_Crash",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, AoE, Cold, Slam, Melee",
+    "Level": "(1-20)",
+    "Cost": "(10-14) Mana",
+    "Attack Speed": "70% of base",
+    "Attack Damage": "(332-611)% of base",
+    "Effectiveness of Added Damage": "(332-611)%",
+    "AoE Radius": "26",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "28",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemIceCrash"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,103 +378,21 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Slam the ground, damaging enemies in an area around the impact in three stages of increasing size. Enemies take slightly less damage on the second and third stage, and can only be hit by one stage. Works with Swords, Maces, Sceptres, Axes, Staves and Unarmed.",
-  "explicitMods": [
-    {
-      "text": "100% of Physical Damage Converted to Cold Damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Second Stage deals 15% less Damage",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Third Stage deals 30% less Damage",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "Base radius is 1.1 metres",
-      "values": [
-        "1.1"
-      ]
-    },
-    {
-      "text": "Base tertiary radius is 3.1 metres",
-      "values": [
-        "3.1"
-      ]
-    },
-    {
-      "text": "Base secondary radius is 2.1 metres",
-      "values": [
-        "2.1"
-      ]
-    },
-    {
-      "text": "100% of Physical Damage Converted to Cold Damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Second Stage deals 15% less Damage",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Third Stage deals 30% less Damage",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "Base radius is 1.1 metres",
-      "values": [
-        "1.1"
-      ]
-    },
-    {
-      "text": "Base tertiary radius is 3.1 metres",
-      "values": [
-        "3.1"
-      ]
-    },
-    {
-      "text": "Base secondary radius is 2.1 metres",
-      "values": [
-        "2.1"
-      ]
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "100% of Physical Damage Converted to Cold Damage",
+    "Second Stage deals 15% less Damage",
+    "Third Stage deals 30% less Damage",
+    "Base radius is 1.1 metres",
+    "Base secondary radius is 2.1 metres",
+    "Base tertiary radius is 3.1 metres"
   ],
+  "gemDescription": "Slam the ground, damaging enemies in an area around the impact in three stages of increasing size. Enemies take slightly less damage on the second and third stage, and can only be hit by one stage. Works with Swords, Maces, Sceptres, Axes, Staves and Unarmed.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Gain (0–15)% of Physical Damage as Extra Cold Damage",
-      "values": [
-        "(0–15)"
-      ]
-    },
-    {
-      "text": "Gain (0–15)% of Physical Damage as Extra Cold Damage",
-      "values": [
-        "(0–15)"
-      ]
+      "text": "Gain (0.75-15)% of Physical Damage as Extra Cold Damage",
+      "values": []
     }
   ]
 }

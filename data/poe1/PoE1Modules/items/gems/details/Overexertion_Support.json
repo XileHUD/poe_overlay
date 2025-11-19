@@ -1,7 +1,17 @@
 {
   "name": "Overexertion Support",
   "slug": "Overexertion_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Warcry, Support, Melee, Attack",
+    "Icon": "o",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "140%",
+    "Requires Level": "38",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "38",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemOverexertion"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,47 +335,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports melee attack skills which can be exerted. Cannot modify the skills of minions. Vaal skills and channelling skills cannot be exerted.",
-  "explicitMods": [
-    {
-      "text": "Supported Attacks deal (12–18)% more Damage for each Warcry Exerting them",
-      "values": [
-        "(12–18)"
-      ]
-    },
-    {
-      "text": "Supported Attacks deal 10% more Damage if Exerted",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Supported Attacks deal (12–18)% more Damage for each Warcry Exerting them",
-      "values": [
-        "(12–18)"
-      ]
-    },
-    {
-      "text": "Supported Attacks deal 10% more Damage if Exerted",
-      "values": [
-        "10"
-      ]
-    }
+  "stats": [
+    "Supported Attacks deal (12-18)% more Damage for each Warcry Exerting them",
+    "Supported Attacks deal 10% more Damage if Exerted"
   ],
+  "gemDescription": "Supports melee attack skills which can be exerted. Cannot modify the skills of minions. Vaal skills and channelling skills cannot be exerted.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Attacks deal (0–20)% increased Damage if Exerted",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "Supported Attacks deal (0–20)% increased Damage if Exerted",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "Supported Attacks deal (1-20)% increased Damage if Exerted",
+      "values": []
     }
   ]
 }

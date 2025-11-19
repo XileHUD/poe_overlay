@@ -1,7 +1,19 @@
 {
   "name": "Storm Call",
   "slug": "Storm_Call",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Duration, Lightning",
+    "Level": "(1-20)",
+    "Cost": "(6-16) Mana",
+    "Cast Time": "0.50 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "(220-250)%",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "12",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemStormCall"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,73 +417,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Sets a marker at a location. After a short duration, lightning strikes the marker, dealing damage around it and causing lightning strikes at any other markers you've cast.",
-  "explicitMods": [
-    {
-      "text": "Deals (21–949) to (39–1762) Lightning Damage",
-      "values": [
-        "(21–949)",
-        "(39–1762)"
-      ]
-    },
-    {
-      "text": "Base duration is 1.5 seconds",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "+(0–0.6) metres to radius",
-      "values": [
-        "+(0–0.6)"
-      ]
-    },
-    {
-      "text": "Deals (21–949) to (39–1762) Lightning Damage",
-      "values": [
-        "(21–949)",
-        "(39–1762)"
-      ]
-    },
-    {
-      "text": "Base duration is 1.5 seconds",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "+(0–0.6) metres to radius",
-      "values": [
-        "+(0–0.6)"
-      ]
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (21-949) to (39-1762) Lightning Damage",
+    "Base duration is 1.50 seconds",
+    "+(0-0.6) metres to radius"
   ],
+  "gemDescription": "Sets a marker at a location. After a short duration, lightning strikes the marker, dealing damage around it and causing lightning strikes at any other markers you've cast.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–15)% chance for Lightning to Strike the Marker when Cast",
-      "values": [
-        "(0–15)"
-      ]
-    },
-    {
-      "text": "(0–15)% chance for Lightning to Strike the Marker when Cast",
-      "values": [
-        "(0–15)"
-      ]
+      "text": "(0.75-15)% chance for Lightning to Strike the Marker when Cast",
+      "values": []
     }
   ]
 }

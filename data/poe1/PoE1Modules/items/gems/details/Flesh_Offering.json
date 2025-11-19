@@ -1,7 +1,17 @@
 {
   "name": "Flesh Offering",
   "slug": "Flesh_Offering",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Minion, Spell, Duration",
+    "Level": "(1-20)",
+    "Cost": "(16-33) Mana",
+    "Cast Time": "1.00 sec",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "12",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemFleshOffering"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -485,133 +495,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Consumes a corpse, which temporarily empowers your minions with swiftness. The skill consumes other nearby corpses, increasing the duration for each corpse consumed.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 5 seconds",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Additional 1 seconds Base Duration per extra corpse Consumed",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Grants Minions (20–30)% increased Attack Speed",
-      "values": [
-        "(20–30)"
-      ]
-    },
-    {
-      "text": "Grants Minions (20–30)% increased Cast Speed",
-      "values": [
-        "(20–30)"
-      ]
-    },
-    {
-      "text": "Grants Minions (20–29)% increased Movement Speed",
-      "values": [
-        "(20–29)"
-      ]
-    },
-    {
-      "text": "Base duration is 5 seconds",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Additional 1 seconds Base Duration per extra corpse Consumed",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Grants Minions (20–30)% increased Attack Speed",
-      "values": [
-        "(20–30)"
-      ]
-    },
-    {
-      "text": "Grants Minions (20–30)% increased Cast Speed",
-      "values": [
-        "(20–30)"
-      ]
-    },
-    {
-      "text": "Grants Minions (20–29)% increased Movement Speed",
-      "values": [
-        "(20–29)"
-      ]
-    },
-    {
-      "text": "base deal no damage [1]",
-      "values": []
-    },
-    {
-      "text": "Trigger Level 20 Bone Offering, Flesh Offering, Spirit Offering every 5 seconds in sequenceOffering Skills Triggered this way also affect you",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "(100–130)% increased Energy Shield",
-      "values": [
-        "(100–130)"
-      ]
-    },
-    {
-      "text": "(6–10)% increased maximum Life",
-      "values": [
-        "(6–10)"
-      ]
-    },
-    {
-      "text": "buff impl stat [0]",
-      "values": []
-    },
-    {
-      "text": "veiled mod seed [2,60000]",
-      "values": []
-    },
-    {
-      "text": "veiled mod type [3]",
-      "values": []
-    },
-    {
-      "text": "attack_speed_+%",
-      "values": []
-    },
-    {
-      "text": "life_leech_from_any_damage_permyriad",
-      "values": []
-    },
-    {
-      "text": "base_movement_velocity_+%",
-      "values": []
-    },
-    {
-      "text": "base_cast_speed_+%",
-      "values": []
-    }
+  "stats": [
+    "Base duration is 5.00 seconds",
+    "Additional 1.00 seconds Base Duration per extra corpse Consumed",
+    "Grants Minions (20-30)% increased Attack Speed",
+    "Grants Minions (20-30)% increased Cast Speed",
+    "Grants Minions (20-29)% increased Movement Speed"
   ],
+  "gemDescription": "Consumes a corpse, which temporarily empowers your minions with swiftness. The skill consumes other nearby corpses, increasing the duration for each corpse consumed.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–10)% increased Effect of Offering",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "(0–10)% increased Effect of Offering",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "(0.5-10)% increased Effect of Offering",
+      "values": []
     }
   ]
 }

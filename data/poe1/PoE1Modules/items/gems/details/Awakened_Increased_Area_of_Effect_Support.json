@@ -1,7 +1,18 @@
 {
   "name": "Awakened Increased Area of Effect Support",
   "slug": "Awakened_Increased_Area_of_Effect_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, AoE",
+    "Icon": "E",
+    "Level": "(1-5)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "72",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Can drop from either version of the Maven or from Maven-witnessed map bosses.",
+    "Drop level": "72",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemIncreasedAreaOfEffectPlus"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -185,47 +196,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports any skill with an area of effect.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills have (50–54)% increased Area of Effect",
-      "values": [
-        "(50–54)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (10–14)% more Area Damage",
-      "values": [
-        "(10–14)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (50–54)% increased Area of Effect",
-      "values": [
-        "(50–54)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (10–14)% more Area Damage",
-      "values": [
-        "(10–14)"
-      ]
-    }
+  "stats": [
+    "Supported Skills have (50-54)% increased Area of Effect",
+    "Supported Skills deal (10-14)% more Area Damage"
   ],
+  "gemDescription": "Supports any skill with an area of effect.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Area Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Area Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Area Damage",
+      "values": []
     }
   ]
 }

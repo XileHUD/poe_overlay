@@ -1,7 +1,21 @@
 {
   "name": "Flicker Strike of Power",
   "slug": "Flicker_Strike_of_Power",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Critical, Attack, Melee, Strike, Movement, Duration",
+    "Level": "(1-20)",
+    "Cost": "(5-8) Mana",
+    "Cooldown Time": "2.00 sec",
+    "Can Store": "1 Use(s)",
+    "Attack Speed": "120% of base",
+    "Attack Damage": "(177-408)% of base",
+    "Effectiveness of Added Damage": "(177-408)%",
+    "Requires Level": "10",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "10",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -285,125 +299,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Teleports the character to a nearby monster and attacks with a melee weapon. If no specific monster is targeted, one is picked at random. Grants a buff that increases movement speed for a duration. The cooldown can be bypassed by expending a Power Charge.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 3 seconds",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "30% chance to gain a Power Charge on Critical Strike",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "50% increased Critical Strike Chance per Power Charge",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Buff grants 20% increased Movement Speed",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "Base duration is 3 seconds",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "30% chance to gain a Power Charge on Critical Strike",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "50% increased Critical Strike Chance per Power Charge",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Buff grants 20% increased Movement Speed",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "ignores proximity shield [1]",
-      "values": []
-    },
-    {
-      "text": "melee defer damage prediction [1]",
-      "values": []
-    },
-    {
-      "text": "Base duration is 3 seconds",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "30% chance to gain a Power Charge on Critical Strike",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "50% increased Critical Strike Chance per Power Charge",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Buff grants 20% increased Movement Speed",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "ignores proximity shield [1]",
-      "values": []
-    },
-    {
-      "text": "melee defer damage prediction [1]",
-      "values": []
-    }
+  "stats": [
+    "Base duration is 3.00 seconds",
+    "30% chance to gain a Power Charge on Critical Strike",
+    "50% increased Critical Strike Chance per Power Charge",
+    "Buff grants 20% increased Movement Speed"
   ],
+  "gemDescription": "Teleports the character to a nearby monster and attacks with a melee weapon. If no specific monster is targeted, one is picked at random. Grants a buff that increases movement speed for a duration. The cooldown can be bypassed by expending a Power Charge.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–20)% chance to gain a Power Charge on Critical Strike",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% chance to gain a Power Charge on Critical Strike",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% chance to gain a Power Charge on Critical Strike",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "(1-20)% chance to gain a Power Charge on Critical Strike",
+      "values": []
     }
   ]
 }

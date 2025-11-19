@@ -1,7 +1,19 @@
 {
   "name": "Ice Spear of Splitting",
   "slug": "Ice_Spear_of_Splitting",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Projectile, Cold",
+    "Level": "(1-20)",
+    "Cost": "(8-23) Mana",
+    "Cast Time": "0.70 sec",
+    "Critical Strike Chance": "5.00%",
+    "Effectiveness of Added Damage": "330%",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "12",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,118 +377,21 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Launches a shard of ice that splits on hitting terrain or enemies. After splitting, the projectiles are in second form, which moves much faster and pierces through enemies.",
-  "explicitMods": [
-    {
-      "text": "Deals (57–1465) to (86–2197) Cold Damage",
-      "values": [
-        "(57–1465)",
-        "(86–2197)"
-      ]
-    },
-    {
-      "text": "Modifiers to number of Projectiles instead apply tothe number of targets Projectile Splits towards",
-      "values": []
-    },
-    {
-      "text": "Projectiles Split towards (2–5) targets",
-      "values": [
-        "(2–5)"
-      ]
-    },
-    {
-      "text": "Second form has 300% more Projectile Speed",
-      "values": [
-        "300"
-      ]
-    },
-    {
-      "text": "Projectiles can Split from hitting terrain",
-      "values": []
-    },
-    {
-      "text": "Deals (57–1465) to (86–2197) Cold Damage",
-      "values": [
-        "(57–1465)",
-        "(86–2197)"
-      ]
-    },
-    {
-      "text": "Modifiers to number of Projectiles instead apply tothe number of targets Projectile Splits towards",
-      "values": []
-    },
-    {
-      "text": "Projectiles Split towards (2–5) targets",
-      "values": [
-        "(2–5)"
-      ]
-    },
-    {
-      "text": "Second form has 300% more Projectile Speed",
-      "values": [
-        "300"
-      ]
-    },
-    {
-      "text": "Projectiles can Split from hitting terrain",
-      "values": []
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "Deals (57–5511) to (86–8267) Cold Damage",
-      "values": [
-        "(57–5511)",
-        "(86–8267)"
-      ]
-    },
-    {
-      "text": "Modifiers to number of Projectiles instead apply tothe number of targets Projectile Splits towards",
-      "values": []
-    },
-    {
-      "text": "Projectiles Split towards (2–8) targets",
-      "values": [
-        "(2–8)"
-      ]
-    },
-    {
-      "text": "Second form has 300% more Projectile Speed",
-      "values": [
-        "300"
-      ]
-    },
-    {
-      "text": "Projectiles can Split from hitting terrain",
-      "values": []
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (57-1465) to (86-2197) Cold Damage",
+    "Modifiers to number of Projectiles instead apply to",
+    "the number of targets Projectile Splits towards",
+    "Projectiles Split towards (2-5) targets",
+    "Second form has 300% more Projectile Speed",
+    "Projectiles can Split from hitting terrain"
   ],
+  "gemDescription": "Launches a shard of ice that splits on hitting terrain or enemies. After splitting, the projectiles are in second form, which moves much faster and pierces through enemies.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Projectiles Split towards (0–2) targets",
-      "values": [
-        "(0–2)"
-      ]
-    },
-    {
-      "text": "Projectiles Split towards (0–2) targets",
-      "values": [
-        "(0–2)"
-      ]
-    },
-    {
-      "text": "Projectiles Split towards (0–2) targets",
-      "values": [
-        "(0–2)"
-      ]
+      "text": "Projectiles Split towards (0.1-2) targets",
+      "values": []
     }
   ]
 }

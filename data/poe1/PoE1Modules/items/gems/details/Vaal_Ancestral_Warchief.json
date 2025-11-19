@@ -1,7 +1,23 @@
 {
   "name": "Vaal Ancestral Warchief",
   "slug": "Vaal_Ancestral_Warchief",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Totem, AoE, Vaal, Melee, Slam",
+    "Level": "(1-20)",
+    "Souls Per Use": "20",
+    "Can Store": "2 Use(s)",
+    "Soul Gain Prevention": "9 sec",
+    "Attack Speed": "80% of base",
+    "Attack Damage": "(100-154)% of base",
+    "Effectiveness of Added Damage": "(100-154)%",
+    "Requires Level": "28",
+    "Info 10": "Corrupted",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Not in game; Vaal Ancestral Warchief can drop from the Vaal Vessels found in Vaal side areas .",
+    "Drop level": "28",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVaalAncestralWarchief"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,163 +341,21 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "+1 to maximum number of Summoned Totems",
+    "Totem lasts 6 seconds",
+    "Modifiers to Totem Duration also apply to this Skill's Soul Gain Prevention",
+    "Summons a Totem which uses this Skill",
+    "32% more Melee Damage while Totem is Active",
+    "50% increased Totem Placement speed"
+  ],
   "gemDescription": "Summons an Ancestor Totem which attacks enemies with a powerful cascading slam while you're near it. If the enemies are far away, it will leap toward them as it slams. Being near it grants you more melee damage. Requires a Melee Weapon or Unarmed.",
-  "explicitMods": [
-    {
-      "text": "+1 to maximum number of Summoned Totems",
-      "values": [
-        "+1"
-      ]
-    },
-    {
-      "text": "Totem lasts 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Modifiers to Totem Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "Summons a Totem which uses this Skill",
-      "values": []
-    },
-    {
-      "text": "32% more Melee Damage while Totem is Active",
-      "values": [
-        "32"
-      ]
-    },
-    {
-      "text": "50% increased Totem Placement speed",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "+1 to maximum number of Summoned Totems",
-      "values": [
-        "+1"
-      ]
-    },
-    {
-      "text": "Totem lasts 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Modifiers to Totem Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "Summons a Totem which uses this Skill",
-      "values": []
-    },
-    {
-      "text": "32% more Melee Damage while Totem is Active",
-      "values": [
-        "32"
-      ]
-    },
-    {
-      "text": "50% increased Totem Placement speed",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "ancestor totem parent activiation range [120]",
-      "values": []
-    },
-    {
-      "text": "base skill is totemified [1]",
-      "values": []
-    },
-    {
-      "text": "base totem range [50]",
-      "values": []
-    },
-    {
-      "text": "cannot cancel skill before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "totem ignores vaal skill cost [1]",
-      "values": []
-    },
-    {
-      "text": "Totem lasts 12 seconds",
-      "values": [
-        "12"
-      ]
-    },
-    {
-      "text": "Summons a Totem which uses this Skill",
-      "values": []
-    },
-    {
-      "text": "(8–25)% more Melee Damage while Totem is Active",
-      "values": [
-        "(8–25)"
-      ]
-    },
-    {
-      "text": "50% increased Totem Placement speed",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "+1 metre to Melee Strike Range",
-      "values": [
-        "+1"
-      ]
-    },
-    {
-      "text": "ancestor totem parent activiation range [70]",
-      "values": []
-    },
-    {
-      "text": "base skill is totemified [1]",
-      "values": []
-    },
-    {
-      "text": "base totem range [50]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–20)% increased Totem Damage",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% increased Totem Damage",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–30)% increased Activation range",
-      "values": [
-        "(0–30)"
-      ]
+      "text": "(1-20)% increased Totem Damage",
+      "values": []
     }
   ]
 }

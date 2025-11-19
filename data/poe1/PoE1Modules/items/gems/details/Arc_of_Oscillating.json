@@ -1,7 +1,19 @@
 {
   "name": "Arc of Oscillating",
   "slug": "Arc_of_Oscillating",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Chaining, Lightning",
+    "Level": "(1-20)",
+    "Cost": "(8-23) Mana",
+    "Cast Time": "0.70 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "60%",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "12",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,110 +337,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "An arc of lightning reaches from the caster to a targeted enemy and chains to other enemies. Each time the arc chains, it will also chain a secondary arc to another enemy, but this secondary arc cannot chain further.",
-  "explicitMods": [
-    {
-      "text": "Deals (3–94) to (15–531) Lightning Damage",
-      "values": [
-        "(3–94)",
-        "(15–531)"
-      ]
-    },
-    {
-      "text": "Chains +6 Times",
-      "values": [
-        "+6"
-      ]
-    },
-    {
-      "text": "50% more Damage with Hits and Ailments for each remaining Chain",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Deals (3–94) to (15–531) Lightning Damage",
-      "values": [
-        "(3–94)",
-        "(15–531)"
-      ]
-    },
-    {
-      "text": "Chains +6 Times",
-      "values": [
-        "+6"
-      ]
-    },
-    {
-      "text": "50% more Damage with Hits and Ailments for each remaining Chain",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "arc chain distance [35]",
-      "values": []
-    },
-    {
-      "text": "arc enhanced behaviour [1]",
-      "values": []
-    },
-    {
-      "text": "disable visual hit effect [1]",
-      "values": []
-    },
-    {
-      "text": "Deals (3–412) to (15–2335) Lightning Damage",
-      "values": [
-        "(3–412)",
-        "(15–2335)"
-      ]
-    },
-    {
-      "text": "Chains +6 Times",
-      "values": [
-        "+6"
-      ]
-    },
-    {
-      "text": "50% more Damage with Hits and Ailments for each remaining Chain",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "arc chain distance [35]",
-      "values": []
-    },
-    {
-      "text": "arc enhanced behaviour [1]",
-      "values": []
-    },
-    {
-      "text": "disable visual hit effect [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (3-94) to (15-531) Lightning Damage",
+    "Chains +6 Times",
+    "50% more Damage with Hits and Ailments for each remaining Chain"
   ],
+  "gemDescription": "An arc of lightning reaches from the caster to a targeted enemy and chains to other enemies. Each time the arc chains, it will also chain a secondary arc to another enemy, but this secondary arc cannot chain further.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Chains +(0–1) Times",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Chains +(0–1) Times",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Chains +(0–1) Times",
-      "values": [
-        "+(0–1)"
-      ]
+      "text": "Chains +(0.05-1) Times",
+      "values": []
     }
   ]
 }

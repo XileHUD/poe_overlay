@@ -1,7 +1,18 @@
 {
   "name": "Conductivity",
   "slug": "Conductivity",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Duration, Lightning, Curse, Hex",
+    "Level": "(1-20)",
+    "Cost": "(24-50) Mana",
+    "Cast Time": "0.50 sec",
+    "AoE Radius": "22",
+    "Requires Level": "24",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "24",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemConductivity"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -445,91 +456,19 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Base duration is (8.00-11.80) seconds",
+    "+(0-1) metre to radius",
+    "Cursed enemies have -(17-36)% to Lightning Resistance",
+    "Hits against Cursed Enemies have +25% chance to Shock"
+  ],
   "gemDescription": "Curses all targets in an area, lowering their lightning resistance and giving them a chance to be shocked when hit.",
-  "explicitMods": [
-    {
-      "text": "Base duration is (8–11.8) seconds",
-      "values": [
-        "(8–11.8)"
-      ]
-    },
-    {
-      "text": "+(0–1) metre to radius",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Cursed enemies have (-36–-17)% to Lightning Resistance",
-      "values": [
-        "(-36–-17)"
-      ]
-    },
-    {
-      "text": "Hits against Cursed Enemies have +25% chance to Shock",
-      "values": [
-        "+25"
-      ]
-    },
-    {
-      "text": "Base duration is (8–11.8) seconds",
-      "values": [
-        "(8–11.8)"
-      ]
-    },
-    {
-      "text": "+(0–1) metre to radius",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Cursed enemies have (-36–-17)% to Lightning Resistance",
-      "values": [
-        "(-36–-17)"
-      ]
-    },
-    {
-      "text": "Hits against Cursed Enemies have +25% chance to Shock",
-      "values": [
-        "+25"
-      ]
-    },
-    {
-      "text": "base deal no damage [1]",
-      "values": []
-    },
-    {
-      "text": "base_self_shock_duration_-%",
-      "values": []
-    },
-    {
-      "text": "chance_to_be_shocked_%",
-      "values": []
-    },
-    {
-      "text": "lightning_damage_resistance_%_from_curse",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
-    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
-    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Shocks on Cursed enemies have (0–20)% increased Duration",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "Shocks on Cursed enemies have (0–20)% increased Duration",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "Shocks on Cursed enemies have (1-20)% increased Duration",
+      "values": []
     }
   ]
 }

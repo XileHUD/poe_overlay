@@ -1,7 +1,19 @@
 {
   "name": "Boneshatter of Complex Trauma",
   "slug": "Boneshatter_of_Complex_Trauma",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Melee, Strike, AoE, Duration, Physical",
+    "Level": "(1-20)",
+    "Cost": "(9-12) Mana",
+    "Attack Speed": "85% of base",
+    "Attack Damage": "(231-338)% of base",
+    "Effectiveness of Added Damage": "(231-338)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,125 +417,22 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Attack enemies with a forceful melee strike that also hurts you. Successive uses will raise the damage dealt both to enemies and you. Stunning an enemy with the strike releases a damaging pulse. Requires a Mace, Sceptre, Axe or Staff.",
-  "explicitMods": [
-    {
-      "text": "(11–158) to (17–238) Physical Damage",
-      "values": [
-        "(11–158)",
-        "(17–238)"
-      ]
-    },
-    {
-      "text": "Lose all Trauma on reaching 10 Trauma",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Pulse has 15% increased Area of Effect per 0.1s of Stun Duration, up to 400%",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Gain 1 Trauma the first time this Attack Hits an EnemyTake (18–582) Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds",
-      "values": [
-        "(18–582)",
-        "6"
-      ]
-    },
-    {
-      "text": "(8–15)% more Damage per Trauma, up to 200%",
-      "values": [
-        "(8–15)"
-      ]
-    },
-    {
-      "text": "(11–158) to (17–238) Physical Damage",
-      "values": [
-        "(11–158)",
-        "(17–238)"
-      ]
-    },
-    {
-      "text": "Lose all Trauma on reaching 10 Trauma",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Pulse has 15% increased Area of Effect per 0.1s of Stun Duration, up to 400%",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Gain 1 Trauma the first time this Attack Hits an EnemyTake (18–582) Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds",
-      "values": [
-        "(18–582)",
-        "6"
-      ]
-    },
-    {
-      "text": "(8–15)% more Damage per Trauma, up to 200%",
-      "values": [
-        "(8–15)"
-      ]
-    },
-    {
-      "text": "(11–739) to (17–1108) Physical Damage",
-      "values": [
-        "(11–739)",
-        "(17–1108)"
-      ]
-    },
-    {
-      "text": "Lose all Trauma on reaching 10 Trauma",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Pulse has 15% increased Area of Effect per 0.1s of Stun Duration, up to 400%",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Gain 1 Trauma the first time this Attack Hits an EnemyTake (18–5066) Physical Damage per Trauma when you gain TraumaTrauma lasts 6 seconds",
-      "values": [
-        "(18–5066)",
-        "6"
-      ]
-    },
-    {
-      "text": "(8–15)% more Damage per Trauma, up to 200%",
-      "values": [
-        "(8–15)"
-      ]
-    }
+  "stats": [
+    "(11-158) to (17-238) Physical Damage",
+    "Lose all Trauma on reaching 10 Trauma",
+    "Gain 1 Trauma the first time this Attack Hits an Enemy",
+    "Take (18-582) Physical Damage per Trauma when you gain Trauma",
+    "Trauma lasts 6.0 seconds",
+    "(8-15)% more Damage per Trauma, up to 200%",
+    "Pulse has 15% increased Area of Effect per 0.1s of Stun Duration, up to 400%"
   ],
+  "gemDescription": "Attack enemies with a forceful melee strike that also hurts you. Successive uses will raise the damage dealt both to enemies and you. Stunning an enemy with the strike releases a damaging pulse. Requires a Mace, Sceptre, Axe or Staff.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–5)% more Damage per Trauma, up to 200%",
-      "values": [
-        "(0–5)"
-      ]
-    },
-    {
-      "text": "(0–5)% more Damage per Trauma, up to 200%",
-      "values": [
-        "(0–5)"
-      ]
-    },
-    {
-      "text": "(0–5)% more Damage per Trauma, up to 200%",
-      "values": [
-        "(0–5)"
-      ]
+      "text": "(0.25-5)% more Damage per Trauma, up to 200%",
+      "values": []
     }
   ]
 }

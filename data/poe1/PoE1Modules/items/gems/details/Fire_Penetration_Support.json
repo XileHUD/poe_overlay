@@ -1,7 +1,17 @@
 {
   "name": "Fire Penetration Support",
   "slug": "Fire_Penetration_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Fire, Support",
+    "Icon": "V",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "31",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "31",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemFirePenetration"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,64 +335,16 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Supported Skills Penetrate (20-34)% Fire Resistance"
+  ],
   "gemDescription": "Supports any skill that hits enemies, making those hits penetrate enemy fire resistance.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills Penetrate (20–34)% Fire Resistance",
-      "values": [
-        "(20–34)"
-      ]
-    },
-    {
-      "text": "Supported Skills Penetrate (20–34)% Fire Resistance",
-      "values": [
-        "(20–34)"
-      ]
-    },
-    {
-      "text": "(150–200)% increased Physical Damage",
-      "values": [
-        "(150–200)"
-      ]
-    },
-    {
-      "text": "Adds (76–98) to (161–176) Fire Damage",
-      "values": [
-        "(76–98)",
-        "(161–176)"
-      ]
-    },
-    {
-      "text": "50% increased Light Radius",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Battlemage",
-      "values": []
-    },
-    {
-      "text": "(Gain Added Spell Damage equal to the Damage of your Main Hand Weapon)",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Gain Added Spell Damage equal to the Damage of your Main Hand Weapon)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Fire Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Fire Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Fire Damage",
+      "values": []
     }
   ]
 }

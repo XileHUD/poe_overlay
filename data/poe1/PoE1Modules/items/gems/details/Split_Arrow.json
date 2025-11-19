@@ -1,7 +1,19 @@
 {
   "name": "Split Arrow",
   "slug": "Split_Arrow",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Projectile, Bow",
+    "Level": "(1-20)",
+    "Cost": "(5-9) Mana",
+    "Attack Speed": "110% of base",
+    "Attack Damage": "(120-142)% of base",
+    "Effectiveness of Added Damage": "(120-142)%",
+    "Projectile Speed": "3260",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "5",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemSplitArrow"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,57 +377,16 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Fires multiple arrows at different targets.",
-  "explicitMods": [
-    {
-      "text": "Fires (5–9) Arrows",
-      "values": [
-        "(5–9)"
-      ]
-    },
-    {
-      "text": "Fires (5–9) Arrows",
-      "values": [
-        "(5–9)"
-      ]
-    },
-    {
-      "text": "active skill projectile speed +% variation final [50]",
-      "values": []
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    },
-    {
-      "text": "(7–10)% increased Projectile Damage",
-      "values": [
-        "(7–10)"
-      ]
-    },
-    {
-      "text": "With at least 40 Dexterity in Radius, Split Arrow fires Projectiles in Parallel",
-      "values": []
-    },
-    {
-      "text": "local unique jewel split arrow projectiles fire in parallel y dist with 40 dex in radius [5]",
-      "values": []
-    }
+  "stats": [
+    "Fires (5-9) Arrows"
   ],
+  "gemDescription": "Fires multiple arrows at different targets.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Fires +(0–4) Arrows",
-      "values": [
-        "+(0–4)"
-      ]
-    },
-    {
-      "text": "Fires +(0–4) Arrows",
-      "values": [
-        "+(0–4)"
-      ]
+      "text": "Fires +(0.2-4) Arrows",
+      "values": []
     }
   ]
 }

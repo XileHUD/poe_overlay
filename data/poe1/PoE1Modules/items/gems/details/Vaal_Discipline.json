@@ -1,7 +1,23 @@
 {
   "name": "Vaal Discipline",
   "slug": "Vaal_Discipline",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Aura, Spell, AoE, Duration, Vaal",
+    "Level": "(1-20)",
+    "Cooldown Time": "0.50 sec",
+    "Can Store": "1 Use(s)",
+    "Souls Per Use": "50",
+    "Soul Gain Prevention": "5 sec",
+    "Cast Time": "Instant",
+    "AoE Radius": "36",
+    "Requires Level": "24",
+    "Info 10": "Corrupted",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Vaal Discipline can drop from the Vaal Vessels found in Vaal side areas .",
+    "Drop level": "24",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVaalDiscipline"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,89 +341,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Casts a temporary aura that prevents energy shield recharge being delayed by damage taken for you and your allies.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 3 seconds",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Modifiers to Buff Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "+(0–1.9) metres to radius",
-      "values": [
-        "+(0–1.9)"
-      ]
-    },
-    {
-      "text": "Your and nearby allies' Energy Shield Recharges are not delayed by Damage",
-      "values": []
-    },
-    {
-      "text": "Base duration is 3 seconds",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Modifiers to Buff Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "+(0–1.9) metres to radius",
-      "values": [
-        "+(0–1.9)"
-      ]
-    },
-    {
-      "text": "Your and nearby allies' Energy Shield Recharges are not delayed by Damage",
-      "values": []
-    },
-    {
-      "text": "base deal no damage [1]",
-      "values": []
-    },
-    {
-      "text": "+(0–3.4) metres to radius",
-      "values": [
-        "+(0–3.4)"
-      ]
-    },
-    {
-      "text": "You and nearby allies gain (60–356) additional Energy Shield",
-      "values": [
-        "(60–356)"
-      ]
-    },
-    {
-      "text": "You and nearby Allies gain 30% increased Energy Shield Recharge Rate",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "base deal no damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Base duration is 3.00 seconds",
+    "Modifiers to Buff Duration also apply to this Skill's Soul Gain Prevention",
+    "+(0-1.9) metres to radius",
+    "Your and nearby allies' Energy Shield Recharges are not delayed by Damage"
   ],
+  "gemDescription": "Casts a temporary aura that prevents energy shield recharge being delayed by damage taken for you and your allies.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–40)% increased Area of Effect",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "(0–40)% increased Area of Effect",
-      "values": [
-        "(0–40)"
-      ]
+      "text": "(2-40)% increased Area of Effect",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,17 @@
 {
   "name": "Iron Will Support",
   "slug": "Iron_Will_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Support",
+    "Icon": "w",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "110%",
+    "Requires Level": "18",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "18",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemIronWill"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,112 +335,17 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Strength's Damage bonus applies to all Spell Damage as well for Supported Skills",
+    "Supported Skills deal (0-38)% increased Spell Damage"
+  ],
   "gemDescription": "Supports spell skills, making the increase to physical melee damage from strength also increase their spell damage.",
-  "explicitMods": [
-    {
-      "text": "Strength's Damage bonus applies to all Spell Damage as well for Supported Skills",
-      "values": []
-    },
-    {
-      "text": "Supported Skills deal (0–38)% increased Spell Damage",
-      "values": [
-        "(0–38)"
-      ]
-    },
-    {
-      "text": "Strength's Damage bonus applies to all Spell Damage as well for Supported Skills",
-      "values": []
-    },
-    {
-      "text": "Supported Skills deal (0–38)% increased Spell Damage",
-      "values": [
-        "(0–38)"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 30 Iron Will",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "+(50–70) to Strength",
-      "values": [
-        "+(50–70)"
-      ]
-    },
-    {
-      "text": "(15–18)% increased Cast Speed",
-      "values": [
-        "(15–18)"
-      ]
-    },
-    {
-      "text": "+(20–30) to maximum Mana",
-      "values": [
-        "+(20–30)"
-      ]
-    },
-    {
-      "text": "1% increased Damage per 8 Strength when in Main Hand",
-      "values": [
-        "8"
-      ]
-    },
-    {
-      "text": "1% increased Armour per 16 Strength when in Off Hand",
-      "values": [
-        "16"
-      ]
-    },
-    {
-      "text": "500% increased Attribute Requirements",
-      "values": [
-        "500"
-      ]
-    },
-    {
-      "text": "(6–12)% increased Strength",
-      "values": [
-        "(6–12)"
-      ]
-    },
-    {
-      "text": "(400–500)% increased Armour and Energy Shield",
-      "values": [
-        "(400–500)"
-      ]
-    },
-    {
-      "text": "Iron Will",
-      "values": []
-    },
-    {
-      "text": "(Attributes are Strength, Dexterity, and Intelligence)",
-      "values": []
-    },
-    {
-      "text": "(Strength's Damage bonus applies to all Spell Damage as well)",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Attributes are Strength, Dexterity, and Intelligence)",
-    "(Strength's Damage bonus applies to all Spell Damage as well)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Spell Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Spell Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Spell Damage",
+      "values": []
     }
   ]
 }

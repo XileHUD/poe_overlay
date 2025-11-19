@@ -1,7 +1,20 @@
 {
   "name": "Sweep",
   "slug": "Sweep",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, AoE, Melee",
+    "Level": "(1-20)",
+    "Cost": "(9-14) Mana",
+    "Attack Speed": "70% of base",
+    "Attack Damage": "(289-664)% of base",
+    "Effectiveness of Added Damage": "(289-664)%",
+    "AoE Radius": "26",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "12",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemSweep"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,55 +378,17 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Knocks Enemies Back on Hit",
+    "+(0-0.4) metres to radius"
+  ],
   "gemDescription": "Swings a two handed melee weapon in a circle, knocking back monsters around the character.",
-  "explicitMods": [
-    {
-      "text": "Knocks Enemies Back on Hit",
-      "values": []
-    },
-    {
-      "text": "+(0–0.4) metres to radius",
-      "values": [
-        "+(0–0.4)"
-      ]
-    },
-    {
-      "text": "Knocks Enemies Back on Hit",
-      "values": []
-    },
-    {
-      "text": "+(0–0.4) metres to radius",
-      "values": [
-        "+(0–0.4)"
-      ]
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Knockback pushes Enemies away when Hit)",
-    "(Knockback pushes Enemies away when Hit)",
-    "(Knockback pushes Enemies away when Hit)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–0.4) metres to radius",
-      "values": [
-        "+(0–0.4)"
-      ]
-    },
-    {
-      "text": "+(0–0.4) metres to radius",
-      "values": [
-        "+(0–0.4)"
-      ]
+      "text": "+(0.02-0.4) metres to radius",
+      "values": []
     }
   ]
 }

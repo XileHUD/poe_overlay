@@ -1,7 +1,17 @@
 {
   "name": "Animate Guardian",
   "slug": "Animate_Guardian",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Minion",
+    "Level": "(1-20)",
+    "Cost": "(11-20) Mana",
+    "Cast Time": "0.60 sec",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "28",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemAnimateArmour"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -525,164 +535,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Animates a melee weapon or armour, attaching it to an invisible Guardian that fights by your side. Animating multiple items attaches them to the same Guardian. You cannot animate unidentified items. Cannot be used by Traps or Mines. If your Guardian dies you cannot summon an Animated Guardian again in that area.",
-  "explicitMods": [
-    {
-      "text": "Minions have (0–38)% more Maximum Life",
-      "values": [
-        "(0–38)"
-      ]
-    },
-    {
-      "text": "Can use Items requiring up to Level (33–100)",
-      "values": [
-        "(33–100)"
-      ]
-    },
-    {
-      "text": "Minion deals (0–38)% more Damage",
-      "values": [
-        "(0–38)"
-      ]
-    },
-    {
-      "text": "Minions have (0–38)% more Maximum Life",
-      "values": [
-        "(0–38)"
-      ]
-    },
-    {
-      "text": "Can use Items requiring up to Level (33–100)",
-      "values": [
-        "(33–100)"
-      ]
-    },
-    {
-      "text": "Minion deals (0–38)% more Damage",
-      "values": [
-        "(0–38)"
-      ]
-    },
-    {
-      "text": "base display minion actor level [28,70]",
-      "values": []
-    },
-    {
-      "text": "display minion monster type [3]",
-      "values": []
-    },
-    {
-      "text": "emerge speed +% [100]",
-      "values": []
-    },
-    {
-      "text": "infinite minion duration [1]",
-      "values": []
-    },
-    {
-      "text": "Trigger Level 20 Animate Guardian's Weapon when Animated Guardian Kills an Enemy",
-      "values": []
-    },
-    {
-      "text": "10% chance to Trigger Level 18 Animate Guardian's Weapon when Animated Weapon Kills an Enemy",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "(150–190)% increased Armour and Energy Shield",
-      "values": [
-        "(150–190)"
-      ]
-    },
-    {
-      "text": "+(60–90) to maximum Life",
-      "values": [
-        "+(60–90)"
-      ]
-    },
-    {
-      "text": "Animated Guardian deals 5% increased Damage per Animated Weapon",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Animated and Manifested Minions' Melee Strikes deal SplashDamage to surrounding targets",
-      "values": []
-    },
-    {
-      "text": "Animated and Manifested Minions' Melee Strikes deal 50% less Splash Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "You cannot have Non-Animated, Non-Manifested Minions",
-      "values": []
-    },
-    {
-      "text": "animate guardian and weapon track on kill [2]",
-      "values": []
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire wand projectiles [1]",
-      "values": []
-    },
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Deals 103.13% more Attack Damage",
-      "values": [
-        "103.13"
-      ]
-    },
-    {
-      "text": "Base radius is 1.5 metres",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "Base Aura radius is 3.6 metres",
-      "values": [
-        "3.6"
-      ]
-    },
-    {
-      "text": "Lightning strikes 3 targets within 7 metres",
-      "values": [
-        "3",
-        "7"
-      ]
-    },
-    {
-      "text": "visual hit effect elemental is holy [1]",
-      "values": []
-    }
+  "stats": [
+    "Minions have (0-38)% more Maximum Life",
+    "Can use Items requiring up to Level (33-100)",
+    "Minion deals (0-38)% more Damage"
   ],
+  "gemDescription": "Animates a melee weapon or armour, attaching it to an invisible Guardian that fights by your side. Animating multiple items attaches them to the same Guardian. You cannot animate unidentified items. Cannot be used by Traps or Mines. If your Guardian dies you cannot summon an Animated Guardian again in that area.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–40)% increased Minion Movement Speed",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "(0–40)% increased Minion Movement Speed",
-      "values": [
-        "(0–40)"
-      ]
+      "text": "(2-40)% increased Minion Movement Speed",
+      "values": []
     }
   ]
 }

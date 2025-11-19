@@ -1,7 +1,19 @@
 {
   "name": "Cyclone of Tumult",
   "slug": "Cyclone_of_Tumult",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, AoE, Movement, Channelling, Melee",
+    "Level": "(1-20)",
+    "Cost": "(4-5) Mana",
+    "Attack Speed": "180% of base",
+    "Attack Damage": "(81-150)% of base",
+    "Effectiveness of Added Damage": "(81-150)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -285,171 +297,22 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Channel this skill to move towards a targeted location while spinning constantly attacking enemies in an area around you. While channelling this skill, you cannot be knocked back.",
-  "explicitMods": [
-    {
-      "text": "15% increased Area of Effect per 0.1 metre additional Melee Strike Range",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "25% more Attack Speed per Stage",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Gains 1 Stage every 0.4 seconds while Channelling",
-      "values": [
-        "0.4"
-      ]
-    },
-    {
-      "text": "+0.1 metres to radius per Stage",
-      "values": [
-        "+0.1"
-      ]
-    },
-    {
-      "text": "10% less Movement Speed per Stage",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Lose 1 Stage every 0.4 seconds while not Channelling",
-      "values": [
-        "0.4"
-      ]
-    },
-    {
-      "text": "Maximum 5 Stages",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "15% increased Area of Effect per 0.1 metre additional Melee Strike Range",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "25% more Attack Speed per Stage",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Gains 1 Stage every 0.4 seconds while Channelling",
-      "values": [
-        "0.4"
-      ]
-    },
-    {
-      "text": "+0.1 metres to radius per Stage",
-      "values": [
-        "+0.1"
-      ]
-    },
-    {
-      "text": "10% less Movement Speed per Stage",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Lose 1 Stage every 0.4 seconds while not Channelling",
-      "values": [
-        "0.4"
-      ]
-    },
-    {
-      "text": "Maximum 5 Stages",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    },
-    {
-      "text": "15% increased Area of Effect per 0.1 metre additional Melee Strike Range",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "25% more Attack Speed per Stage",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Gains 1 Stage every 0.4 seconds while Channelling",
-      "values": [
-        "0.4"
-      ]
-    },
-    {
-      "text": "+0.1 metres to radius per Stage",
-      "values": [
-        "+0.1"
-      ]
-    },
-    {
-      "text": "10% less Movement Speed per Stage",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Lose 1 Stage every 0.4 seconds while not Channelling",
-      "values": [
-        "0.4"
-      ]
-    },
-    {
-      "text": "Maximum 5 Stages",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    }
+  "stats": [
+    "15% increased Area of Effect per 0.1 metre additional Melee Strike Range",
+    "25% more Attack Speed per Stage",
+    "Gains 1 Stage every 0.4 seconds while Channelling",
+    "Maximum 5 Stages",
+    "+0.1 metres to radius per Stage",
+    "10% less Movement Speed per Stage",
+    "Lose 1 Stage every 0.4 seconds while not Channelling"
   ],
+  "gemDescription": "Channel this skill to move towards a targeted location while spinning constantly attacking enemies in an area around you. While channelling this skill, you cannot be knocked back.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–5)% more Attack Speed per Stage",
-      "values": [
-        "(0–5)"
-      ]
-    },
-    {
-      "text": "(0–5)% more Attack Speed per Stage",
-      "values": [
-        "(0–5)"
-      ]
-    },
-    {
-      "text": "(0–5)% more Attack Speed per Stage",
-      "values": [
-        "(0–5)"
-      ]
+      "text": "(0.25-5)% more Attack Speed per Stage",
+      "values": []
     }
   ]
 }

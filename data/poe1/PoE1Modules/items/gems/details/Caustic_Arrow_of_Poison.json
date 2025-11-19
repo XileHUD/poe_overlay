@@ -1,7 +1,17 @@
 {
   "name": "Caustic Arrow of Poison",
   "slug": "Caustic_Arrow_of_Poison",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Projectile, AoE, Chaos, Bow",
+    "Level": "(1-20)",
+    "Cost": "(6-10) Mana",
+    "Attack Damage": "(71-91)% of base",
+    "Effectiveness of Added Damage": "(71-91)%",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "5",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,112 +335,18 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "+(0-0.6) metres to radius",
+    "60% of Physical Damage Converted to Chaos Damage",
+    "40% chance to Poison on Hit"
+  ],
   "gemDescription": "Fires a poisonous arrow which deals chaos damage in an area on impact.",
-  "explicitMods": [
-    {
-      "text": "60% of Physical Damage Converted to Chaos Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "+(0–0.6) metres to radius",
-      "values": [
-        "+(0–0.6)"
-      ]
-    },
-    {
-      "text": "40% chance to Poison on Hit",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Chaos Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "+(0–0.6) metres to radius",
-      "values": [
-        "+(0–0.6)"
-      ]
-    },
-    {
-      "text": "40% chance to Poison on Hit",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "caustic arrow explode on hit base area of effect radius [12]",
-      "values": []
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    },
-    {
-      "text": "visual hit effect chaos is green [1]",
-      "values": []
-    },
-    {
-      "text": "60% of Physical Damage Converted to Chaos Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "+(0–1.2) metres to radius",
-      "values": [
-        "+(0–1.2)"
-      ]
-    },
-    {
-      "text": "40% chance to Poison on Hit",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "caustic arrow explode on hit base area of effect radius [12]",
-      "values": []
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    },
-    {
-      "text": "visual hit effect chaos is green [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
-    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
-    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
-    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–0.2) metres to radius",
-      "values": [
-        "+(0–0.2)"
-      ]
-    },
-    {
-      "text": "+(0–0.2) metres to radius",
-      "values": [
-        "+(0–0.2)"
-      ]
-    },
-    {
-      "text": "+(0–0.2) metres to radius",
-      "values": [
-        "+(0–0.2)"
-      ]
+      "text": "+(0.01-0.2) metres to radius",
+      "values": []
     }
   ]
 }

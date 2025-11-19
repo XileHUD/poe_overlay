@@ -1,7 +1,19 @@
 {
   "name": "Lightning Conduit",
   "slug": "Lightning_Conduit",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Lightning",
+    "Level": "(1-20)",
+    "Cost": "(6-16) Mana",
+    "Cast Time": "0.50 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "140%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "28",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemLightningConduit"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,77 +417,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Lightning strikes all Shocked enemies around a targeted location, then removes Shock from those enemies. Shocks cannot expire on enemies in range while casting this spell. Cannot be supported by Spell Cascade or Unleash.",
-  "explicitMods": [
-    {
-      "text": "Deals (33–387) to (98–1161) Lightning Damage",
-      "values": [
-        "(33–387)",
-        "(98–1161)"
-      ]
-    },
-    {
-      "text": "Cannot inflict Shock",
-      "values": []
-    },
-    {
-      "text": "This Spell's Cast Time is added to its Cooldown if Triggered",
-      "values": []
-    },
-    {
-      "text": "Base radius is 6 metres",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "(10–20)% more Damage with Hits per 5% Shock Effect on Enemy",
-      "values": [
-        "(10–20)"
-      ]
-    },
-    {
-      "text": "Deals (33–387) to (98–1161) Lightning Damage",
-      "values": [
-        "(33–387)",
-        "(98–1161)"
-      ]
-    },
-    {
-      "text": "Cannot inflict Shock",
-      "values": []
-    },
-    {
-      "text": "This Spell's Cast Time is added to its Cooldown if Triggered",
-      "values": []
-    },
-    {
-      "text": "Base radius is 6 metres",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "(10–20)% more Damage with Hits per 5% Shock Effect on Enemy",
-      "values": [
-        "(10–20)"
-      ]
-    }
+  "stats": [
+    "Deals (33-387) to (98-1161) Lightning Damage",
+    "Cannot inflict Shock",
+    "This Spell's Cast Time is added to its Cooldown if Triggered",
+    "Base radius is 6 metres",
+    "(10-20)% more Damage with Hits per 5% Shock Effect on Enemy"
   ],
+  "gemDescription": "Lightning strikes all Shocked enemies around a targeted location, then removes Shock from those enemies. Shocks cannot expire on enemies in range while casting this spell. Cannot be supported by Spell Cascade or Unleash.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–4)% more Damage with Hits per 5% Shock Effect on Enemy",
-      "values": [
-        "+(0–4)"
-      ]
-    },
-    {
-      "text": "+(0–4)% more Damage with Hits per 5% Shock Effect on Enemy",
-      "values": [
-        "+(0–4)"
-      ]
+      "text": "+(0.2-4)% more Damage with Hits per 5% Shock Effect on Enemy",
+      "values": []
     }
   ]
 }

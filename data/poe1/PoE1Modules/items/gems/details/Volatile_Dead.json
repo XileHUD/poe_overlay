@@ -1,7 +1,19 @@
 {
   "name": "Volatile Dead",
   "slug": "Volatile_Dead",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Fire",
+    "Level": "(1-20)",
+    "Cost": "(9-26) Mana",
+    "Cast Time": "0.80 sec",
+    "Critical Strike Chance": "5.00%",
+    "Effectiveness of Added Damage": "210%",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "12",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVolatileDead"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -445,105 +457,21 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Corpses near the targeted location explode, dealing damage in a small area and creating an orb which moves towards nearby enemies before dealing spell damage in a larger area. The explosion of the corpse is not affected by modifiers to spell damage, and cannot be reflected.",
-  "explicitMods": [
-    {
-      "text": "Deals (25–938) to (37–1407) Fire Damage",
-      "values": [
-        "(25–938)",
-        "(37–1407)"
-      ]
-    },
-    {
-      "text": "Consumes up to 3 corpses",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Explosion deals base Fire Damage equal to (3–4)% of the corpse's Maximum Life",
-      "values": [
-        "(3–4)"
-      ]
-    },
-    {
-      "text": "Base radius is 2 metres",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Base explosion radius is 1.5 metres",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "Maximum of 60 Orbs at a time",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Deals (25–938) to (37–1407) Fire Damage",
-      "values": [
-        "(25–938)",
-        "(37–1407)"
-      ]
-    },
-    {
-      "text": "Consumes up to 3 corpses",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Explosion deals base Fire Damage equal to (3–4)% of the corpse's Maximum Life",
-      "values": [
-        "(3–4)"
-      ]
-    },
-    {
-      "text": "Base radius is 2 metres",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Base explosion radius is 1.5 metres",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "Maximum of 60 Orbs at a time",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (25-938) to (37-1407) Fire Damage",
+    "Explosion deals base Fire Damage equal to (3-4)% of the corpse's Maximum Life",
+    "Consumes up to 3 corpses",
+    "Base radius is 2 metres",
+    "Base explosion radius is 1.5 metres",
+    "Maximum of 60 Orbs at a time"
   ],
+  "gemDescription": "Corpses near the targeted location explode, dealing damage in a small area and creating an orb which moves towards nearby enemies before dealing spell damage in a larger area. The explosion of the corpse is not affected by modifiers to spell damage, and cannot be reflected.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–40)% increased Orb Movement Speed",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "(0–40)% increased Orb Movement Speed",
-      "values": [
-        "(0–40)"
-      ]
+      "text": "(2-40)% increased Orb Movement Speed",
+      "values": []
     }
   ]
 }

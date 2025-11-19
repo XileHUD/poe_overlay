@@ -1,7 +1,17 @@
 {
   "name": "Cold Penetration Support",
   "slug": "Cold_Penetration_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Cold, Support",
+    "Icon": "V",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "31",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "31",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemColdPenetration"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,107 +335,16 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports any skill that hits enemies, making those hits penetrate enemy cold resistance.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills Penetrate (20–34)% Cold Resistance",
-      "values": [
-        "(20–34)"
-      ]
-    },
-    {
-      "text": "Supported Skills Penetrate (20–34)% Cold Resistance",
-      "values": [
-        "(20–34)"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Bonechill",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Added Cold Damage",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Inspiration",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Hypothermia",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Ice Bite",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Cold Penetration",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Bonechill",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 1 Added Cold Damage",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Inspiration",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Hypothermia",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Ice Bite",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Cold Penetration",
-      "values": [
-        "15"
-      ]
-    }
+  "stats": [
+    "Supported Skills Penetrate (20-34)% Cold Resistance"
   ],
+  "gemDescription": "Supports any skill that hits enemies, making those hits penetrate enemy cold resistance.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Cold Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Cold Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Cold Damage",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,22 @@
 {
   "name": "Vaal Impurity of Lightning",
   "slug": "Vaal_Impurity_of_Lightning",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Aura, Spell, AoE, Duration, Vaal, Lightning",
+    "Level": "(1-20)",
+    "Cooldown Time": "0.50 sec",
+    "Can Store": "1 Use(s)",
+    "Souls Per Use": "50",
+    "Soul Gain Prevention": "8 sec",
+    "Cast Time": "Instant",
+    "Requires Level": "24",
+    "Info 9": "Corrupted",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Vaal Impurity of Lightning can drop from the Vaal Vessels found in Vaal side areas .",
+    "Drop level": "24",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVaalLightningResistAura"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,154 +380,22 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Base duration is 3.00 seconds",
+    "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+    "+(1.4-2) metres to radius",
+    "(0-76)% increased effect of Aura",
+    "You and nearby allies gain 5% additional maximum Lightning Resistance",
+    "You and nearby allies are Immune to Shock",
+    "Nearby Enemies' Lightning Resistance is Ignored by Hits"
+  ],
   "gemDescription": "Casts an aura that reduces lightning damage taken and provides shock immunity to you and nearby allies, and makes hits against nearby enemies ignore their lightning resistance.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 3 seconds",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "+(1.4–2) metres to radius",
-      "values": [
-        "+(1.4–2)"
-      ]
-    },
-    {
-      "text": "(0–76)% increased effect of Aura",
-      "values": [
-        "(0–76)"
-      ]
-    },
-    {
-      "text": "You and nearby allies gain 5% additional maximum Lightning Resistance",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "You and nearby allies are Immune to Shock",
-      "values": []
-    },
-    {
-      "text": "Nearby Enemies' Lightning Resistance is Ignored by Hits",
-      "values": []
-    },
-    {
-      "text": "Base duration is 3 seconds",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "+(1.4–2) metres to radius",
-      "values": [
-        "+(1.4–2)"
-      ]
-    },
-    {
-      "text": "(0–76)% increased effect of Aura",
-      "values": [
-        "(0–76)"
-      ]
-    },
-    {
-      "text": "You and nearby allies gain 5% additional maximum Lightning Resistance",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "You and nearby allies are Immune to Shock",
-      "values": []
-    },
-    {
-      "text": "Nearby Enemies' Lightning Resistance is Ignored by Hits",
-      "values": []
-    },
-    {
-      "text": "base deal no damage [1]",
-      "values": []
-    },
-    {
-      "text": "damage_+%",
-      "values": []
-    },
-    {
-      "text": "life_regeneration_rate_per_minute_%",
-      "values": []
-    },
-    {
-      "text": "base_maximum_lightning_damage_resistance_%",
-      "values": []
-    },
-    {
-      "text": "base_additional_physical_damage_reduction_%",
-      "values": []
-    },
-    {
-      "text": "attack_and_cast_speed_+%",
-      "values": []
-    },
-    {
-      "text": "base_immune_to_shock",
-      "values": []
-    },
-    {
-      "text": "base_life_mana_es_recovery_rate_+%",
-      "values": []
-    },
-    {
-      "text": "+(0–3.4) metres to radius",
-      "values": [
-        "+(0–3.4)"
-      ]
-    },
-    {
-      "text": "You and nearby allies gain (22–56)% additional Lightning Resistance",
-      "values": [
-        "(22–56)"
-      ]
-    },
-    {
-      "text": "You and nearby allies gain (0–5)% additional maximum Lightning Resistance",
-      "values": [
-        "(0–5)"
-      ]
-    },
-    {
-      "text": "base deal no damage [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Maximum Resistances cannot be raised above 90%)",
-    "(Maximum Resistances cannot be raised above 90%)",
-    "(Maximum Resistances cannot be raised above 90%)",
-    "(Maximum Resistances cannot be raised above 90%)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–40)% increased Area of Effect",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "(0–40)% increased Area of Effect",
-      "values": [
-        "(0–40)"
-      ]
+      "text": "(2-40)% increased Area of Effect",
+      "values": []
     }
   ]
 }

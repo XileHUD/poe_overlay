@@ -1,7 +1,17 @@
 {
   "name": "Hextouch Support",
   "slug": "Hextouch_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Hex, Trigger",
+    "Icon": "&",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "38",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "38",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemCurseOnHit"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,67 +335,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Must support both a skill that hits enemies, and a hex curse skill to work. The hex will be applied when enemies are hit by the other skill. Cannot support totems, traps, or mines. Minions cannot apply hexes this way.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills apply supported Curses on Hit",
-      "values": []
-    },
-    {
-      "text": "You cannot Cast Supported Curse Spells",
-      "values": []
-    },
-    {
-      "text": "35% less Effect of Supported Curses",
-      "values": [
-        "35"
-      ]
-    },
-    {
-      "text": "Supported Skills have (26–35)% less Curse Duration",
-      "values": [
-        "(26–35)"
-      ]
-    },
-    {
-      "text": "Supported Skills apply supported Curses on Hit",
-      "values": []
-    },
-    {
-      "text": "You cannot Cast Supported Curse Spells",
-      "values": []
-    },
-    {
-      "text": "35% less Effect of Supported Curses",
-      "values": [
-        "35"
-      ]
-    },
-    {
-      "text": "Supported Skills have (26–35)% less Curse Duration",
-      "values": [
-        "(26–35)"
-      ]
-    },
-    {
-      "text": "curse triggered by hextouch [1]",
-      "values": []
-    }
+  "stats": [
+    "Supported Skills apply supported Curses on Hit",
+    "You cannot Cast Supported Curse Spells",
+    "35% less Effect of Supported Curses",
+    "Supported Skills have (35-26)% less Curse Duration"
   ],
+  "gemDescription": "Must support both a skill that hits enemies, and a hex curse skill to work. The hex will be applied when enemies are hit by the other skill. Cannot support totems, traps, or mines. Minions cannot apply hexes this way.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–10)% increased Curse Duration",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–10)% increased Curse Duration",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills have (0.5-10)% increased Curse Duration",
+      "values": []
     }
   ]
 }

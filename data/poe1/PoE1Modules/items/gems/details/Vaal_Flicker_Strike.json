@@ -1,7 +1,34 @@
 {
   "name": "Vaal Flicker Strike",
   "slug": "Vaal_Flicker_Strike",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Melee, Strike, Movement, Vaal, Duration",
+    "Level": "(1-20)",
+    "Souls Per Use": "30",
+    "Can Store": "1 Use(s)",
+    "Soul Gain Prevention": "6 sec",
+    "Attack Speed": "120% of base",
+    "Attack Damage": "(177-408)% of base",
+    "Effectiveness of Added Damage": "(177-408)%",
+    "Requires Level": "10",
+    "Info 10": "Corrupted",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted",
+    "Drop level": "10",
+    "Vaal Flicker Strike can drop from the Vaal Vessels found in Vaal side areas , or by corrupting Flicker StrikeFlicker StrikeAttack, Melee, Strike, Movement, DurationLevel": "(1-20)Cost: (5-8) ManaCooldown Time: 2.00 secCan Store 1 Use(s)Attack Speed: 120% of baseAttack Damage: (177-408)% of baseEffectiveness of Added Damage: (177-408)%Requires Level 10Teleports the character to a nearby monster and attacks with a melee weapon. If no specific monster is targeted, one is picked at random. Grants a buff that increases movement speed for a duration. The cooldown can be bypassed by expending a Frenzy Charge.Base duration is 3.00 seconds10% increased Attack Speed per Frenzy Charge15% chance to gain a Frenzy Charge on HitBuff grants 20% increased Movement Speed Additional Effects From 1-20% Quality: (0.5-10)% chance to gain a Frenzy Charge on HitPlace into an item socket of the right colour to gain this skill. Right click to remove from a socket. .",
+    "Info 15": "Attack , Melee , Strike , Movement , Duration",
+    "Cost": "(5-8) Mana",
+    "Cooldown Time": "2.00 sec",
+    "Info 18": "Teleports the character to a nearby monster and attacks with a melee weapon. If no specific monster is targeted, one is picked at random. Grants a buff that increases movement speed for a duration. The cooldown can be bypassed by expending a Frenzy Charge.",
+    "Info 19": "Base duration is 3.00 seconds",
+    "Info 20": "10% increased Attack Speed per Frenzy Charge",
+    "Info 21": "15% chance to gain a Frenzy Charge on Hit",
+    "Info 22": "Buff grants 20% increased Movement Speed",
+    "Additional Effects From 1-20% Quality": "(0.5-10)% chance to gain a Frenzy Charge on Hit",
+    "Info 24": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVaalFlickerStrike"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -245,197 +272,19 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "This Attack Repeats 25 additional times",
+    "10% increased Attack Speed per Frenzy Charge",
+    "70% less Damage with Ailments",
+    "30% chance to gain a Frenzy Charge on Hit"
+  ],
   "gemDescription": "Repeatedly teleports to enemies and hits them, inflicting a wound but dealing no damage. After the repeating finishes, each enemy is hit by the total damage of their wounds, which are removed.",
-  "explicitMods": [
-    {
-      "text": "This Attack Repeats 25 additional times",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "10% increased Attack Speed per Frenzy Charge",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "70% less Damage with Ailments",
-      "values": [
-        "70"
-      ]
-    },
-    {
-      "text": "30% chance to gain a Frenzy Charge on Hit",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "This Attack Repeats 25 additional times",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "10% increased Attack Speed per Frenzy Charge",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "70% less Damage with Ailments",
-      "values": [
-        "70"
-      ]
-    },
-    {
-      "text": "30% chance to gain a Frenzy Charge on Hit",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "This Attack Repeats 25 additional times",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "10% increased Attack Speed per Frenzy Charge",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "70% less Damage with Ailments",
-      "values": [
-        "70"
-      ]
-    },
-    {
-      "text": "30% chance to gain a Frenzy Charge on Hit",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "apply cut debuff on hit [1]",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "ignores proximity shield [1]",
-      "values": []
-    },
-    {
-      "text": "melee defer damage prediction [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    },
-    {
-      "text": "This Attack Repeats 25 additional times",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "10% increased Attack Speed per Frenzy Charge",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "70% less Damage with Ailments",
-      "values": [
-        "70"
-      ]
-    },
-    {
-      "text": "30% chance to gain a Frenzy Charge on Hit",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "apply cut debuff on hit [1]",
-      "values": []
-    },
-    {
-      "text": "base deal no damage [1]",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "ignores proximity shield [1]",
-      "values": []
-    },
-    {
-      "text": "melee defer damage prediction [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    },
-    {
-      "text": "Base duration is 3 seconds",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "10% increased Attack Speed per Frenzy Charge",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "15% chance to gain a Frenzy Charge on Hit",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Buff grants 20% increased Movement Speed",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "ignores proximity shield [1]",
-      "values": []
-    },
-    {
-      "text": "melee defer damage prediction [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–10)% chance to gain a Frenzy Charge on Hit",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "(0–10)% chance to gain a Frenzy Charge on Hit",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "(0.5-10)% chance to gain a Frenzy Charge on Hit",
+      "values": []
     }
   ]
 }

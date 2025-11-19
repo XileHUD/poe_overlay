@@ -1,7 +1,17 @@
 {
   "name": "Rupture Support",
   "slug": "Rupture_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Physical, Critical, Support",
+    "Icon": "R",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "140%",
+    "Requires Level": "38",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "38",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemRupture"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,59 +375,18 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Critical Strikes with Supported Skills that inflict Bleeding also inflict Rupture",
+    "Targets take (20-29)% more Damage from Bleeding per Rupture on them from Supported Skills",
+    "Bleeding expires 25% more quickly per Rupture from Supported Skills on targets"
+  ],
   "gemDescription": "Supports attack skills.",
-  "explicitMods": [
-    {
-      "text": "Critical Strikes with Supported Skills that inflict Bleeding also inflict Rupture",
-      "values": []
-    },
-    {
-      "text": "Targets take (20–29)% more Damage from Bleeding per Rupture on them from Supported Skills",
-      "values": [
-        "(20–29)"
-      ]
-    },
-    {
-      "text": "Bleeding expires 25% more quickly per Rupture from Supported Skills on targets",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Critical Strikes with Supported Skills that inflict Bleeding also inflict Rupture",
-      "values": []
-    },
-    {
-      "text": "Targets take (20–29)% more Damage from Bleeding per Rupture on them from Supported Skills",
-      "values": [
-        "(20–29)"
-      ]
-    },
-    {
-      "text": "Bleeding expires 25% more quickly per Rupture from Supported Skills on targets",
-      "values": [
-        "25"
-      ]
-    }
-  ],
-  "modDescriptions": [
-    "(Up to 4 Ruptures can be inflicted on a target, lasting 3 seconds each)",
-    "(Up to 4 Ruptures can be inflicted on a target, lasting 3 seconds each)",
-    "(Up to 4 Ruptures can be inflicted on a target, lasting 3 seconds each)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–20)% increased Critical Strike Chance",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–20)% increased Critical Strike Chance",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "Supported Skills have (1-20)% increased Critical Strike Chance",
+      "values": []
     }
   ]
 }

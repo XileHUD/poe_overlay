@@ -1,7 +1,18 @@
 {
   "name": "Wild Strike of Extremes",
   "slug": "Wild_Strike_of_Extremes",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Melee, Strike, Lightning, Cold, Fire, Projectile, AoE, Chaining, Prismatic",
+    "Level": "(1-20)",
+    "Cost": "(14-28) Mana , (14-28) Energy Shield , (14-28) Life",
+    "Attack Damage": "(178-328)% of base",
+    "Effectiveness of Added Damage": "(178-328)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,149 +376,21 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Your melee weapon strikes enemies, converting physical damage to a random element. Then, depending on the element chosen, it releases a fiery explosion, an arcing bolt of lightning, or an icy wave. It will avoid choosing the same element twice in a row.",
-  "explicitMods": [
-    {
-      "text": "Projectiles Pierce all Targets",
-      "values": []
-    },
-    {
-      "text": "Beams Chain (4–7) Times",
-      "values": [
-        "(4–7)"
-      ]
-    },
-    {
-      "text": "Fires 3 Projectiles",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "(0–19)% increased Area of Effect",
-      "values": [
-        "(0–19)"
-      ]
-    },
-    {
-      "text": "100% of Physical Damage Converted to Fire, Cold or Lightning Damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Hits treat Enemy Monster Elemental Resistance values as inverted",
-      "values": []
-    },
-    {
-      "text": "Projectiles Pierce all Targets",
-      "values": []
-    },
-    {
-      "text": "Beams Chain (4–7) Times",
-      "values": [
-        "(4–7)"
-      ]
-    },
-    {
-      "text": "Fires 3 Projectiles",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "(0–19)% increased Area of Effect",
-      "values": [
-        "(0–19)"
-      ]
-    },
-    {
-      "text": "100% of Physical Damage Converted to Fire, Cold or Lightning Damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Hits treat Enemy Monster Elemental Resistance values as inverted",
-      "values": []
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "fixed projectile spread [70]",
-      "values": []
-    },
-    {
-      "text": "show number of projectiles [1]",
-      "values": []
-    },
-    {
-      "text": "Projectiles Pierce all Targets",
-      "values": []
-    },
-    {
-      "text": "Beams Chain (4–9) Times",
-      "values": [
-        "(4–9)"
-      ]
-    },
-    {
-      "text": "Fires 3 Projectiles",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "(0–34)% increased Area of Effect",
-      "values": [
-        "(0–34)"
-      ]
-    },
-    {
-      "text": "100% of Physical Damage Converted to Fire, Cold or Lightning Damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Hits treat Enemy Monster Elemental Resistance values as inverted",
-      "values": []
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "fixed projectile spread [70]",
-      "values": []
-    },
-    {
-      "text": "show number of projectiles [1]",
-      "values": []
-    }
+  "stats": [
+    "Projectiles Pierce all Targets",
+    "Beams Chain (4-7) Times",
+    "Fires 3 Projectiles",
+    "(0-19)% increased Area of Effect",
+    "100% of Physical Damage Converted to Fire, Cold or Lightning Damage",
+    "Hits treat Enemy Monster Elemental Resistance values as inverted"
   ],
+  "gemDescription": "Your melee weapon strikes enemies, converting physical damage to a random element. Then, depending on the element chosen, it releases a fiery explosion, an arcing bolt of lightning, or an icy wave. It will avoid choosing the same element twice in a row.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–20)% chance to Freeze, Shock and Ignite",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% chance to Freeze, Shock and Ignite",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% chance to Freeze, Shock and Ignite",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "(1-20)% chance to Freeze, Shock and Ignite",
+      "values": []
     }
   ]
 }

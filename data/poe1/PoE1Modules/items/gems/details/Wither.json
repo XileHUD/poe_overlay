@@ -1,7 +1,17 @@
 {
   "name": "Wither",
   "slug": "Wither",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Duration, Chaos, Channelling",
+    "Level": "(1-20)",
+    "Cost": "(3-9) Mana",
+    "Cast Time": "0.28 sec",
+    "Requires Level": "10",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "10",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemWither"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,87 +415,20 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Withered lasts 2 seconds",
+    "Base duration is 0.50 seconds",
+    "(0-19)% increased Area of Effect",
+    "(30-36)% reduced Movement Speed",
+    "6% increased Chaos Damage taken"
+  ],
   "gemDescription": "Casts a debilitating debuff on enemies in an area, hindering their movement and also inflicts the Withered debuff, which increases the Chaos Damage they take and can stack up to 15 times.",
-  "explicitMods": [
-    {
-      "text": "Withered lasts 2 seconds",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Base duration is 0.5 seconds",
-      "values": [
-        "0.5"
-      ]
-    },
-    {
-      "text": "(0–19)% increased Area of Effect",
-      "values": [
-        "(0–19)"
-      ]
-    },
-    {
-      "text": "(30–36)% reduced Movement Speed",
-      "values": [
-        "(30–36)"
-      ]
-    },
-    {
-      "text": "6% increased Chaos Damage taken",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Withered lasts 2 seconds",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Base duration is 0.5 seconds",
-      "values": [
-        "0.5"
-      ]
-    },
-    {
-      "text": "(0–19)% increased Area of Effect",
-      "values": [
-        "(0–19)"
-      ]
-    },
-    {
-      "text": "(30–36)% reduced Movement Speed",
-      "values": [
-        "(30–36)"
-      ]
-    },
-    {
-      "text": "6% increased Chaos Damage taken",
-      "values": [
-        "6"
-      ]
-    }
-  ],
-  "modDescriptions": [
-    "(Withered applies 6% increased Chaos Damage Taken, and can be inflicted up to 15 times)",
-    "(Withered applies 6% increased Chaos Damage Taken, and can be inflicted up to 15 times)",
-    "(Withered applies 6% increased Chaos Damage Taken, and can be inflicted up to 15 times)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–20)% increased Skill Effect Duration",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% increased Skill Effect Duration",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "(1-20)% increased Skill Effect Duration",
+      "values": []
     }
   ]
 }

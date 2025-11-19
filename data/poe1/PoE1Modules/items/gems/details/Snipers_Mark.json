@@ -1,7 +1,17 @@
 {
   "name": "Sniper's Mark",
   "slug": "Snipers_Mark",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Curse, Mark",
+    "Level": "(1-20)",
+    "Cost": "(16-33) Mana",
+    "Cast Time": "0.50 sec",
+    "Requires Level": "4",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "4",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemProjectileWeakness"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,71 +375,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Curses a single enemy, increasing the damage they take from projectiles, and making projectiles split when hitting them, to hit other targets around them. You can only have one Mark at a time.",
-  "explicitMods": [
-    {
-      "text": "Cursed enemies take (10–29)% increased Damage from Projectile Hits",
-      "values": [
-        "(10–29)"
-      ]
-    },
-    {
-      "text": "Projectiles which Hit Cursed Enemies Split towards 2 additional targets",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Cursed enemies take (10–29)% increased Damage from Projectile Hits",
-      "values": [
-        "(10–29)"
-      ]
-    },
-    {
-      "text": "Projectiles which Hit Cursed Enemies Split towards 2 additional targets",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "base deal no damage [1]",
-      "values": []
-    },
-    {
-      "text": "chance_to_be_knocked_back_%",
-      "values": []
-    },
-    {
-      "text": "projectile_damage_taken_+%",
-      "values": []
-    },
-    {
-      "text": "projectiles_hitting_self_split_into_x",
-      "values": []
-    },
-    {
-      "text": "grant_attacker_x_mana_flask_charges_when_hit_once_per_500ms",
-      "values": []
-    },
-    {
-      "text": "grant_attacker_x_life_flask_charges_when_hit_once_per_500ms",
-      "values": []
-    }
+  "stats": [
+    "Cursed enemies take (10-29)% increased Damage from Projectile Hits",
+    "Projectiles which Hit Cursed Enemies Split towards 2 additional targets"
   ],
+  "gemDescription": "Curses a single enemy, increasing the damage they take from projectiles, and making projectiles split when hitting them, to hit other targets around them. You can only have one Mark at a time.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Cursed enemies take (0–5)% increased Damage from Projectile Hits",
-      "values": [
-        "(0–5)"
-      ]
-    },
-    {
-      "text": "Cursed enemies take (0–5)% increased Damage from Projectile Hits",
-      "values": [
-        "(0–5)"
-      ]
+      "text": "Cursed enemies take (0.25-5)% increased Damage from Projectile Hits",
+      "values": []
     }
   ]
 }

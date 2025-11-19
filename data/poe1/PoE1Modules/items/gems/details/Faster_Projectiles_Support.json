@@ -1,7 +1,17 @@
 {
   "name": "Faster Projectiles Support",
   "slug": "Faster_Projectiles_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Projectile",
+    "Icon": "j",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "120%",
+    "Requires Level": "31",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "31",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemFasterProjectiles"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,47 +375,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports projectile skills.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills have (50–69)% increased Projectile Speed",
-      "values": [
-        "(50–69)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (20–29)% increased Projectile Damage",
-      "values": [
-        "(20–29)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (50–69)% increased Projectile Speed",
-      "values": [
-        "(50–69)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (20–29)% increased Projectile Damage",
-      "values": [
-        "(20–29)"
-      ]
-    }
+  "stats": [
+    "Supported Skills have (50-69)% increased Projectile Speed",
+    "Supported Skills deal (20-29)% increased Projectile Damage"
   ],
+  "gemDescription": "Supports projectile skills.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–10)% increased Projectile Speed",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–10)% increased Projectile Speed",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills have (0.5-10)% increased Projectile Speed",
+      "values": []
     }
   ]
 }

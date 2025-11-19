@@ -1,7 +1,18 @@
 {
   "name": "Blade Trap",
   "slug": "Blade_Trap",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Trap, Attack, AoE",
+    "Level": "(1-20)",
+    "Cost": "(8-20) Mana",
+    "Attack Damage": "(76-96)% of base",
+    "Effectiveness of Added Damage": "(76-96)%",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "12",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemBladeTrap"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,109 +376,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Throws a trap which, once triggered, swings two copies of your equipped Dagger, Claw or One Handed Sword around it in circles, each repeatedly damaging enemies it spins through.",
-  "explicitMods": [
-    {
-      "text": "Trap lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Rotates 4 times",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "25% increased rotation speed if Dual Wielding",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Rotates +1 times if Dual Wielding",
-      "values": [
-        "+1"
-      ]
-    },
-    {
-      "text": "Base radius is (1.6–2.2) metres",
-      "values": [
-        "(1.6–2.2)"
-      ]
-    },
-    {
-      "text": "Trap lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Rotates 4 times",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "25% increased rotation speed if Dual Wielding",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Rotates +1 times if Dual Wielding",
-      "values": [
-        "+1"
-      ]
-    },
-    {
-      "text": "Base radius is (1.6–2.2) metres",
-      "values": [
-        "(1.6–2.2)"
-      ]
-    },
-    {
-      "text": "attack is not melee override [1]",
-      "values": []
-    },
-    {
-      "text": "base skill is trapped [1]",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "trap use alternate death animation [1]",
-      "values": []
-    },
-    {
-      "text": "trap variation [18]",
-      "values": []
-    }
+  "stats": [
+    "Trap lasts 4 seconds",
+    "Rotates 4 times",
+    "25% increased rotation speed if Dual Wielding",
+    "Rotates +1 times if Dual Wielding",
+    "Base radius is (1.6-2.2) metres"
   ],
+  "gemDescription": "Throws a trap which, once triggered, swings two copies of your equipped Dagger, Claw or One Handed Sword around it in circles, each repeatedly damaging enemies it spins through.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Trap lasts +(0–1) secondRotates +(0–1) time",
-      "values": [
-        "+(0–1)",
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Trap lasts +(0–1) secondRotates +(0–1) time",
-      "values": [
-        "+(0–1)",
-        "+(0–1)"
-      ]
+      "text": "Trap lasts +(0.05-1) secondsRotates +(0.05-1) times",
+      "values": []
     }
   ]
 }

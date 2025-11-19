@@ -1,7 +1,20 @@
 {
   "name": "Blade Trap of Greatswords",
   "slug": "Blade_Trap_of_Greatswords",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Trap, Attack, AoE, Duration",
+    "Level": "(1-20)",
+    "Cost": "(13-25) Mana",
+    "Cooldown Time": "6.00 sec",
+    "Can Store": "3 Use(s)",
+    "Attack Damage": "(146-220)% of base",
+    "Effectiveness of Added Damage": "(146-220)%",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "12",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,131 +338,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Throws a trap which, once triggered, swings two copies of your equipped Two Handed Sword around it in circles for a duration, each repeatedly damaging enemies it spins through",
-  "explicitMods": [
-    {
-      "text": "Trap lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Base duration is 3.5 seconds",
-      "values": [
-        "3.5"
-      ]
-    },
-    {
-      "text": "Base radius is (2.2–2.8) metres",
-      "values": [
-        "(2.2–2.8)"
-      ]
-    },
-    {
-      "text": "Trap lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Base duration is 3.5 seconds",
-      "values": [
-        "3.5"
-      ]
-    },
-    {
-      "text": "Base radius is (2.2–2.8) metres",
-      "values": [
-        "(2.2–2.8)"
-      ]
-    },
-    {
-      "text": "attack is not melee override [1]",
-      "values": []
-    },
-    {
-      "text": "base skill is trapped [1]",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "trap use alternate death animation [1]",
-      "values": []
-    },
-    {
-      "text": "trap variation [18]",
-      "values": []
-    },
-    {
-      "text": "Trap lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Base duration is 3.5 seconds",
-      "values": [
-        "3.5"
-      ]
-    },
-    {
-      "text": "Base radius is (2.2–3.3) metres",
-      "values": [
-        "(2.2–3.3)"
-      ]
-    },
-    {
-      "text": "attack is not melee override [1]",
-      "values": []
-    },
-    {
-      "text": "base skill is trapped [1]",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "trap use alternate death animation [1]",
-      "values": []
-    },
-    {
-      "text": "trap variation [18]",
-      "values": []
-    }
+  "stats": [
+    "Trap lasts 4 seconds",
+    "Base duration is 3.50 seconds",
+    "Base radius is (2.2-2.8) metres"
   ],
+  "gemDescription": "Throws a trap which, once triggered, swings two copies of your equipped Two Handed Sword around it in circles for a duration, each repeatedly damaging enemies it spins through",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base duration is (0–0.5) seconds",
-      "values": [
-        "(0–0.5)"
-      ]
-    },
-    {
-      "text": "Base duration is (0–0.5) seconds",
-      "values": [
-        "(0–0.5)"
-      ]
-    },
-    {
-      "text": "Base duration is (0–0.5) seconds",
-      "values": [
-        "(0–0.5)"
-      ]
+      "text": "Base duration is (0.025-0.5) seconds",
+      "values": []
     }
   ]
 }

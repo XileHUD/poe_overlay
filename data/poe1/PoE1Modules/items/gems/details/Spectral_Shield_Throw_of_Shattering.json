@@ -1,7 +1,18 @@
 {
   "name": "Spectral Shield Throw of Shattering",
   "slug": "Spectral_Shield_Throw_of_Shattering",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Projectile, Cold",
+    "Level": "(1-20)",
+    "Cost": "(7-10) Mana",
+    "Attack Time": "0.75 sec",
+    "Critical Strike Chance": "5.00%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,123 +416,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Throws a spectral copy of your shield as a projectile which cannot pierce, and deals off-hand damage augmented by the evasion of the shield. When it collides with something it will shatter, launching a number of smaller shards as projectiles in all directions. Modifiers that cause additional projectiles to be fired will add more shards, not more copies of the shield.",
-  "explicitMods": [
-    {
-      "text": "Shard Projectiles Deal 25% less Damage",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "(69–297) to (103–446) Base Off Hand Cold Damage",
-      "values": [
-        "(69–297)",
-        "(103–446)"
-      ]
-    },
-    {
-      "text": "(4–7) to (7–12) Added Cold Damage per 15 Evasion Rating on Shield",
-      "values": [
-        "(4–7)",
-        "(7–12)"
-      ]
-    },
-    {
-      "text": "Fires (6–12) additional Projectiles",
-      "values": [
-        "(6–12)"
-      ]
-    },
-    {
-      "text": "Shard Projectiles Deal 25% less Damage",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "(69–297) to (103–446) Base Off Hand Cold Damage",
-      "values": [
-        "(69–297)",
-        "(103–446)"
-      ]
-    },
-    {
-      "text": "(4–7) to (7–12) Added Cold Damage per 15 Evasion Rating on Shield",
-      "values": [
-        "(4–7)",
-        "(7–12)"
-      ]
-    },
-    {
-      "text": "Fires (6–12) additional Projectiles",
-      "values": [
-        "(6–12)"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "thrown shield projectile fire random directions [1]",
-      "values": []
-    },
-    {
-      "text": "Shard Projectiles Deal 25% less Damage",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "(69–685) to (103–1027) Base Off Hand Cold Damage",
-      "values": [
-        "(69–685)",
-        "(103–1027)"
-      ]
-    },
-    {
-      "text": "(4–9) to (7–16) Added Cold Damage per 15 Evasion Rating on Shield",
-      "values": [
-        "(4–9)",
-        "(7–16)"
-      ]
-    },
-    {
-      "text": "Fires (6–17) additional Projectiles",
-      "values": [
-        "(6–17)"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "thrown shield projectile fire random directions [1]",
-      "values": []
-    }
+  "stats": [
+    "Shard Projectiles Deal 25% less Damage",
+    "(69-297) to (103-446) Base Off Hand Cold Damage",
+    "(4-7) to (7-12) Added Cold Damage per 15 Evasion Rating on Shield",
+    "Fires (6-12) additional Projectiles"
   ],
+  "gemDescription": "Throws a spectral copy of your shield as a projectile which cannot pierce, and deals off-hand damage augmented by the evasion of the shield. When it collides with something it will shatter, launching a number of smaller shards as projectiles in all directions. Modifiers that cause additional projectiles to be fired will add more shards, not more copies of the shield.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–20)% more Projectile Speed",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% more Projectile Speed",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% more Projectile Speed",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "(1-20)% more Projectile Speed",
+      "values": []
     }
   ]
 }

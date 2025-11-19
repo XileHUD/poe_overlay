@@ -1,7 +1,21 @@
 {
   "name": "Bear Trap",
   "slug": "Bear_Trap",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Trap, Spell, Duration, Physical",
+    "Level": "(1-20)",
+    "Cost": "(6-23) Mana",
+    "Cooldown Time": "4.00 sec",
+    "Can Store": "3 Use(s)",
+    "Cast Time": "1.00 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "300%",
+    "Requires Level": "4",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "5",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemBearTrap"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,165 +379,22 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Throws a trap that damages and immobilises a single enemy for a duration based on how much damage was dealt. After the immobilise expires, a debuff remains on the enemy for a duration, lowering their movement speed by an amount which lessens over time. The affected enemy will take increased damage from traps and mines until the debuff expires. Modifiers to spell damage do not affect this skill's damage.",
-  "explicitMods": [
-    {
-      "text": "Deals (16–1447) to (22–2026) Physical Damage",
-      "values": [
-        "(16–1447)",
-        "(22–2026)"
-      ]
-    },
-    {
-      "text": "Traps do not Trigger at the end of their Duration",
-      "values": []
-    },
-    {
-      "text": "Trap lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Base duration is 3 seconds",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Locks enemy in place",
-      "values": []
-    },
-    {
-      "text": "Enemies take 25% increased Damage from Trap or Mine Hits",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Enemies have 80% less Movement Speed when the Debuff starts",
-      "values": [
-        "80"
-      ]
-    },
-    {
-      "text": "Deals (16–1447) to (22–2026) Physical Damage",
-      "values": [
-        "(16–1447)",
-        "(22–2026)"
-      ]
-    },
-    {
-      "text": "Traps do not Trigger at the end of their Duration",
-      "values": []
-    },
-    {
-      "text": "Trap lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Base duration is 3 seconds",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Locks enemy in place",
-      "values": []
-    },
-    {
-      "text": "Enemies take 25% increased Damage from Trap or Mine Hits",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Enemies have 80% less Movement Speed when the Debuff starts",
-      "values": [
-        "80"
-      ]
-    },
-    {
-      "text": "base skill is trapped [1]",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "display skill deals secondary damage [1]",
-      "values": []
-    },
-    {
-      "text": "trap override pvp scaling time ms [750]",
-      "values": []
-    },
-    {
-      "text": "Grants Level 25 Bear Trap Skill",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "(18–28)% increased Trap Damage",
-      "values": [
-        "(18–28)"
-      ]
-    },
-    {
-      "text": "(15–25)% increased Global Physical Damage",
-      "values": [
-        "(15–25)"
-      ]
-    },
-    {
-      "text": "+(60–80) to maximum Life",
-      "values": [
-        "+(60–80)"
-      ]
-    },
-    {
-      "text": "(-18–-14) Physical Damage taken from Attack Hits",
-      "values": [
-        "(-18–-14)"
-      ]
-    },
-    {
-      "text": "25% chance to gain a Power Charge when you Throw a Trap",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "no_movement_speed",
-      "values": []
-    },
-    {
-      "text": "base_cooldown_speed_+%",
-      "values": []
-    },
-    {
-      "text": "bear_trap_movement_speed_+%_final",
-      "values": []
-    }
+  "stats": [
+    "Deals (16-1447) to (22-2026) Physical Damage",
+    "Traps do not Trigger at the end of their Duration",
+    "Trap lasts 4 seconds",
+    "Base duration is 3.00 seconds",
+    "Locks enemy in place",
+    "Enemies take 25% increased Damage from Trap or Mine Hits",
+    "Enemies have 80% less Movement Speed when the Debuff starts"
   ],
+  "gemDescription": "Throws a trap that damages and immobilises a single enemy for a duration based on how much damage was dealt. After the immobilise expires, a debuff remains on the enemy for a duration, lowering their movement speed by an amount which lessens over time. The affected enemy will take increased damage from traps and mines until the debuff expires. Modifiers to spell damage do not affect this skill's damage.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base duration is (0–1) seconds",
-      "values": [
-        "(0–1)"
-      ]
-    },
-    {
-      "text": "Base duration is (0–1) seconds",
-      "values": [
-        "(0–1)"
-      ]
+      "text": "Base duration is (0.05-1) seconds",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,17 @@
 {
   "name": "Fortify Support",
   "slug": "Fortify_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Support, Melee",
+    "Icon": "O",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "31",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "31",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemFortify"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,104 +375,18 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Melee Hits from Supported Skills Fortify",
+    "Supported Skills deal (10-19)% more Damage with Ailments caused by Melee Hits",
+    "Supported Skills deal (10-19)% more Melee Damage"
+  ],
   "gemDescription": "Supports melee attack skills that are not triggered.",
-  "explicitMods": [
-    {
-      "text": "Melee Hits from Supported Skills Fortify",
-      "values": []
-    },
-    {
-      "text": "Supported Skills deal (10–19)% more Damage with Ailments caused by Melee Hits",
-      "values": [
-        "(10–19)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (10–19)% more Melee Damage",
-      "values": [
-        "(10–19)"
-      ]
-    },
-    {
-      "text": "Melee Hits from Supported Skills Fortify",
-      "values": []
-    },
-    {
-      "text": "Supported Skills deal (10–19)% more Damage with Ailments caused by Melee Hits",
-      "values": [
-        "(10–19)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (10–19)% more Melee Damage",
-      "values": [
-        "(10–19)"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 12 Fortify",
-      "values": [
-        "12"
-      ]
-    },
-    {
-      "text": "15% Chance to Block Attack Damage",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "(100–120)% increased Physical Damage",
-      "values": [
-        "(100–120)"
-      ]
-    },
-    {
-      "text": "+110 to Evasion Rating",
-      "values": [
-        "+110"
-      ]
-    },
-    {
-      "text": "+35 to maximum Energy Shield",
-      "values": [
-        "+35"
-      ]
-    },
-    {
-      "text": "+(30–50) to maximum Life",
-      "values": [
-        "+(30–50)"
-      ]
-    },
-    {
-      "text": "Reflects (71–90) Physical Damage to Melee Attackers",
-      "values": [
-        "(71–90)"
-      ]
-    }
-  ],
-  "modDescriptions": [
-    "(Fortifying grants an amount of Fortification based on the Damage of the Hit)",
-    "(Take 1% less Damage from Hits per Fortification. Maximum 20 Fortification. Fortification lasts 6 seconds)",
-    "(Fortifying grants an amount of Fortification based on the Damage of the Hit)",
-    "(Take 1% less Damage from Hits per Fortification. Maximum 20 Fortification. Fortification lasts 6 seconds)",
-    "(Fortifying grants an amount of Fortification based on the Damage of the Hit)",
-    "(Take 1% less Damage from Hits per Fortification. Maximum 20 Fortification. Fortification lasts 6 seconds)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–20)% increased Fortification Duration",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–20)% increased Fortification Duration",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "Supported Skills have (1-20)% increased Fortification Duration",
+      "values": []
     }
   ]
 }

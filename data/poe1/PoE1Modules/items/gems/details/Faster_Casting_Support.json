@@ -1,7 +1,17 @@
 {
   "name": "Faster Casting Support",
   "slug": "Faster_Casting_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Spell",
+    "Icon": "f",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "110%",
+    "Requires Level": "18",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "18",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemFasterCast"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,130 +335,16 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Supported Skills have (20-39)% increased Cast Speed"
+  ],
   "gemDescription": "Supports non-instant spell skills.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills have (20–39)% increased Cast Speed",
-      "values": [
-        "(20–39)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (20–39)% increased Cast Speed",
-      "values": [
-        "(20–39)"
-      ]
-    },
-    {
-      "text": "100% increased Melee Damage against Frozen Enemies",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "100% increased Melee Damage against Shocked Enemies",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "100% increased Melee Damage against Ignited Enemies",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Projectiles have (15–20)% chance to Ignite",
-      "values": [
-        "(15–20)"
-      ]
-    },
-    {
-      "text": "Projectiles have (15–20)% chance to Freeze",
-      "values": [
-        "(15–20)"
-      ]
-    },
-    {
-      "text": "Projectiles have (15–20)% chance to Shock",
-      "values": [
-        "(15–20)"
-      ]
-    },
-    {
-      "text": "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
-      "values": []
-    },
-    {
-      "text": "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
-      "values": []
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 18 Faster Casting",
-      "values": [
-        "18"
-      ]
-    },
-    {
-      "text": "+(20–30) to Intelligence",
-      "values": [
-        "+(20–30)"
-      ]
-    },
-    {
-      "text": "+(50–80) to maximum Energy Shield",
-      "values": [
-        "+(50–80)"
-      ]
-    },
-    {
-      "text": "+(50–70) to maximum Life",
-      "values": [
-        "+(50–70)"
-      ]
-    },
-    {
-      "text": "Gain +2% to Critical Strike Chance for 2 seconds after Spending a total of 800 Mana",
-      "values": [
-        "+2"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 10 Concentrated Effect",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 10 Inspiration",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 10 Faster Casting",
-      "values": [
-        "10"
-      ]
-    }
-  ],
-  "modDescriptions": [
-    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
-    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–10)% increased Cast Speed",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–10)% increased Cast Speed",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills have (0.5-10)% increased Cast Speed",
+      "values": []
     }
   ]
 }

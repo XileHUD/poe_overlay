@@ -1,7 +1,18 @@
 {
   "name": "Awakened Arrow Nova Support",
   "slug": "Awakened_Arrow_Nova_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Bow, Attack, Support, Projectile",
+    "Icon": "G",
+    "Level": "(1-5)",
+    "Cost & Reservation Multiplier": "150%",
+    "Requires Level": "72",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Can drop from either version of the Maven or from Maven-witnessed map bosses.",
+    "Drop level": "72",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemArrowNovaPlus"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -165,75 +176,21 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports bow attack skills that fire arrows forwards as projectiles. These skills will instead fire a payload arrow into the air to land at a targeted location. The supported skills' arrows will then fire out in a circle from where it lands. Cannot support skills that already fire arrows into the air, channelled skills, or skills that create Minions.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills deal (11–15)% less Projectile Damage",
-      "values": [
-        "(11–15)"
-      ]
-    },
-    {
-      "text": "Supported Skills fire a Payload Arrow into the airProjectiles from the Supported Skill Fire from where the Payload Arrow lands",
-      "values": []
-    },
-    {
-      "text": "Supported Skills Fire Projectiles in a circle",
-      "values": []
-    },
-    {
-      "text": "Supported Skills fire 5 additional Projectiles",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Supported Skills can only be used with Bows",
-      "values": []
-    },
-    {
-      "text": "Supported Skills deal (11–15)% less Projectile Damage",
-      "values": [
-        "(11–15)"
-      ]
-    },
-    {
-      "text": "Supported Skills fire a Payload Arrow into the airProjectiles from the Supported Skill Fire from where the Payload Arrow lands",
-      "values": []
-    },
-    {
-      "text": "Supported Skills Fire Projectiles in a circle",
-      "values": []
-    },
-    {
-      "text": "Supported Skills fire 5 additional Projectiles",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Supported Skills can only be used with Bows",
-      "values": []
-    },
-    {
-      "text": "skill is rain skill [1]",
-      "values": []
-    }
+  "stats": [
+    "Supported Skills deal (15-11)% less Projectile Damage",
+    "Supported Skills fire a Payload Arrow into the air",
+    "Projectiles from the Supported Skill Fire from where the Payload Arrow lands",
+    "Supported Skills Fire Projectiles in a circle",
+    "Supported Skills fire 5 additional Projectiles",
+    "Supported Skills can only be used with Bows"
   ],
+  "gemDescription": "Supports bow attack skills that fire arrows forwards as projectiles. These skills will instead fire a payload arrow into the air to land at a targeted location. The supported skills' arrows will then fire out in a circle from where it lands. Cannot support skills that already fire arrows into the air, channelled skills, or skills that create Minions.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Projectile Damage",
+      "values": []
     }
   ]
 }

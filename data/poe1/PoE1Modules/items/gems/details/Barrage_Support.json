@@ -1,7 +1,17 @@
 {
   "name": "Barrage Support",
   "slug": "Barrage_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Bow, Attack, Support, Projectile",
+    "Icon": "N",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "150%",
+    "Requires Level": "38",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "38",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemBarrage"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,87 +335,21 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports projectile attack skills that use bows or wands. Cannot support triggered skills, channelled skills, or skills that create Minions.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills deal (62–68)% less Damage",
-      "values": [
-        "(62–68)"
-      ]
-    },
-    {
-      "text": "Supported Skills Fire Projectiles sequentially",
-      "values": []
-    },
-    {
-      "text": "Supported Skills fire 3 additional Projectiles",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Supported Skills have 5% more Attack Time per Projectile",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Supported Skills have 5% more Trap and Mine Throwing Time per Projectile",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Supported Skills can only be used with Bows or Wands",
-      "values": []
-    },
-    {
-      "text": "Supported Skills deal (62–68)% less Damage",
-      "values": [
-        "(62–68)"
-      ]
-    },
-    {
-      "text": "Supported Skills Fire Projectiles sequentially",
-      "values": []
-    },
-    {
-      "text": "Supported Skills fire 3 additional Projectiles",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Supported Skills have 5% more Attack Time per Projectile",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Supported Skills have 5% more Trap and Mine Throwing Time per Projectile",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Supported Skills can only be used with Bows or Wands",
-      "values": []
-    }
+  "stats": [
+    "Supported Skills deal (68-62)% less Damage",
+    "Supported Skills Fire Projectiles sequentially",
+    "Supported Skills fire 3 additional Projectiles",
+    "Supported Skills have 5% more Attack Time per Projectile",
+    "Supported Skills have 5% more Trap and Mine Throwing Time per Projectile",
+    "Supported Skills can only be used with Bows or Wands"
   ],
+  "gemDescription": "Supports projectile attack skills that use bows or wands. Cannot support triggered skills, channelled skills, or skills that create Minions.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Projectile Damage",
+      "values": []
     }
   ]
 }

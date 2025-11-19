@@ -1,7 +1,20 @@
 {
   "name": "Infernal Cry",
   "slug": "Infernal_Cry",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Warcry, AoE, Duration, Fire, Attack, Trigger, Melee",
+    "Level": "(1-20)",
+    "Cost": "(15-19) Mana",
+    "Cooldown Time": "8.00 sec",
+    "Can Store": "1 Use(s)",
+    "Use Time": "0.80 sec",
+    "AoE Radius": "60",
+    "Requires Level": "24",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "24",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemAbyssalCry"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -245,188 +258,27 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Base duration is (2.50-3.40) seconds",
+    "(0-38)% increased Warcry Speed",
+    "Damage cannot be Reflected",
+    "Base Debuff Duration is (2.50-3.40) seconds",
+    "Counts total Power of Enemies in Range",
+    "Explosion deals Base Fire Damage equal to 8% of the Monster's maximum Life",
+    "Buff grants gain 5% of Physical Damage as",
+    "Extra Fire Damage per 5 power, counting a maximum of 25 Power",
+    "Exerts the next 6 Melee Attacks you perform",
+    "Exerted Attacks Trigger Combust the first time they deal a Melee Hit",
+    "60% of Physical Damage Converted to Fire Damage",
+    "This Skill is Triggered by Attacks Exerted by Infernal Cry"
+  ],
   "gemDescription": "Performs a warcry, taunting nearby enemies to attack the user and exerting subsequent attacks. The user and nearby allies gain a buff that grants a portion of their physical damage as extra fire damage. In addition to being taunted, enemies are inflicted with a secondary debuff causing them to explode when they die, dealing fire damage in an area.",
-  "explicitMods": [
-    {
-      "text": "Base duration is (2.5–3.4) seconds",
-      "values": [
-        "(2.5–3.4)"
-      ]
-    },
-    {
-      "text": "(0–38)% increased Warcry Speed",
-      "values": [
-        "(0–38)"
-      ]
-    },
-    {
-      "text": "Damage cannot be Reflected",
-      "values": []
-    },
-    {
-      "text": "Explosion deals Base Fire Damage equal to 8% of the Monster's maximum Life",
-      "values": [
-        "8"
-      ]
-    },
-    {
-      "text": "Buff grants gain 5% of Physical Damage asExtra Fire Damage per 5 power, counting a maximum of 25 Power",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Exerts the next 6 Melee Attacks you perform",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Exerted Attacks Trigger Combust the first time they deal a Melee Hit",
-      "values": []
-    },
-    {
-      "text": "Counts total Power of Enemies in Range",
-      "values": []
-    },
-    {
-      "text": "Base Debuff Duration is (2.5–3.4) seconds",
-      "values": [
-        "(2.5–3.4)"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "This Skill is Triggered by Attacks Exerted by Infernal Cry",
-      "values": []
-    },
-    {
-      "text": "Base duration is (2.5–3.4) seconds",
-      "values": [
-        "(2.5–3.4)"
-      ]
-    },
-    {
-      "text": "(0–38)% increased Warcry Speed",
-      "values": [
-        "(0–38)"
-      ]
-    },
-    {
-      "text": "Damage cannot be Reflected",
-      "values": []
-    },
-    {
-      "text": "Explosion deals Base Fire Damage equal to 8% of the Monster's maximum Life",
-      "values": [
-        "8"
-      ]
-    },
-    {
-      "text": "Buff grants gain 5% of Physical Damage asExtra Fire Damage per 5 power, counting a maximum of 25 Power",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Exerts the next 6 Melee Attacks you perform",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Exerted Attacks Trigger Combust the first time they deal a Melee Hit",
-      "values": []
-    },
-    {
-      "text": "Counts total Power of Enemies in Range",
-      "values": []
-    },
-    {
-      "text": "Base Debuff Duration is (2.5–3.4) seconds",
-      "values": [
-        "(2.5–3.4)"
-      ]
-    },
-    {
-      "text": "base deal no attack damage [1]",
-      "values": []
-    },
-    {
-      "text": "base deal no spell damage [1]",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "cannot cancel skill before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "display skill deals secondary damage [1]",
-      "values": []
-    },
-    {
-      "text": "60% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "This Skill is Triggered by Attacks Exerted by Infernal Cry",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "physical_damage_%_to_add_as_fire",
-      "values": []
-    },
-    {
-      "text": "60% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "This Skill is Triggered by Attacks Exerted by Infernal Cry",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Vaal Attacks, Channelling Attacks, Retaliation Attacks, and Attacks which Repeat cannot be Exerted)",
-    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)",
-    "(Vaal Attacks, Channelling Attacks, Retaliation Attacks, and Attacks which Repeat cannot be Exerted)",
-    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)",
-    "(Vaal Attacks, Channelling Attacks, Retaliation Attacks, and Attacks which Repeat cannot be Exerted)",
-    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–40)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "(0–40)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–40)"
-      ]
+      "text": "(2-40)% increased Cooldown Recovery Rate",
+      "values": []
     }
   ]
 }

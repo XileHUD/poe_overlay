@@ -1,7 +1,20 @@
 {
   "name": "Bladefall",
   "slug": "Bladefall",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Physical, Duration",
+    "Level": "(1-20)",
+    "Cost": "(12-23) Mana",
+    "Cast Time": "0.70 sec",
+    "Critical Strike Chance": "10.00%",
+    "Effectiveness of Added Damage": "140%",
+    "AoE Radius": "12",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "28",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemBladefall"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,89 +378,20 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Deals (43-595) to (65-893) Physical Damage",
+    "Base duration is 6.00 seconds",
+    "Leaves a Lingering Blade in the ground for every Volley",
+    "5 Volleys",
+    "Maximum 40 Lingering Blades can be left in the ground at a time"
+  ],
   "gemDescription": "Ethereal weapons rain from the sky, dealing damage to enemies in a sequence of volleys. Enemies can be hit multiple times where these overlap.",
-  "explicitMods": [
-    {
-      "text": "Deals (43–595) to (65–893) Physical Damage",
-      "values": [
-        "(43–595)",
-        "(65–893)"
-      ]
-    },
-    {
-      "text": "Base duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Leaves a Lingering Blade in the ground for every Volley",
-      "values": []
-    },
-    {
-      "text": "5 Volleys",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Maximum 40 Lingering Blades can be left in the ground at a time",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "Deals (43–595) to (65–893) Physical Damage",
-      "values": [
-        "(43–595)",
-        "(65–893)"
-      ]
-    },
-    {
-      "text": "Base duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Leaves a Lingering Blade in the ground for every Volley",
-      "values": []
-    },
-    {
-      "text": "5 Volleys",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Maximum 40 Lingering Blades can be left in the ground at a time",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Lingering Blades remain on the ground for a duration and can be used by specific skills. If Animated, they count as Daggers)",
-    "(Lingering Blades remain on the ground for a duration and can be used by specific skills. If Animated, they count as Daggers)",
-    "(Lingering Blades remain on the ground for a duration and can be used by specific skills. If Animated, they count as Daggers)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–1) Volley",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "+(0–1) Volley",
-      "values": [
-        "+(0–1)"
-      ]
+      "text": "+(0.05-1) Volleys",
+      "values": []
     }
   ]
 }

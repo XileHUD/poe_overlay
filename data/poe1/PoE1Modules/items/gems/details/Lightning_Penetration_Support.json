@@ -1,7 +1,17 @@
 {
   "name": "Lightning Penetration Support",
   "slug": "Lightning_Penetration_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Lightning, Support",
+    "Icon": "V",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "31",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "31",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemLightningPenetration"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,35 +335,16 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports any skill that hits enemies, making those hits penetrate enemy lightning resistance.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills Penetrate (20–34)% Lightning Resistance",
-      "values": [
-        "(20–34)"
-      ]
-    },
-    {
-      "text": "Supported Skills Penetrate (20–34)% Lightning Resistance",
-      "values": [
-        "(20–34)"
-      ]
-    }
+  "stats": [
+    "Supported Skills Penetrate (20-34)% Lightning Resistance"
   ],
+  "gemDescription": "Supports any skill that hits enemies, making those hits penetrate enemy lightning resistance.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Lightning Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Lightning Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Lightning Damage",
+      "values": []
     }
   ]
 }

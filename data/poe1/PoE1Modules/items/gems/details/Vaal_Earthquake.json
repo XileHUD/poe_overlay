@@ -1,7 +1,23 @@
 {
   "name": "Vaal Earthquake",
   "slug": "Vaal_Earthquake",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, AoE, Duration, Vaal, Slam, Melee",
+    "Level": "(1-20)",
+    "Souls Per Use": "30",
+    "Can Store": "1 Use(s)",
+    "Soul Gain Prevention": "9 sec",
+    "Attack Speed": "75% of base",
+    "Attack Damage": "(100-172)% of base",
+    "Effectiveness of Added Damage": "(100-172)%",
+    "Requires Level": "28",
+    "Info 10": "Corrupted",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Vaal Earthquake can drop from the Vaal Vessels found in Vaal side areas .",
+    "Drop level": "28",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVaalEarthquake"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -245,125 +261,20 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Base duration is 1.00 seconds",
+    "Base secondary duration is 12.00 seconds",
+    "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+    "Aftershock deals (350-407)% more Damage with Hits and Ailments",
+    "Ongoing effect ends after 9 Aftershocks"
+  ],
   "gemDescription": "Smashes the ground, dealing damage in an area and cracking the earth. The crack will erupt in a powerful aftershock after a short duration. After using this skill, your steps will deal damage around you, cracking the earth if the previous cracks have erupted. This effect ends after a secondary duration, or after a maximum number of aftershocks. Requires an Axe, Mace, Sceptre, Staff or Unarmed.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 1 seconds",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Base secondary duration is 12 seconds",
-      "values": [
-        "12"
-      ]
-    },
-    {
-      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "Aftershock deals (350–407)% more Damage with Hits and Ailments",
-      "values": [
-        "(350–407)"
-      ]
-    },
-    {
-      "text": "Ongoing effect ends after 9 Aftershocks",
-      "values": [
-        "9"
-      ]
-    },
-    {
-      "text": "Base duration is 1 seconds",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Base secondary duration is 12 seconds",
-      "values": [
-        "12"
-      ]
-    },
-    {
-      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "Aftershock deals (350–407)% more Damage with Hits and Ailments",
-      "values": [
-        "(350–407)"
-      ]
-    },
-    {
-      "text": "Ongoing effect ends after 9 Aftershocks",
-      "values": [
-        "9"
-      ]
-    },
-    {
-      "text": "cannot cancel skill before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "force lite skill effects [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "is player earthquake [1]",
-      "values": []
-    },
-    {
-      "text": "skill cannot be stunned before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "Base duration is 1 seconds",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "100% of Physical Damage Converted to Cold Damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Aftershock deals +150% more Damage with Hits and Ailments",
-      "values": [
-        "+150"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Aftershock deals +(0–30)% more Damage with Hits and Ailments",
-      "values": [
-        "+(0–30)"
-      ]
-    },
-    {
-      "text": "Aftershock deals +(0–30)% more Damage with Hits and Ailments",
-      "values": [
-        "+(0–30)"
-      ]
+      "text": "Aftershock deals +(1.5-30)% more Damage with Hits and Ailments",
+      "values": []
     }
   ]
 }

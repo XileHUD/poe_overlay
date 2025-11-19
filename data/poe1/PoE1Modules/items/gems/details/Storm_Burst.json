@@ -1,7 +1,19 @@
 {
   "name": "Storm Burst",
   "slug": "Storm_Burst",
-  "metadata": {},
+  "metadata": {
+    "Tags": "AoE, Spell, Lightning, Channelling, Duration, Physical",
+    "Level": "(1-20)",
+    "Cost": "(2-4) Mana",
+    "Cast Time": "0.20 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "35%",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "12",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemStormBurst"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -446,118 +458,20 @@
   ],
   "description": "Cast Speed: Cast speed modifiers affect the rate at which new orbs are created, but does not affect the jump interval (0.4s).",
   "stats": [
-    "Cast Speed: Cast speed modifiers affect the rate at which new orbs are created, but does not affect the jump interval (0.4s)."
+    "Deals (6-168) to (8-252) Physical Damage",
+    "50% of Physical Damage Converted to Lightning Damage",
+    "Base duration is 1.20 seconds",
+    "+(0-0.4) metres to radius",
+    "Orbs jump every 0.4 seconds",
+    "Exploding Orbs deal 75% of Skill Damage for each 0.4 seconds of remaining Duration"
   ],
   "gemDescription": "Unleash orbs of energy while you channel that repeatedly jump towards the targeted location until their duration expires, dealing damage in small area after each jump. When you stop channelling, all remaining orbs explode, dealing higher damage in a larger area.",
-  "explicitMods": [
-    {
-      "text": "Deals (6–168) to (8–252) Physical Damage",
-      "values": [
-        "(6–168)",
-        "(8–252)"
-      ]
-    },
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Base duration is 1.2 seconds",
-      "values": [
-        "1.2"
-      ]
-    },
-    {
-      "text": "+(0–0.4) metres to radius",
-      "values": [
-        "+(0–0.4)"
-      ]
-    },
-    {
-      "text": "Orbs jump every 0.4 seconds",
-      "values": [
-        "0.4"
-      ]
-    },
-    {
-      "text": "Exploding Orbs deal 75% of Skill Damage for each 0.4 seconds of remaining Duration",
-      "values": [
-        "75"
-      ]
-    },
-    {
-      "text": "Deals (6–168) to (8–252) Physical Damage",
-      "values": [
-        "(6–168)",
-        "(8–252)"
-      ]
-    },
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Base duration is 1.2 seconds",
-      "values": [
-        "1.2"
-      ]
-    },
-    {
-      "text": "+(0–0.4) metres to radius",
-      "values": [
-        "+(0–0.4)"
-      ]
-    },
-    {
-      "text": "Orbs jump every 0.4 seconds",
-      "values": [
-        "0.4"
-      ]
-    },
-    {
-      "text": "Exploding Orbs deal 75% of Skill Damage for each 0.4 seconds of remaining Duration",
-      "values": [
-        "75"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "shock art variation [2]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    },
-    {
-      "text": "visual hit effect elemental is holy [1]",
-      "values": []
-    },
-    {
-      "text": "storm_burst_orb_count",
-      "values": []
-    }
-  ],
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base duration is (0–0.4) seconds",
-      "values": [
-        "(0–0.4)"
-      ]
-    },
-    {
-      "text": "Base duration is (0–0.4) seconds",
-      "values": [
-        "(0–0.4)"
-      ]
+      "text": "Base duration is (0.02-0.4) seconds",
+      "values": []
     }
   ]
 }

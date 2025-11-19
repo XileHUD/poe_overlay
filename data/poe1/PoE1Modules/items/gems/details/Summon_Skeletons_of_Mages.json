@@ -1,7 +1,17 @@
 {
   "name": "Summon Skeletons of Mages",
   "slug": "Summon_Skeletons_of_Mages",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Minion, Duration, Prismatic",
+    "Level": "(1-20)",
+    "Cost": "(5-16) Mana",
+    "Cast Time": "0.50 sec",
+    "Requires Level": "10",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "10",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,99 +375,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Summon Skeleton Mage minions of random elemental types at the targeted location. They cast projectile spells based on their element, and die after a duration.",
-  "explicitMods": [
-    {
-      "text": "Maximum (5–7) Summoned Skeletons",
-      "values": [
-        "(5–7)"
-      ]
-    },
-    {
-      "text": "Base duration is 20 seconds",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "Summons (2–3) Skeleton Mages",
-      "values": [
-        "(2–3)"
-      ]
-    },
-    {
-      "text": "Maximum (5–7) Summoned Skeletons",
-      "values": [
-        "(5–7)"
-      ]
-    },
-    {
-      "text": "Base duration is 20 seconds",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "Summons (2–3) Skeleton Mages",
-      "values": [
-        "(2–3)"
-      ]
-    },
-    {
-      "text": "base display minion actor level [10,70]",
-      "values": []
-    },
-    {
-      "text": "display minion monster type [2]",
-      "values": []
-    },
-    {
-      "text": "Maximum (5–9) Summoned Skeletons",
-      "values": [
-        "(5–9)"
-      ]
-    },
-    {
-      "text": "Base duration is 20 seconds",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "Summons (2–5) Skeleton Mages",
-      "values": [
-        "(2–5)"
-      ]
-    },
-    {
-      "text": "base display minion actor level [10,100]",
-      "values": []
-    },
-    {
-      "text": "display minion monster type [2]",
-      "values": []
-    }
+  "stats": [
+    "Maximum (5-7) Summoned Skeletons",
+    "Base duration is 20.00 seconds",
+    "Summons (2-3) Skeleton Mages"
   ],
+  "gemDescription": "Summon Skeleton Mage minions of random elemental types at the targeted location. They cast projectile spells based on their element, and die after a duration.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–1) to Maximum Summoned Skeletons",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "+(0–1) to Maximum Summoned Skeletons",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "+(0–1) to Maximum Summoned Skeletons",
-      "values": [
-        "+(0–1)"
-      ]
+      "text": "+(0.05-1) to Maximum Summoned Skeletons",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,17 @@
 {
   "name": "Explosive Concoction of Destruction",
   "slug": "Explosive_Concoction_of_Destruction",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Critical, Attack, AoE, Fire, Cold, Lightning, Projectile",
+    "Level": "(1-20)",
+    "Cost": "(6-9) Mana",
+    "Attack Speed": "115% of base",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -445,204 +455,23 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Throws a bottle that explodes to deal unarmed attack damage in an area. Can consume charges from your Ruby, Sapphire, and Topaz flasks to add further damage. Requires an empty main hand, and no off-hand weapon.",
-  "explicitMods": [
-    {
-      "text": "(58–714) to (87–1071) Added Fire Damage",
-      "values": [
-        "(58–714)",
-        "(87–1071)"
-      ]
-    },
-    {
-      "text": "+10% to Critical Strike Chance",
-      "values": [
-        "+10"
-      ]
-    },
-    {
-      "text": "Base radius is 1.8 metres",
-      "values": [
-        "1.8"
-      ]
-    },
-    {
-      "text": "Can consume Charges from Ruby, Sapphire, and Topaz FlasksConsumes 1 Charge per Projectile Fired from 1 Flask of each valid type, if possible",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Deals (50–625) to (76–937) Added Cold Damage if Charges were consumed from a Sapphire Flask",
-      "values": [
-        "(50–625)",
-        "(76–937)"
-      ]
-    },
-    {
-      "text": "Deals (11–134) to (126–1562) Added Lightning Damage if Charges were consumed from a Topaz Flask",
-      "values": [
-        "(11–134)",
-        "(126–1562)"
-      ]
-    },
-    {
-      "text": "+(120–196)% to Critical Strike Multiplier if Charges were consumed from a Ruby Flask",
-      "values": [
-        "+(120–196)"
-      ]
-    },
-    {
-      "text": "(58–714) to (87–1071) Added Fire Damage",
-      "values": [
-        "(58–714)",
-        "(87–1071)"
-      ]
-    },
-    {
-      "text": "+10% to Critical Strike Chance",
-      "values": [
-        "+10"
-      ]
-    },
-    {
-      "text": "Base radius is 1.8 metres",
-      "values": [
-        "1.8"
-      ]
-    },
-    {
-      "text": "Can consume Charges from Ruby, Sapphire, and Topaz FlasksConsumes 1 Charge per Projectile Fired from 1 Flask of each valid type, if possible",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Deals (50–625) to (76–937) Added Cold Damage if Charges were consumed from a Sapphire Flask",
-      "values": [
-        "(50–625)",
-        "(76–937)"
-      ]
-    },
-    {
-      "text": "Deals (11–134) to (126–1562) Added Lightning Damage if Charges were consumed from a Topaz Flask",
-      "values": [
-        "(11–134)",
-        "(126–1562)"
-      ]
-    },
-    {
-      "text": "+(120–196)% to Critical Strike Multiplier if Charges were consumed from a Ruby Flask",
-      "values": [
-        "+(120–196)"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "explosive concoction attach flask visual buff [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "projectile behaviour only explode [1]",
-      "values": []
-    },
-    {
-      "text": "(58–3474) to (87–5211) Added Fire Damage",
-      "values": [
-        "(58–3474)",
-        "(87–5211)"
-      ]
-    },
-    {
-      "text": "+10% to Critical Strike Chance",
-      "values": [
-        "+10"
-      ]
-    },
-    {
-      "text": "Base radius is 1.8 metres",
-      "values": [
-        "1.8"
-      ]
-    },
-    {
-      "text": "Can consume Charges from Ruby, Sapphire, and Topaz FlasksConsumes 1 Charge per Projectile Fired from 1 Flask of each valid type, if possible",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Deals (50–3040) to (76–4560) Added Cold Damage if Charges were consumed from a Sapphire Flask",
-      "values": [
-        "(50–3040)",
-        "(76–4560)"
-      ]
-    },
-    {
-      "text": "Deals (11–651) to (126–7599) Added Lightning Damage if Charges were consumed from a Topaz Flask",
-      "values": [
-        "(11–651)",
-        "(126–7599)"
-      ]
-    },
-    {
-      "text": "+(120–276)% to Critical Strike Multiplier if Charges were consumed from a Ruby Flask",
-      "values": [
-        "+(120–276)"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "explosive concoction attach flask visual buff [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "projectile behaviour only explode [1]",
-      "values": []
-    }
+  "stats": [
+    "(58-714) to (87-1071) Added Fire Damage",
+    "+10% to Critical Strike Chance",
+    "Base radius is 1.8 metres",
+    "Can consume Charges from Ruby, Sapphire, and Topaz Flasks",
+    "Consumes 1 Charge per Projectile Fired from 1 Flask of each valid type, if possible",
+    "Deals (50-625) to (76-937) Added Cold Damage if Charges were consumed from a Sapphire Flask",
+    "Deals (11-134) to (126-1562) Added Lightning Damage if Charges were consumed from a Topaz Flask",
+    "+(120-196)% to Critical Strike Multiplier if Charges were consumed from a Ruby Flask"
   ],
+  "gemDescription": "Throws a bottle that explodes to deal unarmed attack damage in an area. Can consume charges from your Ruby, Sapphire, and Topaz flasks to add further damage. Requires an empty main hand, and no off-hand weapon.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–15)% reduced Flask Charges used",
-      "values": [
-        "(0–15)"
-      ]
-    },
-    {
-      "text": "(0–15)% reduced Flask Charges used",
-      "values": [
-        "(0–15)"
-      ]
-    },
-    {
-      "text": "(0–15)% reduced Flask Charges used",
-      "values": [
-        "(0–15)"
-      ]
+      "text": "(0.75-15)% reduced Flask Charges used",
+      "values": []
     }
   ]
 }

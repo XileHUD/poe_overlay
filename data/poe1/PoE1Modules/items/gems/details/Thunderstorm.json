@@ -1,7 +1,18 @@
 {
   "name": "Thunderstorm",
   "slug": "Thunderstorm",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, AoE, Duration, Lightning, Bow, Projectile, Trigger",
+    "Level": "(1-20)",
+    "Cost": "(7-10) Mana",
+    "Attack Damage": "(112-125)% of base",
+    "Effectiveness of Added Damage": "(112-125)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "28",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemThunderstorm"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -245,293 +256,32 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Fires an arrow into the air to land at a targeted location. On impact, deals area damage and creates a thunderstorm which blinds enemies within it. Entering the thunderstorm will cause it to gain stages, and leaving it will cause it to dissipate. Leaving the storm while it is at maximum stages will cause it to explode, dealing damage and triggering Thunderburst. You must use this skill yourself, it cannot be used by Totems, Traps, Mines, or other objects that use skills for you.",
-  "explicitMods": [
-    {
-      "text": "60% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Base duration is 10 seconds",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Fires 1 Arrow",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Modifiers to number of Projectiles do not apply to this Skill",
-      "values": []
-    },
-    {
-      "text": "Base radius is (1.8–2.3) metres",
-      "values": [
-        "(1.8–2.3)"
-      ]
-    },
-    {
-      "text": "Maximum 3 Thunderstorms",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Thunderstorm gains one stage per 0.25 seconds you are in it, up to a maximum of 4",
-      "values": [
-        "0.25",
-        "4"
-      ]
-    },
-    {
-      "text": "Thunderstorm has 30% more Area of Effect per stage",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "Thunderstorm dissipates if you leave it before reaching maximum Stages, or 1.5 seconds after reaching maximum Stages",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "Explosion deals 300% more Damage",
-      "values": [
-        "300"
-      ]
-    },
-    {
-      "text": "Projectiles Pierce all Targets",
-      "values": []
-    },
-    {
-      "text": "60% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Base duration is 3 seconds",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Fires 5 Projectiles",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Fires Projectiles in a circle",
-      "values": []
-    },
-    {
-      "text": "40% more Area Damage",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "Base radius is 1.5 metres",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Base duration is 10 seconds",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Fires 1 Arrow",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Modifiers to number of Projectiles do not apply to this Skill",
-      "values": []
-    },
-    {
-      "text": "Base radius is (1.8–2.3) metres",
-      "values": [
-        "(1.8–2.3)"
-      ]
-    },
-    {
-      "text": "Maximum 3 Thunderstorms",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Thunderstorm gains one stage per 0.25 seconds you are in it, up to a maximum of 4",
-      "values": [
-        "0.25",
-        "4"
-      ]
-    },
-    {
-      "text": "Thunderstorm has 30% more Area of Effect per stage",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "Thunderstorm dissipates if you leave it before reaching maximum Stages, or 1.5 seconds after reaching maximum Stages",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "Explosion deals 300% more Damage",
-      "values": [
-        "300"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    },
-    {
-      "text": "Projectiles Pierce all Targets",
-      "values": []
-    },
-    {
-      "text": "60% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Base duration is 3 seconds",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Fires 5 Projectiles",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Fires Projectiles in a circle",
-      "values": []
-    },
-    {
-      "text": "40% more Area Damage",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "Base radius is 1.5 metres",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "triggered by windstorm [1]",
-      "values": []
-    },
-    {
-      "text": "Projectiles Pierce all Targets",
-      "values": []
-    },
-    {
-      "text": "60% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Base duration is 3 seconds",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Fires 5 Projectiles",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Fires Projectiles in a circle",
-      "values": []
-    },
-    {
-      "text": "40% more Area Damage",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "Base radius is 1.5 metres",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "triggered by windstorm [1]",
-      "values": []
-    }
+  "stats": [
+    "60% of Physical Damage Converted to Lightning Damage",
+    "Base duration is 10.00 seconds",
+    "Fires 1 Arrow",
+    "Modifiers to number of Projectiles do not apply to this Skill",
+    "Base radius is (1.8-2.3) metres",
+    "Maximum 3 Thunderstorms",
+    "Thunderstorm gains one stage per 0.25 seconds you are in it, up to a maximum of 4",
+    "Thunderstorm has 30% more Area of Effect per stage",
+    "Thunderstorm dissipates if you leave it before reaching maximum Stages, or 1.5 seconds after reaching maximum Stages",
+    "Explosion deals 300% more Damage",
+    "Projectiles Pierce all Targets",
+    "60% of Physical Damage Converted to Lightning Damage",
+    "Base duration is 3.00 seconds",
+    "Fires 5 Projectiles",
+    "Fires Projectiles in a circle",
+    "40% more Area Damage",
+    "Base radius is 1.5 metres"
   ],
+  "gemDescription": "Fires an arrow into the air to land at a targeted location. On impact, deals area damage and creates a thunderstorm which blinds enemies within it. Entering the thunderstorm will cause it to gain stages, and leaving it will cause it to dissipate. Leaving the storm while it is at maximum stages will cause it to explode, dealing damage and triggering Thunderburst. You must use this skill yourself, it cannot be used by Totems, Traps, Mines, or other objects that use skills for you.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Fires +(0–2) Projectiles",
-      "values": [
-        "+(0–2)"
-      ]
-    },
-    {
-      "text": "Fires +(0–2) Projectiles",
-      "values": [
-        "+(0–2)"
-      ]
-    },
-    {
-      "text": "Fires +(0–2) Projectiles",
-      "values": [
-        "+(0–2)"
-      ]
+      "text": "Fires +(0.1-2) Projectiles",
+      "values": []
     }
   ]
 }

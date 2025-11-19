@@ -1,7 +1,19 @@
 {
   "name": "Lightning Conduit of the Heavens",
   "slug": "Lightning_Conduit_of_the_Heavens",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Lightning",
+    "Level": "(1-20)",
+    "Cost": "(12-23) Mana",
+    "Cast Time": "0.70 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "270%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,104 +417,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Lightning strikes a number of enemies around a targeted location. Cannot be supported by Spell Cascade.",
-  "explicitMods": [
-    {
-      "text": "Deals (63–749) to (189–2248) Lightning Damage",
-      "values": [
-        "(63–749)",
-        "(189–2248)"
-      ]
-    },
-    {
-      "text": "Shocks Enemies as though dealing (20–39)% more Damage",
-      "values": [
-        "(20–39)"
-      ]
-    },
-    {
-      "text": "Base radius is 4 metres",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Hits up to (6–12) Enemies",
-      "values": [
-        "(6–12)"
-      ]
-    },
-    {
-      "text": "Deals (63–749) to (189–2248) Lightning Damage",
-      "values": [
-        "(63–749)",
-        "(189–2248)"
-      ]
-    },
-    {
-      "text": "Shocks Enemies as though dealing (20–39)% more Damage",
-      "values": [
-        "(20–39)"
-      ]
-    },
-    {
-      "text": "Base radius is 4 metres",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Hits up to (6–12) Enemies",
-      "values": [
-        "(6–12)"
-      ]
-    },
-    {
-      "text": "Deals (63–3543) to (189–10628) Lightning Damage",
-      "values": [
-        "(63–3543)",
-        "(189–10628)"
-      ]
-    },
-    {
-      "text": "Shocks Enemies as though dealing (20–59)% more Damage",
-      "values": [
-        "(20–59)"
-      ]
-    },
-    {
-      "text": "Base radius is 4 metres",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Hits up to (6–17) Enemies",
-      "values": [
-        "(6–17)"
-      ]
-    }
+  "stats": [
+    "Deals (63-749) to (189-2248) Lightning Damage",
+    "Base radius is 4 metres",
+    "Shocks Enemies as though dealing (20-39)% more Damage",
+    "Hits up to (6-12) Enemies"
   ],
+  "gemDescription": "Lightning strikes a number of enemies around a targeted location. Cannot be supported by Spell Cascade.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Hits up to (0–4) Enemies",
-      "values": [
-        "(0–4)"
-      ]
-    },
-    {
-      "text": "Hits up to (0–4) Enemies",
-      "values": [
-        "(0–4)"
-      ]
-    },
-    {
-      "text": "Hits up to (0–4) Enemies",
-      "values": [
-        "(0–4)"
-      ]
+      "text": "Hits up to (0.2-4) Enemies",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,19 @@
 {
   "name": "Frost Wall",
   "slug": "Frost_Wall",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Duration, Cold",
+    "Level": "(1-20)",
+    "Cost": "(9-33) Mana",
+    "Cooldown Time": "3.00 sec",
+    "Can Store": "3 Use(s)",
+    "Cast Time": "0.50 sec",
+    "Requires Level": "4",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "5",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemFrostWall"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -445,77 +457,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Creates a wall of ice which holds back enemies. Targets under the wall are damaged and pushed back.",
-  "explicitMods": [
-    {
-      "text": "Deals (8–462) to (12–693) Cold Damage",
-      "values": [
-        "(8–462)",
-        "(12–693)"
-      ]
-    },
-    {
-      "text": "Base duration is (3–4.9) seconds",
-      "values": [
-        "(3–4.9)"
-      ]
-    },
-    {
-      "text": "0.15 seconds between appearance of Wall sections",
-      "values": [
-        "0.15"
-      ]
-    },
-    {
-      "text": "Wall will be (2.8–5.6) meters long",
-      "values": [
-        "(2.8–5.6)"
-      ]
-    },
-    {
-      "text": "Deals (8–462) to (12–693) Cold Damage",
-      "values": [
-        "(8–462)",
-        "(12–693)"
-      ]
-    },
-    {
-      "text": "Base duration is (3–4.9) seconds",
-      "values": [
-        "(3–4.9)"
-      ]
-    },
-    {
-      "text": "0.15 seconds between appearance of Wall sections",
-      "values": [
-        "0.15"
-      ]
-    },
-    {
-      "text": "Wall will be (2.8–5.6) meters long",
-      "values": [
-        "(2.8–5.6)"
-      ]
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (8-462) to (12-693) Cold Damage",
+    "Base duration is (3.00-4.90) seconds",
+    "0.15 seconds between appearance of Wall sections",
+    "Wall will be (2.8-5.6) meters long"
   ],
+  "gemDescription": "Creates a wall of ice which holds back enemies. Targets under the wall are damaged and pushed back.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–40)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "(0–40)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–40)"
-      ]
+      "text": "(2-40)% increased Cooldown Recovery Rate",
+      "values": []
     }
   ]
 }

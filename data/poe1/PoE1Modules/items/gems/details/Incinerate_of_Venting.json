@@ -1,7 +1,19 @@
 {
   "name": "Incinerate of Venting",
   "slug": "Incinerate_of_Venting",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Fire, Channelling, AoE",
+    "Level": "(1-20)",
+    "Cost": "(2-4) Mana",
+    "Cast Time": "0.17 sec",
+    "Critical Strike Chance": "5.00%",
+    "Effectiveness of Added Damage": "55%",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "12",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,146 +377,20 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Deals (3-228) to (5-342) Fire Damage",
+    "25% more Damage with Hits and Ailments for each stage",
+    "100% increased angle per stage, up to 300%",
+    "15 maximum Stages",
+    "+(0.4-0.5) metres to radius per stage, up to a maximum of +(2.4-3) metres"
+  ],
   "gemDescription": "Continuously launches a torrent of fire from your hand, repeatedly damaging enemies. As you channel this spell longer, the flames spread wider close to you and spread longer directly in front of you.",
-  "explicitMods": [
-    {
-      "text": "Deals (3–228) to (5–342) Fire Damage",
-      "values": [
-        "(3–228)",
-        "(5–342)"
-      ]
-    },
-    {
-      "text": "25% more Damage with Hits and Ailments for each stage",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "100% increased angle per stage, up to 300%",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "15 maximum Stages",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "+(0.4–0.5) metres to radius per stage, up to a maximum of +(2.4–3) metres",
-      "values": [
-        "+(0.4–0.5)",
-        "+(2.4–3)"
-      ]
-    },
-    {
-      "text": "Deals (3–228) to (5–342) Fire Damage",
-      "values": [
-        "(3–228)",
-        "(5–342)"
-      ]
-    },
-    {
-      "text": "25% more Damage with Hits and Ailments for each stage",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "100% increased angle per stage, up to 300%",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "15 maximum Stages",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "+(0.4–0.5) metres to radius per stage, up to a maximum of +(2.4–3) metres",
-      "values": [
-        "+(0.4–0.5)",
-        "+(2.4–3)"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    },
-    {
-      "text": "Deals (3–1406) to (5–2109) Fire Damage",
-      "values": [
-        "(3–1406)",
-        "(5–2109)"
-      ]
-    },
-    {
-      "text": "25% more Damage with Hits and Ailments for each stage",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "100% increased angle per stage, up to 300%",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "15 maximum Stages",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "+(0.4–0.6) metres to radius per stage, up to a maximum of +(2.4–3.5) metres",
-      "values": [
-        "+(0.4–0.6)",
-        "+(2.4–3.5)"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–3) to maximum Stages",
-      "values": [
-        "+(0–3)"
-      ]
-    },
-    {
-      "text": "+(0–3) to maximum Stages",
-      "values": [
-        "+(0–3)"
-      ]
-    },
-    {
-      "text": "+(0–3) to maximum Stages",
-      "values": [
-        "+(0–3)"
-      ]
+      "text": "+(0.15-3) to maximum Stages",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,21 @@
 {
   "name": "Divine Retribution",
   "slug": "Divine_Retribution",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Lightning, Physical, Retaliation",
+    "Level": "(1-20)",
+    "Cost": "(9-23) Mana",
+    "Cooldown Time": "5.00 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "0.70 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "390%",
+    "Requires Level": "16",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "16",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemDivineRetribution"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -445,113 +459,22 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Retaliate against a blocked hit with a surge of divine power, causing multiple waves of lightning bursts to expand outward from a targeted location. This skill cannot be Triggered or used by Totems, Traps, or Mines.",
-  "explicitMods": [
-    {
-      "text": "Deals (57–1745) to (86–2617) Physical Damage",
-      "values": [
-        "(57–1745)",
-        "(86–2617)"
-      ]
-    },
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Cannot be used by defaultBecomes Usable once for 2 seconds when you Block a Hit",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Burst Base radius is (1.2–1.6) metres",
-      "values": [
-        "(1.2–1.6)"
-      ]
-    },
-    {
-      "text": "Each wave has 6 Bursts",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Causes 4 Waves",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Deals (57–1745) to (86–2617) Physical Damage",
-      "values": [
-        "(57–1745)",
-        "(86–2617)"
-      ]
-    },
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Cannot be used by defaultBecomes Usable once for 2 seconds when you Block a Hit",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Burst Base radius is (1.2–1.6) metres",
-      "values": [
-        "(1.2–1.6)"
-      ]
-    },
-    {
-      "text": "Each wave has 6 Bursts",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Causes 4 Waves",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "cannot cancel skill before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill cannot be stunned before contact point [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (57-1745) to (86-2617) Physical Damage",
+    "50% of Physical Damage Converted to Lightning Damage",
+    "Cannot be used by default",
+    "Becomes Usable once for 2 seconds when you Block a Hit",
+    "Burst Base radius is (1.2-1.6) metres",
+    "Each wave has 6 Bursts",
+    "Causes 4 Waves"
   ],
+  "gemDescription": "Retaliate against a blocked hit with a surge of divine power, causing multiple waves of lightning bursts to expand outward from a targeted location. This skill cannot be Triggered or used by Totems, Traps, or Mines.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–20)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "(1-20)% increased Cooldown Recovery Rate",
+      "values": []
     }
   ]
 }

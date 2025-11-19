@@ -1,7 +1,19 @@
 {
   "name": "Manaforged Arrows Support",
   "slug": "Manaforged_Arrows_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Bow, Support, Trigger",
+    "Icon": "U",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "200%",
+    "Cooldown Time": "0.50 sec",
+    "Can Store": "1 Use(s)",
+    "Requires Level": "8",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "8",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemManaforgedArrows"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,59 +377,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports bow attack skills, causing them to trigger when you've spent enough mana in total on other bow attacks. Cannot modify the skills of minions. Cannot support totems, traps, mines, Vaal skills, or channelling skills",
-  "explicitMods": [
-    {
-      "text": "Supported Skills deal 1% more Damage with Hits and Ailments per 1 Mana Cost",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (31–40)% less Damage",
-      "values": [
-        "(31–40)"
-      ]
-    },
-    {
-      "text": "Supported Skills Trigger once total Mana Spent on other BowAttacks exceeds 300% of their Mana Cost",
-      "values": [
-        "300"
-      ]
-    },
-    {
-      "text": "Supported Skills deal 1% more Damage with Hits and Ailments per 1 Mana Cost",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (31–40)% less Damage",
-      "values": [
-        "(31–40)"
-      ]
-    },
-    {
-      "text": "Supported Skills Trigger once total Mana Spent on other BowAttacks exceeds 300% of their Mana Cost",
-      "values": [
-        "300"
-      ]
-    }
+  "stats": [
+    "Supported Skills deal (40-31)% less Damage",
+    "Supported Skills deal 1% more Damage with Hits and Ailments per 1 Mana Cost",
+    "Supported Skills Trigger once total Mana Spent on other Bow",
+    "Attacks exceeds 300% of their Mana Cost"
   ],
+  "gemDescription": "Supports bow attack skills, causing them to trigger when you've spent enough mana in total on other bow attacks. Cannot modify the skills of minions. Cannot support totems, traps, mines, Vaal skills, or channelling skills",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–10)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–10)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills have (0.5-10)% increased Cooldown Recovery Rate",
+      "values": []
     }
   ]
 }

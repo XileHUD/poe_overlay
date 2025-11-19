@@ -1,7 +1,19 @@
 {
   "name": "Ancestral Protector",
   "slug": "Ancestral_Protector",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Totem, Melee, Strike",
+    "Level": "(1-20)",
+    "Cost": "(6-10) Mana",
+    "Attack Damage": "(90-180)% of base",
+    "Effectiveness of Added Damage": "(90-180)%",
+    "Requires Level": "4",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Not in game",
+    "Drop level": "5",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemMeleeTotem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,103 +417,20 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Totem lasts 12 seconds",
+    "Summons a Totem which uses this Skill",
+    "(10-20)% more Attack Speed while Totem is Active",
+    "50% increased Totem Placement speed",
+    "+(1.6-1.8) metres to Melee Strike Range"
+  ],
   "gemDescription": "Summons an Ancestor Totem which attacks enemies with melee strikes while you're near it. Being near it grants you more attack speed. Requires a Melee Weapon or Unarmed.",
-  "explicitMods": [
-    {
-      "text": "Totem lasts 12 seconds",
-      "values": [
-        "12"
-      ]
-    },
-    {
-      "text": "Summons a Totem which uses this Skill",
-      "values": []
-    },
-    {
-      "text": "(10–20)% more Attack Speed while Totem is Active",
-      "values": [
-        "(10–20)"
-      ]
-    },
-    {
-      "text": "50% increased Totem Placement speed",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "+(1.6–1.8) metres to Melee Strike Range",
-      "values": [
-        "+(1.6–1.8)"
-      ]
-    },
-    {
-      "text": "Totem lasts 12 seconds",
-      "values": [
-        "12"
-      ]
-    },
-    {
-      "text": "Summons a Totem which uses this Skill",
-      "values": []
-    },
-    {
-      "text": "(10–20)% more Attack Speed while Totem is Active",
-      "values": [
-        "(10–20)"
-      ]
-    },
-    {
-      "text": "50% increased Totem Placement speed",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "+(1.6–1.8) metres to Melee Strike Range",
-      "values": [
-        "+(1.6–1.8)"
-      ]
-    },
-    {
-      "text": "ancestor totem parent activiation range [70]",
-      "values": []
-    },
-    {
-      "text": "base skill is totemified [1]",
-      "values": []
-    },
-    {
-      "text": "base totem range [50]",
-      "values": []
-    },
-    {
-      "text": "attack_speed_+%",
-      "values": []
-    },
-    {
-      "text": "melee_ancestor_totem_granted_attack_speed_+%_final",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)",
-    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)",
-    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–0.4) metres to Melee Strike Range",
-      "values": [
-        "+(0–0.4)"
-      ]
-    },
-    {
-      "text": "+(0–0.4) metres to Melee Strike Range",
-      "values": [
-        "+(0–0.4)"
-      ]
+      "text": "+(0.02-0.4) metres to Melee Strike Range",
+      "values": []
     }
   ]
 }

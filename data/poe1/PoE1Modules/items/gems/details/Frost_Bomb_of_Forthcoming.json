@@ -1,7 +1,21 @@
 {
   "name": "Frost Bomb of Forthcoming",
   "slug": "Frost_Bomb_of_Forthcoming",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Duration, Cold",
+    "Level": "(1-20)",
+    "Cost": "(4-16) Mana",
+    "Cooldown Time": "4.00 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "0.50 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "(200-370)%",
+    "Requires Level": "4",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "5",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,138 +379,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Creates a crystal which lasts for a duration. When the crystal's duration ends, it explodes, dealing heavy cold damage to enemies around it.",
-  "explicitMods": [
-    {
-      "text": "Deals (9–1668) to (14–2502) Cold Damage",
-      "values": [
-        "(9–1668)",
-        "(14–2502)"
-      ]
-    },
-    {
-      "text": "Base duration is 2.5 seconds",
-      "values": [
-        "2.5"
-      ]
-    },
-    {
-      "text": "Deals 10% more Damage with Hits per 0.1 seconds Duration",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Deals 3% more Damage with Ailments per 0.1 seconds Duration",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Base radius is (2.6–3.3) metres",
-      "values": [
-        "(2.6–3.3)"
-      ]
-    },
-    {
-      "text": "Deals (9–1668) to (14–2502) Cold Damage",
-      "values": [
-        "(9–1668)",
-        "(14–2502)"
-      ]
-    },
-    {
-      "text": "Base duration is 2.5 seconds",
-      "values": [
-        "2.5"
-      ]
-    },
-    {
-      "text": "Deals 10% more Damage with Hits per 0.1 seconds Duration",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Deals 3% more Damage with Ailments per 0.1 seconds Duration",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Base radius is (2.6–3.3) metres",
-      "values": [
-        "(2.6–3.3)"
-      ]
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "Deals (9–10898) to (14–16347) Cold Damage",
-      "values": [
-        "(9–10898)",
-        "(14–16347)"
-      ]
-    },
-    {
-      "text": "Base duration is 2.5 seconds",
-      "values": [
-        "2.5"
-      ]
-    },
-    {
-      "text": "Deals 10% more Damage with Hits per 0.1 seconds Duration",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Deals 3% more Damage with Ailments per 0.1 seconds Duration",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Base radius is (2.6–3.9) metres",
-      "values": [
-        "(2.6–3.9)"
-      ]
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (9-1668) to (14-2502) Cold Damage",
+    "Base duration is 2.50 seconds",
+    "Deals 10% more Damage with Hits per 0.1 seconds Duration",
+    "Deals 3% more Damage with Ailments per 0.1 seconds Duration",
+    "Base radius is (2.6-3.3) metres"
   ],
+  "gemDescription": "Creates a crystal which lasts for a duration. When the crystal's duration ends, it explodes, dealing heavy cold damage to enemies around it.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base duration is (0–0.5) seconds",
-      "values": [
-        "(0–0.5)"
-      ]
-    },
-    {
-      "text": "Base duration is (0–0.5) seconds",
-      "values": [
-        "(0–0.5)"
-      ]
-    },
-    {
-      "text": "Base duration is (0–0.5) seconds",
-      "values": [
-        "(0–0.5)"
-      ]
+      "text": "Base duration is (0.025-0.5) seconds",
+      "values": []
     }
   ]
 }

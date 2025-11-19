@@ -1,7 +1,17 @@
 {
   "name": "Summon Raging Spirit of Enormity",
   "slug": "Summon_Raging_Spirit_of_Enormity",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Minion, Duration, Fire",
+    "Level": "(1-20)",
+    "Cost": "(7-26) Mana",
+    "Cast Time": "0.80 sec",
+    "Requires Level": "4",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "5",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,149 +375,21 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Summons a short-lived flaming skull that rushes at nearby enemies and attacks them rapidly, converting all its physical damage to fire. Enemies will not directly engage these spirits, and can pass through them.",
-  "explicitMods": [
-    {
-      "text": "Maximum 6 Summoned Raging Spirits",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Base duration is 5 seconds",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Minions have (50–88)% more Maximum Life",
-      "values": [
-        "(50–88)"
-      ]
-    },
-    {
-      "text": "Minions' Hits are always Critical Strikes",
-      "values": []
-    },
-    {
-      "text": "Minions have +(40–78)% to Critical Strike Multiplier",
-      "values": [
-        "+(40–78)"
-      ]
-    },
-    {
-      "text": "Minions cannot Taunt Enemies",
-      "values": []
-    },
-    {
-      "text": "Maximum 6 Summoned Raging Spirits",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Base duration is 5 seconds",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Minions have (50–88)% more Maximum Life",
-      "values": [
-        "(50–88)"
-      ]
-    },
-    {
-      "text": "Minions' Hits are always Critical Strikes",
-      "values": []
-    },
-    {
-      "text": "Minions have +(40–78)% to Critical Strike Multiplier",
-      "values": [
-        "+(40–78)"
-      ]
-    },
-    {
-      "text": "Minions cannot Taunt Enemies",
-      "values": []
-    },
-    {
-      "text": "base display minion actor level [4,70]",
-      "values": []
-    },
-    {
-      "text": "display minion monster type [20]",
-      "values": []
-    },
-    {
-      "text": "minion actor scale +% [50]",
-      "values": []
-    },
-    {
-      "text": "Maximum 6 Summoned Raging Spirits",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Base duration is 5 seconds",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Minions have (50–118)% more Maximum Life",
-      "values": [
-        "(50–118)"
-      ]
-    },
-    {
-      "text": "Minions' Hits are always Critical Strikes",
-      "values": []
-    },
-    {
-      "text": "Minions have +(40–108)% to Critical Strike Multiplier",
-      "values": [
-        "+(40–108)"
-      ]
-    },
-    {
-      "text": "Minions cannot Taunt Enemies",
-      "values": []
-    },
-    {
-      "text": "base display minion actor level [4,100]",
-      "values": []
-    },
-    {
-      "text": "display minion monster type [20]",
-      "values": []
-    },
-    {
-      "text": "minion actor scale +% [50]",
-      "values": []
-    }
+  "stats": [
+    "Maximum 6 Summoned Raging Spirits",
+    "Base duration is 5.00 seconds",
+    "Minions have (50-88)% more Maximum Life",
+    "Minions' Hits are always Critical Strikes",
+    "Minions have +(40-78)% to Critical Strike Multiplier",
+    "Minions cannot Taunt Enemies"
   ],
+  "gemDescription": "Summons a short-lived flaming skull that rushes at nearby enemies and attacks them rapidly, converting all its physical damage to fire. Enemies will not directly engage these spirits, and can pass through them.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–10)% more Minion Movement Speed",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "(0–10)% more Minion Movement Speed",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "(0–10)% more Minion Movement Speed",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "(0.5-10)% more Minion Movement Speed",
+      "values": []
     }
   ]
 }

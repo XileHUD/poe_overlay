@@ -1,7 +1,19 @@
 {
   "name": "Summon Carrion Golem of Hordes",
   "slug": "Summon_Carrion_Golem_of_Hordes",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Physical, Minion, Spell, Golem",
+    "Level": "(1-20)",
+    "Cost": "(30-54) Mana",
+    "Cooldown Time": "2.00 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "1.00 sec",
+    "Requires Level": "34",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "34",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -285,97 +297,16 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Summons a Carrion Golem. The Carrion Golem attacks with a series of slashes that increase in speed and damage, as well as a cascade of bone spikes.",
-  "explicitMods": [
-    {
-      "text": "20% reduced Character Size",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "Maximum 3 Summoned Golems",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "20% reduced Character Size",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "Maximum 3 Summoned Golems",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "active skill no golem aura [1]",
-      "values": []
-    },
-    {
-      "text": "base display minion actor level [34,70]",
-      "values": []
-    },
-    {
-      "text": "display minion monster type [7]",
-      "values": []
-    },
-    {
-      "text": "infinite minion duration [1]",
-      "values": []
-    },
-    {
-      "text": "20% reduced Character Size",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "Maximum 3 Summoned Golems",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "active skill no golem aura [1]",
-      "values": []
-    },
-    {
-      "text": "base display minion actor level [34,100]",
-      "values": []
-    },
-    {
-      "text": "display minion monster type [7]",
-      "values": []
-    },
-    {
-      "text": "infinite minion duration [1]",
-      "values": []
-    }
+  "stats": [
+    "Maximum 3 Summoned Golems"
   ],
+  "gemDescription": "Summons a Carrion Golem. The Carrion Golem attacks with a series of slashes that increase in speed and damage, as well as a cascade of bone spikes.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Minions have (0–40)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "Minions have (0–40)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "Minions have (0–40)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–40)"
-      ]
+      "text": "Minions have (2-40)% increased Cooldown Recovery Rate",
+      "values": []
     }
   ]
 }

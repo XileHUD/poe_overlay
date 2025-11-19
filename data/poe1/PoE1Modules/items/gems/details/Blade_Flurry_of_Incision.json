@@ -1,7 +1,19 @@
 {
   "name": "Blade Flurry of Incision",
   "slug": "Blade_Flurry_of_Incision",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Critical, Attack, AoE, Channelling, Melee",
+    "Level": "(1-20)",
+    "Cost": "(5-6) Mana",
+    "Attack Speed": "180% of base",
+    "Attack Damage": "(60-111)% of base",
+    "Effectiveness of Added Damage": "(60-111)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -285,89 +297,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Repeatedly hit enemies in a circle in front of you while channelling, dealing damage to and around the enemy. The critical strike chance is continually boosted while channelling. You unleash an additional hit for each stage reached once the channelling ends. Requires a Dagger, Claw or One-Handed Sword.",
-  "explicitMods": [
-    {
-      "text": "40% more Critical Strike Chance for each Stage",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "Maximum 6 Stages",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "40% more Critical Strike Chance for each Stage",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "Maximum 6 Stages",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    },
-    {
-      "text": "40% more Critical Strike Chance for each Stage",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "Maximum 6 Stages",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    }
+  "stats": [
+    "40% more Critical Strike Chance for each Stage",
+    "Maximum 6 Stages"
   ],
+  "gemDescription": "Repeatedly hit enemies in a circle in front of you while channelling, dealing damage to and around the enemy. The critical strike chance is continually boosted while channelling. You unleash an additional hit for each stage reached once the channelling ends. Requires a Dagger, Claw or One-Handed Sword.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–40)% to Critical Strike Multiplier while at maximum Stages",
-      "values": [
-        "+(0–40)"
-      ]
-    },
-    {
-      "text": "+(0–40)% to Critical Strike Multiplier while at maximum Stages",
-      "values": [
-        "+(0–40)"
-      ]
-    },
-    {
-      "text": "+(0–40)% to Critical Strike Multiplier while at maximum Stages",
-      "values": [
-        "+(0–40)"
-      ]
+      "text": "+(2-40)% to Critical Strike Multiplier while at maximum Stages",
+      "values": []
     }
   ]
 }

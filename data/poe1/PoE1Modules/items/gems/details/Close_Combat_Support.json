@@ -1,7 +1,17 @@
 {
   "name": "Close Combat Support",
   "slug": "Close_Combat_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Melee, Attack, Duration",
+    "Icon": "s",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "140%",
+    "Requires Level": "18",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "18",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemCloseCombat"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,71 +375,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports melee attack skills. Cannot support skills which create minions.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills deal up to (25–39)% more Melee Damage to Enemies, based on proximity",
-      "values": [
-        "(25–39)"
-      ]
-    },
-    {
-      "text": "Supported Skills grant Combat Rush on HitCombat Rush lasts 2 seconds or until you use a Travel Skill",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Combat Rush grants 20% more Attack Speed to Travel Skills not Supported by Close Combat",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "Supported Skills can only be used with Axes or Swords",
-      "values": []
-    },
-    {
-      "text": "Supported Skills deal up to (25–39)% more Melee Damage to Enemies, based on proximity",
-      "values": [
-        "(25–39)"
-      ]
-    },
-    {
-      "text": "Supported Skills grant Combat Rush on HitCombat Rush lasts 2 seconds or until you use a Travel Skill",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Combat Rush grants 20% more Attack Speed to Travel Skills not Supported by Close Combat",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "Supported Skills can only be used with Axes or Swords",
-      "values": []
-    },
-    {
-      "text": "supported by slashing [1]",
-      "values": []
-    }
+  "stats": [
+    "Supported Skills deal up to (25-39)% more Melee Damage to Enemies, based on proximity",
+    "Supported Skills grant Combat Rush on Hit",
+    "Combat Rush lasts 2 seconds or until you use a Travel Skill",
+    "Combat Rush grants 20% more Attack Speed to Travel Skills not Supported by Close Combat",
+    "Supported Skills can only be used with Axes or Swords"
   ],
+  "gemDescription": "Supports melee attack skills. Cannot support skills which create minions.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–10)% increased Damage with Hits to Close Range Enemies",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "(0–10)% increased Damage with Hits to Close Range Enemies",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "(0.5-10)% increased Damage with Hits to Close Range Enemies",
+      "values": []
     }
   ]
 }

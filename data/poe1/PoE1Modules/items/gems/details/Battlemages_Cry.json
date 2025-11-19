@@ -1,7 +1,20 @@
 {
   "name": "Battlemage's Cry",
   "slug": "Battlemages_Cry",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Warcry, Critical, Trigger, AoE, Duration",
+    "Level": "(1-20)",
+    "Cost": "(15-19) Mana",
+    "Cooldown Time": "8.00 sec",
+    "Can Store": "1 Use(s)",
+    "Use Time": "0.80 sec",
+    "AoE Radius": "60",
+    "Requires Level": "24",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "24",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemBattlemagesCry"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -485,183 +498,23 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Base duration is (2.50-3.40) seconds",
+    "(0-38)% increased Warcry Speed",
+    "Counts total Power of Enemies in Range",
+    "Buff grants +0.5% to Critical Strike Chance per 5 power, counting a maximum of 25 Power",
+    "Exerts the next 5 Melee Attacks you perform",
+    "Exerted Attacks Trigger a Supported Spell with their first Melee Hit",
+    "Supported Skills deal (44-38)% less Damage",
+    "Supported Spells are Triggered by Attacks Exerted by Battlemage's Cry"
+  ],
   "gemDescription": "Performs a warcry, taunting nearby enemies to attack the user and exerting subsequent attacks. The user and nearby allies gain a buff that boosts critical strike chance.",
-  "explicitMods": [
-    {
-      "text": "Base duration is (2.5–3.4) seconds",
-      "values": [
-        "(2.5–3.4)"
-      ]
-    },
-    {
-      "text": "(0–38)% increased Warcry Speed",
-      "values": [
-        "(0–38)"
-      ]
-    },
-    {
-      "text": "Exerts the next 5 Melee Attacks you perform",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Buff grants +0.5% to Critical Strike Chance per 5 power, counting a maximum of 25 Power",
-      "values": [
-        "+0.5"
-      ]
-    },
-    {
-      "text": "Exerted Attacks Trigger a Supported Spell with their first Melee Hit",
-      "values": []
-    },
-    {
-      "text": "Counts total Power of Enemies in Range",
-      "values": []
-    },
-    {
-      "text": "Supported Skills deal (38–44)% less Damage",
-      "values": [
-        "(38–44)"
-      ]
-    },
-    {
-      "text": "Supported Spells are Triggered by Attacks Exerted by Battlemage's Cry",
-      "values": []
-    },
-    {
-      "text": "Base duration is (2.5–3.4) seconds",
-      "values": [
-        "(2.5–3.4)"
-      ]
-    },
-    {
-      "text": "(0–38)% increased Warcry Speed",
-      "values": [
-        "(0–38)"
-      ]
-    },
-    {
-      "text": "Exerts the next 5 Melee Attacks you perform",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Buff grants +0.5% to Critical Strike Chance per 5 power, counting a maximum of 25 Power",
-      "values": [
-        "+0.5"
-      ]
-    },
-    {
-      "text": "Exerted Attacks Trigger a Supported Spell with their first Melee Hit",
-      "values": []
-    },
-    {
-      "text": "Counts total Power of Enemies in Range",
-      "values": []
-    },
-    {
-      "text": "base deal no attack damage [1]",
-      "values": []
-    },
-    {
-      "text": "base deal no secondary damage [1]",
-      "values": []
-    },
-    {
-      "text": "base deal no spell damage [1]",
-      "values": []
-    },
-    {
-      "text": "cannot cancel skill before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "Supported Skills deal (38–44)% less Damage",
-      "values": [
-        "(38–44)"
-      ]
-    },
-    {
-      "text": "Supported Spells are Triggered by Attacks Exerted by Battlemage's Cry",
-      "values": []
-    },
-    {
-      "text": "Grants Level 15 Battlemage's Cry Skill",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "+(12–16)% Chance to Block Attack Damage while wielding a Staff",
-      "values": [
-        "+(12–16)"
-      ]
-    },
-    {
-      "text": "100% increased Fire Damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Adds (315–360) to (450–540) Fire Damage",
-      "values": [
-        "(315–360)",
-        "(450–540)"
-      ]
-    },
-    {
-      "text": "Damage Penetrates 15% of Fire Resistance if you have Blocked Recently",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Immune to Freeze and Chill while Ignited",
-      "values": []
-    },
-    {
-      "text": "Battlemage",
-      "values": []
-    },
-    {
-      "text": "(Warstaves are considered Staves)",
-      "values": []
-    },
-    {
-      "text": "(Gain Added Spell Damage equal to the Damage of your Main Hand Weapon)",
-      "values": []
-    },
-    {
-      "text": "additional_base_critical_strike_chance",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Vaal Attacks, Channelling Attacks, Retaliation Attacks, and Attacks which Repeat cannot be Exerted)",
-    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)",
-    "(Vaal Attacks, Channelling Attacks, Retaliation Attacks, and Attacks which Repeat cannot be Exerted)",
-    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)",
-    "(Vaal Attacks, Channelling Attacks, Retaliation Attacks, and Attacks which Repeat cannot be Exerted)",
-    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)",
-    "(Warstaves are considered Staves)",
-    "(Gain Added Spell Damage equal to the Damage of your Main Hand Weapon)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–40)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "(0–40)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–40)"
-      ]
+      "text": "(2-40)% increased Cooldown Recovery Rate",
+      "values": []
     }
   ]
 }

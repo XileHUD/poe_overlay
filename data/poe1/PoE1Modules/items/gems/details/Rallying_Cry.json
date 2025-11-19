@@ -1,7 +1,20 @@
 {
   "name": "Rallying Cry",
   "slug": "Rallying_Cry",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Warcry, AoE, Duration",
+    "Level": "(1-20)",
+    "Cost": "(15-19) Mana",
+    "Cooldown Time": "8.00 sec",
+    "Can Store": "1 Use(s)",
+    "Use Time": "0.80 sec",
+    "AoE Radius": "60",
+    "Requires Level": "24",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "24",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemRallyingCry"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -445,156 +458,23 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Base duration is (2.50-3.40) seconds",
+    "(0-38)% increased Warcry Speed",
+    "Counts total Power of Enemies and Allies in Range",
+    "Buff grants Added Attack Damage equal to 4% of the Damage of your Main",
+    "Hand Weapon per 5 Power, counting a maximum of 30 Power",
+    "Buff has 100% more Effect on your Minions",
+    "Exerts the next 5 Melee Attacks you perform",
+    "Exerted Attacks deal 5% more Damage per affected Ally, to a maximum of 25%"
+  ],
   "gemDescription": "Performs a warcry, taunting nearby enemies to attack the user and exerting subsequent attacks. Nearby allies gain a buff based on the damage of your weapon.",
-  "explicitMods": [
-    {
-      "text": "Base duration is (2.5–3.4) seconds",
-      "values": [
-        "(2.5–3.4)"
-      ]
-    },
-    {
-      "text": "(0–38)% increased Warcry Speed",
-      "values": [
-        "(0–38)"
-      ]
-    },
-    {
-      "text": "Buff has 100% more Effect on your Minions",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Exerts the next 5 Melee Attacks you perform",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Exerted Attacks deal 5% more Damage per affected Ally, to a maximum of 25%",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Buff grants Added Attack Damage equal to 4% of the Damage of your MainHand Weapon per 5 Power, counting a maximum of 30 Power",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Counts total Power of Enemies and Allies in Range",
-      "values": []
-    },
-    {
-      "text": "Base duration is (2.5–3.4) seconds",
-      "values": [
-        "(2.5–3.4)"
-      ]
-    },
-    {
-      "text": "(0–38)% increased Warcry Speed",
-      "values": [
-        "(0–38)"
-      ]
-    },
-    {
-      "text": "Buff has 100% more Effect on your Minions",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Exerts the next 5 Melee Attacks you perform",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Exerted Attacks deal 5% more Damage per affected Ally, to a maximum of 25%",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Buff grants Added Attack Damage equal to 4% of the Damage of your MainHand Weapon per 5 Power, counting a maximum of 30 Power",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Counts total Power of Enemies and Allies in Range",
-      "values": []
-    },
-    {
-      "text": "base deal no attack damage [1]",
-      "values": []
-    },
-    {
-      "text": "base deal no secondary damage [1]",
-      "values": []
-    },
-    {
-      "text": "base deal no spell damage [1]",
-      "values": []
-    },
-    {
-      "text": "cannot cancel skill before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "(7–10)% increased maximum Mana",
-      "values": [
-        "(7–10)"
-      ]
-    },
-    {
-      "text": "With at least 40 Intelligence in Radius, 10% of Damage taken Recouped as Mana if you've Warcried Recently",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "(Only Damage from Hits can be Recouped, over 4 seconds following the Hit)",
-      "values": []
-    },
-    {
-      "text": "(Recently refers to the past 4 seconds)",
-      "values": []
-    },
-    {
-      "text": "damage_+%",
-      "values": []
-    },
-    {
-      "text": "base_mana_regeneration_rate_per_minute",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Vaal Attacks, Channelling Attacks, Retaliation Attacks, and Attacks which Repeat cannot be Exerted)",
-    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)",
-    "(Vaal Attacks, Channelling Attacks, Retaliation Attacks, and Attacks which Repeat cannot be Exerted)",
-    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)",
-    "(Vaal Attacks, Channelling Attacks, Retaliation Attacks, and Attacks which Repeat cannot be Exerted)",
-    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)",
-    "(Only Damage from Hits can be Recouped, over 4 seconds following the Hit)",
-    "(Recently refers to the past 4 seconds)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–40)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "(0–40)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–40)"
-      ]
+      "text": "(2-40)% increased Cooldown Recovery Rate",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,17 @@
 {
   "name": "Mirage Archer Support",
   "slug": "Mirage_Archer_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Bow, Attack, Support, Duration",
+    "Icon": "M",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "4",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "5",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemMirageArcher"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,83 +335,21 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports attack skills that can be used with bows. Supported skills can only be used with bows. Cannot support Vaal skills, minion skills, movement skills, or skills used by totems, traps, or mines.",
-  "explicitMods": [
-    {
-      "text": "Maximum 1 Summoned Mirage Archer",
-      "values": []
-    },
-    {
-      "text": "When you Hit an Enemy with an Arrow from a Supported Skill, Summon a Mirage Archer which uses that SkillMirage Archer can use Triggered Attacks as though they were not Triggered",
-      "values": []
-    },
-    {
-      "text": "Mirage Archer uses Supported Skill with 60% less Attack Speed",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Mirage Archer lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Mirage Archer deals (31–40)% less Damage with Supported Skills",
-      "values": [
-        "(31–40)"
-      ]
-    },
-    {
-      "text": "Maximum 1 Summoned Mirage Archer",
-      "values": []
-    },
-    {
-      "text": "When you Hit an Enemy with an Arrow from a Supported Skill, Summon a Mirage Archer which uses that SkillMirage Archer can use Triggered Attacks as though they were not Triggered",
-      "values": []
-    },
-    {
-      "text": "Mirage Archer uses Supported Skill with 60% less Attack Speed",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Mirage Archer lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Mirage Archer deals (31–40)% less Damage with Supported Skills",
-      "values": [
-        "(31–40)"
-      ]
-    },
-    {
-      "text": "disable skill if weapon not bow [1]",
-      "values": []
-    },
-    {
-      "text": "mirage archer projectile additional height offset [-138]",
-      "values": []
-    }
+  "stats": [
+    "Maximum 1 Summoned Mirage Archer",
+    "When you Hit an Enemy with an Arrow from a Supported Skill, Summon a Mirage Archer which uses that Skill",
+    "Mirage Archer can use Triggered Attacks as though they were not Triggered",
+    "Mirage Archer uses Supported Skill with 60% less Attack Speed",
+    "Mirage Archer lasts 4 seconds",
+    "Mirage Archer deals (40-31)% less Damage with Supported Skills"
   ],
+  "gemDescription": "Supports attack skills that can be used with bows. Supported skills can only be used with bows. Cannot support Vaal skills, minion skills, movement skills, or skills used by totems, traps, or mines.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Attack Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Attack Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Attack Damage",
+      "values": []
     }
   ]
 }

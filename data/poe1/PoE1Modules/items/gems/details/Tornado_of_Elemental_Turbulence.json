@@ -1,7 +1,19 @@
 {
   "name": "Tornado of Elemental Turbulence",
   "slug": "Tornado_of_Elemental_Turbulence",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Duration, Physical, AoE, Orb, Fire, Cold, Lightning, Prismatic",
+    "Level": "(1-20)",
+    "Cost": "(15-25) Mana",
+    "Cast Time": "0.75 sec",
+    "Critical Strike Chance": "5.00%",
+    "Effectiveness of Added Damage": "65%",
+    "Requires Level": "34",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "34",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,179 +337,22 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Deals (22-290) to (32-435) Physical Damage",
+    "Base duration is 4.00 seconds",
+    "Deals Damage every 0.25 seconds",
+    "100% of Physical Damage Converted to Fire, Cold or Lightning Damage",
+    "Enemies in range are Hindered",
+    "Tornado has (0-57)% increased Movement Speed",
+    "Maximum 3 Tornadoes"
+  ],
   "gemDescription": "Create a Tornado of a random element that hinders and repeatedly damages enemies around it, converting physical damage to its element. The Tornado will chase down enemies for a duration.",
-  "explicitMods": [
-    {
-      "text": "Deals (22–290) to (32–435) Physical Damage",
-      "values": [
-        "(22–290)",
-        "(32–435)"
-      ]
-    },
-    {
-      "text": "Deals Damage every 0.25 seconds",
-      "values": [
-        "0.25"
-      ]
-    },
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "100% of Physical Damage Converted to Fire, Cold or Lightning Damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Tornado has (0–57)% increased Movement Speed",
-      "values": [
-        "(0–57)"
-      ]
-    },
-    {
-      "text": "Enemies in range are Hindered",
-      "values": []
-    },
-    {
-      "text": "Maximum 3 Tornadoes",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Deals (22–290) to (32–435) Physical Damage",
-      "values": [
-        "(22–290)",
-        "(32–435)"
-      ]
-    },
-    {
-      "text": "Deals Damage every 0.25 seconds",
-      "values": [
-        "0.25"
-      ]
-    },
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "100% of Physical Damage Converted to Fire, Cold or Lightning Damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Tornado has (0–57)% increased Movement Speed",
-      "values": [
-        "(0–57)"
-      ]
-    },
-    {
-      "text": "Enemies in range are Hindered",
-      "values": []
-    },
-    {
-      "text": "Maximum 3 Tornadoes",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "damage cannot be reflected or leech if used by other object [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    },
-    {
-      "text": "skill override pvp scaling time ms [1000]",
-      "values": []
-    },
-    {
-      "text": "Deals (51–3170) to (76–4755) Physical Damage",
-      "values": [
-        "(51–3170)",
-        "(76–4755)"
-      ]
-    },
-    {
-      "text": "Deals Damage every 0.25 seconds",
-      "values": [
-        "0.25"
-      ]
-    },
-    {
-      "text": "Base duration is 3 seconds",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "100% of Physical Damage Converted to Fire, Cold or Lightning Damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Tornado has (0–102)% increased Movement Speed",
-      "values": [
-        "(0–102)"
-      ]
-    },
-    {
-      "text": "Enemies in range are Hindered",
-      "values": []
-    },
-    {
-      "text": "Maximum 2 Tornadoes",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "damage cannot be reflected or leech if used by other object [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Hinder reduces movement speed by 30%)",
-    "(Hinder reduces movement speed by 30%)",
-    "(Hinder reduces movement speed by 30%)",
-    "(Hinder reduces movement speed by 30%)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Tornado has (0–40)% increased Movement Speed",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "Tornado has (0–40)% increased Movement Speed",
-      "values": [
-        "(0–40)"
-      ]
+      "text": "Tornado has (2-40)% increased Movement Speed",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,16 @@
 {
   "name": "Generosity Support",
   "slug": "Generosity_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Aura",
+    "Icon": "G",
+    "Level": "(1-20)",
+    "Requires Level": "31",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "31",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemGenerosity"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -366,80 +375,16 @@
   ],
   "description": "This gem can be used to increase the effect of auras on the player's minion, totem or party members. Only non-curse aura gems are compatible, and only when they are cast by the player.[1] For instance: a totem casting Haste cannot be generous, and neither can Rejuvenation Totem.",
   "stats": [
-    "This gem can be used to increase the effect of auras on the player's minion, totem or party members. Only non-curse aura gems are compatible, and only when they are cast by the player.[1] For instance: a totem casting Haste cannot be generous, and neither can Rejuvenation Totem."
+    "Supported Auras do not affect you",
+    "Non-Curse Auras from Supported Skills have (20-39)% increased Effect"
   ],
   "gemDescription": "Supports aura skills that affect you and allies, increasing the aura's effect on allies, but preventing it from affecting you at all. Cannot support curse auras, or other auras that only affect enemies. Cannot support skills used by totems. Cannot modify the skills of minions.",
-  "explicitMods": [
-    {
-      "text": "Supported Auras do not affect you",
-      "values": []
-    },
-    {
-      "text": "Non-Curse Auras from Supported Skills have (20–39)% increased Effect",
-      "values": [
-        "(20–39)"
-      ]
-    },
-    {
-      "text": "Supported Auras do not affect you",
-      "values": []
-    },
-    {
-      "text": "Non-Curse Auras from Supported Skills have (20–39)% increased Effect",
-      "values": [
-        "(20–39)"
-      ]
-    },
-    {
-      "text": "+1 to Level of Socketed Aura Gems",
-      "values": [
-        "+1"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 30 Generosity",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "Socketed Gems have 45% increased Reservation Efficiency",
-      "values": [
-        "45"
-      ]
-    },
-    {
-      "text": "(120–150)% increased Evasion and Energy Shield",
-      "values": [
-        "(120–150)"
-      ]
-    },
-    {
-      "text": "(20–40)% increased Area of Effect of Aura Skills",
-      "values": [
-        "(20–40)"
-      ]
-    },
-    {
-      "text": "(10–15)% increased effect of Non-Curse Auras from your Skills",
-      "values": [
-        "(10–15)"
-      ]
-    }
-  ],
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–40)% increased Aura Area of Effect",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–40)% increased Aura Area of Effect",
-      "values": [
-        "(0–40)"
-      ]
+      "text": "Supported Skills have (2-40)% increased Aura Area of Effect",
+      "values": []
     }
   ]
 }

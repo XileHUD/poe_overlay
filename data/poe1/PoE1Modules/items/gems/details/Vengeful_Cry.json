@@ -1,7 +1,19 @@
 {
   "name": "Vengeful Cry",
   "slug": "Vengeful_Cry",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Warcry, AoE, Duration, Retaliation",
+    "Level": "(1-20)",
+    "Cost": "(15-19) Mana",
+    "Cooldown Time": "8.00 sec",
+    "Can Store": "1 Use(s)",
+    "Use Time": "0.80 sec",
+    "Requires Level": "24",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "24",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVengefulCry"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,132 +417,23 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Base duration is (2.50-3.40) seconds",
+    "Cannot be used by default",
+    "Becomes Usable once for 2 seconds when you take a Savage Hit",
+    "(0-38)% increased Warcry Speed",
+    "Counts total Power of Enemies in Range",
+    "Buff grants 3 Rage per second per 5 Power, counting a maximum of 25 power",
+    "Buff grants +25 to Maximum Rage",
+    "Buff prevents inherent loss of Rage"
+  ],
   "gemDescription": "Retaliate against a savage hit with a warcry, taunting all nearby enemies to attack the user. The user and nearby allies gain a buff which grants rage and prevents rage from being lost. Minions cannot gain rage.",
-  "explicitMods": [
-    {
-      "text": "Base duration is (2.5–3.4) seconds",
-      "values": [
-        "(2.5–3.4)"
-      ]
-    },
-    {
-      "text": "(0–38)% increased Warcry Speed",
-      "values": [
-        "(0–38)"
-      ]
-    },
-    {
-      "text": "Cannot be used by defaultBecomes Usable once for 2 seconds when you take a Savage Hit",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Buff grants 3 Rage per second per 5 Power, counting a maximum of 25 power",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Buff grants +25 to Maximum RageBuff prevents inherent loss of Rage",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Counts total Power of Enemies in Range",
-      "values": []
-    },
-    {
-      "text": "Base duration is (2.5–3.4) seconds",
-      "values": [
-        "(2.5–3.4)"
-      ]
-    },
-    {
-      "text": "(0–38)% increased Warcry Speed",
-      "values": [
-        "(0–38)"
-      ]
-    },
-    {
-      "text": "Cannot be used by defaultBecomes Usable once for 2 seconds when you take a Savage Hit",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Buff grants 3 Rage per second per 5 Power, counting a maximum of 25 power",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Buff grants +25 to Maximum RageBuff prevents inherent loss of Rage",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Counts total Power of Enemies in Range",
-      "values": []
-    },
-    {
-      "text": "base deal no attack damage [1]",
-      "values": []
-    },
-    {
-      "text": "base deal no secondary damage [1]",
-      "values": []
-    },
-    {
-      "text": "base deal no spell damage [1]",
-      "values": []
-    },
-    {
-      "text": "cannot cancel skill before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "skill cannot be stunned before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "maximum_rage",
-      "values": []
-    },
-    {
-      "text": "base_rage_regeneration_per_minute",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(A Hit that removes at least 15% of Maximum Life is a Savage Hit)",
-    "(Every Rage grants 1% more Attack Damage. Maximum Rage is 30. Lose 10 Rage per second if you have not been Hit or gained Rage in the last 2 seconds)",
-    "(This only affects the inherent loss of Rage when you haven't been Hit or gained Rage Recently)",
-    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)",
-    "(A Hit that removes at least 15% of Maximum Life is a Savage Hit)",
-    "(Every Rage grants 1% more Attack Damage. Maximum Rage is 30. Lose 10 Rage per second if you have not been Hit or gained Rage in the last 2 seconds)",
-    "(This only affects the inherent loss of Rage when you haven't been Hit or gained Rage Recently)",
-    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)",
-    "(A Hit that removes at least 15% of Maximum Life is a Savage Hit)",
-    "(Every Rage grants 1% more Attack Damage. Maximum Rage is 30. Lose 10 Rage per second if you have not been Hit or gained Rage in the last 2 seconds)",
-    "(This only affects the inherent loss of Rage when you haven't been Hit or gained Rage Recently)",
-    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–40)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "(0–40)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–40)"
-      ]
+      "text": "(2-40)% increased Cooldown Recovery Rate",
+      "values": []
     }
   ]
 }

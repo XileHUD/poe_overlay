@@ -1,7 +1,18 @@
 {
   "name": "Awakened Minion Damage Support",
   "slug": "Awakened_Minion_Damage_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Minion",
+    "Icon": "d",
+    "Level": "(1-5)",
+    "Cost & Reservation Multiplier": "140%",
+    "Requires Level": "72",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; The Maven's Crucible; Can drop from either version of the Maven , from Maven's Invitations , or from Maven-witnessed map bosses.",
+    "Drop level": "72",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemMinionDamagePlus"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -205,59 +216,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports skills which create Minions.",
-  "explicitMods": [
-    {
-      "text": "Minions from Supported Skills deal (40–44)% more Damage",
-      "values": [
-        "(40–44)"
-      ]
-    },
-    {
-      "text": "Minions from Supported Skills have 25% less Maximum Life",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "+(0–1) to Level of Supported Minion Skill Gems",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Minions from Supported Skills deal (40–44)% more Damage",
-      "values": [
-        "(40–44)"
-      ]
-    },
-    {
-      "text": "Minions from Supported Skills have 25% less Maximum Life",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "+(0–1) to Level of Supported Minion Skill Gems",
-      "values": [
-        "+(0–1)"
-      ]
-    }
+  "stats": [
+    "Minions from Supported Skills deal (40-44)% more Damage",
+    "Minions from Supported Skills have 25% less Maximum Life",
+    "+(0-1) to Level of Supported Minion Skill Gems"
   ],
+  "gemDescription": "Supports skills which create Minions.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Minions from Supported Skills deal (0–10)% increased Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Minions from Supported Skills deal (0–10)% increased Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Minions from Supported Skills deal (0.5-10)% increased Damage",
+      "values": []
     }
   ]
 }

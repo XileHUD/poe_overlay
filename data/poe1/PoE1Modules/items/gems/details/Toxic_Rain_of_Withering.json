@@ -1,7 +1,18 @@
 {
   "name": "Toxic Rain of Withering",
   "slug": "Toxic_Rain_of_Withering",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, AoE, Chaos, Duration, Projectile, Bow",
+    "Level": "(1-20)",
+    "Cost": "(6-10) Mana",
+    "Attack Damage": "(50-72)% of base",
+    "Effectiveness of Added Damage": "(50-73)%",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "12",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,170 +336,21 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Deals (8-238) Base Chaos Damage per second",
+    "Base duration is 0.40 seconds",
+    "Fires 5 Arrows",
+    "Modifiers to Projectile Damage apply to this Skill's Damage Over Time effect",
+    "60% of Physical Damage Converted to Chaos Damage",
+    "Each Spore Pod inflicts 1 Withered Debuff on nearby Enemies"
+  ],
   "gemDescription": "Fire arrows into the air that rain down around the targeted area, dealing damage to enemies they hit and creating spore pods where they land. Each spore pod deals chaos damage over time to nearby enemies and withers them, causing them to take increased chaos damage. The pods last for a duration before bursting, dealing area damage.",
-  "explicitMods": [
-    {
-      "text": "Deals (8–238) Base Chaos Damage per second",
-      "values": [
-        "(8–238)"
-      ]
-    },
-    {
-      "text": "Base duration is 0.4 seconds",
-      "values": [
-        "0.4"
-      ]
-    },
-    {
-      "text": "Fires 5 Arrows",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Chaos Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Modifiers to Projectile Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Each Spore Pod inflicts 1 Withered Debuff on nearby Enemies",
-      "values": []
-    },
-    {
-      "text": "Deals (8–238) Base Chaos Damage per second",
-      "values": [
-        "(8–238)"
-      ]
-    },
-    {
-      "text": "Base duration is 0.4 seconds",
-      "values": [
-        "0.4"
-      ]
-    },
-    {
-      "text": "Fires 5 Arrows",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Chaos Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Modifiers to Projectile Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Each Spore Pod inflicts 1 Withered Debuff on nearby Enemies",
-      "values": []
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "cannot pierce [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    },
-    {
-      "text": "visual hit effect chaos is green [1]",
-      "values": []
-    },
-    {
-      "text": "Deals (8–971.2) Base Chaos Damage per second",
-      "values": [
-        "(8–971.2)"
-      ]
-    },
-    {
-      "text": "Base duration is 0.4 seconds",
-      "values": [
-        "0.4"
-      ]
-    },
-    {
-      "text": "Fires 5 Arrows",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Chaos Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Modifiers to Projectile Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Each Spore Pod inflicts 1 Withered Debuff on nearby Enemies",
-      "values": []
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "cannot pierce [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    },
-    {
-      "text": "visual hit effect chaos is green [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Withered applies 6% increased Chaos Damage Taken, and can be inflicted up to 15 times)",
-    "(Withered applies 6% increased Chaos Damage Taken, and can be inflicted up to 15 times)",
-    "(Withered applies 6% increased Chaos Damage Taken, and can be inflicted up to 15 times)",
-    "(Withered applies 6% increased Chaos Damage Taken, and can be inflicted up to 15 times)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base duration is (0–0.1) seconds",
-      "values": [
-        "(0–0.1)"
-      ]
-    },
-    {
-      "text": "Base duration is (0–0.1) seconds",
-      "values": [
-        "(0–0.1)"
-      ]
-    },
-    {
-      "text": "Base duration is (0–0.1) seconds",
-      "values": [
-        "(0–0.1)"
-      ]
+      "text": "Base duration is (0.005-0.1) seconds",
+      "values": []
     }
   ]
 }

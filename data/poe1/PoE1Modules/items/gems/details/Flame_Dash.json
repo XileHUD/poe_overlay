@@ -1,7 +1,21 @@
 {
   "name": "Flame Dash",
   "slug": "Flame_Dash",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Movement, Duration, Fire, Travel, Blink",
+    "Level": "(1-20)",
+    "Cost": "(8-23) Mana",
+    "Cooldown Time": "3.50 sec",
+    "Can Store": "3 Use(s)",
+    "Cast Time": "0.80 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "(80-140)%",
+    "Requires Level": "10",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "10",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemFlameDash"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -445,85 +459,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills.",
-  "explicitMods": [
-    {
-      "text": "Deals (19.7–1738.6) Base Fire Damage per second",
-      "values": [
-        "(19.7–1738.6)"
-      ]
-    },
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Deals (7–659) to (11–988) Fire Damage",
-      "values": [
-        "(7–659)",
-        "(11–988)"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "(0–19)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–19)"
-      ]
-    },
-    {
-      "text": "Deals (19.7–1738.6) Base Fire Damage per second",
-      "values": [
-        "(19.7–1738.6)"
-      ]
-    },
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Deals (7–659) to (11–988) Fire Damage",
-      "values": [
-        "(7–659)",
-        "(11–988)"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "(0–19)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–19)"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (19.7-1738.6) Base Fire Damage per second",
+    "Base duration is 4.00 seconds",
+    "Deals (7-659) to (11-988) Fire Damage",
+    "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+    "(0-19)% increased Cooldown Recovery Rate"
   ],
+  "gemDescription": "Teleport to a location, damaging enemies and leaving a trail of burning ground. Shares a cooldown with other Blink skills.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–10)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "(0–10)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "(0.5-10)% increased Cooldown Recovery Rate",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,18 @@
 {
   "name": "Detonate Dead of Scavenging",
   "slug": "Detonate_Dead_of_Scavenging",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Fire",
+    "Level": "(1-20)",
+    "Cost": "(5-20) Mana",
+    "Cast Time": "0.60 sec",
+    "Critical Strike Chance": "6.00%",
+    "Requires Level": "4",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "5",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,96 +376,18 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Explosion deals base Fire Damage equal to (20-29.5)% of the corpse's Maximum Life",
+    "60% less Damage with Ailments",
+    "Base radius is (2.8-3.2) metres"
+  ],
   "gemDescription": "Targets a corpse, causing it to explode, dealing fire damage. The explosion is not affected by modifiers to spell damage and cannot be reflected. Cannot target corpses that have been created by skills.",
-  "explicitMods": [
-    {
-      "text": "Explosion deals base Fire Damage equal to (20–29.5)% of the corpse's Maximum Life",
-      "values": [
-        "(20–29.5)"
-      ]
-    },
-    {
-      "text": "60% less Damage with Ailments",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Base radius is (2.8–3.2) metres",
-      "values": [
-        "(2.8–3.2)"
-      ]
-    },
-    {
-      "text": "Explosion deals base Fire Damage equal to (20–29.5)% of the corpse's Maximum Life",
-      "values": [
-        "(20–29.5)"
-      ]
-    },
-    {
-      "text": "60% less Damage with Ailments",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Base radius is (2.8–3.2) metres",
-      "values": [
-        "(2.8–3.2)"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "Explosion deals base Fire Damage equal to (20–37)% of the corpse's Maximum Life",
-      "values": [
-        "(20–37)"
-      ]
-    },
-    {
-      "text": "60% less Damage with Ailments",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Base radius is (2.8–3.6) metres",
-      "values": [
-        "(2.8–3.6)"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Explosion deals base Fire Damage equal to (0–5)% of the corpse's Maximum Life",
-      "values": [
-        "(0–5)"
-      ]
-    },
-    {
-      "text": "Explosion deals base Fire Damage equal to (0–5)% of the corpse's Maximum Life",
-      "values": [
-        "(0–5)"
-      ]
-    },
-    {
-      "text": "Explosion deals base Fire Damage equal to (0–5)% of the corpse's Maximum Life",
-      "values": [
-        "(0–5)"
-      ]
+      "text": "Explosion deals base Fire Damage equal to (0.25-5)% of the corpse's Maximum Life",
+      "values": []
     }
   ]
 }

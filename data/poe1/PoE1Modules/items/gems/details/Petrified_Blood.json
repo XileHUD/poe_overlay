@@ -1,7 +1,19 @@
 {
   "name": "Petrified Blood",
   "slug": "Petrified_Blood",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell",
+    "Level": "(1-20)",
+    "Reservation": "35% Mana",
+    "Cooldown Time": "1.00 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "Instant",
+    "Requires Level": "24",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "24",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemPetrifiedBlood"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,65 +337,18 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Life Recovery other than Flasks cannot Recover Life to above Low Life",
+    "When taking Damage from Hits, 40% of Life loss below half Life is Prevented, then (100-81)% of Life loss prevented this way is lost over 4 seconds",
+    "Skills gain a Base Life Cost equal to 40% of Base Mana Cost while not on Low Life"
+  ],
   "gemDescription": "Applies a buff that protects the lower half of your life, preventing some of the immediate life loss when damaged by hits and applying the loss over time instead. Your life cannot be raised above low life other than by flasks, and while above low life, skills will cost life as well as mana.",
-  "explicitMods": [
-    {
-      "text": "Life Recovery other than Flasks cannot Recover Life to above Low LifeWhen taking Damage from Hits, 40% of Life loss below half Life is Prevented, then (81–100)% of Life loss prevented this way is lost over 4 seconds",
-      "values": [
-        "40",
-        "(81–100)"
-      ]
-    },
-    {
-      "text": "Skills gain a Base Life Cost equal to 40% of Base Mana Cost while not on Low Life",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "Life Recovery other than Flasks cannot Recover Life to above Low LifeWhen taking Damage from Hits, 40% of Life loss below half Life is Prevented, then (81–100)% of Life loss prevented this way is lost over 4 seconds",
-      "values": [
-        "40",
-        "(81–100)"
-      ]
-    },
-    {
-      "text": "Skills gain a Base Life Cost equal to 40% of Base Mana Cost while not on Low Life",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "petrified_blood_%_life_loss_below_half_from_hit_to_prevent",
-      "values": []
-    },
-    {
-      "text": "petrified_blood_%_prevented_life_loss_to_lose_over_time",
-      "values": []
-    },
-    {
-      "text": "base_skill_gain_life_cost_%_of_mana_cost_while_not_on_low_life",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(You are on Low Life if you have 50% of your Maximum Life or less)",
-    "(You are on Low Life if you have 50% of your Maximum Life or less)",
-    "(You are on Low Life if you have 50% of your Maximum Life or less)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(-5–0)% of Life loss prevented is lost over 4 seconds",
-      "values": [
-        "(-5–0)"
-      ]
-    },
-    {
-      "text": "(-5–0)% of Life loss prevented is lost over 4 seconds",
-      "values": [
-        "(-5–0)"
-      ]
+      "text": "-(0.25-5)% of Life loss prevented is lost over 4 seconds",
+      "values": []
     }
   ]
 }

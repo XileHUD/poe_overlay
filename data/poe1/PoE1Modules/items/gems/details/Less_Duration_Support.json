@@ -1,7 +1,17 @@
 {
   "name": "Less Duration Support",
   "slug": "Less_Duration_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Duration",
+    "Icon": "d",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "31",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "31",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemReducedDuration"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,47 +375,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports any skill that has a duration.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills deal (10–19)% more Damage",
-      "values": [
-        "(10–19)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (40–49)% less Skill Effect Duration",
-      "values": [
-        "(40–49)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (10–19)% more Damage",
-      "values": [
-        "(10–19)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (40–49)% less Skill Effect Duration",
-      "values": [
-        "(40–49)"
-      ]
-    }
+  "stats": [
+    "Supported Skills deal (10-19)% more Damage",
+    "Supported Skills have (40-49)% less Skill Effect Duration"
   ],
+  "gemDescription": "Supports any skill that has a duration.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–10)% less Skill Effect Duration",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–10)% less Skill Effect Duration",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills have (0.5-10)% less Skill Effect Duration",
+      "values": []
     }
   ]
 }

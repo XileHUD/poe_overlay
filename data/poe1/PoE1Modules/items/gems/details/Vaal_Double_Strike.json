@@ -1,7 +1,21 @@
 {
   "name": "Vaal Double Strike",
   "slug": "Vaal_Double_Strike",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Melee, Strike, Duration, Vaal, Physical",
+    "Level": "(1-20)",
+    "Souls Per Use": "30",
+    "Can Store": "2 Use(s)",
+    "Soul Gain Prevention": "8 sec",
+    "Attack Damage": "(40-101)% of base",
+    "Effectiveness of Added Damage": "(40-101)%",
+    "Info 8": "Corrupted",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Vaal Double Strike can drop from the Vaal Vessels found in Vaal side areas .",
+    "Drop level": "1",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVaalDoubleStrike"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -285,124 +299,21 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Base duration is 6.00 seconds",
+    "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+    "Doubles have (0-57)% increased Movement Speed",
+    "Can't be Evaded",
+    "25% chance to cause Bleeding",
+    "Maximum 8 Summoned Doubles"
+  ],
   "gemDescription": "Performs two fast strikes with a melee weapon, each of which summons a double of you for a duration to continuously attack monsters in this fashion.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "Doubles have (0–57)% increased Movement Speed",
-      "values": [
-        "(0–57)"
-      ]
-    },
-    {
-      "text": "Can't be Evaded",
-      "values": []
-    },
-    {
-      "text": "25% chance to cause Bleeding",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Maximum 8 Summoned Doubles",
-      "values": [
-        "8"
-      ]
-    },
-    {
-      "text": "Base duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "Doubles have (0–57)% increased Movement Speed",
-      "values": [
-        "(0–57)"
-      ]
-    },
-    {
-      "text": "Can't be Evaded",
-      "values": []
-    },
-    {
-      "text": "25% chance to cause Bleeding",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Maximum 8 Summoned Doubles",
-      "values": [
-        "8"
-      ]
-    },
-    {
-      "text": "base skill number of additional hits [1]",
-      "values": []
-    },
-    {
-      "text": "cannot cancel skill before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "number of monsters to summon [1]",
-      "values": []
-    },
-    {
-      "text": "skill cannot be stunned before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "25% chance to cause Bleeding",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "base skill number of additional hits [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
-    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
-    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
-    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–20)% chance to deal Double Damage to Bleeding Enemies",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% chance to deal Double Damage to Bleeding Enemies",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% chance to deal Double Damage to Bleeding Enemies",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "(1-20)% chance to deal Double Damage to Bleeding Enemies",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,19 @@
 {
   "name": "Leap Slam of Groundbreaking",
   "slug": "Leap_Slam_of_Groundbreaking",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, AoE, Movement, Travel, Slam, Melee",
+    "Level": "(1-20)",
+    "Cost": "(9-14) Mana",
+    "Attack Speed": "70% of base",
+    "Attack Damage": "(286-660)% of base",
+    "Effectiveness of Added Damage": "(286-660)%",
+    "Requires Level": "10",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "10",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -285,87 +297,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Jump a short distance through the air, damaging and knocking back enemies with your weapon where you land. Enemies you would land on are pushed out of the way. Requires an Axe, Mace, Sceptre, Sword or Staff.",
-  "explicitMods": [
-    {
-      "text": "(20–39)% increased Stun Duration against Enemies that are on Full Life",
-      "values": [
-        "(20–39)"
-      ]
-    },
-    {
-      "text": "Base radius is 2.5 metres",
-      "values": [
-        "2.5"
-      ]
-    },
-    {
-      "text": "Damaging Hits always Stun Enemies that are on Full Life",
-      "values": []
-    },
-    {
-      "text": "(20–39)% increased Stun Duration against Enemies that are on Full Life",
-      "values": [
-        "(20–39)"
-      ]
-    },
-    {
-      "text": "Base radius is 2.5 metres",
-      "values": [
-        "2.5"
-      ]
-    },
-    {
-      "text": "Damaging Hits always Stun Enemies that are on Full Life",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "leap slam always knockback within range [1]",
-      "values": []
-    },
-    {
-      "text": "(20–54)% increased Stun Duration against Enemies that are on Full Life",
-      "values": [
-        "(20–54)"
-      ]
-    },
-    {
-      "text": "Base radius is 2 metres",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Damaging Hits always Stun Enemies that are on Full Life",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "leap slam always knockback within range [1]",
-      "values": []
-    }
+  "stats": [
+    "(20-39)% increased Stun Duration against Enemies that are on Full Life",
+    "Base radius is 2.5 metres",
+    "Damaging Hits always Stun Enemies that are on Full Life"
   ],
+  "gemDescription": "Jump a short distance through the air, damaging and knocking back enemies with your weapon where you land. Enemies you would land on are pushed out of the way. Requires an Axe, Mace, Sceptre, Sword or Staff.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–40)% increased Stun Duration against Enemies that are on Full Life",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "(0–40)% increased Stun Duration against Enemies that are on Full Life",
-      "values": [
-        "(0–40)"
-      ]
+      "text": "(2-40)% increased Stun Duration against Enemies that are on Full Life",
+      "values": []
     }
   ]
 }

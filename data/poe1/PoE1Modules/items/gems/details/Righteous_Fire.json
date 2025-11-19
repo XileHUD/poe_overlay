@@ -1,7 +1,18 @@
 {
   "name": "Righteous Fire",
   "slug": "Righteous_Fire",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Fire",
+    "Level": "(1-20)",
+    "Cooldown Time": "0.30 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "Instant",
+    "Requires Level": "16",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "16",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemRighteousFire"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,163 +416,21 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Engulfs you in magical fire that rapidly burns you and nearby enemies. Your spell damage is substantially increased while under this effect. The effect ends when you have 1 life remaining.",
-  "explicitMods": [
-    {
-      "text": "Deals 70% of your Maximum Life as Base Fire Damage per second",
-      "values": [
-        "70"
-      ]
-    },
-    {
-      "text": "Deals 70% of your Maximum Energy Shield as Base Fire Damage per second",
-      "values": [
-        "70"
-      ]
-    },
-    {
-      "text": "You Burn for 90% of your Maximum Life per second as Fire Damage",
-      "values": [
-        "90"
-      ]
-    },
-    {
-      "text": "You Burn for 70% of your Maximum Energy Shield per second as Fire Damage",
-      "values": [
-        "70"
-      ]
-    },
-    {
-      "text": "Grants (20–39)% more Spell Damage",
-      "values": [
-        "(20–39)"
-      ]
-    },
-    {
-      "text": "Base radius is (1.8–2.3) metres",
-      "values": [
-        "(1.8–2.3)"
-      ]
-    },
-    {
-      "text": "Deals 70% of your Maximum Life as Base Fire Damage per second",
-      "values": [
-        "70"
-      ]
-    },
-    {
-      "text": "Deals 70% of your Maximum Energy Shield as Base Fire Damage per second",
-      "values": [
-        "70"
-      ]
-    },
-    {
-      "text": "You Burn for 90% of your Maximum Life per second as Fire Damage",
-      "values": [
-        "90"
-      ]
-    },
-    {
-      "text": "You Burn for 70% of your Maximum Energy Shield per second as Fire Damage",
-      "values": [
-        "70"
-      ]
-    },
-    {
-      "text": "Grants (20–39)% more Spell Damage",
-      "values": [
-        "(20–39)"
-      ]
-    },
-    {
-      "text": "Base radius is (1.8–2.3) metres",
-      "values": [
-        "(1.8–2.3)"
-      ]
-    },
-    {
-      "text": "spell_damage_+%",
-      "values": []
-    },
-    {
-      "text": "base_nonlethal_fire_damage_%_of_maximum_life_taken_per_minute",
-      "values": []
-    },
-    {
-      "text": "righteous_fire_spell_damage_+%_final",
-      "values": []
-    },
-    {
-      "text": "base_nonlethal_fire_damage_%_of_maximum_energy_shield_taken_per_minute",
-      "values": []
-    },
-    {
-      "text": "base_nonlethal_fire_damage_%_of_maximum_mana_taken_per_minute",
-      "values": []
-    },
-    {
-      "text": "righteous_fire_cast_speed_+%_final",
-      "values": []
-    },
-    {
-      "text": "base_fire_damage_taken_per_minute",
-      "values": []
-    },
-    {
-      "text": "spell_damage_+%",
-      "values": []
-    },
-    {
-      "text": "righteous_fire_spell_damage_+%_final",
-      "values": []
-    },
-    {
-      "text": "base_fire_damage_%_of_maximum_life_plus_maximum_ES_taken_per_minute",
-      "values": []
-    },
-    {
-      "text": "base_fire_damage_taken_per_minute",
-      "values": []
-    },
-    {
-      "text": "spell_damage_+%",
-      "values": []
-    },
-    {
-      "text": "base_nonlethal_fire_damage_%_of_maximum_life_taken_per_minute",
-      "values": []
-    },
-    {
-      "text": "righteous_fire_spell_damage_+%_final",
-      "values": []
-    },
-    {
-      "text": "base_nonlethal_fire_damage_%_of_maximum_energy_shield_taken_per_minute",
-      "values": []
-    },
-    {
-      "text": "base_nonlethal_fire_damage_%_of_maximum_mana_taken_per_minute",
-      "values": []
-    },
-    {
-      "text": "righteous_fire_cast_speed_+%_final",
-      "values": []
-    }
+  "stats": [
+    "Deals 70% of your Maximum Life as Base Fire Damage per second",
+    "Deals 70% of your Maximum Energy Shield as Base Fire Damage per second",
+    "You Burn for 90% of your Maximum Life per second as Fire Damage",
+    "You Burn for 70% of your Maximum Energy Shield per second as Fire Damage",
+    "Grants (20-39)% more Spell Damage",
+    "Base radius is (1.8-2.3) metres"
   ],
+  "gemDescription": "Engulfs you in magical fire that rapidly burns you and nearby enemies. Your spell damage is substantially increased while under this effect. The effect ends when you have 1 life remaining.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base radius is (0–0.3) metres",
-      "values": [
-        "(0–0.3)"
-      ]
-    },
-    {
-      "text": "Base radius is (0–0.3) metres",
-      "values": [
-        "(0–0.3)"
-      ]
+      "text": "Base radius is (0.015-0.3) metres",
+      "values": []
     }
   ]
 }

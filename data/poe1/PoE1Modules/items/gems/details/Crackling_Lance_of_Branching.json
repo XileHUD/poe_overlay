@@ -1,7 +1,19 @@
 {
   "name": "Crackling Lance of Branching",
   "slug": "Crackling_Lance_of_Branching",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Lightning",
+    "Level": "(1-20)",
+    "Cost": "(13-25) Mana",
+    "Cast Time": "0.75 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "(240-330)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,76 +337,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Release a beam which deals lightning damage to enemies in a long area in front of you, and has several smaller beams branch off from it at an angle, hitting more enemies to the sides.",
-  "explicitMods": [
-    {
-      "text": "Deals (55–905) to (166–2715) Lightning Damage",
-      "values": [
-        "(55–905)",
-        "(166–2715)"
-      ]
-    },
-    {
-      "text": "50% increased branching angle",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Deals (55–905) to (166–2715) Lightning Damage",
-      "values": [
-        "(55–905)",
-        "(166–2715)"
-      ]
-    },
-    {
-      "text": "50% increased branching angle",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "Deals (55–5367) to (166–16100) Lightning Damage",
-      "values": [
-        "(55–5367)",
-        "(166–16100)"
-      ]
-    },
-    {
-      "text": "50% increased branching angle",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (55-905) to (166-2715) Lightning Damage",
+    "50% increased branching angle"
   ],
+  "gemDescription": "Release a beam which deals lightning damage to enemies in a long area in front of you, and has several smaller beams branch off from it at an angle, hitting more enemies to the sides.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–20)% more Area of Effect",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% more Area of Effect",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% more Area of Effect",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "(1-20)% more Area of Effect",
+      "values": []
     }
   ]
 }

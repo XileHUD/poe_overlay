@@ -1,7 +1,18 @@
 {
   "name": "Caustic Arrow",
   "slug": "Caustic_Arrow",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Projectile, AoE, Duration, Chaos, Bow",
+    "Level": "(1-20)",
+    "Cost": "(6-10) Mana",
+    "Attack Damage": "(55-64)% of base",
+    "Effectiveness of Added Damage": "(55-64)%",
+    "AoE Radius": "20",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "5",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemPoisonArrow"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,91 +416,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Fires an arrow which deals chaos damage in an area on impact, and spreads caustic ground. Enemies standing on the caustic ground take chaos damage over time.",
-  "explicitMods": [
-    {
-      "text": "Deals (8.8–1927.1) Base Chaos Damage per second",
-      "values": [
-        "(8.8–1927.1)"
-      ]
-    },
-    {
-      "text": "Base duration is 2 seconds",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Chaos Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Modifiers to Projectile Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "+(0–0.6) metres to radius",
-      "values": [
-        "+(0–0.6)"
-      ]
-    },
-    {
-      "text": "Deals (8.8–1927.1) Base Chaos Damage per second",
-      "values": [
-        "(8.8–1927.1)"
-      ]
-    },
-    {
-      "text": "Base duration is 2 seconds",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Chaos Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Modifiers to Projectile Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "+(0–0.6) metres to radius",
-      "values": [
-        "+(0–0.6)"
-      ]
-    },
-    {
-      "text": "caustic arrow explode on hit base area of effect radius [12]",
-      "values": []
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    },
-    {
-      "text": "visual hit effect chaos is green [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (8.8-1927.1) Base Chaos Damage per second",
+    "Base duration is 2.00 seconds",
+    "Modifiers to Projectile Damage apply to this Skill's Damage Over Time effect",
+    "+(0-0.6) metres to radius",
+    "60% of Physical Damage Converted to Chaos Damage"
   ],
+  "gemDescription": "Fires an arrow which deals chaos damage in an area on impact, and spreads caustic ground. Enemies standing on the caustic ground take chaos damage over time.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–0.2) metres to radius",
-      "values": [
-        "+(0–0.2)"
-      ]
-    },
-    {
-      "text": "+(0–0.2) metres to radius",
-      "values": [
-        "+(0–0.2)"
-      ]
+      "text": "+(0.01-0.2) metres to radius",
+      "values": []
     }
   ]
 }

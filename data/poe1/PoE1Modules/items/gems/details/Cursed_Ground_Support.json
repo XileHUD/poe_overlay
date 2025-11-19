@@ -1,7 +1,17 @@
 {
   "name": "Cursed Ground Support",
   "slug": "Cursed_Ground_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "AoE, Duration, Support, Hex",
+    "Icon": "_",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "140%",
+    "Requires Level": "31",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "31",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemCursedGround"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,35 +335,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports non-aura hex curse skills.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills create Cursed Ground with a base Duration of (15–34) secondsHexes from Supported Skills have no DurationEnemies on the Cursed Ground from a Supported Skill are Cursed with that HexMaximum 1 area of Cursed Ground",
-      "values": [
-        "(15–34)"
-      ]
-    },
-    {
-      "text": "Supported Skills create Cursed Ground with a base Duration of (15–34) secondsHexes from Supported Skills have no DurationEnemies on the Cursed Ground from a Supported Skill are Cursed with that HexMaximum 1 area of Cursed Ground",
-      "values": [
-        "(15–34)"
-      ]
-    }
+  "stats": [
+    "Supported Skills create Cursed Ground with a base Duration of (15-34) seconds",
+    "Hexes from Supported Skills have no Duration",
+    "Enemies on the Cursed Ground from a Supported Skill are Cursed with that Hex",
+    "Maximum 1 area of Cursed Ground"
   ],
+  "gemDescription": "Supports non-aura hex curse skills.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–10)% increased Area of Effect of Supported Curse Skills",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "(0–10)% increased Area of Effect of Supported Curse Skills",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "(0.5-10)% increased Area of Effect of Supported Curse Skills",
+      "values": []
     }
   ]
 }

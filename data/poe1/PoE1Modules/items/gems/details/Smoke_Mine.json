@@ -1,7 +1,20 @@
 {
   "name": "Smoke Mine",
   "slug": "Smoke_Mine",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Mine, Spell, AoE, Duration, Movement, Travel, Blink",
+    "Level": "(1-20)",
+    "Cost": "(6-13) Mana",
+    "Reservation": "(6-13) Mana",
+    "Cooldown Time": "5.00 sec",
+    "Can Store": "3 Use(s)",
+    "Cast Time": "0.50 sec",
+    "Requires Level": "10",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "10",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemSmokeMine"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -445,115 +458,23 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Throws a mine that will teleport you to it when detonated. It covers both your escape and arrival with a cloud of smoke that blinds enemies, and gives you a temporary buff to movement speed. Shares a cooldown with other Blink skills.",
-  "explicitMods": [
-    {
-      "text": "Mine lasts 8 seconds",
-      "values": [
-        "8"
-      ]
-    },
-    {
-      "text": "Base duration is (4–5) seconds",
-      "values": [
-        "(4–5)"
-      ]
-    },
-    {
-      "text": "Base secondary duration is 1 seconds",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Increases and Reductions to Mine Duration also apply to this Skill's Buff Duration",
-      "values": []
-    },
-    {
-      "text": "Only one Mine of this type can Detonate in each Detonation Sequence",
-      "values": []
-    },
-    {
-      "text": "Mines cannot be Re-armed",
-      "values": []
-    },
-    {
-      "text": "Mine Detonation is Instant",
-      "values": []
-    },
-    {
-      "text": "Buff grants (20–29)% increased Movement Speed",
-      "values": [
-        "(20–29)"
-      ]
-    },
-    {
-      "text": "Mine lasts 8 seconds",
-      "values": [
-        "8"
-      ]
-    },
-    {
-      "text": "Base duration is (4–5) seconds",
-      "values": [
-        "(4–5)"
-      ]
-    },
-    {
-      "text": "Base secondary duration is 1 seconds",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Increases and Reductions to Mine Duration also apply to this Skill's Buff Duration",
-      "values": []
-    },
-    {
-      "text": "Only one Mine of this type can Detonate in each Detonation Sequence",
-      "values": []
-    },
-    {
-      "text": "Mines cannot be Re-armed",
-      "values": []
-    },
-    {
-      "text": "Mine Detonation is Instant",
-      "values": []
-    },
-    {
-      "text": "Buff grants (20–29)% increased Movement Speed",
-      "values": [
-        "(20–29)"
-      ]
-    },
-    {
-      "text": "base deal no damage [1]",
-      "values": []
-    },
-    {
-      "text": "base skill is mined [1]",
-      "values": []
-    },
-    {
-      "text": "ground smoke art variation [5]",
-      "values": []
-    }
+  "stats": [
+    "Mine lasts 8 seconds",
+    "Base duration is (4.00-5.00) seconds",
+    "Base secondary duration is 1.00 seconds",
+    "Increases and Reductions to Mine Duration also apply to this Skill's Buff Duration",
+    "Only one Mine of this type can Detonate in each Detonation Sequence",
+    "Buff grants (20-29)% increased Movement Speed",
+    "Mines cannot be Re-armed",
+    "Mine Detonation is Instant"
   ],
+  "gemDescription": "Throws a mine that will teleport you to it when detonated. It covers both your escape and arrival with a cloud of smoke that blinds enemies, and gives you a temporary buff to movement speed. Shares a cooldown with other Blink skills.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Buff grants (0–20)% increased Movement Speed",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "Buff grants (0–20)% increased Movement Speed",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "Buff grants (1-20)% increased Movement Speed",
+      "values": []
     }
   ]
 }

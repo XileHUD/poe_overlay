@@ -1,7 +1,17 @@
 {
   "name": "Energy Leech Support",
   "slug": "Energy_Leech_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support",
+    "Icon": "g",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "31",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "31",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemEnergyShieldLeech"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,51 +375,17 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Supported Skills have (1.5-1.9)% of Damage Leeched as Energy Shield",
+    "Supported Skills deal (15-24)% more Damage while on Full Energy Shield"
+  ],
   "gemDescription": "Supports any skill that hits enemies, causing those hits to leech energy shield based on damage dealt.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills have (1.5–1.9)% of Damage Leeched as Energy Shield",
-      "values": [
-        "(1.5–1.9)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (15–24)% more Damage while on Full Energy Shield",
-      "values": [
-        "(15–24)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (1.5–1.9)% of Damage Leeched as Energy Shield",
-      "values": [
-        "(1.5–1.9)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (15–24)% more Damage while on Full Energy Shield",
-      "values": [
-        "(15–24)"
-      ]
-    }
-  ],
-  "modDescriptions": [
-    "(Leeched Energy Shield is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
-    "(Leeched Energy Shield is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
-    "(Leeched Energy Shield is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–20)% increased Damage while Leeching Energy Shield",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–20)% increased Damage while Leeching Energy Shield",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "Supported Skills deal (1-20)% increased Damage while Leeching Energy Shield",
+      "values": []
     }
   ]
 }

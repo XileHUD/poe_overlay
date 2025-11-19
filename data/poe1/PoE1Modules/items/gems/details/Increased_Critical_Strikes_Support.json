@@ -1,7 +1,17 @@
 {
   "name": "Increased Critical Strikes Support",
   "slug": "Increased_Critical_Strikes_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Critical, Support",
+    "Icon": "s",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "120%",
+    "Requires Level": "8",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "8",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemIncreasedCriticalStrikes"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -326,48 +336,16 @@
   ],
   "description": "This item is drop disabled.",
   "stats": [
-    "This item is drop disabled."
+    "Supported Skills have (60-117)% increased Critical Strike Chance",
+    "Supported Skills have +2% to Critical Strike Chance"
   ],
   "gemDescription": "Supports any skill that hits enemies.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills have (60–117)% increased Critical Strike Chance",
-      "values": [
-        "(60–117)"
-      ]
-    },
-    {
-      "text": "Supported Skills have +2% to Critical Strike Chance",
-      "values": [
-        "+2"
-      ]
-    },
-    {
-      "text": "Supported Skills have (60–117)% increased Critical Strike Chance",
-      "values": [
-        "(60–117)"
-      ]
-    },
-    {
-      "text": "Supported Skills have +2% to Critical Strike Chance",
-      "values": [
-        "+2"
-      ]
-    }
-  ],
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–20)% increased Critical Strike Chance",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–20)% increased Critical Strike Chance",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "Supported Skills have (1-20)% increased Critical Strike Chance",
+      "values": []
     }
   ]
 }

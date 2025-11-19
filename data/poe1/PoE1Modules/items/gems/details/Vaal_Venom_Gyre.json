@@ -1,7 +1,37 @@
 {
   "name": "Vaal Venom Gyre",
   "slug": "Vaal_Venom_Gyre",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Projectile, Chaos, Duration, Vaal",
+    "Level": "(1-20)",
+    "Souls Per Use": "30",
+    "Can Store": "1 Use(s)",
+    "Soul Gain Prevention": "8 sec",
+    "Attack Damage": "(150-200)% of base",
+    "Effectiveness of Added Damage": "(150-200)%",
+    "Requires Level": "12",
+    "Info 9": "Corrupted",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted",
+    "Drop level": "12",
+    "Vaal Venom Gyre can drop from the Vaal Vessels found in Vaal side areas , or by corrupting Venom GyreVenom GyreAttack, Projectile, Chaos, DurationLevel": "(1-20)Cost: (5-8) ManaAttack Speed: 120% of baseAttack Damage: (150-200)% of baseEffectiveness of Added Damage: (150-200)%Requires Level 12Fires a returning projectile that can be caught. Caught projectiles spiral outwards when you use Whirling Blades and do not return. Requires a Dagger or Claw.Base duration is 12.00 seconds60% of Physical Damage Converted to Chaos DamageProjectiles Return to you40% chance to Poison on HitReturning Projectiles deal 75% less Damage with Hits and AilmentsReturning Projectiles Pierce all TargetsMaximum 30 caught Projectiles40% chance to keep each caught Projectile fired with Whirling Blades Additional Effects From 1-20% Quality: Maximum +(0.5-10) caught ProjectilesPlace into an item socket of the right colour to gain this skill. Right click to remove from a socket. .",
+    "Info 14": "Attack , Projectile , Chaos , Duration",
+    "Cost": "(5-8) Mana",
+    "Attack Speed": "120% of base",
+    "Info 17": "Fires a returning projectile that can be caught. Caught projectiles spiral outwards when you use Whirling Blades and do not return. Requires a Dagger or Claw.",
+    "Info 18": "Base duration is 12.00 seconds",
+    "Info 19": "60% of Physical Damage Converted to Chaos Damage",
+    "Info 20": "Projectiles Return to you",
+    "Info 21": "40% chance to Poison on Hit",
+    "Info 22": "Returning Projectiles deal 75% less Damage with Hits and Ailments",
+    "Info 23": "Returning Projectiles Pierce all Targets",
+    "Info 24": "Maximum 30 caught Projectiles",
+    "Info 25": "40% chance to keep each caught Projectile fired with Whirling Blades",
+    "Additional Effects From 1-20% Quality": "Maximum +(0.5-10) caught Projectiles",
+    "Info 27": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVaalVenomGyre"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -245,200 +275,24 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Base duration is 12.00 seconds",
+    "Base secondary duration is 6.00 seconds",
+    "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+    "60% of Physical Damage Converted to Chaos Damage",
+    "40% chance to Poison on Hit",
+    "Maximum 50 caught Projectiles",
+    "Creates up to 50 caught Projectiles immediately",
+    "Creates 15 caught Projectiles per second",
+    "40% chance to keep each caught Projectile fired with Whirling Blades"
+  ],
   "gemDescription": "Creates already-caught projectiles without firing them first, both immediately and over a secondary duration. Caught projectiles spiral outwards when you use Whirling Blades and do not return. Requires a Dagger or Claw.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 12 seconds",
-      "values": [
-        "12"
-      ]
-    },
-    {
-      "text": "Base secondary duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Chaos Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "40% chance to Poison on Hit",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "Maximum 50 caught ProjectilesCreates up to 50 caught Projectiles immediatelyCreates 15 caught Projectiles per second",
-      "values": [
-        "50",
-        "50",
-        "15"
-      ]
-    },
-    {
-      "text": "40% chance to keep each caught Projectile fired with Whirling Blades",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "Base duration is 12 seconds",
-      "values": [
-        "12"
-      ]
-    },
-    {
-      "text": "Base secondary duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Chaos Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "40% chance to Poison on Hit",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "Maximum 50 caught ProjectilesCreates up to 50 caught Projectiles immediatelyCreates 15 caught Projectiles per second",
-      "values": [
-        "50",
-        "50",
-        "15"
-      ]
-    },
-    {
-      "text": "40% chance to keep each caught Projectile fired with Whirling Blades",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "cannot cancel skill before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "projectile speed variation +% [15]",
-      "values": []
-    },
-    {
-      "text": "projectiles are not fired [1]",
-      "values": []
-    },
-    {
-      "text": "skill cannot be stunned before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "snapping adder maximum projectiles released [30]",
-      "values": []
-    },
-    {
-      "text": "visual hit effect chaos is green [1]",
-      "values": []
-    },
-    {
-      "text": "Base duration is 12 seconds",
-      "values": [
-        "12"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Chaos Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Projectiles Return to you",
-      "values": []
-    },
-    {
-      "text": "40% chance to Poison on Hit",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "Returning Projectiles deal 75% less Damage with Hits and Ailments",
-      "values": [
-        "75"
-      ]
-    },
-    {
-      "text": "Returning Projectiles Pierce all Targets",
-      "values": []
-    },
-    {
-      "text": "Maximum +30 caught Projectiles",
-      "values": [
-        "+30"
-      ]
-    },
-    {
-      "text": "40% chance to keep each caught Projectile fired with Whirling Blades",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "projectile speed variation +% [15]",
-      "values": []
-    },
-    {
-      "text": "snapping adder maximum projectiles released [30]",
-      "values": []
-    },
-    {
-      "text": "visual hit effect chaos is green [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
-    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
-    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
-    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–20)% increased Poison Duration",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% increased Poison Duration",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "(1-20)% increased Poison Duration",
+      "values": []
     }
   ]
 }

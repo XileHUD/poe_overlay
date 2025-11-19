@@ -1,7 +1,19 @@
 {
   "name": "Leap Slam",
   "slug": "Leap_Slam",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, AoE, Movement, Travel, Slam, Melee",
+    "Level": "(1-20)",
+    "Cost": "(6-10) Mana",
+    "Attack Damage": "(136-314)% of base",
+    "Effectiveness of Added Damage": "(136-314)%",
+    "AoE Radius": "15",
+    "Requires Level": "10",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "10",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemLeapSlam"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,75 +377,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Jump through the air, damaging and knocking back enemies with your weapon where you land. Enemies you would land on are pushed out of the way. Requires an Axe, Mace, Sceptre, Sword or Staff.",
-  "explicitMods": [
-    {
-      "text": "(20–39)% increased Stun Duration against Enemies that are on Full Life",
-      "values": [
-        "(20–39)"
-      ]
-    },
-    {
-      "text": "+0.55 seconds to Attack Time",
-      "values": [
-        "+0.55"
-      ]
-    },
-    {
-      "text": "Base radius is 1.5 metres",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "Damaging Hits always Stun Enemies that are on Full Life",
-      "values": []
-    },
-    {
-      "text": "(20–39)% increased Stun Duration against Enemies that are on Full Life",
-      "values": [
-        "(20–39)"
-      ]
-    },
-    {
-      "text": "+0.55 seconds to Attack Time",
-      "values": [
-        "+0.55"
-      ]
-    },
-    {
-      "text": "Base radius is 1.5 metres",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "Damaging Hits always Stun Enemies that are on Full Life",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "leap slam always knockback within range [1]",
-      "values": []
-    }
+  "stats": [
+    "(20-39)% increased Stun Duration against Enemies that are on Full Life",
+    "+0.55 seconds to Attack Time",
+    "Base radius is 1.5 metres",
+    "Damaging Hits always Stun Enemies that are on Full Life"
   ],
+  "gemDescription": "Jump through the air, damaging and knocking back enemies with your weapon where you land. Enemies you would land on are pushed out of the way. Requires an Axe, Mace, Sceptre, Sword or Staff.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–40)% increased Stun Duration against Enemies that are on Full Life",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "(0–40)% increased Stun Duration against Enemies that are on Full Life",
-      "values": [
-        "(0–40)"
-      ]
+      "text": "(2-40)% increased Stun Duration against Enemies that are on Full Life",
+      "values": []
     }
   ]
 }

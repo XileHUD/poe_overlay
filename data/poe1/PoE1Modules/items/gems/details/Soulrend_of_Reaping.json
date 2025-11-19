@@ -1,7 +1,19 @@
 {
   "name": "Soulrend of Reaping",
   "slug": "Soulrend_of_Reaping",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Chaos, Spell, Projectile",
+    "Level": "(1-20)",
+    "Cost": "(14-26) Mana",
+    "Cast Time": "0.80 sec",
+    "Critical Strike Chance": "7.00%",
+    "Effectiveness of Added Damage": "400%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -285,83 +297,17 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Deals (42-1784) to (62-2676) Chaos Damage",
+    "4% of Spell Damage Leeched as Energy Shield"
+  ],
   "gemDescription": "Fires a projectile that deals chaos damage to enemies it hits and leeches some of that damage as energy shield.",
-  "explicitMods": [
-    {
-      "text": "Deals (42–1784) to (62–2676) Chaos Damage",
-      "values": [
-        "(42–1784)",
-        "(62–2676)"
-      ]
-    },
-    {
-      "text": "4% of Spell Damage Leeched as Energy Shield",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Deals (42–1784) to (62–2676) Chaos Damage",
-      "values": [
-        "(42–1784)",
-        "(62–2676)"
-      ]
-    },
-    {
-      "text": "4% of Spell Damage Leeched as Energy Shield",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "active skill projectile speed +% variation final [25]",
-      "values": []
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "Deals (417–64189) to (625–96284) Chaos Damage",
-      "values": [
-        "(417–64189)",
-        "(625–96284)"
-      ]
-    },
-    {
-      "text": "4% of Spell Damage Leeched as Energy Shield",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "active skill projectile speed +% variation final [25]",
-      "values": []
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Leeched Energy Shield is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
-    "(Leeched Energy Shield is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
-    "(Leeched Energy Shield is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)",
-    "(Leeched Energy Shield is recovered over time. Multiple Leeches can occur simultaneously, up to a maximum rate)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–40)% increased Projectile Speed",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "(0–40)% increased Projectile Speed",
-      "values": [
-        "(0–40)"
-      ]
+      "text": "(2-40)% increased Projectile Speed",
+      "values": []
     }
   ]
 }

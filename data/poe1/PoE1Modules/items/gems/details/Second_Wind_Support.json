@@ -1,7 +1,17 @@
 {
   "name": "Second Wind Support",
   "slug": "Second_Wind_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support",
+    "Icon": "8",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "200%",
+    "Requires Level": "31",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "31",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemSecondWind"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,47 +375,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports skills with cooldowns.\nCannot support triggered skills.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills have (5–24)% reduced Cooldown Recovery Rate",
-      "values": [
-        "(5–24)"
-      ]
-    },
-    {
-      "text": "Supported Non-Instant Skills have +1 Cooldown Use",
-      "values": [
-        "+1"
-      ]
-    },
-    {
-      "text": "Supported Skills have (5–24)% reduced Cooldown Recovery Rate",
-      "values": [
-        "(5–24)"
-      ]
-    },
-    {
-      "text": "Supported Non-Instant Skills have +1 Cooldown Use",
-      "values": [
-        "+1"
-      ]
-    }
+  "stats": [
+    "Supported Skills have (24-5)% reduced Cooldown Recovery Rate",
+    "Supported Non-Instant Skills have +1 Cooldown Use"
   ],
+  "gemDescription": "Supports skills with cooldowns.Cannot support triggered skills.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–5)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–5)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–5)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–5)"
-      ]
+      "text": "Supported Skills have (0.25-5)% increased Cooldown Recovery Rate",
+      "values": []
     }
   ]
 }

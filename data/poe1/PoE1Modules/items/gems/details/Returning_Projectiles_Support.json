@@ -1,7 +1,17 @@
 {
   "name": "Returning Projectiles Support",
   "slug": "Returning_Projectiles_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Projectile",
+    "Icon": "R",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "150%",
+    "Requires Level": "38",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "38",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemReturningProjectiles"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,51 +335,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports projectile skills.",
-  "explicitMods": [
-    {
-      "text": "Projectiles from Supported Skills Return to you",
-      "values": []
-    },
-    {
-      "text": "Projectiles from Supported Skills deal (66–70)% less Damage with Hits and Ailments while Returning",
-      "values": [
-        "(66–70)"
-      ]
-    },
-    {
-      "text": "Projectiles from Supported Skills Pierce all Targets while Returning",
-      "values": []
-    },
-    {
-      "text": "Projectiles from Supported Skills Return to you",
-      "values": []
-    },
-    {
-      "text": "Projectiles from Supported Skills deal (66–70)% less Damage with Hits and Ailments while Returning",
-      "values": [
-        "(66–70)"
-      ]
-    },
-    {
-      "text": "Projectiles from Supported Skills Pierce all Targets while Returning",
-      "values": []
-    }
+  "stats": [
+    "Projectiles from Supported Skills Return to you",
+    "Projectiles from Supported Skills deal (70-66)% less Damage with Hits and Ailments while Returning",
+    "Projectiles from Supported Skills Pierce all Targets while Returning"
   ],
+  "gemDescription": "Supports projectile skills.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–10)% increased Projectile Speed",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–10)% increased Projectile Speed",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills have (0.5-10)% increased Projectile Speed",
+      "values": []
     }
   ]
 }

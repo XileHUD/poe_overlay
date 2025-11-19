@@ -1,7 +1,19 @@
 {
   "name": "Corrupting Fever",
   "slug": "Corrupting_Fever",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Duration, Physical",
+    "Level": "(1-20)",
+    "Cost": "(78-520) Life",
+    "Cooldown Time": "1.00 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "Instant",
+    "Requires Level": "16",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "16",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemCorruptingFever"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,71 +417,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Draws out your own blood to power a buff for a duration, letting this skill inflict the Corrupting Blood debuff on enemies you hit, dealing physical damage over time for a short secondary duration. The buff's duration will be refreshed if you spend enough life before it expires.",
-  "explicitMods": [
-    {
-      "text": "Deals (7.8–335.4) Base Physical Damage per second",
-      "values": [
-        "(7.8–335.4)"
-      ]
-    },
-    {
-      "text": "Base duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Buff Duration is refreshed after you spend a total of (26–205) Life",
-      "values": [
-        "(26–205)"
-      ]
-    },
-    {
-      "text": "Base Debuff Duration is 1 seconds",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Deals (7.8–335.4) Base Physical Damage per second",
-      "values": [
-        "(7.8–335.4)"
-      ]
-    },
-    {
-      "text": "Base duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Buff Duration is refreshed after you spend a total of (26–205) Life",
-      "values": [
-        "(26–205)"
-      ]
-    },
-    {
-      "text": "Base Debuff Duration is 1 seconds",
-      "values": [
-        "1"
-      ]
-    }
+  "stats": [
+    "Deals (7.8-335.4) Base Physical Damage per second",
+    "Base duration is 6.00 seconds",
+    "Buff Duration is refreshed after you spend a total of (26-205) Life",
+    "Base Debuff Duration is 1.00 seconds"
   ],
+  "gemDescription": "Draws out your own blood to power a buff for a duration, letting this skill inflict the Corrupting Blood debuff on enemies you hit, dealing physical damage over time for a short secondary duration. The buff's duration will be refreshed if you spend enough life before it expires.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–20)% increased Skill Effect Duration",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% increased Skill Effect Duration",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "(1-20)% increased Skill Effect Duration",
+      "values": []
     }
   ]
 }

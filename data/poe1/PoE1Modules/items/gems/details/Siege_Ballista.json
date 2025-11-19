@@ -1,7 +1,20 @@
 {
   "name": "Siege Ballista",
   "slug": "Siege_Ballista",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Projectile, Totem, Bow",
+    "Level": "(1-20)",
+    "Cost": "(8-13) Mana",
+    "Attack Speed": "50% of base",
+    "Attack Damage": "(100-145)% of base",
+    "Effectiveness of Added Damage": "(100-145)%",
+    "Projectile Speed": "3260",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "12",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemSiegeBallista"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,121 +418,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Summons a ballista totem that attacks with piercing arrows. Requires a Bow.",
-  "explicitMods": [
-    {
-      "text": "Arrows Pierce (6–9) additional Targets",
-      "values": [
-        "(6–9)"
-      ]
-    },
-    {
-      "text": "+(2–3) to maximum number of Summoned Totems",
-      "values": [
-        "+(2–3)"
-      ]
-    },
-    {
-      "text": "Totem lasts 8 seconds",
-      "values": [
-        "8"
-      ]
-    },
-    {
-      "text": "Summons a Ballista Totem which uses this Skill",
-      "values": []
-    },
-    {
-      "text": "Arrows Pierce (6–9) additional Targets",
-      "values": [
-        "(6–9)"
-      ]
-    },
-    {
-      "text": "+(2–3) to maximum number of Summoned Totems",
-      "values": [
-        "+(2–3)"
-      ]
-    },
-    {
-      "text": "Totem lasts 8 seconds",
-      "values": [
-        "8"
-      ]
-    },
-    {
-      "text": "Summons a Ballista Totem which uses this Skill",
-      "values": []
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "base skill is totemified [1]",
-      "values": []
-    },
-    {
-      "text": "base totem range [80]",
-      "values": []
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    },
-    {
-      "text": "Adds (8–12) to (16–24) Physical Damage",
-      "values": [
-        "(8–12)",
-        "(16–24)"
-      ]
-    },
-    {
-      "text": "(14–20)% increased Attack Speed",
-      "values": [
-        "(14–20)"
-      ]
-    },
-    {
-      "text": "(14–20)% increased Totem Life",
-      "values": [
-        "(14–20)"
-      ]
-    },
-    {
-      "text": "(14–20)% increased Totem Placement speed",
-      "values": [
-        "(14–20)"
-      ]
-    },
-    {
-      "text": "Adds 1 to 3 Physical Damage to Attacks per 25 Dexterity",
-      "values": [
-        "1",
-        "3"
-      ]
-    },
-    {
-      "text": "Siege Ballista has +1 to maximum number of Summoned Totems per 200 Dexterity",
-      "values": [
-        "+1"
-      ]
-    }
+  "stats": [
+    "Arrows Pierce (6-9) additional Targets",
+    "+(2-3) to maximum number of Summoned Totems",
+    "Totem lasts 8 seconds",
+    "Summons a Ballista Totem which uses this Skill"
   ],
+  "gemDescription": "Summons a ballista totem that attacks with piercing arrows. Requires a Bow.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–5)% increased Attack Speed per maximum Totem",
-      "values": [
-        "(0–5)"
-      ]
-    },
-    {
-      "text": "(0–5)% increased Attack Speed per maximum Totem",
-      "values": [
-        "(0–5)"
-      ]
+      "text": "(0.25-5)% increased Attack Speed per maximum Totem",
+      "values": []
     }
   ]
 }

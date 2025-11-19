@@ -1,7 +1,18 @@
 {
   "name": "Lightning Arrow of Electrocution",
   "slug": "Lightning_Arrow_of_Electrocution",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Projectile, Lightning, Bow",
+    "Level": "(1-20)",
+    "Cost": "(6-10) Mana",
+    "Attack Damage": "(74-86)% of base",
+    "Effectiveness of Added Damage": "(74-86)%",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "12",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -285,109 +296,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Fires a charged arrow which damages enemies by causing them to be struck by a bolt of lightning. It sticks into the final target, causing them to be struck and damaged multiple times.",
-  "explicitMods": [
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Arrows Damage final target 4 additional times after sticking in",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Lightning bolts strike every 0.5 seconds",
-      "values": [
-        "0.5"
-      ]
-    },
-    {
-      "text": "10 Maximum Lightning Arrows stuck in an Enemy",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Arrows Damage final target 4 additional times after sticking in",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Lightning bolts strike every 0.5 seconds",
-      "values": [
-        "0.5"
-      ]
-    },
-    {
-      "text": "10 Maximum Lightning Arrows stuck in an Enemy",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    },
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Arrows Damage final target 4 additional times after sticking in",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Lightning bolts strike every 0.5 seconds",
-      "values": [
-        "0.5"
-      ]
-    },
-    {
-      "text": "10 Maximum Lightning Arrows stuck in an Enemy",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    }
+  "stats": [
+    "50% of Physical Damage Converted to Lightning Damage",
+    "Arrows Damage final target 4 additional times after sticking in",
+    "Lightning bolts strike every 0.5 seconds",
+    "10 Maximum Lightning Arrows stuck in an Enemy"
   ],
+  "gemDescription": "Fires a charged arrow which damages enemies by causing them to be struck by a bolt of lightning. It sticks into the final target, causing them to be struck and damaged multiple times.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Arrows Damage final target (0–1) additional time after sticking in",
-      "values": [
-        "(0–1)"
-      ]
-    },
-    {
-      "text": "Arrows Damage final target (0–1) additional time after sticking in",
-      "values": [
-        "(0–1)"
-      ]
-    },
-    {
-      "text": "Arrows Damage final target (0–1) additional time after sticking in",
-      "values": [
-        "(0–1)"
-      ]
+      "text": "Arrows Damage final target (0.05-1) additional times after sticking in",
+      "values": []
     }
   ]
 }

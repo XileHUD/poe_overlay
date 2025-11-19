@@ -1,7 +1,20 @@
 {
   "name": "Molten Shell",
   "slug": "Molten_Shell",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Duration, Fire, Physical, Guard",
+    "Level": "(1-20)",
+    "Cost": "(8-12) Mana",
+    "Cooldown Time": "4.00 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "Instant",
+    "AoE Radius": "15",
+    "Requires Level": "16",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "16",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemMoltenShell"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,115 +418,21 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Applies a buff that adds to your armour, and can take some of the damage from hits for you before being depleted. When the buff expires or is depleted, the skill deals reflected damage to enemies around you based on the total damage that was taken from the buff. Shares a cooldown with other Guard skills.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 3 seconds",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "This Skill's Cooldown does not recover during its effect",
-      "values": []
-    },
-    {
-      "text": "75% of Damage from Hits is taken from the Buff before your Life or Energy ShieldBuff can take Damage equal to 10% of your Armour, up to a maximum of 5000",
-      "values": [
-        "75",
-        "10",
-        "5000"
-      ]
-    },
-    {
-      "text": "Reflects (100–3000)% of Damage taken from Buff as Fire Damage when Buff expires or is depleted",
-      "values": [
-        "(100–3000)"
-      ]
-    },
-    {
-      "text": "Buff grants +(115–858) to Armour",
-      "values": [
-        "+(115–858)"
-      ]
-    },
-    {
-      "text": "Base duration is 3 seconds",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "This Skill's Cooldown does not recover during its effect",
-      "values": []
-    },
-    {
-      "text": "75% of Damage from Hits is taken from the Buff before your Life or Energy ShieldBuff can take Damage equal to 10% of your Armour, up to a maximum of 5000",
-      "values": [
-        "75",
-        "10",
-        "5000"
-      ]
-    },
-    {
-      "text": "Reflects (100–3000)% of Damage taken from Buff as Fire Damage when Buff expires or is depleted",
-      "values": [
-        "(100–3000)"
-      ]
-    },
-    {
-      "text": "Buff grants +(115–858) to Armour",
-      "values": [
-        "+(115–858)"
-      ]
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "damage originates from initiator location [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill override pvp scaling time ms [200]",
-      "values": []
-    },
-    {
-      "text": "base_physical_damage_reduction_rating",
-      "values": []
-    },
-    {
-      "text": "physical_damage_reduction_rating_+%",
-      "values": []
-    },
-    {
-      "text": "vaal_molten_shall_armour_+%_final",
-      "values": []
-    },
-    {
-      "text": "affected_by_guard_skill",
-      "values": []
-    }
+  "stats": [
+    "Base duration is 3.00 seconds",
+    "This Skill's Cooldown does not recover during its effect",
+    "Buff grants +(115-858) to Armour",
+    "75% of Damage from Hits is taken from the Buff before your Life or Energy Shield",
+    "Buff can take Damage equal to 10% of your Armour, up to a maximum of 5000",
+    "Reflects (100-3000)% of Damage taken from Buff as Fire Damage when Buff expires or is depleted"
   ],
+  "gemDescription": "Applies a buff that adds to your armour, and can take some of the damage from hits for you before being depleted. When the buff expires or is depleted, the skill deals reflected damage to enemies around you based on the total damage that was taken from the buff. Shares a cooldown with other Guard skills.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–20)% increased Skill Effect Duration",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% increased Skill Effect Duration",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "(1-20)% increased Skill Effect Duration",
+      "values": []
     }
   ]
 }

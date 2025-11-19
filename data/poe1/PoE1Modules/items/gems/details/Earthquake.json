@@ -1,7 +1,20 @@
 {
   "name": "Earthquake",
   "slug": "Earthquake",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, AoE, Duration, Slam, Melee",
+    "Level": "(1-20)",
+    "Cost": "(10-13) Mana",
+    "Attack Speed": "75% of base",
+    "Attack Damage": "(143-229)% of base",
+    "Effectiveness of Added Damage": "(143-229)%",
+    "AoE Radius": "18 / 28",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "28",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemEarthquake"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,63 +338,17 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Base duration is 1.00 seconds",
+    "Aftershock deals 150% more Damage with Hits and Ailments"
+  ],
   "gemDescription": "Smashes the ground, dealing damage in an area and cracking the earth. The crack will erupt in a powerful aftershock after a duration. Cracks created before the first one has erupted will not generate their own aftershocks. Requires an Axe, Mace, Sceptre, Staff or Unarmed.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 1 seconds",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Aftershock deals 150% more Damage with Hits and Ailments",
-      "values": [
-        "150"
-      ]
-    },
-    {
-      "text": "Base duration is 1 seconds",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Aftershock deals 150% more Damage with Hits and Ailments",
-      "values": [
-        "150"
-      ]
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "is player earthquake [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Aftershock deals +(0–30)% more Damage with Hits and Ailments",
-      "values": [
-        "+(0–30)"
-      ]
-    },
-    {
-      "text": "Aftershock deals +(0–30)% more Damage with Hits and Ailments",
-      "values": [
-        "+(0–30)"
-      ]
+      "text": "Aftershock deals +(1.5-30)% more Damage with Hits and Ailments",
+      "values": []
     }
   ]
 }

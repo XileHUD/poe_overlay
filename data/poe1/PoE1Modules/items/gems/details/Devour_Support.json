@@ -1,7 +1,17 @@
 {
   "name": "Devour Support",
   "slug": "Devour_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support",
+    "Icon": "*",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "120%",
+    "Requires Level": "8",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "8",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemDevour"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,37 +375,16 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports any skill that hits enemies.",
-  "explicitMods": [
-    {
-      "text": "Killing Blows with Supported Skills Consume corpses to Recover (24–366) Life and (10–40) Mana",
-      "values": [
-        "(24–366)",
-        "(10–40)"
-      ]
-    },
-    {
-      "text": "Killing Blows with Supported Skills Consume corpses to Recover (24–366) Life and (10–40) Mana",
-      "values": [
-        "(24–366)",
-        "(10–40)"
-      ]
-    }
+  "stats": [
+    "Killing Blows with Supported Skills Consume corpses to Recover (24-366) Life and (10-40) Mana"
   ],
+  "gemDescription": "Supports any skill that hits enemies.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–80)% increased Damage if you have Consumed a corpse Recently",
-      "values": [
-        "(0–80)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–80)% increased Damage if you have Consumed a corpse Recently",
-      "values": [
-        "(0–80)"
-      ]
+      "text": "Supported Skills deal (4-80)% increased Damage if you have Consumed a corpse Recently",
+      "values": []
     }
   ]
 }

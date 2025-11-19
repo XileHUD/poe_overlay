@@ -1,7 +1,19 @@
 {
   "name": "Tectonic Slam of Cataclysm",
   "slug": "Tectonic_Slam_of_Cataclysm",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Fire, Attack, AoE, Slam, Melee",
+    "Level": "(1-20)",
+    "Cost": "(9-13) Mana",
+    "Attack Speed": "80% of base",
+    "Attack Damage": "(257-472)% of base",
+    "Effectiveness of Added Damage": "(257-472)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -285,117 +297,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Slam the ground, consuming all Endurance Charges and unleashing a fiery fissure in front of you, dealing area damage and randomly releasing a number of smaller fissures branching off from it. Requires a Mace, Sceptre, Sword, Axe, Staff, or Unarmed.",
-  "explicitMods": [
-    {
-      "text": "60% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "15% more Damage per Endurance Charge removed",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "10% more Area of Effect per Endurance Charge removed",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "10% fissure branching chance per Endurance Charge removed",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "15% more Damage per Endurance Charge removed",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "10% more Area of Effect per Endurance Charge removed",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "10% fissure branching chance per Endurance Charge removed",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "60% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "15% more Damage per Endurance Charge removed",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "10% more Area of Effect per Endurance Charge removed",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "10% fissure branching chance per Endurance Charge removed",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "60% of Physical Damage Converted to Fire Damage",
+    "15% more Damage per Endurance Charge removed",
+    "10% more Area of Effect per Endurance Charge removed",
+    "10% fissure branching chance per Endurance Charge removed"
   ],
+  "gemDescription": "Slam the ground, consuming all Endurance Charges and unleashing a fiery fissure in front of you, dealing area damage and randomly releasing a number of smaller fissures branching off from it. Requires a Mace, Sceptre, Sword, Axe, Staff, or Unarmed.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–5)% more Damage per Endurance Charge removed",
-      "values": [
-        "+(0–5)"
-      ]
-    },
-    {
-      "text": "+(0–5)% more Damage per Endurance Charge removed",
-      "values": [
-        "+(0–5)"
-      ]
-    },
-    {
-      "text": "+(0–5)% more Damage per Endurance Charge removed",
-      "values": [
-        "+(0–5)"
-      ]
+      "text": "+(0.25-5)% more Damage per Endurance Charge removed",
+      "values": []
     }
   ]
 }

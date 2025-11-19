@@ -1,7 +1,22 @@
 {
   "name": "Vaal Fireball",
   "slug": "Vaal_Fireball",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Projectile, Spell, AoE, Vaal, Fire",
+    "Level": "(1-20)",
+    "Souls Per Use": "30",
+    "Can Store": "1 Use(s)",
+    "Soul Gain Prevention": "4 sec",
+    "Cast Time": "0.75 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "240%",
+    "Info 9": "Corrupted",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Vaal Fireball can drop from the Vaal Vessels found in Vaal side areas .",
+    "Drop level": "1",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVaalFireball"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,123 +380,19 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Deals (9-1095) to (14-1643) Fire Damage",
+    "Fires 32 Projectiles in a spiral",
+    "25% chance to Ignite enemies",
+    "Base radius is (0.9-1.4) metres"
+  ],
   "gemDescription": "Launches a series of fireballs in a spiral around the caster.",
-  "explicitMods": [
-    {
-      "text": "Deals (9–1095) to (14–1643) Fire Damage",
-      "values": [
-        "(9–1095)",
-        "(14–1643)"
-      ]
-    },
-    {
-      "text": "Fires 32 Projectiles in a spiral",
-      "values": [
-        "32"
-      ]
-    },
-    {
-      "text": "25% chance to Ignite enemies",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Base radius is (0.9–1.4) metres",
-      "values": [
-        "(0.9–1.4)"
-      ]
-    },
-    {
-      "text": "Deals (9–1095) to (14–1643) Fire Damage",
-      "values": [
-        "(9–1095)",
-        "(14–1643)"
-      ]
-    },
-    {
-      "text": "Fires 32 Projectiles in a spiral",
-      "values": [
-        "32"
-      ]
-    },
-    {
-      "text": "25% chance to Ignite enemies",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Base radius is (0.9–1.4) metres",
-      "values": [
-        "(0.9–1.4)"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "cannot cancel skill before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "projectile spiral nova time ms [2000]",
-      "values": []
-    },
-    {
-      "text": "skill cannot be stunned before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "Deals (9–9055) to (14–13583) Fire Damage",
-      "values": [
-        "(9–9055)",
-        "(14–13583)"
-      ]
-    },
-    {
-      "text": "25% chance to Ignite enemies",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Base radius is (0.9–1.7) metres",
-      "values": [
-        "(0.9–1.7)"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
-    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
-    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
-    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
-    },
-    {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
-    },
-    {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
+      "text": "Base radius is (0.01-0.2) metres",
+      "values": []
     }
   ]
 }

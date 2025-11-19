@@ -1,7 +1,19 @@
 {
   "name": "Voltaxic Burst",
   "slug": "Voltaxic_Burst",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Chaos, Lightning, Nova, Duration",
+    "Level": "(1-20)",
+    "Cost": "(5-13) Mana",
+    "Cast Time": "0.40 sec",
+    "Critical Strike Chance": "6.50%",
+    "Effectiveness of Added Damage": "(210-230)%",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "12",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVoltaxicBurst"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -445,113 +457,21 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Deals (20-906) to (38-1683) Lightning Damage",
+    "Base duration is 2.50 seconds",
+    "Explosion deals base Lightning Damage equal to 6% of corpse's Maximum Life",
+    "+(0-0.3) metres to radius",
+    "40% of Lightning Damage Converted to Chaos Damage",
+    "1% more Damage with Hits and Ailments for each Cast of this Spell currently waiting"
+  ],
   "gemDescription": "Each cast of this spell waits for a short duration, releasing a burst of lightning and chaos spell damage in an area around you when that duration ends. Enemies killed by this damage, or shortly after, will explode. The explosions of the corpses are not affected by modifiers to spell damage, and cannot be reflected.",
-  "explicitMods": [
-    {
-      "text": "Deals (20–906) to (38–1683) Lightning Damage",
-      "values": [
-        "(20–906)",
-        "(38–1683)"
-      ]
-    },
-    {
-      "text": "Base duration is 2.5 seconds",
-      "values": [
-        "2.5"
-      ]
-    },
-    {
-      "text": "40% of Lightning Damage Converted to Chaos Damage",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "Explosion deals base Lightning Damage equal to 6% of corpse's Maximum Life",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "+(0–0.3) metres to radius",
-      "values": [
-        "+(0–0.3)"
-      ]
-    },
-    {
-      "text": "1% more Damage with Hits and Ailments for each Cast of this Spell currently waiting",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Deals (20–906) to (38–1683) Lightning Damage",
-      "values": [
-        "(20–906)",
-        "(38–1683)"
-      ]
-    },
-    {
-      "text": "Base duration is 2.5 seconds",
-      "values": [
-        "2.5"
-      ]
-    },
-    {
-      "text": "40% of Lightning Damage Converted to Chaos Damage",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "Explosion deals base Lightning Damage equal to 6% of corpse's Maximum Life",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "+(0–0.3) metres to radius",
-      "values": [
-        "+(0–0.3)"
-      ]
-    },
-    {
-      "text": "1% more Damage with Hits and Ailments for each Cast of this Spell currently waiting",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "voltaxic_burst_stack_count",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Ailments are Bleeding, Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, Sapped, and Poisoned)",
-    "(Ailments are Bleeding, Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, Sapped, and Poisoned)",
-    "(Ailments are Bleeding, Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, Sapped, and Poisoned)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–1)% more Damage with Hits and Ailments for each Cast of this Spell currently waiting",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "+(0–1)% more Damage with Hits and Ailments for each Cast of this Spell currently waiting",
-      "values": [
-        "+(0–1)"
-      ]
+      "text": "+(0.05-1)% more Damage with Hits and Ailments for each Cast of this Spell currently waiting",
+      "values": []
     }
   ]
 }

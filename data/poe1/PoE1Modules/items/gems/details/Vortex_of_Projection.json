@@ -1,7 +1,19 @@
 {
   "name": "Vortex of Projection",
   "slug": "Vortex_of_Projection",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Cold, Duration, Nova",
+    "Level": "(1-20)",
+    "Cost": "(13-25) Mana",
+    "Cast Time": "0.75 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "(130-210)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,196 +377,24 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "An icy blast explodes around the caster, dealing cold damage to enemies, and leaving behind a whirling vortex which deals cold damage over time and chills enemies caught in it. If the caster targets near their Frostbolt projectiles, it will explode from a number of those projectiles instead, destroying them.",
-  "explicitMods": [
-    {
-      "text": "Deals (48–933) to (72–1399) Cold Damage",
-      "values": [
-        "(48–933)",
-        "(72–1399)"
-      ]
-    },
-    {
-      "text": "Base duration is 1.5 seconds",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "Deals (57.7–1386.4) Base Cold Damage per second",
-      "values": [
-        "(57.7–1386.4)"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "50% more Area of Effect when Cast on Frostbolt",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "50% more Damage when Cast on Frostbolt",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Base radius is 2 metres",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Base secondary radius is 2 metres",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Can explode from up to 5 Frostbolt Projectiles",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Deals (48–933) to (72–1399) Cold Damage",
-      "values": [
-        "(48–933)",
-        "(72–1399)"
-      ]
-    },
-    {
-      "text": "Base duration is 1.5 seconds",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "Deals (57.7–1386.4) Base Cold Damage per second",
-      "values": [
-        "(57.7–1386.4)"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "50% more Area of Effect when Cast on Frostbolt",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "50% more Damage when Cast on Frostbolt",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Base radius is 2 metres",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Base secondary radius is 2 metres",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Can explode from up to 5 Frostbolt Projectiles",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "Deals (48–6236) to (72–9354) Cold Damage",
-      "values": [
-        "(48–6236)",
-        "(72–9354)"
-      ]
-    },
-    {
-      "text": "Base duration is 1.5 seconds",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "Deals (57.7–10783.3) Base Cold Damage per second",
-      "values": [
-        "(57.7–10783.3)"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "50% more Area of Effect when Cast on Frostbolt",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "50% more Damage when Cast on Frostbolt",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Base radius is 2 metres",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Base secondary radius is 2 metres",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Can explode from up to 5 Frostbolt Projectiles",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (48-933) to (72-1399) Cold Damage",
+    "Base duration is 1.50 seconds",
+    "Deals (57.7-1386.4) Base Cold Damage per second",
+    "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+    "50% more Area of Effect when Cast on Frostbolt",
+    "Base radius is 2 metres",
+    "50% more Damage when Cast on Frostbolt",
+    "Base secondary radius is 2 metres",
+    "Can explode from up to 5 Frostbolt Projectiles"
   ],
+  "gemDescription": "An icy blast explodes around the caster, dealing cold damage to enemies, and leaving behind a whirling vortex which deals cold damage over time and chills enemies caught in it. If the caster targets near their Frostbolt projectiles, it will explode from a number of those projectiles instead, destroying them.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–0.2) metres to radius",
-      "values": [
-        "+(0–0.2)"
-      ]
-    },
-    {
-      "text": "+(0–0.2) metres to radius",
-      "values": [
-        "+(0–0.2)"
-      ]
-    },
-    {
-      "text": "+(0–0.2) metres to radius",
-      "values": [
-        "+(0–0.2)"
-      ]
+      "text": "+(0.01-0.2) metres to radius",
+      "values": []
     }
   ]
 }

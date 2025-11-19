@@ -1,7 +1,18 @@
 {
   "name": "Smite",
   "slug": "Smite",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Lightning, Attack, AoE, Duration, Melee, Strike, Aura",
+    "Level": "(1-20)",
+    "Cost": "(7-12) Mana",
+    "Attack Speed": "85% of base",
+    "Attack Damage": "(225-488)% of base",
+    "Effectiveness of Added Damage": "(225-488)%",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "5",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemSmite"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -565,160 +576,23 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "50% of Physical Damage Converted to Lightning Damage",
+    "Base duration is 4.00 seconds",
+    "(30-20)% less Area Damage",
+    "Base radius is (1.5-2.1) metres",
+    "Base Aura radius is (3.6-4.2) metres",
+    "Lightning strikes 1 target within 5 metres",
+    "Aura grants (1-12) to (4-220) added Lightning Damage",
+    "Aura grants (10-19)% chance to Shock"
+  ],
   "gemDescription": "Performs a melee attack, and causes lightning to strike a nearby enemy, dealing damage in an area. Each target can only be hit once by this skill. Hitting an enemy grants an aura for a duration. Requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed.",
-  "explicitMods": [
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "(20–30)% less Area Damage",
-      "values": [
-        "(20–30)"
-      ]
-    },
-    {
-      "text": "Base radius is (1.5–2.1) metres",
-      "values": [
-        "(1.5–2.1)"
-      ]
-    },
-    {
-      "text": "Base Aura radius is (3.6–4.2) metres",
-      "values": [
-        "(3.6–4.2)"
-      ]
-    },
-    {
-      "text": "Lightning strikes 1 target within 5 metres",
-      "values": [
-        "1",
-        "5"
-      ]
-    },
-    {
-      "text": "Aura grants (1–12) to (4–220) added Lightning Damage",
-      "values": [
-        "(1–12)",
-        "(4–220)"
-      ]
-    },
-    {
-      "text": "Aura grants (10–19)% chance to Shock",
-      "values": [
-        "(10–19)"
-      ]
-    },
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "(20–30)% less Area Damage",
-      "values": [
-        "(20–30)"
-      ]
-    },
-    {
-      "text": "Base radius is (1.5–2.1) metres",
-      "values": [
-        "(1.5–2.1)"
-      ]
-    },
-    {
-      "text": "Base Aura radius is (3.6–4.2) metres",
-      "values": [
-        "(3.6–4.2)"
-      ]
-    },
-    {
-      "text": "Lightning strikes 1 target within 5 metres",
-      "values": [
-        "1",
-        "5"
-      ]
-    },
-    {
-      "text": "Aura grants (1–12) to (4–220) added Lightning Damage",
-      "values": [
-        "(1–12)",
-        "(4–220)"
-      ]
-    },
-    {
-      "text": "Aura grants (10–19)% chance to Shock",
-      "values": [
-        "(10–19)"
-      ]
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "visual hit effect elemental is holy [1]",
-      "values": []
-    },
-    {
-      "text": "Grants Level 30 Smite Skill",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "+(10–30) to Strength and Intelligence",
-      "values": [
-        "+(10–30)"
-      ]
-    },
-    {
-      "text": "Enemies inflict Elemental Ailments on you instead of nearby Allies",
-      "values": []
-    },
-    {
-      "text": "redirect elemental ailments to aura owner [1]",
-      "values": []
-    },
-    {
-      "text": "(Elemental Ailments are Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
-    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
-    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
-    "(Elemental Ailments are Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(-10–0)% less Area Damage",
-      "values": [
-        "(-10–0)"
-      ]
-    },
-    {
-      "text": "(-10–0)% less Area Damage",
-      "values": [
-        "(-10–0)"
-      ]
+      "text": "-(0.5-10)% less Area Damage",
+      "values": []
     }
   ]
 }

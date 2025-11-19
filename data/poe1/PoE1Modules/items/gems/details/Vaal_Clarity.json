@@ -1,7 +1,23 @@
 {
   "name": "Vaal Clarity",
   "slug": "Vaal_Clarity",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Aura, Spell, AoE, Duration, Vaal",
+    "Level": "(1-20)",
+    "Cooldown Time": "0.50 sec",
+    "Can Store": "1 Use(s)",
+    "Souls Per Use": "50",
+    "Soul Gain Prevention": "14 sec",
+    "Cast Time": "Instant",
+    "AoE Radius": "36",
+    "Requires Level": "10",
+    "Info 10": "Corrupted",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Vaal Clarity can drop from the Vaal Vessels found in Vaal side areas .",
+    "Drop level": "10",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVaalClarity"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,83 +341,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Casts a temporary aura that lets you and your allies cast skills without paying their mana costs.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 10 seconds",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Modifiers to Buff Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "+(0–1.9) metres to radius",
-      "values": [
-        "+(0–1.9)"
-      ]
-    },
-    {
-      "text": "Your and nearby allies' Skills Cost no Mana",
-      "values": []
-    },
-    {
-      "text": "Base duration is 10 seconds",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Modifiers to Buff Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "+(0–1.9) metres to radius",
-      "values": [
-        "+(0–1.9)"
-      ]
-    },
-    {
-      "text": "Your and nearby allies' Skills Cost no Mana",
-      "values": []
-    },
-    {
-      "text": "base deal no damage [1]",
-      "values": []
-    },
-    {
-      "text": "+(0–3.4) metres to radius",
-      "values": [
-        "+(0–3.4)"
-      ]
-    },
-    {
-      "text": "You and nearby Allies Regenerate (2.9–48.1) Mana per second",
-      "values": [
-        "(2.9–48.1)"
-      ]
-    },
-    {
-      "text": "base deal no damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Base duration is 10.00 seconds",
+    "Modifiers to Buff Duration also apply to this Skill's Soul Gain Prevention",
+    "+(0-1.9) metres to radius",
+    "Your and nearby allies' Skills Cost no Mana"
   ],
+  "gemDescription": "Casts a temporary aura that lets you and your allies cast skills without paying their mana costs.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–40)% increased Area of Effect",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "(0–40)% increased Area of Effect",
-      "values": [
-        "(0–40)"
-      ]
+      "text": "(2-40)% increased Area of Effect",
+      "values": []
     }
   ]
 }

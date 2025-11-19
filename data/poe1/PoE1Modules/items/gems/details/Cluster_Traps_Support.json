@@ -1,7 +1,17 @@
 {
   "name": "Cluster Traps Support",
   "slug": "Cluster_Traps_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Trap, Support",
+    "Icon": "L",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "140%",
+    "Requires Level": "38",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "38",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemClusterTrap"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,107 +375,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports traps skills, making them throw extra traps randomly around the targeted location.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills throw up to 2 additional Traps",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Supported Skills throw Traps randomly around targeted location",
-      "values": []
-    },
-    {
-      "text": "Supported Skills can have up to 5 additional Traps placed at a time",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (55–61)% less Damage",
-      "values": [
-        "(55–61)"
-      ]
-    },
-    {
-      "text": "Supported Skills throw up to 2 additional Traps",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Supported Skills throw Traps randomly around targeted location",
-      "values": []
-    },
-    {
-      "text": "Supported Skills can have up to 5 additional Traps placed at a time",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (55–61)% less Damage",
-      "values": [
-        "(55–61)"
-      ]
-    },
-    {
-      "text": "multi trap and mine support flags [1]",
-      "values": []
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 16 Trap",
-      "values": [
-        "16"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 16 Cluster Trap",
-      "values": [
-        "16"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 16 Trap And Mine Damage",
-      "values": [
-        "16"
-      ]
-    },
-    {
-      "text": "(40–50)% increased Global Damage",
-      "values": [
-        "(40–50)"
-      ]
-    },
-    {
-      "text": "(10–20)% increased maximum Life",
-      "values": [
-        "(10–20)"
-      ]
-    },
-    {
-      "text": "(10–20)% increased maximum Mana",
-      "values": [
-        "(10–20)"
-      ]
-    }
+  "stats": [
+    "Supported Skills throw up to 2 additional Traps",
+    "Supported Skills throw Traps randomly around targeted location",
+    "Supported Skills can have up to 5 additional Traps placed at a time",
+    "Supported Skills deal (61-55)% less Damage"
   ],
+  "gemDescription": "Supports traps skills, making them throw extra traps randomly around the targeted location.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–20)% increased Trap Trigger Area of Effect",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–20)% increased Trap Trigger Area of Effect",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "Supported Skills have (1-20)% increased Trap Trigger Area of Effect",
+      "values": []
     }
   ]
 }

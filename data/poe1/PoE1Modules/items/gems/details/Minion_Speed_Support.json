@@ -1,7 +1,17 @@
 {
   "name": "Minion Speed Support",
   "slug": "Minion_Speed_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Movement, Support, Minion",
+    "Icon": "e",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "120%",
+    "Requires Level": "18",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "18",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemMinionSpeed"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -445,59 +455,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports skills which create Minions.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills have (25–34)% increased Minion Attack Speed",
-      "values": [
-        "(25–34)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (25–34)% increased Minion Cast Speed",
-      "values": [
-        "(25–34)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (25–44)% increased Minion Movement Speed",
-      "values": [
-        "(25–44)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (25–34)% increased Minion Attack Speed",
-      "values": [
-        "(25–34)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (25–34)% increased Minion Cast Speed",
-      "values": [
-        "(25–34)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (25–44)% increased Minion Movement Speed",
-      "values": [
-        "(25–44)"
-      ]
-    }
+  "stats": [
+    "Supported Skills have (25-34)% increased Minion Attack Speed",
+    "Supported Skills have (25-34)% increased Minion Cast Speed",
+    "Supported Skills have (25-44)% increased Minion Movement Speed"
   ],
+  "gemDescription": "Supports skills which create Minions.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–10)% increased Minion Movement Speed",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–10)% increased Minion Movement Speed",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills have (0.5-10)% increased Minion Movement Speed",
+      "values": []
     }
   ]
 }

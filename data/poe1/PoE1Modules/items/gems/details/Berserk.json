@@ -1,7 +1,19 @@
 {
   "name": "Berserk",
   "slug": "Berserk",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell",
+    "Level": "(1-20)",
+    "Cost": "(10-16) Mana",
+    "Cooldown Time": "5.00 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "Instant",
+    "Requires Level": "34",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "34",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemBerserk"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,103 +377,20 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Lose 5 Rage per second",
+    "At least 5 Rage required to start Berserking",
+    "Each second, 20% more Rage loss Rate",
+    "This Skill's Cooldown does not recover during its effect",
+    "(40-59)% increased Rage Effect"
+  ],
   "gemDescription": "Consumes Rage at an accelerating rate to increase the effects of Rage.",
-  "explicitMods": [
-    {
-      "text": "Lose 5 Rage per second",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "At least 5 Rage required to start Berserking",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Each second, 20% more Rage loss Rate",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "This Skill's Cooldown does not recover during its effect",
-      "values": []
-    },
-    {
-      "text": "(40–59)% increased Rage Effect",
-      "values": [
-        "(40–59)"
-      ]
-    },
-    {
-      "text": "Lose 5 Rage per second",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "At least 5 Rage required to start Berserking",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Each second, 20% more Rage loss Rate",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "This Skill's Cooldown does not recover during its effect",
-      "values": []
-    },
-    {
-      "text": "(40–59)% increased Rage Effect",
-      "values": [
-        "(40–59)"
-      ]
-    },
-    {
-      "text": "base deal no damage [1]",
-      "values": []
-    },
-    {
-      "text": "base_actor_scale_+%",
-      "values": []
-    },
-    {
-      "text": "affected_by_berserk",
-      "values": []
-    },
-    {
-      "text": "berserk_cooldown_does_not_tick",
-      "values": []
-    },
-    {
-      "text": "rage_effect_+%",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Every Rage has an inherent effect of 1% more Attack Damage, and modifiers can add extra effects to Rage)",
-    "(Every Rage has an inherent effect of 1% more Attack Damage, and modifiers can add extra effects to Rage)",
-    "(Every Rage has an inherent effect of 1% more Attack Damage, and modifiers can add extra effects to Rage)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–10)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "(0–10)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "(0.5-10)% increased Cooldown Recovery Rate",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,19 @@
 {
   "name": "Earthshatter of Fragility",
   "slug": "Earthshatter_of_Fragility",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, AoE, Slam, Duration, Melee",
+    "Level": "(1-20)",
+    "Cost": "(8-13) Mana",
+    "Attack Speed": "80% of base",
+    "Attack Damage": "(136-314)% of base",
+    "Effectiveness of Added Damage": "(136-314)%",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "12",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,130 +337,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Slam the ground, sending out rectangular fissures that deal area damage to enemies and thrust a spike from the ground when they end. The spikes shatter after a duration, damaging surrounding enemies. Works with Maces, Sceptres, Axes, Staves and Unarmed.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 1.5 seconds",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "(0–19)% more Area of Effect",
-      "values": [
-        "(0–19)"
-      ]
-    },
-    {
-      "text": "Shattering Spikes deal 30% less damage",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "Creates 5 fissures",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Maximum 15 Spikes",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Base duration is 1.5 seconds",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "(0–19)% more Area of Effect",
-      "values": [
-        "(0–19)"
-      ]
-    },
-    {
-      "text": "Shattering Spikes deal 30% less damage",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "Creates 5 fissures",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Maximum 15 Spikes",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "Base duration is 1.5 seconds",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "(0–34)% more Area of Effect",
-      "values": [
-        "(0–34)"
-      ]
-    },
-    {
-      "text": "Shattering Spikes deal 30% less damage",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "Creates 5 fissures",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Maximum 15 Spikes",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Base duration is 1.50 seconds",
+    "(0-19)% more Area of Effect",
+    "Shattering Spikes deal 30% less damage",
+    "Maximum 15 Spikes",
+    "Creates 5 fissures"
   ],
+  "gemDescription": "Slam the ground, sending out rectangular fissures that deal area damage to enemies and thrust a spike from the ground when they end. The spikes shatter after a duration, damaging surrounding enemies. Works with Maces, Sceptres, Axes, Staves and Unarmed.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–3) Maximum SpikesCreates +(0–1) fissure",
-      "values": [
-        "+(0–3)",
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "+(0–3) Maximum SpikesCreates +(0–1) fissure",
-      "values": [
-        "+(0–3)",
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "+(0–3) Maximum SpikesCreates +(0–1) fissure",
-      "values": [
-        "+(0–3)",
-        "+(0–1)"
-      ]
+      "text": "Creates +(0.05-1) fissures+(0.15-3) Maximum Spikes",
+      "values": []
     }
   ]
 }

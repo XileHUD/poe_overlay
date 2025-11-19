@@ -1,7 +1,18 @@
 {
   "name": "Kinetic Bolt of Fragmentation",
   "slug": "Kinetic_Bolt_of_Fragmentation",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Projectile",
+    "Level": "(1-20)",
+    "Cost": "(5-9) Mana",
+    "Attack Speed": "115% of base",
+    "Attack Damage": "(70-95)% of base",
+    "Effectiveness of Added Damage": "(70-95)%",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "5",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -285,101 +296,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Fire a projectile from your wand that changes direction in a zig-zag pattern at regular intervals or when hitting enemies. Each time it changes direction, a secondary projectile breaks off, flying in the direction it changed away from. Multiple of these projectiles can hit the same target.",
-  "explicitMods": [
-    {
-      "text": "Projectile changes direction 3 times",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Fires 2 additional Projectiles",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Modifiers which would cause projectiles to Fork instead cause them to change direction additional times",
-      "values": []
-    },
-    {
-      "text": "Projectile changes direction 3 times",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Fires 2 additional Projectiles",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Modifiers which would cause projectiles to Fork instead cause them to change direction additional times",
-      "values": []
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "projectiles can shotgun [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire wand projectiles [1]",
-      "values": []
-    },
-    {
-      "text": "Projectile changes direction 3 times",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Fires 2 additional Projectiles",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Modifiers which would cause projectiles to Fork instead cause them to change direction additional times",
-      "values": []
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "projectiles can shotgun [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire wand projectiles [1]",
-      "values": []
-    }
+  "stats": [
+    "Projectile changes direction 3 times",
+    "Fires 2 additional Projectiles",
+    "Modifiers which would cause projectiles to Fork instead cause them to change direction additional times"
   ],
+  "gemDescription": "Fire a projectile from your wand that changes direction in a zig-zag pattern at regular intervals or when hitting enemies. Each time it changes direction, a secondary projectile breaks off, flying in the direction it changed away from. Multiple of these projectiles can hit the same target.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Projectile changes direction (0–1) times",
-      "values": [
-        "(0–1)"
-      ]
-    },
-    {
-      "text": "Projectile changes direction (0–1) times",
-      "values": [
-        "(0–1)"
-      ]
-    },
-    {
-      "text": "Projectile changes direction (0–1) times",
-      "values": [
-        "(0–1)"
-      ]
+      "text": "Projectile changes direction (0.05-1) times",
+      "values": []
     }
   ]
 }

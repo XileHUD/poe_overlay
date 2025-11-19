@@ -1,7 +1,18 @@
 {
   "name": "Awakened Added Chaos Damage Support",
   "slug": "Awakened_Added_Chaos_Damage_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Chaos, Support",
+    "Icon": "H",
+    "Level": "(1-5)",
+    "Cost & Reservation Multiplier": "120%",
+    "Requires Level": "72",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; The Maven's Crucible; Can drop from either version of the Maven , from Maven's Invitations , or from Maven-witnessed map bosses.",
+    "Drop level": "72",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemAddedChaosDamagePlus"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -185,49 +196,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports any skill that hits enemies.",
-  "explicitMods": [
-    {
-      "text": "+(0–1) to Level of Supported Skill Gems",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (167–189) to (251–284) added Chaos Damage",
-      "values": [
-        "(167–189)",
-        "(251–284)"
-      ]
-    },
-    {
-      "text": "+(0–1) to Level of Supported Skill Gems",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (167–189) to (251–284) added Chaos Damage",
-      "values": [
-        "(167–189)",
-        "(251–284)"
-      ]
-    }
+  "stats": [
+    "+(0-1) to Level of Supported Skill Gems",
+    "Supported Skills have (167-189) to (251-284) added Chaos Damage"
   ],
+  "gemDescription": "Supports any skill that hits enemies.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Chaos Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Chaos Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Chaos Damage",
+      "values": []
     }
   ]
 }

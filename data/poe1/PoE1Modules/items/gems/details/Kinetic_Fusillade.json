@@ -1,7 +1,19 @@
 {
   "name": "Kinetic Fusillade",
   "slug": "Kinetic_Fusillade",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Projectile, Duration, AoE",
+    "Level": "(1-20)",
+    "Cost": "(4-6) Mana",
+    "Attack Speed": "200% of base",
+    "Attack Damage": "(93-107)% of base",
+    "Effectiveness of Added Damage": "(93-107)%",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "12",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemKineticFusillade"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,115 +377,21 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Wave your wand to create a hovering kinetic projectile. After a short duration, the projectile is fired at an enemy, dealing area damage on impact and chaining to further targets. Using this attack again will reset the duration for all hovering projectiles. Multiple projectiles fired in sequence will attempt to target different enemies. Cannot be directly used by traps or mines.",
-  "explicitMods": [
-    {
-      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
-      "values": [
-        "150"
-      ]
-    },
-    {
-      "text": "Base duration is 0.7 seconds",
-      "values": [
-        "0.7"
-      ]
-    },
-    {
-      "text": "Chains +3 Times",
-      "values": [
-        "+3"
-      ]
-    },
-    {
-      "text": "Base radius is 1.2 metres",
-      "values": [
-        "1.2"
-      ]
-    },
-    {
-      "text": "Projectiles deal (3–8)% more Damage per previous Projectile fired in sequence",
-      "values": [
-        "(3–8)"
-      ]
-    },
-    {
-      "text": "Maximum 12 hovering Projectiles",
-      "values": [
-        "12"
-      ]
-    },
-    {
-      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
-      "values": [
-        "150"
-      ]
-    },
-    {
-      "text": "Base duration is 0.7 seconds",
-      "values": [
-        "0.7"
-      ]
-    },
-    {
-      "text": "Chains +3 Times",
-      "values": [
-        "+3"
-      ]
-    },
-    {
-      "text": "Base radius is 1.2 metres",
-      "values": [
-        "1.2"
-      ]
-    },
-    {
-      "text": "Projectiles deal (3–8)% more Damage per previous Projectile fired in sequence",
-      "values": [
-        "(3–8)"
-      ]
-    },
-    {
-      "text": "Maximum 12 hovering Projectiles",
-      "values": [
-        "12"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "kinetic fusillade base delay between projectiles ms [50]",
-      "values": []
-    },
-    {
-      "text": "kinetic fusillade subsequent targeting radius [30]",
-      "values": []
-    },
-    {
-      "text": "projectile uses contact position [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire wand projectiles [1]",
-      "values": []
-    }
+  "stats": [
+    "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
+    "Base duration is 0.70 seconds",
+    "Chains +3 Times",
+    "Base radius is 1.2 metres",
+    "Projectiles deal (3-8)% more Damage per previous Projectile fired in sequence",
+    "Maximum 12 hovering Projectiles"
   ],
+  "gemDescription": "Wave your wand to create a hovering kinetic projectile. After a short duration, the projectile is fired at an enemy, dealing area damage on impact and chaining to further targets. Using this attack again will reset the duration for all hovering projectiles. Multiple projectiles fired in sequence will attempt to target different enemies. Cannot be directly used by traps or mines.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Projectiles deal +(0–4)% more Damage per previous Projectile fired in sequence",
-      "values": [
-        "+(0–4)"
-      ]
-    },
-    {
-      "text": "Projectiles deal +(0–4)% more Damage per previous Projectile fired in sequence",
-      "values": [
-        "+(0–4)"
-      ]
+      "text": "Projectiles deal +(0.2-4)% more Damage per previous Projectile fired in sequence",
+      "values": []
     }
   ]
 }

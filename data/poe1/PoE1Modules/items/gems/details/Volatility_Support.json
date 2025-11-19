@@ -1,7 +1,17 @@
 {
   "name": "Volatility Support",
   "slug": "Volatility_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Support",
+    "Icon": "v",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "18",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "18",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemVolatility"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,47 +375,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports attack skills.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills deal (30–58)% more Maximum Attack Damage",
-      "values": [
-        "(30–58)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (50–69)% less Minimum Attack Damage",
-      "values": [
-        "(50–69)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (30–58)% more Maximum Attack Damage",
-      "values": [
-        "(30–58)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (50–69)% less Minimum Attack Damage",
-      "values": [
-        "(50–69)"
-      ]
-    }
+  "stats": [
+    "Supported Skills deal (30-58)% more Maximum Attack Damage",
+    "Supported Skills deal (50-69)% less Minimum Attack Damage"
   ],
+  "gemDescription": "Supports attack skills.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Damage",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,17 @@
 {
   "name": "Viper Strike of the Mamba",
   "slug": "Viper_Strike_of_the_Mamba",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Duration, Melee, Strike, Chaos",
+    "Level": "(1-20)",
+    "Cost": "(6-10) Mana",
+    "Attack Damage": "(155-442)% of base",
+    "Effectiveness of Added Damage": "(155-442)%",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "5",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -285,142 +295,20 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Base duration is 2.00 seconds",
+    "60% of Physical Damage Converted to Chaos Damage",
+    "60% chance to Poison on Hit",
+    "200% more Damage with Poison",
+    "Cannot inflict Poison on Poisoned Enemies"
+  ],
   "gemDescription": "Hits enemies, converting some of your physical damage to chaos damage and inflicting poison which will be affected by modifiers to skill duration. If dual wielding, deals the damage of both weapons in one strike. Requires a claw, dagger or sword.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 2 seconds",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Chaos Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "60% chance to Poison on Hit",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "200% more Damage with Poison",
-      "values": [
-        "200"
-      ]
-    },
-    {
-      "text": "Cannot inflict Poison on Poisoned Enemies",
-      "values": []
-    },
-    {
-      "text": "Base duration is 2 seconds",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Chaos Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "60% chance to Poison on Hit",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "200% more Damage with Poison",
-      "values": [
-        "200"
-      ]
-    },
-    {
-      "text": "Cannot inflict Poison on Poisoned Enemies",
-      "values": []
-    },
-    {
-      "text": "poison duration is skill duration [1]",
-      "values": []
-    },
-    {
-      "text": "skill double hits when dual wielding [1]",
-      "values": []
-    },
-    {
-      "text": "visual hit effect chaos is green [1]",
-      "values": []
-    },
-    {
-      "text": "Base duration is 2 seconds",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Chaos Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "60% chance to Poison on Hit",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "200% more Damage with Poison",
-      "values": [
-        "200"
-      ]
-    },
-    {
-      "text": "Cannot inflict Poison on Poisoned Enemies",
-      "values": []
-    },
-    {
-      "text": "poison duration is skill duration [1]",
-      "values": []
-    },
-    {
-      "text": "skill double hits when dual wielding [1]",
-      "values": []
-    },
-    {
-      "text": "visual hit effect chaos is green [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
-    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
-    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
-    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–40)% more Damage with Poison",
-      "values": [
-        "+(0–40)"
-      ]
-    },
-    {
-      "text": "+(0–40)% more Damage with Poison",
-      "values": [
-        "+(0–40)"
-      ]
-    },
-    {
-      "text": "+(0–40)% more Damage with Poison",
-      "values": [
-        "+(0–40)"
-      ]
+      "text": "+(2-40)% more Damage with Poison",
+      "values": []
     }
   ]
 }

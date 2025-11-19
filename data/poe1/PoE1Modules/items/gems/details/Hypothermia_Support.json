@@ -1,7 +1,17 @@
 {
   "name": "Hypothermia Support",
   "slug": "Hypothermia_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Cold, Support",
+    "Icon": "D",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "31",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "31",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemDamageAgainstChilled"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,138 +375,18 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Supported Skills have +20% chance to Freeze Enemies which are Chilled",
+    "Supported Skills deal (20-29)% more Cold Damage Over Time",
+    "Supported Skills deal (20-29)% more Damage with Hits and Ailments against Chilled Enemies"
+  ],
   "gemDescription": "Supports any skill that deals damage.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills have +20% chance to Freeze Enemies which are Chilled",
-      "values": [
-        "+20"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (20–29)% more Cold Damage Over Time",
-      "values": [
-        "(20–29)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (20–29)% more Damage with Hits and Ailments against Chilled Enemies",
-      "values": [
-        "(20–29)"
-      ]
-    },
-    {
-      "text": "Supported Skills have +20% chance to Freeze Enemies which are Chilled",
-      "values": [
-        "+20"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (20–29)% more Cold Damage Over Time",
-      "values": [
-        "(20–29)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (20–29)% more Damage with Hits and Ailments against Chilled Enemies",
-      "values": [
-        "(20–29)"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Bonechill",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Added Cold Damage",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Inspiration",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Hypothermia",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Ice Bite",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Cold Penetration",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Bonechill",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 1 Added Cold Damage",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Inspiration",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Hypothermia",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Ice Bite",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Cold Penetration",
-      "values": [
-        "15"
-      ]
-    }
-  ],
-  "modDescriptions": [
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have +(0–20)% chance to Freeze Enemies which are Chilled",
-      "values": [
-        "+(0–20)"
-      ]
-    },
-    {
-      "text": "Supported Skills have +(0–20)% chance to Freeze Enemies which are Chilled",
-      "values": [
-        "+(0–20)"
-      ]
+      "text": "Supported Skills have +(1-20)% chance to Freeze Enemies which are Chilled",
+      "values": []
     }
   ]
 }

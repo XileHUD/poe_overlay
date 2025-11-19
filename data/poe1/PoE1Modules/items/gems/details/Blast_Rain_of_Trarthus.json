@@ -1,7 +1,19 @@
 {
   "name": "Blast Rain of Trarthus",
   "slug": "Blast_Rain_of_Trarthus",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Fire, Attack, AoE, Projectile, Duration, Bow",
+    "Level": "(1-20)",
+    "Cost": "(9-13) Mana",
+    "Attack Speed": "80% of base",
+    "Attack Damage": "(90-105)% of base",
+    "Effectiveness of Added Damage": "(90-105)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Mercenaries; Can be obtained from reward chests that contain gems in Heist .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -285,187 +297,23 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Fires a single arrow up in the air, to rain down at a targeted location. The arrow deals area damage around where it lands, as well as releasing a wave of fire which will apply a burning debuff to enemies. The impact of the arrow will also inflict this debuff.",
-  "explicitMods": [
-    {
-      "text": "Deals (171–3287.9) Base Fire Damage per second",
-      "values": [
-        "(171–3287.9)"
-      ]
-    },
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Fires 1 Arrow",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Modifiers to number of Projectiles do not apply to this Skill",
-      "values": []
-    },
-    {
-      "text": "100% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Modifiers to Projectile Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Base radius is 1 metre",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Base secondary radius is 4 metres",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Deals (171–3287.9) Base Fire Damage per second",
-      "values": [
-        "(171–3287.9)"
-      ]
-    },
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Fires 1 Arrow",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Modifiers to number of Projectiles do not apply to this Skill",
-      "values": []
-    },
-    {
-      "text": "100% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Modifiers to Projectile Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Base radius is 1 metre",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Base secondary radius is 4 metres",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "blast rain arrow delay ms [80]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    },
-    {
-      "text": "Deals (185.9–23821.4) Base Fire Damage per second",
-      "values": [
-        "(185.9–23821.4)"
-      ]
-    },
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Fires +1 Arrow",
-      "values": [
-        "+1"
-      ]
-    },
-    {
-      "text": "Modifiers to number of Projectiles do not apply to this Skill",
-      "values": []
-    },
-    {
-      "text": "100% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Modifiers to Projectile Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Base radius is 1 metre",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Base secondary radius is 3.5 metres",
-      "values": [
-        "3.5"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "blast rain arrow delay ms [80]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (171-3287.9) Base Fire Damage per second",
+    "Base duration is 4.00 seconds",
+    "Fires 1 Arrow",
+    "Modifiers to Projectile Damage apply to this Skill's Damage Over Time effect",
+    "Modifiers to number of Projectiles do not apply to this Skill",
+    "100% of Physical Damage Converted to Fire Damage",
+    "Base radius is 1 metre",
+    "Base secondary radius is 4 metres"
   ],
+  "gemDescription": "Fires a single arrow up in the air, to rain down at a targeted location. The arrow deals area damage around where it lands, as well as releasing a wave of fire which will apply a burning debuff to enemies. The impact of the arrow will also inflict this debuff.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–20)% to Fire Damage over Time Multiplier",
-      "values": [
-        "+(0–20)"
-      ]
-    },
-    {
-      "text": "+(0–20)% to Fire Damage over Time Multiplier",
-      "values": [
-        "+(0–20)"
-      ]
+      "text": "+(1-20)% to Fire Damage over Time Multiplier",
+      "values": []
     }
   ]
 }

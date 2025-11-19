@@ -1,7 +1,23 @@
 {
   "name": "Vaal Haste",
   "slug": "Vaal_Haste",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Aura, Spell, AoE, Duration, Vaal",
+    "Level": "(1-20)",
+    "Cooldown Time": "0.50 sec",
+    "Can Store": "1 Use(s)",
+    "Souls Per Use": "50",
+    "Soul Gain Prevention": "6 sec",
+    "Cast Time": "Instant",
+    "AoE Radius": "36",
+    "Requires Level": "24",
+    "Info 10": "Corrupted",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Vaal Haste can drop from the Vaal Vessels found in Vaal side areas .",
+    "Drop level": "24",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVaalHaste"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,123 +421,21 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Casts a temporary aura that increases the movement speed, attack speed and cast speed of you and your allies.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Modifiers to Buff Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "+(0–1.9) metres to radius",
-      "values": [
-        "+(0–1.9)"
-      ]
-    },
-    {
-      "text": "You and nearby allies gain (16–20)% increased Movement Speed",
-      "values": [
-        "(16–20)"
-      ]
-    },
-    {
-      "text": "You and nearby allies gain (25–31)% increased Attack Speed",
-      "values": [
-        "(25–31)"
-      ]
-    },
-    {
-      "text": "You and nearby allies gain (24–31)% increased Cast Speed",
-      "values": [
-        "(24–31)"
-      ]
-    },
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Modifiers to Buff Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "+(0–1.9) metres to radius",
-      "values": [
-        "+(0–1.9)"
-      ]
-    },
-    {
-      "text": "You and nearby allies gain (16–20)% increased Movement Speed",
-      "values": [
-        "(16–20)"
-      ]
-    },
-    {
-      "text": "You and nearby allies gain (25–31)% increased Attack Speed",
-      "values": [
-        "(25–31)"
-      ]
-    },
-    {
-      "text": "You and nearby allies gain (24–31)% increased Cast Speed",
-      "values": [
-        "(24–31)"
-      ]
-    },
-    {
-      "text": "base deal no damage [1]",
-      "values": []
-    },
-    {
-      "text": "+(0–3.4) metres to radius",
-      "values": [
-        "+(0–3.4)"
-      ]
-    },
-    {
-      "text": "You and nearby allies gain (10–21)% increased Movement Speed",
-      "values": [
-        "(10–21)"
-      ]
-    },
-    {
-      "text": "You and nearby allies gain (15–32)% increased Attack Speed",
-      "values": [
-        "(15–32)"
-      ]
-    },
-    {
-      "text": "You and nearby allies gain (15–32)% increased Cast Speed",
-      "values": [
-        "(15–32)"
-      ]
-    },
-    {
-      "text": "base deal no damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Base duration is 4.00 seconds",
+    "Modifiers to Buff Duration also apply to this Skill's Soul Gain Prevention",
+    "+(0-1.9) metres to radius",
+    "You and nearby allies gain (16-20)% increased Movement Speed",
+    "You and nearby allies gain (25-31)% increased Attack Speed",
+    "You and nearby allies gain (24-31)% increased Cast Speed"
   ],
+  "gemDescription": "Casts a temporary aura that increases the movement speed, attack speed and cast speed of you and your allies.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–40)% increased Area of Effect",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "(0–40)% increased Area of Effect",
-      "values": [
-        "(0–40)"
-      ]
+      "text": "(2-40)% increased Area of Effect",
+      "values": []
     }
   ]
 }

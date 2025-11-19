@@ -1,7 +1,18 @@
 {
   "name": "Awakened Elemental Damage with Attacks Support",
   "slug": "Awakened_Elemental_Damage_with_Attacks_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Support",
+    "Icon": "W",
+    "Level": "(1-5)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "72",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; The Maven's Crucible; Can drop from either version of the Maven , from Maven's Invitations , or from Maven-witnessed map bosses.",
+    "Drop level": "72",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemWeaponElementalDamagePlus"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -185,43 +196,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports attack skills.",
-  "explicitMods": [
-    {
-      "text": "Supported Attack Skills deal (35–39)% more Elemental Damage",
-      "values": [
-        "(35–39)"
-      ]
-    },
-    {
-      "text": "Elemental Damage from Supported Skills cannot be Reflected",
-      "values": []
-    },
-    {
-      "text": "Supported Attack Skills deal (35–39)% more Elemental Damage",
-      "values": [
-        "(35–39)"
-      ]
-    },
-    {
-      "text": "Elemental Damage from Supported Skills cannot be Reflected",
-      "values": []
-    }
+  "stats": [
+    "Supported Attack Skills deal (35-39)% more Elemental Damage",
+    "Elemental Damage from Supported Skills cannot be Reflected"
   ],
+  "gemDescription": "Supports attack skills.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–10)% increased Elemental Damage with Attack Skills",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "(0–10)% increased Elemental Damage with Attack Skills",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "(0.5-10)% increased Elemental Damage with Attack Skills",
+      "values": []
     }
   ]
 }

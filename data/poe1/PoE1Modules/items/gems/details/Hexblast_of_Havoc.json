@@ -1,7 +1,19 @@
 {
   "name": "Hexblast of Havoc",
   "slug": "Hexblast_of_Havoc",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Chaos, Hex",
+    "Level": "(1-20)",
+    "Cost": "(10-20) Mana",
+    "Cast Time": "0.60 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "370%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,68 +337,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Deals chaos damage to a single enemy. If the enemy was Hexed, also deals area damage to other enemies around the target.",
-  "explicitMods": [
-    {
-      "text": "Deals (119–1627) to (178–2440) Chaos Damage",
-      "values": [
-        "(119–1627)",
-        "(178–2440)"
-      ]
-    },
-    {
-      "text": "Base radius is 2.5 metres",
-      "values": [
-        "2.5"
-      ]
-    },
-    {
-      "text": "Deals (119–1627) to (178–2440) Chaos Damage",
-      "values": [
-        "(119–1627)",
-        "(178–2440)"
-      ]
-    },
-    {
-      "text": "Base radius is 2.5 metres",
-      "values": [
-        "2.5"
-      ]
-    },
-    {
-      "text": "Deals (119–8504) to (178–12757) Chaos Damage",
-      "values": [
-        "(119–8504)",
-        "(178–12757)"
-      ]
-    },
-    {
-      "text": "Base radius is 2.5 metres",
-      "values": [
-        "2.5"
-      ]
-    }
+  "stats": [
+    "Deals (119-1627) to (178-2440) Chaos Damage",
+    "Base radius is 2.5 metres"
   ],
+  "gemDescription": "Deals chaos damage to a single enemy. If the enemy was Hexed, also deals area damage to other enemies around the target.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
-    },
-    {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
-    },
-    {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
+      "text": "Base radius is (0.01-0.2) metres",
+      "values": []
     }
   ]
 }

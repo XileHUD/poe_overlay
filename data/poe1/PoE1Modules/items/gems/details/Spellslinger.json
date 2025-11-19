@@ -1,7 +1,19 @@
 {
   "name": "Spellslinger",
   "slug": "Spellslinger",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Trigger, Spell",
+    "Level": "(1-20)",
+    "Reservation": "20% Mana",
+    "Cooldown Time": "0.60 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "Instant",
+    "Requires Level": "24",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "24",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemSpellslinger"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,75 +417,21 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Reserves mana based on the supported spells to cause those spells to trigger when you fire projectiles from a wand attack.",
-  "explicitMods": [
-    {
-      "text": "This Skill's Mana Reservation is the total of the Mana Reservations of Supported Skills, and cannot be further modified",
-      "values": []
-    },
-    {
-      "text": "Trigger Supported Spells when you fire Projectiles from a Non-Triggered Wand Attack",
-      "values": []
-    },
-    {
-      "text": "Supported Skills have (0–38)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–38)"
-      ]
-    },
-    {
-      "text": "Supported Skills have Added Spell Damage equal to (60–174)% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage",
-      "values": [
-        "(60–174)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (20–30)% less Damage with Hits and Ailments",
-      "values": [
-        "(20–30)"
-      ]
-    },
-    {
-      "text": "This Skill's Mana Reservation is the total of the Mana Reservations of Supported Skills, and cannot be further modified",
-      "values": []
-    },
-    {
-      "text": "Trigger Supported Spells when you fire Projectiles from a Non-Triggered Wand Attack",
-      "values": []
-    },
-    {
-      "text": "Supported Skills have (0–38)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–38)"
-      ]
-    },
-    {
-      "text": "Supported Skills have Added Spell Damage equal to (60–174)% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage",
-      "values": [
-        "(60–174)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (20–30)% less Damage with Hits and Ailments",
-      "values": [
-        "(20–30)"
-      ]
-    }
+  "stats": [
+    "This Skill's Mana Reservation is the total of the Mana Reservations of Supported Skills, and cannot be further modified",
+    "Trigger Supported Spells when you fire Projectiles from a Non-Triggered Wand Attack",
+    "Supported Skills have (0-38)% increased Cooldown Recovery Rate",
+    "Supported Skills have Added Spell Damage equal to (60-174)% of Damage of Equipped Wand",
+    "If two Wands are Equipped, each contributes half as much Added Damage",
+    "Supported Skills deal (30-20)% less Damage with Hits and Ailments"
   ],
+  "gemDescription": "Reserves mana based on the supported spells to cause those spells to trigger when you fire projectiles from a wand attack.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have Added Spell Damage equal to +(0–20)% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage",
-      "values": [
-        "+(0–20)"
-      ]
-    },
-    {
-      "text": "Supported Skills have Added Spell Damage equal to +(0–20)% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage",
-      "values": [
-        "+(0–20)"
-      ]
+      "text": "Supported Skills have Added Spell Damage equal to +(1-20)% of Damage of Equipped WandIf two Wands are Equipped, each contributes half as much Added Damage",
+      "values": []
     }
   ]
 }

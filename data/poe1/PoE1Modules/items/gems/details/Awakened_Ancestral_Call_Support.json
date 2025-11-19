@@ -1,7 +1,18 @@
 {
   "name": "Awakened Ancestral Call Support",
   "slug": "Awakened_Ancestral_Call_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Melee, Attack, Strike",
+    "Icon": "A",
+    "Level": "(1-5)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "72",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Can drop from either version of the Maven or from Maven-witnessed map bosses.",
+    "Drop level": "72",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemAncestralCallPlus"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -165,47 +176,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports melee strike skills, causing them to also strike at extra targets simultaneously. The extra targets must be a minimum distance from the user. If supporting a minion attack skill, the minion's skills will not also strike extra targets. Cannot support Vaal skills or triggered skills.",
-  "explicitMods": [
-    {
-      "text": "Supported Strike Skills target 3 additional nearby Enemies",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (1–5)% more Damage",
-      "values": [
-        "(1–5)"
-      ]
-    },
-    {
-      "text": "Supported Strike Skills target 3 additional nearby Enemies",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (1–5)% more Damage",
-      "values": [
-        "(1–5)"
-      ]
-    }
+  "stats": [
+    "Supported Strike Skills target 3 additional nearby Enemies",
+    "Supported Skills deal (1-5)% more Damage"
   ],
+  "gemDescription": "Supports melee strike skills, causing them to also strike at extra targets simultaneously. The extra targets must be a minimum distance from the user. If supporting a minion attack skill, the minion's skills will not also strike extra targets. Cannot support Vaal skills or triggered skills.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Extra Targets for Supported Skills can be found (0–15)% further away",
-      "values": [
-        "(0–15)"
-      ]
-    },
-    {
-      "text": "Extra Targets for Supported Skills can be found (0–15)% further away",
-      "values": [
-        "(0–15)"
-      ]
+      "text": "Extra Targets for Supported Skills can be found (0.75-15)% further away",
+      "values": []
     }
   ]
 }

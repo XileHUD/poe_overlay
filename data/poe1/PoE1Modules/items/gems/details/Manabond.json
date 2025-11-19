@@ -1,7 +1,19 @@
 {
   "name": "Manabond",
   "slug": "Manabond",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Lightning, Arcane",
+    "Level": "(1-20)",
+    "Cost": "5% Mana",
+    "Cast Time": "0.80 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "160%",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "12",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemManabond"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,65 +377,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Deals lightning damage based upon your missing mana in a circular area around the targeted location, as well as in four rectangular extensions whose lengths depend upon your remaining mana.",
-  "explicitMods": [
-    {
-      "text": "Deals (7–263) to (39–1488) Lightning Damage",
-      "values": [
-        "(7–263)",
-        "(39–1488)"
-      ]
-    },
-    {
-      "text": "+6 to length per 25% of Unreserved maximum Mana you have",
-      "values": []
-    },
-    {
-      "text": "Deals base Lightning Damage equal to (25–44)% of missing Unreserved Mana",
-      "values": [
-        "(25–44)"
-      ]
-    },
-    {
-      "text": "Deals (7–263) to (39–1488) Lightning Damage",
-      "values": [
-        "(7–263)",
-        "(39–1488)"
-      ]
-    },
-    {
-      "text": "+6 to length per 25% of Unreserved maximum Mana you have",
-      "values": []
-    },
-    {
-      "text": "Deals base Lightning Damage equal to (25–44)% of missing Unreserved Mana",
-      "values": [
-        "(25–44)"
-      ]
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (7-263) to (39-1488) Lightning Damage",
+    "Deals base Lightning Damage equal to (25-44)% of missing Unreserved Mana",
+    "+6 to length per 25% of Unreserved maximum Mana you have"
   ],
+  "gemDescription": "Deals lightning damage based upon your missing mana in a circular area around the targeted location, as well as in four rectangular extensions whose lengths depend upon your remaining mana.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Deals base Lightning Damage equal to +(0–10)% of missing Unreserved Mana",
-      "values": [
-        "+(0–10)"
-      ]
-    },
-    {
-      "text": "Deals base Lightning Damage equal to +(0–10)% of missing Unreserved Mana",
-      "values": [
-        "+(0–10)"
-      ]
+      "text": "Deals base Lightning Damage equal to +(0.5-10)% of missing Unreserved Mana",
+      "values": []
     }
   ]
 }

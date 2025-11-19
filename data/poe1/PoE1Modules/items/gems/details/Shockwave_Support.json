@@ -1,7 +1,19 @@
 {
   "name": "Shockwave Support",
   "slug": "Shockwave_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Melee, Attack, AoE",
+    "Icon": "s",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "140%",
+    "Cooldown Time": "1.00 sec",
+    "Can Store": "(1-4) Use(s)",
+    "Requires Level": "18",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "18",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemShockwave"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,113 +337,19 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Supported Skills will Trigger Shockwave on Melee Hit",
+    "Supported Skills can only be used with Maces, Sceptres or Staves",
+    "+(0-0.3) metres to radius",
+    "(0-38)% increased Cooldown Recovery Rate"
+  ],
   "gemDescription": "Supports melee attack skills. Cannot support triggered attacks, attacks used by things other than you, or skills which create minions.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills will Trigger Shockwave on Melee Hit",
-      "values": []
-    },
-    {
-      "text": "Supported Skills can only be used with Maces, Sceptres or Staves",
-      "values": []
-    },
-    {
-      "text": "+(0–0.3) metres to radius",
-      "values": [
-        "+(0–0.3)"
-      ]
-    },
-    {
-      "text": "(0–38)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–38)"
-      ]
-    },
-    {
-      "text": "Supported Skills will Trigger Shockwave on Melee Hit",
-      "values": []
-    },
-    {
-      "text": "Supported Skills can only be used with Maces, Sceptres or Staves",
-      "values": []
-    },
-    {
-      "text": "+(0–0.3) metres to radius",
-      "values": [
-        "+(0–0.3)"
-      ]
-    },
-    {
-      "text": "(0–38)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–38)"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "triggered by shockwave support [1]",
-      "values": []
-    },
-    {
-      "text": "+(0–0.7) metres to radius",
-      "values": [
-        "+(0–0.7)"
-      ]
-    },
-    {
-      "text": "(0–68)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–68)"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "triggered by shockwave support [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Warstaves are considered Staves)",
-    "(Warstaves are considered Staves)",
-    "(Warstaves are considered Staves)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Melee Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "(0–10)% increased Melee Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Melee Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "(0–10)% increased Melee Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "(0–10)% increased Melee Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Melee Damage(0.5-10)% increased Melee Damage",
+      "values": []
     }
   ]
 }

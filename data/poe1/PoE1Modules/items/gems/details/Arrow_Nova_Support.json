@@ -1,7 +1,17 @@
 {
   "name": "Arrow Nova Support",
   "slug": "Arrow_Nova_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Bow, Attack, Support, Projectile",
+    "Icon": "G",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "150%",
+    "Requires Level": "8",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "8",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemArrowNova"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,117 +335,21 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports bow attack skills that fire arrows forwards as projectiles. These skills will instead fire a payload arrow into the air to land at a targeted location. The supported skills' arrows will then fire out in a circle from where it lands. Cannot support skills that already fire arrows into the air, channelled skills, or skills that create Minions.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills deal (16–30)% less Projectile Damage",
-      "values": [
-        "(16–30)"
-      ]
-    },
-    {
-      "text": "Supported Skills fire a Payload Arrow into the airProjectiles from the Supported Skill Fire from where the Payload Arrow lands",
-      "values": []
-    },
-    {
-      "text": "Supported Skills Fire Projectiles in a circle",
-      "values": []
-    },
-    {
-      "text": "Supported Skills fire 4 additional Projectiles",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Supported Skills can only be used with Bows",
-      "values": []
-    },
-    {
-      "text": "Supported Skills deal (16–30)% less Projectile Damage",
-      "values": [
-        "(16–30)"
-      ]
-    },
-    {
-      "text": "Supported Skills fire a Payload Arrow into the airProjectiles from the Supported Skill Fire from where the Payload Arrow lands",
-      "values": []
-    },
-    {
-      "text": "Supported Skills Fire Projectiles in a circle",
-      "values": []
-    },
-    {
-      "text": "Supported Skills fire 4 additional Projectiles",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Supported Skills can only be used with Bows",
-      "values": []
-    },
-    {
-      "text": "skill is rain skill [1]",
-      "values": []
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 1 Arrow Nova",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "+(10–20) to Dexterity",
-      "values": [
-        "+(10–20)"
-      ]
-    },
-    {
-      "text": "100% increased Physical Damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "(25–30)% increased Attack Speed",
-      "values": [
-        "(25–30)"
-      ]
-    },
-    {
-      "text": "Grants 2 Mana per Enemy Hit",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "(50–100)% increased Projectile Speed",
-      "values": [
-        "(50–100)"
-      ]
-    },
-    {
-      "text": "+(25–50) to Accuracy Rating",
-      "values": [
-        "+(25–50)"
-      ]
-    }
+  "stats": [
+    "Supported Skills deal (30-16)% less Projectile Damage",
+    "Supported Skills fire a Payload Arrow into the air",
+    "Projectiles from the Supported Skill Fire from where the Payload Arrow lands",
+    "Supported Skills Fire Projectiles in a circle",
+    "Supported Skills fire 4 additional Projectiles",
+    "Supported Skills can only be used with Bows"
   ],
+  "gemDescription": "Supports bow attack skills that fire arrows forwards as projectiles. These skills will instead fire a payload arrow into the air to land at a targeted location. The supported skills' arrows will then fire out in a circle from where it lands. Cannot support skills that already fire arrows into the air, channelled skills, or skills that create Minions.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Projectile Damage",
+      "values": []
     }
   ]
 }

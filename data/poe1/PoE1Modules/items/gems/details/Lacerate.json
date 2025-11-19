@@ -1,7 +1,20 @@
 {
   "name": "Lacerate",
   "slug": "Lacerate",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, AoE, Physical, Melee",
+    "Level": "(1-20)",
+    "Cost": "(10-17) Mana",
+    "Attack Speed": "60% of base",
+    "Attack Damage": "(171-393)% of base",
+    "Effectiveness of Added Damage": "(171-393)%",
+    "AoE Radius": "38",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "12",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemLacerate"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -446,87 +459,18 @@
   ],
   "description": "Base radius of Lacerate is 38 units.",
   "stats": [
-    "Base radius of Lacerate is 38 units."
+    "+(0-0.9) metres to radius",
+    "(50-88)% more Damage with Bleeding while in Blood Stance",
+    "25% chance to cause Bleeding while in Blood Stance",
+    "50% increased angle while in Sand Stance"
   ],
   "gemDescription": "Slashes twice, releasing waves of force that damage enemies they hit. Enemies in the middle of the slashes can be hit by both. The slashes will have a chance to inflict bleeding in Blood Stance, or have a wider angle in Sand Stance. Can be used with Axes and Swords. You are in Blood Stance by default.",
-  "explicitMods": [
-    {
-      "text": "+(0–0.9) metres to radius",
-      "values": [
-        "+(0–0.9)"
-      ]
-    },
-    {
-      "text": "(50–88)% more Damage with Bleeding while in Blood Stance",
-      "values": [
-        "(50–88)"
-      ]
-    },
-    {
-      "text": "25% chance to cause Bleeding while in Blood Stance",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "50% increased angle while in Sand Stance",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "+(0–0.9) metres to radius",
-      "values": [
-        "+(0–0.9)"
-      ]
-    },
-    {
-      "text": "(50–88)% more Damage with Bleeding while in Blood Stance",
-      "values": [
-        "(50–88)"
-      ]
-    },
-    {
-      "text": "25% chance to cause Bleeding while in Blood Stance",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "50% increased angle while in Sand Stance",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(You are in Blood Stance by default)",
-    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
-    "(You are in Blood Stance by default)",
-    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
-    "(You are in Blood Stance by default)",
-    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–20)% increased Attack Speed if you've changed Stance Recently",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% increased Attack Speed if you've changed Stance Recently",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "(1-20)% increased Attack Speed if you've changed Stance Recently",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,20 @@
 {
   "name": "Cyclone",
   "slug": "Cyclone",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, AoE, Movement, Channelling, Melee",
+    "Level": "(1-20)",
+    "Cost": "(2-3) Mana",
+    "Attack Speed": "300% of base",
+    "Attack Damage": "(81-150)% of base",
+    "Effectiveness of Added Damage": "(81-150)%",
+    "AoE Radius": "1.6",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "28",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemCyclone"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,59 +418,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Channel this skill to move towards a targeted location while spinning constantly attacking enemies in an area around you. While channelling this skill, you cannot be knocked back.",
-  "explicitMods": [
-    {
-      "text": "15% increased Area of Effect per 0.1 metre additional Melee Strike Range",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "(20–30)% less Movement Speed",
-      "values": [
-        "(20–30)"
-      ]
-    },
-    {
-      "text": "15% increased Area of Effect per 0.1 metre additional Melee Strike Range",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "(20–30)% less Movement Speed",
-      "values": [
-        "(20–30)"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    },
-    {
-      "text": "cyclone_current_number_of_stages",
-      "values": []
-    }
+  "stats": [
+    "15% increased Area of Effect per 0.1 metre additional Melee Strike Range",
+    "(30-20)% less Movement Speed"
   ],
+  "gemDescription": "Channel this skill to move towards a targeted location while spinning constantly attacking enemies in an area around you. While channelling this skill, you cannot be knocked back.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–5)% increased Area of Effect per 0.1 metre additional Melee Strike Range",
-      "values": [
-        "(0–5)"
-      ]
-    },
-    {
-      "text": "(0–5)% increased Area of Effect per 0.1 metre additional Melee Strike Range",
-      "values": [
-        "(0–5)"
-      ]
+      "text": "(0.25-5)% increased Area of Effect per 0.1 metre additional Melee Strike Range",
+      "values": []
     }
   ]
 }

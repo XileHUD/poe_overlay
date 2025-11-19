@@ -1,7 +1,19 @@
 {
   "name": "Conversion Trap",
   "slug": "Conversion_Trap",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Trap, Spell, Duration",
+    "Level": "(1-20)",
+    "Cost": "(6-23) Mana",
+    "Cooldown Time": "8.00 sec",
+    "Can Store": "3 Use(s)",
+    "Cast Time": "1.00 sec",
+    "Requires Level": "4",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "5",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemConversionTrap"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,63 +417,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Throws a trap that, when triggered by an enemy, converts that enemy to your side for a short duration. Does not affect unique monsters or players.",
-  "explicitMods": [
-    {
-      "text": "Traps do not Trigger at the end of their Duration",
-      "values": []
-    },
-    {
-      "text": "Trap lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Base duration is (5.3–10) seconds",
-      "values": [
-        "(5.3–10)"
-      ]
-    },
-    {
-      "text": "Traps do not Trigger at the end of their Duration",
-      "values": []
-    },
-    {
-      "text": "Trap lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Base duration is (5.3–10) seconds",
-      "values": [
-        "(5.3–10)"
-      ]
-    },
-    {
-      "text": "base deal no damage [1]",
-      "values": []
-    },
-    {
-      "text": "base skill is trapped [1]",
-      "values": []
-    }
+  "stats": [
+    "Traps do not Trigger at the end of their Duration",
+    "Trap lasts 4 seconds",
+    "Base duration is (5.30-10.00) seconds"
   ],
+  "gemDescription": "Throws a trap that, when triggered by an enemy, converts that enemy to your side for a short duration. Does not affect unique monsters or players.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base duration is (0–4) seconds",
-      "values": [
-        "(0–4)"
-      ]
-    },
-    {
-      "text": "Base duration is (0–4) seconds",
-      "values": [
-        "(0–4)"
-      ]
+      "text": "Base duration is (0.2-4) seconds",
+      "values": []
     }
   ]
 }

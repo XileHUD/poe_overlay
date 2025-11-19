@@ -1,7 +1,17 @@
 {
   "name": "Bonechill Support",
   "slug": "Bonechill_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Cold, Support",
+    "Icon": "B",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "38",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "38",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemBonechill"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,139 +415,19 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "(25-44)% increased Effect of Chill inflicted with Supported Skills",
+    "Enemies Chilled by Supported Skills increase Cold Damage taken by Chill Effect",
+    "Enemies in Chilling Areas from Supported Skills increase Cold Damage taken by Chill Effect",
+    "Supported Skills deal (5-14)% more Cold Damage"
+  ],
   "gemDescription": "Supports any skill that can chill enemies or create chilling areas.",
-  "explicitMods": [
-    {
-      "text": "(25–44)% increased Effect of Chill inflicted with Supported Skills",
-      "values": [
-        "(25–44)"
-      ]
-    },
-    {
-      "text": "Enemies Chilled by Supported Skills increase Cold Damage taken by Chill Effect",
-      "values": []
-    },
-    {
-      "text": "Enemies in Chilling Areas from Supported Skills increase Cold Damage taken by Chill Effect",
-      "values": []
-    },
-    {
-      "text": "Supported Skills deal (5–14)% more Cold Damage",
-      "values": [
-        "(5–14)"
-      ]
-    },
-    {
-      "text": "(25–44)% increased Effect of Chill inflicted with Supported Skills",
-      "values": [
-        "(25–44)"
-      ]
-    },
-    {
-      "text": "Enemies Chilled by Supported Skills increase Cold Damage taken by Chill Effect",
-      "values": []
-    },
-    {
-      "text": "Enemies in Chilling Areas from Supported Skills increase Cold Damage taken by Chill Effect",
-      "values": []
-    },
-    {
-      "text": "Supported Skills deal (5–14)% more Cold Damage",
-      "values": [
-        "(5–14)"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Bonechill",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Added Cold Damage",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Inspiration",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Hypothermia",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Ice Bite",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Cold Penetration",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Bonechill",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 1 Added Cold Damage",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Inspiration",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Hypothermia",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Ice Bite",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 15 Cold Penetration",
-      "values": [
-        "15"
-      ]
-    }
-  ],
-  "modDescriptions": [
-    "(Chilled Ground, Creeping Frost, Frost Shield, and Vortices are Chilling Areas)",
-    "(Chilled Ground, Creeping Frost, Frost Shield, and Vortices are Chilling Areas)",
-    "(Chilled Ground, Creeping Frost, Frost Shield, and Vortices are Chilling Areas)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Cold Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Cold Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Cold Damage",
+      "values": []
     }
   ]
 }

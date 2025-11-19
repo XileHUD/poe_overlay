@@ -1,7 +1,20 @@
 {
   "name": "Shock Nova",
   "slug": "Shock_Nova",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Lightning, Nova",
+    "Level": "(1-20)",
+    "Cost": "(12-23) Mana",
+    "Cast Time": "0.70 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "(140-190)%",
+    "AoE Radius": "26 / 14",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "28",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemShockNova"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,65 +378,18 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Deals (34-537) to (101-1610) Lightning Damage",
+    "+10% to Maximum Effect of Shock",
+    "Ring always Shocks"
+  ],
   "gemDescription": "Casts a ring of Lightning around you, followed by a larger Lightning nova. Each effect hits enemies caught in their area with Lightning Damage.",
-  "explicitMods": [
-    {
-      "text": "Deals (34–537) to (101–1610) Lightning Damage",
-      "values": [
-        "(34–537)",
-        "(101–1610)"
-      ]
-    },
-    {
-      "text": "+10% to Maximum Effect of Shock",
-      "values": [
-        "+10"
-      ]
-    },
-    {
-      "text": "Ring always Shocks",
-      "values": []
-    },
-    {
-      "text": "Deals (34–537) to (101–1610) Lightning Damage",
-      "values": [
-        "(34–537)",
-        "(101–1610)"
-      ]
-    },
-    {
-      "text": "+10% to Maximum Effect of Shock",
-      "values": [
-        "+10"
-      ]
-    },
-    {
-      "text": "Ring always Shocks",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Base Maximum Effect of Shock is 50% increased Damage taken)",
-    "(Base Maximum Effect of Shock is 50% increased Damage taken)",
-    "(Base Maximum Effect of Shock is 50% increased Damage taken)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–10)% to Maximum Effect of Shock",
-      "values": [
-        "+(0–10)"
-      ]
-    },
-    {
-      "text": "+(0–10)% to Maximum Effect of Shock",
-      "values": [
-        "+(0–10)"
-      ]
+      "text": "+(0.5-10)% to Maximum Effect of Shock",
+      "values": []
     }
   ]
 }

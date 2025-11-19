@@ -1,7 +1,19 @@
 {
   "name": "Barrage of Volley Fire",
   "slug": "Barrage_of_Volley_Fire",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Projectile, Bow",
+    "Level": "(1-20)",
+    "Cost": "(5-9) Mana",
+    "Attack Speed": "115% of base",
+    "Attack Damage": "(50-60)% of base",
+    "Effectiveness of Added Damage": "(50-60)%",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "12",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -245,87 +257,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "After a short preparation time, you fire projectiles repeatedly with a Bow or Wand. These projectiles have a small randomised spread. This skill cannot be Triggered.",
-  "explicitMods": [
-    {
-      "text": "Fires 4 Projectiles",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Fires Projectiles sequentially",
-      "values": []
-    },
-    {
-      "text": "The first and final shots of the sequence fire 6 additional Projectiles simultaneously",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Fires 4 Projectiles",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Fires Projectiles sequentially",
-      "values": []
-    },
-    {
-      "text": "The first and final shots of the sequence fire 6 additional Projectiles simultaneously",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire wand projectiles [1]",
-      "values": []
-    },
-    {
-      "text": "Fires +4 Projectiles",
-      "values": [
-        "+4"
-      ]
-    },
-    {
-      "text": "Fires Projectiles sequentially",
-      "values": []
-    },
-    {
-      "text": "The first and final shots of the sequence fire 6 additional Projectiles simultaneously",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire wand projectiles [1]",
-      "values": []
-    }
+  "stats": [
+    "Fires 4 Projectiles",
+    "Fires Projectiles sequentially",
+    "The first and final shots of the sequence fire 6 additional Projectiles simultaneously"
   ],
+  "gemDescription": "After a short preparation time, you fire projectiles repeatedly with a Bow or Wand. These projectiles have a small randomised spread. This skill cannot be Triggered.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "The first and final shots of the sequence fire (0–4) additional Projectiles simultaneously",
-      "values": [
-        "(0–4)"
-      ]
-    },
-    {
-      "text": "The first and final shots of the sequence fire (0–4) additional Projectiles simultaneously",
-      "values": [
-        "(0–4)"
-      ]
+      "text": "The first and final shots of the sequence fire (0.2-4) additional Projectiles simultaneously",
+      "values": []
     }
   ]
 }

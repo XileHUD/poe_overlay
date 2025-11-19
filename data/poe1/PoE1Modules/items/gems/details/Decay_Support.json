@@ -1,7 +1,17 @@
 {
   "name": "Decay Support",
   "slug": "Decay_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Chaos, Support",
+    "Icon": "D",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "120%",
+    "Requires Level": "38",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "38",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemDecay"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -366,38 +376,15 @@
   ],
   "description": "Cast on Death Support\nCast on Melee Kill Support (Quality only)\nCast when Damage Taken Support",
   "stats": [
-    "Cast on Death Support",
-    "Cast on Melee Kill Support (Quality only)",
-    "Cast when Damage Taken Support"
+    "Supported Skills inflict Decay on Hit, dealing (162-1230) Chaos Damage per second for 8 seconds"
   ],
   "gemDescription": "Supports any skill that hits enemies.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills inflict Decay on Hit, dealing (162–1230) Chaos Damage per second for 8 seconds",
-      "values": [
-        "(162–1230)"
-      ]
-    },
-    {
-      "text": "Supported Skills inflict Decay on Hit, dealing (162–1230) Chaos Damage per second for 8 seconds",
-      "values": [
-        "(162–1230)"
-      ]
-    }
-  ],
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Chaos Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Chaos Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Chaos Damage",
+      "values": []
     }
   ]
 }

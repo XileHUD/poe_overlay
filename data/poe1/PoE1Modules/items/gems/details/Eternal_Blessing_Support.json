@@ -1,7 +1,16 @@
 {
   "name": "Eternal Blessing Support",
   "slug": "Eternal_Blessing_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Aura, Blessing",
+    "Icon": "c",
+    "Level": "(1-20)",
+    "Requires Level": "38",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "38",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemEternalBlessing"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,59 +334,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports aura skills that reserve life or mana to create auras around you.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills have (0–19)% increased Aura effect",
-      "values": [
-        "(0–19)"
-      ]
-    },
-    {
-      "text": "Supported Skills have no Reservation",
-      "values": []
-    },
-    {
-      "text": "Supported Skills also count as Blessing SkillsYou can only have one Aura on you from your Blessing Skills",
-      "values": []
-    },
-    {
-      "text": "Your Non-Blessing Skills which Reserve Mana are Disabled while you have an Aura from a Supported Skill on you",
-      "values": []
-    },
-    {
-      "text": "Supported Skills have (0–19)% increased Aura effect",
-      "values": [
-        "(0–19)"
-      ]
-    },
-    {
-      "text": "Supported Skills have no Reservation",
-      "values": []
-    },
-    {
-      "text": "Supported Skills also count as Blessing SkillsYou can only have one Aura on you from your Blessing Skills",
-      "values": []
-    },
-    {
-      "text": "Your Non-Blessing Skills which Reserve Mana are Disabled while you have an Aura from a Supported Skill on you",
-      "values": []
-    }
+  "stats": [
+    "Supported Skills have (0-19)% increased Aura effect",
+    "Supported Skills have no Reservation",
+    "Supported Skills also count as Blessing Skills",
+    "You can only have one Aura on you from your Blessing Skills",
+    "Your Non-Blessing Skills which Reserve Mana are Disabled while you have an Aura from a Supported Skill on you"
   ],
+  "gemDescription": "Supports aura skills that reserve life or mana to create auras around you.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–5)% increased Aura effect",
-      "values": [
-        "(0–5)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–5)% increased Aura effect",
-      "values": [
-        "(0–5)"
-      ]
+      "text": "Supported Skills have (0.25-5)% increased Aura effect",
+      "values": []
     }
   ]
 }

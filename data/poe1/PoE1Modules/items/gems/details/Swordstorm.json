@@ -1,7 +1,20 @@
 {
   "name": "Swordstorm",
   "slug": "Swordstorm",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, AoE, Retaliation, Melee",
+    "Level": "(1-20)",
+    "Cost": "(7-10) Mana",
+    "Cooldown Time": "3.00 sec",
+    "Can Store": "1 Use(s)",
+    "Attack Damage": "(123-247)% of base",
+    "Effectiveness of Added Damage": "(123-247)%",
+    "Requires Level": "16",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "16",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemReckoning"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,87 +418,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Retaliate against a blocked hit with a hail of blades that rains down in front of you, repeatedly dealing the damage of both your weapons combined. Requires Dual Wielding Melee Weapons.",
-  "explicitMods": [
-    {
-      "text": "Cannot be used by defaultBecomes Usable once for 2 seconds when you Block a Hit",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Can't be Evaded",
-      "values": []
-    },
-    {
-      "text": "Base radius is (1.8–2.3) metres",
-      "values": [
-        "(1.8–2.3)"
-      ]
-    },
-    {
-      "text": "Damages Enemies 8 times",
-      "values": [
-        "8"
-      ]
-    },
-    {
-      "text": "Cannot be used by defaultBecomes Usable once for 2 seconds when you Block a Hit",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Can't be Evaded",
-      "values": []
-    },
-    {
-      "text": "Base radius is (1.8–2.3) metres",
-      "values": [
-        "(1.8–2.3)"
-      ]
-    },
-    {
-      "text": "Damages Enemies 8 times",
-      "values": [
-        "8"
-      ]
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "cannot cancel skill before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill cannot be exerted [1]",
-      "values": []
-    },
-    {
-      "text": "skill cannot be stunned before contact point [1]",
-      "values": []
-    }
+  "stats": [
+    "Cannot be used by default",
+    "Becomes Usable once for 2 seconds when you Block a Hit",
+    "Can't be Evaded",
+    "Base radius is (1.8-2.3) metres",
+    "Damages Enemies 8 times"
   ],
+  "gemDescription": "Retaliate against a blocked hit with a hail of blades that rains down in front of you, repeatedly dealing the damage of both your weapons combined. Requires Dual Wielding Melee Weapons.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–20)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "(1-20)% increased Cooldown Recovery Rate",
+      "values": []
     }
   ]
 }

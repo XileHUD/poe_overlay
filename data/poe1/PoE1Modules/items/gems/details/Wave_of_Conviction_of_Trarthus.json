@@ -1,7 +1,19 @@
 {
   "name": "Wave of Conviction of Trarthus",
   "slug": "Wave_of_Conviction_of_Trarthus",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Duration, Physical, Fire, Nova",
+    "Level": "(1-20)",
+    "Cost": "(9-23) Mana",
+    "Cast Time": "0.70 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "(180-260)%",
+    "Requires Level": "16",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Mercenaries; Can be obtained from reward chests that contain gems in Heist .",
+    "Drop level": "16",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,118 +337,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "An expanding wave of energy surges outwards from you, damaging enemies in a ring-shaped area over a duration. The ring then returns, damaging enemies again on the way back. Only one Wave of Conviction can be active at a time",
-  "explicitMods": [
-    {
-      "text": "Deals (28–1181) to (42–1772) Physical Damage",
-      "values": [
-        "(28–1181)",
-        "(42–1772)"
-      ]
-    },
-    {
-      "text": "Base duration is (0.4–0.5) seconds",
-      "values": [
-        "(0.4–0.5)"
-      ]
-    },
-    {
-      "text": "50% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Deals (28–1181) to (42–1772) Physical Damage",
-      "values": [
-        "(28–1181)",
-        "(42–1772)"
-      ]
-    },
-    {
-      "text": "Base duration is (0.4–0.5) seconds",
-      "values": [
-        "(0.4–0.5)"
-      ]
-    },
-    {
-      "text": "50% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "ignite art variation [7]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "shock art variation [2]",
-      "values": []
-    },
-    {
-      "text": "visual hit effect elemental is holy [1]",
-      "values": []
-    },
-    {
-      "text": "Deals (28–6964) to (42–10447) Physical Damage",
-      "values": [
-        "(28–6964)",
-        "(42–10447)"
-      ]
-    },
-    {
-      "text": "Base duration is (0.4–0.57) seconds",
-      "values": [
-        "(0.4–0.57)"
-      ]
-    },
-    {
-      "text": "Base secondary duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "50% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "ignite art variation [7]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "shock art variation [2]",
-      "values": []
-    },
-    {
-      "text": "visual hit effect elemental is holy [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (28-1181) to (42-1772) Physical Damage",
+    "Base duration is (0.40-0.50) seconds",
+    "50% of Physical Damage Converted to Fire Damage"
   ],
+  "gemDescription": "An expanding wave of energy surges outwards from you, damaging enemies in a ring-shaped area over a duration. The ring then returns, damaging enemies again on the way back. Only one Wave of Conviction can be active at a time",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Damage Penetrates (0–15)% of Enemy Elemental Resistances",
-      "values": [
-        "(0–15)"
-      ]
-    },
-    {
-      "text": "Damage Penetrates (0–15)% of Enemy Elemental Resistances",
-      "values": [
-        "(0–15)"
-      ]
+      "text": "Damage Penetrates (0.75-15)% of Enemy Elemental Resistances",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,34 @@
 {
   "name": "Vaal Animate Weapon",
   "slug": "Vaal_Animate_Weapon",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Duration, Minion, Spell, Vaal, Physical",
+    "Level": "(1-20)",
+    "Souls Per Use": "50",
+    "Can Store": "1 Use(s)",
+    "Soul Gain Prevention": "40 sec",
+    "Cast Time": "0.60 sec",
+    "Requires Level": "4",
+    "Info 8": "Corrupted",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted",
+    "Drop level": "5",
+    "Vaal Animate Weapon can drop from the Vaal Vessels found in Vaal side areas , or by corrupting Animate WeaponAnimate WeaponDuration, Minion, Spell, PhysicalLevel": "(1-20)Cost: (4-16) ManaCast Time: 0.60 secRequires Level 4Animates a Melee Weapon Item or Lingering Blade to fight by your side. You cannot animate unidentified Weapons. Will not animate weapons with 6 sockets. Cannot be used by Traps or Mines.Base duration is 40.00 secondsMaximum (5-14) Animated WeaponsCan use Items requiring up to Level (9-100)Minions' Attacks deal (5-126) to (8-184) additional Physical DamageAnimated Lingering Blades deal (1-17) to (2-80) Added Attack Physical DamageMinions deal (0-38)% more DamageMinions have (0-38)% more Attack Speed Additional Effects From 1-20% Quality: +(0.1-2) to Maximum Animated WeaponsPlace into an item socket of the right colour to gain this skill. Right click to remove from a socket. .",
+    "Info 13": "Duration , Minion , Spell , Physical",
+    "Cost": "(4-16) Mana",
+    "Info 15": "Animates a Melee Weapon Item or Lingering Blade to fight by your side. You cannot animate unidentified Weapons. Will not animate weapons with 6 sockets. Cannot be used by Traps or Mines.",
+    "Info 16": "Base duration is 40.00 seconds",
+    "Info 17": "Maximum (5-14) Animated Weapons",
+    "Info 18": "Can use Items requiring up to Level (9-100)",
+    "Info 19": "Minions' Attacks deal (5-126) to (8-184) additional Physical Damage",
+    "Info 20": "Animated Lingering Blades deal (1-17) to (2-80) Added Attack Physical Damage",
+    "Info 21": "Minions deal (0-38)% more Damage",
+    "Info 22": "Minions have (0-38)% more Attack Speed",
+    "Additional Effects From 1-20% Quality": "+(0.1-2) to Maximum Animated Weapons",
+    "Info 24": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVaalAnimateWeapon"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -525,183 +552,24 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Base duration is 15.00 seconds",
+    "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+    "Can use Items requiring up to Level (9-100)",
+    "Animated Weapons are transformed into random Unique",
+    "Weapons with Level Requirement between (1-40) and (9-100)",
+    "Minions deal (50-107)% more Damage",
+    "Maximum (5-10) Animated Weapons",
+    "Minions have (0-38)% more Attack Speed",
+    "Animates up to (5-10) Weapons"
+  ],
   "gemDescription": "Animates multiple Melee Weapon Items and Lingering Blades to fight by your side, and transforms them into different, unique weapons. You cannot animate unidentified Weapons. Will not animate weapons with 6 sockets. Cannot be used by Traps or Mines.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 15 seconds",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Maximum (5–10) Animated Weapons",
-      "values": [
-        "(5–10)"
-      ]
-    },
-    {
-      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "Can use Items requiring up to Level (9–100)Animated Weapons are transformed into random UniqueWeapons with Level Requirement between (1–40) and (9–100)",
-      "values": [
-        "(9–100)",
-        "(1–40)",
-        "(9–100)"
-      ]
-    },
-    {
-      "text": "Animates up to (5–10) Weapons",
-      "values": [
-        "(5–10)"
-      ]
-    },
-    {
-      "text": "Minions deal (50–107)% more Damage",
-      "values": [
-        "(50–107)"
-      ]
-    },
-    {
-      "text": "Minions have (0–38)% more Attack Speed",
-      "values": [
-        "(0–38)"
-      ]
-    },
-    {
-      "text": "Base duration is 15 seconds",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Maximum (5–10) Animated Weapons",
-      "values": [
-        "(5–10)"
-      ]
-    },
-    {
-      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "Can use Items requiring up to Level (9–100)Animated Weapons are transformed into random UniqueWeapons with Level Requirement between (1–40) and (9–100)",
-      "values": [
-        "(9–100)",
-        "(1–40)",
-        "(9–100)"
-      ]
-    },
-    {
-      "text": "Animates up to (5–10) Weapons",
-      "values": [
-        "(5–10)"
-      ]
-    },
-    {
-      "text": "Minions deal (50–107)% more Damage",
-      "values": [
-        "(50–107)"
-      ]
-    },
-    {
-      "text": "Minions have (0–38)% more Attack Speed",
-      "values": [
-        "(0–38)"
-      ]
-    },
-    {
-      "text": "base display minion actor level [4,70]",
-      "values": []
-    },
-    {
-      "text": "cannot cancel skill before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "display minion monster type [22]",
-      "values": []
-    },
-    {
-      "text": "skill cannot be stunned before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "Base duration is 40 seconds",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "Maximum (5–24) Animated Weapons",
-      "values": [
-        "(5–24)"
-      ]
-    },
-    {
-      "text": "Can use Items requiring up to Level (9–100)",
-      "values": [
-        "(9–100)"
-      ]
-    },
-    {
-      "text": "Minions' Attacks deal (5–228) to (8–333) additional Physical Damage",
-      "values": [
-        "(5–228)",
-        "(8–333)"
-      ]
-    },
-    {
-      "text": "Animated Lingering Blades deal (1–41) to (2–203) Added Attack Physical Damage",
-      "values": [
-        "(1–41)",
-        "(2–203)"
-      ]
-    },
-    {
-      "text": "Minions deal (0–58)% more Damage",
-      "values": [
-        "(0–58)"
-      ]
-    },
-    {
-      "text": "Minions have (0–58)% more Attack Speed",
-      "values": [
-        "(0–58)"
-      ]
-    },
-    {
-      "text": "base display minion actor level [4,100]",
-      "values": []
-    },
-    {
-      "text": "display minion monster type [22]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Lingering Blades remain on the ground for a duration and can be used by specific skills. If Animated, they count as Daggers)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–2) to Maximum Animated Weapons",
-      "values": [
-        "+(0–2)"
-      ]
-    },
-    {
-      "text": "+(0–2) to Maximum Animated Weapons",
-      "values": [
-        "+(0–2)"
-      ]
-    },
-    {
-      "text": "+(0–2) to Maximum Animated Weapons",
-      "values": [
-        "+(0–2)"
-      ]
+      "text": "+(0.1-2) to maximum number of Animated Weapons",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,18 @@
 {
   "name": "Purifying Flame of Revelations",
   "slug": "Purifying_Flame_of_Revelations",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Fire, Spell, AoE, Duration, Physical",
+    "Level": "(1-20)",
+    "Cost": "(6-25) Mana",
+    "Cast Time": "0.70 sec",
+    "Critical Strike Chance": "5.50%",
+    "Effectiveness of Added Damage": "(140-190)%",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "5",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,146 +376,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "A wave of divine fire deals damage in a line, then creates Consecrated Ground and deals damage in an area around the targeted location. A larger shockwave then expands outwards, damaging enemies standing on Consecrated Ground that were not already hit.",
-  "explicitMods": [
-    {
-      "text": "Deals (5–860) to (7–1291) Physical Damage",
-      "values": [
-        "(5–860)",
-        "(7–1291)"
-      ]
-    },
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "50% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "+(0.5–1.1) metres to radius of Consecrated Ground",
-      "values": [
-        "+(0.5–1.1)"
-      ]
-    },
-    {
-      "text": "Shockwave deals 110% more Damage",
-      "values": [
-        "110"
-      ]
-    },
-    {
-      "text": "Deals (5–860) to (7–1291) Physical Damage",
-      "values": [
-        "(5–860)",
-        "(7–1291)"
-      ]
-    },
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "50% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "+(0.5–1.1) metres to radius of Consecrated Ground",
-      "values": [
-        "+(0.5–1.1)"
-      ]
-    },
-    {
-      "text": "Shockwave deals 110% more Damage",
-      "values": [
-        "110"
-      ]
-    },
-    {
-      "text": "ignite art variation [7]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "visual hit effect elemental is holy [1]",
-      "values": []
-    },
-    {
-      "text": "Deals (5–4669) to (7–7004) Physical Damage",
-      "values": [
-        "(5–4669)",
-        "(7–7004)"
-      ]
-    },
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "50% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "+(0.5–1.6) metres to radius of Consecrated Ground",
-      "values": [
-        "+(0.5–1.6)"
-      ]
-    },
-    {
-      "text": "Shockwave deals 110% more Damage",
-      "values": [
-        "110"
-      ]
-    },
-    {
-      "text": "ignite art variation [7]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "visual hit effect elemental is holy [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (5-860) to (7-1291) Physical Damage",
+    "Base duration is 4.00 seconds",
+    "+(0.5-1.1) metres to radius of Consecrated Ground",
+    "50% of Physical Damage Converted to Fire Damage",
+    "Shockwave deals 110% more Damage"
   ],
+  "gemDescription": "A wave of divine fire deals damage in a line, then creates Consecrated Ground and deals damage in an area around the targeted location. A larger shockwave then expands outwards, damaging enemies standing on Consecrated Ground that were not already hit.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Shockwave deals +(0–30)% more Damage",
-      "values": [
-        "+(0–30)"
-      ]
-    },
-    {
-      "text": "Shockwave deals +(0–30)% more Damage",
-      "values": [
-        "+(0–30)"
-      ]
-    },
-    {
-      "text": "Shockwave deals +(0–30)% more Damage",
-      "values": [
-        "+(0–30)"
-      ]
+      "text": "Shockwave deals +(1.5-30)% more Damage",
+      "values": []
     }
   ]
 }

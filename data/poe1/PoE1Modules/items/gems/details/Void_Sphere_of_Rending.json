@@ -1,7 +1,19 @@
 {
   "name": "Void Sphere of Rending",
   "slug": "Void_Sphere_of_Rending",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Duration, Physical, Chaos, Orb",
+    "Level": "(1-20)",
+    "Cost": "(14-26) Mana",
+    "Cast Time": "0.80 sec",
+    "Critical Strike Chance": "5.00%",
+    "Effectiveness of Added Damage": "(120-190)%",
+    "Requires Level": "34",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "34",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,169 +377,21 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Deals (68-860) to (101-1290) Physical Damage",
+    "Base duration is 2.00 seconds",
+    "Pulses every 0.25 seconds",
+    "40% of Physical Damage Converted to Chaos Damage",
+    "Base radius is 2.4 metres",
+    "Enemies in range are Hindered, with up to (30-39)% reduced Movement Speed, based on distance from the Void Sphere"
+  ],
   "gemDescription": "Creates a Void Sphere which Hinders enemies in an area around it, with the debuff being stronger on enemies closer to the sphere. It also regularly releases pulses of area damage. The Void Sphere will consume the corpses of any enemies which die in its area. Can only have one Void Sphere at a time.",
-  "explicitMods": [
-    {
-      "text": "Deals (68–860) to (101–1290) Physical Damage",
-      "values": [
-        "(68–860)",
-        "(101–1290)"
-      ]
-    },
-    {
-      "text": "Base duration is 2 seconds",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Pulses every 0.25 seconds",
-      "values": [
-        "0.25"
-      ]
-    },
-    {
-      "text": "40% of Physical Damage Converted to Chaos Damage",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "Base radius is 2.4 metres",
-      "values": [
-        "2.4"
-      ]
-    },
-    {
-      "text": "Enemies in range are Hindered, with up to (30–39)% reduced Movement Speed, based on distance from the Void Sphere",
-      "values": [
-        "(30–39)"
-      ]
-    },
-    {
-      "text": "Deals (68–860) to (101–1290) Physical Damage",
-      "values": [
-        "(68–860)",
-        "(101–1290)"
-      ]
-    },
-    {
-      "text": "Base duration is 2 seconds",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Pulses every 0.25 seconds",
-      "values": [
-        "0.25"
-      ]
-    },
-    {
-      "text": "40% of Physical Damage Converted to Chaos Damage",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "Base radius is 2.4 metres",
-      "values": [
-        "2.4"
-      ]
-    },
-    {
-      "text": "Enemies in range are Hindered, with up to (30–39)% reduced Movement Speed, based on distance from the Void Sphere",
-      "values": [
-        "(30–39)"
-      ]
-    },
-    {
-      "text": "damage cannot be reflected or leech if used by other object [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    },
-    {
-      "text": "Deals (68–5982) to (101–8973) Physical Damage",
-      "values": [
-        "(68–5982)",
-        "(101–8973)"
-      ]
-    },
-    {
-      "text": "Base duration is 2 seconds",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Pulses every 0.25 seconds",
-      "values": [
-        "0.25"
-      ]
-    },
-    {
-      "text": "40% of Physical Damage Converted to Chaos Damage",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "Base radius is 2.4 metres",
-      "values": [
-        "2.4"
-      ]
-    },
-    {
-      "text": "Enemies in range are Hindered, with up to (30–47)% reduced Movement Speed, based on distance from the Void Sphere",
-      "values": [
-        "(30–47)"
-      ]
-    },
-    {
-      "text": "damage cannot be reflected or leech if used by other object [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Hinder reduces movement speed)",
-    "(Hinder reduces movement speed)",
-    "(Hinder reduces movement speed)",
-    "(Hinder reduces movement speed)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base duration is (0–0.5) seconds",
-      "values": [
-        "(0–0.5)"
-      ]
-    },
-    {
-      "text": "Base duration is (0–0.5) seconds",
-      "values": [
-        "(0–0.5)"
-      ]
-    },
-    {
-      "text": "Base duration is (0–0.5) seconds",
-      "values": [
-        "(0–0.5)"
-      ]
+      "text": "Base duration is (0.025-0.5) seconds",
+      "values": []
     }
   ]
 }

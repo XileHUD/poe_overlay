@@ -1,7 +1,19 @@
 {
   "name": "Anger",
   "slug": "Anger",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Aura, Spell, AoE, Fire",
+    "Level": "(1-20)",
+    "Reservation": "50% Mana",
+    "Cooldown Time": "1.20 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "Instant",
+    "Requires Level": "24",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "24",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemAnger"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -445,67 +457,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Casts an aura that adds fire damage to the attacks and spells of you and your allies.",
-  "explicitMods": [
-    {
-      "text": "+(0–1.9) metres to radius",
-      "values": [
-        "+(0–1.9)"
-      ]
-    },
-    {
-      "text": "You and nearby allies deal (16–109) to (23–155) additional Fire Damage with Attacks",
-      "values": [
-        "(16–109)",
-        "(23–155)"
-      ]
-    },
-    {
-      "text": "You and nearby allies deal (16–109) to (23–155) additional Fire Damage with Spells",
-      "values": [
-        "(16–109)",
-        "(23–155)"
-      ]
-    },
-    {
-      "text": "+(0–1.9) metres to radius",
-      "values": [
-        "+(0–1.9)"
-      ]
-    },
-    {
-      "text": "You and nearby allies deal (16–109) to (23–155) additional Fire Damage with Attacks",
-      "values": [
-        "(16–109)",
-        "(23–155)"
-      ]
-    },
-    {
-      "text": "You and nearby allies deal (16–109) to (23–155) additional Fire Damage with Spells",
-      "values": [
-        "(16–109)",
-        "(23–155)"
-      ]
-    },
-    {
-      "text": "base deal no damage [1]",
-      "values": []
-    }
+  "stats": [
+    "+(0-1.9) metres to radius",
+    "You and nearby allies deal (16-109) to (23-155) additional Fire Damage with Attacks",
+    "You and nearby allies deal (16-109) to (23-155) additional Fire Damage with Spells"
   ],
+  "gemDescription": "Casts an aura that adds fire damage to the attacks and spells of you and your allies.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–40)% increased Area of Effect",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "(0–40)% increased Area of Effect",
-      "values": [
-        "(0–40)"
-      ]
+      "text": "(2-40)% increased Area of Effect",
+      "values": []
     }
   ]
 }

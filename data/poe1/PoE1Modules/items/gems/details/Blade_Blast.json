@@ -1,7 +1,19 @@
 {
   "name": "Blade Blast",
   "slug": "Blade_Blast",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Physical",
+    "Level": "(1-20)",
+    "Cost": "(6-16) Mana",
+    "Cast Time": "0.50 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "70%",
+    "Requires Level": "16",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "16",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemBladeBlast"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,53 +377,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Deals spell damage in a targeted area. Each time this spell deals damage,  it will detonate any of your Lingering Blades it touches, dealing damage again in an area around them. Up to 50 Blades can be detonated this way.",
-  "explicitMods": [
-    {
-      "text": "Deals (11–309) to (17–464) Physical Damage",
-      "values": [
-        "(11–309)",
-        "(17–464)"
-      ]
-    },
-    {
-      "text": "Base radius is 1.4 metres",
-      "values": [
-        "1.4"
-      ]
-    },
-    {
-      "text": "Deals (11–309) to (17–464) Physical Damage",
-      "values": [
-        "(11–309)",
-        "(17–464)"
-      ]
-    },
-    {
-      "text": "Base radius is 1.4 metres",
-      "values": [
-        "1.4"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (11-309) to (17-464) Physical Damage",
+    "Base radius is 1.4 metres"
   ],
+  "gemDescription": "Deals spell damage in a targeted area. Each time this spell deals damage,  it will detonate any of your Lingering Blades it touches, dealing damage again in an area around them. Up to 50 Blades can be detonated this way.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base radius is (0–0.1) metres",
-      "values": [
-        "(0–0.1)"
-      ]
-    },
-    {
-      "text": "Base radius is (0–0.1) metres",
-      "values": [
-        "(0–0.1)"
-      ]
+      "text": "Base radius is (0.005-0.1) metres",
+      "values": []
     }
   ]
 }

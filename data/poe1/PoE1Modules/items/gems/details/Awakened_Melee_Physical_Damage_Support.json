@@ -1,7 +1,18 @@
 {
   "name": "Awakened Melee Physical Damage Support",
   "slug": "Awakened_Melee_Physical_Damage_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Melee, Physical, Support, Attack",
+    "Icon": "M",
+    "Level": "(1-5)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "72",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; The Maven's Crucible; Can drop from either version of the Maven , from Maven's Invitations , or from Maven-witnessed map bosses.",
+    "Drop level": "72",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemMeleePhysicalDamagePlus"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -205,74 +216,19 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Supported Skills deal (50-54)% more Melee Physical Damage",
+    "Supported Skills deal (50-54)% more Damage with Bleeding and Poison caused by Melee Hits",
+    "Supported Skills have (0-10)% chance to Intimidate Enemies for 4 seconds on Hit",
+    "Supported Skills have 10% less Attack Speed"
+  ],
   "gemDescription": "Supports melee attack skills.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills deal (50–54)% more Melee Physical Damage",
-      "values": [
-        "(50–54)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (50–54)% more Damage with Bleeding and Poison caused by Melee Hits",
-      "values": [
-        "(50–54)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–10)% chance to Intimidate Enemies for 4 seconds on Hit",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills have 10% less Attack Speed",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (50–54)% more Melee Physical Damage",
-      "values": [
-        "(50–54)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (50–54)% more Damage with Bleeding and Poison caused by Melee Hits",
-      "values": [
-        "(50–54)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–10)% chance to Intimidate Enemies for 4 seconds on Hit",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills have 10% less Attack Speed",
-      "values": [
-        "10"
-      ]
-    }
-  ],
-  "modDescriptions": [
-    "(Intimidated enemies take 10% increased Attack Damage)",
-    "(Intimidated enemies take 10% increased Attack Damage)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Melee Physical Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Melee Physical Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Melee Physical Damage",
+      "values": []
     }
   ]
 }

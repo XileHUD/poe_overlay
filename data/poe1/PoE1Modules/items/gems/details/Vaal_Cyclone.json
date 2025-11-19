@@ -1,7 +1,23 @@
 {
   "name": "Vaal Cyclone",
   "slug": "Vaal_Cyclone",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, AoE, Duration, Vaal, Melee, Movement, Channelling",
+    "Level": "(1-20)",
+    "Souls Per Use": "25",
+    "Can Store": "1 Use(s)",
+    "Soul Gain Prevention": "5 sec",
+    "Attack Speed": "300% of base",
+    "Attack Damage": "(108-184)% of base",
+    "Effectiveness of Added Damage": "(108-184)%",
+    "Requires Level": "28",
+    "Info 10": "Corrupted",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Vaal Cyclone can drop from the Vaal Vessels found in Vaal side areas .",
+    "Drop level": "28",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVaalCyclone"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -245,115 +261,19 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Base duration is 5.00 seconds",
+    "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+    "10% increased Area of Effect per 0.1 metre additional Melee Strike Range",
+    "Can't be Evaded"
+  ],
   "gemDescription": "Spin and attack in place, damaging nearby enemies and pulling others towards you. While using this skill, you cannot be stunned or knocked back. Cannot be supported by Ruthless.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 5 seconds",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "15% increased Area of Effect per 0.1 metre additional Melee Strike Range",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Can't be Evaded",
-      "values": []
-    },
-    {
-      "text": "Base duration is 5 seconds",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "15% increased Area of Effect per 0.1 metre additional Melee Strike Range",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Can't be Evaded",
-      "values": []
-    },
-    {
-      "text": "cannot cancel skill before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    },
-    {
-      "text": "skill cannot be stunned before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "Knocks Enemies Back on Hit",
-      "values": []
-    },
-    {
-      "text": "Knockback direction is reversed",
-      "values": []
-    },
-    {
-      "text": "10% increased Area of Effect per 0.1 metre additional Melee Strike Range",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "30% less Movement Speed",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "50% chance to gain a Frenzy Charge on Hit",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Knockback pushes Enemies away when Hit)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–5)% increased Area of Effect per 0.1 metre additional Melee Strike Range",
-      "values": [
-        "(0–5)"
-      ]
-    },
-    {
-      "text": "(0–5)% increased Area of Effect per 0.1 metre additional Melee Strike Range",
-      "values": [
-        "(0–5)"
-      ]
+      "text": "(0.5-10)% increased Area of Effect",
+      "values": []
     }
   ]
 }

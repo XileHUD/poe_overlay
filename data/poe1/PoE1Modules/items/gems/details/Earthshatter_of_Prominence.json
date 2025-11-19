@@ -1,7 +1,19 @@
 {
   "name": "Earthshatter of Prominence",
   "slug": "Earthshatter_of_Prominence",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, AoE, Slam, Duration, Melee",
+    "Level": "(1-20)",
+    "Cost": "(8-13) Mana",
+    "Attack Speed": "80% of base",
+    "Attack Damage": "(150-346)% of base",
+    "Effectiveness of Added Damage": "(150-346)%",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "12",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,127 +337,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Slam the ground, sending out a rectangular fissure that deals area damage to enemies and thrusts a large spike from the ground where it ends. Warcries or other Slam Attacks performed by you or allied players near the spike will cause it to shatter, damaging surrounding enemies. Works with Maces, Sceptres, Axes, Staves and Unarmed.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Shattering Spikes have (100–157)% more Area of Effect",
-      "values": [
-        "(100–157)"
-      ]
-    },
-    {
-      "text": "Shattering Spikes deal 100% more damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Creates 1 fissure",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Maximum 5 Spikes",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Base duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Shattering Spikes have (100–157)% more Area of Effect",
-      "values": [
-        "(100–157)"
-      ]
-    },
-    {
-      "text": "Shattering Spikes deal 100% more damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Creates 1 fissure",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Maximum 5 Spikes",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "Base duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Shattering Spikes have (100–202)% more Area of Effect",
-      "values": [
-        "(100–202)"
-      ]
-    },
-    {
-      "text": "Shattering Spikes deal 100% more damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Creates 1 fissure",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Maximum 5 Spikes",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Base duration is 6.00 seconds",
+    "Shattering Spikes have (100-157)% more Area of Effect",
+    "Shattering Spikes deal 100% more damage",
+    "Maximum 5 Spikes",
+    "Creates 1 fissure"
   ],
+  "gemDescription": "Slam the ground, sending out a rectangular fissure that deals area damage to enemies and thrusts a large spike from the ground where it ends. Warcries or other Slam Attacks performed by you or allied players near the spike will cause it to shatter, damaging surrounding enemies. Works with Maces, Sceptres, Axes, Staves and Unarmed.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Shattering Spikes deal +(0–20)% more damage",
-      "values": [
-        "+(0–20)"
-      ]
-    },
-    {
-      "text": "Shattering Spikes deal +(0–20)% more damage",
-      "values": [
-        "+(0–20)"
-      ]
-    },
-    {
-      "text": "Shattering Spikes deal +(0–20)% more damage",
-      "values": [
-        "+(0–20)"
-      ]
+      "text": "Shattering Spikes deal +(1-20)% more damage",
+      "values": []
     }
   ]
 }

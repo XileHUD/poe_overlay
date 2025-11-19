@@ -1,7 +1,17 @@
 {
   "name": "Sadism Support",
   "slug": "Sadism_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support",
+    "Icon": "X",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "18",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "18",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemSadism"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,57 +375,17 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Damaging Ailments inflicted with Supported Skills deal damage (60-98)% faster",
+    "70% less Duration of Ailments inflicted with Supported Skills"
+  ],
   "gemDescription": "Supports any skill that hits enemies.",
-  "explicitMods": [
-    {
-      "text": "Damaging Ailments inflicted with Supported Skills deal damage (60–98)% faster",
-      "values": [
-        "(60–98)"
-      ]
-    },
-    {
-      "text": "70% less Duration of Ailments inflicted with Supported Skills",
-      "values": [
-        "70"
-      ]
-    },
-    {
-      "text": "Damaging Ailments inflicted with Supported Skills deal damage (60–98)% faster",
-      "values": [
-        "(60–98)"
-      ]
-    },
-    {
-      "text": "70% less Duration of Ailments inflicted with Supported Skills",
-      "values": [
-        "70"
-      ]
-    }
-  ],
-  "modDescriptions": [
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(They will deal the same total damage over a shorter duration)",
-    "(Ailments are Bleeding, Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, Sapped, and Poisoned)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(They will deal the same total damage over a shorter duration)",
-    "(Ailments are Bleeding, Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, Sapped, and Poisoned)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(They will deal the same total damage over a shorter duration)",
-    "(Ailments are Bleeding, Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, Sapped, and Poisoned)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Damage over Time",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Damage over Time",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Damage over Time",
+      "values": []
     }
   ]
 }

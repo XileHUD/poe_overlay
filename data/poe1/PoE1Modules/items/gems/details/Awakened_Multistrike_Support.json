@@ -1,7 +1,18 @@
 {
   "name": "Awakened Multistrike Support",
   "slug": "Awakened_Multistrike_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Melee, Support",
+    "Icon": "3",
+    "Level": "(1-5)",
+    "Cost & Reservation Multiplier": "150%",
+    "Requires Level": "72",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Can drop from either version of the Maven or from Maven-witnessed map bosses.",
+    "Drop level": "72",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemMultistrikePlus"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -185,99 +196,21 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports melee attack skills, making them repeat three times when used, targeting a random enemy each time. Cannot support Vaal skills, channelling skills, travel skills, retaliation skills or triggered skills.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills Repeat 3 additional times",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Supported Skills have (45–47)% more Melee Attack Speed",
-      "values": [
-        "(45–47)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal 20% less Attack Damage",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "First Repeat of Supported Skills deals 22% more Damage",
-      "values": [
-        "22"
-      ]
-    },
-    {
-      "text": "Second Repeat of Supported Skills deals 44% more Damage",
-      "values": [
-        "44"
-      ]
-    },
-    {
-      "text": "Third Repeat of Supported Skills deals 66% more Damage",
-      "values": [
-        "66"
-      ]
-    },
-    {
-      "text": "Supported Skills Repeat 3 additional times",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Supported Skills have (45–47)% more Melee Attack Speed",
-      "values": [
-        "(45–47)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal 20% less Attack Damage",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "First Repeat of Supported Skills deals 22% more Damage",
-      "values": [
-        "22"
-      ]
-    },
-    {
-      "text": "Second Repeat of Supported Skills deals 44% more Damage",
-      "values": [
-        "44"
-      ]
-    },
-    {
-      "text": "Third Repeat of Supported Skills deals 66% more Damage",
-      "values": [
-        "66"
-      ]
-    },
-    {
-      "text": "repeat target selection distance from initial target bias [3]",
-      "values": []
-    }
+  "stats": [
+    "Supported Skills Repeat 3 additional times",
+    "Supported Skills have (45-47)% more Melee Attack Speed",
+    "Supported Skills deal 20% less Attack Damage",
+    "First Repeat of Supported Skills deals 22% more Damage",
+    "Second Repeat of Supported Skills deals 44% more Damage",
+    "Third Repeat of Supported Skills deals 66% more Damage"
   ],
+  "gemDescription": "Supports melee attack skills, making them repeat three times when used, targeting a random enemy each time. Cannot support Vaal skills, channelling skills, travel skills, retaliation skills or triggered skills.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Melee Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Melee Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Melee Damage",
+      "values": []
     }
   ]
 }

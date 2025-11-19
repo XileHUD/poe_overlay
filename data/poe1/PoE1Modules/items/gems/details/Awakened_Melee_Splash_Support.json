@@ -1,7 +1,18 @@
 {
   "name": "Awakened Melee Splash Support",
   "slug": "Awakened_Melee_Splash_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Melee, Attack, Strike, AoE",
+    "Icon": "S",
+    "Level": "(1-5)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "72",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; The Maven's Crucible; Can drop from either version of the Maven , from Maven's Invitations , or from Maven-witnessed map bosses.",
+    "Drop level": "72",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemMeleeSplashPlus"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -205,67 +216,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports melee strike skills, causing their melee strike to deal splash damage around each target hit.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills deal Splash Damage to surrounding targets",
-      "values": []
-    },
-    {
-      "text": "Supported Skills deal (37–39)% less Splash Damage to surrounding targets",
-      "values": [
-        "(37–39)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (60–72)% more Melee Splash Area of Effect",
-      "values": [
-        "(60–72)"
-      ]
-    },
-    {
-      "text": "+(0–1) to Level of Supported Strike Skill Gems",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal Splash Damage to surrounding targets",
-      "values": []
-    },
-    {
-      "text": "Supported Skills deal (37–39)% less Splash Damage to surrounding targets",
-      "values": [
-        "(37–39)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (60–72)% more Melee Splash Area of Effect",
-      "values": [
-        "(60–72)"
-      ]
-    },
-    {
-      "text": "+(0–1) to Level of Supported Strike Skill Gems",
-      "values": [
-        "+(0–1)"
-      ]
-    }
+  "stats": [
+    "Supported Skills deal Splash Damage to surrounding targets",
+    "Supported Skills deal (39-37)% less Splash Damage to surrounding targets",
+    "Supported Skills have (60-72)% more Melee Splash Area of Effect",
+    "+(0-1) to Level of Supported Strike Skill Gems"
   ],
+  "gemDescription": "Supports melee strike skills, causing their melee strike to deal splash damage around each target hit.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–10)% increased Area of Effect",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–10)% increased Area of Effect",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills have (0.5-10)% increased Area of Effect",
+      "values": []
     }
   ]
 }

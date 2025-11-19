@@ -1,7 +1,19 @@
 {
   "name": "Puncture",
   "slug": "Puncture",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Projectile, Duration, Physical, Bow",
+    "Level": "(1-20)",
+    "Cost": "(8-14) Mana",
+    "Attack Speed": "70% of base",
+    "Attack Damage": "(168-205)% of base",
+    "Effectiveness of Added Damage": "(168-205)%",
+    "Requires Level": "4",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "5",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemPuncture"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,67 +417,18 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Base duration is 8.00 seconds",
+    "(30-49)% more Damage with Bleeding",
+    "Causes Bleeding"
+  ],
   "gemDescription": "Punctures enemies with your Bow, causing a bleeding debuff, which will be affected by modifiers to skill duration.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 8 seconds",
-      "values": [
-        "8"
-      ]
-    },
-    {
-      "text": "(30–49)% more Damage with Bleeding",
-      "values": [
-        "(30–49)"
-      ]
-    },
-    {
-      "text": "Causes Bleeding",
-      "values": []
-    },
-    {
-      "text": "Base duration is 8 seconds",
-      "values": [
-        "8"
-      ]
-    },
-    {
-      "text": "(30–49)% more Damage with Bleeding",
-      "values": [
-        "(30–49)"
-      ]
-    },
-    {
-      "text": "Causes Bleeding",
-      "values": []
-    },
-    {
-      "text": "bleed duration is skill duration [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
-    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
-    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–20)% more Damage with Bleeding",
-      "values": [
-        "+(0–20)"
-      ]
-    },
-    {
-      "text": "+(0–20)% more Damage with Bleeding",
-      "values": [
-        "+(0–20)"
-      ]
+      "text": "+(1-20)% more Damage with Bleeding",
+      "values": []
     }
   ]
 }

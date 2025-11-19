@@ -1,7 +1,17 @@
 {
   "name": "Vampiric Link",
   "slug": "Vampiric_Link",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Duration, Link",
+    "Level": "(1-20)",
+    "Cost": "(15-32) Mana per second",
+    "Cast Time": "0.50 sec",
+    "Requires Level": "34",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "34",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVampiricLink"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -445,75 +455,23 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Targets an allied player to apply a buff which links you to them for a duration. While linked, they get recovery from your life leech instead of you. If the target dies while linked, you will also die. This skill cannot be triggered, or used by Totems, Traps, or Mines.",
-  "explicitMods": [
-    {
-      "text": "Base duration is (8–9.9) seconds",
-      "values": [
-        "(8–9.9)"
-      ]
-    },
-    {
-      "text": "Life Leech effects are not removed at Full LifeLife Leech effects apply Recovery Linked Target instead of youLinked target's Maximum total Life Recovery per second from Leech is equal to yours",
-      "values": []
-    },
-    {
-      "text": "Buff grants +(2–5.8)% to Maximum total Life Recovery per second from Leech",
-      "values": [
-        "+(2–5.8)"
-      ]
-    },
-    {
-      "text": "Link breaks if target leaves range or line of sight for 4 secondsMaximum 1 Link from any source per targetYou die if Linked target dies",
-      "values": []
-    },
-    {
-      "text": "Base duration is (8–9.9) seconds",
-      "values": [
-        "(8–9.9)"
-      ]
-    },
-    {
-      "text": "Life Leech effects are not removed at Full LifeLife Leech effects apply Recovery Linked Target instead of youLinked target's Maximum total Life Recovery per second from Leech is equal to yours",
-      "values": []
-    },
-    {
-      "text": "Buff grants +(2–5.8)% to Maximum total Life Recovery per second from Leech",
-      "values": [
-        "+(2–5.8)"
-      ]
-    },
-    {
-      "text": "Link breaks if target leaves range or line of sight for 4 secondsMaximum 1 Link from any source per targetYou die if Linked target dies",
-      "values": []
-    },
-    {
-      "text": "skill cost over time is not removed with skill [1]",
-      "values": []
-    },
-    {
-      "text": "maximum_life_leech_rate_%_per_minute",
-      "values": []
-    },
-    {
-      "text": "damage_+%_when_on_full_life",
-      "values": []
-    }
+  "stats": [
+    "Base duration is (8.00-9.90) seconds",
+    "Life Leech effects are not removed at Full Life",
+    "Life Leech effects apply Recovery Linked Target instead of you",
+    "Linked target's Maximum total Life Recovery per second from Leech is equal to yours",
+    "Buff grants +(2-5.8)% to Maximum total Life Recovery per second from Leech",
+    "Link breaks if target leaves range or line of sight for 4 seconds",
+    "Maximum 1 Link from any source per target",
+    "You die if Linked target dies"
   ],
+  "gemDescription": "Targets an allied player to apply a buff which links you to them for a duration. While linked, they get recovery from your life leech instead of you. If the target dies while linked, you will also die. This skill cannot be triggered, or used by Totems, Traps, or Mines.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base duration is (0–1.5) seconds",
-      "values": [
-        "(0–1.5)"
-      ]
-    },
-    {
-      "text": "Base duration is (0–1.5) seconds",
-      "values": [
-        "(0–1.5)"
-      ]
+      "text": "Base duration is (0.075-1.5) seconds",
+      "values": []
     }
   ]
 }

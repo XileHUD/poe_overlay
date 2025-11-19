@@ -1,7 +1,18 @@
 {
   "name": "Kinetic Rain",
   "slug": "Kinetic_Rain",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, AoE, Projectile, Duration, Trigger",
+    "Level": "(1-20)",
+    "Cost": "(7-10) Mana",
+    "Attack Damage": "(20-25)% of base",
+    "Effectiveness of Added Damage": "(20-25)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "28",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemKineticRain"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -245,187 +256,25 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Swing your wand to cause a number of projectiles to rain down within a large area in front of you, directly targeting the locations of enemies in the area. The locations where each projectile will land are shown with markers before they fall. Each projectile explodes when hitting the ground, dealing area damage and triggering Kinetic Anomaly. Cannot be used by Totems, Traps, or Mines.",
-  "explicitMods": [
-    {
-      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
-      "values": [
-        "150"
-      ]
-    },
-    {
-      "text": "Fires 8 Projectiles",
-      "values": [
-        "8"
-      ]
-    },
-    {
-      "text": "Base targeting area length is 9 metres",
-      "values": [
-        "9"
-      ]
-    },
-    {
-      "text": "Base explosion radius is 1.2 metres",
-      "values": [
-        "1.2"
-      ]
-    },
-    {
-      "text": "Base targeting area width is 4.5 metres",
-      "values": [
-        "4.5"
-      ]
-    },
-    {
-      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
-      "values": [
-        "150"
-      ]
-    },
-    {
-      "text": "Base duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Base explosion radius is 1.2 metres",
-      "values": [
-        "1.2"
-      ]
-    },
-    {
-      "text": "Maximum 30 Anomalies",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "This Skill is Triggered when Projectiles from Kinetic Rain explode",
-      "values": []
-    },
-    {
-      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
-      "values": [
-        "150"
-      ]
-    },
-    {
-      "text": "Fires 8 Projectiles",
-      "values": [
-        "8"
-      ]
-    },
-    {
-      "text": "Base targeting area length is 9 metres",
-      "values": [
-        "9"
-      ]
-    },
-    {
-      "text": "Base explosion radius is 1.2 metres",
-      "values": [
-        "1.2"
-      ]
-    },
-    {
-      "text": "Base targeting area width is 4.5 metres",
-      "values": [
-        "4.5"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire wand projectiles [1]",
-      "values": []
-    },
-    {
-      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
-      "values": [
-        "150"
-      ]
-    },
-    {
-      "text": "Base duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Base explosion radius is 1.2 metres",
-      "values": [
-        "1.2"
-      ]
-    },
-    {
-      "text": "Maximum 30 Anomalies",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "This Skill is Triggered when Projectiles from Kinetic Rain explode",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
-      "values": [
-        "150"
-      ]
-    },
-    {
-      "text": "Base duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Base explosion radius is 1.2 metres",
-      "values": [
-        "1.2"
-      ]
-    },
-    {
-      "text": "Maximum 30 Anomalies",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "This Skill is Triggered when Projectiles from Kinetic Rain explode",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
+    "Fires 8 Projectiles",
+    "Base targeting area length is 9 metres",
+    "Base targeting area width is 4.5 metres",
+    "Base explosion radius is 1.2 metres",
+    "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
+    "Base duration is 6.00 seconds",
+    "Base explosion radius is 1.2 metres",
+    "Maximum 30 Anomalies",
+    "This Skill is Triggered when Projectiles from Kinetic Rain explode"
   ],
+  "gemDescription": "Swing your wand to cause a number of projectiles to rain down within a large area in front of you, directly targeting the locations of enemies in the area. The locations where each projectile will land are shown with markers before they fall. Each projectile explodes when hitting the ground, dealing area damage and triggering Kinetic Anomaly. Cannot be used by Totems, Traps, or Mines.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Fires +(0–2) Projectiles",
-      "values": [
-        "+(0–2)"
-      ]
-    },
-    {
-      "text": "Fires +(0–2) Projectiles",
-      "values": [
-        "+(0–2)"
-      ]
+      "text": "Fires +(0.1-2) Projectiles",
+      "values": []
     }
   ]
 }

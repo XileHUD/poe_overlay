@@ -1,7 +1,18 @@
 {
   "name": "Awakened Swift Affliction Support",
   "slug": "Awakened_Swift_Affliction_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Duration",
+    "Icon": "r",
+    "Level": "(1-5)",
+    "Cost & Reservation Multiplier": "140%",
+    "Requires Level": "72",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; The Maven's Crucible; Can drop from either version of the Maven , from Maven's Invitations , or from Maven-witnessed map bosses.",
+    "Drop level": "72",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemSwiftAfflictionPlus"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -165,51 +176,17 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Supported Skills deal (40-49)% more Damage over Time",
+    "25% less Duration of Supported Skills and Damaging Ailments they inflict"
+  ],
   "gemDescription": "Supports any skill that has a duration, or can hit enemies to inflict ailments on them.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills deal (40–49)% more Damage over Time",
-      "values": [
-        "(40–49)"
-      ]
-    },
-    {
-      "text": "25% less Duration of Supported Skills and Damaging Ailments they inflict",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (40–49)% more Damage over Time",
-      "values": [
-        "(40–49)"
-      ]
-    },
-    {
-      "text": "25% less Duration of Supported Skills and Damaging Ailments they inflict",
-      "values": [
-        "25"
-      ]
-    }
-  ],
-  "modDescriptions": [
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Damage over Time",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Damage over Time",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Damage over Time",
+      "values": []
     }
   ]
 }

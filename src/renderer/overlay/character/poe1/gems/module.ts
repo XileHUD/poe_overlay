@@ -771,6 +771,54 @@ function renderDetail(): void {
     Object.entries(detail.metadata || {}).filter(([k]) => !skipKeys.has(k))
   );
 
+  // Split metadata into compact header chips (small info) and detailed grid
+  const headerMetaKeys = [
+    'Icon',
+    'Level',
+    'Cost',
+    'Cost & Reservation Multiplier',
+    'Cooldown Time',
+    'Cast Time',
+    'Can Store',
+    'Requires Level',
+    'Drop level',
+    'Item class',
+    'Tags'
+  ];
+
+  const headerMetaEntries: Array<[string, string]> = [];
+  const bodyMetaEntries: Array<[string, string]> = [];
+  Object.entries(filteredMetadata).forEach(([k, v]) => {
+    if (headerMetaKeys.includes(k)) {
+      headerMetaEntries.push([k, v]);
+    } else {
+      bodyMetaEntries.push([k, v]);
+    }
+  });
+
+  const headerMetaHtml = headerMetaEntries.length > 0 ? `
+    <div style='display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px;'>
+      ${headerMetaEntries.map(([k, v]) => `
+        <div style='padding:8px 12px; border-radius:4px; background:var(--bg-secondary); border:1px solid var(--border-color); display:flex; flex-direction:column; gap:2px;'>
+          <div style='font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-secondary);'>${k}</div>
+          <div style='font-size:13px; color:var(--text-primary); font-weight:500;'>${v}</div>
+        </div>
+      `).join('')}
+    </div>
+  ` : '';
+
+  const metadataGridHtml = bodyMetaEntries.length > 0 ? `
+    <div style='background:var(--bg-secondary); padding:12px; border-radius:6px; margin-bottom:12px;'>
+      <div style='font-weight:600; margin-bottom:8px;'>Metadata</div>
+      <div style='display:grid; grid-template-columns: auto 1fr; gap:6px 12px; font-size:12px;'>
+        ${bodyMetaEntries.map(([k, v]) => `
+          <div style='color:var(--text-secondary);'>${k}:</div>
+          <div style='color:var(--text-primary);'>${v}</div>
+        `).join('')}
+      </div>
+    </div>
+  ` : '';
+
   // Get image
   let gemImg: Gem | undefined;
   if (Array.isArray(state.cache)) {
@@ -857,10 +905,31 @@ function renderDetail(): void {
     </div>
   ` : '';
 
+  // Core stats (high-level effect summary from wiki stats array)
+  const coreStats = Array.isArray(detail.stats)
+    ? detail.stats.filter(s => s && s.trim())
+    : [];
+
+  const coreStatsHtml = coreStats.length > 0 ? `
+    <div style='background:var(--bg-secondary); padding:10px 12px; border-radius:6px; margin-bottom:10px; font-size:13px;'>
+      <div style='font-weight:600; margin-bottom:6px; color:var(--text-primary);'>Core Effect</div>
+      <ul style='margin:0; padding-left:18px; display:flex; flex-direction:column; gap:2px;'>
+        ${coreStats.map(line => `
+          <li style='color:var(--text-primary); line-height:1.4;'>
+            ${line
+              .replace(/(\d+(?:–\d+)?(?:\.\d+)?)/g, '<span style="color:var(--accent-blue); font-weight:600;">$1<\/span>')
+              .replace(/(\d+(?:\.\d+)?)%/g, '<span style="color:var(--accent-blue); font-weight:600;">$1%<\/span>')
+            }
+          <\/li>
+        `).join('')}
+      </ul>
+    </div>
+  ` : '';
+
   const qualityModsHtml = uniqueQualityMods.length > 0 ? `
-    <div style='background:rgba(65,105,225,0.08); border:1px solid rgba(65,105,225,0.25); padding:14px; border-radius:6px; margin-bottom:12px;'>
-      <div style='font-weight:600; margin-bottom:10px; color:var(--accent-blue);'>Additional Effects From Quality</div>
-      <div style='display:flex; flex-direction:column; gap:4px;'>
+    <div style='background:rgba(65,105,225,0.08); border:1px solid rgba(65,105,225,0.25); padding:12px; border-radius:6px; margin-bottom:12px;'>
+      <div style='font-weight:600; margin-bottom:6px; color:var(--accent-blue);'>Quality Bonus</div>
+      <div style='display:flex; flex-direction:column; gap:3px; font-size:13px;'>
         ${uniqueQualityMods.map(mod => `
           <div style='font-size:14px; line-height:1.5; color:var(--text-primary);'>
             ${mod.text
@@ -900,20 +969,14 @@ function renderDetail(): void {
       ${imgHtml}
       <h2 style='margin:0; flex:1; font-size:18px; color:var(--text-primary);'>${detail.name}</h2>
     </div>
+    ${headerMetaHtml}
     ${descriptionHtml}
+    ${coreStatsHtml}
     ${gemDescriptionHtml}
     ${explicitModsHtml}
     ${modDescriptionsHtml}
     ${qualityModsHtml}
-    <div style='background:var(--bg-secondary); padding:12px; border-radius:6px; margin-bottom:12px;'>
-      <div style='font-weight:600; margin-bottom:8px;'>Metadata</div>
-      <div style='display:grid; grid-template-columns: auto 1fr; gap:6px 12px; font-size:12px;'>
-        ${Object.entries(filteredMetadata).map(([k, v]) => `
-          <div style='color:var(--text-secondary);'>${k}:</div>
-          <div style='color:var(--text-primary);'>${v}</div>
-        `).join('')}
-      </div>
-    </div>
+    ${metadataGridHtml}
     ${chartColumns.length > 0 ? `
       <div style='margin-bottom:12px;'>
         ${chartColumns.length >= 3 ? `

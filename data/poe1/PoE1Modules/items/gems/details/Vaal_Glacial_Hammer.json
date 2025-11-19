@@ -1,7 +1,21 @@
 {
   "name": "Vaal Glacial Hammer",
   "slug": "Vaal_Glacial_Hammer",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Melee, Strike, Duration, AoE, Vaal, Cold",
+    "Level": "(1-20)",
+    "Souls Per Use": "15",
+    "Can Store": "3 Use(s)",
+    "Soul Gain Prevention": "4 sec",
+    "Attack Damage": "(218-552)% of base",
+    "Effectiveness of Added Damage": "(218-552)%",
+    "Info 8": "Corrupted",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Vaal Glacial Hammer can drop from the Vaal Vessels found in Vaal side areas .",
+    "Drop level": "1",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVaalGlacialHammer"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,162 +339,23 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Base duration is (3.40-4.35) seconds",
+    "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+    "25% chance to Freeze enemies",
+    "100% of Physical Damage Converted to Cold Damage",
+    "Freezes enemies as though dealing (200-390)% more Damage",
+    "Can't be Evaded",
+    "35% increased Duration of Cold Ailments",
+    "(10-29)% increased Effect of Cold Ailments"
+  ],
   "gemDescription": "Hits enemies, converting some of your physical damage to cold damage. It traps enemies with you in a circle of ice so that they can't escape. Requires a Mace, Sceptre or Staff.",
-  "explicitMods": [
-    {
-      "text": "Base duration is (3.4–4.35) seconds",
-      "values": [
-        "(3.4–4.35)"
-      ]
-    },
-    {
-      "text": "100% of Physical Damage Converted to Cold Damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "25% chance to Freeze enemies",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Freezes enemies as though dealing (200–390)% more Damage",
-      "values": [
-        "(200–390)"
-      ]
-    },
-    {
-      "text": "Can't be Evaded",
-      "values": []
-    },
-    {
-      "text": "35% increased Duration of Cold Ailments",
-      "values": [
-        "35"
-      ]
-    },
-    {
-      "text": "(10–29)% increased Effect of Cold Ailments",
-      "values": [
-        "(10–29)"
-      ]
-    },
-    {
-      "text": "Base duration is (3.4–4.35) seconds",
-      "values": [
-        "(3.4–4.35)"
-      ]
-    },
-    {
-      "text": "100% of Physical Damage Converted to Cold Damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "25% chance to Freeze enemies",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Freezes enemies as though dealing (200–390)% more Damage",
-      "values": [
-        "(200–390)"
-      ]
-    },
-    {
-      "text": "Can't be Evaded",
-      "values": []
-    },
-    {
-      "text": "35% increased Duration of Cold Ailments",
-      "values": [
-        "35"
-      ]
-    },
-    {
-      "text": "(10–29)% increased Effect of Cold Ailments",
-      "values": [
-        "(10–29)"
-      ]
-    },
-    {
-      "text": "cannot cancel skill before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "skill cannot be stunned before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "100% of Physical Damage Converted to Cold Damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "25% chance to Freeze enemies",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Every third successive strike Freezes enemies as though dealing (200–540)% more Damage",
-      "values": [
-        "(200–540)"
-      ]
-    },
-    {
-      "text": "35% increased Duration of Cold Ailments",
-      "values": [
-        "35"
-      ]
-    },
-    {
-      "text": "(10–44)% increased Effect of Cold Ailments",
-      "values": [
-        "(10–44)"
-      ]
-    },
-    {
-      "text": "additional main hand hits per combo average [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Cold Ailments are Chilled, Frozen and Brittle)",
-    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
-    "(Cold Ailments are Chilled, Frozen and Brittle)",
-    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
-    "(Cold Ailments are Chilled, Frozen and Brittle)",
-    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)",
-    "(Cold Ailments are Chilled, Frozen and Brittle)",
-    "(Freeze lowers Enemy Action Speed to zero, preventing them from acting. Duration is based on the Cold Damage of the Hit)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–40)% increased Duration of Cold Ailments",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "(0–40)% increased Duration of Cold Ailments",
-      "values": [
-        "(0–40)"
-      ]
+      "text": "(2-40)% increased Duration of Cold Ailments",
+      "values": []
     }
   ]
 }

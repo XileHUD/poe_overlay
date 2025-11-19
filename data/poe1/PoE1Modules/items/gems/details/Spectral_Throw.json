@@ -1,7 +1,18 @@
 {
   "name": "Spectral Throw",
   "slug": "Spectral_Throw",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Projectile",
+    "Level": "(1-20)",
+    "Cost": "(5-9) Mana",
+    "Attack Speed": "120% of base",
+    "Attack Damage": "(100-150)% of base",
+    "Effectiveness of Added Damage": "(100-150)%",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "5",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemThrownWeapon"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -367,41 +378,12 @@
   "description": "",
   "stats": [],
   "gemDescription": "Throws a spectral copy of your melee weapon. It flies out and then returns to you, in a spinning attack that damages enemies in its path.",
-  "explicitMods": [
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "spectral throw forget hit list time override [225]",
-      "values": []
-    },
-    {
-      "text": "(7–10)% increased Projectile Damage",
-      "values": [
-        "(7–10)"
-      ]
-    },
-    {
-      "text": "With at least 40 Dexterity in Radius, each Spectral Throw Projectile gains 5% increased Damage each time it Hits",
-      "values": [
-        "5"
-      ]
-    }
-  ],
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Projectiles that have Pierced deal (0–20)% more Damage",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "Projectiles that have Pierced deal (0–20)% more Damage",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "Projectiles that have Pierced deal (1-20)% more Damage",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,17 @@
 {
   "name": "Summon Reaper of Revenants",
   "slug": "Summon_Reaper_of_Revenants",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Minion, Spell",
+    "Level": "(1-20)",
+    "Cost": "(15-28) Mana",
+    "Cast Time": "0.85 sec",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,143 +415,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Summons a Reaper which uses a variety of slashing area attacks. The presence of any Reapers weakens your other non-Reaper minions, and Reapers will consume them to temporarily empower and heal themselves.",
-  "explicitMods": [
-    {
-      "text": "25% reduced Character Size",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Maximum (3–4) Summoned Reapers",
-      "values": [
-        "(3–4)"
-      ]
-    },
-    {
-      "text": "Minions deal 30% less Damage",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "Reapers cause your Non-Reaper Minions to deal (20–29)% less Damage",
-      "values": [
-        "(20–29)"
-      ]
-    },
-    {
-      "text": "Reapers cause your Non-Reaper Minions to have (20–29)% less Maximum Life",
-      "values": [
-        "(20–29)"
-      ]
-    },
-    {
-      "text": "25% reduced Character Size",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Maximum (3–4) Summoned Reapers",
-      "values": [
-        "(3–4)"
-      ]
-    },
-    {
-      "text": "Minions deal 30% less Damage",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "Reapers cause your Non-Reaper Minions to deal (20–29)% less Damage",
-      "values": [
-        "(20–29)"
-      ]
-    },
-    {
-      "text": "Reapers cause your Non-Reaper Minions to have (20–29)% less Maximum Life",
-      "values": [
-        "(20–29)"
-      ]
-    },
-    {
-      "text": "base display minion actor level [28,70]",
-      "values": []
-    },
-    {
-      "text": "display minion monster type [18]",
-      "values": []
-    },
-    {
-      "text": "infinite minion duration [1]",
-      "values": []
-    },
-    {
-      "text": "25% reduced Character Size",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Maximum (3–5) Summoned Reapers",
-      "values": [
-        "(3–5)"
-      ]
-    },
-    {
-      "text": "Minions deal 30% less Damage",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "Reapers cause your Non-Reaper Minions to deal (20–37)% less Damage",
-      "values": [
-        "(20–37)"
-      ]
-    },
-    {
-      "text": "Reapers cause your Non-Reaper Minions to have (20–37)% less Maximum Life",
-      "values": [
-        "(20–37)"
-      ]
-    },
-    {
-      "text": "base display minion actor level [28,100]",
-      "values": []
-    },
-    {
-      "text": "display minion monster type [18]",
-      "values": []
-    },
-    {
-      "text": "infinite minion duration [1]",
-      "values": []
-    }
+  "stats": [
+    "Maximum (3-4) Summoned Reapers",
+    "Minion deals 30% less Damage",
+    "Reaper causes your Non-Reaper Minions to deal (20-29)% less Damage",
+    "Reaper causes your Non-Reaper Minions to have (20-29)% less Maximum Life"
   ],
+  "gemDescription": "Summons a Reaper which uses a variety of slashing area attacks. The presence of any Reapers weakens your other non-Reaper minions, and Reapers will consume them to temporarily empower and heal themselves.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–40)% increased Minion Movement Speed",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "(0–40)% increased Minion Movement Speed",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "(0–40)% increased Minion Movement Speed",
-      "values": [
-        "(0–40)"
-      ]
+      "text": "(2-40)% increased Minion Movement Speed",
+      "values": []
     }
   ]
 }

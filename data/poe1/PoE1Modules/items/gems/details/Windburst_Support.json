@@ -1,7 +1,17 @@
 {
   "name": "Windburst Support",
   "slug": "Windburst_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Attack, Projectile, Trigger, AoE, Duration, Bow",
+    "Icon": ")",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "120%",
+    "Requires Level": "31",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "31",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemWindburst"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -245,139 +255,22 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports Attack Skills, causing them to trigger Windburst on hit after you've travelled a certain distance. Cannot support triggered skills or skills used by things other than you. Cannot modify the skills of minions.",
-  "explicitMods": [
-    {
-      "text": "Supported Attacks Trigger Windburst on Hit, no more than once every 10 metres moved",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Projectiles Pierce all Targets",
-      "values": []
-    },
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Fires 3 Projectiles",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "40% more Area Damage",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "Base radius is 1.5 metres",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "This Skill is Triggered by Supported Attack Skills",
-      "values": []
-    },
-    {
-      "text": "Supported Attacks Trigger Windburst on Hit, no more than once every 10 metres moved",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Projectiles Pierce all Targets",
-      "values": []
-    },
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Fires 3 Projectiles",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "40% more Area Damage",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "Base radius is 1.5 metres",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "This Skill is Triggered by Supported Attack Skills",
-      "values": []
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "Projectiles Pierce all Targets",
-      "values": []
-    },
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Fires 3 Projectiles",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "40% more Area Damage",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "Base radius is 1.5 metres",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "This Skill is Triggered by Supported Attack Skills",
-      "values": []
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    }
+  "stats": [
+    "Supported Attacks Trigger Windburst on Hit, no more than once every 10 metres moved",
+    "Projectiles Pierce all Targets",
+    "Base duration is 4.00 seconds",
+    "Fires 3 Projectiles",
+    "40% more Area Damage",
+    "Base radius is 1.5 metres",
+    "This Skill is Triggered by Supported Attack Skills"
   ],
+  "gemDescription": "Supports Attack Skills, causing them to trigger Windburst on hit after you've travelled a certain distance. Cannot support triggered skills or skills used by things other than you. Cannot modify the skills of minions.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Projectile Damage",
+      "values": []
     }
   ]
 }

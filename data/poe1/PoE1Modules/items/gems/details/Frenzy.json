@@ -1,7 +1,18 @@
 {
   "name": "Frenzy",
   "slug": "Frenzy",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Projectile, Bow",
+    "Level": "(1-20)",
+    "Cost": "(7-10) Mana",
+    "Attack Damage": "(115-135)% of base",
+    "Effectiveness of Added Damage": "(115-135)%",
+    "Requires Level": "16",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "16",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemFrenzy"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,57 +336,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Performs an attack with a ranged weapon that gives the character a frenzy charge if it hits. Frenzy charges increase your attack speed.",
-  "explicitMods": [
-    {
-      "text": "5% more Attack Damage per Frenzy Charge",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "5% more Attack Speed per Frenzy Charge",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "5% more Attack Damage per Frenzy Charge",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "5% more Attack Speed per Frenzy Charge",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire wand projectiles [1]",
-      "values": []
-    }
+  "stats": [
+    "5% more Attack Damage per Frenzy Charge",
+    "5% more Attack Speed per Frenzy Charge"
   ],
+  "gemDescription": "Performs an attack with a ranged weapon that gives the character a frenzy charge if it hits. Frenzy charges increase your attack speed.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–2)% more Attack Damage per Frenzy Charge+(0–2)% more Attack Speed per Frenzy Charge",
-      "values": [
-        "+(0–2)",
-        "+(0–2)"
-      ]
-    },
-    {
-      "text": "+(0–2)% more Attack Damage per Frenzy Charge+(0–2)% more Attack Speed per Frenzy Charge",
-      "values": [
-        "+(0–2)",
-        "+(0–2)"
-      ]
+      "text": "+(0.1-2)% more Attack Damage per Frenzy Charge+(0.1-2)% more Attack Speed per Frenzy Charge",
+      "values": []
     }
   ]
 }

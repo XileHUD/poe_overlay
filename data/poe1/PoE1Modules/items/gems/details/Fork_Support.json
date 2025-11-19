@@ -1,7 +1,17 @@
 {
   "name": "Fork Support",
   "slug": "Fork_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Projectile",
+    "Icon": "Y",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "31",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "31",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemFork"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,47 +335,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports projectile skills, making their projectiles fork into two projectiles the first time they hit an enemy and don't pierce it.",
-  "explicitMods": [
-    {
-      "text": "Projectiles from Supported Skills Fork",
-      "values": []
-    },
-    {
-      "text": "Supported Skills deal (-9–10)% less Projectile Damage",
-      "values": [
-        "(-9–10)"
-      ]
-    },
-    {
-      "text": "Projectiles from Supported Skills Fork",
-      "values": []
-    },
-    {
-      "text": "Supported Skills deal (-9–10)% less Projectile Damage",
-      "values": [
-        "(-9–10)"
-      ]
-    },
-    {
-      "text": "terrain arrow attachment chance reduction +% [100]",
-      "values": []
-    }
+  "stats": [
+    "Projectiles from Supported Skills Fork",
+    "Supported Skills deal (-10-9)% more Projectile Damage"
   ],
+  "gemDescription": "Supports projectile skills, making their projectiles fork into two projectiles the first time they hit an enemy and don't pierce it.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Projectile Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Projectile Damage",
+      "values": []
     }
   ]
 }

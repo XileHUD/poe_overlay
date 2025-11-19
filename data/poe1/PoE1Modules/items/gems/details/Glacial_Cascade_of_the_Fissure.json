@@ -1,7 +1,19 @@
 {
   "name": "Glacial Cascade of the Fissure",
   "slug": "Glacial_Cascade_of_the_Fissure",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Cold, Physical",
+    "Level": "(1-20)",
+    "Cost": "(10-20) Mana",
+    "Cast Time": "0.60 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "(140-160)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,94 +337,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Icicles emerge from the ground in a series of small bursts, each damaging enemies caught in the area.",
-  "explicitMods": [
-    {
-      "text": "Deals (51–758) to (77–1137) Physical Damage",
-      "values": [
-        "(51–758)",
-        "(77–1137)"
-      ]
-    },
-    {
-      "text": "100% of Physical Damage Converted to Cold Damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Causes 6 Bursts",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Deals (51–758) to (77–1137) Physical Damage",
-      "values": [
-        "(51–758)",
-        "(77–1137)"
-      ]
-    },
-    {
-      "text": "100% of Physical Damage Converted to Cold Damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Causes 6 Bursts",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "Deals (51–4185) to (77–6278) Physical Damage",
-      "values": [
-        "(51–4185)",
-        "(77–6278)"
-      ]
-    },
-    {
-      "text": "100% of Physical Damage Converted to Cold Damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Causes 6 Bursts",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (51-758) to (77-1137) Physical Damage",
+    "100% of Physical Damage Converted to Cold Damage",
+    "Causes 6 Bursts"
   ],
+  "gemDescription": "Icicles emerge from the ground in a series of small bursts, each damaging enemies caught in the area.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Causes +(0–2) Bursts",
-      "values": [
-        "+(0–2)"
-      ]
-    },
-    {
-      "text": "Causes +(0–2) Bursts",
-      "values": [
-        "+(0–2)"
-      ]
-    },
-    {
-      "text": "Causes +(0–2) Bursts",
-      "values": [
-        "+(0–2)"
-      ]
+      "text": "Causes +(0.1-2) Bursts",
+      "values": []
     }
   ]
 }

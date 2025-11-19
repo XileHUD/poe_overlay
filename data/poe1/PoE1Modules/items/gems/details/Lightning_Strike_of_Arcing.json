@@ -1,7 +1,18 @@
 {
   "name": "Lightning Strike of Arcing",
   "slug": "Lightning_Strike_of_Arcing",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Projectile, Melee, Strike, Lightning, Chaining",
+    "Level": "(1-20)",
+    "Cost": "(6-10) Mana",
+    "Attack Damage": "(164-377)% of base",
+    "Effectiveness of Added Damage": "(164-377)%",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "12",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,165 +336,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Infuses your melee weapon with electrical energies as you swing. In addition to converting some of your physical damage to lightning damage, the stored energy is released from the weapon as a projectile as you strike, flying out to hit farther-away enemies and chain between them. The projectile cannot miss if the melee attack hit a target.",
-  "explicitMods": [
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Chains +(4–7) Times",
-      "values": [
-        "+(4–7)"
-      ]
-    },
-    {
-      "text": "Projectiles deal 50% less Damage with Hits and Ailments",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "10% more Damage for each time this Skill has Chained",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Projectiles deal 50% less Damage with Hits and Ailments",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "10% more Damage for each time this Skill has Chained",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Chains +(4–7) Times",
-      "values": [
-        "+(4–7)"
-      ]
-    },
-    {
-      "text": "Projectiles deal 50% less Damage with Hits and Ailments",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "10% more Damage for each time this Skill has Chained",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "show number of projectiles [1]",
-      "values": []
-    },
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Projectiles deal 50% less Damage with Hits and Ailments",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "10% more Damage for each time this Skill has Chained",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "show number of projectiles [1]",
-      "values": []
-    },
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Chains +(4–11) Times",
-      "values": [
-        "+(4–11)"
-      ]
-    },
-    {
-      "text": "Projectiles deal 50% less Damage with Hits and Ailments",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "10% more Damage for each time this Skill has Chained",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "show number of projectiles [1]",
-      "values": []
-    }
+  "stats": [
+    "50% of Physical Damage Converted to Lightning Damage",
+    "Chains +(4-7) Times",
+    "Projectiles deal 50% less Damage with Hits and Ailments",
+    "10% more Damage for each time this Skill has Chained"
   ],
+  "gemDescription": "Infuses your melee weapon with electrical energies as you swing. In addition to converting some of your physical damage to lightning damage, the stored energy is released from the weapon as a projectile as you strike, flying out to hit farther-away enemies and chain between them. The projectile cannot miss if the melee attack hit a target.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Chains +(0–2) Times",
-      "values": [
-        "+(0–2)"
-      ]
-    },
-    {
-      "text": "Chains +(0–2) Times",
-      "values": [
-        "+(0–2)"
-      ]
-    },
-    {
-      "text": "Chains +(0–2) Times",
-      "values": [
-        "+(0–2)"
-      ]
+      "text": "Chains +(0.1-2) Times",
+      "values": []
     }
   ]
 }

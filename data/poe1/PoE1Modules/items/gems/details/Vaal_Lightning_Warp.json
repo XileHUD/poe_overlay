@@ -1,7 +1,23 @@
 {
   "name": "Vaal Lightning Warp",
   "slug": "Vaal_Lightning_Warp",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Duration, Vaal, Lightning, Movement, Travel",
+    "Level": "(1-20)",
+    "Souls Per Use": "20",
+    "Can Store": "1 Use(s)",
+    "Soul Gain Prevention": "2 sec",
+    "Cast Time": "1.00 sec",
+    "Critical Strike Chance": "5.00%",
+    "Effectiveness of Added Damage": "50%",
+    "Requires Level": "10",
+    "Info 10": "Corrupted",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop disabled",
+    "Drop level": "10",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVaalLightningWarp"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,88 +341,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Casts a delayed teleport for nearby enemies to a target destination. When the teleport occurs, lightning damage is dealt to the enemies both before and after they teleport.",
-  "explicitMods": [
-    {
-      "text": "Deals (1–31) to (18–586) Lightning Damage",
-      "values": [
-        "(1–31)",
-        "(18–586)"
-      ]
-    },
-    {
-      "text": "(0–38)% reduced Duration",
-      "values": [
-        "(0–38)"
-      ]
-    },
-    {
-      "text": "Deals (1–31) to (18–586) Lightning Damage",
-      "values": [
-        "(1–31)",
-        "(18–586)"
-      ]
-    },
-    {
-      "text": "(0–38)% reduced Duration",
-      "values": [
-        "(0–38)"
-      ]
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "cannot cancel skill before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill override pvp scaling time ms [1000]",
-      "values": []
-    },
-    {
-      "text": "Deals (6–1853) to (19–5558) Lightning Damage",
-      "values": [
-        "(6–1853)",
-        "(19–5558)"
-      ]
-    },
-    {
-      "text": "Can queue up to 50 uses",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "(30–64)% reduced Duration",
-      "values": [
-        "(30–64)"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (1-31) to (18-586) Lightning Damage",
+    "(0-38)% reduced Duration"
   ],
+  "gemDescription": "Casts a delayed teleport for nearby enemies to a target destination. When the teleport occurs, lightning damage is dealt to the enemies both before and after they teleport.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–20)% increased Cast Speed",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% increased Cast Speed",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "(1-20)% increased Cast Speed",
+      "values": []
     }
   ]
 }

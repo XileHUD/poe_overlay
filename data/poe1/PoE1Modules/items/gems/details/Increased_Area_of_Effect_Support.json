@@ -1,7 +1,17 @@
 {
   "name": "Increased Area of Effect Support",
   "slug": "Increased_Area_of_Effect_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, AoE",
+    "Icon": "E",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "38",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "38",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemIncreasedAreaOfEffect"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,77 +335,16 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Supported Skills have (30-49)% increased Area of Effect"
+  ],
   "gemDescription": "Supports any skill with an area of effect.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills have (30–49)% increased Area of Effect",
-      "values": [
-        "(30–49)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (30–49)% increased Area of Effect",
-      "values": [
-        "(30–49)"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 20 Increased Area of Effect",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "+10 to Strength",
-      "values": [
-        "+10"
-      ]
-    },
-    {
-      "text": "(120–160)% increased Physical Damage",
-      "values": [
-        "(120–160)"
-      ]
-    },
-    {
-      "text": "Gain 10 Mana per Enemy Killed",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "+(120–150) to Accuracy Rating",
-      "values": [
-        "+(120–150)"
-      ]
-    },
-    {
-      "text": "+0.2 metres to Weapon Range",
-      "values": [
-        "+0.2"
-      ]
-    },
-    {
-      "text": "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Affects Melee Strikes, including the Default Attack. Does not apply to Areas of Effect)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Area Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Area Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Area Damage",
+      "values": []
     }
   ]
 }

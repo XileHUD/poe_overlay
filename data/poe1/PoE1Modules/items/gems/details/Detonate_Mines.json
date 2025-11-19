@@ -1,7 +1,18 @@
 {
   "name": "Detonate Mines",
   "slug": "Detonate_Mines",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Mine, Spell",
+    "Level": "1",
+    "Cooldown Time": "0.20 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "Instant",
+    "Requires Level": "8",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "8",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemDetonateMines"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -95,39 +106,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Detonates a Mine, starting a Detonation Sequence which will detonate other Mines around it.",
-  "explicitMods": [
-    {
-      "text": "First Mine Detonates InstantlyMines get 10% more Detonation Speed for each prior Mine in Detonation Sequence",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "First Mine Detonates InstantlyMines get 10% more Detonation Speed for each prior Mine in Detonation Sequence",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "base deal no damage [1]",
-      "values": []
-    }
+  "stats": [
+    "First Mine Detonates Instantly",
+    "Mines get 10% more Detonation Speed for each prior Mine in Detonation Sequence"
   ],
+  "gemDescription": "Detonates a Mine, starting a Detonation Sequence which will detonate other Mines around it.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Mines have (0–20)% increased Detonation Speed",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "Mines have (0–20)% increased Detonation Speed",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "Mines have (1-20)% increased Detonation Speed",
+      "values": []
     }
   ]
 }

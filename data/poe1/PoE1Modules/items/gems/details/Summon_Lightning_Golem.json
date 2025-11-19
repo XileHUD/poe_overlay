@@ -1,7 +1,19 @@
 {
   "name": "Summon Lightning Golem",
   "slug": "Summon_Lightning_Golem",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Lightning, Minion, Spell, Golem",
+    "Level": "(1-20)",
+    "Cost": "(30-54) Mana",
+    "Cooldown Time": "6.00 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "1.00 sec",
+    "Requires Level": "34",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "34",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemSummonLightningGolem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -485,145 +497,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Summons a Lightning Golem that grants you increased attack and cast speed, and mana regeneration. The Lightning Golem fires a projectile spell, creates orbs of Lightning that zap nearby enemies, and casts a temporary aura that grants added Lightning Damage to spells and attacks used by the Golem and its nearby allies.",
-  "explicitMods": [
-    {
-      "text": "(0–19)% increased Character Size",
-      "values": [
-        "(0–19)"
-      ]
-    },
-    {
-      "text": "Maximum 1 Summoned Golem",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Golems grant 10% increased Attack and Cast Speed",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Golems grant (7.3–18) Mana Regenerated per second",
-      "values": [
-        "(7.3–18)"
-      ]
-    },
-    {
-      "text": "(0–19)% increased Character Size",
-      "values": [
-        "(0–19)"
-      ]
-    },
-    {
-      "text": "Maximum 1 Summoned Golem",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Golems grant 10% increased Attack and Cast Speed",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Golems grant (7.3–18) Mana Regenerated per second",
-      "values": [
-        "(7.3–18)"
-      ]
-    },
-    {
-      "text": "base display minion actor level [34,70]",
-      "values": []
-    },
-    {
-      "text": "display minion monster type [11]",
-      "values": []
-    },
-    {
-      "text": "infinite minion duration [1]",
-      "values": []
-    },
-    {
-      "text": "Deals 28.88 to 259.9 Lightning Damage",
-      "values": [
-        "28.88",
-        "259.9"
-      ]
-    },
-    {
-      "text": "Base duration is 8 seconds",
-      "values": [
-        "8"
-      ]
-    },
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "3.432 to 30.89 Added Lightning Damage",
-      "values": [
-        "3.432",
-        "30.89"
-      ]
-    },
-    {
-      "text": "Adds 2.059 to 18.53 Lightning Damage to Spells",
-      "values": [
-        "2.059",
-        "18.53"
-      ]
-    },
-    {
-      "text": "base deal no damage [1]",
-      "values": []
-    },
-    {
-      "text": "Deals 198.7 to 1788 Lightning Damage",
-      "values": [
-        "198.7",
-        "1788"
-      ]
-    },
-    {
-      "text": "15% less Cast Speed",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "monster projectile variation [11]",
-      "values": []
-    },
-    {
-      "text": "spell maximum action distance +% [-40]",
-      "values": []
-    }
+  "stats": [
+    "Maximum 1 Summoned Golem",
+    "Golems grant 10% increased Attack and Cast Speed",
+    "Golems grant (7.3-18) Mana Regenerated per second"
   ],
+  "gemDescription": "Summons a Lightning Golem that grants you increased attack and cast speed, and mana regeneration. The Lightning Golem fires a projectile spell, creates orbs of Lightning that zap nearby enemies, and casts a temporary aura that grants added Lightning Damage to spells and attacks used by the Golem and its nearby allies.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–20)% increased Buff Effect",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% increased Buff Effect",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "(1-20)% increased Buff Effect",
+      "values": []
     }
   ]
 }

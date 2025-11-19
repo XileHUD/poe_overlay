@@ -1,7 +1,20 @@
 {
   "name": "Ice Nova",
   "slug": "Ice_Nova",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Cold, Nova",
+    "Level": "(1-20)",
+    "Cost": "(8-23) Mana",
+    "Cast Time": "0.70 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "(200-230)%",
+    "AoE Radius": "30",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "12",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemIceNova"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,53 +418,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "A circle of ice expands from the caster.",
-  "explicitMods": [
-    {
-      "text": "Deals (23–988) to (34–1481) Cold Damage",
-      "values": [
-        "(23–988)",
-        "(34–1481)"
-      ]
-    },
-    {
-      "text": "Base radius is (2.6–3) metres",
-      "values": [
-        "(2.6–3)"
-      ]
-    },
-    {
-      "text": "Deals (23–988) to (34–1481) Cold Damage",
-      "values": [
-        "(23–988)",
-        "(34–1481)"
-      ]
-    },
-    {
-      "text": "Base radius is (2.6–3) metres",
-      "values": [
-        "(2.6–3)"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (23-988) to (34-1481) Cold Damage",
+    "Base radius is (2.6-3) metres"
   ],
+  "gemDescription": "A circle of ice expands from the caster.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base radius is (0–0.3) metres",
-      "values": [
-        "(0–0.3)"
-      ]
-    },
-    {
-      "text": "Base radius is (0–0.3) metres",
-      "values": [
-        "(0–0.3)"
-      ]
+      "text": "Base radius is (0.015-0.3) metres",
+      "values": []
     }
   ]
 }

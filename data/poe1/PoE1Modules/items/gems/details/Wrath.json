@@ -1,7 +1,20 @@
 {
   "name": "Wrath",
   "slug": "Wrath",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Aura, Spell, AoE, Lightning",
+    "Level": "(1-20)",
+    "Reservation": "50% Mana",
+    "Cooldown Time": "1.20 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "Instant",
+    "AoE Radius": "36",
+    "Requires Level": "24",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "24",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemWrath"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,69 +418,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Casts an aura that adds lightning damage to the attacks of you and your allies, and makes your spells deal more lightning damage.",
-  "explicitMods": [
-    {
-      "text": "+(0–1.9) metres to radius",
-      "values": [
-        "+(0–1.9)"
-      ]
-    },
-    {
-      "text": "You and nearby allies deal (2–16) to (37–248) additional Lightning Damage with Attacks",
-      "values": [
-        "(2–16)",
-        "(37–248)"
-      ]
-    },
-    {
-      "text": "You and nearby allies deal (15–21)% more Spell Lightning Damage",
-      "values": [
-        "(15–21)"
-      ]
-    },
-    {
-      "text": "+(0–1.9) metres to radius",
-      "values": [
-        "+(0–1.9)"
-      ]
-    },
-    {
-      "text": "You and nearby allies deal (2–16) to (37–248) additional Lightning Damage with Attacks",
-      "values": [
-        "(2–16)",
-        "(37–248)"
-      ]
-    },
-    {
-      "text": "You and nearby allies deal (15–21)% more Spell Lightning Damage",
-      "values": [
-        "(15–21)"
-      ]
-    },
-    {
-      "text": "base deal no damage [1]",
-      "values": []
-    },
-    {
-      "text": "[Aura Bonus Modifier]",
-      "values": []
-    }
+  "stats": [
+    "+(0-1.9) metres to radius",
+    "You and nearby allies deal (2-16) to (37-248) additional Lightning Damage with Attacks",
+    "You and nearby allies deal (15-21)% more Spell Lightning Damage"
   ],
+  "gemDescription": "Casts an aura that adds lightning damage to the attacks of you and your allies, and makes your spells deal more lightning damage.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–40)% increased Area of Effect",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "(0–40)% increased Area of Effect",
-      "values": [
-        "(0–40)"
-      ]
+      "text": "(2-40)% increased Area of Effect",
+      "values": []
     }
   ]
 }

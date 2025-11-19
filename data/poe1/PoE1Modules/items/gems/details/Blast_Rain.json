@@ -1,7 +1,18 @@
 {
   "name": "Blast Rain",
   "slug": "Blast_Rain",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Fire, Attack, AoE, Projectile, Bow",
+    "Level": "(1-20)",
+    "Cost": "(7-10) Mana",
+    "Attack Damage": "(30-35)% of base",
+    "Effectiveness of Added Damage": "(30-36)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "28",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemBlastRain"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,75 +376,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Fires arrows up in the air, to rain down in an area. Each arrow deals area damage around where it lands, and they will all overlap on the targeted location.",
-  "explicitMods": [
-    {
-      "text": "Fires 6 Arrows",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "100% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Penetrates (20–30)% Fire Resistance",
-      "values": [
-        "(20–30)"
-      ]
-    },
-    {
-      "text": "Fires 6 Arrows",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "100% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Penetrates (20–30)% Fire Resistance",
-      "values": [
-        "(20–30)"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "blast rain arrow delay ms [80]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    }
+  "stats": [
+    "Fires 6 Arrows",
+    "100% of Physical Damage Converted to Fire Damage",
+    "Penetrates (20-30)% Fire Resistance"
   ],
+  "gemDescription": "Fires arrows up in the air, to rain down in an area. Each arrow deals area damage around where it lands, and they will all overlap on the targeted location.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Fires +(0–1) Arrow",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Fires +(0–1) Arrow",
-      "values": [
-        "+(0–1)"
-      ]
+      "text": "Fires +(0.05-1) Arrows",
+      "values": []
     }
   ]
 }

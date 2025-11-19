@@ -1,7 +1,19 @@
 {
   "name": "Flame Dash of Return",
   "slug": "Flame_Dash_of_Return",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Movement, Duration, Fire",
+    "Level": "(1-20)",
+    "Cost": "(7-20) Mana",
+    "Cast Time": "0.60 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "(190-340)%",
+    "Requires Level": "10",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "10",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,148 +417,22 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Teleport to a location, damaging enemies and leaving a trail of burning ground, then repeat the teleport in the other direction. Cannot be triggered, or used by a totem, trap or mine. Cannot be supported by Unleash.",
-  "explicitMods": [
-    {
-      "text": "Deals (10.6–938.3) Base Fire Damage per second",
-      "values": [
-        "(10.6–938.3)"
-      ]
-    },
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Repeats once",
-      "values": []
-    },
-    {
-      "text": "Deals (17–1501) to (25–2252) Fire Damage",
-      "values": [
-        "(17–1501)",
-        "(25–2252)"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Reverses direction when Repeating",
-      "values": []
-    },
-    {
-      "text": "(0–19)% increased maximum travel distance",
-      "values": [
-        "(0–19)"
-      ]
-    },
-    {
-      "text": "Deals (10.6–938.3) Base Fire Damage per second",
-      "values": [
-        "(10.6–938.3)"
-      ]
-    },
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Repeats once",
-      "values": []
-    },
-    {
-      "text": "Deals (17–1501) to (25–2252) Fire Damage",
-      "values": [
-        "(17–1501)",
-        "(25–2252)"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Reverses direction when Repeating",
-      "values": []
-    },
-    {
-      "text": "(0–19)% increased maximum travel distance",
-      "values": [
-        "(0–19)"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "Deals (10.6–6044.4) Base Fire Damage per second",
-      "values": [
-        "(10.6–6044.4)"
-      ]
-    },
-    {
-      "text": "Base duration is 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Repeats once",
-      "values": []
-    },
-    {
-      "text": "Deals (17–9671) to (25–14507) Fire Damage",
-      "values": [
-        "(17–9671)",
-        "(25–14507)"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Reverses direction when Repeating",
-      "values": []
-    },
-    {
-      "text": "(0–39)% increased maximum travel distance",
-      "values": [
-        "(0–39)"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (10.6-938.3) Base Fire Damage per second",
+    "Base duration is 4.00 seconds",
+    "Repeats once",
+    "Deals (17-1501) to (25-2252) Fire Damage",
+    "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+    "Reverses direction when Repeating",
+    "(0-19)% increased maximum travel distance"
   ],
+  "gemDescription": "Teleport to a location, damaging enemies and leaving a trail of burning ground, then repeat the teleport in the other direction. Cannot be triggered, or used by a totem, trap or mine. Cannot be supported by Unleash.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–20)% chance to Scorch Enemies",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% chance to Scorch Enemies",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% chance to Scorch Enemies",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "(1-20)% chance to Scorch Enemies",
+      "values": []
     }
   ]
 }

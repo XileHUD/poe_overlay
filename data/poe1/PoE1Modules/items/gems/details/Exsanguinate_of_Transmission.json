@@ -1,7 +1,19 @@
 {
   "name": "Exsanguinate of Transmission",
   "slug": "Exsanguinate_of_Transmission",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Chaining, Physical, Duration",
+    "Level": "(1-20)",
+    "Cost": "(16-46) Life",
+    "Cast Time": "0.80 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "60%",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "12",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,134 +417,21 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Releases a tendril of blood from your character, which will target an enemy in front of you, then chain to other enemies. The tendril deals physical damage and inflicts a physical damage over time debuff to enemies, which can stack up to 3 times.",
-  "explicitMods": [
-    {
-      "text": "Deals (4–268) to (5–401) Physical Damage",
-      "values": [
-        "(4–268)",
-        "(5–401)"
-      ]
-    },
-    {
-      "text": "Deals (30.2–1718.9) Base Physical Damage per second",
-      "values": [
-        "(30.2–1718.9)"
-      ]
-    },
-    {
-      "text": "Base duration is 2 seconds",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Chains +(6–10) Times",
-      "values": [
-        "+(6–10)"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Fires tendrils at up to 1 Target",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Deals (4–268) to (5–401) Physical Damage",
-      "values": [
-        "(4–268)",
-        "(5–401)"
-      ]
-    },
-    {
-      "text": "Deals (30.2–1718.9) Base Physical Damage per second",
-      "values": [
-        "(30.2–1718.9)"
-      ]
-    },
-    {
-      "text": "Base duration is 2 seconds",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Chains +(6–10) Times",
-      "values": [
-        "+(6–10)"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Fires tendrils at up to 1 Target",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Deals (4–1707) to (5–2562) Physical Damage",
-      "values": [
-        "(4–1707)",
-        "(5–2562)"
-      ]
-    },
-    {
-      "text": "Deals (30.2–10437.4) Base Physical Damage per second",
-      "values": [
-        "(30.2–10437.4)"
-      ]
-    },
-    {
-      "text": "Base duration is 2 seconds",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Chains +(6–13) Times",
-      "values": [
-        "+(6–13)"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Fires tendrils at up to 1 Target",
-      "values": [
-        "1"
-      ]
-    }
+  "stats": [
+    "Deals (4-268) to (5-401) Physical Damage",
+    "Deals (30.2-1718.9) Base Physical Damage per second",
+    "Base duration is 2.00 seconds",
+    "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+    "Chains +(6-10) Times",
+    "Fires tendrils at up to 1 Target"
   ],
+  "gemDescription": "Releases a tendril of blood from your character, which will target an enemy in front of you, then chain to other enemies. The tendril deals physical damage and inflicts a physical damage over time debuff to enemies, which can stack up to 3 times.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base duration is (0–2) seconds",
-      "values": [
-        "(0–2)"
-      ]
-    },
-    {
-      "text": "Base duration is (0–2) seconds",
-      "values": [
-        "(0–2)"
-      ]
-    },
-    {
-      "text": "Base duration is (0–2) seconds",
-      "values": [
-        "(0–2)"
-      ]
+      "text": "Base duration is (0.1-2) seconds",
+      "values": []
     }
   ]
 }

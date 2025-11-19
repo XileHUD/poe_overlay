@@ -1,7 +1,21 @@
 {
   "name": "Vaal Breach",
   "slug": "Vaal_Breach",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Vaal",
+    "Level": "1",
+    "Souls Per Use": "100",
+    "Can Store": "1 Use(s)",
+    "Soul Gain Prevention": "40 sec",
+    "Cast Time": "2.50 sec",
+    "Requires Level": "10",
+    "Info 8": "Corrupted",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Can drop from Breachlords in Flawless Breachstones or rarely from Breach rewards. This item is drop disabled in Keepers league .",
+    "Drop level": "10",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVaalPortal"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -65,53 +79,16 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Creates a breach, making you vulnerable to its powerful inhabitants.",
-  "explicitMods": [
-    {
-      "text": "Monsters from the Breach do not grant Experience or drop Items",
-      "values": []
-    },
-    {
-      "text": "Monsters from the Breach do not grant Experience or drop Items",
-      "values": []
-    },
-    {
-      "text": "base deal no damage [1]",
-      "values": []
-    },
-    {
-      "text": "cannot cancel skill before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "skill cannot be stunned before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "base deal no damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Monsters from the Breach do not grant Experience or drop Items"
   ],
+  "gemDescription": "Creates a breach, making you vulnerable to its powerful inhabitants.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–60)% increased Cast Speed",
-      "values": [
-        "(0–60)"
-      ]
-    },
-    {
-      "text": "(0–60)% increased Cast Speed",
-      "values": [
-        "(0–60)"
-      ]
-    },
-    {
-      "text": "(0–60)% increased Cast Speed",
-      "values": [
-        "(0–60)"
-      ]
+      "text": "(3-60)% increased Cast Speed",
+      "values": []
     }
   ]
 }

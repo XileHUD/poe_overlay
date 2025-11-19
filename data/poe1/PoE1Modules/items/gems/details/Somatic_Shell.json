@@ -1,7 +1,18 @@
 {
   "name": "Somatic Shell",
   "slug": "Somatic_Shell",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Duration, Physical, Attack, AoE, Projectile",
+    "Level": "(1-20)",
+    "Cost": "(7-10) Mana",
+    "Attack Damage": "(20-50)% of base",
+    "Effectiveness of Added Damage": "(20-50)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "28",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemSomaticShell"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,235 +416,25 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Fire a damaging projectile from your wand which aims itself towards an enemy and applies a shell to the first enemy struck. Damage from hits against that target is taken from the shell first. If fully depleted, the shell will explode, dealing area damage and firing a projectile at another target to apply a new shell to it. If multiple projectiles are fired by an exploding shell, only the first one to hit a target can apply a shell.",
-  "explicitMods": [
-    {
-      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
-      "values": [
-        "150"
-      ]
-    },
-    {
-      "text": "Base duration is 5 seconds",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Damage from this Skill cannot be taken from Shells",
-      "values": []
-    },
-    {
-      "text": "750% more Area Damage",
-      "values": [
-        "750"
-      ]
-    },
-    {
-      "text": "Base explosion radius is 1.5 metres",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take (168–6214) Damage before exploding",
-      "values": [
-        "(168–6214)"
-      ]
-    },
-    {
-      "text": "Shell cannot be reapplied to same target for 0.2 seconds after explosion",
-      "values": [
-        "0.2"
-      ]
-    },
-    {
-      "text": "Maximum (3–6) Somatic Shells",
-      "values": [
-        "(3–6)"
-      ]
-    },
-    {
-      "text": "Projectiles fired from explosion can apply no more than 1 new Shell",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
-      "values": [
-        "150"
-      ]
-    },
-    {
-      "text": "Base duration is 5 seconds",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Damage from this Skill cannot be taken from Shells",
-      "values": []
-    },
-    {
-      "text": "750% more Area Damage",
-      "values": [
-        "750"
-      ]
-    },
-    {
-      "text": "Base explosion radius is 1.5 metres",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "Shell cannot be reapplied to same target for 0.2 seconds after explosion",
-      "values": [
-        "0.2"
-      ]
-    },
-    {
-      "text": "Projectiles fired from explosion can apply no more than 1 new Shell",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
-      "values": [
-        "150"
-      ]
-    },
-    {
-      "text": "Base duration is 5 seconds",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Damage from this Skill cannot be taken from Shells",
-      "values": []
-    },
-    {
-      "text": "750% more Area Damage",
-      "values": [
-        "750"
-      ]
-    },
-    {
-      "text": "Base explosion radius is 1.5 metres",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "Damage from Hits is taken from Shell before target's Life or Energy ShieldShell can take (168–6214) Damage before exploding",
-      "values": [
-        "(168–6214)"
-      ]
-    },
-    {
-      "text": "Shell cannot be reapplied to same target for 0.2 seconds after explosion",
-      "values": [
-        "0.2"
-      ]
-    },
-    {
-      "text": "Maximum (3–6) Somatic Shells",
-      "values": [
-        "(3–6)"
-      ]
-    },
-    {
-      "text": "Projectiles fired from explosion can apply no more than 1 new Shell",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire wand projectiles [1]",
-      "values": []
-    },
-    {
-      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
-      "values": [
-        "150"
-      ]
-    },
-    {
-      "text": "Base duration is 5 seconds",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Damage from this Skill cannot be taken from Shells",
-      "values": []
-    },
-    {
-      "text": "750% more Area Damage",
-      "values": [
-        "750"
-      ]
-    },
-    {
-      "text": "Base explosion radius is 1.5 metres",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "Shell cannot be reapplied to same target for 0.2 seconds after explosion",
-      "values": [
-        "0.2"
-      ]
-    },
-    {
-      "text": "Projectiles fired from explosion can apply no more than 1 new Shell",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "is not projectile override [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire wand projectiles [1]",
-      "values": []
-    },
-    {
-      "text": "kinetic_shell_absorb_%",
-      "values": []
-    }
+  "stats": [
+    "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
+    "Base duration is 5.00 seconds",
+    "Damage from this Skill cannot be taken from Shells",
+    "750% more Area Damage",
+    "Base explosion radius is 1.5 metres",
+    "Damage from Hits is taken from Shell before target's Life or Energy Shield",
+    "Shell can take (168-6214) Damage before exploding",
+    "Shell cannot be reapplied to same target for 0.2 seconds after explosion",
+    "Maximum (3-6) Somatic Shells",
+    "Projectiles fired from explosion can apply no more than 1 new Shell"
   ],
+  "gemDescription": "Fire a damaging projectile from your wand which aims itself towards an enemy and applies a shell to the first enemy struck. Damage from hits against that target is taken from the shell first. If fully depleted, the shell will explode, dealing area damage and firing a projectile at another target to apply a new shell to it. If multiple projectiles are fired by an exploding shell, only the first one to hit a target can apply a shell.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base radius is (0–0.3) metres",
-      "values": [
-        "(0–0.3)"
-      ]
-    },
-    {
-      "text": "Base radius is (0–0.3) metres",
-      "values": [
-        "(0–0.3)"
-      ]
+      "text": "Base radius is (0.015-0.3) metres",
+      "values": []
     }
   ]
 }

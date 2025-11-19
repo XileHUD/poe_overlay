@@ -1,7 +1,19 @@
 {
   "name": "Soulrend of the Spiral",
   "slug": "Soulrend_of_the_Spiral",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Chaos, Spell, AoE, Duration, Projectile",
+    "Level": "(1-20)",
+    "Cost": "(34-64) Mana",
+    "Cast Time": "0.90 sec",
+    "Critical Strike Chance": "5.00%",
+    "Effectiveness of Added Damage": "170%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,152 +377,21 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Fires a series of projectiles in a spiral that turn towards enemies in front of them, damaging and piercing through those they hit, and leeching some of that damage as energy shield. As the projectiles travel, they repeatedly apply a short but powerful chaos damage over time debuff to each enemy in an area around them.",
-  "explicitMods": [
-    {
-      "text": "Deals (21–885) to (31–1327) Chaos Damage",
-      "values": [
-        "(21–885)",
-        "(31–1327)"
-      ]
-    },
-    {
-      "text": "Projectiles Pierce all Targets",
-      "values": []
-    },
-    {
-      "text": "Deals (180.9–3149.5) Base Chaos Damage per second",
-      "values": [
-        "(180.9–3149.5)"
-      ]
-    },
-    {
-      "text": "Base duration is 0.5 seconds",
-      "values": [
-        "0.5"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Fires 5 Projectiles in a spiral",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Deals (21–885) to (31–1327) Chaos Damage",
-      "values": [
-        "(21–885)",
-        "(31–1327)"
-      ]
-    },
-    {
-      "text": "Projectiles Pierce all Targets",
-      "values": []
-    },
-    {
-      "text": "Deals (180.9–3149.5) Base Chaos Damage per second",
-      "values": [
-        "(180.9–3149.5)"
-      ]
-    },
-    {
-      "text": "Base duration is 0.5 seconds",
-      "values": [
-        "0.5"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Fires 5 Projectiles in a spiral",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "active skill projectile speed +% variation final [25]",
-      "values": []
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "projectile spiral nova time ms [800]",
-      "values": []
-    },
-    {
-      "text": "Deals (21–9554) to (31–14728) Chaos Damage",
-      "values": [
-        "(21–9554)",
-        "(31–14728)"
-      ]
-    },
-    {
-      "text": "Projectiles Pierce all Targets",
-      "values": []
-    },
-    {
-      "text": "Deals (180.9–20124.5) Base Chaos Damage per second",
-      "values": [
-        "(180.9–20124.5)"
-      ]
-    },
-    {
-      "text": "Base duration is 0.5 seconds",
-      "values": [
-        "0.5"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Fires 5 Projectiles in a spiral",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "active skill projectile speed +% variation final [25]",
-      "values": []
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "projectile spiral nova time ms [800]",
-      "values": []
-    }
+  "stats": [
+    "Deals (21-885) to (31-1327) Chaos Damage",
+    "Projectiles Pierce all Targets",
+    "Deals (180.8-3149.4) Base Chaos Damage per second",
+    "Base duration is 0.50 seconds",
+    "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+    "Fires 5 Projectiles in a spiral"
   ],
+  "gemDescription": "Fires a series of projectiles in a spiral that turn towards enemies in front of them, damaging and piercing through those they hit, and leeching some of that damage as energy shield. As the projectiles travel, they repeatedly apply a short but powerful chaos damage over time debuff to each enemy in an area around them.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base duration is (0–0.2) seconds",
-      "values": [
-        "(0–0.2)"
-      ]
-    },
-    {
-      "text": "Base duration is (0–0.2) seconds",
-      "values": [
-        "(0–0.2)"
-      ]
-    },
-    {
-      "text": "Base duration is (0–0.2) seconds",
-      "values": [
-        "(0–0.2)"
-      ]
+      "text": "Base duration is (0.01-0.2) seconds",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,17 @@
 {
   "name": "Spell Cascade Support",
   "slug": "Spell_Cascade_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "AoE, Spell, Support",
+    "Icon": "p",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "4",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "5",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemSpellCascade"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,55 +375,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports spell skills that apply an effect to an area around a targeted location. Cannot support Vaal skills or skills used by totems, traps, or mines. Cannot modify the skills of minions.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills have (16–25)% less Area of Effect",
-      "values": [
-        "(16–25)"
-      ]
-    },
-    {
-      "text": "Supported Area of Effect Skills also affect areas in front of and behind the targeted area",
-      "values": []
-    },
-    {
-      "text": "Supported Skills deal (31–40)% less Damage",
-      "values": [
-        "(31–40)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (16–25)% less Area of Effect",
-      "values": [
-        "(16–25)"
-      ]
-    },
-    {
-      "text": "Supported Area of Effect Skills also affect areas in front of and behind the targeted area",
-      "values": []
-    },
-    {
-      "text": "Supported Skills deal (31–40)% less Damage",
-      "values": [
-        "(31–40)"
-      ]
-    }
+  "stats": [
+    "Supported Skills have (25-16)% less Area of Effect",
+    "Supported Skills deal (40-31)% less Damage",
+    "Supported Area of Effect Skills also affect areas in front of and behind the targeted area"
   ],
+  "gemDescription": "Supports spell skills that apply an effect to an area around a targeted location. Cannot support Vaal skills or skills used by totems, traps, or mines. Cannot modify the skills of minions.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–10)% increased Area of Effect",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–10)% increased Area of Effect",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills have (0.5-10)% increased Area of Effect",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,20 @@
 {
   "name": "Haste",
   "slug": "Haste",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Aura, Spell, AoE",
+    "Level": "(1-20)",
+    "Reservation": "50% Mana",
+    "Cooldown Time": "1.20 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "Instant",
+    "AoE Radius": "36",
+    "Requires Level": "24",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "24",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemHaste"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -445,75 +458,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Casts an aura that increases the movement speed, attack speed and cast speed of you and your allies.",
-  "explicitMods": [
-    {
-      "text": "+(0–1.9) metres to radius",
-      "values": [
-        "+(0–1.9)"
-      ]
-    },
-    {
-      "text": "You and nearby allies gain (10–16)% increased Movement Speed",
-      "values": [
-        "(10–16)"
-      ]
-    },
-    {
-      "text": "You and nearby allies gain (15–24)% increased Attack Speed",
-      "values": [
-        "(15–24)"
-      ]
-    },
-    {
-      "text": "You and nearby allies gain (15–24)% increased Cast Speed",
-      "values": [
-        "(15–24)"
-      ]
-    },
-    {
-      "text": "+(0–1.9) metres to radius",
-      "values": [
-        "+(0–1.9)"
-      ]
-    },
-    {
-      "text": "You and nearby allies gain (10–16)% increased Movement Speed",
-      "values": [
-        "(10–16)"
-      ]
-    },
-    {
-      "text": "You and nearby allies gain (15–24)% increased Attack Speed",
-      "values": [
-        "(15–24)"
-      ]
-    },
-    {
-      "text": "You and nearby allies gain (15–24)% increased Cast Speed",
-      "values": [
-        "(15–24)"
-      ]
-    },
-    {
-      "text": "base deal no damage [1]",
-      "values": []
-    }
+  "stats": [
+    "+(0-1.9) metres to radius",
+    "You and nearby allies gain (10-16)% increased Movement Speed",
+    "You and nearby allies gain (15-24)% increased Attack Speed",
+    "You and nearby allies gain (15-24)% increased Cast Speed"
   ],
+  "gemDescription": "Casts an aura that increases the movement speed, attack speed and cast speed of you and your allies.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–40)% increased Area of Effect",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "(0–40)% increased Area of Effect",
-      "values": [
-        "(0–40)"
-      ]
+      "text": "(2-40)% increased Area of Effect",
+      "values": []
     }
   ]
 }

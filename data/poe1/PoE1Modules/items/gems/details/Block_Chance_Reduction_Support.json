@@ -1,7 +1,17 @@
 {
   "name": "Block Chance Reduction Support",
   "slug": "Block_Chance_Reduction_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Duration",
+    "Icon": "B",
+    "Level": "(1-20)",
+    "Requires Level": "18",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Item can only be acquired through vendor recipes.",
+    "Drop level": "18",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemBlockChanceReduction"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,63 +375,18 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Overpowered applies -5% chance to Block Attack and Spell Damage",
+    "Supported Skills inflict Overpowered for 4 seconds when Blocked",
+    "Enemies have -(10-20)% chance to Block Attack or Spell Damage from Supported Skills"
+  ],
   "gemDescription": "Supports any skill that hits enemies.",
-  "explicitMods": [
-    {
-      "text": "Overpowered applies -5% chance to Block Attack and Spell Damage",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Supported Skills inflict Overpowered for 4 seconds when Blocked",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Enemies have -(10–20)% chance to Block Attack or Spell Damage from Supported Skills",
-      "values": [
-        "(10–20)"
-      ]
-    },
-    {
-      "text": "Overpowered applies -5% chance to Block Attack and Spell Damage",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Supported Skills inflict Overpowered for 4 seconds when Blocked",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Enemies have -(10–20)% chance to Block Attack or Spell Damage from Supported Skills",
-      "values": [
-        "(10–20)"
-      ]
-    }
-  ],
-  "modDescriptions": [
-    "(Overpowered can be applied any number of times)",
-    "(Overpowered can be applied any number of times)",
-    "(Overpowered can be applied any number of times)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–5)% reduced Enemy Block Chance",
-      "values": [
-        "(0–5)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–5)% reduced Enemy Block Chance",
-      "values": [
-        "(0–5)"
-      ]
+      "text": "Supported Skills have (0.25-5)% reduced Enemy Block Chance",
+      "values": []
     }
   ]
 }

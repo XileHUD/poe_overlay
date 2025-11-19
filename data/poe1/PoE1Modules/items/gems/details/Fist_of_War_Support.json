@@ -1,7 +1,17 @@
 {
   "name": "Fist of War Support",
   "slug": "Fist_of_War_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Slam, Attack, Melee, AoE, Support",
+    "Icon": "X",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "140%",
+    "Requires Level": "38",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "38",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemFistOfWar"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,63 +415,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports slam skills, providing a powerful boost when they're used, with a delay before they can be boosted again. Cannot support Vaal skills or triggered skills. Cannot modify the skills of minions. Only skills you use yourself can receive the boost.",
-  "explicitMods": [
-    {
-      "text": "Ancestrally Boosted Slams have (40–59)% increased Area of Effect",
-      "values": [
-        "(40–59)"
-      ]
-    },
-    {
-      "text": "Attacks with Supported Skill are Ancestrally Boosted, no more than once every (1.8–2.5) secondsAncestral Boost does not apply to repeats of the Attack",
-      "values": [
-        "(1.8–2.5)"
-      ]
-    },
-    {
-      "text": "Ancestrally Boosted Slams deal (70–98)% more Damage with Hits and Ailments",
-      "values": [
-        "(70–98)"
-      ]
-    },
-    {
-      "text": "Ancestrally Boosted Slams have (40–59)% increased Area of Effect",
-      "values": [
-        "(40–59)"
-      ]
-    },
-    {
-      "text": "Attacks with Supported Skill are Ancestrally Boosted, no more than once every (1.8–2.5) secondsAncestral Boost does not apply to repeats of the Attack",
-      "values": [
-        "(1.8–2.5)"
-      ]
-    },
-    {
-      "text": "Ancestrally Boosted Slams deal (70–98)% more Damage with Hits and Ailments",
-      "values": [
-        "(70–98)"
-      ]
-    },
-    {
-      "text": "support ancestral slam big hit max count [1]",
-      "values": []
-    }
+  "stats": [
+    "Attacks with Supported Skill are Ancestrally Boosted, no more than once every (2.5-1.8) seconds",
+    "Ancestral Boost does not apply to repeats of the Attack",
+    "Ancestrally Boosted Slams deal (70-98)% more Damage with Hits and Ailments",
+    "Ancestrally Boosted Slams have (40-59)% increased Area of Effect"
   ],
+  "gemDescription": "Supports slam skills, providing a powerful boost when they're used, with a delay before they can be boosted again. Cannot support Vaal skills or triggered skills. Cannot modify the skills of minions. Only skills you use yourself can receive the boost.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–10)% increased Area of Effect",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–10)% increased Area of Effect",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills have (0.5-10)% increased Area of Effect",
+      "values": []
     }
   ]
 }

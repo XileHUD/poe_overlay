@@ -1,7 +1,19 @@
 {
   "name": "Infernal Blow",
   "slug": "Infernal_Blow",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, AoE, Melee, Strike, Fire, Duration",
+    "Level": "(1-20)",
+    "Cost": "(6-10) Mana",
+    "Attack Damage": "(164-377)% of base",
+    "Effectiveness of Added Damage": "(164-377)%",
+    "AoE Radius": "15",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "12",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemInfernalBlow"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,99 +337,21 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Attacks with your weapon, applying a charged debuff to enemies hit by your strike, and an uncharged debuff to any other enemies hit. Upon reaching 6 charges, expiring, or the enemy's death, the charged debuff is removed to damage that and other surrounding enemies. Enemies with either debuff explode when they die, damaging other surrounding enemies. Damage from this explosion cannot be reflected. Requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 0.8 seconds",
-      "values": [
-        "0.8"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Base radius is 2.4 metres",
-      "values": [
-        "2.4"
-      ]
-    },
-    {
-      "text": "Base explosion radius is 1.8 metres",
-      "values": [
-        "1.8"
-      ]
-    },
-    {
-      "text": "Debuff deals 66% of Damage per Charge",
-      "values": [
-        "66"
-      ]
-    },
-    {
-      "text": "Base duration is 0.8 seconds",
-      "values": [
-        "0.8"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Base radius is 2.4 metres",
-      "values": [
-        "2.4"
-      ]
-    },
-    {
-      "text": "Base explosion radius is 1.8 metres",
-      "values": [
-        "1.8"
-      ]
-    },
-    {
-      "text": "Debuff deals 66% of Damage per Charge",
-      "values": [
-        "66"
-      ]
-    },
-    {
-      "text": "base_monster_will_be_deleted_on_death",
-      "values": []
-    }
+  "stats": [
+    "Base duration is 0.80 seconds",
+    "Explosion deals base Fire Damage equal to 6% of the corpse's Maximum Life",
+    "60% of Physical Damage Converted to Fire Damage",
+    "Base radius is 2.4 metres",
+    "Base explosion radius is 1.8 metres",
+    "Debuff deals 66% of Damage per Charge"
   ],
+  "gemDescription": "Attacks with your weapon, applying a charged debuff to enemies hit by your strike, and an uncharged debuff to any other enemies hit. Upon reaching 6 charges, expiring, or the enemy's death, the charged debuff is removed to damage that and other surrounding enemies. Enemies with either debuff explode when they die, damaging other surrounding enemies. Damage from this explosion cannot be reflected. Requires a Sword, Axe, Mace, Sceptre, Staff or Unarmed.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Debuff deals +(0–10)% of Damage per Charge",
-      "values": [
-        "+(0–10)"
-      ]
-    },
-    {
-      "text": "Debuff deals +(0–10)% of Damage per Charge",
-      "values": [
-        "+(0–10)"
-      ]
+      "text": "Debuff deals +(0.5-10)% of Damage per Charge",
+      "values": []
     }
   ]
 }

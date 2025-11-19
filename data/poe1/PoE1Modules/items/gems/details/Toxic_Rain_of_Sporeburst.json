@@ -1,7 +1,18 @@
 {
   "name": "Toxic Rain of Sporeburst",
   "slug": "Toxic_Rain_of_Sporeburst",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, AoE, Chaos, Duration, Projectile, Bow",
+    "Level": "(1-20)",
+    "Cost": "(6-10) Mana",
+    "Attack Damage": "(72-102)% of base",
+    "Effectiveness of Added Damage": "(72-102)%",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "12",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -285,167 +296,20 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Base duration is 1.00 seconds",
+    "Fires 5 Arrows",
+    "60% of Physical Damage Converted to Chaos Damage",
+    "40% chance to Poison on Hit",
+    "Each Spore Pod applies 5% less Movement Speed to nearby Enemies, to a maximum of 30%"
+  ],
   "gemDescription": "Fire arrows into the air that rain down around the targeted area, dealing damage to enemies they hit and creating spore pods where they land. Each spore pod slows the movement speed of nearby enemies. The pods last for a duration before bursting, dealing area damage.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 1 seconds",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Fires 5 Arrows",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Chaos Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "40% chance to Poison on Hit",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "Each Spore Pod applies 5% less Movement Speed to nearby Enemies, to a maximum of 30%",
-      "values": [
-        "5",
-        "30"
-      ]
-    },
-    {
-      "text": "Base duration is 1 seconds",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Fires 5 Arrows",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Chaos Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "40% chance to Poison on Hit",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "Each Spore Pod applies 5% less Movement Speed to nearby Enemies, to a maximum of 30%",
-      "values": [
-        "5",
-        "30"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "cannot pierce [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    },
-    {
-      "text": "visual hit effect chaos is green [1]",
-      "values": []
-    },
-    {
-      "text": "Base duration is 1 seconds",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Fires 5 Arrows",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "60% of Physical Damage Converted to Chaos Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "40% chance to Poison on Hit",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "Each Spore Pod applies 5% less Movement Speed to nearby Enemies, to a maximum of 30%",
-      "values": [
-        "5",
-        "30"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "cannot pierce [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    },
-    {
-      "text": "visual hit effect chaos is green [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
-    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
-    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
-    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Fires +(0–2) Arrows",
-      "values": [
-        "+(0–2)"
-      ]
-    },
-    {
-      "text": "Fires +(0–2) Arrows",
-      "values": [
-        "+(0–2)"
-      ]
-    },
-    {
-      "text": "Fires +(0–2) Arrows",
-      "values": [
-        "+(0–2)"
-      ]
+      "text": "Fires +(0.1-2) Arrows",
+      "values": []
     }
   ]
 }

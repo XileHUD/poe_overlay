@@ -1,7 +1,19 @@
 {
   "name": "Reap",
   "slug": "Reap",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Physical, AoE, Duration",
+    "Level": "(1-20)",
+    "Cost": "(25-46) Life",
+    "Cast Time": "0.80 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "(150-210)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "28",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemBloodreap"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -445,113 +457,23 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "A bloody scythe swipes across a selected area, applying a physical damage over time debuff and hitting enemies with physical damage. If any survive, you gain a blood charge which raises the damage and cost of the skill. Players can have 5 maximum blood charges.",
-  "explicitMods": [
-    {
-      "text": "Deals (57–943) to (86–1414) Physical Damage",
-      "values": [
-        "(57–943)",
-        "(86–1414)"
-      ]
-    },
-    {
-      "text": "Deals (138.2–2002.5) Base Physical Damage per second",
-      "values": [
-        "(138.2–2002.5)"
-      ]
-    },
-    {
-      "text": "Base duration is 1 seconds",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Costs 20% more Life per Blood Charge",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "Deals 15% more Damage per Blood Charge",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Gain a Blood Charge if this Skill Hits Enemies and none of them DieLose a Blood Charge when an Enemy Dies while affected by this Skill's Debuff",
-      "values": []
-    },
-    {
-      "text": "Deals (57–943) to (86–1414) Physical Damage",
-      "values": [
-        "(57–943)",
-        "(86–1414)"
-      ]
-    },
-    {
-      "text": "Deals (138.2–2002.5) Base Physical Damage per second",
-      "values": [
-        "(138.2–2002.5)"
-      ]
-    },
-    {
-      "text": "Base duration is 1 seconds",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Costs 20% more Life per Blood Charge",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "Deals 15% more Damage per Blood Charge",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Gain a Blood Charge if this Skill Hits Enemies and none of them DieLose a Blood Charge when an Enemy Dies while affected by this Skill's Debuff",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "base_physical_damage_taken_per_minute",
-      "values": []
-    },
-    {
-      "text": "base_fire_damage_taken_per_minute",
-      "values": []
-    }
+  "stats": [
+    "Deals (57-943) to (86-1414) Physical Damage",
+    "Deals (138.2-2002.5) Base Physical Damage per second",
+    "Base duration is 1.00 seconds",
+    "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+    "Gain a Blood Charge if this Skill Hits Enemies and none of them Die",
+    "Lose a Blood Charge when an Enemy Dies while affected by this Skill's Debuff",
+    "Costs 20% more Life per Blood Charge",
+    "Deals 15% more Damage per Blood Charge"
   ],
+  "gemDescription": "A bloody scythe swipes across a selected area, applying a physical damage over time debuff and hitting enemies with physical damage. If any survive, you gain a blood charge which raises the damage and cost of the skill. Players can have 5 maximum blood charges.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Deals +(0–5)% more Damage per Blood Charge",
-      "values": [
-        "+(0–5)"
-      ]
-    },
-    {
-      "text": "Deals +(0–5)% more Damage per Blood Charge",
-      "values": [
-        "+(0–5)"
-      ]
+      "text": "Deals +(0.25-5)% more Damage per Blood Charge",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,17 @@
 {
   "name": "Hex Bloom Support",
   "slug": "Hex_Bloom_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Hex",
+    "Icon": "*",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "140%",
+    "Requires Level": "38",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "38",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemHexBloom"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,47 +335,17 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Supported Skills have (0-28)% increased Hex Transfer range",
+    "Hexes from Supported Skills Transfer to all Enemies within 3 metres when Hexed Enemy dies"
+  ],
   "gemDescription": "Supports hex curse skills. Hexes from auras or cursed ground cannot transfer.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills have (0–28)% increased Hex Transfer range",
-      "values": [
-        "(0–28)"
-      ]
-    },
-    {
-      "text": "Hexes from Supported Skills Transfer to all Enemies within 3 metres when Hexed Enemy dies",
-      "values": []
-    },
-    {
-      "text": "Supported Skills have (0–28)% increased Hex Transfer range",
-      "values": [
-        "(0–28)"
-      ]
-    },
-    {
-      "text": "Hexes from Supported Skills Transfer to all Enemies within 3 metres when Hexed Enemy dies",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Hexes from Auras or Cursed Ground cannot be Transferred)",
-    "(Hexes from Auras or Cursed Ground cannot be Transferred)",
-    "(Hexes from Auras or Cursed Ground cannot be Transferred)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–4)% increased Hex Transfer range",
-      "values": [
-        "(0–4)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–4)% increased Hex Transfer range",
-      "values": [
-        "(0–4)"
-      ]
+      "text": "Supported Skills have (0.2-4)% increased Hex Transfer range",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,22 @@
 {
   "name": "Vaal Immortal Call",
   "slug": "Vaal_Immortal_Call",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Duration, Vaal, Guard",
+    "Level": "(1-20)",
+    "Cooldown Time": "60.00 sec",
+    "Can Store": "1 Use(s)",
+    "Souls Per Use": "100",
+    "Soul Gain Prevention": "8 sec",
+    "Cast Time": "Instant",
+    "Requires Level": "34",
+    "Info 9": "Corrupted",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop disabled",
+    "Drop level": "34",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVaalImmortalCall"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,123 +380,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Discharges Endurance Charges, making the character unable to die or gain Vaal souls for a short time, proportional to how many endurance charges were expended.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 0.4 seconds",
-      "values": [
-        "0.4"
-      ]
-    },
-    {
-      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "(100–157)% increased Buff Duration per Endurance Charge removed",
-      "values": [
-        "(100–157)"
-      ]
-    },
-    {
-      "text": "Buff expiry rate cannot be modified",
-      "values": []
-    },
-    {
-      "text": "Base duration is 0.4 seconds",
-      "values": [
-        "0.4"
-      ]
-    },
-    {
-      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "(100–157)% increased Buff Duration per Endurance Charge removed",
-      "values": [
-        "(100–157)"
-      ]
-    },
-    {
-      "text": "Buff expiry rate cannot be modified",
-      "values": []
-    },
-    {
-      "text": "base deal no damage [1]",
-      "values": []
-    },
-    {
-      "text": "immortal call prevent all damage [1]",
-      "values": []
-    },
-    {
-      "text": "cannot_die",
-      "values": []
-    },
-    {
-      "text": "cannot_gain_souls",
-      "values": []
-    },
-    {
-      "text": "Base duration is 1 seconds",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "20% increased Buff Duration per Endurance Charge removed",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "This Skill's Cooldown does not recover during its effect",
-      "values": []
-    },
-    {
-      "text": "(25–42)% less Elemental Damage taken",
-      "values": [
-        "(25–42)"
-      ]
-    },
-    {
-      "text": "(25–42)% less Physical Damage taken",
-      "values": [
-        "(25–42)"
-      ]
-    },
-    {
-      "text": "15% less Physical Damage taken per Endurance Charge removed",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "base deal no damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Base duration is 0.40 seconds",
+    "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+    "(100-157)% increased Buff Duration per Endurance Charge removed",
+    "Buff expiry rate cannot be modified"
   ],
+  "gemDescription": "Discharges Endurance Charges, making the character unable to die or gain Vaal souls for a short time, proportional to how many endurance charges were expended.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–20)% increased Skill Effect Duration",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% increased Skill Effect Duration",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "(1-20)% increased Skill Effect Duration",
+      "values": []
     }
   ]
 }

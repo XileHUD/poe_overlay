@@ -1,7 +1,17 @@
 {
   "name": "Focused Ballista Support",
   "slug": "Focused_Ballista_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Projectile, Support, Totem",
+    "Icon": "^",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "140%",
+    "Requires Level": "31",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "31",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemFocusedBallista"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,67 +415,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports skills that summon ballista totems. Cannot modify the skills of minions.",
-  "explicitMods": [
-    {
-      "text": "Ballista Totems from Supported Skills only Attack when you fire an Attack Projectile",
-      "values": []
-    },
-    {
-      "text": "Supported Skills have (40–68)% increased Totem Placement speed",
-      "values": [
-        "(40–68)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (25–35)% more Attack Speed",
-      "values": [
-        "(25–35)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–9)% more Damage",
-      "values": [
-        "(0–9)"
-      ]
-    },
-    {
-      "text": "Ballista Totems from Supported Skills only Attack when you fire an Attack Projectile",
-      "values": []
-    },
-    {
-      "text": "Supported Skills have (40–68)% increased Totem Placement speed",
-      "values": [
-        "(40–68)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (25–35)% more Attack Speed",
-      "values": [
-        "(25–35)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–9)% more Damage",
-      "values": [
-        "(0–9)"
-      ]
-    }
+  "stats": [
+    "Ballista Totems from Supported Skills only Attack when you fire an Attack Projectile",
+    "Supported Skills have (40-68)% increased Totem Placement speed",
+    "Supported Skills have (25-35)% more Attack Speed",
+    "Supported Skills deal (0-9)% more Damage"
   ],
+  "gemDescription": "Supports skills that summon ballista totems. Cannot modify the skills of minions.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–10)% increased Totem Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "(0–10)% increased Totem Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "(0.5-10)% increased Totem Damage",
+      "values": []
     }
   ]
 }

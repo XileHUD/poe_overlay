@@ -1,7 +1,19 @@
 {
   "name": "Lancing Steel of Spraying",
   "slug": "Lancing_Steel_of_Spraying",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Projectile",
+    "Level": "(1-20)",
+    "Cost": "(9-13) Mana",
+    "Attack Speed": "80% of base",
+    "Attack Damage": "(260-360)% of base",
+    "Effectiveness of Added Damage": "(260-360)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,85 +337,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Thrust an Axe or Sword forward to form a cluster of shards in front of you. The cluster will fire a number of projectiles in sequence, aiming at enemies in front of or close to it.",
-  "explicitMods": [
-    {
-      "text": "Projectiles Pierce all Targets",
-      "values": []
-    },
-    {
-      "text": "Fires (6–8) Projectiles",
-      "values": [
-        "(6–8)"
-      ]
-    },
-    {
-      "text": "Hits after the first on each Enemy deal 90% less Damage",
-      "values": [
-        "90"
-      ]
-    },
-    {
-      "text": "Projectiles Pierce all Targets",
-      "values": []
-    },
-    {
-      "text": "Fires (6–8) Projectiles",
-      "values": [
-        "(6–8)"
-      ]
-    },
-    {
-      "text": "Hits after the first on each Enemy deal 90% less Damage",
-      "values": [
-        "90"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "Projectiles Pierce all Targets",
-      "values": []
-    },
-    {
-      "text": "Fires (6–10) Projectiles",
-      "values": [
-        "(6–10)"
-      ]
-    },
-    {
-      "text": "Hits after the first on each Enemy deal 90% less Damage",
-      "values": [
-        "90"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    }
+  "stats": [
+    "Projectiles Pierce all Targets",
+    "Fires (6-8) Projectiles",
+    "Hits after the first on each Enemy deal 90% less Damage"
   ],
+  "gemDescription": "Thrust an Axe or Sword forward to form a cluster of shards in front of you. The cluster will fire a number of projectiles in sequence, aiming at enemies in front of or close to it.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Fires +(0–2) Projectiles",
-      "values": [
-        "+(0–2)"
-      ]
-    },
-    {
-      "text": "Fires +(0–2) Projectiles",
-      "values": [
-        "+(0–2)"
-      ]
-    },
-    {
-      "text": "Fires +(0–2) Projectiles",
-      "values": [
-        "+(0–2)"
-      ]
+      "text": "Fires +(0.1-2) Projectiles",
+      "values": []
     }
   ]
 }

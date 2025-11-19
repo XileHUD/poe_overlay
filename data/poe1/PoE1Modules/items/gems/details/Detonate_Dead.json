@@ -1,7 +1,20 @@
 {
   "name": "Detonate Dead",
   "slug": "Detonate_Dead",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Fire",
+    "Level": "(1-20)",
+    "Cost": "(5-20) Mana",
+    "Cast Time": "0.60 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "160%",
+    "AoE Radius": "22",
+    "Requires Level": "4",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "5",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemDetonateDead"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -485,65 +498,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Targets a corpse, and deals spell damage to enemies around the corpse, as well as causing the corpse to explode, dealing fire damage. The explosion is not affected by modifiers to spell damage and cannot be reflected.",
-  "explicitMods": [
-    {
-      "text": "Deals (15–798) to (22–1197) Fire Damage",
-      "values": [
-        "(15–798)",
-        "(22–1197)"
-      ]
-    },
-    {
-      "text": "Explosion deals base Fire Damage equal to (6–7.9)% of the corpse's Maximum Life",
-      "values": [
-        "(6–7.9)"
-      ]
-    },
-    {
-      "text": "Base radius is (2.2–2.6) metres",
-      "values": [
-        "(2.2–2.6)"
-      ]
-    },
-    {
-      "text": "Deals (15–798) to (22–1197) Fire Damage",
-      "values": [
-        "(15–798)",
-        "(22–1197)"
-      ]
-    },
-    {
-      "text": "Explosion deals base Fire Damage equal to (6–7.9)% of the corpse's Maximum Life",
-      "values": [
-        "(6–7.9)"
-      ]
-    },
-    {
-      "text": "Base radius is (2.2–2.6) metres",
-      "values": [
-        "(2.2–2.6)"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (15-798) to (22-1197) Fire Damage",
+    "Explosion deals base Fire Damage equal to (6-7.9)% of the corpse's Maximum Life",
+    "Base radius is (2.2-2.6) metres"
   ],
+  "gemDescription": "Targets a corpse, and deals spell damage to enemies around the corpse, as well as causing the corpse to explode, dealing fire damage. The explosion is not affected by modifiers to spell damage and cannot be reflected.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–15)% chance to detonate an additional corpse",
-      "values": [
-        "(0–15)"
-      ]
-    },
-    {
-      "text": "(0–15)% chance to detonate an additional corpse",
-      "values": [
-        "(0–15)"
-      ]
+      "text": "(0.75-15)% chance to detonate an additional corpse",
+      "values": []
     }
   ]
 }

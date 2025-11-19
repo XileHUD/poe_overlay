@@ -1,7 +1,19 @@
 {
   "name": "Puncture of Shanking",
   "slug": "Puncture_of_Shanking",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Melee, Strike, Duration, Physical",
+    "Level": "(1-20)",
+    "Cost": "(8-14) Mana",
+    "Attack Speed": "70% of base",
+    "Attack Damage": "(170-437)% of base",
+    "Effectiveness of Added Damage": "(170-437)%",
+    "Requires Level": "4",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "5",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,108 +377,19 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Base duration is 6.00 seconds",
+    "(80-118)% increased Critical Strike Chance against Bleeding Enemies",
+    "(30-49)% more Damage with Bleeding",
+    "Causes Bleeding"
+  ],
   "gemDescription": "Punctures enemies, causing a bleeding debuff, which will be affected by modifiers to skill duration. Puncture works with daggers, claws or swords.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "(80–118)% increased Critical Strike Chance against Bleeding Enemies",
-      "values": [
-        "(80–118)"
-      ]
-    },
-    {
-      "text": "(30–49)% more Damage with Bleeding",
-      "values": [
-        "(30–49)"
-      ]
-    },
-    {
-      "text": "Causes Bleeding",
-      "values": []
-    },
-    {
-      "text": "Base duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "(80–118)% increased Critical Strike Chance against Bleeding Enemies",
-      "values": [
-        "(80–118)"
-      ]
-    },
-    {
-      "text": "(30–49)% more Damage with Bleeding",
-      "values": [
-        "(30–49)"
-      ]
-    },
-    {
-      "text": "Causes Bleeding",
-      "values": []
-    },
-    {
-      "text": "bleed duration is skill duration [1]",
-      "values": []
-    },
-    {
-      "text": "Base duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "(80–148)% increased Critical Strike Chance against Bleeding Enemies",
-      "values": [
-        "(80–148)"
-      ]
-    },
-    {
-      "text": "(30–69)% more Damage with Bleeding",
-      "values": [
-        "(30–69)"
-      ]
-    },
-    {
-      "text": "Causes Bleeding",
-      "values": []
-    },
-    {
-      "text": "bleed duration is skill duration [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
-    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
-    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)",
-    "(Bleeding deals Physical Damage over time, based on the base Physical Damage of the Skill. Damage is 200% higher while moving)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–20)% more Damage with Bleeding",
-      "values": [
-        "+(0–20)"
-      ]
-    },
-    {
-      "text": "+(0–20)% more Damage with Bleeding",
-      "values": [
-        "+(0–20)"
-      ]
-    },
-    {
-      "text": "+(0–20)% more Damage with Bleeding",
-      "values": [
-        "+(0–20)"
-      ]
+      "text": "+(1-20)% more Damage with Bleeding",
+      "values": []
     }
   ]
 }

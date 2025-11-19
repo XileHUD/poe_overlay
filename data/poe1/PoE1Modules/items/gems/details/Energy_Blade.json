@@ -1,7 +1,19 @@
 {
   "name": "Energy Blade",
   "slug": "Energy_Blade",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Lightning",
+    "Level": "(1-20)",
+    "Cost": "(136-624) Energy Shield",
+    "Cooldown Time": "1.00 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "1.00 sec",
+    "Requires Level": "24",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "24",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemEnergyBlade"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,73 +377,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Grants a buff which significantly lowers your maximum Energy Shield to transform your equipped weapons into Swords formed from that energy. Casting the spell again removes the buff. Requires a Non-Bow weapon. This skill cannot be triggered.",
-  "explicitMods": [
-    {
-      "text": "Energy Blades have minimum Lightning Damage equal to 2% of Energy Shield, plus (2–12)Energy Blades have maximum Lightning Damage equal to 40% of Energy Shield, plus (40–235)",
-      "values": [
-        "2",
-        "(2–12)",
-        "40",
-        "(40–235)"
-      ]
-    },
-    {
-      "text": "Two Handed Energy Blades have 70% more Lightning Damage",
-      "values": [
-        "70"
-      ]
-    },
-    {
-      "text": "Buff grants 50% less Maximum Energy Shield",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Energy Blades have minimum Lightning Damage equal to 2% of Energy Shield, plus (2–12)Energy Blades have maximum Lightning Damage equal to 40% of Energy Shield, plus (40–235)",
-      "values": [
-        "2",
-        "(2–12)",
-        "40",
-        "(40–235)"
-      ]
-    },
-    {
-      "text": "Two Handed Energy Blades have 70% more Lightning Damage",
-      "values": [
-        "70"
-      ]
-    },
-    {
-      "text": "Buff grants 50% less Maximum Energy Shield",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "base deal no damage [1]",
-      "values": []
-    },
-    {
-      "text": "storm_blade_energy_shield_+%_final",
-      "values": []
-    }
+  "stats": [
+    "Energy Blades have minimum Lightning Damage equal to 2% of Energy Shield, plus (2-12)",
+    "Energy Blades have maximum Lightning Damage equal to 40% of Energy Shield, plus (40-235)",
+    "Two Handed Energy Blades have 70% more Lightning Damage",
+    "Buff grants 50% less Maximum Energy Shield"
   ],
+  "gemDescription": "Grants a buff which significantly lowers your maximum Energy Shield to transform your equipped weapons into Swords formed from that energy. Casting the spell again removes the buff. Requires a Non-Bow weapon. This skill cannot be triggered.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Buff grants (0–5)% more Maximum Energy Shield",
-      "values": [
-        "(0–5)"
-      ]
-    },
-    {
-      "text": "Buff grants (0–5)% more Maximum Energy Shield",
-      "values": [
-        "(0–5)"
-      ]
+      "text": "Buff grants (0.25-5)% more Maximum Energy Shield",
+      "values": []
     }
   ]
 }

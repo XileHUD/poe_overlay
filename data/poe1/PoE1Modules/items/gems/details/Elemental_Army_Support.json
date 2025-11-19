@@ -1,7 +1,17 @@
 {
   "name": "Elemental Army Support",
   "slug": "Elemental_Army_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Minion",
+    "Icon": "r",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "120%",
+    "Requires Level": "31",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "31",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemSummonElementalResistance"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -485,71 +495,19 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Minions from Supported Skills have +(19-29)% to all Elemental Resistances",
+    "Minions from Supported Skills have +(0-2)% to all maximum Elemental Resistances",
+    "Minions from Supported Skills inflict Exposure on Hit, applying -10% to the Elemental Resistance matching highest Damage type taken by Enemy",
+    "Minions from Supported Skills deal (10-19)% more Elemental Damage"
+  ],
   "gemDescription": "Supports skills which create Minions.",
-  "explicitMods": [
-    {
-      "text": "Minions from Supported Skills have +(19–29)% to all Elemental Resistances",
-      "values": [
-        "+(19–29)"
-      ]
-    },
-    {
-      "text": "Minions from Supported Skills have +(0–2)% to all maximum Elemental Resistances",
-      "values": [
-        "+(0–2)"
-      ]
-    },
-    {
-      "text": "Minions from Supported Skills inflict Exposure on Hit, applying -10% to the Elemental Resistance matching highest Damage type taken by Enemy",
-      "values": []
-    },
-    {
-      "text": "Minions from Supported Skills deal (10–19)% more Elemental Damage",
-      "values": [
-        "(10–19)"
-      ]
-    },
-    {
-      "text": "Minions from Supported Skills have +(19–29)% to all Elemental Resistances",
-      "values": [
-        "+(19–29)"
-      ]
-    },
-    {
-      "text": "Minions from Supported Skills have +(0–2)% to all maximum Elemental Resistances",
-      "values": [
-        "+(0–2)"
-      ]
-    },
-    {
-      "text": "Minions from Supported Skills inflict Exposure on Hit, applying -10% to the Elemental Resistance matching highest Damage type taken by Enemy",
-      "values": []
-    },
-    {
-      "text": "Minions from Supported Skills deal (10–19)% more Elemental Damage",
-      "values": [
-        "(10–19)"
-      ]
-    }
-  ],
-  "modDescriptions": [
-    "(Maximum Resistances cannot be raised above 90%)",
-    "(Maximum Resistances cannot be raised above 90%)",
-    "(Maximum Resistances cannot be raised above 90%)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Minions from Supported Skills have +(0–2)% to all maximum Elemental Resistances",
-      "values": [
-        "+(0–2)"
-      ]
-    },
-    {
-      "text": "Minions from Supported Skills have +(0–2)% to all maximum Elemental Resistances",
-      "values": [
-        "+(0–2)"
-      ]
+      "text": "Minions from Supported Skills have +(0.1-2)% to all maximum Elemental Resistances",
+      "values": []
     }
   ]
 }

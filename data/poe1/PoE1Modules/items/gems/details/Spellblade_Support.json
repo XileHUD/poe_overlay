@@ -1,7 +1,17 @@
 {
   "name": "Spellblade Support",
   "slug": "Spellblade_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Spell",
+    "Icon": "|",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "38",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "38",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemSpellblade"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,35 +375,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports spells that hit enemies. Cannot modify the skills of minions.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills have Added Spell Damage equal to (40–135)% ofDamage of Equipped One Handed Melee WeaponsIf two Weapons are Equipped, each contributes 60% as much Added Damage",
-      "values": [
-        "(40–135)"
-      ]
-    },
-    {
-      "text": "Supported Skills have Added Spell Damage equal to (40–135)% ofDamage of Equipped One Handed Melee WeaponsIf two Weapons are Equipped, each contributes 60% as much Added Damage",
-      "values": [
-        "(40–135)"
-      ]
-    }
+  "stats": [
+    "Supported Skills have Added Spell Damage equal to (40-135)% of",
+    "Damage of Equipped One Handed Melee Weapons",
+    "If two Weapons are Equipped, each contributes 60% as much Added Damage"
   ],
+  "gemDescription": "Supports spells that hit enemies. Cannot modify the skills of minions.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Spell Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Spell Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Spell Damage",
+      "values": []
     }
   ]
 }

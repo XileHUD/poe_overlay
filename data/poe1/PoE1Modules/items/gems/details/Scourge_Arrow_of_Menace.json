@@ -1,7 +1,19 @@
 {
   "name": "Scourge Arrow of Menace",
   "slug": "Scourge_Arrow_of_Menace",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Projectile, Chaos, Bow",
+    "Level": "(1-20)",
+    "Cost": "(9-13) Mana",
+    "Attack Speed": "80% of base",
+    "Attack Damage": "(117-162)% of base",
+    "Effectiveness of Added Damage": "(117-162)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -245,131 +257,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Fire an arrow that leaves a spore pod in its wake. The spore pod blooms, firing thorn arrows, which travel for a short time before dissipating. Modifiers that cause additional projectiles to be fired will only apply to the initial arrows, each of which leaves its own spore pod.",
-  "explicitMods": [
-    {
-      "text": "Arrows Pierce all Targets",
-      "values": []
-    },
-    {
-      "text": "60% of Physical Damage Converted to Chaos Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Each Arrow leaves 1 Spore Pod",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Each Spore Pod fires 4 Thorn Arrows",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Thorn Arrows deal (50–60)% less Damage",
-      "values": [
-        "(50–60)"
-      ]
-    },
-    {
-      "text": "Arrows Pierce all Targets",
-      "values": []
-    },
-    {
-      "text": "60% of Physical Damage Converted to Chaos Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Each Arrow leaves 1 Spore Pod",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Each Spore Pod fires 4 Thorn Arrows",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Thorn Arrows deal (50–60)% less Damage",
-      "values": [
-        "(50–60)"
-      ]
-    },
-    {
-      "text": "override turn duration ms [100]",
-      "values": []
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    },
-    {
-      "text": "visual hit effect chaos is green [1]",
-      "values": []
-    },
-    {
-      "text": "Arrows Pierce all Targets",
-      "values": []
-    },
-    {
-      "text": "60% of Physical Damage Converted to Chaos Damage",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "Each Arrow leaves 1 Spore Pod",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Each Spore Pod fires +4 Thorn Arrows",
-      "values": [
-        "+4"
-      ]
-    },
-    {
-      "text": "Thorn Arrows deal 33% less Damage",
-      "values": [
-        "33"
-      ]
-    },
-    {
-      "text": "override turn duration ms [100]",
-      "values": []
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    },
-    {
-      "text": "visual hit effect chaos is green [1]",
-      "values": []
-    }
+  "stats": [
+    "Arrows Pierce all Targets",
+    "60% of Physical Damage Converted to Chaos Damage",
+    "Each Arrow leaves 1 Spore Pod",
+    "Each Spore Pod fires 4 Thorn Arrows",
+    "Thorn Arrows deal (60-50)% less Damage"
   ],
+  "gemDescription": "Fire an arrow that leaves a spore pod in its wake. The spore pod blooms, firing thorn arrows, which travel for a short time before dissipating. Modifiers that cause additional projectiles to be fired will only apply to the initial arrows, each of which leaves its own spore pod.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Each Spore Pod fires +(0–1) Thorn Arrow",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Each Spore Pod fires +(0–1) Thorn Arrow",
-      "values": [
-        "+(0–1)"
-      ]
+      "text": "Each Spore Pod fires +(0.05-1) Thorn Arrows",
+      "values": []
     }
   ]
 }

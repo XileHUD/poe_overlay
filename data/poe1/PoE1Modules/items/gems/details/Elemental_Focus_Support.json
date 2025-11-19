@@ -1,7 +1,17 @@
 {
   "name": "Elemental Focus Support",
   "slug": "Elemental_Focus_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support",
+    "Icon": "F",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "18",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "18",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemElementalFocus"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,47 +335,17 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Supported Skills deal (20-34)% more Elemental Damage",
+    "Supported Skills cannot inflict Elemental Ailments"
+  ],
   "gemDescription": "Supports any skill that hits or burns enemies, or inflicts elemental ailments.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills deal (20–34)% more Elemental Damage",
-      "values": [
-        "(20–34)"
-      ]
-    },
-    {
-      "text": "Supported Skills cannot inflict Elemental Ailments",
-      "values": []
-    },
-    {
-      "text": "Supported Skills deal (20–34)% more Elemental Damage",
-      "values": [
-        "(20–34)"
-      ]
-    },
-    {
-      "text": "Supported Skills cannot inflict Elemental Ailments",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Elemental Ailments are Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)",
-    "(Elemental Ailments are Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)",
-    "(Elemental Ailments are Ignited, Scorched, Chilled, Frozen, Brittle, Shocked, and Sapped)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Elemental Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Elemental Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Elemental Damage",
+      "values": []
     }
   ]
 }

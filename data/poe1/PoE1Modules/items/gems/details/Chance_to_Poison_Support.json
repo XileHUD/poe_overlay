@@ -1,7 +1,16 @@
 {
   "name": "Chance to Poison Support",
   "slug": "Chance_to_Poison_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Chaos, Support",
+    "Icon": "O",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "120%",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "5",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemLesserPoison"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,89 +334,17 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Supported Skills have 40% chance to Poison on Hit",
+    "Supported Skills have (1-94) to (2-141) added Chaos Damage"
+  ],
   "gemDescription": "Supports any skill that hits enemies.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills have 40% chance to Poison on Hit",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "Supported Skills have (1–94) to (2–141) added Chaos Damage",
-      "values": [
-        "(1–94)",
-        "(2–141)"
-      ]
-    },
-    {
-      "text": "Supported Skills have 40% chance to Poison on Hit",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "Supported Skills have (1–94) to (2–141) added Chaos Damage",
-      "values": [
-        "(1–94)",
-        "(2–141)"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 10 Chance to Poison",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "(130–150)% increased Evasion and Energy Shield",
-      "values": [
-        "(130–150)"
-      ]
-    },
-    {
-      "text": "+40 to maximum Energy Shield",
-      "values": [
-        "+40"
-      ]
-    },
-    {
-      "text": "+(15–25)% to all Elemental Resistances",
-      "values": [
-        "+(15–25)"
-      ]
-    },
-    {
-      "text": "(75–100)% increased Damage with Poison if you have at least 300 Dexterity",
-      "values": [
-        "(75–100)"
-      ]
-    },
-    {
-      "text": "(15–25)% increased Poison Duration if you have at least 150 Intelligence",
-      "values": [
-        "(15–25)"
-      ]
-    }
-  ],
-  "modDescriptions": [
-    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
-    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)",
-    "(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Damage with Poison",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Damage with Poison",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Damage with Poison",
+      "values": []
     }
   ]
 }

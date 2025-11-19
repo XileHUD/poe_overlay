@@ -1,7 +1,17 @@
 {
   "name": "Swiftbrand Support",
   "slug": "Swiftbrand_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Brand, Support",
+    "Icon": "t",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "31",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "31",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemSwiftbrand"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,59 +335,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports skills which create brands.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills have 65% less Attached Duration",
-      "values": [
-        "65"
-      ]
-    },
-    {
-      "text": "Supported Skills have 65% less Detached Duration",
-      "values": [
-        "65"
-      ]
-    },
-    {
-      "text": "Supported Skills have (30–44)% more Activation frequency",
-      "values": [
-        "(30–44)"
-      ]
-    },
-    {
-      "text": "Supported Skills have 65% less Attached Duration",
-      "values": [
-        "65"
-      ]
-    },
-    {
-      "text": "Supported Skills have 65% less Detached Duration",
-      "values": [
-        "65"
-      ]
-    },
-    {
-      "text": "Supported Skills have (30–44)% more Activation frequency",
-      "values": [
-        "(30–44)"
-      ]
-    }
+  "stats": [
+    "Supported Skills have 65% less Attached Duration",
+    "Supported Skills have 65% less Detached Duration",
+    "Supported Skills have (30-44)% more Activation frequency"
   ],
+  "gemDescription": "Supports skills which create brands.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–5)% more Activation frequency",
-      "values": [
-        "(0–5)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–5)% more Activation frequency",
-      "values": [
-        "(0–5)"
-      ]
+      "text": "Supported Skills have (0.25-5)% more Activation frequency",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,17 @@
 {
   "name": "Galvanic Arrow of Energy",
   "slug": "Galvanic_Arrow_of_Energy",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Lightning, Attack, AoE, Bow",
+    "Level": "(1-20)",
+    "Cost": "(6-10) Mana",
+    "Attack Damage": "(201-241)% of base",
+    "Effectiveness of Added Damage": "(201-241)%",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "5",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,65 +335,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Create a burst of lightning from your Bow, firing no arrows but damaging enemies in a cone in front of you.",
-  "explicitMods": [
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "+(0.8–1.3) metres to radius",
-      "values": [
-        "+(0.8–1.3)"
-      ]
-    },
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "+(0.8–1.3) metres to radius",
-      "values": [
-        "+(0.8–1.3)"
-      ]
-    },
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "+(0.8–1.8) metres to radius",
-      "values": [
-        "+(0.8–1.8)"
-      ]
-    }
+  "stats": [
+    "50% of Physical Damage Converted to Lightning Damage",
+    "+(0.8-1.3) metres to radius"
   ],
+  "gemDescription": "Create a burst of lightning from your Bow, firing no arrows but damaging enemies in a cone in front of you.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–0.4) metres to radius",
-      "values": [
-        "+(0–0.4)"
-      ]
-    },
-    {
-      "text": "+(0–0.4) metres to radius",
-      "values": [
-        "+(0–0.4)"
-      ]
-    },
-    {
-      "text": "+(0–0.4) metres to radius",
-      "values": [
-        "+(0–0.4)"
-      ]
+      "text": "+(0.02-0.4) metres to radius",
+      "values": []
     }
   ]
 }

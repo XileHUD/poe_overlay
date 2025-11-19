@@ -1,7 +1,17 @@
 {
   "name": "Cast while Channelling Support",
   "slug": "Cast_while_Channelling_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Channelling, Spell, Trigger",
+    "Icon": "W",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "120%",
+    "Requires Level": "38",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "38",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemCastWhileChannelling"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -366,86 +376,16 @@
   ],
   "description": "Cast while Channelling Support\nSupport, Channelling, Spell, TriggerLevel: (1–20)Cost & Reservation Multiplier: 120%Requires Level (38–70), (27–48) Dex, (39–70) IntMust support both a channelling skill and a non-channelling spell skill to work. The channelling skill will trigger a spell periodically while channelling. Cannot support skills used by totems, traps, or mines. Vaal skills and skills with a reservation cannot be triggered.Trigger a Supported Spell every (0.35–0.45) seconds while Channelling Supported Skills\nAdditional Effects From Quality:Supported Channelling Skills deal (0–10)% increased Damage\nSupport\nCost & Reservation Multiplier: 120%Supported Triggered Spells deal 30% less Damage\nAdditional Effects From Quality:Supported Triggered Spells deal (0–10)% increased Damage\nThis is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.\nCast while Channelling Support\nCast while Channelling Support\nCast while Channelling Support\nSupport, Channelling, Spell, TriggerLevel: (1–20)Cost & Reservation Multiplier: 120%Requires Level (38–70), (27–48) Dex, (39–70) IntMust support both a channelling skill and a non-channelling spell skill to work. The channelling skill will trigger a spell periodically while channelling. Cannot support skills used by totems, traps, or mines. Vaal skills and skills with a reservation cannot be triggered.Trigger a Supported Spell every (0.35–0.45) seconds while Channelling Supported Skills\nAdditional Effects From Quality:Supported Channelling Skills deal (0–10)% increased Damage\nSupport\nCost & Reservation Multiplier: 120%Supported Triggered Spells deal 30% less Damagecast spell while linked skill channelling [1]spell uncastable if triggerable [1]\nAdditional Effects From Quality:Supported Triggered Spells deal (0–10)% increased Damage\nThis is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.\nCast while Channelling Support\nCast while Channelling Support\nCast while Channelling Support is a Support gem that trigger linked non-channeling Spell while the character is using a channelling skill.",
   "stats": [
-    "Cast while Channelling Support",
-    "Support, Channelling, Spell, TriggerLevel: (1–20)Cost & Reservation Multiplier: 120%Requires Level (38–70), (27–48) Dex, (39–70) IntMust support both a channelling skill and a non-channelling spell skill to work. The channelling skill will trigger a spell periodically while channelling. Cannot support skills used by totems, traps, or mines. Vaal skills and skills with a reservation cannot be triggered.Trigger a Supported Spell every (0.35–0.45) seconds while Channelling Supported Skills",
-    "Additional Effects From Quality:Supported Channelling Skills deal (0–10)% increased Damage",
-    "Support",
-    "Cost & Reservation Multiplier: 120%Supported Triggered Spells deal 30% less Damage",
-    "Additional Effects From Quality:Supported Triggered Spells deal (0–10)% increased Damage",
-    "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
-    "Cast while Channelling Support",
-    "Cast while Channelling Support",
-    "Cast while Channelling Support",
-    "Support, Channelling, Spell, TriggerLevel: (1–20)Cost & Reservation Multiplier: 120%Requires Level (38–70), (27–48) Dex, (39–70) IntMust support both a channelling skill and a non-channelling spell skill to work. The channelling skill will trigger a spell periodically while channelling. Cannot support skills used by totems, traps, or mines. Vaal skills and skills with a reservation cannot be triggered.Trigger a Supported Spell every (0.35–0.45) seconds while Channelling Supported Skills",
-    "Additional Effects From Quality:Supported Channelling Skills deal (0–10)% increased Damage",
-    "Support",
-    "Cost & Reservation Multiplier: 120%Supported Triggered Spells deal 30% less Damagecast spell while linked skill channelling [1]spell uncastable if triggerable [1]",
-    "Additional Effects From Quality:Supported Triggered Spells deal (0–10)% increased Damage",
-    "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
-    "Cast while Channelling Support",
-    "Cast while Channelling Support",
-    "Cast while Channelling Support is a Support gem that trigger linked non-channeling Spell while the character is using a channelling skill."
+    "Trigger a Supported Spell every (0.45-0.35) seconds while Channelling Supported Skills",
+    "Supported Triggered Spells deal 30% less Damage"
   ],
   "gemDescription": "Must support both a channelling skill and a non-channelling spell skill to work. The channelling skill will trigger a spell periodically while channelling. Cannot support skills used by totems, traps, or mines. Vaal skills and skills with a reservation cannot be triggered.",
-  "explicitMods": [
-    {
-      "text": "Trigger a Supported Spell every (0.35–0.45) seconds while Channelling Supported Skills",
-      "values": [
-        "(0.35–0.45)"
-      ]
-    },
-    {
-      "text": "Supported Triggered Spells deal 30% less Damage",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "Trigger a Supported Spell every (0.35–0.45) seconds while Channelling Supported Skills",
-      "values": [
-        "(0.35–0.45)"
-      ]
-    },
-    {
-      "text": "Supported Triggered Spells deal 30% less Damage",
-      "values": [
-        "30"
-      ]
-    },
-    {
-      "text": "cast spell while linked skill channelling [1]",
-      "values": []
-    },
-    {
-      "text": "spell uncastable if triggerable [1]",
-      "values": []
-    }
-  ],
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Channelling Skills deal (0–10)% increased Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Triggered Spells deal (0–10)% increased Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Channelling Skills deal (0–10)% increased Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Triggered Spells deal (0–10)% increased Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Channelling Skills deal (0.5-10)% increased DamageSupported Triggered Spells deal (0.5-10)% increased Damage",
+      "values": []
     }
   ]
 }

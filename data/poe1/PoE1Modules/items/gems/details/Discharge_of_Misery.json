@@ -1,7 +1,19 @@
 {
   "name": "Discharge of Misery",
   "slug": "Discharge_of_Misery",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Fire, Cold, Lightning, Nova",
+    "Level": "(1-20)",
+    "Cost": "(13-25) Mana",
+    "Cast Time": "0.75 sec",
+    "Critical Strike Chance": "7.00%",
+    "Effectiveness of Added Damage": "210%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,136 +417,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Discharge all the character's charges to deal elemental damage to all nearby monsters.",
-  "explicitMods": [
-    {
-      "text": "Deals (25–234) to (75–701) base Lightning Damage per Power Charge removed",
-      "values": [
-        "(25–234)",
-        "(75–701)"
-      ]
-    },
-    {
-      "text": "Deals (40–374) to (60–561) base Fire Damage per Endurance Charge removed",
-      "values": [
-        "(40–374)",
-        "(60–561)"
-      ]
-    },
-    {
-      "text": "Deals (40–374) to (60–561) base Cold Damage per Frenzy Charge removed",
-      "values": [
-        "(40–374)",
-        "(60–561)"
-      ]
-    },
-    {
-      "text": "Base radius is 2 metres",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "20% more Area of Effect per Charge removed",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "Deals (25–234) to (75–701) base Lightning Damage per Power Charge removed",
-      "values": [
-        "(25–234)",
-        "(75–701)"
-      ]
-    },
-    {
-      "text": "Deals (40–374) to (60–561) base Fire Damage per Endurance Charge removed",
-      "values": [
-        "(40–374)",
-        "(60–561)"
-      ]
-    },
-    {
-      "text": "Deals (40–374) to (60–561) base Cold Damage per Frenzy Charge removed",
-      "values": [
-        "(40–374)",
-        "(60–561)"
-      ]
-    },
-    {
-      "text": "Base radius is 2 metres",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "20% more Area of Effect per Charge removed",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "Deals (25–929) to (75–2786) base Lightning Damage per Power Charge removed",
-      "values": [
-        "(25–929)",
-        "(75–2786)"
-      ]
-    },
-    {
-      "text": "Deals (40–1486) to (60–2228) base Fire Damage per Endurance Charge removed",
-      "values": [
-        "(40–1486)",
-        "(60–2228)"
-      ]
-    },
-    {
-      "text": "Deals (40–1486) to (60–2228) base Cold Damage per Frenzy Charge removed",
-      "values": [
-        "(40–1486)",
-        "(60–2228)"
-      ]
-    },
-    {
-      "text": "Base radius is 2 metres",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "20% more Area of Effect per Charge removed",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (25-234) to (75-701) base Lightning Damage per Power Charge removed",
+    "Deals (40-374) to (60-561) base Fire Damage per Endurance Charge removed",
+    "Deals (40-374) to (60-561) base Cold Damage per Frenzy Charge removed",
+    "Base radius is 2 metres",
+    "20% more Area of Effect per Charge removed"
   ],
+  "gemDescription": "Discharge all the character's charges to deal elemental damage to all nearby monsters.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–10)% chance to deal Damage without removing Charges",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "(0–10)% chance to deal Damage without removing Charges",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "(0–10)% chance to deal Damage without removing Charges",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "(0.5-10)% chance to deal Damage without removing Charges",
+      "values": []
     }
   ]
 }

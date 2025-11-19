@@ -1,7 +1,18 @@
 {
   "name": "Awakened Lightning Penetration Support",
   "slug": "Awakened_Lightning_Penetration_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Lightning, Support",
+    "Icon": "V",
+    "Level": "(1-5)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "72",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; The Maven's Crucible; Can drop from either version of the Maven , from Maven's Invitations , or from Maven-witnessed map bosses.",
+    "Drop level": "72",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemLightningPenetrationPlus"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -185,50 +196,17 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Supported Skills Penetrate (35-39)% Lightning Resistance",
+    "Supported Skills have (0-10)% chance to inflict Lightning Exposure on Hit"
+  ],
   "gemDescription": "Supports any skill that hits enemies, making those hits penetrate enemy lightning resistance.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills Penetrate (35–39)% Lightning Resistance",
-      "values": [
-        "(35–39)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–10)% chance to inflict Lightning Exposure on Hit",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills Penetrate (35–39)% Lightning Resistance",
-      "values": [
-        "(35–39)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–10)% chance to inflict Lightning Exposure on Hit",
-      "values": [
-        "(0–10)"
-      ]
-    }
-  ],
-  "modDescriptions": [
-    "(Lightning Exposure applies -10% to Lightning Resistance for 4 seconds)",
-    "(Lightning Exposure applies -10% to Lightning Resistance for 4 seconds)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Lightning Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Lightning Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Lightning Damage",
+      "values": []
     }
   ]
 }

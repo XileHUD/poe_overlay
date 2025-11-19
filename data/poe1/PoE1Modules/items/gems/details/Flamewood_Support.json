@@ -1,7 +1,21 @@
 {
   "name": "Flamewood Support",
   "slug": "Flamewood_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Totem, Spell, AoE, Fire, Projectile, Trigger",
+    "Icon": "f",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "140%",
+    "Cooldown Time": "1.00 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "1.00 sec",
+    "Critical Strike Chance": "5.00%",
+    "Requires Level": "8",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "8",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemFlamewood"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,119 +339,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports skills which summon totems. Cannot modify the skills of minions.",
-  "explicitMods": [
-    {
-      "text": "Totems from Supported Skills gain the Avenging FlameSkill and Trigger it when Hit by an Enemy",
-      "values": []
-    },
-    {
-      "text": "Base radius is (1.3–1.8) metres",
-      "values": [
-        "(1.3–1.8)"
-      ]
-    },
-    {
-      "text": "Deals base Fire Damage equal to (80–137)% of Totem's Maximum Life",
-      "values": [
-        "(80–137)"
-      ]
-    },
-    {
-      "text": "Totems with this Skill Trigger it when Hit by an Enemy",
-      "values": []
-    },
-    {
-      "text": "Totems from Supported Skills gain the Avenging FlameSkill and Trigger it when Hit by an Enemy",
-      "values": []
-    },
-    {
-      "text": "Base radius is (1.3–1.8) metres",
-      "values": [
-        "(1.3–1.8)"
-      ]
-    },
-    {
-      "text": "Deals base Fire Damage equal to (80–137)% of Totem's Maximum Life",
-      "values": [
-        "(80–137)"
-      ]
-    },
-    {
-      "text": "Totems with this Skill Trigger it when Hit by an Enemy",
-      "values": []
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "base skill is totemified [1]",
-      "values": []
-    },
-    {
-      "text": "do not predict totem life [1]",
-      "values": []
-    },
-    {
-      "text": "infernal bolt cannot be triggered [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "Base radius is (1.3–2.3) metres",
-      "values": [
-        "(1.3–2.3)"
-      ]
-    },
-    {
-      "text": "Deals base Fire Damage equal to (80–182)% of Totem's Maximum Life",
-      "values": [
-        "(80–182)"
-      ]
-    },
-    {
-      "text": "Totems with this Skill Trigger it when Hit by an Enemy",
-      "values": []
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "base skill is totemified [1]",
-      "values": []
-    },
-    {
-      "text": "do not predict totem life [1]",
-      "values": []
-    },
-    {
-      "text": "infernal bolt cannot be triggered [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Totems from Supported Skills gain the Avenging Flame",
+    "Skill and Trigger it when Hit by an Enemy",
+    "Base radius is (1.3-1.8) metres",
+    "Deals base Fire Damage equal to (80-137)% of Totem's Maximum Life",
+    "Totems with this Skill Trigger it when Hit by an Enemy"
   ],
+  "gemDescription": "Supports skills which summon totems. Cannot modify the skills of minions.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–10)% increased Totem Life",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–10)% increased Totem Life",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills have (0.5-10)% increased Totem Life",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,21 @@
 {
   "name": "Frostblink",
   "slug": "Frostblink",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Movement, Duration, Cold, Travel, Blink, AoE",
+    "Level": "(1-20)",
+    "Cost": "(12-22) Mana",
+    "Cooldown Time": "(3.00 sec-2.60 sec)",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "Instant",
+    "Critical Strike Chance": "5.00%",
+    "Effectiveness of Added Damage": "(180-250)%",
+    "Requires Level": "4",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "5",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemFrostblink"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -526,126 +540,20 @@
   ],
   "description": "This spell has an instant cast speed, which means it is the only non-triggered method for a character to move on command while otherwise locked into a stationary action. For example, it can be used to dodge enemy attacks while in the middle of laying a mine, casting a different spell, or channelling. Other actions are not interrupted by casting Frostblink.",
   "stats": [
-    "This spell has an instant cast speed, which means it is the only non-triggered method for a character to move on command while otherwise locked into a stationary action. For example, it can be used to dodge enemy attacks while in the middle of laying a mine, casting a different spell, or channelling. Other actions are not interrupted by casting Frostblink."
+    "Deals (9-1144) to (14-1716) Cold Damage",
+    "Base duration is 3.00 seconds",
+    "+(0-0.3) metres to radius",
+    "(15-19)% increased Cooldown Recovery Rate for each Normal or Magic Enemy in Area",
+    "(80-99)% increased Cooldown Recovery Rate for each Rare or Unique Enemy in Area",
+    "(0-38)% increased maximum travel distance"
   ],
   "gemDescription": "Teleport to a location, damaging enemies and leaving Chilled ground in an area at both ends of the teleport. Shares a cooldown with other Blink skills.",
-  "explicitMods": [
-    {
-      "text": "Deals (9–1144) to (14–1716) Cold Damage",
-      "values": [
-        "(9–1144)",
-        "(14–1716)"
-      ]
-    },
-    {
-      "text": "Base duration is 3 seconds",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "+(0–0.3) metres to radius",
-      "values": [
-        "+(0–0.3)"
-      ]
-    },
-    {
-      "text": "(15–19)% increased Cooldown Recovery Rate for each Normal or Magic Enemy in Area(80–99)% increased Cooldown Recovery Rate for each Rare or Unique Enemy in Area",
-      "values": [
-        "(15–19)",
-        "(80–99)"
-      ]
-    },
-    {
-      "text": "(0–38)% increased maximum travel distance",
-      "values": [
-        "(0–38)"
-      ]
-    },
-    {
-      "text": "Deals (9–1144) to (14–1716) Cold Damage",
-      "values": [
-        "(9–1144)",
-        "(14–1716)"
-      ]
-    },
-    {
-      "text": "Base duration is 3 seconds",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "+(0–0.3) metres to radius",
-      "values": [
-        "+(0–0.3)"
-      ]
-    },
-    {
-      "text": "(15–19)% increased Cooldown Recovery Rate for each Normal or Magic Enemy in Area(80–99)% increased Cooldown Recovery Rate for each Rare or Unique Enemy in Area",
-      "values": [
-        "(15–19)",
-        "(80–99)"
-      ]
-    },
-    {
-      "text": "(0–38)% increased maximum travel distance",
-      "values": [
-        "(0–38)"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "Grants Level 10 Frostblink Skill",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "(30–50)% increased Cold Damage",
-      "values": [
-        "(30–50)"
-      ]
-    },
-    {
-      "text": "+(10–15)% to all Elemental Resistances",
-      "values": [
-        "+(10–15)"
-      ]
-    },
-    {
-      "text": "60% increased Area of Effect of Hex Skills",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "You cannot be Cursed with Silence",
-      "values": []
-    },
-    {
-      "text": "Frostblink has 50% increased Duration",
-      "values": [
-        "50"
-      ]
-    }
-  ],
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–10)% increased maximum travel distance",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "(0–10)% increased maximum travel distance",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "(0.5-10)% increased maximum travel distance",
+      "values": []
     }
   ]
 }

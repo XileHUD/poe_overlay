@@ -1,7 +1,21 @@
 {
   "name": "Bladefall of Trarthus",
   "slug": "Bladefall_of_Trarthus",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Physical, Arcane, Duration",
+    "Level": "(1-20)",
+    "Cost": "5% Mana per second",
+    "Cooldown Time": "0.30 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "Instant",
+    "Critical Strike Chance": "10.00%",
+    "Effectiveness of Added Damage": "120%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Mercenaries; Can be obtained from reward chests that contain gems in Heist .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,193 +339,23 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Deals (39-536) to (59-803) Physical Damage",
+    "Base duration is 6.00 seconds",
+    "A Volley of blades falls every 0.7 seconds",
+    "2% increased Volley frequency per 100 maximum Mana",
+    "Base Volley radius is 2.5 metres",
+    "Base Blade radius is 1 metre",
+    "5 Blades fall per Volley, which will then Linger in the ground",
+    "Maximum 40 Lingering Blades can be left in the ground at a time"
+  ],
   "gemDescription": "Once activated, continuously spends mana to cause volleys of ethereal weapons rain from the sky around you, dealing damage to enemies they impact. Each Blade will target a separate enemy in the volley area if possible. Each enemy can only be hit once by each volley, even if multiple blades land near them. This skill cannot be triggered or used by Totems, Traps, or Mines.",
-  "explicitMods": [
-    {
-      "text": "Deals (39–536) to (59–803) Physical Damage",
-      "values": [
-        "(39–536)",
-        "(59–803)"
-      ]
-    },
-    {
-      "text": "Base duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "A Volley of blades falls every 0.7 seconds",
-      "values": [
-        "0.7"
-      ]
-    },
-    {
-      "text": "2% increased Volley frequency per 100 maximum Mana",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Base Volley radius is 2.5 metres",
-      "values": [
-        "2.5"
-      ]
-    },
-    {
-      "text": "Base Blade radius is 1 metre",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "5 Blades fall per Volley, which will then Linger in the ground",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Maximum 40 Lingering Blades can be left in the ground at a time",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "Deals (39–536) to (59–803) Physical Damage",
-      "values": [
-        "(39–536)",
-        "(59–803)"
-      ]
-    },
-    {
-      "text": "Base duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "A Volley of blades falls every 0.7 seconds",
-      "values": [
-        "0.7"
-      ]
-    },
-    {
-      "text": "2% increased Volley frequency per 100 maximum Mana",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Base Volley radius is 2.5 metres",
-      "values": [
-        "2.5"
-      ]
-    },
-    {
-      "text": "Base Blade radius is 1 metre",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "5 Blades fall per Volley, which will then Linger in the ground",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Maximum 40 Lingering Blades can be left in the ground at a time",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    },
-    {
-      "text": "Deals (26–1867) to (39–2800) Physical Damage",
-      "values": [
-        "(26–1867)",
-        "(39–2800)"
-      ]
-    },
-    {
-      "text": "Lose 6% of Mana per Second",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Base duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "A Volley of blades falls every 0.7 seconds",
-      "values": [
-        "0.7"
-      ]
-    },
-    {
-      "text": "2% increased Volley frequency per 100 maximum Mana",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Base radius is (2–3) metres",
-      "values": [
-        "(2–3)"
-      ]
-    },
-    {
-      "text": "Base secondary radius is 0.8 metres",
-      "values": [
-        "0.8"
-      ]
-    },
-    {
-      "text": "5 Blades fall per Volley, which will then Linger in the ground",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Maximum 40 Lingering Blades can be left in the ground at a time",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Lingering Blades remain on the ground for a duration and can be used by specific skills. If Animated, they count as Daggers)",
-    "(Lingering Blades remain on the ground for a duration and can be used by specific skills. If Animated, they count as Daggers)",
-    "(Lingering Blades remain on the ground for a duration and can be used by specific skills. If Animated, they count as Daggers)",
-    "(Lingering Blades remain on the ground for a duration and can be used by specific skills. If Animated, they count as Daggers)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base radius is (0–0.3) metres",
-      "values": [
-        "(0–0.3)"
-      ]
-    },
-    {
-      "text": "Base radius is (0–0.3) metres",
-      "values": [
-        "(0–0.3)"
-      ]
+      "text": "Base radius is (0.015-0.3) metres",
+      "values": []
     }
   ]
 }

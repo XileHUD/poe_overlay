@@ -1,7 +1,19 @@
 {
   "name": "Kinetic Rain of Impact",
   "slug": "Kinetic_Rain_of_Impact",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, AoE, Projectile",
+    "Level": "(1-20)",
+    "Cost": "(6-9) Mana",
+    "Attack Speed": "120% of base",
+    "Attack Damage": "(120-135)% of base",
+    "Effectiveness of Added Damage": "(120-135)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -285,143 +297,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Swing your wand to cause a number of projectiles to rain down within a large area in front of you, directly targeting the locations of enemies in the area. The locations where each projectile will land are shown with markers before they fall. Each projectile explodes when hitting the ground, dealing area damage.",
-  "explicitMods": [
-    {
-      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
-      "values": [
-        "150"
-      ]
-    },
-    {
-      "text": "Fires 10 Projectiles",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Base targeting area length is 9 metres",
-      "values": [
-        "9"
-      ]
-    },
-    {
-      "text": "Base explosion radius is 1.2 metres",
-      "values": [
-        "1.2"
-      ]
-    },
-    {
-      "text": "Base targeting area width is 4.5 metres",
-      "values": [
-        "4.5"
-      ]
-    },
-    {
-      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
-      "values": [
-        "150"
-      ]
-    },
-    {
-      "text": "Fires 10 Projectiles",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Base targeting area length is 9 metres",
-      "values": [
-        "9"
-      ]
-    },
-    {
-      "text": "Base explosion radius is 1.2 metres",
-      "values": [
-        "1.2"
-      ]
-    },
-    {
-      "text": "Base targeting area width is 4.5 metres",
-      "values": [
-        "4.5"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire wand projectiles [1]",
-      "values": []
-    },
-    {
-      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
-      "values": [
-        "150"
-      ]
-    },
-    {
-      "text": "Fires 10 Projectiles",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Base targeting area length is 9 metres",
-      "values": [
-        "9"
-      ]
-    },
-    {
-      "text": "Base explosion radius is 1.2 metres",
-      "values": [
-        "1.2"
-      ]
-    },
-    {
-      "text": "Base targeting area width is 4.5 metres",
-      "values": [
-        "4.5"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire wand projectiles [1]",
-      "values": []
-    }
+  "stats": [
+    "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
+    "Fires 10 Projectiles",
+    "Base targeting area length is 9 metres",
+    "Base targeting area width is 4.5 metres",
+    "Base explosion radius is 1.2 metres"
   ],
+  "gemDescription": "Swing your wand to cause a number of projectiles to rain down within a large area in front of you, directly targeting the locations of enemies in the area. The locations where each projectile will land are shown with markers before they fall. Each projectile explodes when hitting the ground, dealing area damage.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Fires +(0–2) Projectiles",
-      "values": [
-        "+(0–2)"
-      ]
-    },
-    {
-      "text": "Fires +(0–2) Projectiles",
-      "values": [
-        "+(0–2)"
-      ]
-    },
-    {
-      "text": "Fires +(0–2) Projectiles",
-      "values": [
-        "+(0–2)"
-      ]
+      "text": "Fires +(0.1-2) Projectiles",
+      "values": []
     }
   ]
 }

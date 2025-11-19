@@ -1,7 +1,20 @@
 {
   "name": "General's Cry",
   "slug": "Generals_Cry",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Warcry, AoE, Duration",
+    "Level": "(1-20)",
+    "Cost": "(15-19) Mana",
+    "Cooldown Time": "3.00 sec",
+    "Can Store": "1 Use(s)",
+    "Use Time": "0.80 sec",
+    "AoE Radius": "60",
+    "Requires Level": "24",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "24",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemGeneralsCry"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -446,144 +459,24 @@
   ],
   "description": "Requires 1 Corpse per General even with*  Redblade Banner *(3 corpses = 3 generals) does NOT work with Projectile skills UNLESS they have the MELEE tag as well.",
   "stats": [
-    "Requires 1 Corpse per General even with*  Redblade Banner *(3 corpses = 3 generals) does NOT work with Projectile skills UNLESS they have the MELEE tag as well."
+    "Base duration is (4.00-4.90) seconds",
+    "(0-38)% increased Warcry Speed",
+    "Maximum 5 Summoned Mirage Warriors",
+    "Counts total Power of Enemies and Corpses in Range",
+    "Summons Mirage Warriors from 2 corpses per 5 Power, minimum 1 corpse",
+    "Supported Strike Skills cannot target additional Enemies",
+    "Attacks with Supported Skills count as Exerted",
+    "Supported Skills deal (60-51)% less Damage",
+    "Supported Skills are used by Mirage Warriors Summoned by General's Cry",
+    "Supported Skills count as Triggered"
   ],
   "gemDescription": "Performs a warcry, taunting nearby enemies to attack the user, and summoning Mirage Warriors from nearby corpses. The Mirage Warriors each use a linked attack skill once before dissipating.",
-  "explicitMods": [
-    {
-      "text": "Base duration is (4–4.9) seconds",
-      "values": [
-        "(4–4.9)"
-      ]
-    },
-    {
-      "text": "(0–38)% increased Warcry Speed",
-      "values": [
-        "(0–38)"
-      ]
-    },
-    {
-      "text": "Maximum 5 Summoned Mirage Warriors",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Summons Mirage Warriors from 2 corpses per 5 Power, minimum 1 corpse",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Counts total Power of Enemies and Corpses in Range",
-      "values": []
-    },
-    {
-      "text": "Supported Strike Skills cannot target additional Enemies",
-      "values": []
-    },
-    {
-      "text": "Attacks with Supported Skills count as Exerted",
-      "values": []
-    },
-    {
-      "text": "Supported Skills deal (51–60)% less Damage",
-      "values": [
-        "(51–60)"
-      ]
-    },
-    {
-      "text": "Supported Skills are used by Mirage Warriors Summoned by General's CrySupported Skills count as Triggered",
-      "values": []
-    },
-    {
-      "text": "Base duration is (4–4.9) seconds",
-      "values": [
-        "(4–4.9)"
-      ]
-    },
-    {
-      "text": "(0–38)% increased Warcry Speed",
-      "values": [
-        "(0–38)"
-      ]
-    },
-    {
-      "text": "Maximum 5 Summoned Mirage Warriors",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Summons Mirage Warriors from 2 corpses per 5 Power, minimum 1 corpse",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Counts total Power of Enemies and Corpses in Range",
-      "values": []
-    },
-    {
-      "text": "base deal no attack damage [1]",
-      "values": []
-    },
-    {
-      "text": "base deal no secondary damage [1]",
-      "values": []
-    },
-    {
-      "text": "base deal no spell damage [1]",
-      "values": []
-    },
-    {
-      "text": "cannot cancel skill before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "Supported Strike Skills cannot target additional Enemies",
-      "values": []
-    },
-    {
-      "text": "Attacks with Supported Skills count as Exerted",
-      "values": []
-    },
-    {
-      "text": "Supported Skills deal (51–60)% less Damage",
-      "values": [
-        "(51–60)"
-      ]
-    },
-    {
-      "text": "Supported Skills are used by Mirage Warriors Summoned by General's CrySupported Skills count as Triggered",
-      "values": []
-    },
-    {
-      "text": "base damage not from skill user [1]",
-      "values": []
-    },
-    {
-      "text": "force lite skill effects [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)",
-    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)",
-    "(Normal Monsters have 1 Power, Magic Monsters 2, Rare Monsters 10, Unique Monsters 20, and Players 5)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Maximum +(0–1) Summoned Mirage Warrior",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Maximum +(0–1) Summoned Mirage Warrior",
-      "values": [
-        "+(0–1)"
-      ]
+      "text": "Maximum +(0.05-1) Summoned Mirage Warriors",
+      "values": []
     }
   ]
 }

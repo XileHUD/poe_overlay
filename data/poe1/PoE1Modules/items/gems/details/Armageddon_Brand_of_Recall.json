@@ -1,7 +1,19 @@
 {
   "name": "Armageddon Brand of Recall",
   "slug": "Armageddon_Brand_of_Recall",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Fire, Duration, Brand",
+    "Level": "(1-20)",
+    "Cost": "(15-27) Mana",
+    "Cast Time": "0.40 sec",
+    "Critical Strike Chance": "5.00%",
+    "Effectiveness of Added Damage": "(270-300)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,192 +337,22 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Creates a magical brand which can attach to a nearby enemy. It periodically activates while attached, causing a fiery meteor to fall from the sky. The brand will detach if the enemy dies.",
-  "explicitMods": [
-    {
-      "text": "Activates every 1.5 seconds while Attached",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "Increases and Reductions to Cast Speed also apply to this Skill's Activation frequency",
-      "values": []
-    },
-    {
-      "text": "Deals (102–1357) to (152–2036) Fire Damage",
-      "values": [
-        "(102–1357)",
-        "(152–2036)"
-      ]
-    },
-    {
-      "text": "Base radius is 2.2 metres",
-      "values": [
-        "2.2"
-      ]
-    },
-    {
-      "text": "Can be Detached for a total Duration of 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Can be Attached for a total Duration of 5 seconds",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Deals 80% less Damage with Hits against Branded Enemy",
-      "values": [
-        "80"
-      ]
-    },
-    {
-      "text": "Activates every 1.5 seconds while Attached",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "Increases and Reductions to Cast Speed also apply to this Skill's Activation frequency",
-      "values": []
-    },
-    {
-      "text": "Deals (102–1357) to (152–2036) Fire Damage",
-      "values": [
-        "(102–1357)",
-        "(152–2036)"
-      ]
-    },
-    {
-      "text": "Base radius is 2.2 metres",
-      "values": [
-        "2.2"
-      ]
-    },
-    {
-      "text": "Can be Detached for a total Duration of 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Can be Attached for a total Duration of 5 seconds",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Deals 80% less Damage with Hits against Branded Enemy",
-      "values": [
-        "80"
-      ]
-    },
-    {
-      "text": "base number of sigils allowed per target [1]",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    },
-    {
-      "text": "Activates every 1.5 seconds while Attached",
-      "values": [
-        "1.5"
-      ]
-    },
-    {
-      "text": "Increases and Reductions to Cast Speed also apply to this Skill's Activation frequency",
-      "values": []
-    },
-    {
-      "text": "Deals (102–6974) to (152–10461) Fire Damage",
-      "values": [
-        "(102–6974)",
-        "(152–10461)"
-      ]
-    },
-    {
-      "text": "Base radius is 2.2 metres",
-      "values": [
-        "2.2"
-      ]
-    },
-    {
-      "text": "Can be Detached for a total Duration of 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Can be Attached for a total Duration of 5 seconds",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Deals 80% less Damage with Hits against Branded Enemy",
-      "values": [
-        "80"
-      ]
-    },
-    {
-      "text": "base number of sigils allowed per target [1]",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    }
+  "stats": [
+    "Activates every 1.5 seconds while Attached",
+    "Increases and Reductions to Cast Speed also apply to this Skill's Activation frequency",
+    "Deals (102-1357) to (152-2036) Fire Damage",
+    "Base radius is 2.2 metres",
+    "Can be Detached for a total Duration of 6.00 seconds",
+    "Can be Attached for a total Duration of 5.00 seconds",
+    "Deals 80% less Damage with Hits against Branded Enemy"
   ],
+  "gemDescription": "Creates a magical brand which can attach to a nearby enemy. It periodically activates while attached, causing a fiery meteor to fall from the sky. The brand will detach if the enemy dies.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
-    },
-    {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
-    },
-    {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
+      "text": "Base radius is (0.01-0.2) metres",
+      "values": []
     }
   ]
 }

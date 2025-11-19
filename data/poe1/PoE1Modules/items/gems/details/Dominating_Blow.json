@@ -1,7 +1,18 @@
 {
   "name": "Dominating Blow",
   "slug": "Dominating_Blow",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Minion, Duration, Melee, Strike",
+    "Level": "(1-20)",
+    "Cost": "(7-10) Mana",
+    "Attack Damage": "(249-458)% of base",
+    "Effectiveness of Added Damage": "(249-458)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "28",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemDominatingBlow"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,103 +416,21 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Attacks enemies with a melee strike, applying a debuff for a short duration. If a non-unique enemy dies while affected by the debuff, the enemy's corpse will be consumed and a Sentinel of Dominance with the same rarity, prefix and suffix modifiers will be summoned for a longer secondary duration.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 1 seconds",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Base secondary duration is 20 seconds",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "Maximum 3 Summoned Magic Sentinels of Dominance",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Maximum 9 Summoned Normal Sentinels of Dominance",
-      "values": [
-        "9"
-      ]
-    },
-    {
-      "text": "Maximum 1 Summoned Rare Sentinel of Dominance",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "25% Chance to Summon a Normal Sentinel of Dominance on Hitting a Unique Monster",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Base duration is 1 seconds",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Base secondary duration is 20 seconds",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "Maximum 3 Summoned Magic Sentinels of Dominance",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Maximum 9 Summoned Normal Sentinels of Dominance",
-      "values": [
-        "9"
-      ]
-    },
-    {
-      "text": "Maximum 1 Summoned Rare Sentinel of Dominance",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "25% Chance to Summon a Normal Sentinel of Dominance on Hitting a Unique Monster",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "base max number of vaal dominated monsters [3]",
-      "values": []
-    },
-    {
-      "text": "is dominated [1]",
-      "values": []
-    }
+  "stats": [
+    "Base duration is 1.00 seconds",
+    "Base secondary duration is 20.00 seconds",
+    "Maximum 3 Summoned Magic Sentinels of Dominance",
+    "Maximum 9 Summoned Normal Sentinels of Dominance",
+    "Maximum 1 Summoned Rare Sentinel of Dominance",
+    "25% Chance to Summon a Normal Sentinel of Dominance on Hitting a Unique Monster"
   ],
+  "gemDescription": "Attacks enemies with a melee strike, applying a debuff for a short duration. If a non-unique enemy dies while affected by the debuff, the enemy's corpse will be consumed and a Sentinel of Dominance with the same rarity, prefix and suffix modifiers will be summoned for a longer secondary duration.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Minions have (0–40)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "Minions have (0–40)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–40)"
-      ]
+      "text": "Minions have (2-40)% increased Cooldown Recovery Rate",
+      "values": []
     }
   ]
 }

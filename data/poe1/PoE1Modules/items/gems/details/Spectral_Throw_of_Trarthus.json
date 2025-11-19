@@ -1,7 +1,18 @@
 {
   "name": "Spectral Throw of Trarthus",
   "slug": "Spectral_Throw_of_Trarthus",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Trap, Attack, Projectile",
+    "Level": "(1-20)",
+    "Cost": "(5-9) Mana",
+    "Attack Speed": "120% of base",
+    "Attack Damage": "(92-138)% of base",
+    "Effectiveness of Added Damage": "(92-138)%",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Mercenaries; Can be obtained from reward chests that contain gems in Heist .",
+    "Drop level": "5",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -285,113 +296,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Throws a trap which, once triggered, fires many spectral copies of your melee weapon. They fly out in all directions and then return to where the trap triggered, in a spinning attack that damages enemies in their path. If dual wielding, each Trap thrown will randomly use either the main hand or off hand weapon.",
-  "explicitMods": [
-    {
-      "text": "Trap lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Fires (3–5) Projectiles",
-      "values": [
-        "(3–5)"
-      ]
-    },
-    {
-      "text": "Fires Projectiles in a circle",
-      "values": []
-    },
-    {
-      "text": "Trap lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Fires (3–5) Projectiles",
-      "values": [
-        "(3–5)"
-      ]
-    },
-    {
-      "text": "Fires Projectiles in a circle",
-      "values": []
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "base skill is trapped [1]",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "spectral throw forget hit list time override [225]",
-      "values": []
-    },
-    {
-      "text": "Trap lasts +4 seconds",
-      "values": [
-        "+4"
-      ]
-    },
-    {
-      "text": "Throw up to 1 additional Trap if dual wielding",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Fires +(3–7) Projectiles",
-      "values": [
-        "+(3–7)"
-      ]
-    },
-    {
-      "text": "Traps are thrown randomly around targeted location",
-      "values": []
-    },
-    {
-      "text": "Fires Projectiles in a circle",
-      "values": []
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "base skill is trapped [1]",
-      "values": []
-    },
-    {
-      "text": "ignores trap and mine cooldown limit [1]",
-      "values": []
-    },
-    {
-      "text": "spectral throw forget hit list time override [225]",
-      "values": []
-    }
+  "stats": [
+    "Trap lasts 4 seconds",
+    "Fires (3-5) Projectiles",
+    "Fires Projectiles in a circle"
   ],
+  "gemDescription": "Throws a trap which, once triggered, fires many spectral copies of your melee weapon. They fly out in all directions and then return to where the trap triggered, in a spinning attack that damages enemies in their path. If dual wielding, each Trap thrown will randomly use either the main hand or off hand weapon.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Projectiles that have Pierced deal (0–20)% more Damage",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "Projectiles that have Pierced deal (0–20)% more Damage",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "Projectiles that have Pierced deal (1-20)% more Damage",
+      "values": []
     }
   ]
 }

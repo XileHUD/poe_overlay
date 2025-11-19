@@ -1,7 +1,22 @@
 {
   "name": "Vaal Lightning Strike",
   "slug": "Vaal_Lightning_Strike",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Melee, Strike, Duration, Vaal, Lightning, Projectile",
+    "Level": "(1-20)",
+    "Souls Per Use": "20",
+    "Can Store": "2 Use(s)",
+    "Soul Gain Prevention": "8 sec",
+    "Attack Damage": "(114-237)% of base",
+    "Effectiveness of Added Damage": "(114-237)%",
+    "Requires Level": "12",
+    "Info 9": "Corrupted",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Vaal Lightning Strike can drop from the Vaal Vessels found in Vaal side areas .",
+    "Drop level": "12",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemVaalLightningStrike"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -245,189 +260,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Infuses your melee weapon with electrical energies as you swing. In addition to converting some of your physical damage to lightning damage, the stored energy becomes an orb attached to the enemy you hit, or the ground if you don't hit an enemy. The orb will periodically fire projectiles at other nearby enemies for a duration, which will also damage the enemy the orb is attached to.",
-  "explicitMods": [
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Base duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Fires (5–9) Projectiles",
-      "values": [
-        "(5–9)"
-      ]
-    },
-    {
-      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "Can't be Evaded",
-      "values": []
-    },
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Base duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "Can't be Evaded",
-      "values": []
-    },
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Base duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Fires (5–9) Projectiles",
-      "values": [
-        "(5–9)"
-      ]
-    },
-    {
-      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "Can't be Evaded",
-      "values": []
-    },
-    {
-      "text": "cannot cancel skill before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "show number of projectiles [1]",
-      "values": []
-    },
-    {
-      "text": "skill cannot be stunned before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "total projectile spread angle override [180]",
-      "values": []
-    },
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Base duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
-      "values": []
-    },
-    {
-      "text": "Can't be Evaded",
-      "values": []
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "cannot cancel skill before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "show number of projectiles [1]",
-      "values": []
-    },
-    {
-      "text": "skill cannot be stunned before contact point [1]",
-      "values": []
-    },
-    {
-      "text": "total projectile spread angle override [180]",
-      "values": []
-    },
-    {
-      "text": "Fires +3 Projectiles",
-      "values": [
-        "+3"
-      ]
-    },
-    {
-      "text": "50% of Physical Damage Converted to Fire Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Projectiles deal 50% less Damage with Hits and Ailments",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "active skill projectile speed +% variation final [30]",
-      "values": []
-    },
-    {
-      "text": "show number of projectiles [1]",
-      "values": []
-    },
-    {
-      "text": "total projectile spread angle override [70]",
-      "values": []
-    }
+  "stats": [
+    "50% of Physical Damage Converted to Lightning Damage",
+    "Base duration is 6.00 seconds",
+    "Fires (5-9) Projectiles",
+    "Modifiers to Skill Effect Duration also apply to this Skill's Soul Gain Prevention",
+    "Can't be Evaded"
   ],
+  "gemDescription": "Infuses your melee weapon with electrical energies as you swing. In addition to converting some of your physical damage to lightning damage, the stored energy becomes an orb attached to the enemy you hit, or the ground if you don't hit an enemy. The orb will periodically fire projectiles at other nearby enemies for a duration, which will also damage the enemy the orb is attached to.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Fires +(0–1) Projectile",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Fires +(0–1) Projectile",
-      "values": [
-        "+(0–1)"
-      ]
+      "text": "Fires +(0.05-1) Projectiles",
+      "values": []
     }
   ]
 }

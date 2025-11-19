@@ -1,7 +1,19 @@
 {
   "name": "Armageddon Brand of Volatility",
   "slug": "Armageddon_Brand_of_Volatility",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Fire, Duration, Brand",
+    "Level": "(1-20)",
+    "Cost": "(15-27) Mana",
+    "Cast Time": "0.80 sec",
+    "Critical Strike Chance": "7.50%",
+    "Effectiveness of Added Damage": "(330-370)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,150 +337,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Creates a magical brand which can attach to a nearby enemy. It activates once, causing a fiery meteor to fall from the sky, then is destroyed.",
-  "explicitMods": [
-    {
-      "text": "Deals (125–1676) to (188–2514) Fire Damage",
-      "values": [
-        "(125–1676)",
-        "(188–2514)"
-      ]
-    },
-    {
-      "text": "Base radius is 2.6 metres",
-      "values": [
-        "2.6"
-      ]
-    },
-    {
-      "text": "Cannot be Recalled",
-      "values": []
-    },
-    {
-      "text": "Can be Detached for a total Duration of 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Activates once when Attached, then is Destroyed",
-      "values": []
-    },
-    {
-      "text": "Deals (125–1676) to (188–2514) Fire Damage",
-      "values": [
-        "(125–1676)",
-        "(188–2514)"
-      ]
-    },
-    {
-      "text": "Base radius is 2.6 metres",
-      "values": [
-        "2.6"
-      ]
-    },
-    {
-      "text": "Cannot be Recalled",
-      "values": []
-    },
-    {
-      "text": "Can be Detached for a total Duration of 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Activates once when Attached, then is Destroyed",
-      "values": []
-    },
-    {
-      "text": "base number of sigils allowed per target [1]",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    },
-    {
-      "text": "Deals (125–8613) to (188–12920) Fire Damage",
-      "values": [
-        "(125–8613)",
-        "(188–12920)"
-      ]
-    },
-    {
-      "text": "Base radius is 2.6 metres",
-      "values": [
-        "2.6"
-      ]
-    },
-    {
-      "text": "Cannot be Recalled",
-      "values": []
-    },
-    {
-      "text": "Can be Detached for a total Duration of 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Activates once when Attached, then is Destroyed",
-      "values": []
-    },
-    {
-      "text": "base number of sigils allowed per target [1]",
-      "values": []
-    },
-    {
-      "text": "base skill show average damage instead of dps [1]",
-      "values": []
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (125-1676) to (188-2514) Fire Damage",
+    "Base radius is 2.6 metres",
+    "Cannot be Recalled",
+    "Can be Detached for a total Duration of 6.00 seconds",
+    "Activates once when Attached, then is Destroyed"
   ],
+  "gemDescription": "Creates a magical brand which can attach to a nearby enemy. It activates once, causing a fiery meteor to fall from the sky, then is destroyed.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
-    },
-    {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
-    },
-    {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
+      "text": "Base radius is (0.01-0.2) metres",
+      "values": []
     }
   ]
 }

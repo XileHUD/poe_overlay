@@ -1,7 +1,19 @@
 {
   "name": "Shattering Steel of Ammunition",
   "slug": "Shattering_Steel_of_Ammunition",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Projectile, AoE, Physical, Duration",
+    "Level": "(1-20)",
+    "Cost": "(7-12) Mana",
+    "Attack Speed": "85% of base",
+    "Attack Damage": "(170-265)% of base",
+    "Effectiveness of Added Damage": "(170-265)%",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "12",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,186 +337,23 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Base duration is 6.00 seconds",
+    "Fires 3 Projectiles",
+    "Gain a Steel Ward if you have at least 2 Steel Shards, up to a maximum of 6",
+    "Each Steel Ward grants +8% Chance to Block Projectile Attack Damage",
+    "40% chance to Impale Enemies on Hit",
+    "If you have no Steel Shards, only Fires 1 Projectile",
+    "Projectiles deal up to (50-110)% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther",
+    "Consumes up to 2 Steel Shards"
+  ],
   "gemDescription": "Swing an Axe or Sword, consuming Steel Shards to gain a Steel Ward that protects you for a duration, and fire projectiles which shatter on impact or soon after being launched, dealing area damage in front of where they shatter. Steel Shards are gained with the Call of Steel Skill.",
-  "explicitMods": [
-    {
-      "text": "Base duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Fires 3 Projectiles",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Gain a Steel Ward if you have at least 2 Steel Shards, up to a maximum of 6Each Steel Ward grants +8% Chance to Block Projectile Attack Damage",
-      "values": [
-        "+8"
-      ]
-    },
-    {
-      "text": "40% chance to Impale Enemies on Hit",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "If you have no Steel Shards, only Fires 1 Projectile",
-      "values": []
-    },
-    {
-      "text": "Projectiles deal up to (50–110)% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther",
-      "values": [
-        "(50–110)"
-      ]
-    },
-    {
-      "text": "Consumes up to 2 Steel Shards",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Base duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Fires 3 Projectiles",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Gain a Steel Ward if you have at least 2 Steel Shards, up to a maximum of 6Each Steel Ward grants +8% Chance to Block Projectile Attack Damage",
-      "values": [
-        "+8"
-      ]
-    },
-    {
-      "text": "40% chance to Impale Enemies on Hit",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "If you have no Steel Shards, only Fires 1 Projectile",
-      "values": []
-    },
-    {
-      "text": "Projectiles deal up to (50–110)% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther",
-      "values": [
-        "(50–110)"
-      ]
-    },
-    {
-      "text": "Consumes up to 2 Steel Shards",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "active skill additional projectiles fire parallel x dist [90]",
-      "values": []
-    },
-    {
-      "text": "active skill projectile speed +% variation final [100]",
-      "values": []
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "Base duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Fires 3 Projectiles",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Gain a Steel Ward if you have at least 2 Steel Shards, up to a maximum of 6Each Steel Ward grants +8% Chance to Block Projectile Attack Damage",
-      "values": [
-        "+8"
-      ]
-    },
-    {
-      "text": "40% chance to Impale Enemies on Hit",
-      "values": [
-        "40"
-      ]
-    },
-    {
-      "text": "If you have no Steel Shards, only Fires 1 Projectile",
-      "values": []
-    },
-    {
-      "text": "Projectiles deal up to (50–180)% more Damage with Hits per Steel Shard consumed at the start of their movement, lowering this bonus as they travel farther",
-      "values": [
-        "(50–180)"
-      ]
-    },
-    {
-      "text": "Consumes up to 2 Steel Shards",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "active skill additional projectiles fire parallel x dist [90]",
-      "values": []
-    },
-    {
-      "text": "active skill projectile speed +% variation final [100]",
-      "values": []
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)",
-    "(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)",
-    "(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)",
-    "(When an Impaled enemy is hit, the Impale reflects 10% of the physical damage of the Impaling hit to that enemy. Impale lasts for 5 hits or 8 seconds)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–40)% increased Impale Effect",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "(0–40)% increased Impale Effect",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "(0–40)% increased Impale Effect",
-      "values": [
-        "(0–40)"
-      ]
+      "text": "(2-40)% increased Impale Effect",
+      "values": []
     }
   ]
 }

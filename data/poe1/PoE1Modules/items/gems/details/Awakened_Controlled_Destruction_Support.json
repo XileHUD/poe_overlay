@@ -1,7 +1,18 @@
 {
   "name": "Awakened Controlled Destruction Support",
   "slug": "Awakened_Controlled_Destruction_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Critical, Support",
+    "Icon": "C",
+    "Level": "(1-5)",
+    "Cost & Reservation Multiplier": "140%",
+    "Requires Level": "72",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; The Maven's Crucible; Can drop from either version of the Maven , from Maven's Invitations , or from Maven-witnessed map bosses.",
+    "Drop level": "72",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemControlledDestructionPlus"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -185,63 +196,18 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Supported Skills have 80% less Critical Strike Chance",
+    "Supported Skills deal (40-44)% more Spell Damage",
+    "Supported Skills have (0-10)% chance to Unnerve Enemies for 4 seconds on Hit"
+  ],
   "gemDescription": "Supports attack skills, or spell skills that deal damage.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills have 80% less Critical Strike Chance",
-      "values": [
-        "80"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (40–44)% more Spell Damage",
-      "values": [
-        "(40–44)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–10)% chance to Unnerve Enemies for 4 seconds on Hit",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills have 80% less Critical Strike Chance",
-      "values": [
-        "80"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (40–44)% more Spell Damage",
-      "values": [
-        "(40–44)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–10)% chance to Unnerve Enemies for 4 seconds on Hit",
-      "values": [
-        "(0–10)"
-      ]
-    }
-  ],
-  "modDescriptions": [
-    "(Unnerved enemies take 10% increased Spell Damage)",
-    "(Unnerved enemies take 10% increased Spell Damage)",
-    "(Unnerved enemies take 10% increased Spell Damage)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Spell Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Spell Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Spell Damage",
+      "values": []
     }
   ]
 }

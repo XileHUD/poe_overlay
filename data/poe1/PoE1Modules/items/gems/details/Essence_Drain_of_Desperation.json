@@ -1,7 +1,19 @@
 {
   "name": "Essence Drain of Desperation",
   "slug": "Essence_Drain_of_Desperation",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Projectile, Duration, Chaos, AoE",
+    "Level": "(1-20)",
+    "Cost": "(8-23) Mana",
+    "Cast Time": "0.70 sec",
+    "Critical Strike Chance": "5.00%",
+    "Effectiveness of Added Damage": "160%",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "12",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,124 +377,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Fires a projectile that applies a damage over time debuff when it hits. You lose Life and Energy Shield equal to a portion of the debuff damage. The debuff is spread by Contagion.",
-  "explicitMods": [
-    {
-      "text": "Deals (12–926) to (18–1389) Chaos Damage",
-      "values": [
-        "(12–926)",
-        "(18–1389)"
-      ]
-    },
-    {
-      "text": "Deals (91.1–4726.1) Base Chaos Damage per second",
-      "values": [
-        "(91.1–4726.1)"
-      ]
-    },
-    {
-      "text": "Base duration is 3.8 seconds",
-      "values": [
-        "3.8"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Lose Life and Energy Shield equal to 0.3% of Debuff Damage",
-      "values": [
-        "0.3"
-      ]
-    },
-    {
-      "text": "Deals (12–926) to (18–1389) Chaos Damage",
-      "values": [
-        "(12–926)",
-        "(18–1389)"
-      ]
-    },
-    {
-      "text": "Deals (91.1–4726.1) Base Chaos Damage per second",
-      "values": [
-        "(91.1–4726.1)"
-      ]
-    },
-    {
-      "text": "Base duration is 3.8 seconds",
-      "values": [
-        "3.8"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Lose Life and Energy Shield equal to 0.3% of Debuff Damage",
-      "values": [
-        "0.3"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "Deals (12–6154) to (18–9232) Chaos Damage",
-      "values": [
-        "(12–6154)",
-        "(18–9232)"
-      ]
-    },
-    {
-      "text": "Deals (91.1–25429.6) Base Chaos Damage per second",
-      "values": [
-        "(91.1–25429.6)"
-      ]
-    },
-    {
-      "text": "Base duration is 3.8 seconds",
-      "values": [
-        "3.8"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Lose Life and Energy Shield equal to 0.3% of Debuff Damage",
-      "values": [
-        "0.3"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (12-926) to (18-1389) Chaos Damage",
+    "Deals (91.1-4726.1) Base Chaos Damage per second",
+    "Base duration is 3.80 seconds",
+    "Modifiers to Spell Damage apply to this Skill's Damage Over Time effect",
+    "Lose Life and Energy Shield equal to 0.3% of Debuff Damage"
   ],
+  "gemDescription": "Fires a projectile that applies a damage over time debuff when it hits. You lose Life and Energy Shield equal to a portion of the debuff damage. The debuff is spread by Contagion.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base duration is (0–0.4) seconds",
-      "values": [
-        "(0–0.4)"
-      ]
-    },
-    {
-      "text": "Base duration is (0–0.4) seconds",
-      "values": [
-        "(0–0.4)"
-      ]
-    },
-    {
-      "text": "Base duration is (0–0.4) seconds",
-      "values": [
-        "(0–0.4)"
-      ]
+      "text": "Base duration is (0.02-0.4) seconds",
+      "values": []
     }
   ]
 }

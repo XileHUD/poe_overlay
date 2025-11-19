@@ -1,7 +1,17 @@
 {
   "name": "Kinetic Instability Support",
   "slug": "Kinetic_Instability_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, AoE, Trigger, Attack, Duration",
+    "Icon": "`",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "120%",
+    "Requires Level": "18",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "18",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemKineticInstability"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -245,123 +255,21 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports Wand Attacks, granting them a chance to trigger Kinetic Flux on kill. Cannot support triggered skills or skills used by things other than you. Cannot modify the skills of minions.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills trigger Kinetic Flux on Killing Blow",
-      "values": []
-    },
-    {
-      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
-      "values": [
-        "150"
-      ]
-    },
-    {
-      "text": "Base duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Base radius is 1.2 metres",
-      "values": [
-        "1.2"
-      ]
-    },
-    {
-      "text": "Maximum 20 Anomalies",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "This Skill is Triggered by Skills Supported by Kinetic Instability",
-      "values": []
-    },
-    {
-      "text": "Supported Skills trigger Kinetic Flux on Killing Blow",
-      "values": []
-    },
-    {
-      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
-      "values": [
-        "150"
-      ]
-    },
-    {
-      "text": "Base duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Base radius is 1.2 metres",
-      "values": [
-        "1.2"
-      ]
-    },
-    {
-      "text": "Maximum 20 Anomalies",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "This Skill is Triggered by Skills Supported by Kinetic Instability",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
-      "values": [
-        "150"
-      ]
-    },
-    {
-      "text": "Base duration is 6 seconds",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Base radius is 1.2 metres",
-      "values": [
-        "1.2"
-      ]
-    },
-    {
-      "text": "Maximum 20 Anomalies",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "This Skill is Triggered by Skills Supported by Kinetic Instability",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Supported Skills trigger Kinetic Flux on Killing Blow",
+    "Increases and Reductions to Spell Damage also apply to Attack Damage from this Skill at 150% of their value",
+    "Base duration is 6.00 seconds",
+    "Base radius is 1.2 metres",
+    "Maximum 20 Anomalies",
+    "This Skill is Triggered by Skills Supported by Kinetic Instability"
   ],
+  "gemDescription": "Supports Wand Attacks, granting them a chance to trigger Kinetic Flux on kill. Cannot support triggered skills or skills used by things other than you. Cannot modify the skills of minions.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Attack Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Attack Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Attack Damage",
+      "values": []
     }
   ]
 }

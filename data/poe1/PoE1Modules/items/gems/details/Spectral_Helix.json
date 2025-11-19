@@ -1,7 +1,19 @@
 {
   "name": "Spectral Helix",
   "slug": "Spectral_Helix",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Projectile",
+    "Level": "(1-20)",
+    "Cost": "(6-9) Mana",
+    "Attack Speed": "120% of base",
+    "Attack Damage": "(120-180)% of base",
+    "Effectiveness of Added Damage": "(120-180)%",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "12",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemSpectralHelix"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,55 +377,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Throws a spectral copy of your melee weapon. It spins around while flying in a large spiral, damaging enemies in its path, and bouncing if it collides with walls.",
-  "explicitMods": [
-    {
-      "text": "Bounces up to 3 timesModifiers to number of Projectiles instead apply to the number of Bounces",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Spirals through 4.25 rotations",
-      "values": [
-        "4.25"
-      ]
-    },
-    {
-      "text": "Bounces up to 3 timesModifiers to number of Projectiles instead apply to the number of Bounces",
-      "values": [
-        "3"
-      ]
-    },
-    {
-      "text": "Spirals through 4.25 rotations",
-      "values": [
-        "4.25"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "projectiles ignore wall of force [1]",
-      "values": []
-    }
+  "stats": [
+    "Bounces up to 3 times",
+    "Modifiers to number of Projectiles instead apply to the number of Bounces",
+    "Spirals through 4.25 rotations"
   ],
+  "gemDescription": "Throws a spectral copy of your melee weapon. It spins around while flying in a large spiral, damaging enemies in its path, and bouncing if it collides with walls.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Projectiles that have Pierced deal (0–20)% more Damage",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "Projectiles that have Pierced deal (0–20)% more Damage",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "Projectiles that have Pierced deal (1-20)% more Damage",
+      "values": []
     }
   ]
 }

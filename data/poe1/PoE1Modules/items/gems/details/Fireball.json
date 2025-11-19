@@ -1,7 +1,20 @@
 {
   "name": "Fireball",
   "slug": "Fireball",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Projectile, Spell, AoE, Fire",
+    "Level": "(1-20)",
+    "Cost": "(6-25) Mana",
+    "Cast Time": "0.75 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "(260-370)%",
+    "Projectile Speed": "1040",
+    "AoE Radius": "9",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "5",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemFireball"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,85 +418,18 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Deals (9-1640) to (14-2460) Fire Damage",
+    "25% chance to Ignite enemies",
+    "Base radius is (0.9-1.4) metres"
+  ],
   "gemDescription": "Unleashes a ball of fire towards a target which explodes, damaging nearby foes.",
-  "explicitMods": [
-    {
-      "text": "Deals (9–1640) to (14–2460) Fire Damage",
-      "values": [
-        "(9–1640)",
-        "(14–2460)"
-      ]
-    },
-    {
-      "text": "25% chance to Ignite enemies",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Base radius is (0.9–1.4) metres",
-      "values": [
-        "(0.9–1.4)"
-      ]
-    },
-    {
-      "text": "Deals (9–1640) to (14–2460) Fire Damage",
-      "values": [
-        "(9–1640)",
-        "(14–2460)"
-      ]
-    },
-    {
-      "text": "25% chance to Ignite enemies",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Base radius is (0.9–1.4) metres",
-      "values": [
-        "(0.9–1.4)"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "(10–15)% increased Fire Damage",
-      "values": [
-        "(10–15)"
-      ]
-    },
-    {
-      "text": "With at least 40 Intelligence in Radius, Fireball cannot ignite",
-      "values": []
-    },
-    {
-      "text": "With at least 40 Intelligence in Radius, Fireball has +(30–50)% chance to inflict scorch",
-      "values": [
-        "+(30–50)"
-      ]
-    }
-  ],
-  "modDescriptions": [
-    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
-    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)",
-    "(Ignite deals Fire Damage over time, based on the base Fire Damage of the Skill, for 4 seconds)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
-    },
-    {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
+      "text": "Base radius is (0.01-0.2) metres",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,17 @@
 {
   "name": "Pulverise Support",
   "slug": "Pulverise_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "AoE, Support, Melee, Attack",
+    "Icon": "P",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "31",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "31",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemPulverise"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,83 +375,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports melee attack skills.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills have (25–34)% increased Area of Effect",
-      "values": [
-        "(25–34)"
-      ]
-    },
-    {
-      "text": "Supported Skills have 15% less Attack Speed",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (35–49)% more Melee Area Damage",
-      "values": [
-        "(35–49)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (25–34)% increased Area of Effect",
-      "values": [
-        "(25–34)"
-      ]
-    },
-    {
-      "text": "Supported Skills have 15% less Attack Speed",
-      "values": [
-        "15"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (35–49)% more Melee Area Damage",
-      "values": [
-        "(35–49)"
-      ]
-    },
-    {
-      "text": "(500–600)% increased Physical Damage",
-      "values": [
-        "(500–600)"
-      ]
-    },
-    {
-      "text": "25% reduced Attack Speed",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "(40–50)% increased Stun Duration on Enemies",
-      "values": [
-        "(40–50)"
-      ]
-    },
-    {
-      "text": "-500 to Accuracy Rating",
-      "values": [
-        "-500"
-      ]
-    }
+  "stats": [
+    "Supported Skills have (25-34)% increased Area of Effect",
+    "Supported Skills have 15% less Attack Speed",
+    "Supported Skills deal (35-49)% more Melee Area Damage"
   ],
+  "gemDescription": "Supports melee attack skills.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–10)% increased Area of Effect",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–10)% increased Area of Effect",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills have (0.5-10)% increased Area of Effect",
+      "values": []
     }
   ]
 }

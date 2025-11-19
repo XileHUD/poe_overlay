@@ -1,7 +1,19 @@
 {
   "name": "Crackling Lance of Disintegration",
   "slug": "Crackling_Lance_of_Disintegration",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Lightning",
+    "Level": "(1-20)",
+    "Cost": "(13-25) Mana",
+    "Cast Time": "0.75 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "(260-360)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,103 +337,18 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Deals (59-1054) to (178-3161) Lightning Damage",
+    "25% chance to Shock enemies",
+    "+10% to Maximum Effect of Shock"
+  ],
   "gemDescription": "Release a concentrated beam which deals lightning damage to enemies in a long area in front of you.",
-  "explicitMods": [
-    {
-      "text": "Deals (59–1054) to (178–3161) Lightning Damage",
-      "values": [
-        "(59–1054)",
-        "(178–3161)"
-      ]
-    },
-    {
-      "text": "25% chance to Shock enemies",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "+10% to Maximum Effect of Shock",
-      "values": [
-        "+10"
-      ]
-    },
-    {
-      "text": "Deals (59–1054) to (178–3161) Lightning Damage",
-      "values": [
-        "(59–1054)",
-        "(178–3161)"
-      ]
-    },
-    {
-      "text": "25% chance to Shock enemies",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "+10% to Maximum Effect of Shock",
-      "values": [
-        "+10"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "Deals (59–6635) to (178–19905) Lightning Damage",
-      "values": [
-        "(59–6635)",
-        "(178–19905)"
-      ]
-    },
-    {
-      "text": "25% chance to Shock enemies",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "+10% to Maximum Effect of Shock",
-      "values": [
-        "+10"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
-    "(Base Maximum Effect of Shock is 50% increased Damage taken)",
-    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
-    "(Base Maximum Effect of Shock is 50% increased Damage taken)",
-    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
-    "(Base Maximum Effect of Shock is 50% increased Damage taken)",
-    "(Shock increases Damage taken by up to 50%, depending on the amount of Lightning Damage in the hit, for 2 seconds)",
-    "(Base Maximum Effect of Shock is 50% increased Damage taken)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–10)% to Maximum Effect of Shock",
-      "values": [
-        "+(0–10)"
-      ]
-    },
-    {
-      "text": "+(0–10)% to Maximum Effect of Shock",
-      "values": [
-        "+(0–10)"
-      ]
-    },
-    {
-      "text": "+(0–10)% to Maximum Effect of Shock",
-      "values": [
-        "+(0–10)"
-      ]
+      "text": "+(0.5-10)% to Maximum Effect of Shock",
+      "values": []
     }
   ]
 }

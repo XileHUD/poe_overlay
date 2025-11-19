@@ -1,7 +1,20 @@
 {
   "name": "Awakened Cast On Critical Strike Support",
   "slug": "Awakened_Cast_On_Critical_Strike_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Critical, Support, Spell, Trigger",
+    "Icon": "&",
+    "Level": "(1-5)",
+    "Cost & Reservation Multiplier": "120%",
+    "Cooldown Time": "0.15 sec",
+    "Can Store": "1 Use(s)",
+    "Requires Level": "72",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Can drop from either version of the Maven or from Maven-witnessed map bosses.",
+    "Drop level": "72",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemCastOnCritPlus"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -205,79 +218,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Must support both an attack skill and a spell skill to work. The attack skill will trigger a spell when it critically strikes an enemy. Cannot support totems, traps, or mines. Vaal skills, channelling skills, and skills with a reservation cannot be triggered.",
-  "explicitMods": [
-    {
-      "text": "Supported Attacks will Trigger a Supported Spell when you Crit an Enemy",
-      "values": []
-    },
-    {
-      "text": "Supported Skills deal (7–9)% less Spell Damage",
-      "values": [
-        "(7–9)"
-      ]
-    },
-    {
-      "text": "Supported Spells have (10–22)% increased Cooldown Recovery Rate",
-      "values": [
-        "(10–22)"
-      ]
-    },
-    {
-      "text": "Supported Attacks will Trigger a Supported Spell when you Crit an Enemy",
-      "values": []
-    },
-    {
-      "text": "Supported Skills deal (7–9)% less Spell Damage",
-      "values": [
-        "(7–9)"
-      ]
-    },
-    {
-      "text": "Supported Spells have (10–22)% increased Cooldown Recovery Rate",
-      "values": [
-        "(10–22)"
-      ]
-    },
-    {
-      "text": "cast spell on linked attack crit [1]",
-      "values": []
-    },
-    {
-      "text": "spell uncastable if triggerable [1]",
-      "values": []
-    },
-    {
-      "text": "triggered skill uses main hand or averaged attack time for pvp scaling [1]",
-      "values": []
-    }
+  "stats": [
+    "Supported Attacks will Trigger a Supported Spell when you Crit an Enemy",
+    "Supported Skills deal (9-7)% less Spell Damage",
+    "Supported Spells have (10-22)% increased Cooldown Recovery Rate"
   ],
+  "gemDescription": "Must support both an attack skill and a spell skill to work. The attack skill will trigger a spell when it critically strikes an enemy. Cannot support totems, traps, or mines. Vaal skills, channelling skills, and skills with a reservation cannot be triggered.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–20)% increased Attack Critical Strike Chance",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–20)% increased Spell Critical Strike Chance",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–20)% increased Attack Critical Strike Chance",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–20)% increased Spell Critical Strike Chance",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "Supported Skills have (1-20)% increased Attack Critical Strike ChanceSupported Skills have (1-20)% increased Spell Critical Strike Chance",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,19 @@
 {
   "name": "Boneshatter of Carnage",
   "slug": "Boneshatter_of_Carnage",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, Melee, Strike, AoE",
+    "Level": "(1-20)",
+    "Cost": "(9-12) Mana",
+    "Attack Speed": "85% of base",
+    "Attack Damage": "(336-620)% of base",
+    "Effectiveness of Added Damage": "(336-620)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "28",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,88 +337,18 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "25% reduced Enemy Stun Threshold",
+    "(20-39)% chance to double Stun Duration",
+    "Pulse has 20% increased Area of Effect per 0.1s of Stun Duration, up to 400%"
+  ],
   "gemDescription": "Attack enemies with a forceful melee strike. Stunning an enemy with the strike releases a damaging pulse. Requires a Mace, Sceptre, Axe or Staff.",
-  "explicitMods": [
-    {
-      "text": "25% reduced Enemy Stun Threshold",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "(20–39)% chance to double Stun Duration",
-      "values": [
-        "(20–39)"
-      ]
-    },
-    {
-      "text": "Pulse has 20% increased Area of Effect per 0.1s of Stun Duration, up to 400%",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "25% reduced Enemy Stun Threshold",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "(20–39)% chance to double Stun Duration",
-      "values": [
-        "(20–39)"
-      ]
-    },
-    {
-      "text": "Pulse has 20% increased Area of Effect per 0.1s of Stun Duration, up to 400%",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "25% reduced Enemy Stun Threshold",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "(20–54)% chance to double Stun Duration",
-      "values": [
-        "(20–54)"
-      ]
-    },
-    {
-      "text": "Pulse has 20% increased Area of Effect per 0.1s of Stun Duration, up to 400%",
-      "values": [
-        "20"
-      ]
-    }
-  ],
-  "modDescriptions": [
-    "(The Stun Threshold determines how much Damage can Stun something)",
-    "(The Stun Threshold determines how much Damage can Stun something)",
-    "(The Stun Threshold determines how much Damage can Stun something)",
-    "(The Stun Threshold determines how much Damage can Stun something)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–20)% more Damage against Stunned Enemies",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% more Damage against Stunned Enemies",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% more Damage against Stunned Enemies",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "(1-20)% more Damage against Stunned Enemies",
+      "values": []
     }
   ]
 }

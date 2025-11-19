@@ -1,7 +1,20 @@
 {
   "name": "Shockwave Totem",
   "slug": "Shockwave_Totem",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Totem, Spell, AoE, Physical, Nova",
+    "Level": "(1-20)",
+    "Cost": "(21-39) Mana",
+    "Cast Time": "0.60 sec",
+    "Critical Strike Chance": "5.00%",
+    "Effectiveness of Added Damage": "110%",
+    "AoE Radius": "24",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "28",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemShockwaveTotem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,126 +378,20 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Deals (33-412) to (65-765) Physical Damage",
+    "Totem lasts 8 seconds",
+    "25% chance to Knock Enemies Back on hit",
+    "Summons a Totem which uses this Skill",
+    "Base radius is 2.4 metres"
+  ],
   "gemDescription": "Summons a totem that shakes the earth around it, knocking back and damaging nearby enemies",
-  "explicitMods": [
-    {
-      "text": "Deals (33–412) to (65–765) Physical Damage",
-      "values": [
-        "(33–412)",
-        "(65–765)"
-      ]
-    },
-    {
-      "text": "Totem lasts 8 seconds",
-      "values": [
-        "8"
-      ]
-    },
-    {
-      "text": "25% chance to Knock Enemies Back on hit",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Summons a Totem which uses this Skill",
-      "values": []
-    },
-    {
-      "text": "Base radius is 2.4 metres",
-      "values": [
-        "2.4"
-      ]
-    },
-    {
-      "text": "Deals (33–412) to (65–765) Physical Damage",
-      "values": [
-        "(33–412)",
-        "(65–765)"
-      ]
-    },
-    {
-      "text": "Totem lasts 8 seconds",
-      "values": [
-        "8"
-      ]
-    },
-    {
-      "text": "25% chance to Knock Enemies Back on hit",
-      "values": [
-        "25"
-      ]
-    },
-    {
-      "text": "Summons a Totem which uses this Skill",
-      "values": []
-    },
-    {
-      "text": "Base radius is 2.4 metres",
-      "values": [
-        "2.4"
-      ]
-    },
-    {
-      "text": "base skill is totemified [1]",
-      "values": []
-    },
-    {
-      "text": "base totem range [80]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "Deals 66.8 to 124.1 Physical Damage",
-      "values": [
-        "66.8",
-        "124.1"
-      ]
-    },
-    {
-      "text": "Knocks Enemies Back on Hit",
-      "values": []
-    },
-    {
-      "text": "Base radius is 2.4 metres",
-      "values": [
-        "2.4"
-      ]
-    },
-    {
-      "text": "active skill area of effect radius +% final [-17]",
-      "values": []
-    },
-    {
-      "text": "base skill is totemified [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Knockback pushes Enemies away when Hit)",
-    "(Knockback pushes Enemies away when Hit)",
-    "(Knockback pushes Enemies away when Hit)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–0.2) metres to radius",
-      "values": [
-        "+(0–0.2)"
-      ]
-    },
-    {
-      "text": "+(0–0.2) metres to radius",
-      "values": [
-        "+(0–0.2)"
-      ]
+      "text": "+(0.01-0.2) metres to radius",
+      "values": []
     }
   ]
 }

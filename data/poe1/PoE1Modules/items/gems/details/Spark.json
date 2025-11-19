@@ -1,7 +1,19 @@
 {
   "name": "Spark",
   "slug": "Spark",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Projectile, Duration, Lightning",
+    "Level": "(1-20)",
+    "Cost": "(5-21) Mana",
+    "Cast Time": "0.65 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "190%",
+    "Projectile Speed": "420",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "5",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemSpark"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,79 +417,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Launches unpredictable sparks that move randomly until they hit an enemy or expire.",
-  "explicitMods": [
-    {
-      "text": "Deals (1–104) to (28–1983) Lightning Damage",
-      "values": [
-        "(1–104)",
-        "(28–1983)"
-      ]
-    },
-    {
-      "text": "Base duration is 2 seconds",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Fires (4–8) Projectiles",
-      "values": [
-        "(4–8)"
-      ]
-    },
-    {
-      "text": "Deals (1–104) to (28–1983) Lightning Damage",
-      "values": [
-        "(1–104)",
-        "(28–1983)"
-      ]
-    },
-    {
-      "text": "Base duration is 2 seconds",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Fires (4–8) Projectiles",
-      "values": [
-        "(4–8)"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "(10–15)% increased Lightning Damage",
-      "values": [
-        "(10–15)"
-      ]
-    },
-    {
-      "text": "With at least 40 Intelligence in Radius, Spark fires  additional Projectiles",
-      "values": []
-    },
-    {
-      "text": "With at least 40 Intelligence in Radius, Spark fires Projectiles in a circle",
-      "values": []
-    }
+  "stats": [
+    "Deals (1-104) to (28-1983) Lightning Damage",
+    "Base duration is 2.00 seconds",
+    "Fires (4-8) Projectiles"
   ],
+  "gemDescription": "Launches unpredictable sparks that move randomly until they hit an enemy or expire.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Fires +(0–2) Projectiles",
-      "values": [
-        "+(0–2)"
-      ]
-    },
-    {
-      "text": "Fires +(0–2) Projectiles",
-      "values": [
-        "+(0–2)"
-      ]
+      "text": "Fires +(0.1-2) Projectiles",
+      "values": []
     }
   ]
 }

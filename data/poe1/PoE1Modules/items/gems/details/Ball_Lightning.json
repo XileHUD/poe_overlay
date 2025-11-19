@@ -1,7 +1,21 @@
 {
   "name": "Ball Lightning",
   "slug": "Ball_Lightning",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, Projectile, AoE, Lightning",
+    "Level": "(1-20)",
+    "Cost": "(12-23) Mana",
+    "Cast Time": "0.70 sec",
+    "Critical Strike Chance": "5.00%",
+    "Effectiveness of Added Damage": "60%",
+    "Projectile Speed": "400",
+    "AoE Radius": "22",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "28",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemBallLightning"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,57 +379,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Fires a slow-moving projectile that damages each enemy in an area around it repeatedly with bolts of lightning.",
-  "explicitMods": [
-    {
-      "text": "Deals (2–32) to (47–617) Lightning Damage",
-      "values": [
-        "(2–32)",
-        "(47–617)"
-      ]
-    },
-    {
-      "text": "Base radius is 1.8 metres",
-      "values": [
-        "1.8"
-      ]
-    },
-    {
-      "text": "Deals (2–32) to (47–617) Lightning Damage",
-      "values": [
-        "(2–32)",
-        "(47–617)"
-      ]
-    },
-    {
-      "text": "Base radius is 1.8 metres",
-      "values": [
-        "1.8"
-      ]
-    },
-    {
-      "text": "ball lightning projectile speed and hit frequency +% final [33]",
-      "values": []
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (2-32) to (47-617) Lightning Damage",
+    "Base radius is 1.8 metres"
   ],
+  "gemDescription": "Fires a slow-moving projectile that damages each enemy in an area around it repeatedly with bolts of lightning.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
-    },
-    {
-      "text": "Base radius is (0–0.2) metres",
-      "values": [
-        "(0–0.2)"
-      ]
+      "text": "Base radius is (0.01-0.2) metres",
+      "values": []
     }
   ]
 }

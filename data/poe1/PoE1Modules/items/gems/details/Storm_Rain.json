@@ -1,7 +1,18 @@
 {
   "name": "Storm Rain",
   "slug": "Storm_Rain",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, AoE, Lightning, Projectile, Bow",
+    "Level": "(1-20)",
+    "Cost": "(7-10) Mana",
+    "Attack Damage": "(46-58)% of base",
+    "Effectiveness of Added Damage": "(46-58)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "28",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemStormRain"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,95 +376,19 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Fires an arrow into the air to land at a targeted location, dealing area damage. The arrow sticks in the ground where it lands, and periodically fires a beam of lightning to another arrow near it, dealing area damage between them.",
-  "explicitMods": [
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Arrows fire Beams every (0.41–0.5) seconds",
-      "values": [
-        "(0.41–0.5)"
-      ]
-    },
-    {
-      "text": "Maximum 100 Arrows in the ground",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Each Arrow can fire 4 Beams",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "50% of Physical Damage Converted to Lightning Damage",
-      "values": [
-        "50"
-      ]
-    },
-    {
-      "text": "Arrows fire Beams every (0.41–0.5) seconds",
-      "values": [
-        "(0.41–0.5)"
-      ]
-    },
-    {
-      "text": "Maximum 100 Arrows in the ground",
-      "values": [
-        "100"
-      ]
-    },
-    {
-      "text": "Each Arrow can fire 4 Beams",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "base is projectile [1]",
-      "values": []
-    },
-    {
-      "text": "cannot pierce [1]",
-      "values": []
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill can add multiple charges per action [1]",
-      "values": []
-    },
-    {
-      "text": "skill can fire arrows [1]",
-      "values": []
-    }
+  "stats": [
+    "50% of Physical Damage Converted to Lightning Damage",
+    "Arrows fire Beams every (0.50-0.41) seconds",
+    "Maximum 100 Arrows in the ground",
+    "Each Arrow can fire 4 Beams"
   ],
+  "gemDescription": "Fires an arrow into the air to land at a targeted location, dealing area damage. The arrow sticks in the ground where it lands, and periodically fires a beam of lightning to another arrow near it, dealing area damage between them.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Each Arrow can fire +(0–1) Beam",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Each Arrow can fire +(0–1) Beam",
-      "values": [
-        "+(0–1)"
-      ]
+      "text": "Each Arrow can fire +(0.05-1) Beams",
+      "values": []
     }
   ]
 }

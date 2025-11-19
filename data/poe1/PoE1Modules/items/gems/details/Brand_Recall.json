@@ -1,7 +1,19 @@
 {
   "name": "Brand Recall",
   "slug": "Brand_Recall",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Brand, Spell",
+    "Level": "(1-6)",
+    "Cost": "(7-16) Mana",
+    "Cooldown Time": "4.00 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "Instant",
+    "Requires Level": "16",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "16",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemRecallBrands"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -291,63 +303,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Recall your brands to you, detaching them from enemies and increasing attachment range until they next attach to an enemy. Spends a portion of each recalled brand's cost to cause it to activate.",
-  "explicitMods": [
-    {
-      "text": "(0–40)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "Spends 20% of Brand's Cost",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "Brands gain (25–45)% increased Attachment Range",
-      "values": [
-        "(25–45)"
-      ]
-    },
-    {
-      "text": "(0–40)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–40)"
-      ]
-    },
-    {
-      "text": "Spends 20% of Brand's Cost",
-      "values": [
-        "20"
-      ]
-    },
-    {
-      "text": "Brands gain (25–45)% increased Attachment Range",
-      "values": [
-        "(25–45)"
-      ]
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    }
+  "stats": [
+    "(0-40)% increased Cooldown Recovery Rate",
+    "Spends 20% of Brand's Cost",
+    "Brands gain (25-45)% increased Attachment Range"
   ],
+  "gemDescription": "Recall your brands to you, detaching them from enemies and increasing attachment range until they next attach to an enemy. Spends a portion of each recalled brand's cost to cause it to activate.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "(0–20)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–20)"
-      ]
-    },
-    {
-      "text": "(0–20)% increased Cooldown Recovery Rate",
-      "values": [
-        "(0–20)"
-      ]
+      "text": "(1-20)% increased Cooldown Recovery Rate",
+      "values": []
     }
   ]
 }

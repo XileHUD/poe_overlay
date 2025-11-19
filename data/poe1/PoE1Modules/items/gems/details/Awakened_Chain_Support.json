@@ -1,7 +1,18 @@
 {
   "name": "Awakened Chain Support",
   "slug": "Awakened_Chain_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Support, Chaining, Projectile",
+    "Icon": "c",
+    "Level": "(1-5)",
+    "Cost & Reservation Multiplier": "150%",
+    "Requires Level": "72",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Can drop from either version of the Maven or from Maven-witnessed map bosses.",
+    "Drop level": "72",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemChainPlus"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -165,51 +176,17 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports projectile skills, and any other skills that chain.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills Chain +3 times",
-      "values": [
-        "+3"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (6–10)% less Damage with Hits",
-      "values": [
-        "(6–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills Chain +3 times",
-      "values": [
-        "+3"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (6–10)% less Damage with Hits",
-      "values": [
-        "(6–10)"
-      ]
-    },
-    {
-      "text": "terrain arrow attachment chance reduction +% [150]",
-      "values": []
-    }
+  "stats": [
+    "Supported Skills Chain +3 times",
+    "Supported Skills deal (10-6)% less Damage with Hits"
   ],
+  "gemDescription": "Supports projectile skills, and any other skills that chain.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills have (0–10)% increased Chaining range",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills have (0–10)% increased Chaining range",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills have (0.5-10)% increased Chaining range",
+      "values": []
     }
   ]
 }

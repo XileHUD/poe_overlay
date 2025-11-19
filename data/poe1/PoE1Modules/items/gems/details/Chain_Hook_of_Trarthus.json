@@ -1,7 +1,19 @@
 {
   "name": "Chain Hook of Trarthus",
   "slug": "Chain_Hook_of_Trarthus",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, AoE, Melee",
+    "Level": "(1-20)",
+    "Cost": "(5-8) Mana",
+    "Attack Speed": "120% of base",
+    "Attack Damage": "(213-491)% of base",
+    "Effectiveness of Added Damage": "(213-491)%",
+    "Requires Level": "12",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; Mercenaries; Can be obtained from reward chests that contain gems in Heist .",
+    "Drop level": "12",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -245,121 +257,20 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Throws chains ahead of you, attaching them to targets hit. Enemies chained to you will grant rage when hit. When chains are broken, they snap and deal attack damage in an area around the target they were attached to. Requires a One Handed Mace, Sceptre, Sword or Axe.",
-  "explicitMods": [
-    {
-      "text": "+0.1 metres to Radius per 5 Rage",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Throws Chains at up to 8 targets in range",
-      "values": [
-        "8"
-      ]
-    },
-    {
-      "text": "Chained targets grant 1 Rage when Hit",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Maximum chain length is 6 metres",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Maximum 16 chains",
-      "values": [
-        "16"
-      ]
-    },
-    {
-      "text": "+0.1 metres to Radius per 5 Rage",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Throws Chains at up to 8 targets in range",
-      "values": [
-        "8"
-      ]
-    },
-    {
-      "text": "Chained targets grant 1 Rage when Hit",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Maximum chain length is 6 metres",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Maximum 16 chains",
-      "values": [
-        "16"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "+0.1 metres to Radius per 5 Rage",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Throws Chains at up to 4 targets in range",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Chained targets grant 1 Rage when Hit",
-      "values": [
-        "1"
-      ]
-    },
-    {
-      "text": "Maximum chain length is 6 metres",
-      "values": [
-        "6"
-      ]
-    },
-    {
-      "text": "Maximum 8 chains",
-      "values": [
-        "8"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Throws Chains at up to 8 targets in range",
+    "Chained targets grant 1 Rage when Hit",
+    "Maximum chain length is 6 metres",
+    "Maximum 16 chains",
+    "+0.1 metres to Radius per 5 Rage"
   ],
+  "gemDescription": "Throws chains ahead of you, attaching them to targets hit. Enemies chained to you will grant rage when hit. When chains are broken, they snap and deal attack damage in an area around the target they were attached to. Requires a One Handed Mace, Sceptre, Sword or Axe.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Throws Chains at up to (0–3) targets in range",
-      "values": [
-        "(0–3)"
-      ]
-    },
-    {
-      "text": "Throws Chains at up to (0–3) targets in range",
-      "values": [
-        "(0–3)"
-      ]
+      "text": "Throws Chains at up to (0.15-3) targets in range",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,16 @@
 {
   "name": "Arcane Surge Support",
   "slug": "Arcane_Surge_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Arcane, Support, Spell, Duration",
+    "Icon": "N",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "130%",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "5",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemArcaneSurge"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,107 +374,21 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Gain Arcane Surge after Spending a total of (15-400) Mana on",
+    "Upfront Costs and Effects of a Supported Skill",
+    "Arcane Surge grants 20% increased Cast Speed",
+    "Arcane Surge grants 30% increased Mana Regeneration rate",
+    "Arcane Surge lasts 4 seconds",
+    "Supported Skills deal (14-35)% more Spell Damage while you have Arcane Surge"
+  ],
   "gemDescription": "Each supported spell will track how much mana you spend on it, granting a buff when the total mana spent reaches a threshold. Cannot support skills used by totems, traps, mines or skills with a reservation.",
-  "explicitMods": [
-    {
-      "text": "Gain Arcane Surge after Spending a total of (15–400) Mana onUpfront Costs and Effects of a Supported Skill",
-      "values": [
-        "(15–400)"
-      ]
-    },
-    {
-      "text": "Arcane Surge grants 20% increased Cast SpeedArcane Surge grants 30% increased Mana Regeneration rate",
-      "values": [
-        "20",
-        "30"
-      ]
-    },
-    {
-      "text": "Arcane Surge lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (14–35)% more Spell Damage while you have Arcane Surge",
-      "values": [
-        "(14–35)"
-      ]
-    },
-    {
-      "text": "Gain Arcane Surge after Spending a total of (15–400) Mana onUpfront Costs and Effects of a Supported Skill",
-      "values": [
-        "(15–400)"
-      ]
-    },
-    {
-      "text": "Arcane Surge grants 20% increased Cast SpeedArcane Surge grants 30% increased Mana Regeneration rate",
-      "values": [
-        "20",
-        "30"
-      ]
-    },
-    {
-      "text": "Arcane Surge lasts 4 seconds",
-      "values": [
-        "4"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (14–35)% more Spell Damage while you have Arcane Surge",
-      "values": [
-        "(14–35)"
-      ]
-    },
-    {
-      "text": "+2 to Level of Socketed Gems",
-      "values": [
-        "+2"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 10 Arcane Surge",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 10 Spell Echo",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "Socketed Gems are Supported by Level 10 Controlled Destruction",
-      "values": [
-        "10"
-      ]
-    },
-    {
-      "text": "+(10–30) to Intelligence",
-      "values": [
-        "+(10–30)"
-      ]
-    }
-  ],
-  "modDescriptions": [
-    "(Upfront Costs are all Costs that are not paid per-second)",
-    "(Upfront Costs are all Costs that are not paid per-second)",
-    "(Upfront Costs are all Costs that are not paid per-second)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Spell Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Spell Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Spell Damage",
+      "values": []
     }
   ]
 }

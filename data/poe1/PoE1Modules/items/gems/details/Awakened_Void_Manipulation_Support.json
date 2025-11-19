@@ -1,7 +1,18 @@
 {
   "name": "Awakened Void Manipulation Support",
   "slug": "Awakened_Void_Manipulation_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Chaos, Support",
+    "Icon": "v",
+    "Level": "(1-5)",
+    "Cost & Reservation Multiplier": "130%",
+    "Requires Level": "72",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; The Maven's Crucible; Can drop from either version of the Maven , from Maven's Invitations , or from Maven-witnessed map bosses.",
+    "Drop level": "72",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemVoidManipulationPlus"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -205,55 +216,18 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Supports any skill that deals damage.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills deal (35–39)% more Chaos Damage",
-      "values": [
-        "(35–39)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal no Elemental Damage",
-      "values": []
-    },
-    {
-      "text": "+(0–1) to Level of Supported Chaos Skill Gems",
-      "values": [
-        "+(0–1)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (35–39)% more Chaos Damage",
-      "values": [
-        "(35–39)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal no Elemental Damage",
-      "values": []
-    },
-    {
-      "text": "+(0–1) to Level of Supported Chaos Skill Gems",
-      "values": [
-        "+(0–1)"
-      ]
-    }
+  "stats": [
+    "Supported Skills deal (35-39)% more Chaos Damage",
+    "Supported Skills deal no Elemental Damage",
+    "+(0-1) to Level of Supported Chaos Skill Gems"
   ],
+  "gemDescription": "Supports any skill that deals damage.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Chaos Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Chaos Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Chaos Damage",
+      "values": []
     }
   ]
 }

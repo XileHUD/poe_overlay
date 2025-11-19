@@ -1,7 +1,16 @@
 {
   "name": "Ruthless Support",
   "slug": "Ruthless_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Slam, Support, Melee, Attack, Strike",
+    "Icon": "u",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "120%",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "5",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemRuthless"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,71 +374,20 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Every third Attack with Supported Melee Attacks deals a Ruthless Blow",
+    "Ruthless Blows with Supported Skills deal (70-98)% more Melee Damage",
+    "Ruthless Blows with Supported Skills deal (70-98)% more Damage with",
+    "Ailments caused by Melee Hits",
+    "Ruthless Blows with Supported Skills have a base Stun Duration of 0.8 seconds"
+  ],
   "gemDescription": "Supports melee strike or slam skills. Every third time you use a supported attack, that use of the skill will be more powerful.",
-  "explicitMods": [
-    {
-      "text": "Every third Attack with Supported Melee Attacks deals a Ruthless Blow",
-      "values": []
-    },
-    {
-      "text": "Ruthless Blows with Supported Skills deal (70–98)% more Melee Damage",
-      "values": [
-        "(70–98)"
-      ]
-    },
-    {
-      "text": "Ruthless Blows with Supported Skills deal (70–98)% more Damage withAilments caused by Melee Hits",
-      "values": [
-        "(70–98)"
-      ]
-    },
-    {
-      "text": "Ruthless Blows with Supported Skills have a base Stun Duration of 0.8 seconds",
-      "values": [
-        "0.8"
-      ]
-    },
-    {
-      "text": "Every third Attack with Supported Melee Attacks deals a Ruthless Blow",
-      "values": []
-    },
-    {
-      "text": "Ruthless Blows with Supported Skills deal (70–98)% more Melee Damage",
-      "values": [
-        "(70–98)"
-      ]
-    },
-    {
-      "text": "Ruthless Blows with Supported Skills deal (70–98)% more Damage withAilments caused by Melee Hits",
-      "values": [
-        "(70–98)"
-      ]
-    },
-    {
-      "text": "Ruthless Blows with Supported Skills have a base Stun Duration of 0.8 seconds",
-      "values": [
-        "0.8"
-      ]
-    }
-  ],
-  "modDescriptions": [
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)",
-    "(Ailments that deal Damage are Bleeding, Ignited, and Poisoned)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Supported Skills deal (0–10)% increased Attack Damage",
-      "values": [
-        "(0–10)"
-      ]
-    },
-    {
-      "text": "Supported Skills deal (0–10)% increased Attack Damage",
-      "values": [
-        "(0–10)"
-      ]
+      "text": "Supported Skills deal (0.5-10)% increased Attack Damage",
+      "values": []
     }
   ]
 }

@@ -1,7 +1,19 @@
 {
   "name": "Crackling Lance",
   "slug": "Crackling_Lance",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Spell, AoE, Lightning",
+    "Level": "(1-20)",
+    "Cost": "(11-21) Mana",
+    "Cast Time": "0.65 sec",
+    "Critical Strike Chance": "6.00%",
+    "Effectiveness of Added Damage": "(120-165)%",
+    "Requires Level": "28",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "28",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemCracklingLance"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -365,81 +377,21 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Release a beam which deals lightning damage to enemies in a long area in front of you, and has several smaller beams branch off from it at an angle, hitting more enemies to the sides.",
-  "explicitMods": [
-    {
-      "text": "Deals (28–458) to (84–1375) Lightning Damage",
-      "values": [
-        "(28–458)",
-        "(84–1375)"
-      ]
-    },
-    {
-      "text": "This Spell loses 1 Intensity every 0.5 seconds while moving, or immediately if you teleport",
-      "values": []
-    },
-    {
-      "text": "This Spell gains Intensity when you Cast it, to a maximum of 3",
-      "values": []
-    },
-    {
-      "text": "+0.3 metres to Beam Width Per Intensity33% less branching angle per Intensity",
-      "values": [
-        "+0.3"
-      ]
-    },
-    {
-      "text": "35% more Damage with Hits and Ailments per Intensity",
-      "values": [
-        "35"
-      ]
-    },
-    {
-      "text": "Deals (28–458) to (84–1375) Lightning Damage",
-      "values": [
-        "(28–458)",
-        "(84–1375)"
-      ]
-    },
-    {
-      "text": "This Spell loses 1 Intensity every 0.5 seconds while moving, or immediately if you teleport",
-      "values": []
-    },
-    {
-      "text": "This Spell gains Intensity when you Cast it, to a maximum of 3",
-      "values": []
-    },
-    {
-      "text": "+0.3 metres to Beam Width Per Intensity33% less branching angle per Intensity",
-      "values": [
-        "+0.3"
-      ]
-    },
-    {
-      "text": "35% more Damage with Hits and Ailments per Intensity",
-      "values": [
-        "35"
-      ]
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    }
+  "stats": [
+    "Deals (28-458) to (84-1375) Lightning Damage",
+    "This Spell loses 1 Intensity every 0.5 seconds while moving, or immediately if you teleport",
+    "This Spell gains Intensity when you Cast it, to a maximum of 3",
+    "+0.3 metres to Beam Width Per Intensity",
+    "33% less branching angle per Intensity",
+    "35% more Damage with Hits and Ailments per Intensity"
   ],
+  "gemDescription": "Release a beam which deals lightning damage to enemies in a long area in front of you, and has several smaller beams branch off from it at an angle, hitting more enemies to the sides.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "+(0–10)% more Damage with Hits and Ailments per Intensity",
-      "values": [
-        "+(0–10)"
-      ]
-    },
-    {
-      "text": "+(0–10)% more Damage with Hits and Ailments per Intensity",
-      "values": [
-        "+(0–10)"
-      ]
+      "text": "+(0.5-10)% more Damage with Hits and Ailments per Intensity",
+      "values": []
     }
   ]
 }

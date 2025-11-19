@@ -1,7 +1,18 @@
 {
   "name": "Cleave of Rage",
   "slug": "Cleave_of_Rage",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Attack, AoE, Melee",
+    "Level": "(1-20)",
+    "Cost": "(7-13) Mana",
+    "Attack Speed": "80% of base",
+    "Attack Damage": "(179-511)% of base",
+    "Effectiveness of Added Damage": "(179-511)%",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Acquisition": "Drop restricted; This item is a transfigured gem . It can be obtained through the use of the Divine Font in the Lord's Labyrinth .",
+    "Drop level": "5",
+    "Item class": "Skill Gem"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -285,116 +296,18 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "When Dual Wielding, Deals 60% Damage from each Weapon combined",
+    "+0.1 metres to Radius per 5 Rage",
+    "Gain 2 Rage on Attack Hit"
+  ],
   "gemDescription": "The character swings both their weapons in an arc, damaging monsters in an area in front of them. Requires dual wielding both an Axe and a Sword.",
-  "explicitMods": [
-    {
-      "text": "When Dual Wielding, Deals 60% Damage from each Weapon combined",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "+0.1 metres to Radius per 5 Rage",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Gain 2 Rage on Attack Hit",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "When Dual Wielding, Deals 60% Damage from each Weapon combined",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "+0.1 metres to Radius per 5 Rage",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Gain 2 Rage on Attack Hit",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill double hits when dual wielding [1]",
-      "values": []
-    },
-    {
-      "text": "When Dual Wielding, Deals 60% Damage from each Weapon combined",
-      "values": [
-        "60"
-      ]
-    },
-    {
-      "text": "+0.1 metres to Radius per 5 Rage",
-      "values": [
-        "5"
-      ]
-    },
-    {
-      "text": "Gain 2 Rage on Attack Hit",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "console skill dont chase [1]",
-      "values": []
-    },
-    {
-      "text": "is area damage [1]",
-      "values": []
-    },
-    {
-      "text": "skill double hits when dual wielding [1]",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(Every Rage grants 1% more Attack Damage. Maximum Rage is 30. Lose 10 Rage per second if you have not been Hit or gained Rage in the last 2 seconds)",
-    "(Only one Hit every 0.5 seconds can cause you to gain Rage)",
-    "(Every Rage grants 1% more Attack Damage. Maximum Rage is 30. Lose 10 Rage per second if you have not been Hit or gained Rage in the last 2 seconds)",
-    "(Only one Hit every 0.5 seconds can cause you to gain Rage)",
-    "(Every Rage grants 1% more Attack Damage. Maximum Rage is 30. Lose 10 Rage per second if you have not been Hit or gained Rage in the last 2 seconds)",
-    "(Only one Hit every 0.5 seconds can cause you to gain Rage)",
-    "(Every Rage grants 1% more Attack Damage. Maximum Rage is 30. Lose 10 Rage per second if you have not been Hit or gained Rage in the last 2 seconds)",
-    "(Only one Hit every 0.5 seconds can cause you to gain Rage)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Gain (0–1) Rage on Attack Hit",
-      "values": [
-        "(0–1)"
-      ]
-    },
-    {
-      "text": "Gain (0–1) Rage on Attack Hit",
-      "values": [
-        "(0–1)"
-      ]
-    },
-    {
-      "text": "Gain (0–1) Rage on Attack Hit",
-      "values": [
-        "(0–1)"
-      ]
+      "text": "Gain (0.05-1) Rage on Attack Hit",
+      "values": []
     }
   ]
 }

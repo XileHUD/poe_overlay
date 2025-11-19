@@ -1,7 +1,17 @@
 {
   "name": "Frigid Bond Support",
   "slug": "Frigid_Bond_Support",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Cold, Support, Link, Duration",
+    "Icon": "f",
+    "Level": "(1-20)",
+    "Cost & Reservation Multiplier": "140%",
+    "Requires Level": "38",
+    "Usage": "This is a Support Gem. It does not grant a bonus to your character, but to skills in sockets connected to it. Place into an item socket connected to a socket containing the Skill Gem you wish to augment. Right click to remove from a socket.",
+    "Drop level": "38",
+    "Item class": "Support Gem",
+    "Metadata ID": "Metadata/Items/Gems/SupportGemFrigidBond"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -325,70 +335,19 @@
     }
   ],
   "description": "",
-  "stats": [],
+  "stats": [
+    "Supported Skills Damage and Chill Enemies between you and Linked Targets",
+    "Supported Skills deal (355.9-3566.4) Base Cold Damage per second",
+    "Damage and Chill Linger for a Base Duration of 2 seconds",
+    "Modifiers to Spell Damage apply to Supported Skill's Damage Over Time effect"
+  ],
   "gemDescription": "Supports link skills.",
-  "explicitMods": [
-    {
-      "text": "Supported Skills Damage and Chill Enemies between you and Linked Targets",
-      "values": []
-    },
-    {
-      "text": "Supported Skills deal (355.9–3566.4) Base Cold Damage per second",
-      "values": [
-        "(355.9–3566.4)"
-      ]
-    },
-    {
-      "text": "Damage and Chill Linger for a Base Duration of 2 seconds",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to Supported Skill's Damage Over Time effect",
-      "values": []
-    },
-    {
-      "text": "Supported Skills Damage and Chill Enemies between you and Linked Targets",
-      "values": []
-    },
-    {
-      "text": "Supported Skills deal (355.9–3566.4) Base Cold Damage per second",
-      "values": [
-        "(355.9–3566.4)"
-      ]
-    },
-    {
-      "text": "Damage and Chill Linger for a Base Duration of 2 seconds",
-      "values": [
-        "2"
-      ]
-    },
-    {
-      "text": "Modifiers to Spell Damage apply to Supported Skill's Damage Over Time effect",
-      "values": []
-    }
-  ],
-  "modDescriptions": [
-    "(The effects still apply to enemies after leaving the link)",
-    "(Chill reduces Enemy Action Speed by 10%)",
-    "(The effects still apply to enemies after leaving the link)",
-    "(Chill reduces Enemy Action Speed by 10%)",
-    "(The effects still apply to enemies after leaving the link)",
-    "(Chill reduces Enemy Action Speed by 10%)"
-  ],
+  "explicitMods": [],
+  "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Damage and Chill Linger for a Base Duration of +(0–2) seconds",
-      "values": [
-        "+(0–2)"
-      ]
-    },
-    {
-      "text": "Damage and Chill Linger for a Base Duration of +(0–2) seconds",
-      "values": [
-        "+(0–2)"
-      ]
+      "text": "Damage and Chill Linger for a Base Duration of +(0.1-2) seconds",
+      "values": []
     }
   ]
 }

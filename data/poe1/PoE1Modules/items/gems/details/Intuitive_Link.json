@@ -1,7 +1,19 @@
 {
   "name": "Intuitive Link",
   "slug": "Intuitive_Link",
-  "metadata": {},
+  "metadata": {
+    "Tags": "Trigger, Spell, Duration, Link",
+    "Level": "(1-20)",
+    "Cost": "(15-32) Mana per second",
+    "Cooldown Time": "0.50 sec",
+    "Can Store": "1 Use(s)",
+    "Cast Time": "0.50 sec",
+    "Requires Level": "34",
+    "Usage": "Place into an item socket of the right colour to gain this skill. Right click to remove from a socket.",
+    "Drop level": "34",
+    "Item class": "Skill Gem",
+    "Metadata ID": "Metadata/Items/Gems/SkillGemIntuitiveLink"
+  },
   "levelProgression": [
     {
       "Level": "1",
@@ -405,75 +417,22 @@
     }
   ],
   "description": "",
-  "stats": [],
-  "gemDescription": "Targets an allied player to apply a buff which links you to them for a duration. While linked, their hits can trigger your supported spells. If the target dies while linked, you will also die. This skill cannot be triggered, or used by Totems, Traps, or Mines.",
-  "explicitMods": [
-    {
-      "text": "Base duration is (8–9.9) seconds",
-      "values": [
-        "(8–9.9)"
-      ]
-    },
-    {
-      "text": "Triggers a Supported Spell from Linked target's location when they Hit an Enemy",
-      "values": []
-    },
-    {
-      "text": "Link breaks if target leaves range or line of sight for 4 secondsMaximum 1 Link from any source per targetYou die if Linked target dies",
-      "values": []
-    },
-    {
-      "text": "Supported Spells deal (38–44)% less Damage",
-      "values": [
-        "(38–44)"
-      ]
-    },
-    {
-      "text": "Supported Spells are Triggered by Intuitive Link",
-      "values": []
-    },
-    {
-      "text": "Base duration is (8–9.9) seconds",
-      "values": [
-        "(8–9.9)"
-      ]
-    },
-    {
-      "text": "Triggers a Supported Spell from Linked target's location when they Hit an Enemy",
-      "values": []
-    },
-    {
-      "text": "Link breaks if target leaves range or line of sight for 4 secondsMaximum 1 Link from any source per targetYou die if Linked target dies",
-      "values": []
-    },
-    {
-      "text": "skill cost over time is not removed with skill [1]",
-      "values": []
-    },
-    {
-      "text": "Supported Spells deal (38–44)% less Damage",
-      "values": [
-        "(38–44)"
-      ]
-    },
-    {
-      "text": "Supported Spells are Triggered by Intuitive Link",
-      "values": []
-    }
+  "stats": [
+    "Base duration is (8.00-9.90) seconds",
+    "Triggers a Supported Spell from Linked target's location when they Hit an Enemy",
+    "Link breaks if target leaves range or line of sight for 4 seconds",
+    "Maximum 1 Link from any source per target",
+    "You die if Linked target dies",
+    "Supported Spells deal (44-38)% less Damage",
+    "Supported Spells are Triggered by Intuitive Link"
   ],
+  "gemDescription": "Targets an allied player to apply a buff which links you to them for a duration. While linked, their hits can trigger your supported spells. If the target dies while linked, you will also die. This skill cannot be triggered, or used by Totems, Traps, or Mines.",
+  "explicitMods": [],
   "modDescriptions": [],
   "qualityMods": [
     {
-      "text": "Base duration is (0–1.5) seconds",
-      "values": [
-        "(0–1.5)"
-      ]
-    },
-    {
-      "text": "Base duration is (0–1.5) seconds",
-      "values": [
-        "(0–1.5)"
-      ]
+      "text": "Base duration is (0.075-1.5) seconds",
+      "values": []
     }
   ]
 }
