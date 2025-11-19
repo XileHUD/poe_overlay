@@ -9,6 +9,7 @@
     "weight": 2,
     "weight_pct": 6.25,
     "tags": [],
+    "family": "JewelRadiusLargerRadius",
     "tiers": [
       {
         "tier_name": "Greater",
@@ -30,7 +31,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(3–7)% increased Magnitude of Ailments you inflict",
+    "text_plain": "Notable Passive Skills in Radius also grant (3–7)% increased Magnitude of Ailments you inflict",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -39,11 +40,12 @@
       "damage",
       "ailment"
     ],
+    "family": "AilmentEffect",
     "tiers": [
       {
         "tier_name": "Acrimonious",
         "tier_level": 1,
-        "text_plain": "1 (3–7)% increased Magnitude of Ailments you inflict",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (3–7)% increased Magnitude of Ailments you inflict",
         "weight": 1,
         "weight_pct": 3.125
       }
@@ -53,17 +55,18 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(2–3)% increased Area of Effect",
+    "text_plain": "Notable Passive Skills in Radius also grant (2–3)% increased Area of Effect",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
     "weight_pct": 3.125,
     "tags": [],
+    "family": "AreaOfEffect",
     "tiers": [
       {
         "tier_name": "Blasting",
         "tier_level": 1,
-        "text_plain": "1 (2–3)% increased Area of Effect",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (2–3)% increased Area of Effect",
         "weight": 1,
         "weight_pct": 3.125
       }
@@ -73,7 +76,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Aura Skills have (1–3)% increased Magnitudes",
+    "text_plain": "Notable Passive Skills in Radius also grant Aura Skills have (1–3)% increased Magnitudes",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -81,11 +84,12 @@
     "tags": [
       "aura"
     ],
+    "family": "AuraEffect",
     "tiers": [
       {
         "tier_name": "Commanding",
         "tier_level": 1,
-        "text_plain": "1 Aura Skills have (1–3)% increased Magnitudes",
+        "text_plain": "1 Notable Passive Skills in Radius also grant Aura Skills have (1–3)% increased Magnitudes",
         "weight": 1,
         "weight_pct": 3.125
       }
@@ -95,7 +99,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "#% increased Damage with Axes#% increased Damage with Daggers#% increased Damage with Swords",
+    "text_plain": "Small Passive Skills in Radius also grant #% increased Damage with AxesSmall Passive Skills in Radius also grant #% increased Damage with DaggersSmall Passive Skills in Radius also grant #% increased Damage with Swords",
     "tier": 3,
     "ilvl": 1,
     "weight": 3,
@@ -104,25 +108,26 @@
       "damage",
       "attack"
     ],
+    "family": "SpecificWeaponDamage",
     "tiers": [
       {
         "tier_name": "Sinister",
         "tier_level": 1,
-        "text_plain": "1 (2–3)% increased Damage with Axes",
+        "text_plain": "1 Small Passive Skills in Radius also grant (2–3)% increased Damage with Axes",
         "weight": 1,
         "weight_pct": 3.125
       },
       {
         "tier_name": "Lethal",
         "tier_level": 1,
-        "text_plain": "1 (2–3)% increased Damage with Daggers",
+        "text_plain": "1 Small Passive Skills in Radius also grant (2–3)% increased Damage with Daggers",
         "weight": 1,
         "weight_pct": 3.125
       },
       {
         "tier_name": "Vicious",
         "tier_level": 1,
-        "text_plain": "1 (1–2)% increased Damage with Swords",
+        "text_plain": "1 Small Passive Skills in Radius also grant (1–2)% increased Damage with Swords",
         "weight": 1,
         "weight_pct": 3.125
       }
@@ -132,7 +137,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(1–2)% increased Chaos Damage",
+    "text_plain": "Small Passive Skills in Radius also grant (1–2)% increased Chaos Damage",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -141,11 +146,12 @@
       "damage",
       "chaos"
     ],
+    "family": "IncreasedChaosDamage",
     "tiers": [
       {
         "tier_name": "Chaotic",
         "tier_level": 1,
-        "text_plain": "1 (1–2)% increased Chaos Damage",
+        "text_plain": "1 Small Passive Skills in Radius also grant (1–2)% increased Chaos Damage",
         "weight": 1,
         "weight_pct": 3.125
       }
@@ -155,7 +161,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(1–2)% increased Cold Damage",
+    "text_plain": "Small Passive Skills in Radius also grant (1–2)% increased Cold Damage",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -165,11 +171,12 @@
       "elemental",
       "cold"
     ],
+    "family": "ColdDamagePercentage",
     "tiers": [
       {
         "tier_name": "Chilling",
         "tier_level": 1,
-        "text_plain": "1 (1–2)% increased Cold Damage",
+        "text_plain": "1 Small Passive Skills in Radius also grant (1–2)% increased Cold Damage",
         "weight": 1,
         "weight_pct": 3.125
       }
@@ -179,7 +186,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Damage Penetrates (1–2)% Cold Resistance",
+    "text_plain": "Small Passive Skills in Radius also grant Damage Penetrates (1–2)% Cold Resistance",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -189,11 +196,12 @@
       "elemental",
       "cold"
     ],
+    "family": "ColdResistancePenetration",
     "tiers": [
       {
         "tier_name": "Numbing",
         "tier_level": 1,
-        "text_plain": "1 Damage Penetrates (1–2)% Cold Resistance",
+        "text_plain": "1 Small Passive Skills in Radius also grant Damage Penetrates (1–2)% Cold Resistance",
         "weight": 1,
         "weight_pct": 3.125
       }
@@ -203,7 +211,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(2–3)% increased Damage if you have Consumed a Corpse Recently",
+    "text_plain": "Small Passive Skills in Radius also grant (2–3)% increased Damage if you have Consumed a Corpse Recently",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -211,11 +219,12 @@
     "tags": [
       "damage"
     ],
+    "family": "AllDamage",
     "tiers": [
       {
         "tier_name": "Necromantic",
         "tier_level": 1,
-        "text_plain": "1 (2–3)% increased Damage if you have Consumed a Corpse Recently",
+        "text_plain": "1 Small Passive Skills in Radius also grant (2–3)% increased Damage if you have Consumed a Corpse Recently",
         "weight": 1,
         "weight_pct": 3.125
       }
@@ -225,7 +234,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(5–10)% increased Magnitude of Damaging Ailments you inflict with Critical Hits",
+    "text_plain": "Notable Passive Skills in Radius also grant (5–10)% increased Magnitude of Damaging Ailments you inflict with Critical Hits",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -235,11 +244,12 @@
       "critical",
       "ailment"
     ],
+    "family": "CriticalAilmentEffect",
     "tiers": [
       {
         "tier_name": "Rancorous",
         "tier_level": 1,
-        "text_plain": "1 (5–10)% increased Magnitude of Damaging Ailments you inflict with Critical Hits",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (5–10)% increased Magnitude of Damaging Ailments you inflict with Critical Hits",
         "weight": 1,
         "weight_pct": 3.125
       }
@@ -249,7 +259,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(6–12)% increased Area of Effect of Curses",
+    "text_plain": "Notable Passive Skills in Radius also grant (6–12)% increased Area of Effect of Curses",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -258,11 +268,12 @@
       "caster",
       "curse"
     ],
+    "family": "CurseAreaOfEffect",
     "tiers": [
       {
         "tier_name": "Expanding",
         "tier_level": 1,
-        "text_plain": "1 (6–12)% increased Area of Effect of Curses",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (6–12)% increased Area of Effect of Curses",
         "weight": 1,
         "weight_pct": 3.125
       }
@@ -272,7 +283,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "1% increased Curse Magnitudes",
+    "text_plain": "Notable Passive Skills in Radius also grant 1% increased Curse Magnitudes",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -281,11 +292,12 @@
       "caster",
       "curse"
     ],
+    "family": "CurseEffectiveness",
     "tiers": [
       {
         "tier_name": "Hexing",
         "tier_level": 1,
-        "text_plain": "1 1% increased Curse Magnitudes",
+        "text_plain": "1 Notable Passive Skills in Radius also grant 1% increased Curse Magnitudes",
         "weight": 1,
         "weight_pct": 3.125
       }
@@ -295,7 +307,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(1–2)% increased Elemental Damage",
+    "text_plain": "Small Passive Skills in Radius also grant (1–2)% increased Elemental Damage",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -304,11 +316,12 @@
       "damage",
       "elemental"
     ],
+    "family": "ElementalDamagePercent",
     "tiers": [
       {
         "tier_name": "Prismatic",
         "tier_level": 1,
-        "text_plain": "1 (1–2)% increased Elemental Damage",
+        "text_plain": "1 Small Passive Skills in Radius also grant (1–2)% increased Elemental Damage",
         "weight": 1,
         "weight_pct": 3.125
       }
@@ -318,7 +331,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(2–3)% increased maximum Energy Shield",
+    "text_plain": "Small Passive Skills in Radius also grant (2–3)% increased maximum Energy Shield",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -326,11 +339,12 @@
     "tags": [
       "defences"
     ],
+    "family": "EnergyShieldPercent",
     "tiers": [
       {
         "tier_name": "Shimmering",
         "tier_level": 1,
-        "text_plain": "1 (2–3)% increased maximum Energy Shield",
+        "text_plain": "1 Small Passive Skills in Radius also grant (2–3)% increased maximum Energy Shield",
         "weight": 1,
         "weight_pct": 3.125
       }
@@ -340,7 +354,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(5–7)% faster start of Energy Shield Recharge",
+    "text_plain": "Notable Passive Skills in Radius also grant (5–7)% faster start of Energy Shield Recharge",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -348,11 +362,12 @@
     "tags": [
       "defences"
     ],
+    "family": "EnergyShieldDelay",
     "tiers": [
       {
         "tier_name": "Serene",
         "tier_level": 1,
-        "text_plain": "1 (5–7)% faster start of Energy Shield Recharge",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (5–7)% faster start of Energy Shield Recharge",
         "weight": 1,
         "weight_pct": 3.125
       }
@@ -362,7 +377,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(2–3)% increased Energy Shield Recharge Rate",
+    "text_plain": "Small Passive Skills in Radius also grant (2–3)% increased Energy Shield Recharge Rate",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -370,11 +385,12 @@
     "tags": [
       "defences"
     ],
+    "family": "EnergyShieldRegeneration",
     "tiers": [
       {
         "tier_name": "Fevered",
         "tier_level": 1,
-        "text_plain": "1 (2–3)% increased Energy Shield Recharge Rate",
+        "text_plain": "1 Small Passive Skills in Radius also grant (2–3)% increased Energy Shield Recharge Rate",
         "weight": 1,
         "weight_pct": 3.125
       }
@@ -384,7 +400,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(1–2)% increased Damage with Flails",
+    "text_plain": "Small Passive Skills in Radius also grant (1–2)% increased Damage with Flails",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -393,11 +409,12 @@
       "damage",
       "attack"
     ],
+    "family": "FlailDamage",
     "tiers": [
       {
         "tier_name": "Flailing",
         "tier_level": 1,
-        "text_plain": "1 (1–2)% increased Damage with Flails",
+        "text_plain": "1 Small Passive Skills in Radius also grant (1–2)% increased Damage with Flails",
         "weight": 1,
         "weight_pct": 3.125
       }
@@ -407,7 +424,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(15–25)% increased Energy Shield from Equipped Focus",
+    "text_plain": "Notable Passive Skills in Radius also grant (15–25)% increased Energy Shield from Equipped Focus",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -415,11 +432,12 @@
     "tags": [
       "defences"
     ],
+    "family": "FocusEnergyShield",
     "tiers": [
       {
         "tier_name": "Focusing",
         "tier_level": 1,
-        "text_plain": "1 (15–25)% increased Energy Shield from Equipped Focus",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (15–25)% increased Energy Shield from Equipped Focus",
         "weight": 1,
         "weight_pct": 3.125
       }
@@ -429,17 +447,18 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(3–7)% increased Ignite Magnitude",
+    "text_plain": "Notable Passive Skills in Radius also grant (3–7)% increased Ignite Magnitude",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
     "weight_pct": 3.125,
     "tags": [],
+    "family": "IgniteEffect",
     "tiers": [
       {
         "tier_name": "Burning",
         "tier_level": 1,
-        "text_plain": "1 (3–7)% increased Ignite Magnitude",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (3–7)% increased Ignite Magnitude",
         "weight": 1,
         "weight_pct": 3.125
       }
@@ -449,7 +468,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(2–3)% increased Minion Accuracy Rating",
+    "text_plain": "Small Passive Skills in Radius also grant (2–3)% increased Minion Accuracy Rating",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -458,11 +477,12 @@
       "attack",
       "minion"
     ],
+    "family": "MinionAccuracyRating",
     "tiers": [
       {
         "tier_name": "Training",
         "tier_level": 1,
-        "text_plain": "1 (2–3)% increased Minion Accuracy Rating",
+        "text_plain": "1 Small Passive Skills in Radius also grant (2–3)% increased Minion Accuracy Rating",
         "weight": 1,
         "weight_pct": 3.125
       }
@@ -472,7 +492,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Minions deal (1–2)% increased Damage",
+    "text_plain": "Small Passive Skills in Radius also grant Minions deal (1–2)% increased Damage",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -481,11 +501,12 @@
       "damage",
       "minion"
     ],
+    "family": "MinionDamage",
     "tiers": [
       {
         "tier_name": "Authoritative",
         "tier_level": 1,
-        "text_plain": "1 Minions deal (1–2)% increased Damage",
+        "text_plain": "1 Small Passive Skills in Radius also grant Minions deal (1–2)% increased Damage",
         "weight": 1,
         "weight_pct": 3.125
       }
@@ -495,17 +516,18 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Offerings have (2–3)% increased Maximum Life",
+    "text_plain": "Small Passive Skills in Radius also grant Offerings have (2–3)% increased Maximum Life",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
     "weight_pct": 3.125,
     "tags": [],
+    "family": "OfferingLife",
     "tiers": [
       {
         "tier_name": "Sacrificial",
         "tier_level": 1,
-        "text_plain": "1 Offerings have (2–3)% increased Maximum Life",
+        "text_plain": "1 Small Passive Skills in Radius also grant Offerings have (2–3)% increased Maximum Life",
         "weight": 1,
         "weight_pct": 3.125
       }
@@ -515,7 +537,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(5–7)% increased Magnitude of Shock you inflict",
+    "text_plain": "Notable Passive Skills in Radius also grant (5–7)% increased Magnitude of Shock you inflict",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -525,11 +547,12 @@
       "lightning",
       "ailment"
     ],
+    "family": "ShockEffect",
     "tiers": [
       {
         "tier_name": "Jolting",
         "tier_level": 1,
-        "text_plain": "1 (5–7)% increased Magnitude of Shock you inflict",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (5–7)% increased Magnitude of Shock you inflict",
         "weight": 1,
         "weight_pct": 3.125
       }
@@ -539,7 +562,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(1–2)% increased Spell Damage",
+    "text_plain": "Small Passive Skills in Radius also grant (1–2)% increased Spell Damage",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -548,11 +571,12 @@
       "damage",
       "caster"
     ],
+    "family": "WeaponCasterDamagePrefix",
     "tiers": [
       {
         "tier_name": "Mystic",
         "tier_level": 1,
-        "text_plain": "1 (1–2)% increased Spell Damage",
+        "text_plain": "1 Small Passive Skills in Radius also grant (1–2)% increased Spell Damage",
         "weight": 1,
         "weight_pct": 3.125
       }
@@ -562,7 +586,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(1–2)% increased Trap Damage",
+    "text_plain": "Small Passive Skills in Radius also grant (1–2)% increased Trap Damage",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -570,11 +594,12 @@
     "tags": [
       "damage"
     ],
+    "family": "TrapDamage",
     "tiers": [
       {
         "tier_name": "Trapping",
         "tier_level": 1,
-        "text_plain": "1 (1–2)% increased Trap Damage",
+        "text_plain": "1 Small Passive Skills in Radius also grant (1–2)% increased Trap Damage",
         "weight": 1,
         "weight_pct": 3.125
       }
@@ -584,7 +609,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Triggered Spells deal (2–3)% increased Spell Damage",
+    "text_plain": "Small Passive Skills in Radius also grant Triggered Spells deal (2–3)% increased Spell Damage",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -593,11 +618,12 @@
       "damage",
       "caster"
     ],
+    "family": "DamageWithTriggeredSpells",
     "tiers": [
       {
         "tier_name": "Triggered",
         "tier_level": 1,
-        "text_plain": "1 Triggered Spells deal (2–3)% increased Spell Damage",
+        "text_plain": "1 Small Passive Skills in Radius also grant Triggered Spells deal (2–3)% increased Spell Damage",
         "weight": 1,
         "weight_pct": 3.125
       }
@@ -607,7 +633,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(1–2)% increased Damage with Unarmed Attacks",
+    "text_plain": "Small Passive Skills in Radius also grant (1–2)% increased Damage with Unarmed Attacks",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -616,11 +642,12 @@
       "damage",
       "attack"
     ],
+    "family": "UnarmedDamage",
     "tiers": [
       {
         "tier_name": "Punching",
         "tier_level": 1,
-        "text_plain": "1 (1–2)% increased Damage with Unarmed Attacks",
+        "text_plain": "1 Small Passive Skills in Radius also grant (1–2)% increased Damage with Unarmed Attacks",
         "weight": 1,
         "weight_pct": 3.125
       }
@@ -630,7 +657,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(3–5)% increased Withered Magnitude",
+    "text_plain": "Notable Passive Skills in Radius also grant (3–5)% increased Withered Magnitude",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -638,11 +665,12 @@
     "tags": [
       "chaos"
     ],
+    "family": "WitheredEffect",
     "tiers": [
       {
         "tier_name": "Withering",
         "tier_level": 1,
-        "text_plain": "1 (3–5)% increased Withered Magnitude",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (3–5)% increased Withered Magnitude",
         "weight": 1,
         "weight_pct": 3.125
       }
@@ -652,17 +680,18 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(8–12)% increased Presence Area of Effect",
+    "text_plain": "Notable Passive Skills in Radius also grant (8–12)% increased Presence Area of Effect",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
     "weight_pct": 3.125,
     "tags": [],
+    "family": "PresenceRadius",
     "tiers": [
       {
         "tier_name": "Iconic",
         "tier_level": 1,
-        "text_plain": "1 (8–12)% increased Presence Area of Effect",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (8–12)% increased Presence Area of Effect",
         "weight": 1,
         "weight_pct": 3.125
       }
@@ -678,6 +707,7 @@
     "weight": 2,
     "weight_pct": 4.545,
     "tags": [],
+    "family": "JewelRadiusSmallNodeEffect",
     "tiers": [
       {
         "tier_name": "of Potency",
@@ -705,6 +735,7 @@
     "weight": 1,
     "weight_pct": 2.273,
     "tags": [],
+    "family": "JewelRadiusNotableEffect",
     "tiers": [
       {
         "tier_name": "of Supremacy",
@@ -719,7 +750,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "(3–7)% increased chance to inflict Ailments",
+    "text_plain": "Notable Passive Skills in Radius also grant (3–7)% increased chance to inflict Ailments",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -727,11 +758,12 @@
     "tags": [
       "ailment"
     ],
+    "family": "AilmentChance",
     "tiers": [
       {
         "tier_name": "of Ailing",
         "tier_level": 1,
-        "text_plain": "1 (3–7)% increased chance to inflict Ailments",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (3–7)% increased chance to inflict Ailments",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -741,7 +773,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "#% increased Attack Speed with Axes#% increased Attack Speed with Daggers#% increased Attack Speed with Swords",
+    "text_plain": "Notable Passive Skills in Radius also grant #% increased Attack Speed with AxesNotable Passive Skills in Radius also grant #% increased Attack Speed with DaggersNotable Passive Skills in Radius also grant #% increased Attack Speed with Swords",
     "tier": 3,
     "ilvl": 1,
     "weight": 3,
@@ -750,25 +782,26 @@
       "attack",
       "speed"
     ],
+    "family": "SpecificWeaponSpeed",
     "tiers": [
       {
         "tier_name": "of Cleaving",
         "tier_level": 1,
-        "text_plain": "1 (1–2)% increased Attack Speed with Axes",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (1–2)% increased Attack Speed with Axes",
         "weight": 1,
         "weight_pct": 2.273
       },
       {
         "tier_name": "of Slicing",
         "tier_level": 1,
-        "text_plain": "1 (1–2)% increased Attack Speed with Daggers",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (1–2)% increased Attack Speed with Daggers",
         "weight": 1,
         "weight_pct": 2.273
       },
       {
         "tier_name": "of Fencing",
         "tier_level": 1,
-        "text_plain": "1 (1–2)% increased Attack Speed with Swords",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (1–2)% increased Attack Speed with Swords",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -778,7 +811,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "(1–2)% increased Cast Speed",
+    "text_plain": "Notable Passive Skills in Radius also grant (1–2)% increased Cast Speed",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -787,11 +820,12 @@
       "caster",
       "speed"
     ],
+    "family": "IncreasedCastSpeed",
     "tiers": [
       {
         "tier_name": "of Enchanting",
         "tier_level": 1,
-        "text_plain": "1 (1–2)% increased Cast Speed",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (1–2)% increased Cast Speed",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -801,7 +835,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "(6–12)% increased Chill Duration on Enemies",
+    "text_plain": "Notable Passive Skills in Radius also grant (6–12)% increased Chill Duration on Enemies",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -811,11 +845,12 @@
       "cold",
       "ailment"
     ],
+    "family": "IncreasedChillDuration",
     "tiers": [
       {
         "tier_name": "of Frost",
         "tier_level": 1,
-        "text_plain": "1 (6–12)% increased Chill Duration on Enemies",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (6–12)% increased Chill Duration on Enemies",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -825,7 +860,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "(3–7)% increased Critical Hit Chance",
+    "text_plain": "Notable Passive Skills in Radius also grant (3–7)% increased Critical Hit Chance",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -833,11 +868,12 @@
     "tags": [
       "critical"
     ],
+    "family": "CriticalStrikeChanceIncrease",
     "tiers": [
       {
         "tier_name": "of Annihilation",
         "tier_level": 1,
-        "text_plain": "1 (3–7)% increased Critical Hit Chance",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (3–7)% increased Critical Hit Chance",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -847,7 +883,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "(5–10)% increased Critical Damage Bonus",
+    "text_plain": "Notable Passive Skills in Radius also grant (5–10)% increased Critical Damage Bonus",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -856,11 +892,12 @@
       "damage",
       "critical"
     ],
+    "family": "CriticalStrikeMultiplier",
     "tiers": [
       {
         "tier_name": "of Potency",
         "tier_level": 1,
-        "text_plain": "1 (5–10)% increased Critical Damage Bonus",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (5–10)% increased Critical Damage Bonus",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -870,7 +907,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "(5–10)% increased Critical Spell Damage Bonus",
+    "text_plain": "Notable Passive Skills in Radius also grant (5–10)% increased Critical Spell Damage Bonus",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -880,11 +917,12 @@
       "caster",
       "critical"
     ],
+    "family": "FormCritMultiplier",
     "tiers": [
       {
         "tier_name": "of Unmaking",
         "tier_level": 1,
-        "text_plain": "1 (5–10)% increased Critical Spell Damage Bonus",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (5–10)% increased Critical Spell Damage Bonus",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -894,7 +932,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "(2–4)% increased Curse Duration",
+    "text_plain": "Small Passive Skills in Radius also grant (2–4)% increased Curse Duration",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -902,11 +940,12 @@
     "tags": [
       "curse"
     ],
+    "family": "BaseCurseDuration",
     "tiers": [
       {
         "tier_name": "of Continuation",
         "tier_level": 1,
-        "text_plain": "1 (2–4)% increased Curse Duration",
+        "text_plain": "1 Small Passive Skills in Radius also grant (2–4)% increased Curse Duration",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -916,7 +955,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "(3–7)% increased Critical Hit Chance with Daggers",
+    "text_plain": "Notable Passive Skills in Radius also grant (3–7)% increased Critical Hit Chance with Daggers",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -925,11 +964,12 @@
       "attack",
       "critical"
     ],
+    "family": "SpecificWeaponCritChance",
     "tiers": [
       {
         "tier_name": "of Backstabbing",
         "tier_level": 1,
-        "text_plain": "1 (3–7)% increased Critical Hit Chance with Daggers",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (3–7)% increased Critical Hit Chance with Daggers",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -939,7 +979,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "1% of Damage is taken from Mana before Life",
+    "text_plain": "Notable Passive Skills in Radius also grant 1% of Damage is taken from Mana before Life",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -948,11 +988,12 @@
       "life",
       "mana"
     ],
+    "family": "DamageRemovedFromManaBeforeLife",
     "tiers": [
       {
         "tier_name": "of Mind",
         "tier_level": 1,
-        "text_plain": "1 1% of Damage is taken from Mana before Life",
+        "text_plain": "1 Notable Passive Skills in Radius also grant 1% of Damage is taken from Mana before Life",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -962,7 +1003,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "(3–5)% increased Duration of Damaging Ailments on Enemies",
+    "text_plain": "Notable Passive Skills in Radius also grant (3–5)% increased Duration of Damaging Ailments on Enemies",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -970,11 +1011,12 @@
     "tags": [
       "ailment"
     ],
+    "family": "DamagingAilmentDuration",
     "tiers": [
       {
         "tier_name": "of Suffusion",
         "tier_level": 1,
-        "text_plain": "1 (3–5)% increased Duration of Damaging Ailments on Enemies",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (3–5)% increased Duration of Damaging Ailments on Enemies",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -984,17 +1026,18 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Debuffs on you expire (3–5)% faster",
+    "text_plain": "Notable Passive Skills in Radius also grant Debuffs on you expire (3–5)% faster",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
     "weight_pct": 2.273,
     "tags": [],
+    "family": "DebuffTime",
     "tiers": [
       {
         "tier_name": "of Diminishing",
         "tier_level": 1,
-        "text_plain": "1 Debuffs on you expire (3–5)% faster",
+        "text_plain": "1 Notable Passive Skills in Radius also grant Debuffs on you expire (3–5)% faster",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -1004,17 +1047,18 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Meta Skills gain (2–4)% increased Energy",
+    "text_plain": "Notable Passive Skills in Radius also grant Meta Skills gain (2–4)% increased Energy",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
     "weight_pct": 2.273,
     "tags": [],
+    "family": "Energy",
     "tiers": [
       {
         "tier_name": "of Generation",
         "tier_level": 1,
-        "text_plain": "1 Meta Skills gain (2–4)% increased Energy",
+        "text_plain": "1 Notable Passive Skills in Radius also grant Meta Skills gain (2–4)% increased Energy",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -1024,7 +1068,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Damaging Ailments deal damage (2–3)% faster",
+    "text_plain": "Notable Passive Skills in Radius also grant Damaging Ailments deal damage (2–3)% faster",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -1032,11 +1076,12 @@
     "tags": [
       "ailment"
     ],
+    "family": "FasterAilmentDamage",
     "tiers": [
       {
         "tier_name": "of Decrepifying",
         "tier_level": 1,
-        "text_plain": "1 Damaging Ailments deal damage (2–3)% faster",
+        "text_plain": "1 Notable Passive Skills in Radius also grant Damaging Ailments deal damage (2–3)% faster",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -1046,7 +1091,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "(3–7)% increased Critical Hit Chance with Flails",
+    "text_plain": "Notable Passive Skills in Radius also grant (3–7)% increased Critical Hit Chance with Flails",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -1055,11 +1100,12 @@
       "attack",
       "critical"
     ],
+    "family": "FlailCriticalChance",
     "tiers": [
       {
         "tier_name": "of Thrashing",
         "tier_level": 1,
-        "text_plain": "1 (3–7)% increased Critical Hit Chance with Flails",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (3–7)% increased Critical Hit Chance with Flails",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -1069,17 +1115,18 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "(5–10)% increased Freeze Buildup",
+    "text_plain": "Notable Passive Skills in Radius also grant (5–10)% increased Freeze Buildup",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
     "weight_pct": 2.273,
     "tags": [],
+    "family": "FreezeDamageIncrease",
     "tiers": [
       {
         "tier_name": "of Freezing",
         "tier_level": 1,
-        "text_plain": "1 (5–10)% increased Freeze Buildup",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (5–10)% increased Freeze Buildup",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -1089,7 +1136,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "(2–4)% increased Freeze Threshold",
+    "text_plain": "Small Passive Skills in Radius also grant (2–4)% increased Freeze Threshold",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -1097,11 +1144,12 @@
     "tags": [
       "damage"
     ],
+    "family": "FreezeThreshold",
     "tiers": [
       {
         "tier_name": "of Snowbreathing",
         "tier_level": 1,
-        "text_plain": "1 (2–4)% increased Freeze Threshold",
+        "text_plain": "1 Small Passive Skills in Radius also grant (2–4)% increased Freeze Threshold",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -1111,17 +1159,18 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "(2–3)% increased Flammability Magnitude",
+    "text_plain": "Small Passive Skills in Radius also grant (2–3)% increased Flammability Magnitude",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
     "weight_pct": 2.273,
     "tags": [],
+    "family": "IgniteChanceIncrease",
     "tiers": [
       {
         "tier_name": "of Ignition",
         "tier_level": 1,
-        "text_plain": "1 (2–3)% increased Flammability Magnitude",
+        "text_plain": "1 Small Passive Skills in Radius also grant (2–3)% increased Flammability Magnitude",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -1131,17 +1180,18 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "(3–5)% increased Skill Effect Duration",
+    "text_plain": "Notable Passive Skills in Radius also grant (3–5)% increased Skill Effect Duration",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
     "weight_pct": 2.273,
     "tags": [],
+    "family": "SkillEffectDuration",
     "tiers": [
       {
         "tier_name": "of Lengthening",
         "tier_level": 1,
-        "text_plain": "1 (3–5)% increased Skill Effect Duration",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (3–5)% increased Skill Effect Duration",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -1151,7 +1201,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Recover 1% of maximum Life on Kill",
+    "text_plain": "Notable Passive Skills in Radius also grant Recover 1% of maximum Life on Kill",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -1159,11 +1209,12 @@
     "tags": [
       "life"
     ],
+    "family": "MaximumLifeOnKillPercent",
     "tiers": [
       {
         "tier_name": "of Success",
         "tier_level": 1,
-        "text_plain": "1 Recover 1% of maximum Life on Kill",
+        "text_plain": "1 Notable Passive Skills in Radius also grant Recover 1% of maximum Life on Kill",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -1173,7 +1224,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "1% of Damage taken Recouped as Life",
+    "text_plain": "Notable Passive Skills in Radius also grant 1% of Damage taken Recouped as Life",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -1181,11 +1232,12 @@
     "tags": [
       "life"
     ],
+    "family": "DamageTakenGainedAsLife",
     "tiers": [
       {
         "tier_name": "of Infusion",
         "tier_level": 1,
-        "text_plain": "1 1% of Damage taken Recouped as Life",
+        "text_plain": "1 Notable Passive Skills in Radius also grant 1% of Damage taken Recouped as Life",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -1195,7 +1247,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Recover 1% of maximum Mana on Kill",
+    "text_plain": "Notable Passive Skills in Radius also grant Recover 1% of maximum Mana on Kill",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -1203,11 +1255,12 @@
     "tags": [
       "mana"
     ],
+    "family": "ManaGainedOnKillPercentage",
     "tiers": [
       {
         "tier_name": "of Osmosis",
         "tier_level": 1,
-        "text_plain": "1 Recover 1% of maximum Mana on Kill",
+        "text_plain": "1 Notable Passive Skills in Radius also grant Recover 1% of maximum Mana on Kill",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -1217,7 +1270,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "(1–2)% increased Mana Regeneration Rate",
+    "text_plain": "Small Passive Skills in Radius also grant (1–2)% increased Mana Regeneration Rate",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -1225,11 +1278,12 @@
     "tags": [
       "mana"
     ],
+    "family": "ManaRegeneration",
     "tiers": [
       {
         "tier_name": "of Energy",
         "tier_level": 1,
-        "text_plain": "1 (1–2)% increased Mana Regeneration Rate",
+        "text_plain": "1 Small Passive Skills in Radius also grant (1–2)% increased Mana Regeneration Rate",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -1239,7 +1293,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Minions have (1–2)% increased Attack and Cast Speed",
+    "text_plain": "Notable Passive Skills in Radius also grant Minions have (1–2)% increased Attack and Cast Speed",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -1250,11 +1304,12 @@
       "speed",
       "minion"
     ],
+    "family": "MinionAttackSpeedAndCastSpeed",
     "tiers": [
       {
         "tier_name": "of Orchestration",
         "tier_level": 1,
-        "text_plain": "1 Minions have (1–2)% increased Attack and Cast Speed",
+        "text_plain": "1 Notable Passive Skills in Radius also grant Minions have (1–2)% increased Attack and Cast Speed",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -1264,7 +1319,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Minions have +(1–2)% to Chaos Resistance",
+    "text_plain": "Small Passive Skills in Radius also grant Minions have +(1–2)% to Chaos Resistance",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -1274,11 +1329,12 @@
       "resistance",
       "minion"
     ],
+    "family": "MinionChaosResistance",
     "tiers": [
       {
         "tier_name": "of Righteousness",
         "tier_level": 1,
-        "text_plain": "1 Minions have +(1–2)% to Chaos Resistance",
+        "text_plain": "1 Small Passive Skills in Radius also grant Minions have +(1–2)% to Chaos Resistance",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -1288,7 +1344,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Minions have (5–10)% increased Critical Hit Chance",
+    "text_plain": "Notable Passive Skills in Radius also grant Minions have (5–10)% increased Critical Hit Chance",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -1297,11 +1353,12 @@
       "minion",
       "critical"
     ],
+    "family": "MinionCriticalStrikeChance",
     "tiers": [
       {
         "tier_name": "of Marshalling",
         "tier_level": 1,
-        "text_plain": "1 Minions have (5–10)% increased Critical Hit Chance",
+        "text_plain": "1 Notable Passive Skills in Radius also grant Minions have (5–10)% increased Critical Hit Chance",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -1311,7 +1368,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Minions have (6–12)% increased Critical Damage Bonus",
+    "text_plain": "Notable Passive Skills in Radius also grant Minions have (6–12)% increased Critical Damage Bonus",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -1321,11 +1378,12 @@
       "minion",
       "critical"
     ],
+    "family": "MinionCriticalStrikeMultiplier",
     "tiers": [
       {
         "tier_name": "of Gripping",
         "tier_level": 1,
-        "text_plain": "1 Minions have (6–12)% increased Critical Damage Bonus",
+        "text_plain": "1 Notable Passive Skills in Radius also grant Minions have (6–12)% increased Critical Damage Bonus",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -1335,7 +1393,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Minions have +(1–2)% to all Elemental Resistances",
+    "text_plain": "Small Passive Skills in Radius also grant Minions have +(1–2)% to all Elemental Resistances",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -1345,11 +1403,12 @@
       "resistance",
       "minion"
     ],
+    "family": "MinionElementalResistances",
     "tiers": [
       {
         "tier_name": "of Acclimatisation",
         "tier_level": 1,
-        "text_plain": "1 Minions have +(1–2)% to all Elemental Resistances",
+        "text_plain": "1 Small Passive Skills in Radius also grant Minions have +(1–2)% to all Elemental Resistances",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -1359,7 +1418,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Minions Revive (3–7)% faster",
+    "text_plain": "Notable Passive Skills in Radius also grant Minions Revive (3–7)% faster",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -1367,11 +1426,12 @@
     "tags": [
       "minion"
     ],
+    "family": "MinionReviveSpeed",
     "tiers": [
       {
         "tier_name": "of Revival",
         "tier_level": 1,
-        "text_plain": "1 Minions Revive (3–7)% faster",
+        "text_plain": "1 Notable Passive Skills in Radius also grant Minions Revive (3–7)% faster",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -1381,17 +1441,18 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Offering Skills have (6–12)% increased Duration",
+    "text_plain": "Notable Passive Skills in Radius also grant Offering Skills have (6–12)% increased Duration",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
     "weight_pct": 2.273,
     "tags": [],
+    "family": "OfferingDuration",
     "tiers": [
       {
         "tier_name": "of Offering",
         "tier_level": 1,
-        "text_plain": "1 Offering Skills have (6–12)% increased Duration",
+        "text_plain": "1 Notable Passive Skills in Radius also grant Offering Skills have (6–12)% increased Duration",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -1401,17 +1462,18 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "(5–10)% increased Freeze Buildup with Quarterstaves",
+    "text_plain": "Notable Passive Skills in Radius also grant (5–10)% increased Freeze Buildup with Quarterstaves",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
     "weight_pct": 2.273,
     "tags": [],
+    "family": "QuarterstaffFreezeBuildup",
     "tiers": [
       {
         "tier_name": "of Glaciers",
         "tier_level": 1,
-        "text_plain": "1 (5–10)% increased Freeze Buildup with Quarterstaves",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (5–10)% increased Freeze Buildup with Quarterstaves",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -1421,17 +1483,18 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "(2–3)% increased chance to Shock",
+    "text_plain": "Small Passive Skills in Radius also grant (2–3)% increased chance to Shock",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
     "weight_pct": 2.273,
     "tags": [],
+    "family": "ShockChanceIncrease",
     "tiers": [
       {
         "tier_name": "of Shocking",
         "tier_level": 1,
-        "text_plain": "1 (2–3)% increased chance to Shock",
+        "text_plain": "1 Small Passive Skills in Radius also grant (2–3)% increased chance to Shock",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -1441,7 +1504,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "(2–3)% increased Shock Duration",
+    "text_plain": "Small Passive Skills in Radius also grant (2–3)% increased Shock Duration",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -1451,11 +1514,12 @@
       "lightning",
       "ailment"
     ],
+    "family": "ShockDuration",
     "tiers": [
       {
         "tier_name": "of Paralyzing",
         "tier_level": 1,
-        "text_plain": "1 (2–3)% increased Shock Duration",
+        "text_plain": "1 Small Passive Skills in Radius also grant (2–3)% increased Shock Duration",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -1465,7 +1529,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "(3–7)% increased Critical Hit Chance for Spells",
+    "text_plain": "Notable Passive Skills in Radius also grant (3–7)% increased Critical Hit Chance for Spells",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -1474,11 +1538,12 @@
       "caster",
       "critical"
     ],
+    "family": "SpellCriticalStrikeChanceIncrease",
     "tiers": [
       {
         "tier_name": "of Annihilating",
         "tier_level": 1,
-        "text_plain": "1 (3–7)% increased Critical Hit Chance for Spells",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (3–7)% increased Critical Hit Chance for Spells",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -1488,17 +1553,18 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Gain additional Stun Threshold equal to (1–2)% of maximum Energy Shield",
+    "text_plain": "Small Passive Skills in Radius also grant Gain additional Stun Threshold equal to (1–2)% of maximum Energy Shield",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
     "weight_pct": 2.273,
     "tags": [],
+    "family": "StunThresholdfromEnergyShield",
     "tiers": [
       {
         "tier_name": "of Barriers",
         "tier_level": 1,
-        "text_plain": "1 Gain additional Stun Threshold equal to (1–2)% of maximum Energy Shield",
+        "text_plain": "1 Small Passive Skills in Radius also grant Gain additional Stun Threshold equal to (1–2)% of maximum Energy Shield",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -1508,7 +1574,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Gain additional Ailment Threshold equal to (1–2)% of maximum Energy Shield",
+    "text_plain": "Small Passive Skills in Radius also grant Gain additional Ailment Threshold equal to (1–2)% of maximum Energy Shield",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -1516,11 +1582,12 @@
     "tags": [
       "ailment"
     ],
+    "family": "AilmentThresholdfromEnergyShield",
     "tiers": [
       {
         "tier_name": "of Inuring",
         "tier_level": 1,
-        "text_plain": "1 Gain additional Ailment Threshold equal to (1–2)% of maximum Energy Shield",
+        "text_plain": "1 Small Passive Skills in Radius also grant Gain additional Ailment Threshold equal to (1–2)% of maximum Energy Shield",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -1530,7 +1597,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "(2–4)% increased Trap Throwing Speed",
+    "text_plain": "Notable Passive Skills in Radius also grant (2–4)% increased Trap Throwing Speed",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -1538,11 +1605,12 @@
     "tags": [
       "speed"
     ],
+    "family": "TrapAndMineThrowSpeed",
     "tiers": [
       {
         "tier_name": "of Preparation",
         "tier_level": 1,
-        "text_plain": "1 (2–4)% increased Trap Throwing Speed",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (2–4)% increased Trap Throwing Speed",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -1552,7 +1620,7 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "(1–2)% increased Unarmed Attack Speed",
+    "text_plain": "Notable Passive Skills in Radius also grant (1–2)% increased Unarmed Attack Speed",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -1561,11 +1629,12 @@
       "attack",
       "speed"
     ],
+    "family": "UnarmedAttackSpeed",
     "tiers": [
       {
         "tier_name": "of Jabbing",
         "tier_level": 1,
-        "text_plain": "1 (1–2)% increased Unarmed Attack Speed",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (1–2)% increased Unarmed Attack Speed",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -1575,17 +1644,18 @@
     "category": "Time-Lost_Sapphire",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "1% chance to gain Volatility on Kill",
+    "text_plain": "Notable Passive Skills in Radius also grant 1% chance to gain Volatility on Kill",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
     "weight_pct": 2.273,
     "tags": [],
+    "family": "VolatilityOnKillChance",
     "tiers": [
       {
         "tier_name": "of Volatility",
         "tier_level": 1,
-        "text_plain": "1 1% chance to gain Volatility on Kill",
+        "text_plain": "1 Notable Passive Skills in Radius also grant 1% chance to gain Volatility on Kill",
         "weight": 1,
         "weight_pct": 2.273
       }
@@ -1595,216 +1665,53 @@
     "category": "Time-Lost_Sapphire",
     "domain": "desecrated",
     "side": "prefix",
-    "text_plain": "#% increased Armour#% increased Attack Damage#% increased Damage with Warcries#% increased Warcry Buff Effect#% increased Evasion Rating#% increased Totem Damage#% increased maximum Energy Shield#% increased Totem Damage#% increased Armour#% increased Totem Damage#% increased Evasion Rating#% increased Thorns damage#% increased maximum Energy Shield#% increased Thorns damage#% increased Armour#% increased Thorns damage#% increased Spell Damage#% increased Evasion Rating#% increased Spell Damage#% increased maximum Energy Shield#% increased Spell Damage#% increased Armour#% increased chance to Poison#% increased Magnitude of Poison you inflict#% increased Evasion RatingMinions deal #% increased Damage#% increased maximum Energy ShieldMinions deal #% increased Damage#% increased ArmourMinions deal #% increased Damage#% increased Lightning DamageDamage Penetrates #% Lightning Resistance#% increased Magnitude of Abyssal Wasting you inflict#% increased maximum Energy Shield#% increased Attack Damage#% increased Evasion Rating#% increased Attack Damage#% increased Presence Area of EffectAura Skills have #% increased Magnitudes#% increased chance to inflict Bleeding#% increased Magnitude of Bleeding you inflict#% increased Chaos Damage#% increased Withered Magnitude#% increased Cold DamageDamage Penetrates #% Cold ResistanceCompanions deal #% increased DamageCompanions have #% increased maximum Life#% increased Elemental Damage#% increased Magnitude of Ailments you inflict#% increased Exposure Effect#% increased Fire DamageDamage Penetrates #% Fire Resistance#% increased Global Physical DamageBreak #% increased ArmourMinions have #% increased maximum Lifeminion area of effect +% [#,#]",
-    "tier": 29,
+    "text_plain": "Notable Passive Skills in Radius also grant #% of Damage is taken from Mana before LifeNotable Passive Skills in Radius also grant #% of Damage taken Recouped as LifeNotable Passive Skills in Radius also grant #% of Damage taken Recouped as ManaNotable Passive Skills in Radius also grant #% increased Global DefencesNotable Passive Skills in Radius also grant #% increased maximum LifeNotable Passive Skills in Radius also grant #% increased maximum Mana",
+    "tier": 6,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
-    "tags": [
-      "defences",
-      "attack"
-    ],
+    "tags": [],
+    "family": "AbyssRadiusJewelMod",
     "tiers": [
       {
         "tier_name": "Lightless",
         "tier_level": 1,
-        "text_plain": "1 (5–10)% increased Armour(4–8)% increased Attack Damage",
+        "text_plain": "1 Notable Passive Skills in Radius also grant 1% of Damage is taken from Mana before Life",
         "weight": 0,
         "weight_pct": 0
       },
       {
         "tier_name": "Lightless",
         "tier_level": 1,
-        "text_plain": "1 (5–10)% increased Damage with Warcries(4–8)% increased Warcry Buff Effect",
+        "text_plain": "1 Notable Passive Skills in Radius also grant 1% of Damage taken Recouped as Life",
         "weight": 0,
         "weight_pct": 0
       },
       {
         "tier_name": "Lightless",
         "tier_level": 1,
-        "text_plain": "1 (5–10)% increased Evasion Rating(4–8)% increased Totem Damage",
+        "text_plain": "1 Notable Passive Skills in Radius also grant 1% of Damage taken Recouped as Mana",
         "weight": 0,
         "weight_pct": 0
       },
       {
         "tier_name": "Lightless",
         "tier_level": 1,
-        "text_plain": "1 (5–10)% increased maximum Energy Shield(4–8)% increased Totem Damage",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (2–3)% increased Global Defences",
         "weight": 0,
         "weight_pct": 0
       },
       {
         "tier_name": "Lightless",
         "tier_level": 1,
-        "text_plain": "1 (5–10)% increased Armour(4–8)% increased Totem Damage",
+        "text_plain": "1 Notable Passive Skills in Radius also grant 1% increased maximum Life",
         "weight": 0,
         "weight_pct": 0
       },
       {
         "tier_name": "Lightless",
         "tier_level": 1,
-        "text_plain": "1 (5–10)% increased Evasion Rating(4–8)% increased Thorns damage",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Lightless",
-        "tier_level": 1,
-        "text_plain": "1 (5–10)% increased maximum Energy Shield(4–8)% increased Thorns damage",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Lightless",
-        "tier_level": 1,
-        "text_plain": "1 (5–10)% increased Armour(4–8)% increased Thorns damage",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Lightless",
-        "tier_level": 1,
-        "text_plain": "1 (4–8)% increased Spell Damage(5–10)% increased Evasion Rating",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Lightless",
-        "tier_level": 1,
-        "text_plain": "1 (4–8)% increased Spell Damage(5–10)% increased maximum Energy Shield",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Lightless",
-        "tier_level": 1,
-        "text_plain": "1 (4–8)% increased Spell Damage(5–10)% increased Armour",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Lightless",
-        "tier_level": 1,
-        "text_plain": "1 15% increased chance to Poison(5–10)% increased Magnitude of Poison you inflict",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Lightless",
-        "tier_level": 1,
-        "text_plain": "1 (5–10)% increased Evasion RatingMinions deal (4–8)% increased Damage",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Lightless",
-        "tier_level": 1,
-        "text_plain": "1 (5–10)% increased maximum Energy ShieldMinions deal (4–8)% increased Damage",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Lightless",
-        "tier_level": 1,
-        "text_plain": "1 (5–10)% increased ArmourMinions deal (4–8)% increased Damage",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Lightless",
-        "tier_level": 1,
-        "text_plain": "1 (4–8)% increased Lightning DamageDamage Penetrates (4–7)% Lightning Resistance",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Lightless",
-        "tier_level": 1,
-        "text_plain": "1 (10–20)% increased Magnitude of Abyssal Wasting you inflict",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Lightless",
-        "tier_level": 1,
-        "text_plain": "1 (5–10)% increased maximum Energy Shield(4–8)% increased Attack Damage",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Lightless",
-        "tier_level": 1,
-        "text_plain": "1 (5–10)% increased Evasion Rating(4–8)% increased Attack Damage",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Lightless",
-        "tier_level": 1,
-        "text_plain": "1 (8–15)% increased Presence Area of EffectAura Skills have (2–4)% increased Magnitudes",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Lightless",
-        "tier_level": 1,
-        "text_plain": "1 15% increased chance to inflict Bleeding(5–10)% increased Magnitude of Bleeding you inflict",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Lightless",
-        "tier_level": 1,
-        "text_plain": "1 (4–8)% increased Chaos Damage(3–6)% increased Withered Magnitude",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Lightless",
-        "tier_level": 1,
-        "text_plain": "1 (4–8)% increased Cold DamageDamage Penetrates (4–7)% Cold Resistance",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Lightless",
-        "tier_level": 1,
-        "text_plain": "1 Companions deal (5–10)% increased DamageCompanions have (5–10)% increased maximum Life",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Lightless",
-        "tier_level": 1,
-        "text_plain": "1 (4–8)% increased Elemental Damage(4–8)% increased Magnitude of Ailments you inflict",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Lightless",
-        "tier_level": 1,
-        "text_plain": "1 (4–8)% increased Exposure Effect",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Lightless",
-        "tier_level": 1,
-        "text_plain": "1 (4–8)% increased Fire DamageDamage Penetrates (4–7)% Fire Resistance",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Lightless",
-        "tier_level": 1,
-        "text_plain": "1 (4–8)% increased Global Physical DamageBreak (4–8)% increased Armour",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Lightless",
-        "tier_level": 1,
-        "text_plain": "1 Minions have (4–8)% increased maximum Lifeminion area of effect +% [3,6]",
+        "text_plain": "1 Notable Passive Skills in Radius also grant 1% increased maximum Mana",
         "weight": 0,
         "weight_pct": 0
       }
@@ -1814,33 +1721,53 @@
     "category": "Time-Lost_Sapphire",
     "domain": "desecrated",
     "side": "suffix",
-    "text_plain": "#% increased Dexterity#% increased Intelligence#% increased Strength",
-    "tier": 3,
+    "text_plain": "Notable Passive Skills in Radius also grant Charms gain # charges per SecondNotable Passive Skills in Radius also grant Life Flasks gain # charges per SecondNotable Passive Skills in Radius also grant #% increased Mana Cost EfficiencyNotable Passive Skills in Radius also grant Mana Flasks gain # charges per SecondNotable Passive Skills in Radius also grant Hits have #% reduced Critical Hit Chance against youNotable Passive Skills in Radius also grant Regenerate #% of maximum Life per second",
+    "tier": 6,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
-    "tags": [
-      "attribute"
-    ],
+    "tags": [],
+    "family": "AbyssRadiusJewelMod",
     "tiers": [
       {
-        "tier_name": "of the Abyss",
+        "tier_name": "Lightless",
         "tier_level": 1,
-        "text_plain": "1 (1–2)% increased Dexterity",
+        "text_plain": "1 Notable Passive Skills in Radius also grant Charms gain 0.1 charges per Second",
         "weight": 0,
         "weight_pct": 0
       },
       {
-        "tier_name": "of the Abyss",
+        "tier_name": "Lightless",
         "tier_level": 1,
-        "text_plain": "1 (1–2)% increased Intelligence",
+        "text_plain": "1 Notable Passive Skills in Radius also grant Life Flasks gain 0.1 charges per Second",
         "weight": 0,
         "weight_pct": 0
       },
       {
-        "tier_name": "of the Abyss",
+        "tier_name": "Lightless",
         "tier_level": 1,
-        "text_plain": "1 (1–2)% increased Strength",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (2–3)% increased Mana Cost Efficiency",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Lightless",
+        "tier_level": 1,
+        "text_plain": "1 Notable Passive Skills in Radius also grant Mana Flasks gain 0.1 charges per Second",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Lightless",
+        "tier_level": 1,
+        "text_plain": "1 Notable Passive Skills in Radius also grant Hits have (3–5)% reduced Critical Hit Chance against you",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Lightless",
+        "tier_level": 1,
+        "text_plain": "1 Notable Passive Skills in Radius also grant Regenerate (0.03–0.07)% of maximum Life per second",
         "weight": 0,
         "weight_pct": 0
       }
@@ -1858,6 +1785,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Strength",
     "tiers": [
       {
         "tier_name": "CorruptionJewelStrength1",
@@ -1880,6 +1808,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Dexterity",
     "tiers": [
       {
         "tier_name": "CorruptionJewelDexterity1",
@@ -1902,6 +1831,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Intelligence",
     "tiers": [
       {
         "tier_name": "CorruptionJewelIntelligence1",
@@ -1926,6 +1856,7 @@
       "fire",
       "resistance"
     ],
+    "family": "FireResistance",
     "tiers": [
       {
         "tier_name": "CorruptionJewelFireResist1",
@@ -1950,6 +1881,7 @@
       "cold",
       "resistance"
     ],
+    "family": "ColdResistance",
     "tiers": [
       {
         "tier_name": "CorruptionJewelColdResist1",
@@ -1974,6 +1906,7 @@
       "lightning",
       "resistance"
     ],
+    "family": "LightningResistance",
     "tiers": [
       {
         "tier_name": "CorruptionJewelLightningResist1",
@@ -1997,6 +1930,7 @@
       "chaos",
       "resistance"
     ],
+    "family": "ChaosResistance",
     "tiers": [
       {
         "tier_name": "CorruptionJewelChaosResist1",
@@ -2017,6 +1951,7 @@
     "weight": 1,
     "weight_pct": 9.091,
     "tags": [],
+    "family": "ImmuneToMaim",
     "tiers": [
       {
         "tier_name": "CorruptionJewelMaimImmunity1",
@@ -2037,6 +1972,7 @@
     "weight": 1,
     "weight_pct": 9.091,
     "tags": [],
+    "family": "YouCannotBeHindered",
     "tiers": [
       {
         "tier_name": "CorruptionJewelHinderImmunity1",
@@ -2060,6 +1996,7 @@
       "physical",
       "ailment"
     ],
+    "family": "CorruptedBlood",
     "tiers": [
       {
         "tier_name": "CorruptionJewelCorruptedBloodImmunity1",
@@ -2080,6 +2017,7 @@
     "weight": 1,
     "weight_pct": 9.091,
     "tags": [],
+    "family": "ImmunityToBlind",
     "tiers": [
       {
         "tier_name": "CorruptionJewelBlindImmunity1",

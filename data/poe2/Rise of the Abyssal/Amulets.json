@@ -11,6 +11,7 @@
     "tags": [
       "life"
     ],
+    "family": "IncreasedLife",
     "tiers": [
       {
         "tier_name": "Hale",
@@ -89,6 +90,7 @@
     "tags": [
       "life"
     ],
+    "family": "MaximumLifeIncreasePercent",
     "tiers": [
       {
         "tier_name": "Hopeful",
@@ -125,6 +127,7 @@
     "tags": [
       "mana"
     ],
+    "family": "IncreasedMana",
     "tiers": [
       {
         "tier_name": "Beryl",
@@ -231,6 +234,7 @@
     "tags": [
       "mana"
     ],
+    "family": "MaximumManaIncreasePercent",
     "tiers": [
       {
         "tier_name": "Cognizant",
@@ -267,6 +271,7 @@
     "tags": [
       "defences"
     ],
+    "family": "IncreasedEnergyShield",
     "tiers": [
       {
         "tier_name": "Shining",
@@ -352,6 +357,7 @@
     "tags": [
       "defences"
     ],
+    "family": "IncreasedPhysicalDamageReductionRatingPercent",
     "tiers": [
       {
         "tier_name": "Reinforced",
@@ -416,6 +422,7 @@
     "tags": [
       "defences"
     ],
+    "family": "EvasionRatingPercent",
     "tiers": [
       {
         "tier_name": "Shade's",
@@ -480,6 +487,7 @@
     "tags": [
       "defences"
     ],
+    "family": "EnergyShieldPercent",
     "tiers": [
       {
         "tier_name": "Protective",
@@ -544,6 +552,7 @@
     "tags": [
       "attack"
     ],
+    "family": "IncreasedAccuracy",
     "tiers": [
       {
         "tier_name": "Precise",
@@ -613,6 +622,7 @@
     "weight": 5000,
     "weight_pct": 6.739,
     "tags": [],
+    "family": "ItemFoundRarityIncreasePrefix",
     "tiers": [
       {
         "tier_name": "Magpie's",
@@ -661,6 +671,7 @@
     "weight": 2400,
     "weight_pct": 3.235,
     "tags": [],
+    "family": "BaseSpirit",
     "tiers": [
       {
         "tier_name": "Lady's",
@@ -712,6 +723,7 @@
       "damage",
       "caster"
     ],
+    "family": "SpellDamage",
     "tiers": [
       {
         "tier_name": "Apprentice's",
@@ -769,6 +781,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Strength",
     "tiers": [
       {
         "tier_name": "of the Brute",
@@ -840,6 +853,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Dexterity",
     "tiers": [
       {
         "tier_name": "of the Mongoose",
@@ -911,6 +925,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Intelligence",
     "tiers": [
       {
         "tier_name": "of the Pupil",
@@ -982,6 +997,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "AllAttributes",
     "tiers": [
       {
         "tier_name": "of the Clouds",
@@ -1062,6 +1078,7 @@
       "fire",
       "resistance"
     ],
+    "family": "FireResistance",
     "tiers": [
       {
         "tier_name": "of the Whelpling",
@@ -1135,6 +1152,7 @@
       "cold",
       "resistance"
     ],
+    "family": "ColdResistance",
     "tiers": [
       {
         "tier_name": "of the Seal",
@@ -1208,6 +1226,7 @@
       "lightning",
       "resistance"
     ],
+    "family": "LightningResistance",
     "tiers": [
       {
         "tier_name": "of the Cloud",
@@ -1283,6 +1302,7 @@
       "lightning",
       "resistance"
     ],
+    "family": "AllResistances",
     "tiers": [
       {
         "tier_name": "of the Crystal",
@@ -1341,6 +1361,7 @@
       "chaos",
       "resistance"
     ],
+    "family": "ChaosResistance",
     "tiers": [
       {
         "tier_name": "of the Lost",
@@ -1399,6 +1420,7 @@
       "caster",
       "gem"
     ],
+    "family": "IncreaseSocketedGemLevel",
     "tiers": [
       {
         "tier_name": "of the Mage",
@@ -1498,6 +1520,7 @@
     "tags": [
       "life"
     ],
+    "family": "LifeRegeneration",
     "tiers": [
       {
         "tier_name": "of the Newt",
@@ -1583,6 +1606,7 @@
     "tags": [
       "mana"
     ],
+    "family": "ManaRegeneration",
     "tiers": [
       {
         "tier_name": "of Excitement",
@@ -1641,6 +1665,7 @@
       "caster",
       "speed"
     ],
+    "family": "IncreasedCastSpeed",
     "tiers": [
       {
         "tier_name": "of Talent",
@@ -1691,6 +1716,7 @@
     "tags": [
       "critical"
     ],
+    "family": "CriticalStrikeChanceIncrease",
     "tiers": [
       {
         "tier_name": "of Menace",
@@ -1749,6 +1775,7 @@
       "damage",
       "critical"
     ],
+    "family": "CriticalStrikeMultiplier",
     "tiers": [
       {
         "tier_name": "of Ire",
@@ -1804,6 +1831,7 @@
     "weight": 5000,
     "weight_pct": 4.871,
     "tags": [],
+    "family": "ItemFoundRarityIncrease",
     "tiers": [
       {
         "tier_name": "of Plunder",
@@ -1854,6 +1882,7 @@
     "tags": [
       "life"
     ],
+    "family": "DamageTakenGainedAsLife",
     "tiers": [
       {
         "tier_name": "of Mending",
@@ -1905,6 +1934,7 @@
       "life",
       "mana"
     ],
+    "family": "PercentDamageGoesToMana",
     "tiers": [
       {
         "tier_name": "of Reprieve",
@@ -1956,6 +1986,7 @@
       "amanamu_mod",
       "defences"
     ],
+    "family": "AllDefences",
     "tiers": [
       {
         "tier_name": "Amanamu's",
@@ -1978,6 +2009,7 @@
     "tags": [
       "amanamu_mod"
     ],
+    "family": "RemnantEffect",
     "tiers": [
       {
         "tier_name": "Amanamu's",
@@ -2002,6 +2034,7 @@
       "damage",
       "minion"
     ],
+    "family": "IncreasedMinionDamageIfYouHitEnemy",
     "tiers": [
       {
         "tier_name": "Amanamu's",
@@ -2025,6 +2058,7 @@
       "amanamu_mod",
       "defences"
     ],
+    "family": "BodyArmourFromBodyArmour",
     "tiers": [
       {
         "tier_name": "Amanamu's",
@@ -2049,6 +2083,7 @@
       "damage",
       "caster"
     ],
+    "family": "IncreasedSpellDamageOnFullEnergyShield",
     "tiers": [
       {
         "tier_name": "Kurgal's",
@@ -2072,6 +2107,7 @@
       "kurgal_mod",
       "caster"
     ],
+    "family": "InvocatedSpellHalfEnergyChance",
     "tiers": [
       {
         "tier_name": "Kurgal's",
@@ -2095,6 +2131,7 @@
       "kurgal_mod",
       "defences"
     ],
+    "family": "MaximumEnergyShieldFromBodyArmour",
     "tiers": [
       {
         "tier_name": "Kurgal's",
@@ -2117,6 +2154,7 @@
     "tags": [
       "ulaman_mod"
     ],
+    "family": "GloryChanceToNotConsume",
     "tiers": [
       {
         "tier_name": "Ulaman's",
@@ -2140,6 +2178,7 @@
       "ulaman_mod",
       "defences"
     ],
+    "family": "EvasionRatingFromBodyArmour",
     "tiers": [
       {
         "tier_name": "Ulaman's",
@@ -2162,6 +2201,7 @@
     "tags": [
       "ulaman_mod"
     ],
+    "family": "AttackDamage",
     "tiers": [
       {
         "tier_name": "Ulaman's",
@@ -2185,6 +2225,7 @@
       "ulaman_mod",
       "defences"
     ],
+    "family": "GlobalDeflectionRating",
     "tiers": [
       {
         "tier_name": "Ulaman's",
@@ -2208,6 +2249,7 @@
       "amanamu_mod",
       "attribute"
     ],
+    "family": "Strength",
     "tiers": [
       {
         "tier_name": "of Amanamu",
@@ -2237,6 +2279,7 @@
     "tags": [
       "amanamu_mod"
     ],
+    "family": "SkillEffectDuration",
     "tiers": [
       {
         "tier_name": "of Amanamu",
@@ -2259,6 +2302,7 @@
     "tags": [
       "amanamu_mod"
     ],
+    "family": "RemnantPickupRadius",
     "tiers": [
       {
         "tier_name": "of Amanamu",
@@ -2285,6 +2329,7 @@
       "chaos",
       "resistance"
     ],
+    "family": "FireAndChaosDamageResistance",
     "tiers": [
       {
         "tier_name": "of Amanamu",
@@ -2307,6 +2352,7 @@
     "tags": [
       "amanamu_mod"
     ],
+    "family": "AuraEffect",
     "tiers": [
       {
         "tier_name": "of Amanamu",
@@ -2329,6 +2375,7 @@
     "tags": [
       "amanamu_mod"
     ],
+    "family": "GlobalItemAttributeRequirements",
     "tiers": [
       {
         "tier_name": "of Amanamu",
@@ -2352,6 +2399,7 @@
       "kurgal_mod",
       "mana"
     ],
+    "family": "ManaGainedOnKillPercentage",
     "tiers": [
       {
         "tier_name": "of Kurgal",
@@ -2374,6 +2422,7 @@
     "tags": [
       "kurgal_mod"
     ],
+    "family": "ExposureEffect",
     "tiers": [
       {
         "tier_name": "of Kurgal",
@@ -2396,6 +2445,7 @@
     "tags": [
       "kurgal_mod"
     ],
+    "family": "CooldownRecovery",
     "tiers": [
       {
         "tier_name": "of Kurgal",
@@ -2422,6 +2472,7 @@
       "chaos",
       "resistance"
     ],
+    "family": "ColdAndChaosDamageResistance",
     "tiers": [
       {
         "tier_name": "of Kurgal",
@@ -2445,6 +2496,7 @@
       "kurgal_mod",
       "attribute"
     ],
+    "family": "Dexterity",
     "tiers": [
       {
         "tier_name": "of Kurgal",
@@ -2468,6 +2520,7 @@
       "kurgal_mod",
       "gem"
     ],
+    "family": "GlobalSkillGemQuality",
     "tiers": [
       {
         "tier_name": "of Kurgal",
@@ -2492,6 +2545,7 @@
       "life",
       "mana"
     ],
+    "family": "DamageRemovedFromManaBeforeLife",
     "tiers": [
       {
         "tier_name": "of Kurgal",
@@ -2515,6 +2569,7 @@
       "kurgal_mod",
       "minion"
     ],
+    "family": "MinionCooldown",
     "tiers": [
       {
         "tier_name": "of Kurgal",
@@ -2538,6 +2593,7 @@
       "ulaman_mod",
       "speed"
     ],
+    "family": "IncreasedSpeed",
     "tiers": [
       {
         "tier_name": "of Ulaman",
@@ -2561,6 +2617,7 @@
       "ulaman_mod",
       "life"
     ],
+    "family": "RecoverPercentMaxLifeOnKill",
     "tiers": [
       {
         "tier_name": "of Ulaman",
@@ -2587,6 +2644,7 @@
       "chaos",
       "resistance"
     ],
+    "family": "LightningAndChaosDamageResistance",
     "tiers": [
       {
         "tier_name": "of Ulaman",
@@ -2609,6 +2667,7 @@
     "tags": [
       "ulaman_mod"
     ],
+    "family": "HeraldReservationEfficiency",
     "tiers": [
       {
         "tier_name": "of Ulaman",
@@ -2632,6 +2691,7 @@
       "ulaman_mod",
       "gem"
     ],
+    "family": "IncreaseSocketedGemLevel",
     "tiers": [
       {
         "tier_name": "of Ulaman",
@@ -2654,6 +2714,7 @@
     "tags": [
       "life"
     ],
+    "family": "IncreasedLife",
     "tiers": [
       {
         "tier_name": "Lesser Essence of the Body",
@@ -2690,6 +2751,7 @@
     "tags": [
       "mana"
     ],
+    "family": "IncreasedMana",
     "tiers": [
       {
         "tier_name": "Lesser Essence of the Mind",
@@ -2726,6 +2788,7 @@
     "tags": [
       "defences"
     ],
+    "family": "AllDefences",
     "tiers": [
       {
         "tier_name": "Perfect Essence of Enhancement",
@@ -2746,6 +2809,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "EssenceAbyss",
     "tiers": [
       {
         "tier_name": "Essence of the Abyss",
@@ -2769,6 +2833,7 @@
       "chaos",
       "resistance"
     ],
+    "family": "ChaosResistance",
     "tiers": [
       {
         "tier_name": "Lesser Essence of Ruin",
@@ -2805,6 +2870,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Strength",
     "tiers": [
       {
         "tier_name": "Lesser Essence of the Infinite",
@@ -2841,6 +2907,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Dexterity",
     "tiers": [
       {
         "tier_name": "Lesser Essence of the Infinite",
@@ -2877,6 +2944,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Intelligence",
     "tiers": [
       {
         "tier_name": "Lesser Essence of the Infinite",
@@ -2913,6 +2981,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "PercentageStrength",
     "tiers": [
       {
         "tier_name": "Perfect Essence of the Infinite",
@@ -2935,6 +3004,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "PercentageDexterity",
     "tiers": [
       {
         "tier_name": "Perfect Essence of the Infinite",
@@ -2957,6 +3027,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "PercentageIntelligence",
     "tiers": [
       {
         "tier_name": "Perfect Essence of the Infinite",
@@ -2979,6 +3050,7 @@
     "tags": [
       "life"
     ],
+    "family": "DamageTakenGainedAsLife",
     "tiers": [
       {
         "tier_name": "Essence of Hysteria",
@@ -2999,6 +3071,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "EssenceAbyss",
     "tiers": [
       {
         "tier_name": "Essence of the Abyss",
@@ -3023,6 +3096,7 @@
       "fire",
       "resistance"
     ],
+    "family": "FireResistance",
     "tiers": [
       {
         "tier_name": "Lesser Essence of Insulation",
@@ -3061,6 +3135,7 @@
       "cold",
       "resistance"
     ],
+    "family": "ColdResistance",
     "tiers": [
       {
         "tier_name": "Lesser Essence of Thawing",
@@ -3099,6 +3174,7 @@
       "lightning",
       "resistance"
     ],
+    "family": "LightningResistance",
     "tiers": [
       {
         "tier_name": "Lesser Essence of Grounding",
@@ -3133,6 +3209,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "ItemFoundRarityIncrease",
     "tiers": [
       {
         "tier_name": "Lesser Essence of Opulence",
@@ -3171,6 +3248,7 @@
       "physical",
       "attack"
     ],
+    "family": "LifeLeech",
     "tiers": [
       {
         "tier_name": "CorruptionLifeLeech1",
@@ -3195,6 +3273,7 @@
       "physical",
       "attack"
     ],
+    "family": "ManaLeech",
     "tiers": [
       {
         "tier_name": "CorruptionManaLeech1",
@@ -3218,6 +3297,7 @@
       "elemental",
       "resistance"
     ],
+    "family": "MaximumResistances",
     "tiers": [
       {
         "tier_name": "CorruptionMaximumElementalResistance1",
@@ -3244,6 +3324,7 @@
       "lightning",
       "resistance"
     ],
+    "family": "AllResistances",
     "tiers": [
       {
         "tier_name": "CorruptionAllResistances1",
@@ -3264,6 +3345,7 @@
     "weight": 1,
     "weight_pct": 8.333,
     "tags": [],
+    "family": "ItemFoundRarityIncrease",
     "tiers": [
       {
         "tier_name": "CorruptionItemFoundRarityIncrease1",
@@ -3286,6 +3368,7 @@
     "tags": [
       "gem"
     ],
+    "family": "IncreaseSocketedGemLevel",
     "tiers": [
       {
         "tier_name": "CorruptionGlobalSkillGemLevel1",
@@ -3308,6 +3391,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Strength",
     "tiers": [
       {
         "tier_name": "CorruptionStrength1",
@@ -3330,6 +3414,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Dexterity",
     "tiers": [
       {
         "tier_name": "CorruptionDexterity1",
@@ -3352,6 +3437,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Intelligence",
     "tiers": [
       {
         "tier_name": "CorruptionIntelligence1",
@@ -3372,6 +3458,7 @@
     "weight": 3,
     "weight_pct": 25,
     "tags": [],
+    "family": "FlaskChargeGeneration",
     "tiers": [
       {
         "tier_name": "CorruptionLifeFlaskChargeGeneration1",

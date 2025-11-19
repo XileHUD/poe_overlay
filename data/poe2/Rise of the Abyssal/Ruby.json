@@ -9,6 +9,7 @@
     "weight": 1,
     "weight_pct": 3.571,
     "tags": [],
+    "family": "AreaOfEffect",
     "tiers": [
       {
         "tier_name": "Blasting",
@@ -31,6 +32,7 @@
     "tags": [
       "defences"
     ],
+    "family": "IncreasedPhysicalDamageReductionRatingPercent",
     "tiers": [
       {
         "tier_name": "Armoured",
@@ -51,6 +53,7 @@
     "weight": 1,
     "weight_pct": 3.571,
     "tags": [],
+    "family": "ArmourBreak",
     "tiers": [
       {
         "tier_name": "Shattering",
@@ -74,6 +77,7 @@
       "damage",
       "attack"
     ],
+    "family": "AttackDamage",
     "tiers": [
       {
         "tier_name": "Combat",
@@ -94,6 +98,7 @@
     "weight": 1,
     "weight_pct": 3.571,
     "tags": [],
+    "family": "BleedChanceIncrease",
     "tiers": [
       {
         "tier_name": "Bleeding",
@@ -114,6 +119,7 @@
     "weight": 1,
     "weight_pct": 3.571,
     "tags": [],
+    "family": "IncreasedBlockChance",
     "tiers": [
       {
         "tier_name": "Protecting",
@@ -136,6 +142,7 @@
     "tags": [
       "damage"
     ],
+    "family": "DamagevsArmourBrokenEnemies",
     "tiers": [
       {
         "tier_name": "Exploiting",
@@ -159,6 +166,7 @@
       "damage",
       "elemental"
     ],
+    "family": "ElementalDamagePercent",
     "tiers": [
       {
         "tier_name": "Prismatic",
@@ -182,6 +190,7 @@
       "damage",
       "attack"
     ],
+    "family": "ExertedAttackDamage",
     "tiers": [
       {
         "tier_name": "Empowering",
@@ -206,6 +215,7 @@
       "elemental",
       "fire"
     ],
+    "family": "FireDamagePercentage",
     "tiers": [
       {
         "tier_name": "Flaming",
@@ -230,6 +240,7 @@
       "elemental",
       "fire"
     ],
+    "family": "FireResistancePenetration",
     "tiers": [
       {
         "tier_name": "Searing",
@@ -250,6 +261,7 @@
     "weight": 1,
     "weight_pct": 3.571,
     "tags": [],
+    "family": "IgniteEffect",
     "tiers": [
       {
         "tier_name": "Burning",
@@ -273,6 +285,7 @@
       "damage",
       "attack"
     ],
+    "family": "SpecificWeaponDamage",
     "tiers": [
       {
         "tier_name": "Beating",
@@ -293,6 +306,7 @@
     "weight": 1,
     "weight_pct": 3.571,
     "tags": [],
+    "family": "MaximumRage",
     "tiers": [
       {
         "tier_name": "Angry",
@@ -316,6 +330,7 @@
       "damage",
       "attack"
     ],
+    "family": "MeleeDamage",
     "tiers": [
       {
         "tier_name": "Clashing",
@@ -338,6 +353,7 @@
     "tags": [
       "minion"
     ],
+    "family": "MinionAreaOfEffect",
     "tiers": [
       {
         "tier_name": "Companion",
@@ -361,6 +377,7 @@
       "life",
       "minion"
     ],
+    "family": "MinionLife",
     "tiers": [
       {
         "tier_name": "Fortuitous",
@@ -384,6 +401,7 @@
       "damage",
       "physical"
     ],
+    "family": "PhysicalDamagePercent",
     "tiers": [
       {
         "tier_name": "Sharpened",
@@ -406,6 +424,7 @@
     "tags": [
       "defences"
     ],
+    "family": "ShieldArmourIncrease",
     "tiers": [
       {
         "tier_name": "Shielding",
@@ -431,6 +450,7 @@
       "attack",
       "ailment"
     ],
+    "family": "BleedingDamage",
     "tiers": [
       {
         "tier_name": "Haemorrhaging",
@@ -453,6 +473,7 @@
     "tags": [
       "damage"
     ],
+    "family": "Thorns",
     "tiers": [
       {
         "tier_name": "Retaliating",
@@ -475,6 +496,7 @@
     "tags": [
       "damage"
     ],
+    "family": "TotemDamage",
     "tiers": [
       {
         "tier_name": "Shaman's",
@@ -497,6 +519,7 @@
     "tags": [
       "life"
     ],
+    "family": "IncreasedTotemLife",
     "tiers": [
       {
         "tier_name": "Carved",
@@ -517,6 +540,7 @@
     "weight": 1,
     "weight_pct": 3.571,
     "tags": [],
+    "family": "WarcryEffect",
     "tiers": [
       {
         "tier_name": "of Warcries",
@@ -539,6 +563,7 @@
     "tags": [
       "damage"
     ],
+    "family": "WarcryDamage",
     "tiers": [
       {
         "tier_name": "Yelling",
@@ -563,6 +588,7 @@
       "physical",
       "ailment"
     ],
+    "family": "IncisionChance",
     "tiers": [
       {
         "tier_name": "Incise",
@@ -583,6 +609,7 @@
     "weight": 1,
     "weight_pct": 3.571,
     "tags": [],
+    "family": "BannerArea",
     "tiers": [
       {
         "tier_name": "Rallying",
@@ -603,6 +630,7 @@
     "weight": 1,
     "weight_pct": 3.571,
     "tags": [],
+    "family": "PresenceRadius",
     "tiers": [
       {
         "tier_name": "Iconic",
@@ -623,6 +651,7 @@
     "weight": 1,
     "weight_pct": 4.762,
     "tags": [],
+    "family": "ArmourBreakDuration",
     "tiers": [
       {
         "tier_name": "Resonating",
@@ -647,6 +676,7 @@
       "attack",
       "ailment"
     ],
+    "family": "BleedDuration",
     "tiers": [
       {
         "tier_name": "of Haemophilia",
@@ -667,6 +697,7 @@
     "weight": 1,
     "weight_pct": 4.762,
     "tags": [],
+    "family": "IgniteChanceIncrease",
     "tiers": [
       {
         "tier_name": "of Ignition",
@@ -687,6 +718,7 @@
     "weight": 1,
     "weight_pct": 4.762,
     "tags": [],
+    "family": "SkillEffectDuration",
     "tiers": [
       {
         "tier_name": "of Lengthening",
@@ -707,6 +739,7 @@
     "weight": 1,
     "weight_pct": 4.762,
     "tags": [],
+    "family": "Knockback",
     "tiers": [
       {
         "tier_name": "of Fending",
@@ -729,6 +762,7 @@
     "tags": [
       "life"
     ],
+    "family": "LifeCost",
     "tiers": [
       {
         "tier_name": "of Sacrifice",
@@ -749,6 +783,7 @@
     "weight": 1,
     "weight_pct": 4.762,
     "tags": [],
+    "family": "LifeLeech",
     "tiers": [
       {
         "tier_name": "of Frenzy",
@@ -771,6 +806,7 @@
     "tags": [
       "life"
     ],
+    "family": "LifeRegenerationRate",
     "tiers": [
       {
         "tier_name": "of Regeneration",
@@ -793,6 +829,7 @@
     "tags": [
       "attack"
     ],
+    "family": "MaceStun",
     "tiers": [
       {
         "tier_name": "of Thumping",
@@ -817,6 +854,7 @@
       "fire",
       "resistance"
     ],
+    "family": "MaximumFireResist",
     "tiers": [
       {
         "tier_name": "of the Phoenix",
@@ -840,6 +878,7 @@
       "physical",
       "minion"
     ],
+    "family": "MinionPhysicalDamageReduction",
     "tiers": [
       {
         "tier_name": "of Confidence",
@@ -860,6 +899,7 @@
     "weight": 1,
     "weight_pct": 4.762,
     "tags": [],
+    "family": "RageOnHit",
     "tiers": [
       {
         "tier_name": "of Raging",
@@ -880,6 +920,7 @@
     "weight": 1,
     "weight_pct": 4.762,
     "tags": [],
+    "family": "GainRage",
     "tiers": [
       {
         "tier_name": "of Retribution",
@@ -900,6 +941,7 @@
     "weight": 1,
     "weight_pct": 4.762,
     "tags": [],
+    "family": "StunDamageIncrease",
     "tiers": [
       {
         "tier_name": "of Stunning",
@@ -920,6 +962,7 @@
     "weight": 1,
     "weight_pct": 4.762,
     "tags": [],
+    "family": "IncreasedStunThreshold",
     "tiers": [
       {
         "tier_name": "of Withstanding",
@@ -942,6 +985,7 @@
     "tags": [
       "speed"
     ],
+    "family": "SummonTotemCastSpeed",
     "tiers": [
       {
         "tier_name": "of Ancestry",
@@ -962,6 +1006,7 @@
     "weight": 1,
     "weight_pct": 4.762,
     "tags": [],
+    "family": "WarcryCooldownSpeed",
     "tiers": [
       {
         "tier_name": "of Rallying",
@@ -984,6 +1029,7 @@
     "tags": [
       "speed"
     ],
+    "family": "WarcrySpeed",
     "tiers": [
       {
         "tier_name": "of Lungs",
@@ -1007,6 +1053,7 @@
       "attack",
       "speed"
     ],
+    "family": "WeaponSwapSpeed",
     "tiers": [
       {
         "tier_name": "of Swapping",
@@ -1027,6 +1074,7 @@
     "weight": 1,
     "weight_pct": 4.762,
     "tags": [],
+    "family": "BannerValourGained",
     "tiers": [
       {
         "tier_name": "of Valour",
@@ -1047,6 +1095,7 @@
     "weight": 1,
     "weight_pct": 4.762,
     "tags": [],
+    "family": "BannerDuration",
     "tiers": [
       {
         "tier_name": "of Inspiring",
@@ -1061,7 +1110,7 @@
     "category": "Ruby",
     "domain": "desecrated",
     "side": "prefix",
-    "text_plain": "#% increased Armour#% increased Attack Damage#% increased Damage with Warcries#% increased Warcry Buff Effect#% increased Evasion Rating#% increased Totem Damage#% increased maximum Energy Shield#% increased Totem Damage#% increased Armour#% increased Totem Damage#% increased Evasion Rating#% increased Thorns damage#% increased maximum Energy Shield#% increased Thorns damage#% increased Armour#% increased Thorns damage#% increased Spell Damage#% increased Evasion Rating#% increased Spell Damage#% increased maximum Energy Shield#% increased Spell Damage#% increased Armour#% increased chance to Poison#% increased Magnitude of Poison you inflict#% increased Evasion RatingMinions deal #% increased Damage#% increased maximum Energy ShieldMinions deal #% increased Damage#% increased ArmourMinions deal #% increased Damage#% increased Lightning DamageDamage Penetrates #% Lightning Resistance#% increased Magnitude of Abyssal Wasting you inflict#% increased maximum Energy Shield#% increased Attack Damage#% increased Evasion Rating#% increased Attack Damage#% increased Presence Area of EffectAura Skills have #% increased Magnitudes#% increased chance to inflict Bleeding#% increased Magnitude of Bleeding you inflict#% increased Chaos Damage#% increased Withered Magnitude#% increased Cold DamageDamage Penetrates #% Cold ResistanceCompanions deal #% increased DamageCompanions have #% increased maximum Life#% increased Elemental Damage#% increased Magnitude of Ailments you inflict#% increased Exposure Effect#% increased Fire DamageDamage Penetrates #% Fire Resistance#% increased Global Physical DamageBreak #% increased ArmourMinions have #% increased maximum Lifeminion area of effect +% [#,#]",
+    "text_plain": "#% increased Armour#% increased Attack Damage#% increased Warcry Buff Effect#% increased Damage with Warcries#% increased Evasion Rating#% increased Totem Damage#% increased maximum Energy Shield#% increased Totem Damage#% increased Armour#% increased Totem Damage#% increased Evasion Rating#% increased Thorns damage#% increased maximum Energy Shield#% increased Thorns damage#% increased Armour#% increased Thorns damage#% increased Spell Damage#% increased Evasion Rating#% increased Spell Damage#% increased maximum Energy Shield#% increased Spell Damage#% increased Armour#% increased chance to Poison#% increased Magnitude of Poison you inflict#% increased Evasion RatingMinions deal #% increased Damage#% increased maximum Energy ShieldMinions deal #% increased Damage#% increased ArmourMinions deal #% increased Damage#% increased Lightning DamageDamage Penetrates #% Lightning Resistance#% increased Magnitude of Abyssal Wasting you inflict#% increased maximum Energy Shield#% increased Attack Damage#% increased Evasion Rating#% increased Attack Damage#% increased Presence Area of EffectAura Skills have #% increased Magnitudes#% increased chance to inflict Bleeding#% increased Magnitude of Bleeding you inflict#% increased Chaos Damage#% increased Withered Magnitude#% increased Cold DamageDamage Penetrates #% Cold ResistanceCompanions deal #% increased DamageCompanions have #% increased maximum Life#% increased Elemental Damage#% increased Magnitude of Ailments you inflict#% increased Exposure Effect#% increased Fire DamageDamage Penetrates #% Fire Resistance#% increased Global Physical DamageBreak #% increased ArmourMinions have #% increased maximum Lifeminion area of effect +% [#,#]",
     "tier": 29,
     "ilvl": 1,
     "weight": 0,
@@ -1070,6 +1119,7 @@
       "defences",
       "attack"
     ],
+    "family": "AbyssJewelMod",
     "tiers": [
       {
         "tier_name": "Lightless",
@@ -1081,7 +1131,7 @@
       {
         "tier_name": "Lightless",
         "tier_level": 1,
-        "text_plain": "1 (5–10)% increased Damage with Warcries(4–8)% increased Warcry Buff Effect",
+        "text_plain": "1 (4–8)% increased Warcry Buff Effect(5–10)% increased Damage with Warcries",
         "weight": 0,
         "weight_pct": 0
       },
@@ -1288,6 +1338,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "AbyssJewelMod",
     "tiers": [
       {
         "tier_name": "of the Abyss",
@@ -1324,6 +1375,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Strength",
     "tiers": [
       {
         "tier_name": "CorruptionJewelStrength1",
@@ -1346,6 +1398,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Dexterity",
     "tiers": [
       {
         "tier_name": "CorruptionJewelDexterity1",
@@ -1368,6 +1421,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Intelligence",
     "tiers": [
       {
         "tier_name": "CorruptionJewelIntelligence1",
@@ -1392,6 +1446,7 @@
       "fire",
       "resistance"
     ],
+    "family": "FireResistance",
     "tiers": [
       {
         "tier_name": "CorruptionJewelFireResist1",
@@ -1416,6 +1471,7 @@
       "cold",
       "resistance"
     ],
+    "family": "ColdResistance",
     "tiers": [
       {
         "tier_name": "CorruptionJewelColdResist1",
@@ -1440,6 +1496,7 @@
       "lightning",
       "resistance"
     ],
+    "family": "LightningResistance",
     "tiers": [
       {
         "tier_name": "CorruptionJewelLightningResist1",
@@ -1463,6 +1520,7 @@
       "chaos",
       "resistance"
     ],
+    "family": "ChaosResistance",
     "tiers": [
       {
         "tier_name": "CorruptionJewelChaosResist1",
@@ -1483,6 +1541,7 @@
     "weight": 1,
     "weight_pct": 9.091,
     "tags": [],
+    "family": "ImmuneToMaim",
     "tiers": [
       {
         "tier_name": "CorruptionJewelMaimImmunity1",
@@ -1503,6 +1562,7 @@
     "weight": 1,
     "weight_pct": 9.091,
     "tags": [],
+    "family": "YouCannotBeHindered",
     "tiers": [
       {
         "tier_name": "CorruptionJewelHinderImmunity1",
@@ -1526,6 +1586,7 @@
       "physical",
       "ailment"
     ],
+    "family": "CorruptedBlood",
     "tiers": [
       {
         "tier_name": "CorruptionJewelCorruptedBloodImmunity1",
@@ -1546,6 +1607,7 @@
     "weight": 1,
     "weight_pct": 9.091,
     "tags": [],
+    "family": "ImmunityToBlind",
     "tiers": [
       {
         "tier_name": "CorruptionJewelBlindImmunity1",

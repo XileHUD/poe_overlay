@@ -12,6 +12,7 @@
       "damage",
       "ailment"
     ],
+    "family": "AilmentEffect",
     "tiers": [
       {
         "tier_name": "Acrimonious",
@@ -32,6 +33,7 @@
     "weight": 1,
     "weight_pct": 4.348,
     "tags": [],
+    "family": "AreaOfEffect",
     "tiers": [
       {
         "tier_name": "Blasting",
@@ -54,6 +56,7 @@
     "tags": [
       "aura"
     ],
+    "family": "AuraEffect",
     "tiers": [
       {
         "tier_name": "Commanding",
@@ -77,6 +80,7 @@
       "damage",
       "chaos"
     ],
+    "family": "IncreasedChaosDamage",
     "tiers": [
       {
         "tier_name": "Chaotic",
@@ -101,6 +105,7 @@
       "elemental",
       "cold"
     ],
+    "family": "ColdDamagePercentage",
     "tiers": [
       {
         "tier_name": "Chilling",
@@ -125,6 +130,7 @@
       "elemental",
       "cold"
     ],
+    "family": "ColdResistancePenetration",
     "tiers": [
       {
         "tier_name": "Numbing",
@@ -147,6 +153,7 @@
     "tags": [
       "damage"
     ],
+    "family": "AllDamage",
     "tiers": [
       {
         "tier_name": "Necromantic",
@@ -171,6 +178,7 @@
       "critical",
       "ailment"
     ],
+    "family": "CriticalAilmentEffect",
     "tiers": [
       {
         "tier_name": "Rancorous",
@@ -194,6 +202,7 @@
       "caster",
       "curse"
     ],
+    "family": "CurseAreaOfEffect",
     "tiers": [
       {
         "tier_name": "Expanding",
@@ -217,6 +226,7 @@
       "caster",
       "curse"
     ],
+    "family": "CurseEffectiveness",
     "tiers": [
       {
         "tier_name": "Hexing",
@@ -240,6 +250,7 @@
       "damage",
       "elemental"
     ],
+    "family": "ElementalDamagePercent",
     "tiers": [
       {
         "tier_name": "Prismatic",
@@ -262,6 +273,7 @@
     "tags": [
       "defences"
     ],
+    "family": "EnergyShieldPercent",
     "tiers": [
       {
         "tier_name": "Shimmering",
@@ -284,6 +296,7 @@
     "tags": [
       "defences"
     ],
+    "family": "EnergyShieldDelay",
     "tiers": [
       {
         "tier_name": "Serene",
@@ -306,6 +319,7 @@
     "tags": [
       "defences"
     ],
+    "family": "EnergyShieldRegeneration",
     "tiers": [
       {
         "tier_name": "Fevered",
@@ -328,6 +342,7 @@
     "tags": [
       "defences"
     ],
+    "family": "FocusEnergyShield",
     "tiers": [
       {
         "tier_name": "Focusing",
@@ -348,6 +363,7 @@
     "weight": 1,
     "weight_pct": 4.348,
     "tags": [],
+    "family": "IgniteEffect",
     "tiers": [
       {
         "tier_name": "Burning",
@@ -371,6 +387,7 @@
       "damage",
       "minion"
     ],
+    "family": "MinionDamage",
     "tiers": [
       {
         "tier_name": "Authoritative",
@@ -391,6 +408,7 @@
     "weight": 1,
     "weight_pct": 4.348,
     "tags": [],
+    "family": "OfferingLife",
     "tiers": [
       {
         "tier_name": "Sacrificial",
@@ -415,6 +433,7 @@
       "lightning",
       "ailment"
     ],
+    "family": "ShockEffect",
     "tiers": [
       {
         "tier_name": "Jolting",
@@ -438,6 +457,7 @@
       "damage",
       "caster"
     ],
+    "family": "WeaponCasterDamagePrefix",
     "tiers": [
       {
         "tier_name": "Mystic",
@@ -461,6 +481,7 @@
       "damage",
       "caster"
     ],
+    "family": "DamageWithTriggeredSpells",
     "tiers": [
       {
         "tier_name": "Triggered",
@@ -483,6 +504,7 @@
     "tags": [
       "chaos"
     ],
+    "family": "WitheredEffect",
     "tiers": [
       {
         "tier_name": "Withering",
@@ -503,6 +525,7 @@
     "weight": 1,
     "weight_pct": 4.348,
     "tags": [],
+    "family": "PresenceRadius",
     "tiers": [
       {
         "tier_name": "Iconic",
@@ -525,6 +548,7 @@
     "tags": [
       "ailment"
     ],
+    "family": "AilmentChance",
     "tiers": [
       {
         "tier_name": "of Ailing",
@@ -548,6 +572,7 @@
       "caster",
       "speed"
     ],
+    "family": "IncreasedCastSpeed",
     "tiers": [
       {
         "tier_name": "of Enchanting",
@@ -572,6 +597,7 @@
       "cold",
       "ailment"
     ],
+    "family": "IncreasedChillDuration",
     "tiers": [
       {
         "tier_name": "of Frost",
@@ -594,6 +620,7 @@
     "tags": [
       "critical"
     ],
+    "family": "CriticalStrikeChanceIncrease",
     "tiers": [
       {
         "tier_name": "of Annihilation",
@@ -617,6 +644,7 @@
       "damage",
       "critical"
     ],
+    "family": "CriticalStrikeMultiplier",
     "tiers": [
       {
         "tier_name": "of Potency",
@@ -641,6 +669,7 @@
       "caster",
       "critical"
     ],
+    "family": "FormCritMultiplier",
     "tiers": [
       {
         "tier_name": "of Unmaking",
@@ -663,6 +692,7 @@
     "tags": [
       "curse"
     ],
+    "family": "CurseDelay",
     "tiers": [
       {
         "tier_name": "of Chanting",
@@ -685,6 +715,7 @@
     "tags": [
       "curse"
     ],
+    "family": "BaseCurseDuration",
     "tiers": [
       {
         "tier_name": "of Continuation",
@@ -708,6 +739,7 @@
       "life",
       "mana"
     ],
+    "family": "DamageRemovedFromManaBeforeLife",
     "tiers": [
       {
         "tier_name": "of Mind",
@@ -730,6 +762,7 @@
     "tags": [
       "ailment"
     ],
+    "family": "DamagingAilmentDuration",
     "tiers": [
       {
         "tier_name": "of Suffusion",
@@ -750,6 +783,7 @@
     "weight": 1,
     "weight_pct": 2.857,
     "tags": [],
+    "family": "DebuffTime",
     "tiers": [
       {
         "tier_name": "of Diminishing",
@@ -770,6 +804,7 @@
     "weight": 1,
     "weight_pct": 2.857,
     "tags": [],
+    "family": "Energy",
     "tiers": [
       {
         "tier_name": "of Generation",
@@ -792,6 +827,7 @@
     "tags": [
       "ailment"
     ],
+    "family": "FasterAilmentDamage",
     "tiers": [
       {
         "tier_name": "of Decrepifying",
@@ -812,6 +848,7 @@
     "weight": 1,
     "weight_pct": 2.857,
     "tags": [],
+    "family": "FreezeDamageIncrease",
     "tiers": [
       {
         "tier_name": "of Freezing",
@@ -834,6 +871,7 @@
     "tags": [
       "damage"
     ],
+    "family": "FreezeThreshold",
     "tiers": [
       {
         "tier_name": "of Snowbreathing",
@@ -854,6 +892,7 @@
     "weight": 1,
     "weight_pct": 2.857,
     "tags": [],
+    "family": "IgniteChanceIncrease",
     "tiers": [
       {
         "tier_name": "of Ignition",
@@ -874,6 +913,7 @@
     "weight": 1,
     "weight_pct": 2.857,
     "tags": [],
+    "family": "SkillEffectDuration",
     "tiers": [
       {
         "tier_name": "of Lengthening",
@@ -896,6 +936,7 @@
     "tags": [
       "life"
     ],
+    "family": "MaximumLifeOnKillPercent",
     "tiers": [
       {
         "tier_name": "of Success",
@@ -918,6 +959,7 @@
     "tags": [
       "life"
     ],
+    "family": "DamageTakenGainedAsLife",
     "tiers": [
       {
         "tier_name": "of Infusion",
@@ -940,6 +982,7 @@
     "tags": [
       "mana"
     ],
+    "family": "ManaGainedOnKillPercentage",
     "tiers": [
       {
         "tier_name": "of Osmosis",
@@ -962,6 +1005,7 @@
     "tags": [
       "mana"
     ],
+    "family": "ManaRegeneration",
     "tiers": [
       {
         "tier_name": "of Energy",
@@ -986,6 +1030,7 @@
       "cold",
       "resistance"
     ],
+    "family": "MaximumColdResist",
     "tiers": [
       {
         "tier_name": "of the Kraken",
@@ -1011,6 +1056,7 @@
       "speed",
       "minion"
     ],
+    "family": "MinionAttackSpeedAndCastSpeed",
     "tiers": [
       {
         "tier_name": "of Orchestration",
@@ -1035,6 +1081,7 @@
       "resistance",
       "minion"
     ],
+    "family": "MinionChaosResistance",
     "tiers": [
       {
         "tier_name": "of Righteousness",
@@ -1058,6 +1105,7 @@
       "minion",
       "critical"
     ],
+    "family": "MinionCriticalStrikeChance",
     "tiers": [
       {
         "tier_name": "of Marshalling",
@@ -1082,6 +1130,7 @@
       "minion",
       "critical"
     ],
+    "family": "MinionCriticalStrikeMultiplier",
     "tiers": [
       {
         "tier_name": "of Gripping",
@@ -1106,6 +1155,7 @@
       "resistance",
       "minion"
     ],
+    "family": "MinionElementalResistances",
     "tiers": [
       {
         "tier_name": "of Acclimatisation",
@@ -1126,6 +1176,7 @@
     "weight": 1,
     "weight_pct": 2.857,
     "tags": [],
+    "family": "OfferingDuration",
     "tiers": [
       {
         "tier_name": "of Offering",
@@ -1146,6 +1197,7 @@
     "weight": 1,
     "weight_pct": 2.857,
     "tags": [],
+    "family": "QuarterstaffFreezeBuildup",
     "tiers": [
       {
         "tier_name": "of Glaciers",
@@ -1166,6 +1218,7 @@
     "weight": 1,
     "weight_pct": 2.857,
     "tags": [],
+    "family": "ShockChanceIncrease",
     "tiers": [
       {
         "tier_name": "of Shocking",
@@ -1190,6 +1243,7 @@
       "lightning",
       "ailment"
     ],
+    "family": "ShockDuration",
     "tiers": [
       {
         "tier_name": "of Paralyzing",
@@ -1213,6 +1267,7 @@
       "caster",
       "critical"
     ],
+    "family": "SpellCriticalStrikeChanceIncrease",
     "tiers": [
       {
         "tier_name": "of Annihilating",
@@ -1233,6 +1288,7 @@
     "weight": 1,
     "weight_pct": 2.857,
     "tags": [],
+    "family": "StunThresholdfromEnergyShield",
     "tiers": [
       {
         "tier_name": "of Barriers",
@@ -1255,6 +1311,7 @@
     "tags": [
       "ailment"
     ],
+    "family": "AilmentThresholdfromEnergyShield",
     "tiers": [
       {
         "tier_name": "of Inuring",
@@ -1275,6 +1332,7 @@
     "weight": 1,
     "weight_pct": 2.857,
     "tags": [],
+    "family": "VolatilityOnKillChance",
     "tiers": [
       {
         "tier_name": "of Volatility",
@@ -1289,7 +1347,7 @@
     "category": "Sapphire",
     "domain": "desecrated",
     "side": "prefix",
-    "text_plain": "#% increased Armour#% increased Attack Damage#% increased Damage with Warcries#% increased Warcry Buff Effect#% increased Evasion Rating#% increased Totem Damage#% increased maximum Energy Shield#% increased Totem Damage#% increased Armour#% increased Totem Damage#% increased Evasion Rating#% increased Thorns damage#% increased maximum Energy Shield#% increased Thorns damage#% increased Armour#% increased Thorns damage#% increased Spell Damage#% increased Evasion Rating#% increased Spell Damage#% increased maximum Energy Shield#% increased Spell Damage#% increased Armour#% increased chance to Poison#% increased Magnitude of Poison you inflict#% increased Evasion RatingMinions deal #% increased Damage#% increased maximum Energy ShieldMinions deal #% increased Damage#% increased ArmourMinions deal #% increased Damage#% increased Lightning DamageDamage Penetrates #% Lightning Resistance#% increased Magnitude of Abyssal Wasting you inflict#% increased maximum Energy Shield#% increased Attack Damage#% increased Evasion Rating#% increased Attack Damage#% increased Presence Area of EffectAura Skills have #% increased Magnitudes#% increased chance to inflict Bleeding#% increased Magnitude of Bleeding you inflict#% increased Chaos Damage#% increased Withered Magnitude#% increased Cold DamageDamage Penetrates #% Cold ResistanceCompanions deal #% increased DamageCompanions have #% increased maximum Life#% increased Elemental Damage#% increased Magnitude of Ailments you inflict#% increased Exposure Effect#% increased Fire DamageDamage Penetrates #% Fire Resistance#% increased Global Physical DamageBreak #% increased ArmourMinions have #% increased maximum Lifeminion area of effect +% [#,#]",
+    "text_plain": "#% increased Armour#% increased Attack Damage#% increased Warcry Buff Effect#% increased Damage with Warcries#% increased Evasion Rating#% increased Totem Damage#% increased maximum Energy Shield#% increased Totem Damage#% increased Armour#% increased Totem Damage#% increased Evasion Rating#% increased Thorns damage#% increased maximum Energy Shield#% increased Thorns damage#% increased Armour#% increased Thorns damage#% increased Spell Damage#% increased Evasion Rating#% increased Spell Damage#% increased maximum Energy Shield#% increased Spell Damage#% increased Armour#% increased chance to Poison#% increased Magnitude of Poison you inflict#% increased Evasion RatingMinions deal #% increased Damage#% increased maximum Energy ShieldMinions deal #% increased Damage#% increased ArmourMinions deal #% increased Damage#% increased Lightning DamageDamage Penetrates #% Lightning Resistance#% increased Magnitude of Abyssal Wasting you inflict#% increased maximum Energy Shield#% increased Attack Damage#% increased Evasion Rating#% increased Attack Damage#% increased Presence Area of EffectAura Skills have #% increased Magnitudes#% increased chance to inflict Bleeding#% increased Magnitude of Bleeding you inflict#% increased Chaos Damage#% increased Withered Magnitude#% increased Cold DamageDamage Penetrates #% Cold ResistanceCompanions deal #% increased DamageCompanions have #% increased maximum Life#% increased Elemental Damage#% increased Magnitude of Ailments you inflict#% increased Exposure Effect#% increased Fire DamageDamage Penetrates #% Fire Resistance#% increased Global Physical DamageBreak #% increased ArmourMinions have #% increased maximum Lifeminion area of effect +% [#,#]",
     "tier": 29,
     "ilvl": 1,
     "weight": 0,
@@ -1298,6 +1356,7 @@
       "defences",
       "attack"
     ],
+    "family": "AbyssJewelMod",
     "tiers": [
       {
         "tier_name": "Lightless",
@@ -1309,7 +1368,7 @@
       {
         "tier_name": "Lightless",
         "tier_level": 1,
-        "text_plain": "1 (5–10)% increased Damage with Warcries(4–8)% increased Warcry Buff Effect",
+        "text_plain": "1 (4–8)% increased Warcry Buff Effect(5–10)% increased Damage with Warcries",
         "weight": 0,
         "weight_pct": 0
       },
@@ -1516,6 +1575,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "AbyssJewelMod",
     "tiers": [
       {
         "tier_name": "of the Abyss",
@@ -1552,6 +1612,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Strength",
     "tiers": [
       {
         "tier_name": "CorruptionJewelStrength1",
@@ -1574,6 +1635,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Dexterity",
     "tiers": [
       {
         "tier_name": "CorruptionJewelDexterity1",
@@ -1596,6 +1658,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Intelligence",
     "tiers": [
       {
         "tier_name": "CorruptionJewelIntelligence1",
@@ -1620,6 +1683,7 @@
       "fire",
       "resistance"
     ],
+    "family": "FireResistance",
     "tiers": [
       {
         "tier_name": "CorruptionJewelFireResist1",
@@ -1644,6 +1708,7 @@
       "cold",
       "resistance"
     ],
+    "family": "ColdResistance",
     "tiers": [
       {
         "tier_name": "CorruptionJewelColdResist1",
@@ -1668,6 +1733,7 @@
       "lightning",
       "resistance"
     ],
+    "family": "LightningResistance",
     "tiers": [
       {
         "tier_name": "CorruptionJewelLightningResist1",
@@ -1691,6 +1757,7 @@
       "chaos",
       "resistance"
     ],
+    "family": "ChaosResistance",
     "tiers": [
       {
         "tier_name": "CorruptionJewelChaosResist1",
@@ -1711,6 +1778,7 @@
     "weight": 1,
     "weight_pct": 9.091,
     "tags": [],
+    "family": "ImmuneToMaim",
     "tiers": [
       {
         "tier_name": "CorruptionJewelMaimImmunity1",
@@ -1731,6 +1799,7 @@
     "weight": 1,
     "weight_pct": 9.091,
     "tags": [],
+    "family": "YouCannotBeHindered",
     "tiers": [
       {
         "tier_name": "CorruptionJewelHinderImmunity1",
@@ -1754,6 +1823,7 @@
       "physical",
       "ailment"
     ],
+    "family": "CorruptedBlood",
     "tiers": [
       {
         "tier_name": "CorruptionJewelCorruptedBloodImmunity1",
@@ -1774,6 +1844,7 @@
     "weight": 1,
     "weight_pct": 9.091,
     "tags": [],
+    "family": "ImmunityToBlind",
     "tiers": [
       {
         "tier_name": "CorruptionJewelBlindImmunity1",

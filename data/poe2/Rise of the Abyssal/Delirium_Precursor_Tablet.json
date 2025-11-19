@@ -3,24 +3,18 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "none",
-    "text_plain": "Delirium Fog in your Maps lasts (3–6) additional seconds before dissipating",
+    "text_plain": "Delirium Fog in Map lasts (3–6) additional seconds before dissipating",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "DeliriumFogDissipationDelay",
     "tiers": [
       {
         "tier_name": "of Eternity",
         "tier_level": 1,
-        "text_plain": "1 Delirium Fog in your Maps lasts (3–6) additional seconds before dissipating",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "of Eternity",
-        "tier_level": 1,
-        "text_plain": "1 Delirium Fog in your Maps lasts (3–6) additional seconds before dissipating",
+        "text_plain": "1 Delirium Fog in Map lasts (3–6) additional seconds before dissipating",
         "weight": 0,
         "weight_pct": 0
       }
@@ -30,24 +24,18 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(4–10)% increased Quantity of Items found in your Maps",
+    "text_plain": "(4–10)% increased Quantity of Items found in Map",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapDroppedItemQuantityIncrease",
     "tiers": [
       {
         "tier_name": "Plundering",
         "tier_level": 1,
-        "text_plain": "1 (4–10)% increased Quantity of Items found in your Maps",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Plundering",
-        "tier_level": 1,
-        "text_plain": "1 (4–10)% increased Quantity of Items found in your Maps",
+        "text_plain": "1 (4–10)% increased Quantity of Items found in Map",
         "weight": 0,
         "weight_pct": 0
       }
@@ -57,24 +45,18 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(10–30)% increased Rarity of Items found in your Maps",
+    "text_plain": "(10–30)% increased Rarity of Items found in Map",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapDroppedItemRarityIncrease",
     "tiers": [
       {
         "tier_name": "Collector's",
         "tier_level": 1,
-        "text_plain": "1 (10–30)% increased Rarity of Items found in your Maps",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Collector's",
-        "tier_level": 1,
-        "text_plain": "1 (10–30)% increased Rarity of Items found in your Maps",
+        "text_plain": "1 (10–30)% increased Rarity of Items found in Map",
         "weight": 0,
         "weight_pct": 0
       }
@@ -84,24 +66,18 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(4–10)% increased Pack Size in your Maps",
+    "text_plain": "(4–10)% increased Pack Size in Map",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapPackSizeIncrease",
     "tiers": [
       {
         "tier_name": "Breeding",
         "tier_level": 1,
-        "text_plain": "1 (4–10)% increased Pack Size in your Maps",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Breeding",
-        "tier_level": 1,
-        "text_plain": "1 (4–10)% increased Pack Size in your Maps",
+        "text_plain": "1 (4–10)% increased Pack Size in Map",
         "weight": 0,
         "weight_pct": 0
       }
@@ -111,24 +87,18 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(25–70)% increased Magic Monsters",
+    "text_plain": "Map has (25–70)% increased Magic Monsters",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapMagicPackIncrease",
     "tiers": [
       {
         "tier_name": "Teeming",
         "tier_level": 1,
-        "text_plain": "1 (25–70)% increased Magic Monsters",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Teeming",
-        "tier_level": 1,
-        "text_plain": "1 (25–70)% increased Magic Monsters",
+        "text_plain": "1 Map has (25–70)% increased Magic Monsters",
         "weight": 0,
         "weight_pct": 0
       }
@@ -138,24 +108,18 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(15–40)% increased number of Rare Monsters",
+    "text_plain": "Map has (15–40)% increased number of Rare Monsters",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapRarePackIncrease",
     "tiers": [
       {
         "tier_name": "Brimming",
         "tier_level": 1,
-        "text_plain": "1 (15–40)% increased number of Rare Monsters",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Brimming",
-        "tier_level": 1,
-        "text_plain": "1 (15–40)% increased number of Rare Monsters",
+        "text_plain": "1 Map has (15–40)% increased number of Rare Monsters",
         "weight": 0,
         "weight_pct": 0
       }
@@ -165,24 +129,18 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(15–40)% increased Gold found in your Maps",
+    "text_plain": "(15–40)% increased Gold found in Map",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapDroppedGoldIncrease",
     "tiers": [
       {
         "tier_name": "Bountiful",
         "tier_level": 1,
-        "text_plain": "1 (15–40)% increased Gold found in your Maps",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Bountiful",
-        "tier_level": 1,
-        "text_plain": "1 (15–40)% increased Gold found in your Maps",
+        "text_plain": "1 (15–40)% increased Gold found in Map",
         "weight": 0,
         "weight_pct": 0
       }
@@ -192,24 +150,18 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(5–20)% increased Experience gain in your Maps",
+    "text_plain": "(5–20)% increased Experience gain in Map",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapExperienceGainIncrease",
     "tiers": [
       {
         "tier_name": "Elevated",
         "tier_level": 1,
-        "text_plain": "1 (5–20)% increased Experience gain in your Maps",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Elevated",
-        "tier_level": 1,
-        "text_plain": "1 (5–20)% increased Experience gain in your Maps",
+        "text_plain": "1 (5–20)% increased Experience gain in Map",
         "weight": 0,
         "weight_pct": 0
       }
@@ -219,24 +171,18 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Your Maps contain an additional Rare Chest",
+    "text_plain": "Map contains an additional Rare Chest",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapAdditionalChests",
     "tiers": [
       {
         "tier_name": "Treasurer's",
         "tier_level": 1,
-        "text_plain": "1 Your Maps contain an additional Rare Chest",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Treasurer's",
-        "tier_level": 1,
-        "text_plain": "1 Your Maps contain an additional Rare Chest",
+        "text_plain": "1 Map contains an additional Rare Chest",
         "weight": 0,
         "weight_pct": 0
       }
@@ -246,24 +192,18 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Your Maps contain an additional Essence% increased Quantity of Waystones found in your Maps",
+    "text_plain": "Map contains an additional Essence% increased Quantity of Waystones found in Map",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapAdditionalEssence",
     "tiers": [
       {
         "tier_name": "Crystallised",
         "tier_level": 1,
-        "text_plain": "1 Your Maps contain an additional Essence% increased Quantity of Waystones found in your Maps",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Crystallised",
-        "tier_level": 1,
-        "text_plain": "1 Your Maps contain an additional Essence% increased Quantity of Waystones found in your Maps",
+        "text_plain": "1 Map contains an additional Essence% increased Quantity of Waystones found in Map",
         "weight": 0,
         "weight_pct": 0
       }
@@ -273,24 +213,18 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Area contains 1 additional Azmeri Spirit% increased Quantity of Waystones found in your Maps",
+    "text_plain": "% increased Quantity of Waystones found in MapMap contains 1 additional Azmeri Spirit",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapAdditionalAzmeriWisp",
     "tiers": [
       {
         "tier_name": "Azmeri's",
         "tier_level": 1,
-        "text_plain": "1 Area contains 1 additional Azmeri Spirit% increased Quantity of Waystones found in your Maps",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Azmeri's",
-        "tier_level": 1,
-        "text_plain": "1 Area contains 1 additional Azmeri Spirit% increased Quantity of Waystones found in your Maps",
+        "text_plain": "1 % increased Quantity of Waystones found in MapMap contains 1 additional Azmeri Spirit",
         "weight": 0,
         "weight_pct": 0
       }
@@ -300,24 +234,18 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "% increased Quantity of Waystones found in your MapsYour Maps are inhabited by 1 additional Rogue Exile",
+    "text_plain": "% increased Quantity of Waystones found in MapMap is inhabited by 1 additional Rogue Exile",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapAdditionalExile",
     "tiers": [
       {
         "tier_name": "Exiled",
         "tier_level": 1,
-        "text_plain": "1 % increased Quantity of Waystones found in your MapsYour Maps are inhabited by 1 additional Rogue Exile",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Exiled",
-        "tier_level": 1,
-        "text_plain": "1 % increased Quantity of Waystones found in your MapsYour Maps are inhabited by 1 additional Rogue Exile",
+        "text_plain": "1 % increased Quantity of Waystones found in MapMap is inhabited by 1 additional Rogue Exile",
         "weight": 0,
         "weight_pct": 0
       }
@@ -327,24 +255,18 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Area contains an additional Summoning Circle",
+    "text_plain": "Map contains an additional Summoning Circle",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapAdditionalStoneCircle",
     "tiers": [
       {
         "tier_name": "Summoner's",
         "tier_level": 1,
-        "text_plain": "1 Area contains an additional Summoning Circle",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "Summoner's",
-        "tier_level": 1,
-        "text_plain": "1 Area contains an additional Summoning Circle",
+        "text_plain": "1 Map contains an additional Summoning Circle",
         "weight": 0,
         "weight_pct": 0
       }
@@ -354,24 +276,18 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "(10–30)% increased Stack size of Simulacrum Splinters found in your Maps",
+    "text_plain": "(10–30)% increased Stack size of Simulacrum Splinters found in Map",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "DeliriumMonsterSplinterIncrease",
     "tiers": [
       {
         "tier_name": "of the Simulacrum",
         "tier_level": 1,
-        "text_plain": "1 (10–30)% increased Stack size of Simulacrum Splinters found in your Maps",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "of the Simulacrum",
-        "tier_level": 1,
-        "text_plain": "1 (10–30)% increased Stack size of Simulacrum Splinters found in your Maps",
+        "text_plain": "1 (10–30)% increased Stack size of Simulacrum Splinters found in Map",
         "weight": 0,
         "weight_pct": 0
       }
@@ -381,24 +297,18 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Delirious Monsters Killed in your Maps provide (10–30)% increased Reward Progress",
+    "text_plain": "Delirious Monsters Killed in Map provide (10–30)% increased Reward Progress",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "DeliriumRewardProgressIncrease",
     "tiers": [
       {
         "tier_name": "of the Pursuit",
         "tier_level": 1,
-        "text_plain": "1 Delirious Monsters Killed in your Maps provide (10–30)% increased Reward Progress",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "of the Pursuit",
-        "tier_level": 1,
-        "text_plain": "1 Delirious Monsters Killed in your Maps provide (10–30)% increased Reward Progress",
+        "text_plain": "1 Delirious Monsters Killed in Map provide (10–30)% increased Reward Progress",
         "weight": 0,
         "weight_pct": 0
       }
@@ -408,24 +318,18 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Delirium Fog in your Maps lasts (6–12) additional seconds before dissipating",
+    "text_plain": "Delirium Fog in Map lasts (6–12) additional seconds before dissipating",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "DeliriumFogDissipationDelay",
     "tiers": [
       {
         "tier_name": "of Eternity",
         "tier_level": 1,
-        "text_plain": "1 Delirium Fog in your Maps lasts (6–12) additional seconds before dissipating",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "of Eternity",
-        "tier_level": 1,
-        "text_plain": "1 Delirium Fog in your Maps lasts (6–12) additional seconds before dissipating",
+        "text_plain": "1 Delirium Fog in Map lasts (6–12) additional seconds before dissipating",
         "weight": 0,
         "weight_pct": 0
       }
@@ -435,24 +339,18 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Delirium Fog in your Maps dissipates (20–30)% slower",
+    "text_plain": "Delirium Fog in Map dissipates (20–30)% slower",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "DeliriumFogPersistence",
     "tiers": [
       {
         "tier_name": "of the Unending",
         "tier_level": 1,
-        "text_plain": "1 Delirium Fog in your Maps dissipates (20–30)% slower",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "of the Unending",
-        "tier_level": 1,
-        "text_plain": "1 Delirium Fog in your Maps dissipates (20–30)% slower",
+        "text_plain": "1 Delirium Fog in Map dissipates (20–30)% slower",
         "weight": 0,
         "weight_pct": 0
       }
@@ -462,24 +360,18 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Delirium in your Maps increases (10–30)% faster with distance from the mirror",
+    "text_plain": "Delirium in Map increases (10–30)% faster with distance from the mirror",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "DeliriumDifficultyIncrease",
     "tiers": [
       {
         "tier_name": "of Madness",
         "tier_level": 1,
-        "text_plain": "1 Delirium in your Maps increases (10–30)% faster with distance from the mirror",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "of Madness",
-        "tier_level": 1,
-        "text_plain": "1 Delirium in your Maps increases (10–30)% faster with distance from the mirror",
+        "text_plain": "1 Delirium in Map increases (10–30)% faster with distance from the mirror",
         "weight": 0,
         "weight_pct": 0
       }
@@ -489,24 +381,18 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Delirium Monsters in your Maps have (10–30)% increased Pack Size",
+    "text_plain": "Delirium Monsters in Map have (10–30)% increased Pack Size",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "DeliriumPackSizeIncrease",
     "tiers": [
       {
         "tier_name": "of Persecution",
         "tier_level": 1,
-        "text_plain": "1 Delirium Monsters in your Maps have (10–30)% increased Pack Size",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "of Persecution",
-        "tier_level": 1,
-        "text_plain": "1 Delirium Monsters in your Maps have (10–30)% increased Pack Size",
+        "text_plain": "1 Delirium Monsters in Map have (10–30)% increased Pack Size",
         "weight": 0,
         "weight_pct": 0
       }
@@ -516,24 +402,18 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Delirium Fog in your Maps spawns (10–30)% increased Fracturing Mirrors",
+    "text_plain": "Delirium Fog in Map spawns (10–30)% increased Fracturing Mirrors",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "DeliriumDoodadsIncrease",
     "tiers": [
       {
         "tier_name": "of Mirrors",
         "tier_level": 1,
-        "text_plain": "1 Delirium Fog in your Maps spawns (10–30)% increased Fracturing Mirrors",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "of Mirrors",
-        "tier_level": 1,
-        "text_plain": "1 Delirium Fog in your Maps spawns (10–30)% increased Fracturing Mirrors",
+        "text_plain": "1 Delirium Fog in Map spawns (10–30)% increased Fracturing Mirrors",
         "weight": 0,
         "weight_pct": 0
       }
@@ -543,24 +423,18 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Slaying Rare Monsters in your Maps pauses the Delirium Mirror Timer for (2–5) seconds",
+    "text_plain": "Slaying Rare Monsters in Map pauses the Delirium Mirror Timer for (2–5) seconds",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "DeliriumRareMonsterPause",
     "tiers": [
       {
         "tier_name": "of Freeze Time",
         "tier_level": 1,
-        "text_plain": "1 Slaying Rare Monsters in your Maps pauses the Delirium Mirror Timer for (2–5) seconds",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "of Freeze Time",
-        "tier_level": 1,
-        "text_plain": "1 Slaying Rare Monsters in your Maps pauses the Delirium Mirror Timer for (2–5) seconds",
+        "text_plain": "1 Slaying Rare Monsters in Map pauses the Delirium Mirror Timer for (2–5) seconds",
         "weight": 0,
         "weight_pct": 0
       }
@@ -570,24 +444,18 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Delirium Encounters in your Maps are (10–30)% more likely to spawn Unique Bosses",
+    "text_plain": "Delirium Encounters in Map are (10–30)% more likely to spawn Unique Bosses",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "DeliriumBossChance",
     "tiers": [
       {
         "tier_name": "of Phobia",
         "tier_level": 1,
-        "text_plain": "1 Delirium Encounters in your Maps are (10–30)% more likely to spawn Unique Bosses",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "of Phobia",
-        "tier_level": 1,
-        "text_plain": "1 Delirium Encounters in your Maps are (10–30)% more likely to spawn Unique Bosses",
+        "text_plain": "1 Delirium Encounters in Map are (10–30)% more likely to spawn Unique Bosses",
         "weight": 0,
         "weight_pct": 0
       }
@@ -597,24 +465,18 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Delirium Encounters in your Maps have (8–24)% chance to generate an additional Reward",
+    "text_plain": "Delirium Encounters in affected Map have (8–24)% chance to generate an additional Reward",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "DeliriumAdditionalRewardType",
     "tiers": [
       {
         "tier_name": "of Envy",
         "tier_level": 1,
-        "text_plain": "1 Delirium Encounters in your Maps have (8–24)% chance to generate an additional Reward",
-        "weight": 0,
-        "weight_pct": 0
-      },
-      {
-        "tier_name": "of Envy",
-        "tier_level": 1,
-        "text_plain": "1 Delirium Encounters in your Maps have (8–24)% chance to generate an additional Reward",
+        "text_plain": "1 Delirium Encounters in affected Map have (8–24)% chance to generate an additional Reward",
         "weight": 0,
         "weight_pct": 0
       }

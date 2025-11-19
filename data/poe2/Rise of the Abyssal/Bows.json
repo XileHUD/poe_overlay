@@ -13,6 +13,7 @@
       "physical",
       "attack"
     ],
+    "family": "PhysicalDamage",
     "tiers": [
       {
         "tier_name": "Glinting",
@@ -94,6 +95,7 @@
       "fire",
       "attack"
     ],
+    "family": "FireDamage",
     "tiers": [
       {
         "tier_name": "Heated",
@@ -182,6 +184,7 @@
       "cold",
       "attack"
     ],
+    "family": "ColdDamage",
     "tiers": [
       {
         "tier_name": "Frosted",
@@ -270,6 +273,7 @@
       "lightning",
       "attack"
     ],
+    "family": "LightningDamage",
     "tiers": [
       {
         "tier_name": "Humming",
@@ -357,6 +361,7 @@
       "physical",
       "attack"
     ],
+    "family": "LocalPhysicalDamagePercent",
     "tiers": [
       {
         "tier_name": "Heavy",
@@ -430,6 +435,7 @@
       "physical",
       "attack"
     ],
+    "family": "LocalIncreasedPhysicalDamagePercentAndAccuracyRating",
     "tiers": [
       {
         "tier_name": "Squire's",
@@ -501,6 +507,7 @@
     "tags": [
       "attack"
     ],
+    "family": "IncreasedAccuracy",
     "tiers": [
       {
         "tier_name": "Precise",
@@ -588,6 +595,7 @@
       "elemental",
       "attack"
     ],
+    "family": "IncreasedWeaponElementalDamagePercent",
     "tiers": [
       {
         "tier_name": "Catalysing",
@@ -645,6 +653,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Dexterity",
     "tiers": [
       {
         "tier_name": "of the Mongoose",
@@ -714,6 +723,7 @@
     "weight": 5000,
     "weight_pct": 9.153,
     "tags": [],
+    "family": "LocalAttributeRequirements",
     "tiers": [
       {
         "tier_name": "of the Worthy",
@@ -762,6 +772,7 @@
     "weight": 2600,
     "weight_pct": 4.76,
     "tags": [],
+    "family": "IncreaseSocketedGemLevel",
     "tiers": [
       {
         "tier_name": "of the Archer",
@@ -814,6 +825,7 @@
       "physical",
       "attack"
     ],
+    "family": "LifeLeech",
     "tiers": [
       {
         "tier_name": "of the Parasite",
@@ -859,6 +871,7 @@
       "physical",
       "attack"
     ],
+    "family": "ManaLeech",
     "tiers": [
       {
         "tier_name": "of the Thirsty",
@@ -902,6 +915,7 @@
     "tags": [
       "life"
     ],
+    "family": "LifeGainedFromEnemyDeath",
     "tiers": [
       {
         "tier_name": "of Success",
@@ -973,6 +987,7 @@
     "tags": [
       "mana"
     ],
+    "family": "ManaGainedFromEnemyDeath",
     "tiers": [
       {
         "tier_name": "of Absorption",
@@ -1045,6 +1060,7 @@
       "life",
       "attack"
     ],
+    "family": "LifeGainPerTarget",
     "tiers": [
       {
         "tier_name": "of Rejuvenation",
@@ -1089,6 +1105,7 @@
       "attack",
       "speed"
     ],
+    "family": "IncreasedAttackSpeed",
     "tiers": [
       {
         "tier_name": "of Skill",
@@ -1140,6 +1157,7 @@
       "attack",
       "critical"
     ],
+    "family": "CriticalStrikeChanceIncrease",
     "tiers": [
       {
         "tier_name": "of Menace",
@@ -1199,6 +1217,7 @@
       "attack",
       "critical"
     ],
+    "family": "CriticalStrikeMultiplier",
     "tiers": [
       {
         "tier_name": "of Ire",
@@ -1256,6 +1275,7 @@
     "tags": [
       "attack"
     ],
+    "family": "LightRadiusAndAccuracy",
     "tiers": [
       {
         "tier_name": "of Shining",
@@ -1292,6 +1312,7 @@
     "tags": [
       "attack"
     ],
+    "family": "AdditionalArrows",
     "tiers": [
       {
         "tier_name": "of Splintering",
@@ -1322,6 +1343,7 @@
       "amanamu_mod",
       "attack"
     ],
+    "family": "IncreasedAttackAreaOfEffect",
     "tiers": [
       {
         "tier_name": "Amanamu's",
@@ -1344,6 +1366,7 @@
     "tags": [
       "amanamu_mod"
     ],
+    "family": "CompanionDamage",
     "tiers": [
       {
         "tier_name": "Amanamu's",
@@ -1370,6 +1393,7 @@
       "fire",
       "attack"
     ],
+    "family": "FireResistancePenetration",
     "tiers": [
       {
         "tier_name": "Amanamu's",
@@ -1392,6 +1416,7 @@
     "tags": [
       "kurgal_mod"
     ],
+    "family": "ChainFromTerrain",
     "tiers": [
       {
         "tier_name": "Kurgal's",
@@ -1414,6 +1439,7 @@
     "tags": [
       "kurgal_mod"
     ],
+    "family": "EquipmentModifierEffect",
     "tiers": [
       {
         "tier_name": "Kurgal's",
@@ -1440,6 +1466,7 @@
       "cold",
       "attack"
     ],
+    "family": "ColdResistancePenetration",
     "tiers": [
       {
         "tier_name": "Kurgal's",
@@ -1466,6 +1493,7 @@
       "lightning",
       "attack"
     ],
+    "family": "LightningResistancePenetration",
     "tiers": [
       {
         "tier_name": "Ulaman's",
@@ -1488,6 +1516,7 @@
     "tags": [
       "ulaman_mod"
     ],
+    "family": "ProjectileDamage",
     "tiers": [
       {
         "tier_name": "Ulaman's",
@@ -1510,6 +1539,7 @@
     "tags": [
       "amanamu_mod"
     ],
+    "family": "ChanceToPierce",
     "tiers": [
       {
         "tier_name": "of Amanamu",
@@ -1532,6 +1562,7 @@
     "tags": [
       "amanamu_mod"
     ],
+    "family": "CompanionAttackSpeed",
     "tiers": [
       {
         "tier_name": "of Amanamu",
@@ -1554,6 +1585,7 @@
     "tags": [
       "amanamu_mod"
     ],
+    "family": "SpiritReservationEfficiency",
     "tiers": [
       {
         "tier_name": "of Amanamu",
@@ -1576,6 +1608,7 @@
     "tags": [
       "kurgal_mod"
     ],
+    "family": "Immobilise",
     "tiers": [
       {
         "tier_name": "of Kurgal",
@@ -1598,6 +1631,7 @@
     "tags": [
       "kurgal_mod"
     ],
+    "family": "CriticalStrikeChanceIncrease",
     "tiers": [
       {
         "tier_name": "of Kurgal",
@@ -1621,6 +1655,7 @@
       "kurgal_mod",
       "attack"
     ],
+    "family": "ManaCostEfficiency",
     "tiers": [
       {
         "tier_name": "of Kurgal",
@@ -1644,6 +1679,7 @@
       "ulaman_mod",
       "life"
     ],
+    "family": "LifeCost",
     "tiers": [
       {
         "tier_name": "of Ulaman",
@@ -1666,6 +1702,7 @@
     "tags": [
       "ulaman_mod"
     ],
+    "family": "AdditionalProjectiles",
     "tiers": [
       {
         "tier_name": "of Ulaman",
@@ -1688,6 +1725,7 @@
     "tags": [
       "ulaman_mod"
     ],
+    "family": "CompanionDamage",
     "tiers": [
       {
         "tier_name": "of Ulaman",
@@ -1712,6 +1750,7 @@
       "physical",
       "attack"
     ],
+    "family": "PhysicalDamage",
     "tiers": [
       {
         "tier_name": "Lesser Essence of Abrasion",
@@ -1751,6 +1790,7 @@
       "fire",
       "attack"
     ],
+    "family": "FireDamage",
     "tiers": [
       {
         "tier_name": "Lesser Essence of Flames",
@@ -1790,6 +1830,7 @@
       "cold",
       "attack"
     ],
+    "family": "ColdDamage",
     "tiers": [
       {
         "tier_name": "Lesser Essence of Ice",
@@ -1829,6 +1870,7 @@
       "lightning",
       "attack"
     ],
+    "family": "LightningDamage",
     "tiers": [
       {
         "tier_name": "Lesser Essence of Electricity",
@@ -1865,6 +1907,7 @@
     "tags": [
       "attack"
     ],
+    "family": "IncreasedAccuracy",
     "tiers": [
       {
         "tier_name": "Lesser Essence of Battle",
@@ -1909,6 +1952,7 @@
       "damage",
       "physical"
     ],
+    "family": "MartialWeaponGainedDamage",
     "tiers": [
       {
         "tier_name": "Perfect Essence of Abrasion",
@@ -1950,6 +1994,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "EssenceAbyss",
     "tiers": [
       {
         "tier_name": "Essence of the Abyss",
@@ -1973,6 +2018,7 @@
       "attack",
       "speed"
     ],
+    "family": "IncreasedAttackSpeed",
     "tiers": [
       {
         "tier_name": "Lesser Essence of Haste",
@@ -2009,6 +2055,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Strength",
     "tiers": [
       {
         "tier_name": "Lesser Essence of the Infinite",
@@ -2045,6 +2092,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Dexterity",
     "tiers": [
       {
         "tier_name": "Lesser Essence of the Infinite",
@@ -2081,6 +2129,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Intelligence",
     "tiers": [
       {
         "tier_name": "Lesser Essence of the Infinite",
@@ -2117,6 +2166,7 @@
     "tags": [
       "attack"
     ],
+    "family": "IncreaseSocketedGemLevel",
     "tiers": [
       {
         "tier_name": "Perfect Essence of Battle",
@@ -2139,6 +2189,7 @@
     "tags": [
       "speed"
     ],
+    "family": "Onslaught",
     "tiers": [
       {
         "tier_name": "Perfect Essence of Haste",
@@ -2162,6 +2213,7 @@
       "attack",
       "critical"
     ],
+    "family": "CriticalStrikeChanceIncrease",
     "tiers": [
       {
         "tier_name": "Lesser Essence of Seeking",
@@ -2196,6 +2248,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "EssenceAbyss",
     "tiers": [
       {
         "tier_name": "Essence of the Abyss",
@@ -2216,6 +2269,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "CountessSeske'sRuneofArchery",
     "tiers": [
       {
         "tier_name": "Countess Seske's Rune of Archery",
@@ -2236,6 +2290,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "Cholotl'sSoulCoreofWar",
     "tiers": [
       {
         "tier_name": "Cholotl's Soul Core of War",
@@ -2256,6 +2311,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "DesertRune",
     "tiers": [
       {
         "tier_name": "Lesser Desert Rune",
@@ -2290,6 +2346,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "GlacialRune",
     "tiers": [
       {
         "tier_name": "Lesser Glacial Rune",
@@ -2324,6 +2381,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "StormRune",
     "tiers": [
       {
         "tier_name": "Lesser Storm Rune",
@@ -2358,6 +2416,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "IronRune",
     "tiers": [
       {
         "tier_name": "Lesser Iron Rune",
@@ -2392,6 +2451,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "BodyRune",
     "tiers": [
       {
         "tier_name": "Lesser Body Rune",
@@ -2426,6 +2486,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MindRune",
     "tiers": [
       {
         "tier_name": "Lesser Mind Rune",
@@ -2460,6 +2521,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "RebirthRune",
     "tiers": [
       {
         "tier_name": "Lesser Rebirth Rune",
@@ -2494,6 +2556,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "InspirationRune",
     "tiers": [
       {
         "tier_name": "Lesser Inspiration Rune",
@@ -2528,6 +2591,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "StoneRune",
     "tiers": [
       {
         "tier_name": "Lesser Stone Rune",
@@ -2562,6 +2626,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "VisionRune",
     "tiers": [
       {
         "tier_name": "Lesser Vision Rune",
@@ -2596,6 +2661,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "SoulCoreofTacati",
     "tiers": [
       {
         "tier_name": "Soul Core of Tacati",
@@ -2616,6 +2682,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "SoulCoreofOpiloti",
     "tiers": [
       {
         "tier_name": "Soul Core of Opiloti",
@@ -2636,6 +2703,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "SoulCoreofJiquani",
     "tiers": [
       {
         "tier_name": "Soul Core of Jiquani",
@@ -2656,6 +2724,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "SoulCoreofZalatl",
     "tiers": [
       {
         "tier_name": "Soul Core of Zalatl",
@@ -2676,6 +2745,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "SoulCoreofCitaqualotl",
     "tiers": [
       {
         "tier_name": "Soul Core of Citaqualotl",
@@ -2696,6 +2766,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "SoulCoreofPuhuarte",
     "tiers": [
       {
         "tier_name": "Soul Core of Puhuarte",
@@ -2716,6 +2787,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "SoulCoreofTzamoto",
     "tiers": [
       {
         "tier_name": "Soul Core of Tzamoto",
@@ -2736,6 +2808,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "SoulCoreofXopec",
     "tiers": [
       {
         "tier_name": "Soul Core of Xopec",
@@ -2756,6 +2829,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "SoulCoreofAzcapa",
     "tiers": [
       {
         "tier_name": "Soul Core of Azcapa",
@@ -2776,6 +2850,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "SoulCoreofTopotante",
     "tiers": [
       {
         "tier_name": "Soul Core of Topotante",
@@ -2796,6 +2871,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "SoulCoreofQuipolatl",
     "tiers": [
       {
         "tier_name": "Soul Core of Quipolatl",
@@ -2816,6 +2892,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "SoulCoreofTicaba",
     "tiers": [
       {
         "tier_name": "Soul Core of Ticaba",
@@ -2836,6 +2913,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "SoulCoreofAtmohua",
     "tiers": [
       {
         "tier_name": "Soul Core of Atmohua",
@@ -2856,6 +2934,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "SoulCoreofCholotl",
     "tiers": [
       {
         "tier_name": "Soul Core of Cholotl",
@@ -2876,6 +2955,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "SoulCoreofZantipi",
     "tiers": [
       {
         "tier_name": "Soul Core of Zantipi",
@@ -2896,6 +2976,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "RuneofLeadership",
     "tiers": [
       {
         "tier_name": "Greater Rune of Leadership",
@@ -2916,6 +2997,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "RuneofTithing",
     "tiers": [
       {
         "tier_name": "Greater Rune of Tithing",
@@ -2936,6 +3018,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "RuneofAlacrity",
     "tiers": [
       {
         "tier_name": "Greater Rune of Alacrity",
@@ -2956,6 +3039,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "RuneofNobility",
     "tiers": [
       {
         "tier_name": "Greater Rune of Nobility",
@@ -2976,6 +3060,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "RobustRune",
     "tiers": [
       {
         "tier_name": "Lesser Robust Rune",
@@ -3010,6 +3095,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "AdeptRune",
     "tiers": [
       {
         "tier_name": "Lesser Adept Rune",
@@ -3044,6 +3130,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "ResolveRune",
     "tiers": [
       {
         "tier_name": "Lesser Resolve Rune",
@@ -3078,6 +3165,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "TemperedRune",
     "tiers": [
       {
         "tier_name": "Lesser Tempered Rune",
@@ -3112,6 +3200,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "SaqawalsRuneoftheSky",
     "tiers": [
       {
         "tier_name": "Saqawal's Rune of the Sky",
@@ -3132,6 +3221,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "FenumusRuneofAgony",
     "tiers": [
       {
         "tier_name": "Fenumus' Rune of Agony",
@@ -3152,6 +3242,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "FarrulsRuneoftheHunt",
     "tiers": [
       {
         "tier_name": "Farrul's Rune of the Hunt",
@@ -3172,6 +3263,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "ThaneMyrksRuneofSummer",
     "tiers": [
       {
         "tier_name": "Thane Myrk's Rune of Summer",
@@ -3192,6 +3284,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "LadyHestrasRuneofWinter",
     "tiers": [
       {
         "tier_name": "Lady Hestra's Rune of Winter",
@@ -3212,6 +3305,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "ThaneLeldsRuneofSpring",
     "tiers": [
       {
         "tier_name": "Thane Leld's Rune of Spring",
@@ -3232,6 +3326,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "TalismanofThruldana",
     "tiers": [
       {
         "tier_name": "Talisman of Thruldana",
@@ -3252,6 +3347,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "OpilotisSoulCoreofAssault",
     "tiers": [
       {
         "tier_name": "Opiloti's Soul Core of Assault",
@@ -3272,6 +3368,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "GuatelitzisSoulCoreofEndurance",
     "tiers": [
       {
         "tier_name": "Guatelitzi's Soul Core of Endurance",
@@ -3292,6 +3389,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "XopecsSoulCoreofPower",
     "tiers": [
       {
         "tier_name": "Xopec's Soul Core of Power",
@@ -3312,6 +3410,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "CitaqualotlsSoulCoreofFoulness",
     "tiers": [
       {
         "tier_name": "Citaqualotl's Soul Core of Foulness",
@@ -3332,6 +3431,7 @@
     "weight": 1,
     "weight_pct": 8.333,
     "tags": [],
+    "family": "LocalAttributeRequirements",
     "tiers": [
       {
         "tier_name": "CorruptionReducedLocalAttributeRequirements1",
@@ -3356,6 +3456,7 @@
       "physical",
       "attack"
     ],
+    "family": "LocalPhysicalDamagePercent",
     "tiers": [
       {
         "tier_name": "CorruptionLocalIncreasedPhysicalDamagePercent1",
@@ -3381,6 +3482,7 @@
       "fire",
       "attack"
     ],
+    "family": "FireDamage",
     "tiers": [
       {
         "tier_name": "CorruptionLocalAddedFireDamage1",
@@ -3406,6 +3508,7 @@
       "cold",
       "attack"
     ],
+    "family": "ColdDamage",
     "tiers": [
       {
         "tier_name": "CorruptionLocalAddedColdDamage1",
@@ -3431,6 +3534,7 @@
       "lightning",
       "attack"
     ],
+    "family": "LightningDamage",
     "tiers": [
       {
         "tier_name": "CorruptionLocalAddedLightningDamage1",
@@ -3455,6 +3559,7 @@
       "chaos",
       "attack"
     ],
+    "family": "LocalChaosDamage",
     "tiers": [
       {
         "tier_name": "CorruptionLocalAddedChaosDamage1",
@@ -3478,6 +3583,7 @@
       "attack",
       "speed"
     ],
+    "family": "IncreasedAttackSpeed",
     "tiers": [
       {
         "tier_name": "CorruptionLocalIncreasedAttackSpeed1",
@@ -3502,6 +3608,7 @@
       "attack",
       "critical"
     ],
+    "family": "CriticalStrikeMultiplier",
     "tiers": [
       {
         "tier_name": "CorruptionLocalCriticalStrikeMultiplier1",
@@ -3524,6 +3631,7 @@
     "tags": [
       "attack"
     ],
+    "family": "LocalMaimOnHit",
     "tiers": [
       {
         "tier_name": "CorruptionLocalChanceToMaim1",
@@ -3544,6 +3652,7 @@
     "weight": 1,
     "weight_pct": 8.333,
     "tags": [],
+    "family": "BlindingHit",
     "tiers": [
       {
         "tier_name": "CorruptionLocalChanceToBlind1",
@@ -3568,6 +3677,7 @@
       "elemental",
       "attack"
     ],
+    "family": "IncreasedWeaponElementalDamagePercent",
     "tiers": [
       {
         "tier_name": "CorruptionWeaponElementalDamage1",
@@ -3590,6 +3700,7 @@
     "tags": [
       "attack"
     ],
+    "family": "AdditionalArrows",
     "tiers": [
       {
         "tier_name": "CorruptionAdditionalArrows1",

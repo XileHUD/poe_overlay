@@ -3,12 +3,13 @@
     "category": "Waystones_Top",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Area contains # additional packs of Undead#% increased Rarity of Items found in this Area#% increased Waystones found in AreaArea contains # additional packs of Beasts#% increased Pack size#% increased Waystones found in AreaArea contains # additional packs of Ezomyte Monsters#% increased Pack size#% increased Waystones found in AreaArea contains # additional packs of Faridun Monsters#% increased Rarity of Items found in this Area#% increased Waystones found in AreaArea contains # additional packs of Vaal Monsters#% increased Magic Monsters#% increased Waystones found in AreaArea contains # additional packs of Iron Guards#% increased number of Rare Monsters#% increased Waystones found in AreaArea contains # additional packs of Plagued Monsters#% increased Rarity of Items found in this Area#% increased Waystones found in AreaArea contains # additional packs of Transcended Monsters#% increased number of Rare Monsters#% increased Waystones found in AreaArea contains # additional packs of Bramble Monsters#% increased Pack size#% increased Waystones found in Area",
+    "text_plain": "Area contains # additional packs of Undead#% increased Rarity of Items found in this Area#% increased Waystones found in AreaArea contains # additional packs of Beasts#% increased Pack size#% increased Waystones found in AreaArea contains # additional packs of Ezomyte Monsters#% increased Pack size#% increased Waystones found in AreaArea contains # additional packs of Faridun Monsters#% increased Rarity of Items found in this Area#% increased Waystones found in AreaArea contains # additional packs of Vaal Monsters#% increased number of Magic Monsters#% increased Waystones found in AreaArea contains # additional packs of Iron Guards#% increased number of Rare Monsters#% increased Waystones found in AreaArea contains # additional packs of Plagued Monsters#% increased Rarity of Items found in this Area#% increased Waystones found in AreaArea contains # additional packs of Transcended Monsters#% increased number of Rare Monsters#% increased Waystones found in AreaArea contains # additional packs of Bramble Monsters#% increased Pack size#% increased Waystones found in Area",
     "tier": 9,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapMonsterAdditionalPacks",
     "tiers": [
       {
         "tier_name": "Hallowed",
@@ -41,7 +42,7 @@
       {
         "tier_name": "Sacrificial",
         "tier_level": 1,
-        "text_plain": "1 Area contains (12–13) additional packs of Vaal Monsters18% increased Magic Monsters10% increased Waystones found in Area",
+        "text_plain": "1 Area contains (12–13) additional packs of Vaal Monsters18% increased number of Magic Monsters10% increased Waystones found in Area",
         "weight": 0,
         "weight_pct": 0
       },
@@ -79,17 +80,18 @@
     "category": "Waystones_Top",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "28% increased Magic MonstersMonsters deal (26–30)% of Damage as Extra Fire15% increased Waystones found in Area",
+    "text_plain": "Monsters deal (26–30)% of Damage as Extra Fire28% increased number of Magic Monsters15% increased Waystones found in Area",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapMonsterFireDamage",
     "tiers": [
       {
         "tier_name": "Infernal",
         "tier_level": 1,
-        "text_plain": "1 28% increased Magic MonstersMonsters deal (26–30)% of Damage as Extra Fire15% increased Waystones found in Area",
+        "text_plain": "1 Monsters deal (26–30)% of Damage as Extra Fire28% increased number of Magic Monsters15% increased Waystones found in Area",
         "weight": 0,
         "weight_pct": 0
       }
@@ -105,6 +107,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapMonsterColdDamage",
     "tiers": [
       {
         "tier_name": "Frostbitten",
@@ -125,6 +128,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapMonsterLightningDamage",
     "tiers": [
       {
         "tier_name": "Thunderous",
@@ -139,17 +143,18 @@
     "category": "Waystones_Top",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "28% increased number of Rare Monsters(26–30)% increased Monster Damage20% increased Waystones found in Area",
+    "text_plain": "(26–30)% increased Monster Damage28% increased number of Rare Monsters20% increased Waystones found in Area",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapMonsterDamage",
     "tiers": [
       {
         "tier_name": "Painful",
         "tier_level": 1,
-        "text_plain": "1 28% increased number of Rare Monsters(26–30)% increased Monster Damage20% increased Waystones found in Area",
+        "text_plain": "1 (26–30)% increased Monster Damage28% increased number of Rare Monsters20% increased Waystones found in Area",
         "weight": 0,
         "weight_pct": 0
       }
@@ -159,17 +164,18 @@
     "category": "Waystones_Top",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "26% increased number of Rare Monsters(40–49)% more Monster Life15% increased Waystones found in Area",
+    "text_plain": "(40–49)% more Monster Life26% increased number of Rare Monsters15% increased Waystones found in Area",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapMonsterLife",
     "tiers": [
       {
         "tier_name": "Tough",
         "tier_level": 1,
-        "text_plain": "1 26% increased number of Rare Monsters(40–49)% more Monster Life15% increased Waystones found in Area",
+        "text_plain": "1 (40–49)% more Monster Life26% increased number of Rare Monsters15% increased Waystones found in Area",
         "weight": 0,
         "weight_pct": 0
       }
@@ -185,6 +191,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapMonstersAccuracy",
     "tiers": [
       {
         "tier_name": "Precise",
@@ -205,6 +212,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapMonsterChaosDamage",
     "tiers": [
       {
         "tier_name": "Profane",
@@ -219,31 +227,32 @@
     "category": "Waystones_Top",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "#% increased Magic MonstersArea has patches of Ignited Ground#% increased Waystones found in Areamap ground effect patches per # tiles [#]map ground effect radius [#]Area has patches of Chilled Ground#% increased Rarity of Items found in this Area#% increased Waystones found in Areamap ground effect patches per # tiles [#]map ground effect radius [#]Area has patches of Shocked Ground#% increased Pack size#% increased Waystones found in Areamap ground effect patches per # tiles [#]map ground effect radius [#]",
+    "text_plain": "Area has patches of Ignited Ground#% increased number of Magic Monsters#% increased Waystones found in Areamap ground effect patches per # tiles [#]map ground effect radius [#]Area has patches of Chilled Ground#% increased Rarity of Items found in this Area#% increased Waystones found in Areamap ground effect patches per # tiles [#]map ground effect radius [#]Area has patches of Shocked Ground#% increased Pack size#% increased Waystones found in Areamap ground effect patches per # tiles [#]map ground effect radius [#]",
     "tier": 3,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapSpreadGroundEffect",
     "tiers": [
       {
         "tier_name": "Flaming",
         "tier_level": 1,
-        "text_plain": "1 33% increased Magic MonstersArea has patches of Ignited Ground15% increased Waystones found in Areamap ground effect patches per 100 tiles [18]map ground effect radius [14]",
+        "text_plain": "1 Area has patches of Ignited Ground33% increased number of Magic Monsters15% increased Waystones found in Areamap ground effect patches per 100 tiles [6]map ground effect radius [20]",
         "weight": 0,
         "weight_pct": 0
       },
       {
         "tier_name": "Sleet",
         "tier_level": 1,
-        "text_plain": "1 Area has patches of Chilled Ground20% increased Rarity of Items found in this Area15% increased Waystones found in Areamap ground effect patches per 100 tiles [24]map ground effect radius [18]",
+        "text_plain": "1 Area has patches of Chilled Ground20% increased Rarity of Items found in this Area15% increased Waystones found in Areamap ground effect patches per 100 tiles [5]map ground effect radius [26]",
         "weight": 0,
         "weight_pct": 0
       },
       {
         "tier_name": "Shocking",
         "tier_level": 1,
-        "text_plain": "1 Area has patches of Shocked Ground10% increased Pack size15% increased Waystones found in Areamap ground effect patches per 100 tiles [24]map ground effect radius [18]",
+        "text_plain": "1 Area has patches of Shocked Ground10% increased Pack size15% increased Waystones found in Areamap ground effect patches per 100 tiles [7]map ground effect radius [17]",
         "weight": 0,
         "weight_pct": 0
       }
@@ -259,6 +268,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapMonstersCurseEffectOnSelfFinal",
     "tiers": [
       {
         "tier_name": "Hexwarded",
@@ -279,6 +289,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapMonstersStealChargesOnHit",
     "tiers": [
       {
         "tier_name": "Enervating",
@@ -293,17 +304,18 @@
     "category": "Waystones_Top",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "(21–25)% increased Monster Attack Speed(21–25)% increased Monster Movement Speed(21–25)% increased Monster Cast Speed12% increased Pack size25% increased Waystones found in Area",
+    "text_plain": "(21–25)% increased Monster Movement Speed(21–25)% increased Monster Attack Speed(21–25)% increased Monster Cast Speed12% increased Pack size25% increased Waystones found in Area",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapMonsterFast",
     "tiers": [
       {
         "tier_name": "of Fleeting",
         "tier_level": 1,
-        "text_plain": "1 (21–25)% increased Monster Attack Speed(21–25)% increased Monster Movement Speed(21–25)% increased Monster Cast Speed12% increased Pack size25% increased Waystones found in Area",
+        "text_plain": "1 (21–25)% increased Monster Movement Speed(21–25)% increased Monster Attack Speed(21–25)% increased Monster Cast Speed12% increased Pack size25% increased Waystones found in Area",
         "weight": 0,
         "weight_pct": 0
       }
@@ -319,6 +331,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapMonsterCriticalStrikesAndDamage",
     "tiers": [
       {
         "tier_name": "of Destruction",
@@ -339,6 +352,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapMonstersAllResistances",
     "tiers": [
       {
         "tier_name": "of the Prism",
@@ -359,6 +373,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapPoisoning",
     "tiers": [
       {
         "tier_name": "of Venom",
@@ -373,17 +388,18 @@
     "category": "Waystones_Top",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "27% increased Magic MonstersMonsters have (15–20)% chance to inflict Bleeding on Hit10% increased Waystones found in Area",
+    "text_plain": "Monsters have (15–20)% chance to inflict Bleeding on Hit27% increased number of Magic Monsters10% increased Waystones found in Area",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapBleeding",
     "tiers": [
       {
         "tier_name": "of Puncturing",
         "tier_level": 1,
-        "text_plain": "1 27% increased Magic MonstersMonsters have (15–20)% chance to inflict Bleeding on Hit10% increased Waystones found in Area",
+        "text_plain": "1 Monsters have (15–20)% chance to inflict Bleeding on Hit27% increased number of Magic Monsters10% increased Waystones found in Area",
         "weight": 0,
         "weight_pct": 0
       }
@@ -393,17 +409,18 @@
     "category": "Waystones_Top",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "30% increased Magic MonstersMonsters have (70–79)% increased Ailment ThresholdMonsters have (70–79)% increased Stun Threshold10% increased Waystones found in Area",
+    "text_plain": "Monsters have (70–79)% increased Ailment ThresholdMonsters have (70–79)% increased Stun Threshold30% increased number of Magic Monsters10% increased Waystones found in Area",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapMonstersStunAndAilmentThreshold",
     "tiers": [
       {
         "tier_name": "of the Unwavering",
         "tier_level": 1,
-        "text_plain": "1 30% increased Magic MonstersMonsters have (70–79)% increased Ailment ThresholdMonsters have (70–79)% increased Stun Threshold10% increased Waystones found in Area",
+        "text_plain": "1 Monsters have (70–79)% increased Ailment ThresholdMonsters have (70–79)% increased Stun Threshold30% increased number of Magic Monsters10% increased Waystones found in Area",
         "weight": 0,
         "weight_pct": 0
       }
@@ -413,17 +430,18 @@
     "category": "Waystones_Top",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "21% increased number of Rare MonstersMonsters Break Armour equal to (30–45)% of Physical Damage dealt10% increased Waystones found in Area",
+    "text_plain": "Monsters Break Armour equal to (30–45)% of Physical Damage dealt21% increased number of Rare Monsters10% increased Waystones found in Area",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapMonstersArmourBreak",
     "tiers": [
       {
         "tier_name": "of Shattering",
         "tier_level": 1,
-        "text_plain": "1 21% increased number of Rare MonstersMonsters Break Armour equal to (30–45)% of Physical Damage dealt10% increased Waystones found in Area",
+        "text_plain": "1 Monsters Break Armour equal to (30–45)% of Physical Damage dealt21% increased number of Rare Monsters10% increased Waystones found in Area",
         "weight": 0,
         "weight_pct": 0
       }
@@ -433,17 +451,18 @@
     "category": "Waystones_Top",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "30% increased Magic MonstersMonsters have 125% increased Stun Buildup15% increased Waystones found in Area",
+    "text_plain": "Monsters have 125% increased Stun Buildup30% increased number of Magic Monsters15% increased Waystones found in Area",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapMonstersStunBuildup",
     "tiers": [
       {
         "tier_name": "of Impact",
         "tier_level": 1,
-        "text_plain": "1 30% increased Magic MonstersMonsters have 125% increased Stun Buildup15% increased Waystones found in Area",
+        "text_plain": "1 Monsters have 125% increased Stun Buildup30% increased number of Magic Monsters15% increased Waystones found in Area",
         "weight": 0,
         "weight_pct": 0
       }
@@ -453,17 +472,18 @@
     "category": "Waystones_Top",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Monsters have 125% increased Freeze BuildupMonsters have 125% increased Shock ChanceMonsters inflict 125% increased Flammability Magnitude18% increased Rarity of Items found in this Area15% increased Waystones found in Area",
+    "text_plain": "Monsters have 125% increased Freeze BuildupMonsters inflict 125% increased Flammability MagnitudeMonsters have 125% increased Shock Chance18% increased Rarity of Items found in this Area15% increased Waystones found in Area",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapMonstersAilmentChance",
     "tiers": [
       {
         "tier_name": "of Overpowering",
         "tier_level": 1,
-        "text_plain": "1 Monsters have 125% increased Freeze BuildupMonsters have 125% increased Shock ChanceMonsters inflict 125% increased Flammability Magnitude18% increased Rarity of Items found in this Area15% increased Waystones found in Area",
+        "text_plain": "1 Monsters have 125% increased Freeze BuildupMonsters inflict 125% increased Flammability MagnitudeMonsters have 125% increased Shock Chance18% increased Rarity of Items found in this Area15% increased Waystones found in Area",
         "weight": 0,
         "weight_pct": 0
       }
@@ -479,6 +499,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapMonsterMultipleProjectiles",
     "tiers": [
       {
         "tier_name": "of Splitting",
@@ -499,6 +520,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapMonstersElementalPenetration",
     "tiers": [
       {
         "tier_name": "of Penetration",
@@ -519,6 +541,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapPlayerMaxResists",
     "tiers": [
       {
         "tier_name": "of Exposure",
@@ -539,6 +562,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapPlayersGainReducedFlaskCharges",
     "tiers": [
       {
         "tier_name": "of Drought",
@@ -559,6 +583,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapPlayerReducedRegen",
     "tiers": [
       {
         "tier_name": "of Smothering",
@@ -579,6 +604,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapPlayerCooldownRecovery",
     "tiers": [
       {
         "tier_name": "of Fatigue",
@@ -593,17 +619,18 @@
     "category": "Waystones_Top",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "24% increased number of Rare MonstersMonsters take (26–30)% reduced Extra Damage from Critical Hits10% increased Waystones found in Area",
+    "text_plain": "Monsters take (26–30)% reduced Extra Damage from Critical Hits24% increased number of Rare Monsters10% increased Waystones found in Area",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapMonstersBaseSelfCriticalMultiplier",
     "tiers": [
       {
         "tier_name": "of Obstruction",
         "tier_level": 1,
-        "text_plain": "1 24% increased number of Rare MonstersMonsters take (26–30)% reduced Extra Damage from Critical Hits10% increased Waystones found in Area",
+        "text_plain": "1 Monsters take (26–30)% reduced Extra Damage from Critical Hits24% increased number of Rare Monsters10% increased Waystones found in Area",
         "weight": 0,
         "weight_pct": 0
       }
@@ -613,17 +640,18 @@
     "category": "Waystones_Top",
     "domain": "desecrated",
     "side": "prefix",
-    "text_plain": "16% increased Pack sizeAbyssal Monsters grant (50–100)% increased Experiencemap map item drop chance +% [20]",
+    "text_plain": "Abyssal Monsters grant (50–100)% increased Experiencemap map item drop chance +% [20]map pack size +% [16]",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapAbyssalAbyssMonsterExperience",
     "tiers": [
       {
         "tier_name": "Abyssal",
         "tier_level": 1,
-        "text_plain": "1 16% increased Pack sizeAbyssal Monsters grant (50–100)% increased Experiencemap map item drop chance +% [20]",
+        "text_plain": "1 Abyssal Monsters grant (50–100)% increased Experiencemap map item drop chance +% [20]map pack size +% [16]",
         "weight": 0,
         "weight_pct": 0
       }
@@ -633,17 +661,18 @@
     "category": "Waystones_Top",
     "domain": "desecrated",
     "side": "prefix",
-    "text_plain": "25% increased Rarity of Items found in this AreaAbysses have (2–3) additional Pitsmap map item drop chance +% [20]",
+    "text_plain": "Abysses have (2–3) additional Pitsmap item drop rarity +% [25]map map item drop chance +% [20]",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapAbyssalAdditionalPits",
     "tiers": [
       {
         "tier_name": "Abyssal",
         "tier_level": 1,
-        "text_plain": "1 25% increased Rarity of Items found in this AreaAbysses have (2–3) additional Pitsmap map item drop chance +% [20]",
+        "text_plain": "1 Abysses have (2–3) additional Pitsmap item drop rarity +% [25]map map item drop chance +% [20]",
         "weight": 0,
         "weight_pct": 0
       }
@@ -653,17 +682,18 @@
     "category": "Waystones_Top",
     "domain": "desecrated",
     "side": "prefix",
-    "text_plain": "12% increased Pack sizeAbysses in Area spawn (50–100)% increased Monstersmap map item drop chance +% [20]",
+    "text_plain": "Abysses in Area spawn (50–100)% increased Monstersmap map item drop chance +% [20]map pack size +% [12]",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapAbyssalIncreasedAbyssMonsters",
     "tiers": [
       {
         "tier_name": "Abyssal",
         "tier_level": 1,
-        "text_plain": "1 12% increased Pack sizeAbysses in Area spawn (50–100)% increased Monstersmap map item drop chance +% [20]",
+        "text_plain": "1 Abysses in Area spawn (50–100)% increased Monstersmap map item drop chance +% [20]map pack size +% [12]",
         "weight": 0,
         "weight_pct": 0
       }
@@ -673,17 +703,18 @@
     "category": "Waystones_Top",
     "domain": "desecrated",
     "side": "prefix",
-    "text_plain": "10% increased Pack sizeAbysses have (14–18) additional PitsArea is overrun by the Abyssalmap abyss num additional rare monsters [3]map map item drop chance +% [25]",
+    "text_plain": "Abysses have (14–18) additional PitsArea is overrun by the Abyssalmap abyss num additional rare monsters [3]map map item drop chance +% [25]map pack size +% [10]",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapAbyssalOverrun",
     "tiers": [
       {
         "tier_name": "Abyssal",
         "tier_level": 1,
-        "text_plain": "1 10% increased Pack sizeAbysses have (14–18) additional PitsArea is overrun by the Abyssalmap abyss num additional rare monsters [3]map map item drop chance +% [25]",
+        "text_plain": "1 Abysses have (14–18) additional PitsArea is overrun by the Abyssalmap abyss num additional rare monsters [3]map map item drop chance +% [25]map pack size +% [10]",
         "weight": 0,
         "weight_pct": 0
       }
@@ -693,24 +724,25 @@
     "category": "Waystones_Top",
     "domain": "desecrated",
     "side": "prefix",
-    "text_plain": "#% increased Rarity of Items found in this AreaAbysses lead to an Abyssal Bossmap map item drop chance +% [#]#% increased Rarity of Items found in this AreaAbysses lead to an Abyssal Depthsmap map item drop chance +% [#]",
+    "text_plain": "Abysses lead to an Abyssal Bossmap item drop rarity +% [#]map map item drop chance +% [#]Abysses lead to an Abyssal Depthsmap item drop rarity +% [#]map map item drop chance +% [#]",
     "tier": 2,
     "ilvl": 78,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapAbyssCracksAlwaysLeadToDepths",
     "tiers": [
       {
         "tier_name": "Abyssal",
         "tier_level": 78,
-        "text_plain": "78 25% increased Rarity of Items found in this AreaAbysses lead to an Abyssal Bossmap map item drop chance +% [10]",
+        "text_plain": "78 Abysses lead to an Abyssal Bossmap item drop rarity +% [25]map map item drop chance +% [10]",
         "weight": 0,
         "weight_pct": 0
       },
       {
         "tier_name": "Abyssal",
         "tier_level": 1,
-        "text_plain": "1 25% increased Rarity of Items found in this AreaAbysses lead to an Abyssal Depthsmap map item drop chance +% [20]",
+        "text_plain": "1 Abysses lead to an Abyssal Depthsmap item drop rarity +% [25]map map item drop chance +% [20]",
         "weight": 0,
         "weight_pct": 0
       }
@@ -720,17 +752,18 @@
     "category": "Waystones_Top",
     "domain": "desecrated",
     "side": "prefix",
-    "text_plain": "12% increased Pack sizeArea contains an additional Incubator Queenmap map item drop chance +% [25]",
+    "text_plain": "Area contains an additional Incubator Queenmap map item drop chance +% [25]map pack size +% [12]",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapAbyssContainsHarvester",
     "tiers": [
       {
         "tier_name": "Abyssal",
         "tier_level": 1,
-        "text_plain": "1 12% increased Pack sizeArea contains an additional Incubator Queenmap map item drop chance +% [25]",
+        "text_plain": "1 Area contains an additional Incubator Queenmap map item drop chance +% [25]map pack size +% [12]",
         "weight": 0,
         "weight_pct": 0
       }
@@ -740,17 +773,18 @@
     "category": "Waystones_Top",
     "domain": "desecrated",
     "side": "prefix",
-    "text_plain": "40% increased Magic MonstersAbyss Pits have (50–80)% chance to spawn all Monsters as at least MagicAbyss Cracks have (40–60)% chance to spawn all Monsters as at least Magicmap map item drop chance +% [25]",
+    "text_plain": "Abyss Pits have (50–80)% chance to spawn all Monsters as at least MagicAbyss Cracks have (40–60)% chance to spawn all Monsters as at least Magicmap map item drop chance +% [25]map number of magic packs +% [40]",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapAbyssCracksAllMagicMonsterChance",
     "tiers": [
       {
         "tier_name": "Abyssal",
         "tier_level": 1,
-        "text_plain": "1 40% increased Magic MonstersAbyss Pits have (50–80)% chance to spawn all Monsters as at least MagicAbyss Cracks have (40–60)% chance to spawn all Monsters as at least Magicmap map item drop chance +% [25]",
+        "text_plain": "1 Abyss Pits have (50–80)% chance to spawn all Monsters as at least MagicAbyss Cracks have (40–60)% chance to spawn all Monsters as at least Magicmap map item drop chance +% [25]map number of magic packs +% [40]",
         "weight": 0,
         "weight_pct": 0
       }
@@ -760,17 +794,18 @@
     "category": "Waystones_Top",
     "domain": "desecrated",
     "side": "prefix",
-    "text_plain": "12% increased Pack sizeMonsters from Abysses have increased Difficulty and Reward for each closed Pit in that Abyssmap map item drop chance +% [20]",
+    "text_plain": "Monsters from Abysses have increased Difficulty and Reward for each closed Pit in that Abyssmap map item drop chance +% [20]map pack size +% [12]",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapAbyssDifficultyRewardIncreasePerPit",
     "tiers": [
       {
         "tier_name": "Abyssal",
         "tier_level": 1,
-        "text_plain": "1 12% increased Pack sizeMonsters from Abysses have increased Difficulty and Reward for each closed Pit in that Abyssmap map item drop chance +% [20]",
+        "text_plain": "1 Monsters from Abysses have increased Difficulty and Reward for each closed Pit in that Abyssmap map item drop chance +% [20]map pack size +% [12]",
         "weight": 0,
         "weight_pct": 0
       }
@@ -780,17 +815,18 @@
     "category": "Waystones_Top",
     "domain": "desecrated",
     "side": "prefix",
-    "text_plain": "40% increased Magic Monsters30% increased number of Rare MonstersAbyss Pits in Area always have Rewardsmap map item drop chance +% [25]",
+    "text_plain": "Abyss Pits in Area always have Rewardsmap map item drop chance +% [25]map number of magic packs +% [40]map number of rare packs +% [30]",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapAbyssGuaranteeRewards",
     "tiers": [
       {
         "tier_name": "Abyssal",
         "tier_level": 1,
-        "text_plain": "1 40% increased Magic Monsters30% increased number of Rare MonstersAbyss Pits in Area always have Rewardsmap map item drop chance +% [25]",
+        "text_plain": "1 Abyss Pits in Area always have Rewardsmap map item drop chance +% [25]map number of magic packs +% [40]map number of rare packs +% [30]",
         "weight": 0,
         "weight_pct": 0
       }
@@ -800,17 +836,18 @@
     "category": "Waystones_Top",
     "domain": "desecrated",
     "side": "prefix",
-    "text_plain": "30% increased number of Rare MonstersNatural Rare Monsters in Area have 1 extra Abyssal Modifiermap map item drop chance +% [25]",
+    "text_plain": "Natural Rare Monsters in Area have 1 extra Abyssal Modifiermap map item drop chance +% [25]map number of rare packs +% [30]",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapAbyssRareMonstersAbyssalModifier",
     "tiers": [
       {
         "tier_name": "Abyssal",
         "tier_level": 1,
-        "text_plain": "1 30% increased number of Rare MonstersNatural Rare Monsters in Area have 1 extra Abyssal Modifiermap map item drop chance +% [25]",
+        "text_plain": "1 Natural Rare Monsters in Area have 1 extra Abyssal Modifiermap map item drop chance +% [25]map number of rare packs +% [30]",
         "weight": 0,
         "weight_pct": 0
       }
@@ -820,17 +857,18 @@
     "category": "Waystones_Top",
     "domain": "desecrated",
     "side": "suffix",
-    "text_plain": "18% increased Pack sizeNatural Rare Monsters in Area Eat the Souls of slain Monsters in their PresencePlayers steal the Eaten Souls of Slain Rare Monsters in Areamap map item drop chance +% [25]",
+    "text_plain": "Natural Rare Monsters in Area Eat the Souls of slain Monsters in their PresencePlayers steal the Eaten Souls of Slain Rare Monsters in Areamap map item drop chance +% [25]map pack size +% [18]",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapAbyssRareMonstersSoulEater",
     "tiers": [
       {
         "tier_name": "of Consumption",
         "tier_level": 1,
-        "text_plain": "1 18% increased Pack sizeNatural Rare Monsters in Area Eat the Souls of slain Monsters in their PresencePlayers steal the Eaten Souls of Slain Rare Monsters in Areamap map item drop chance +% [25]",
+        "text_plain": "1 Natural Rare Monsters in Area Eat the Souls of slain Monsters in their PresencePlayers steal the Eaten Souls of Slain Rare Monsters in Areamap map item drop chance +% [25]map pack size +% [18]",
         "weight": 0,
         "weight_pct": 0
       }
@@ -840,17 +878,18 @@
     "category": "Waystones_Top",
     "domain": "desecrated",
     "side": "suffix",
-    "text_plain": "50% increased number of Rare MonstersPlayers and their Minions deal no damage for 3 out of every 10 secondsmap map item drop chance +% [40]",
+    "text_plain": "Players and their Minions deal no damage for 3 out of every 10 secondsmap map item drop chance +% [40]map number of rare packs +% [50]",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapAbyssDamageCycle",
     "tiers": [
       {
         "tier_name": "of Cycling",
         "tier_level": 1,
-        "text_plain": "1 50% increased number of Rare MonstersPlayers and their Minions deal no damage for 3 out of every 10 secondsmap map item drop chance +% [40]",
+        "text_plain": "1 Players and their Minions deal no damage for 3 out of every 10 secondsmap map item drop chance +% [40]map number of rare packs +% [50]",
         "weight": 0,
         "weight_pct": 0
       }
@@ -860,17 +899,18 @@
     "category": "Waystones_Top",
     "domain": "desecrated",
     "side": "suffix",
-    "text_plain": "45% increased Rarity of Items found in this AreaPlayers have 3% less Movement and Skill Speed for each time they've used a Skill Recentlymap map item drop chance +% [25]",
+    "text_plain": "Players have 3% less Movement and Skill Speed for each time they've used a Skill Recentlymap item drop rarity +% [45]map map item drop chance +% [25]",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapUberModActionSpeed",
     "tiers": [
       {
         "tier_name": "of Deceleration",
         "tier_level": 1,
-        "text_plain": "1 45% increased Rarity of Items found in this AreaPlayers have 3% less Movement and Skill Speed for each time they've used a Skill Recentlymap map item drop chance +% [25]",
+        "text_plain": "1 Players have 3% less Movement and Skill Speed for each time they've used a Skill Recentlymap item drop rarity +% [45]map map item drop chance +% [25]",
         "weight": 0,
         "weight_pct": 0
       }
@@ -880,17 +920,18 @@
     "category": "Waystones_Top",
     "domain": "desecrated",
     "side": "suffix",
-    "text_plain": "22% increased Pack sizeMonsters inflict 1 Grasping Vine on Hitmap map item drop chance +% [30]",
+    "text_plain": "Monsters inflict 1 Grasping Vine on Hitmap map item drop chance +% [30]map pack size +% [22]",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapUberModVines",
     "tiers": [
       {
         "tier_name": "of Grasping",
         "tier_level": 1,
-        "text_plain": "1 22% increased Pack sizeMonsters inflict 1 Grasping Vine on Hitmap map item drop chance +% [30]",
+        "text_plain": "1 Monsters inflict 1 Grasping Vine on Hitmap map item drop chance +% [30]map pack size +% [22]",
         "weight": 0,
         "weight_pct": 0
       }
@@ -900,17 +941,18 @@
     "category": "Waystones_Top",
     "domain": "desecrated",
     "side": "suffix",
-    "text_plain": "40% increased Rarity of Items found in this Area10% increased Pack sizePlayers are Marked for Death for 10 secondsafter killing a Rare or Unique monstermap map item drop chance +% [25]",
+    "text_plain": "Players are Marked for Death for 10 secondsafter killing a Rare or Unique monstermap item drop quantity +% [0]map item drop rarity +% [40]map map item drop chance +% [25]map pack size +% [10]",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapUberModMarkedForDeath",
     "tiers": [
       {
         "tier_name": "of Retribution",
         "tier_level": 1,
-        "text_plain": "1 40% increased Rarity of Items found in this Area10% increased Pack sizePlayers are Marked for Death for 10 secondsafter killing a Rare or Unique monstermap map item drop chance +% [25]",
+        "text_plain": "1 Players are Marked for Death for 10 secondsafter killing a Rare or Unique monstermap item drop quantity +% [0]map item drop rarity +% [40]map map item drop chance +% [25]map pack size +% [10]",
         "weight": 0,
         "weight_pct": 0
       }
@@ -920,17 +962,18 @@
     "category": "Waystones_Top",
     "domain": "desecrated",
     "side": "suffix",
-    "text_plain": "18% increased Pack sizeArea has patches of Mana Siphoning Groundmap ground effect patches per 100 tiles [10]map ground effect radius [16]map ground mana siphoning base lightning damage to deal per minute [7200]map ground mana siphoning mana degeneration per minute [1200]map map item drop chance +% [35]",
+    "text_plain": "Area has patches of Mana Siphoning Groundmap ground effect patches per 100 tiles [10]map ground effect radius [16]map ground mana siphoning base lightning damage to deal per minute [7200]map ground mana siphoning mana degeneration per minute [1200]map map item drop chance +% [35]map pack size +% [18]",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapSpreadGroundEffect",
     "tiers": [
       {
         "tier_name": "of Siphoning",
         "tier_level": 1,
-        "text_plain": "1 18% increased Pack sizeArea has patches of Mana Siphoning Groundmap ground effect patches per 100 tiles [10]map ground effect radius [16]map ground mana siphoning base lightning damage to deal per minute [7200]map ground mana siphoning mana degeneration per minute [1200]map map item drop chance +% [35]",
+        "text_plain": "1 Area has patches of Mana Siphoning Groundmap ground effect patches per 100 tiles [10]map ground effect radius [16]map ground mana siphoning base lightning damage to deal per minute [7200]map ground mana siphoning mana degeneration per minute [1200]map map item drop chance +% [35]map pack size +% [18]",
         "weight": 0,
         "weight_pct": 0
       }
@@ -940,17 +983,18 @@
     "category": "Waystones_Top",
     "domain": "desecrated",
     "side": "suffix",
-    "text_plain": "22% increased Pack sizeNatural Monster Packs in Area are in a Union of Soulsmap map item drop chance +% [20]map monsters actor scale +% granted to pack members on death [3]map monsters damage +% granted to pack members on death [5]",
+    "text_plain": "Natural Monster Packs in Area are in a Union of Soulsmap map item drop chance +% [20]map monsters actor scale +% granted to pack members on death [3]map monsters damage +% granted to pack members on death [5]map pack size +% [22]",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapAbyssPackUnionofSouls",
     "tiers": [
       {
         "tier_name": "of Union",
         "tier_level": 1,
-        "text_plain": "1 22% increased Pack sizeNatural Monster Packs in Area are in a Union of Soulsmap map item drop chance +% [20]map monsters actor scale +% granted to pack members on death [3]map monsters damage +% granted to pack members on death [5]",
+        "text_plain": "1 Natural Monster Packs in Area are in a Union of Soulsmap map item drop chance +% [20]map monsters actor scale +% granted to pack members on death [3]map monsters damage +% granted to pack members on death [5]map pack size +% [22]",
         "weight": 0,
         "weight_pct": 0
       }
@@ -960,17 +1004,18 @@
     "category": "Waystones_Top",
     "domain": "desecrated",
     "side": "suffix",
-    "text_plain": "50% increased number of Rare MonstersNatural Rare Monsters in Area are in a Union of Souls with the Map Bossmap map item drop chance +% [25]",
+    "text_plain": "Natural Rare Monsters in Area are in a Union of Souls with the Map Bossmap map item drop chance +% [25]map number of rare packs +% [50]",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "MapAbyssRaresBossUnionofSouls",
     "tiers": [
       {
         "tier_name": "of Union",
         "tier_level": 1,
-        "text_plain": "1 50% increased number of Rare MonstersNatural Rare Monsters in Area are in a Union of Souls with the Map Bossmap map item drop chance +% [25]",
+        "text_plain": "1 Natural Rare Monsters in Area are in a Union of Souls with the Map Bossmap map item drop chance +% [25]map number of rare packs +% [50]",
         "weight": 0,
         "weight_pct": 0
       }

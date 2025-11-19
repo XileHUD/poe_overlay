@@ -13,6 +13,7 @@
       "physical",
       "attack"
     ],
+    "family": "PhysicalDamage",
     "tiers": [
       {
         "tier_name": "Glinting",
@@ -94,6 +95,7 @@
       "fire",
       "attack"
     ],
+    "family": "FireDamage",
     "tiers": [
       {
         "tier_name": "Heated",
@@ -175,6 +177,7 @@
       "cold",
       "attack"
     ],
+    "family": "ColdDamage",
     "tiers": [
       {
         "tier_name": "Frosted",
@@ -256,6 +259,7 @@
       "lightning",
       "attack"
     ],
+    "family": "LightningDamage",
     "tiers": [
       {
         "tier_name": "Humming",
@@ -334,6 +338,7 @@
     "tags": [
       "attack"
     ],
+    "family": "IncreasedAccuracy",
     "tiers": [
       {
         "tier_name": "Precise",
@@ -412,6 +417,7 @@
     "tags": [
       "speed"
     ],
+    "family": "ProjectileSpeed",
     "tiers": [
       {
         "tier_name": "Darting",
@@ -462,6 +468,7 @@
     "tags": [
       "damage"
     ],
+    "family": "DamageWithWeaponTypeSkill",
     "tiers": [
       {
         "tier_name": "Acute",
@@ -519,6 +526,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Dexterity",
     "tiers": [
       {
         "tier_name": "of the Mongoose",
@@ -588,6 +596,7 @@
     "weight": 750,
     "weight_pct": 2.5,
     "tags": [],
+    "family": "IncreaseSocketedGemLevel",
     "tiers": [
       {
         "tier_name": "of the Archer",
@@ -617,6 +626,7 @@
     "tags": [
       "life"
     ],
+    "family": "LifeGainedFromEnemyDeath",
     "tiers": [
       {
         "tier_name": "of Success",
@@ -674,6 +684,7 @@
     "tags": [
       "mana"
     ],
+    "family": "ManaGainedFromEnemyDeath",
     "tiers": [
       {
         "tier_name": "of Absorption",
@@ -732,6 +743,7 @@
       "attack",
       "speed"
     ],
+    "family": "IncreasedAttackSpeed",
     "tiers": [
       {
         "tier_name": "of Skill",
@@ -776,6 +788,7 @@
       "attack",
       "critical"
     ],
+    "family": "CriticalStrikeChanceIncrease",
     "tiers": [
       {
         "tier_name": "of Menace",
@@ -834,6 +847,7 @@
       "attack",
       "critical"
     ],
+    "family": "CriticalStrikeMultiplier",
     "tiers": [
       {
         "tier_name": "of Ire",
@@ -889,6 +903,7 @@
     "weight": 2500,
     "weight_pct": 8.333,
     "tags": [],
+    "family": "ChanceToPierce",
     "tiers": [
       {
         "tier_name": "of Piercing",
@@ -940,6 +955,7 @@
       "amanamu_mod",
       "damage"
     ],
+    "family": "ProjectileDamage",
     "tiers": [
       {
         "tier_name": "Amanamu's",
@@ -976,6 +992,7 @@
     "tags": [
       "amanamu_mod"
     ],
+    "family": "CriticalStrikeMultiplier",
     "tiers": [
       {
         "tier_name": "of Amanamu",
@@ -999,6 +1016,7 @@
       "kurgal_mod",
       "mana"
     ],
+    "family": "ManaCostEfficiency",
     "tiers": [
       {
         "tier_name": "of Kurgal",
@@ -1021,6 +1039,7 @@
     "tags": [
       "kurgal_mod"
     ],
+    "family": "CriticalStrikeChanceIncrease",
     "tiers": [
       {
         "tier_name": "of Kurgal",
@@ -1044,6 +1063,7 @@
       "ulaman_mod",
       "life"
     ],
+    "family": "LifeCost",
     "tiers": [
       {
         "tier_name": "of Ulaman",
@@ -1066,6 +1086,7 @@
     "tags": [
       "ulaman_mod"
     ],
+    "family": "AdditionalProjectiles",
     "tiers": [
       {
         "tier_name": "of Ulaman",
@@ -1088,6 +1109,7 @@
     "tags": [
       "attack"
     ],
+    "family": "IncreasedAccuracy",
     "tiers": [
       {
         "tier_name": "Greater Essence of Battle",
@@ -1117,6 +1139,7 @@
     "tags": [
       "damage"
     ],
+    "family": "DamageWithWeaponTypeSkill",
     "tiers": [
       {
         "tier_name": "Essence of Hysteria",
@@ -1137,6 +1160,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "EssenceAbyss",
     "tiers": [
       {
         "tier_name": "Essence of the Abyss",
@@ -1159,6 +1183,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Strength",
     "tiers": [
       {
         "tier_name": "Lesser Essence of the Infinite",
@@ -1195,6 +1220,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Dexterity",
     "tiers": [
       {
         "tier_name": "Lesser Essence of the Infinite",
@@ -1231,6 +1257,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Intelligence",
     "tiers": [
       {
         "tier_name": "Lesser Essence of the Infinite",
@@ -1265,6 +1292,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "EssenceAbyss",
     "tiers": [
       {
         "tier_name": "Essence of the Abyss",
@@ -1287,6 +1315,7 @@
     "tags": [
       "mana"
     ],
+    "family": "IncreasedMana",
     "tiers": [
       {
         "tier_name": "CorruptionIncreasedMana1",
@@ -1309,6 +1338,7 @@
     "tags": [
       "attack"
     ],
+    "family": "IncreasedAccuracy",
     "tiers": [
       {
         "tier_name": "CorruptionIncreasedAccuracy1",
@@ -1331,6 +1361,7 @@
     "tags": [
       "damage"
     ],
+    "family": "AllDamage",
     "tiers": [
       {
         "tier_name": "CorruptionAllDamage1",
@@ -1353,6 +1384,7 @@
     "tags": [
       "speed"
     ],
+    "family": "IncreasedSpeed",
     "tiers": [
       {
         "tier_name": "CorruptionIncreasedSkillSpeed1",
@@ -1376,6 +1408,7 @@
       "damage",
       "critical"
     ],
+    "family": "CriticalStrikeMultiplier",
     "tiers": [
       {
         "tier_name": "CorruptionCriticalStrikeMultiplier1",
@@ -1398,6 +1431,7 @@
     "tags": [
       "life"
     ],
+    "family": "LifeGainedFromEnemyDeath",
     "tiers": [
       {
         "tier_name": "CorruptionLifeGainedFromEnemyDeath1",
@@ -1420,6 +1454,7 @@
     "tags": [
       "mana"
     ],
+    "family": "ManaGainedFromEnemyDeath",
     "tiers": [
       {
         "tier_name": "CorruptionManaGainedFromEnemyDeath1",
@@ -1440,6 +1475,7 @@
     "weight": 1,
     "weight_pct": 11.111,
     "tags": [],
+    "family": "ChanceToPierce",
     "tiers": [
       {
         "tier_name": "CorruptionChanceToPierce1",
@@ -1460,6 +1496,7 @@
     "weight": 1,
     "weight_pct": 11.111,
     "tags": [],
+    "family": "ChainFromTerrain",
     "tiers": [
       {
         "tier_name": "CorruptionChainFromTerrain1",

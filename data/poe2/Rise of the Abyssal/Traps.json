@@ -11,6 +11,7 @@
     "tags": [
       "mana"
     ],
+    "family": "IncreasedMana",
     "tiers": [
       {
         "tier_name": "Beryl",
@@ -105,6 +106,7 @@
       "elemental",
       "fire"
     ],
+    "family": "WeaponDamageTypePrefix",
     "tiers": [
       {
         "tier_name": "Searing",
@@ -400,6 +402,7 @@
     "tags": [
       "damage"
     ],
+    "family": "WeaponCasterDamagePrefix",
     "tiers": [
       {
         "tier_name": "Explosive",
@@ -469,6 +472,7 @@
     "weight": 7,
     "weight_pct": 10.606,
     "tags": [],
+    "family": "TrapDamageAndMana",
     "tiers": [
       {
         "tier_name": "Sapper's",
@@ -533,6 +537,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Dexterity",
     "tiers": [
       {
         "tier_name": "of the Mongoose",
@@ -604,6 +609,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Intelligence",
     "tiers": [
       {
         "tier_name": "of the Pupil",
@@ -673,6 +679,7 @@
     "weight": 5,
     "weight_pct": 6.494,
     "tags": [],
+    "family": "IncreaseSocketedGemLevel",
     "tiers": [
       {
         "tier_name": "of Explosives",
@@ -723,6 +730,7 @@
     "tags": [
       "mana"
     ],
+    "family": "ManaRegeneration",
     "tiers": [
       {
         "tier_name": "of Excitement",
@@ -780,6 +788,7 @@
     "tags": [
       "life"
     ],
+    "family": "LifeGainedFromEnemyDeath",
     "tiers": [
       {
         "tier_name": "of Success",
@@ -851,6 +860,7 @@
     "tags": [
       "mana"
     ],
+    "family": "ManaGainedFromEnemyDeath",
     "tiers": [
       {
         "tier_name": "of Absorption",
@@ -922,6 +932,7 @@
     "tags": [
       "speed"
     ],
+    "family": "TrapAndMineThrowSpeed",
     "tiers": [
       {
         "tier_name": "TBD",
@@ -984,6 +995,7 @@
     "weight": 6,
     "weight_pct": 7.792,
     "tags": [],
+    "family": "CriticalStrikeChanceIncrease",
     "tiers": [
       {
         "tier_name": "of Menace",
@@ -1039,6 +1051,7 @@
     "weight": 6,
     "weight_pct": 7.792,
     "tags": [],
+    "family": "CriticalStrikeMultiplier",
     "tiers": [
       {
         "tier_name": "of Ire",
@@ -1094,6 +1107,7 @@
     "weight": 5,
     "weight_pct": 6.494,
     "tags": [],
+    "family": "IgniteChanceIncrease",
     "tiers": [
       {
         "tier_name": "of Ignition",
@@ -1142,6 +1156,7 @@
     "weight": 5,
     "weight_pct": 6.494,
     "tags": [],
+    "family": "FreezeDamageIncrease",
     "tiers": [
       {
         "tier_name": "of Freezing",
@@ -1190,6 +1205,7 @@
     "weight": 5,
     "weight_pct": 6.494,
     "tags": [],
+    "family": "ShockChanceIncrease",
     "tiers": [
       {
         "tier_name": "of Shocking",
@@ -1238,6 +1254,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "RobustRune",
     "tiers": [
       {
         "tier_name": "Lesser Robust Rune",
@@ -1272,6 +1289,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "AdeptRune",
     "tiers": [
       {
         "tier_name": "Lesser Adept Rune",
@@ -1306,6 +1324,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "ResolveRune",
     "tiers": [
       {
         "tier_name": "Lesser Resolve Rune",
@@ -1340,6 +1359,7 @@
     "weight": 1,
     "weight_pct": 100,
     "tags": [],
+    "family": "LocalAttributeRequirements",
     "tiers": [
       {
         "tier_name": "CorruptionReducedLocalAttributeRequirements1",

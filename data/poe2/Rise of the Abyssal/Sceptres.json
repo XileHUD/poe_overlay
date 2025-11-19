@@ -11,6 +11,7 @@
     "tags": [
       "mana"
     ],
+    "family": "IncreasedMana",
     "tiers": [
       {
         "tier_name": "Beryl",
@@ -105,6 +106,7 @@
       "physical",
       "attack"
     ],
+    "family": "PhysicalDamage",
     "tiers": [
       {
         "tier_name": "Glinting",
@@ -186,6 +188,7 @@
       "fire",
       "attack"
     ],
+    "family": "FireDamage",
     "tiers": [
       {
         "tier_name": "Heated",
@@ -267,6 +270,7 @@
       "cold",
       "attack"
     ],
+    "family": "ColdDamage",
     "tiers": [
       {
         "tier_name": "Frosted",
@@ -348,6 +352,7 @@
       "lightning",
       "attack"
     ],
+    "family": "LightningDamage",
     "tiers": [
       {
         "tier_name": "Humming",
@@ -426,6 +431,7 @@
     "tags": [
       "damage"
     ],
+    "family": "AllDamage",
     "tiers": [
       {
         "tier_name": "Coercive",
@@ -495,6 +501,7 @@
     "weight": 4350,
     "weight_pct": 10.985,
     "tags": [],
+    "family": "LocalIncreasedSpiritPercent",
     "tiers": [
       {
         "tier_name": "Lord's",
@@ -564,6 +571,7 @@
     "weight": 4300,
     "weight_pct": 10.859,
     "tags": [],
+    "family": "LocalIncreasedSpiritAndMana",
     "tiers": [
       {
         "tier_name": "Advisor's",
@@ -628,6 +636,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Strength",
     "tiers": [
       {
         "tier_name": "of the Brute",
@@ -699,6 +708,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Intelligence",
     "tiers": [
       {
         "tier_name": "of the Pupil",
@@ -771,6 +781,7 @@
       "elemental",
       "resistance"
     ],
+    "family": "AllResistances",
     "tiers": [
       {
         "tier_name": "of Adjustment",
@@ -826,6 +837,7 @@
     "weight": 5000,
     "weight_pct": 8.045,
     "tags": [],
+    "family": "LocalAttributeRequirements",
     "tiers": [
       {
         "tier_name": "of the Worthy",
@@ -877,6 +889,7 @@
       "minion",
       "gem"
     ],
+    "family": "IncreaseSocketedGemLevel",
     "tiers": [
       {
         "tier_name": "of the Taskmaster",
@@ -920,6 +933,7 @@
     "tags": [
       "life"
     ],
+    "family": "LifeRegeneration",
     "tiers": [
       {
         "tier_name": "of the Newt",
@@ -1005,6 +1019,7 @@
     "tags": [
       "mana"
     ],
+    "family": "ManaRegeneration",
     "tiers": [
       {
         "tier_name": "of Excitement",
@@ -1063,6 +1078,7 @@
       "attack",
       "speed"
     ],
+    "family": "IncreasedAttackSpeed",
     "tiers": [
       {
         "tier_name": "of Skill",
@@ -1107,6 +1123,7 @@
       "caster",
       "speed"
     ],
+    "family": "IncreasedCastSpeed",
     "tiers": [
       {
         "tier_name": "of Talent",
@@ -1150,6 +1167,7 @@
     "tags": [
       "critical"
     ],
+    "family": "CriticalStrikeChanceIncrease",
     "tiers": [
       {
         "tier_name": "of Menace",
@@ -1208,6 +1226,7 @@
       "damage",
       "critical"
     ],
+    "family": "CriticalStrikeMultiplier",
     "tiers": [
       {
         "tier_name": "of Ire",
@@ -1265,6 +1284,7 @@
     "tags": [
       "mana"
     ],
+    "family": "LightRadiusAndManaRegeneration",
     "tiers": [
       {
         "tier_name": "of Warmth",
@@ -1299,6 +1319,7 @@
     "weight": 2000,
     "weight_pct": 3.218,
     "tags": [],
+    "family": "PresenceRadius",
     "tiers": [
       {
         "tier_name": "of Direction",
@@ -1343,6 +1364,7 @@
       "life",
       "minion"
     ],
+    "family": "MinionLife",
     "tiers": [
       {
         "tier_name": "of the Mentor",
@@ -1398,6 +1420,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "EssenceAbyss",
     "tiers": [
       {
         "tier_name": "Essence of the Abyss",
@@ -1420,6 +1443,7 @@
     "tags": [
       "damage"
     ],
+    "family": "AllDamage",
     "tiers": [
       {
         "tier_name": "Lesser Essence of Command",
@@ -1456,6 +1480,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Strength",
     "tiers": [
       {
         "tier_name": "Lesser Essence of the Infinite",
@@ -1492,6 +1517,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Dexterity",
     "tiers": [
       {
         "tier_name": "Lesser Essence of the Infinite",
@@ -1528,6 +1554,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Intelligence",
     "tiers": [
       {
         "tier_name": "Lesser Essence of the Infinite",
@@ -1562,6 +1589,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "EssenceAbyss",
     "tiers": [
       {
         "tier_name": "Essence of the Abyss",
@@ -1582,6 +1610,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "AuraEffect",
     "tiers": [
       {
         "tier_name": "Perfect Essence of Command",
@@ -1602,6 +1631,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "SerpentTalisman",
     "tiers": [
       {
         "tier_name": "Serpent Talisman",
@@ -1622,6 +1652,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "PrimateTalisman",
     "tiers": [
       {
         "tier_name": "Primate Talisman",
@@ -1642,6 +1673,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "OwlTalisman",
     "tiers": [
       {
         "tier_name": "Owl Talisman",
@@ -1662,6 +1694,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "CatTalisman",
     "tiers": [
       {
         "tier_name": "Cat Talisman",
@@ -1682,6 +1715,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "WolfTalisman",
     "tiers": [
       {
         "tier_name": "Wolf Talisman",
@@ -1702,6 +1736,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "StagTalisman",
     "tiers": [
       {
         "tier_name": "Stag Talisman",
@@ -1722,6 +1757,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "BoarTalisman",
     "tiers": [
       {
         "tier_name": "Boar Talisman",
@@ -1742,6 +1778,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "BearTalisman",
     "tiers": [
       {
         "tier_name": "Bear Talisman",
@@ -1762,6 +1799,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "OxTalisman",
     "tiers": [
       {
         "tier_name": "Ox Talisman",
@@ -1782,6 +1820,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "RabbitTalisman",
     "tiers": [
       {
         "tier_name": "Rabbit Talisman",
@@ -1802,6 +1841,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "FoxTalisman",
     "tiers": [
       {
         "tier_name": "Fox Talisman",
@@ -1822,6 +1862,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "Xipocado'sSoulCoreofDominion",
     "tiers": [
       {
         "tier_name": "Xipocado's Soul Core of Dominion",
@@ -1842,6 +1883,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "RobustRune",
     "tiers": [
       {
         "tier_name": "Lesser Robust Rune",
@@ -1876,6 +1918,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "AdeptRune",
     "tiers": [
       {
         "tier_name": "Lesser Adept Rune",
@@ -1910,6 +1953,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "ResolveRune",
     "tiers": [
       {
         "tier_name": "Lesser Resolve Rune",
@@ -1944,6 +1988,7 @@
     "weight": 1,
     "weight_pct": 16.667,
     "tags": [],
+    "family": "LocalAttributeRequirements",
     "tiers": [
       {
         "tier_name": "CorruptionReducedLocalAttributeRequirements1",
@@ -1964,6 +2009,7 @@
     "weight": 1,
     "weight_pct": 16.667,
     "tags": [],
+    "family": "LocalIncreasedSpiritPercent",
     "tiers": [
       {
         "tier_name": "CorruptionLocalIncreasedSpiritPercent1",
@@ -1986,6 +2032,7 @@
     "tags": [
       "damage"
     ],
+    "family": "AllDamage",
     "tiers": [
       {
         "tier_name": "CorruptionAlliesInPresenceAllDamage1",
@@ -2009,6 +2056,7 @@
       "attack",
       "speed"
     ],
+    "family": "IncreasedAttackSpeed",
     "tiers": [
       {
         "tier_name": "CorruptionAlliesInPresenceIncreasedAttackSpeed1",
@@ -2032,6 +2080,7 @@
       "caster",
       "speed"
     ],
+    "family": "IncreasedCastSpeed",
     "tiers": [
       {
         "tier_name": "CorruptionAlliesInPresenceIncreasedCastSpeed1",
@@ -2055,6 +2104,7 @@
       "damage",
       "critical"
     ],
+    "family": "CriticalStrikeMultiplier",
     "tiers": [
       {
         "tier_name": "CorruptionAlliesInPresenceCriticalStrikeMultiplier1",
