@@ -159,6 +159,7 @@ export class ItemParser {
         'Crossbows': 'Crossbows',
         'Wands': 'Wands',
         'Staves': 'Staves',
+        'Warstaves': 'Warstaves',
         'One Hand Swords': 'One_Hand_Swords',
         'Two Hand Swords': 'Two_Hand_Swords',
         'One Hand Axes': 'One_Hand_Axes',
