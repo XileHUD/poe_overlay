@@ -1511,18 +1511,22 @@ body:not(.compact-tiers) .tier-badges-compact {
 .mod-lines.implicit-mods { border-color:rgba(110,160,255,0.25); }
 .mod-lines.enchant-mods { border-color:rgba(142,102,220,0.3); }
 .mod-lines.corrupted-mods { border-color:rgba(200,60,60,0.35); }
+.mod-lines.mutated-mods { border-color:rgba(180,60,120,0.35); }
 .mod-line { position:relative; padding:6px 10px 6px 12px; color: var(--text-primary); font-size:12px; line-height:1.25; }
 .mod-line:nth-child(odd) { background:rgba(255,255,255,0.015); }
 .mod-line:nth-child(even) { background:rgba(0,0,0,0.12); }
 .implicit-mods .mod-line.implicit { background:rgba(40,75,120,0.18); }
 .enchant-mods .mod-line.enchant { background:rgba(100,70,160,0.22); }
 .corrupted-mods .mod-line.corrupted { background:rgba(160,40,40,0.22); }
+.explicit-mods .mod-line.mutated { background:rgba(140,40,90,0.22); }
 .mod-line + .mod-line { border-top:1px solid rgba(255,255,255,0.04); }
 .mod-line::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:transparent; }
 .implicit-mods .mod-line::before { background:linear-gradient(180deg,#4d8dff,#2c5fa8); }
 .explicit-mods .mod-line::before { background:linear-gradient(180deg,#d4af37,#8f6a00); }
 .enchant-mods .mod-line::before { background:linear-gradient(180deg,#a874ff,#6b3fd6); }
 .corrupted-mods .mod-line::before { background:linear-gradient(180deg,#e05a5a,#8b1f1f); }
+.mutated-mods .mod-line::before { background:linear-gradient(180deg,#d966a8,#8b2f5f); }
+.explicit-mods .mod-line.mutated::before { background:linear-gradient(180deg,#d966a8,#8b2f5f); }
 .explicit-mods .mod-line.fractured { background:rgba(210,190,140,0.18); }
 .explicit-mods .mod-line.fractured::before { background:linear-gradient(180deg,#e6d5a8,#b79b55); }
 .explicit-mods .mod-line.desecrated { background:rgba(60,140,60,0.22); }
@@ -1534,6 +1538,7 @@ body:not(.compact-tiers) .tier-badges-compact {
 .mod-tier { display:inline-block; margin-left:6px; font-size:10px; padding:2px 6px; border-radius:999px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); font-weight:600; letter-spacing:.5px; color:#ffdf6b; }
 .explicit-mods .mod-tier { background:rgba(212,175,55,0.15); border-color:rgba(212,175,55,0.4); color:#ffd769; }
 .implicit-mods .mod-tier { background:rgba(90,140,255,0.15); border-color:rgba(90,140,255,0.4); color:#8ec2ff; }
+.mod-label-mutated { float:right; font-size:10px; font-style:italic; color:rgba(217,102,168,0.85); margin-left:8px; font-weight:500; }
 .badge-corrupted { display:inline-block; padding:1px 6px; border-radius:999px; font-size:10px; background:#7a2b2b; color:#ffdede; border:1px solid #a33; margin-left:6px; }
 
 /* Sockets & Runes */

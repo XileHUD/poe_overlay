@@ -107,6 +107,7 @@ export function renderHistoryDetail(idx: number): void {
     : [];
   const fractured = Array.isArray(item?.fracturedMods) ? item.fracturedMods : [];
   const desecrated = Array.isArray(item?.desecratedMods) ? item.desecratedMods : [];
+  const mutated = Array.isArray(item?.mutatedMods) ? item.mutatedMods : [];
   const implicits = Array.isArray(item?.implicitMods)
     ? item.implicitMods
     : Array.isArray(item?.mods?.implicit)
@@ -321,6 +322,17 @@ export function renderHistoryDetail(idx: number): void {
     }).join('');
   }
 
+  /**
+   * Render mutated mods with inline "mutated" label.
+   */
+  function renderMutated(mods: string[]): string {
+    if (!mods.length) return '';
+    return mods.map((raw: string) => {
+      const clean = collapseBracketAlternates(raw);
+      return `<div class=\"mod-line mutated\" data-field=\"mutated\"><span class=\"mod-text\">${escapeHtml(clean)}</span><span class=\"mod-label-mutated\">mutated</span></div>`;
+    }).join('');
+  }
+
   function renderSimpleSection(mods: string[], title: string, lineClass: string, field: string): string {
     if (!mods.length) return '';
     const lines = mods.map((raw: string) => {
@@ -421,8 +433,8 @@ export function renderHistoryDetail(idx: number): void {
                 : ""
             }
             ${
-              (explicits.length + fractured.length + desecrated.length) > 0
-? `<div class=\"mod-section\"><div class=\"mod-section-title\">Explicit</div><div class=\"mod-lines explicit-mods\">${renderExplicitLike(fractured,'fractured')}${renderExplicitLike(explicits,'explicit')}${renderExplicitLike(desecrated,'desecrated')}</div></div>`
+              (explicits.length + fractured.length + desecrated.length + mutated.length) > 0
+? `<div class=\"mod-section\"><div class=\"mod-section-title\">Explicit</div><div class=\"mod-lines explicit-mods\">${renderExplicitLike(fractured,'fractured')}${renderExplicitLike(explicits,'explicit')}${renderExplicitLike(desecrated,'desecrated')}${renderMutated(mutated)}</div></div>`
                 : '<div class="no-mods">No explicit / fractured / desecrated mods</div>'
             }
           </div>
