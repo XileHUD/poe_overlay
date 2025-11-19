@@ -268,13 +268,30 @@
                             <button id="chartExpandBtn" class="chart-inline-btn" title="Expand chart to take full space">▲</button>
                             <div class="history-chart-title">Totals over time</div>
                         </div>
+                        <!-- Currency selector (default mode) -->
                         <div id="chartLegend" class="chart-legend" data-min-lock="2">
                             <span id="chartCur-divine" class="chart-cur active" data-cur="divine" data-priority="1" data-lock="1"><span class="sw" style="background:#d4af37;"></span> Divine</span>
                             <span id="chartCur-exalted" class="chart-cur" data-cur="exalted" data-priority="2" data-lock="1"><span class="sw" style="background:#3f6aa1;"></span> Exalted</span>
                             <span id="chartCur-annul" class="chart-cur" data-cur="annul" data-priority="3"><span class="sw" style="background:#7b40b3;"></span> Annul</span>
                             <span id="chartCur-chaos" class="chart-cur" data-cur="chaos" data-priority="4"><span class="sw" style="background:#4a6a35;"></span> Chaos</span>
-                            <span id="chartCur-regal" class="chart-cur" data-cur="regal" data-priority="5"><span class="sw" style="background:#6b4a28;"></span> Regal</span>
                             <button id="chartLegendMore" class="chart-legend-more" type="button" aria-expanded="false" hidden>+0</button>
+                            <div class="chart-mode-separator"></div>
+                            <button id="chartTimeBtn" class="chart-time-btn" type="button" title="View trade time analytics">Time</button>
+                        </div>
+                        <!-- Time analytics controls (hidden by default) -->
+                        <div id="chartTimeControls" class="chart-time-controls">
+                            <button id="chartBackBtn" class="chart-back-btn" type="button">← Currency</button>
+                            <div class="chart-mode-separator"></div>
+                            <button id="chartPeriodHourly" class="chart-period-btn active" type="button" data-period="hourly">Hourly</button>
+                            <button id="chartPeriodDaily" class="chart-period-btn" type="button" data-period="daily">Daily</button>
+                            <div class="chart-mode-separator"></div>
+                            <button id="chartMetricTrades" class="chart-metric-btn active" type="button" data-metric="trades">Trades</button>
+                            <button id="chartMetricValue" class="chart-metric-btn" type="button" data-metric="value">Value</button>
+                            <select id="chartValueCurrency" class="chart-value-currency" style="padding:3px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); font-size:11px; display:none;">
+                                <option value="divine">Divine</option>
+                                <option value="exalted">Exalted</option>
+                                <option value="chaos">Chaos</option>
+                            </select>
                         </div>
                     </div>
                     <div id="historyChartBody" class="history-chart-body">
@@ -1521,6 +1538,9 @@
     function updateHistoryChartFromTotals(t){ return window.OverlayHistory?.updateHistoryChartFromTotals?.(t); }
     function drawHistoryChart(){ return window.OverlayHistory?.drawHistoryChart?.(); }
     function setChartCurrency(cur){ return window.OverlayHistory?.setChartCurrency?.(cur); }
+    function enableTimeMode(period, metric, currency){ return window.OverlayHistory?.enableTimeMode?.(period, metric, currency); }
+    function disableTimeMode(){ return window.OverlayHistory?.disableTimeMode?.(); }
+    function updateTimeMode(period, metric, currency){ return window.OverlayHistory?.updateTimeMode?.(period, metric, currency); }
     function nextAllowedRefreshAt(){ return window.OverlayHistory?.nextAllowedRefreshAt?.(); }
     function updateHistoryRefreshButton(){ return window.OverlayHistory?.updateHistoryRefreshButton?.(); }
     // HTML wrapper previously called refreshHistoryIfAllowed without required render callbacks (causing TypeError in minified bundle).
@@ -3969,8 +3989,7 @@
                 document.getElementById('chartCur-divine'),
                 document.getElementById('chartCur-exalted'),
                 document.getElementById('chartCur-annul'),
-                document.getElementById('chartCur-chaos'),
-                document.getElementById('chartCur-regal')
+                document.getElementById('chartCur-chaos')
             ].filter(Boolean);
             els.forEach(el=>{
                 el.addEventListener('click', ()=>{
@@ -3980,6 +3999,136 @@
                     drawHistoryChart();
                 });
             });
+
+            // Time analytics mode handlers
+            const chartTimeBtn = document.getElementById('chartTimeBtn');
+            const chartLegend = document.getElementById('chartLegend');
+            const chartTimeControls = document.getElementById('chartTimeControls');
+            const chartBackBtn = document.getElementById('chartBackBtn');
+            const chartTitle = document.querySelector('.history-chart-title');
+            
+            const chartPeriodHourly = document.getElementById('chartPeriodHourly');
+            const chartPeriodDaily = document.getElementById('chartPeriodDaily');
+            const chartMetricTrades = document.getElementById('chartMetricTrades');
+            const chartMetricValue = document.getElementById('chartMetricValue');
+            const chartValueCurrency = document.getElementById('chartValueCurrency');
+
+            // Switch to time mode
+            if (chartTimeBtn) {
+                chartTimeBtn.addEventListener('click', () => {
+                    chartLegend.style.display = 'none';
+                    chartTimeControls.classList.add('active');
+                    chartTimeBtn.classList.add('active');
+                    if (chartTitle) chartTitle.textContent = 'Trade Time Analytics';
+                    
+                    // Reset UI controls to default state (hourly + trades)
+                    if (chartPeriodHourly) chartPeriodHourly.classList.add('active');
+                    if (chartPeriodDaily) chartPeriodDaily.classList.remove('active');
+                    if (chartMetricTrades) chartMetricTrades.classList.add('active');
+                    if (chartMetricValue) chartMetricValue.classList.remove('active');
+                    if (chartValueCurrency) chartValueCurrency.style.display = 'none';
+                    
+                    try {
+                        if (typeof enableTimeMode === 'function') {
+                            enableTimeMode('hourly', 'trades');
+                        }
+                    } catch (e) {
+                        console.error('[Time Analytics] Failed to enable time mode:', e);
+                    }
+                });
+            }
+
+            // Switch back to currency mode
+            if (chartBackBtn) {
+                chartBackBtn.addEventListener('click', () => {
+                    chartLegend.style.display = 'flex';
+                    chartTimeControls.classList.remove('active');
+                    chartTimeBtn.classList.remove('active');
+                    if (chartTitle) chartTitle.textContent = 'Totals over time';
+                    
+                    try {
+                        if (typeof disableTimeMode === 'function') {
+                            disableTimeMode();
+                        }
+                    } catch (e) {
+                        console.error('[Time Analytics] Failed to disable time mode:', e);
+                    }
+                });
+            }
+
+            // Period switchers (Hourly/Daily)
+            if (chartPeriodHourly) {
+                chartPeriodHourly.addEventListener('click', () => {
+                    chartPeriodHourly.classList.add('active');
+                    chartPeriodDaily.classList.remove('active');
+                    try {
+                        if (typeof updateTimeMode === 'function') {
+                            updateTimeMode('hourly');
+                        }
+                    } catch (e) {
+                        console.error('[Time Analytics] Failed to update period:', e);
+                    }
+                });
+            }
+            
+            if (chartPeriodDaily) {
+                chartPeriodDaily.addEventListener('click', () => {
+                    chartPeriodDaily.classList.add('active');
+                    chartPeriodHourly.classList.remove('active');
+                    try {
+                        if (typeof updateTimeMode === 'function') {
+                            updateTimeMode('daily');
+                        }
+                    } catch (e) {
+                        console.error('[Time Analytics] Failed to update period:', e);
+                    }
+                });
+            }
+
+            // Metric switchers (Trades/Value)
+            if (chartMetricTrades) {
+                chartMetricTrades.addEventListener('click', () => {
+                    chartMetricTrades.classList.add('active');
+                    chartMetricValue.classList.remove('active');
+                    if (chartValueCurrency) chartValueCurrency.style.display = 'none';
+                    try {
+                        if (typeof updateTimeMode === 'function') {
+                            updateTimeMode(undefined, 'trades');
+                        }
+                    } catch (e) {
+                        console.error('[Time Analytics] Failed to update metric:', e);
+                    }
+                });
+            }
+            
+            if (chartMetricValue) {
+                chartMetricValue.addEventListener('click', () => {
+                    chartMetricValue.classList.add('active');
+                    chartMetricTrades.classList.remove('active');
+                    if (chartValueCurrency) chartValueCurrency.style.display = 'inline-block';
+                    try {
+                        if (typeof updateTimeMode === 'function') {
+                            const currency = chartValueCurrency?.value || 'divine';
+                            updateTimeMode(undefined, 'value', currency);
+                        }
+                    } catch (e) {
+                        console.error('[Time Analytics] Failed to update metric:', e);
+                    }
+                });
+            }
+
+            // Currency selector for value metric
+            if (chartValueCurrency) {
+                chartValueCurrency.addEventListener('change', () => {
+                    try {
+                        if (typeof updateTimeMode === 'function') {
+                            updateTimeMode(undefined, undefined, chartValueCurrency.value);
+                        }
+                    } catch (e) {
+                        console.error('[Time Analytics] Failed to update currency:', e);
+                    }
+                });
+            }
 
             // Chart collapse/expand handler
             const collapseBtn = document.getElementById('chartCollapseBtn');

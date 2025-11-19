@@ -1620,6 +1620,37 @@ body.crafting-mode #controlPanel { display: none !important; }
 .chart-legend-more:hover { color:var(--text-primary); border-color:var(--text-secondary); }
 .chart-legend-more[hidden] { display:none !important; }
 
+/* Time analytics button */
+.chart-mode-separator { width:1px; height:20px; background:var(--border-color); margin:0 4px; }
+.chart-time-btn { 
+  padding:4px 10px; 
+  background:var(--bg-tertiary); 
+  border:1px solid var(--border-color); 
+  border-radius:4px; 
+  color:var(--text-secondary); 
+  cursor:pointer; 
+  font-size:10px; 
+  font-weight:600; 
+  letter-spacing:0.3px;
+  text-transform:uppercase;
+  transition:all 0.15s ease; 
+  white-space:nowrap; 
+}
+.chart-time-btn:hover { background:var(--bg-secondary); color:var(--text-primary); border-color:var(--text-secondary); }
+.chart-time-btn.active { background:var(--accent-blue); border-color:var(--accent-blue); color:#fff; }
+
+/* Time mode controls */
+.chart-time-controls { display:none; align-items:center; gap:6px; }
+.chart-time-controls.active { display:flex; }
+.chart-period-btn { padding:3px 10px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-secondary); cursor:pointer; font-size:11px; font-weight:500; transition:all 0.15s ease; }
+.chart-period-btn:hover { color:var(--text-primary); border-color:var(--text-secondary); }
+.chart-period-btn.active { background:var(--accent-blue); border-color:var(--accent-blue); color:#fff; }
+.chart-metric-btn { padding:3px 10px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-secondary); cursor:pointer; font-size:11px; font-weight:500; transition:all 0.15s ease; }
+.chart-metric-btn:hover { color:var(--text-primary); border-color:var(--text-secondary); }
+.chart-metric-btn.active { background:var(--accent-blue); border-color:var(--accent-blue); color:#fff; }
+.chart-back-btn { padding:3px 10px; background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-primary); cursor:pointer; font-size:11px; font-weight:600; }
+.chart-back-btn:hover { background:var(--bg-tertiary); }
+
 .chart-inline-btn { padding:2px 6px; background:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-secondary); cursor:pointer; font-size:11px; font-weight:600; }
 .chart-inline-btn:hover { color:var(--text-primary); border-color:var(--text-secondary); }
 

@@ -431,7 +431,7 @@ export function onSortChange(newSort: string): void {
 }
 
 // Chart currency change
-export function onChartCurrencyChange(cur: "divine" | "exalted" | "annul" | "chaos" | "regal"): void {
+export function onChartCurrencyChange(cur: "divine" | "exalted" | "annul" | "chaos"): void {
   setChartCurrency(cur);
 }
 
@@ -640,3 +640,6 @@ export {
   stopHistoryAutoRefresh,
   ensureHistoryAutoRefresh
 };
+
+// Export time analytics functions
+export { enableTimeMode, disableTimeMode, updateTimeMode } from './historyChart';
