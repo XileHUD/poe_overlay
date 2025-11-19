@@ -3208,7 +3208,9 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                                 currency: config.poe1Crafting?.subcategories?.currency ?? disabled.poe1Crafting.subcategories.currency,
                                 essences: config.poe1Crafting?.subcategories?.essences ?? disabled.poe1Crafting.subcategories.essences,
                                 fossils: config.poe1Crafting?.subcategories?.fossils ?? disabled.poe1Crafting.subcategories.fossils,
-                                embers: config.poe1Crafting?.subcategories?.embers ?? disabled.poe1Crafting.subcategories.embers
+                                embers: config.poe1Crafting?.subcategories?.embers ?? disabled.poe1Crafting.subcategories.embers,
+                                horticrafting: config.poe1Crafting?.subcategories?.horticrafting ?? disabled.poe1Crafting.subcategories.horticrafting,
+                                bestiary: config.poe1Crafting?.subcategories?.bestiary ?? disabled.poe1Crafting.subcategories.bestiary
                             }
                         },
                         poe1Character: {
