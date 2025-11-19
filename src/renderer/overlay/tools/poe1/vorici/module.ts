@@ -284,21 +284,40 @@ const BENCH_CRAFTS: BenchCraft[] = [
   { red: 0, green: 1, blue: 2, cost: 100, name: '1G2B' },
 ];
 
-// Find cheapest bench craft that guarantees the needed colors
-// Returns null if no bench craft covers the requirement
-function findCheapestBenchCraft(neededRed: number, neededGreen: number, neededBlue: number): BenchCraft | null {
-  let cheapest: BenchCraft | null = null;
+// Calculate expected bench cost to reach a target color distribution
+// Allows crafts that guarantee a subset of the needed colors and relies on RNG for the rest
+function calculateBenchStartCost(
+  startSockets: number,
+  target: { red: number; green: number; blue: number },
+  probs: ColorProbabilities
+): { cost: number; craftName: string } | null {
+  let best: { cost: number; craftName: string } | null = null;
   
   for (const craft of BENCH_CRAFTS) {
-    // Check if this craft guarantees at least the needed colors
-    if (craft.red >= neededRed && craft.green >= neededGreen && craft.blue >= neededBlue) {
-      if (!cheapest || craft.cost < cheapest.cost) {
-        cheapest = craft;
-      }
+    const forcedSockets = craft.red + craft.green + craft.blue;
+    if (forcedSockets === 0) continue;
+    if (forcedSockets > startSockets) continue;
+    // Can't force more of a particular color than we actually need
+    if (craft.red > target.red || craft.green > target.green || craft.blue > target.blue) continue;
+    
+    const remainingRed = target.red - craft.red;
+    const remainingGreen = target.green - craft.green;
+    const remainingBlue = target.blue - craft.blue;
+    const remainingTotal = remainingRed + remainingGreen + remainingBlue;
+    const freeSockets = startSockets - forcedSockets;
+    if (remainingTotal > freeSockets) continue;
+    
+    const remainingChance = combinationProbability(remainingRed, remainingGreen, remainingBlue, probs, freeSockets);
+    if (remainingChance <= 0) continue;
+    
+    const expectedAttempts = 1 / remainingChance;
+    const expectedCost = craft.cost * expectedAttempts;
+    if (!best || expectedCost < best.cost) {
+      best = { cost: expectedCost, craftName: craft.name };
     }
   }
   
-  return cheapest;
+  return best;
 }
 
 // Calculate Jeweller's Method costs (socket add/remove technique)
@@ -324,70 +343,118 @@ function calculateJewellerMethod(
     description: string;
   }> = [];
   
-  // Can't use this method for less than 3 sockets (need minimum 2 to start)
-  if (desiredSockets < 3 || desiredSockets > 6) return results;
+  // Can't use this method for less than 4 sockets (need minimum 3 to start)
+  if (desiredSockets < 4 || desiredSockets > 6) return results;
   
-  // Calculate for each valid starting point (2 to desiredSockets-1)
-  for (let startSockets = 2; startSockets < desiredSockets; startSockets++) {
-    // First, calculate chromatic cost to get the starting sockets with correct colors
-    let startRed = 0, startGreen = 0, startBlue = 0;
+  // Calculate for each valid starting point (3 to min(4, desiredSockets-1))
+  const maxStartSockets = Math.min(4, desiredSockets - 1);
+  for (let startSockets = 3; startSockets <= maxStartSockets; startSockets++) {
+    // Try different color distributions for starting sockets and find the cheapest
+    const possibleDistributions: Array<{r: number, g: number, b: number}> = [];
     
-    // Distribute colors for starting sockets (best case scenario)
-    let remaining = startSockets;
-    if (red > 0 && remaining > 0) { startRed = Math.min(red, remaining); remaining -= startRed; }
-    if (green > 0 && remaining > 0) { startGreen = Math.min(green, remaining); remaining -= startGreen; }
-    if (blue > 0 && remaining > 0) { startBlue = Math.min(blue, remaining); remaining -= startBlue; }
-    
-    // Calculate chromatic cost for getting starting sockets
-    const startChance = combinationProbability(startRed, startGreen, startBlue, probs, startSockets);
-    const chromaticCost = startChance > 0 ? (1 / startChance) : 0;
-    
-    // Check if bench craft is cheaper than chromatics
-    const benchCraft = findCheapestBenchCraft(startRed, startGreen, startBlue);
-    const finalChromaticCost = (benchCraft && benchCraft.cost < chromaticCost) ? benchCraft.cost : chromaticCost;
-    const usedBench = (benchCraft && benchCraft.cost < chromaticCost);
-    
-    // Now calculate jeweller cost for remaining sockets
-    let jewellerCost = 0;
-    let remainingRed = red - startRed;
-    let remainingGreen = green - startGreen;
-    let remainingBlue = blue - startBlue;
-    
-    // Calculate cost for each socket we need to add
-    for (let currentSockets = startSockets; currentSockets < desiredSockets; currentSockets++) {
-      const nextSocketCount = currentSockets + 1;
-      const addCost = SOCKET_COSTS[nextSocketCount] || 0;
-      const removeCost = SOCKET_COSTS[currentSockets] || 0;
-      
-      // Calculate probability of getting a needed color
-      let pSuccess = 0;
-      if (remainingRed > 0) pSuccess += probs.red;
-      if (remainingGreen > 0) pSuccess += probs.green;
-      if (remainingBlue > 0) pSuccess += probs.blue;
-      
-      // If we don't need any specific color for this socket (wildcard), any color is fine
-      if (pSuccess <= 0) pSuccess = 1; // Wildcard socket - any color works
-      if (pSuccess > 1) pSuccess = 1;
-      
-      // Expected cost for this socket
-      const expectedAttempts = 1 / pSuccess;
-      const failedAttempts = expectedAttempts - 1;
-      const stepCost = addCost + failedAttempts * (addCost + removeCost);
-      
-      jewellerCost += stepCost;
-      
-      // Update remaining colors
-      if (remainingRed > 0) remainingRed--;
-      else if (remainingGreen > 0) remainingGreen--;
-      else if (remainingBlue > 0) remainingBlue--;
+    // Generate all valid distributions for starting sockets
+    for (let tryRed = 0; tryRed <= Math.min(red, startSockets); tryRed++) {
+      for (let tryGreen = 0; tryGreen <= Math.min(green, startSockets - tryRed); tryGreen++) {
+        const tryBlue = startSockets - tryRed - tryGreen;
+        if (tryBlue < 0 || tryBlue > blue) continue;
+        const totalColors = tryRed + tryGreen + tryBlue;
+        
+        if (totalColors === startSockets) {
+          possibleDistributions.push({ r: tryRed, g: tryGreen, b: tryBlue });
+        }
+      }
     }
+    
+    // If no valid distributions (shouldn't happen), skip this starting socket count
+    if (possibleDistributions.length === 0) continue;
+    
+    // Find the cheapest distribution based on TOTAL cost (chromatic + jeweller)
+  let bestDistribution: {r: number, g: number, b: number} | null = null;
+  let bestTotalCost = Infinity;
+  let bestChromaticCost = 0;
+  let bestJewellerCost = 0;
+  let bestUsedBench = false;
+  let bestBenchName: string | null = null;
+    
+    for (const dist of possibleDistributions) {
+      // Calculate chromatic cost for this distribution
+      let distChance = combinationProbability(dist.r, dist.g, dist.b, probs, startSockets);
+      
+      // Apply chromatic bonus - chromatics can't reroll the same permutation twice
+      if (distChance > 0) {
+        const chromaticCollisionChance = calcChromaticBonus(probs, { red: dist.r, green: dist.g, blue: dist.b }, startSockets);
+        distChance = distChance / (1 - chromaticCollisionChance);
+      }
+      
+  const chromaticCost = distChance > 0 ? (1 / distChance) : Infinity;
+      
+  const benchInfo = calculateBenchStartCost(startSockets, { red: dist.r, green: dist.g, blue: dist.b }, probs);
+  const benchCost = benchInfo ? benchInfo.cost : Infinity;
+  const finalChromaticCost = Math.min(chromaticCost, benchCost);
+  if (!Number.isFinite(finalChromaticCost)) continue;
+  const usedBench = benchInfo ? benchCost < chromaticCost : false;
+      
+      // Calculate jeweller cost for this distribution by planning colors per socket
+  const socketsToAdd = desiredSockets - startSockets;
+    const colorTargets: Array<'red' | 'green' | 'blue'> = [];
+      for (let i = 0; i < (red - dist.r); i++) colorTargets.push('red');
+      for (let i = 0; i < (green - dist.g); i++) colorTargets.push('green');
+      for (let i = 0; i < (blue - dist.b); i++) colorTargets.push('blue');
+      // Hardest (lowest probability) colors should be filled on the cheapest sockets
+      colorTargets.sort((a, b) => probs[a] - probs[b]);
+      
+      let tempJewellerCost = 0;
+      for (let step = 0; step < socketsToAdd; step++) {
+        const currentSockets = startSockets + step;
+        const nextSocketCount = currentSockets + 1;
+        const addCost = SOCKET_COSTS[nextSocketCount] || 0;
+        const removeCost = SOCKET_COSTS[currentSockets] || 0;
+        const targetColor = step < colorTargets.length ? colorTargets[step] : null;
+        
+        let pSuccess = 1;
+        if (targetColor) {
+          const colorChance = probs[targetColor];
+          // Safety clamp in case chance is zero (shouldn’t happen but avoid div-by-zero)
+          pSuccess = Math.min(Math.max(colorChance, 0.0001), 1);
+        }
+        
+        const expectedAttempts = 1 / pSuccess;
+        const failedAttempts = expectedAttempts - 1;
+        const stepCost = addCost + failedAttempts * (addCost + removeCost);
+        tempJewellerCost += stepCost;
+      }
+      // Wildcards implicitly handled by pSuccess = 1 when no targetColor
+      
+      // Compare total cost (chromatic + jeweller)
+      const totalCost = finalChromaticCost + tempJewellerCost;
+      
+      if (totalCost < bestTotalCost) {
+        bestTotalCost = totalCost;
+        bestDistribution = dist;
+        bestChromaticCost = finalChromaticCost;
+        bestJewellerCost = tempJewellerCost;
+        bestUsedBench = usedBench;
+        bestBenchName = usedBench && benchInfo ? benchInfo.craftName : null;
+      }
+    }
+    
+    // If no valid distribution found, skip
+    if (!bestDistribution) continue;
+    
+  const startRed = bestDistribution.r;
+  const startGreen = bestDistribution.g;
+  const startBlue = bestDistribution.b;
+  const finalChromaticCost = bestChromaticCost;
+  const jewellerCost = bestJewellerCost;
+  const usedBench = bestUsedBench;
+  const benchLabel = usedBench && bestBenchName ? ` [Vorici ${bestBenchName} bench]` : (usedBench ? ' [bench]' : '');
     
     results.push({
       startSockets,
       chromaticCost: finalChromaticCost,
       jewellerCost,
       totalCostDescription: `${formatNumber(finalChromaticCost)} chr + ${formatNumber(jewellerCost)} jew`,
-      description: `Start ${startSockets} sockets (${[startRed > 0 ? `${startRed}R` : '', startGreen > 0 ? `${startGreen}G` : '', startBlue > 0 ? `${startBlue}B` : ''].filter(Boolean).join(' ')})${usedBench ? ' [bench]' : ''} → ${desiredSockets}`
+      description: `Start ${startSockets} sockets (${[startRed > 0 ? `${startRed}R` : '', startGreen > 0 ? `${startGreen}G` : '', startBlue > 0 ? `${startBlue}B` : ''].filter(Boolean).join(' ')})${benchLabel} → ${desiredSockets}`
     });
   }
   
@@ -698,6 +765,7 @@ function updateOutputs(): void {
   
   // Calculate Jeweller's Method
   const jewellerMethods = calculateJewellerMethod(state.sockets, state.red, state.green, state.blue, probs);
+  jewellerMethods.sort((a, b) => (a.chromaticCost + a.jewellerCost) - (b.chromaticCost + b.jewellerCost));
   
   if (elements.craftTable) {
     let html = '';
