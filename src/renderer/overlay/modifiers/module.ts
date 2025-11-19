@@ -420,6 +420,15 @@ function renderSection(section: any, domainId?: string){
                       </div>`;
                   });
                   
+                  // Add family display at the end if available
+                  if (mod.family) {
+                    html += `
+                      <div class="tier-family">
+                        <span class="tier-family-label">Family:</span>
+                        <span class="tier-family-value">${mod.family}</span>
+                      </div>`;
+                  }
+                  
                   return html;
                 })()}
               </div>

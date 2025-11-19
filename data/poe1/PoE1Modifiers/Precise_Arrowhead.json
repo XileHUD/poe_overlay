@@ -11,6 +11,7 @@
     "tags": [
       "damage"
     ],
+    "family": "AllDamage",
     "tiers": [
       {
         "tier_name": "Harmful",
@@ -52,6 +53,7 @@
     "weight": 2800,
     "weight_pct": 12.5,
     "tags": [],
+    "family": "HeistContractLockdownTimer",
     "tiers": [
       {
         "tier_name": "Slowing",
@@ -95,6 +97,7 @@
     "tags": [
       "speed"
     ],
+    "family": "HeistContractObjectiveSpeed",
     "tiers": [
       {
         "tier_name": "Practiced",
@@ -139,6 +142,7 @@
       "damage",
       "physical"
     ],
+    "family": "AddedPhysicalDamage",
     "tiers": [
       {
         "tier_name": "Glinting",
@@ -184,6 +188,7 @@
       "elemental",
       "fire"
     ],
+    "family": "AddedFireDamage",
     "tiers": [
       {
         "tier_name": "Heated",
@@ -229,6 +234,7 @@
       "elemental",
       "cold"
     ],
+    "family": "AddedColdDamage",
     "tiers": [
       {
         "tier_name": "Frosted",
@@ -274,6 +280,7 @@
       "elemental",
       "lightning"
     ],
+    "family": "AddedLightningDamage",
     "tiers": [
       {
         "tier_name": "Humming",
@@ -318,6 +325,7 @@
       "damage",
       "attack"
     ],
+    "family": "ProjectileAttackDamage",
     "tiers": [
       {
         "tier_name": "Scout's",
@@ -359,6 +367,7 @@
     "weight": 2800,
     "weight_pct": 14.894,
     "tags": [],
+    "family": "HeistContractNPCCost",
     "tiers": [
       {
         "tier_name": "of Personality",
@@ -400,6 +409,7 @@
     "weight": 2800,
     "weight_pct": 14.894,
     "tags": [],
+    "family": "HeistContractGangCut",
     "tiers": [
       {
         "tier_name": "of Bartering",
@@ -441,6 +451,7 @@
     "weight": 2800,
     "weight_pct": 14.894,
     "tags": [],
+    "family": "HeistContractTravelCost",
     "tiers": [
       {
         "tier_name": "of Efficiency",
@@ -484,6 +495,7 @@
     "tags": [
       "critical"
     ],
+    "family": "CriticalStrikeChanceIncrease",
     "tiers": [
       {
         "tier_name": "of Needling",
@@ -525,6 +537,7 @@
     "weight": 2800,
     "weight_pct": 14.894,
     "tags": [],
+    "family": "BeltFlaskCharges",
     "tiers": [
       {
         "tier_name": "of Refilling",
@@ -568,6 +581,7 @@
     "tags": [
       "aura"
     ],
+    "family": "HeistNPCGrantedAura",
     "tiers": [
       {
         "tier_name": "of Aid",

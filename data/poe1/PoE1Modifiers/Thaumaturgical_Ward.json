@@ -11,6 +11,7 @@
     "tags": [
       "damage"
     ],
+    "family": "AllDamage",
     "tiers": [
       {
         "tier_name": "Harmful",
@@ -52,6 +53,7 @@
     "weight": 2800,
     "weight_pct": 17.5,
     "tags": [],
+    "family": "HeistContractLockdownTimer",
     "tiers": [
       {
         "tier_name": "Slowing",
@@ -95,6 +97,7 @@
     "tags": [
       "speed"
     ],
+    "family": "HeistContractObjectiveSpeed",
     "tiers": [
       {
         "tier_name": "Practiced",
@@ -136,6 +139,7 @@
     "weight": 2800,
     "weight_pct": 17.5,
     "tags": [],
+    "family": "HeistNPCLevel",
     "tiers": [
       {
         "tier_name": "Capable",
@@ -177,6 +181,7 @@
     "weight": 100,
     "weight_pct": 0.625,
     "tags": [],
+    "family": "HeistNPCAllJobLevel",
     "tiers": [
       {
         "tier_name": "Skillful",
@@ -197,6 +202,7 @@
     "weight": 100,
     "weight_pct": 0.625,
     "tags": [],
+    "family": "HeistNPCSpecificJobLevel",
     "tiers": [
       {
         "tier_name": "Mental",
@@ -219,6 +225,7 @@
     "tags": [
       "speed"
     ],
+    "family": "HeistNPCJobSpeed",
     "tiers": [
       {
         "tier_name": "Novice's",
@@ -260,6 +267,7 @@
     "weight": 1800,
     "weight_pct": 11.25,
     "tags": [],
+    "family": "HeistNPCFlatLockdownTime",
     "tiers": [
       {
         "tier_name": "Hampering",
@@ -301,6 +309,7 @@
     "weight": 2800,
     "weight_pct": 18.667,
     "tags": [],
+    "family": "HeistContractNPCCost",
     "tiers": [
       {
         "tier_name": "of Personality",
@@ -342,6 +351,7 @@
     "weight": 2800,
     "weight_pct": 18.667,
     "tags": [],
+    "family": "HeistContractGangCut",
     "tiers": [
       {
         "tier_name": "of Bartering",
@@ -383,6 +393,7 @@
     "weight": 2800,
     "weight_pct": 18.667,
     "tags": [],
+    "family": "HeistContractTravelCost",
     "tiers": [
       {
         "tier_name": "of Efficiency",
@@ -424,6 +435,7 @@
     "weight": 1800,
     "weight_pct": 12,
     "tags": [],
+    "family": "HeistNPCAdditionalIntelligenceChance",
     "tiers": [
       {
         "tier_name": "of Gossip",
@@ -465,6 +477,7 @@
     "weight": 1800,
     "weight_pct": 12,
     "tags": [],
+    "family": "HeistNPCJobChestAvoidAlert",
     "tiers": [
       {
         "tier_name": "of Gentleness",
@@ -506,6 +519,7 @@
     "weight": 200,
     "weight_pct": 1.333,
     "tags": [],
+    "family": "HeistNPCJobNoAlertMultiplier",
     "tiers": [
       {
         "tier_name": "of Aplomb",
@@ -526,6 +540,7 @@
     "weight": 2800,
     "weight_pct": 18.667,
     "tags": [],
+    "family": "HeistNPCJobSpecificCost",
     "tiers": [
       {
         "tier_name": "of Discount",

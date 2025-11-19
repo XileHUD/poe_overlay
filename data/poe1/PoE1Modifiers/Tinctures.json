@@ -9,6 +9,7 @@
     "weight": 4800,
     "weight_pct": 40,
     "tags": [],
+    "family": "TinctureEffect",
     "tiers": [
       {
         "tier_name": "Herbal",
@@ -92,6 +93,7 @@
     "weight": 4000,
     "weight_pct": 33.333,
     "tags": [],
+    "family": "TinctureToxicityRate",
     "tiers": [
       {
         "tier_name": "Sustained",
@@ -133,6 +135,7 @@
     "weight": 3200,
     "weight_pct": 26.667,
     "tags": [],
+    "family": "TinctureCooldownRecovery",
     "tiers": [
       {
         "tier_name": "Lucid",
@@ -178,6 +181,7 @@
       "attack",
       "ailment"
     ],
+    "family": "IncreasedAilmentDuration",
     "tiers": [
       {
         "tier_name": "of the Wild",
@@ -222,6 +226,7 @@
       "damage",
       "attack"
     ],
+    "family": "DamageOverTimeMultiplier",
     "tiers": [
       {
         "tier_name": "of Acrimony",
@@ -274,6 +279,7 @@
       "elemental",
       "attack"
     ],
+    "family": "ElementalPenetration",
     "tiers": [
       {
         "tier_name": "of Catalysing",
@@ -326,6 +332,7 @@
       "attack",
       "critical"
     ],
+    "family": "CriticalStrikeMultiplier",
     "tiers": [
       {
         "tier_name": "of Ire",
@@ -377,6 +384,7 @@
       "attack",
       "speed"
     ],
+    "family": "IncreasedAttackSpeed",
     "tiers": [
       {
         "tier_name": "of Skill",
@@ -414,6 +422,7 @@
       "damage",
       "attack"
     ],
+    "family": "WeaponDamageVsLowLifeEnemies",
     "tiers": [
       {
         "tier_name": "of Execution",
@@ -465,6 +474,7 @@
       "life",
       "attack"
     ],
+    "family": "LifeGainedFromEnemyDeath",
     "tiers": [
       {
         "tier_name": "of Success",
@@ -506,6 +516,7 @@
     "weight": 4000,
     "weight_pct": 12.739,
     "tags": [],
+    "family": "ManaGainedOnWeaponKill",
     "tiers": [
       {
         "tier_name": "of Absorption",
@@ -550,6 +561,7 @@
       "life",
       "attack"
     ],
+    "family": "LifeGainPerTarget",
     "tiers": [
       {
         "tier_name": "of Rejuvenation",
@@ -587,6 +599,7 @@
       "mana",
       "attack"
     ],
+    "family": "ManaGainPerTarget",
     "tiers": [
       {
         "tier_name": "of Enveloping",
@@ -621,6 +634,7 @@
     "weight": 3200,
     "weight_pct": 10.191,
     "tags": [],
+    "family": "FlaskChargesFromWeaponKills",
     "tiers": [
       {
         "tier_name": "of Restocking",
@@ -666,6 +680,7 @@
       "physical",
       "attack"
     ],
+    "family": "ArmourPenetration",
     "tiers": [
       {
         "tier_name": "of Battering",

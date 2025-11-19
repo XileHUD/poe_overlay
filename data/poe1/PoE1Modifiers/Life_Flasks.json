@@ -9,6 +9,7 @@
     "weight": 9000,
     "weight_pct": 23.81,
     "tags": [],
+    "family": "FlaskRecoverySpeed",
     "tiers": [
       {
         "tier_name": "Undiluted",
@@ -127,6 +128,7 @@
     "weight": 9000,
     "weight_pct": 23.81,
     "tags": [],
+    "family": "FlaskRecoveryAmount",
     "tiers": [
       {
         "tier_name": "Substantial",
@@ -245,6 +247,7 @@
     "weight": 3000,
     "weight_pct": 7.937,
     "tags": [],
+    "family": "FlaskBuffWhileHealing",
     "tiers": [
       {
         "tier_name": "Seething",
@@ -265,6 +268,7 @@
     "weight": 3000,
     "weight_pct": 7.937,
     "tags": [],
+    "family": "FlaskNumCharges",
     "tiers": [
       {
         "tier_name": "Wide",
@@ -313,6 +317,7 @@
     "weight": 7800,
     "weight_pct": 20.635,
     "tags": [],
+    "family": "FlaskRechargeRate",
     "tiers": [
       {
         "tier_name": "Constant",
@@ -417,6 +422,7 @@
     "weight": 3000,
     "weight_pct": 7.937,
     "tags": [],
+    "family": "FlaskChargesUsed",
     "tiers": [
       {
         "tier_name": "Apprentice's",
@@ -465,6 +471,7 @@
     "weight": 3000,
     "weight_pct": 7.937,
     "tags": [],
+    "family": "FlaskIncreasedHealingCharges",
     "tiers": [
       {
         "tier_name": "Nitrate",
@@ -516,6 +523,7 @@
       "life",
       "minion"
     ],
+    "family": "FlaskHealsOthers",
     "tiers": [
       {
         "tier_name": "of the Novice",
@@ -567,6 +575,7 @@
       "caster",
       "curse"
     ],
+    "family": "FlaskCurseImmunity",
     "tiers": [
       {
         "tier_name": "of Warding",
@@ -589,6 +598,7 @@
     "tags": [
       "caster"
     ],
+    "family": "LocalManaFlaskHinderNearbyEnemies",
     "tiers": [
       {
         "tier_name": "of Interference",
@@ -633,6 +643,7 @@
       "attack",
       "caster"
     ],
+    "family": "LocalFlaskImmuneToHinder",
     "tiers": [
       {
         "tier_name": "of Movement",
@@ -674,6 +685,7 @@
     "weight": 3000,
     "weight_pct": 10,
     "tags": [],
+    "family": "LocalLifeFlaskAdditionalLifeRecovery",
     "tiers": [
       {
         "tier_name": "of Abundance",
@@ -722,6 +734,7 @@
     "weight": 3000,
     "weight_pct": 10,
     "tags": [],
+    "family": "FlaskRemovesBleeding",
     "tiers": [
       {
         "tier_name": "of Sealing",
@@ -763,6 +776,7 @@
     "weight": 3000,
     "weight_pct": 10,
     "tags": [],
+    "family": "FlaskRemovesShock",
     "tiers": [
       {
         "tier_name": "of Earthing",
@@ -804,6 +818,7 @@
     "weight": 3000,
     "weight_pct": 10,
     "tags": [],
+    "family": "FlaskDispellChill",
     "tiers": [
       {
         "tier_name": "of Convection",
@@ -845,6 +860,7 @@
     "weight": 3000,
     "weight_pct": 10,
     "tags": [],
+    "family": "FlaskDispellBurning",
     "tiers": [
       {
         "tier_name": "of Damping",
@@ -886,6 +902,7 @@
     "weight": 3000,
     "weight_pct": 10,
     "tags": [],
+    "family": "FlaskDispellPoison",
     "tiers": [
       {
         "tier_name": "of the Antitoxin",
@@ -929,6 +946,7 @@
     "tags": [
       "life"
     ],
+    "family": "LocalFlaskLifeRegenerationPerMinuteDuringFlaskEffect",
     "tiers": [
       {
         "tier_name": "of the Order",
@@ -949,6 +967,7 @@
     "weight": 1000,
     "weight_pct": 20,
     "tags": [],
+    "family": "LocalFlaskAvoidStunChanceAndMovementSpeedDuringFlaskEffect",
     "tiers": [
       {
         "tier_name": "of the Order",
@@ -971,6 +990,7 @@
     "tags": [
       "drop"
     ],
+    "family": "LocalFlaskItemFoundRarityDuringFlaskEffect",
     "tiers": [
       {
         "tier_name": "of the Order",
@@ -993,6 +1013,7 @@
     "tags": [
       "life"
     ],
+    "family": "LocalFlaskLifeLeechOnDamageTakenPermyriadDuringFlaskEffect",
     "tiers": [
       {
         "tier_name": "of the Order",
@@ -1013,6 +1034,7 @@
     "weight": 1000,
     "weight_pct": 20,
     "tags": [],
+    "family": "FlaskReflectReductionDuringFlaskEffect",
     "tiers": [
       {
         "tier_name": "of the Order",
@@ -1033,6 +1055,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "FlaskRemovesBleeding",
     "tiers": [
       {
         "tier_name": "of Sealing",
@@ -1053,6 +1076,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "FlaskDispellChill",
     "tiers": [
       {
         "tier_name": "of Convection",
@@ -1076,6 +1100,7 @@
       "caster",
       "curse"
     ],
+    "family": "FlaskCurseImmunity",
     "tiers": [
       {
         "tier_name": "of Warding",
@@ -1096,6 +1121,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "FlaskDispellBurning",
     "tiers": [
       {
         "tier_name": "of Damping",
@@ -1116,6 +1142,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "FlaskDispellPoison",
     "tiers": [
       {
         "tier_name": "of the Antitoxin",
@@ -1136,6 +1163,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "FlaskRemovesShock",
     "tiers": [
       {
         "tier_name": "of Earthing",
@@ -1156,6 +1184,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "undefined",
     "tiers": [
       {
         "tier_name": "Horticrafting Station",

@@ -11,6 +11,7 @@
     "tags": [
       "life"
     ],
+    "family": "IncreasedLife",
     "tiers": [
       {
         "tier_name": "Hale",
@@ -98,6 +99,7 @@
       "physical",
       "attack"
     ],
+    "family": "PhysicalDamage",
     "tiers": [
       {
         "tier_name": "Glinting",
@@ -179,6 +181,7 @@
       "fire",
       "attack"
     ],
+    "family": "FireDamage",
     "tiers": [
       {
         "tier_name": "Heated",
@@ -260,6 +263,7 @@
       "cold",
       "attack"
     ],
+    "family": "ColdDamage",
     "tiers": [
       {
         "tier_name": "Frosted",
@@ -341,6 +345,7 @@
       "lightning",
       "attack"
     ],
+    "family": "LightningDamage",
     "tiers": [
       {
         "tier_name": "Humming",
@@ -421,6 +426,7 @@
       "chaos",
       "attack"
     ],
+    "family": "ChaosDamage",
     "tiers": [
       {
         "tier_name": "Malicious",
@@ -443,6 +449,7 @@
     "tags": [
       "damage"
     ],
+    "family": "DamageWithWeaponTypeSkill",
     "tiers": [
       {
         "tier_name": "Acute",
@@ -500,6 +507,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Dexterity",
     "tiers": [
       {
         "tier_name": "of the Mongoose",
@@ -587,6 +595,7 @@
       "physical",
       "attack"
     ],
+    "family": "LifeLeech",
     "tiers": [
       {
         "tier_name": "of the Remora",
@@ -611,6 +620,7 @@
       "physical",
       "attack"
     ],
+    "family": "ManaLeech",
     "tiers": [
       {
         "tier_name": "of Thirst",
@@ -634,6 +644,7 @@
       "attack",
       "speed"
     ],
+    "family": "IncreasedAttackSpeed",
     "tiers": [
       {
         "tier_name": "of Skill",
@@ -677,6 +688,7 @@
     "tags": [
       "attack"
     ],
+    "family": "IncreasedAccuracy",
     "tiers": [
       {
         "tier_name": "of Steadiness",
@@ -735,6 +747,7 @@
       "attack",
       "critical"
     ],
+    "family": "CriticalStrikeChanceIncrease",
     "tiers": [
       {
         "tier_name": "of Needling",
@@ -801,6 +814,7 @@
       "fire",
       "resistance"
     ],
+    "family": "FireResistance",
     "tiers": [
       {
         "tier_name": "of the Whelpling",
@@ -874,6 +888,7 @@
       "cold",
       "resistance"
     ],
+    "family": "ColdResistance",
     "tiers": [
       {
         "tier_name": "of the Inuit",
@@ -947,6 +962,7 @@
       "lightning",
       "resistance"
     ],
+    "family": "LightningResistance",
     "tiers": [
       {
         "tier_name": "of the Cloud",
@@ -1019,6 +1035,7 @@
       "chaos",
       "resistance"
     ],
+    "family": "ChaosResistance",
     "tiers": [
       {
         "tier_name": "of the Lost",
@@ -1078,6 +1095,7 @@
       "attack",
       "critical"
     ],
+    "family": "CriticalStrikeMultiplier",
     "tiers": [
       {
         "tier_name": "of Ire",
@@ -1133,6 +1151,7 @@
     "weight": 5000,
     "weight_pct": 6.592,
     "tags": [],
+    "family": "StunDurationIncreasePercent",
     "tiers": [
       {
         "tier_name": "of Impact",
@@ -1183,6 +1202,7 @@
     "tags": [
       "speed"
     ],
+    "family": "ProjectileSpeed",
     "tiers": [
       {
         "tier_name": "of Darting",
@@ -1233,6 +1253,7 @@
     "tags": [
       "life"
     ],
+    "family": "LifeGainedFromEnemyDeath",
     "tiers": [
       {
         "tier_name": "of Success",
@@ -1290,6 +1311,7 @@
     "tags": [
       "mana"
     ],
+    "family": "ManaGainedFromEnemyDeath",
     "tiers": [
       {
         "tier_name": "of Absorption",
@@ -1347,6 +1369,7 @@
     "tags": [
       "attack"
     ],
+    "family": "AdditionalArrows",
     "tiers": [
       {
         "tier_name": "of Splintering",
@@ -1370,6 +1393,7 @@
       "damage",
       "attack"
     ],
+    "family": "GlobalDamageOverTimeMultiplier",
     "tiers": [
       {
         "tier_name": "of Acrimony",
@@ -1421,6 +1445,7 @@
       "mana",
       "attack"
     ],
+    "family": "ManaGainPerTarget",
     "tiers": [
       {
         "tier_name": "The Shaper's",
@@ -1446,6 +1471,7 @@
       "elemental",
       "cold"
     ],
+    "family": "PhysicalAddedAsCold",
     "tiers": [
       {
         "tier_name": "The Shaper's",
@@ -1475,6 +1501,7 @@
     "tags": [
       "speed"
     ],
+    "family": "MovementVelocity",
     "tiers": [
       {
         "tier_name": "The Shaper's",
@@ -1504,6 +1531,7 @@
     "tags": [
       "attack"
     ],
+    "family": "GlobalMaimOnHit",
     "tiers": [
       {
         "tier_name": "of Shaping",
@@ -1531,6 +1559,7 @@
     "weight": 3000,
     "weight_pct": 39.474,
     "tags": [],
+    "family": "OnslaugtOnKillPercentChance",
     "tiers": [
       {
         "tier_name": "of Shaping",
@@ -1567,6 +1596,7 @@
     "tags": [
       "attack"
     ],
+    "family": "BlindOnHit",
     "tiers": [
       {
         "tier_name": "of Shaping",
@@ -1601,6 +1631,7 @@
     "weight": 1800,
     "weight_pct": 60,
     "tags": [],
+    "family": "AreaOfEffect",
     "tiers": [
       {
         "tier_name": "The Elder's",
@@ -1635,6 +1666,7 @@
     "weight": 800,
     "weight_pct": 26.667,
     "tags": [],
+    "family": "Pierce",
     "tiers": [
       {
         "tier_name": "The Elder's",
@@ -1659,6 +1691,7 @@
       "elemental",
       "cold"
     ],
+    "family": "AddedColdDamagePerFrenzyCharge",
     "tiers": [
       {
         "tier_name": "The Elder's",
@@ -1679,6 +1712,7 @@
     "weight": 1600,
     "weight_pct": 21.053,
     "tags": [],
+    "family": "AvoidStun",
     "tiers": [
       {
         "tier_name": "of the Elder",
@@ -1703,6 +1737,7 @@
       "chaos",
       "ailment"
     ],
+    "family": "PoisonDamage",
     "tiers": [
       {
         "tier_name": "of the Elder",
@@ -1735,6 +1770,7 @@
       "attack",
       "ailment"
     ],
+    "family": "BleedingDamage",
     "tiers": [
       {
         "tier_name": "of the Elder",
@@ -1762,6 +1798,7 @@
     "weight": 2400,
     "weight_pct": 31.579,
     "tags": [],
+    "family": "ChancetoGainPhasingOnKill",
     "tiers": [
       {
         "tier_name": "of the Elder",
@@ -1796,6 +1833,7 @@
     "weight": 400,
     "weight_pct": 5.263,
     "tags": [],
+    "family": "FrenzyChargeOnHittingRareOrUnique",
     "tiers": [
       {
         "tier_name": "of the Elder",
@@ -1821,6 +1859,7 @@
       "elemental",
       "fire"
     ],
+    "family": "ConvertPhysicalToFire",
     "tiers": [
       {
         "tier_name": "Crusader's",
@@ -1853,6 +1892,7 @@
       "elemental",
       "cold"
     ],
+    "family": "ConvertPhysicalToCold",
     "tiers": [
       {
         "tier_name": "Crusader's",
@@ -1885,6 +1925,7 @@
       "elemental",
       "lightning"
     ],
+    "family": "ConvertPhysicalToLightning",
     "tiers": [
       {
         "tier_name": "Crusader's",
@@ -1917,6 +1958,7 @@
       "elemental",
       "lightning"
     ],
+    "family": "PhysicalAddedAsLightning",
     "tiers": [
       {
         "tier_name": "Crusader's",
@@ -1948,6 +1990,7 @@
       "fire",
       "ailment"
     ],
+    "family": "AvoidIgnite",
     "tiers": [
       {
         "tier_name": "of the Crusade",
@@ -1972,6 +2015,7 @@
       "cold",
       "ailment"
     ],
+    "family": "AvoidFreeze",
     "tiers": [
       {
         "tier_name": "of the Crusade",
@@ -1996,6 +2040,7 @@
       "lightning",
       "ailment"
     ],
+    "family": "AvoidShock",
     "tiers": [
       {
         "tier_name": "of the Crusade",
@@ -2016,6 +2061,7 @@
     "weight": 500,
     "weight_pct": 33.333,
     "tags": [],
+    "family": "FrenzyChargeOnKillChance",
     "tiers": [
       {
         "tier_name": "Redeemer's",
@@ -2048,6 +2094,7 @@
       "elemental",
       "cold"
     ],
+    "family": "PhysicalAddedAsCold",
     "tiers": [
       {
         "tier_name": "Redeemer's",
@@ -2075,6 +2122,7 @@
     "weight": 1000,
     "weight_pct": 20,
     "tags": [],
+    "family": "ChanceToGainOnslaughtOnKill",
     "tiers": [
       {
         "tier_name": "of Redemption",
@@ -2104,6 +2152,7 @@
     "tags": [
       "attack"
     ],
+    "family": "IncreasedAccuracyPercent",
     "tiers": [
       {
         "tier_name": "of Redemption",
@@ -2131,6 +2180,7 @@
     "weight": 1000,
     "weight_pct": 20,
     "tags": [],
+    "family": "BlindOnHit",
     "tiers": [
       {
         "tier_name": "of Redemption",
@@ -2160,6 +2210,7 @@
     "tags": [
       "physical"
     ],
+    "family": "PhysicalDamageAvoidance",
     "tiers": [
       {
         "tier_name": "of Redemption",
@@ -2189,6 +2240,7 @@
     "tags": [
       "ailment"
     ],
+    "family": "IncreasedAilmentEffectOnEnemies",
     "tiers": [
       {
         "tier_name": "of Redemption",
@@ -2216,6 +2268,7 @@
     "weight": 500,
     "weight_pct": 33.333,
     "tags": [],
+    "family": "Pierce",
     "tiers": [
       {
         "tier_name": "Hunter's",
@@ -2238,6 +2291,7 @@
     "tags": [
       "speed"
     ],
+    "family": "MovementVelocity",
     "tiers": [
       {
         "tier_name": "Hunter's",
@@ -2268,6 +2322,7 @@
       "mana",
       "attack"
     ],
+    "family": "ManaGainPerTarget",
     "tiers": [
       {
         "tier_name": "of the Hunt",
@@ -2292,6 +2347,7 @@
       "chaos",
       "attack"
     ],
+    "family": "DamageOverTimeMultiplier",
     "tiers": [
       {
         "tier_name": "of the Hunt",
@@ -2351,6 +2407,7 @@
       "chaos",
       "ailment"
     ],
+    "family": "PoisonDamage",
     "tiers": [
       {
         "tier_name": "of the Hunt",
@@ -2378,6 +2435,7 @@
     "weight": 1500,
     "weight_pct": 60,
     "tags": [],
+    "family": "AreaOfEffect",
     "tiers": [
       {
         "tier_name": "Warlord's",
@@ -2417,6 +2475,7 @@
       "elemental",
       "fire"
     ],
+    "family": "PhysicalAddedAsFire",
     "tiers": [
       {
         "tier_name": "Warlord's",
@@ -2444,6 +2503,7 @@
     "weight": 1000,
     "weight_pct": 22.222,
     "tags": [],
+    "family": "AvoidStun",
     "tiers": [
       {
         "tier_name": "of the Conquest",
@@ -2466,6 +2526,7 @@
     "tags": [
       "attack"
     ],
+    "family": "GlobalMaimOnHit",
     "tiers": [
       {
         "tier_name": "of the Conquest",
@@ -2493,6 +2554,7 @@
     "weight": 1500,
     "weight_pct": 33.333,
     "tags": [],
+    "family": "ChancetoGainPhasingOnKill",
     "tiers": [
       {
         "tier_name": "of the Conquest",
@@ -2532,6 +2594,7 @@
       "attack",
       "ailment"
     ],
+    "family": "BleedingDamage",
     "tiers": [
       {
         "tier_name": "of the Conquest",
@@ -2562,6 +2625,7 @@
       "elemental",
       "fire"
     ],
+    "family": "FireDamageAvoidance",
     "tiers": [
       {
         "tier_name": "Subterranean",
@@ -2585,6 +2649,7 @@
       "elemental",
       "cold"
     ],
+    "family": "ColdDamageAvoidance",
     "tiers": [
       {
         "tier_name": "Subterranean",
@@ -2608,6 +2673,7 @@
       "elemental",
       "lightning"
     ],
+    "family": "LightningDamageAvoidance",
     "tiers": [
       {
         "tier_name": "Subterranean",
@@ -2630,6 +2696,7 @@
     "tags": [
       "physical"
     ],
+    "family": "ReducedPhysicalDamageTaken",
     "tiers": [
       {
         "tier_name": "Subterranean",
@@ -2653,6 +2720,7 @@
       "damage",
       "elemental"
     ],
+    "family": "ElementalPenetration",
     "tiers": [
       {
         "tier_name": "Subterranean",
@@ -2676,6 +2744,7 @@
       "chaos",
       "resistance"
     ],
+    "family": "ChaosResistanceAgainstDamageOverTime",
     "tiers": [
       {
         "tier_name": "of the Underground",
@@ -2698,6 +2767,7 @@
     "tags": [
       "life"
     ],
+    "family": "LifeRegenerationRatePercentage",
     "tiers": [
       {
         "tier_name": "of the Underground",
@@ -2721,6 +2791,7 @@
       "defences",
       "evasion"
     ],
+    "family": "AdditionalChanceToEvade",
     "tiers": [
       {
         "tier_name": "of the Underground",
@@ -2744,6 +2815,7 @@
       "damage",
       "ailment"
     ],
+    "family": "AilmentDamage",
     "tiers": [
       {
         "tier_name": "of the Underground",
@@ -2766,6 +2838,7 @@
     "tags": [
       "mana"
     ],
+    "family": "MaximumManaIncreasePercent",
     "tiers": [
       {
         "tier_name": "of the Underground",
@@ -2786,6 +2859,7 @@
     "weight": 2000,
     "weight_pct": 13.158,
     "tags": [],
+    "family": "FrenzyChargeOnHittingRareOrUnique",
     "tiers": [
       {
         "tier_name": "of the Underground",
@@ -2809,6 +2883,7 @@
       "speed",
       "minion"
     ],
+    "family": "MinionMovementSpeed",
     "tiers": [
       {
         "tier_name": "of the Underground",
@@ -2831,6 +2906,7 @@
     "tags": [
       "critical"
     ],
+    "family": "VaalSkillCriticalStrikeChance",
     "tiers": [
       {
         "tier_name": "of the Underground",
@@ -2853,6 +2929,7 @@
     "tags": [
       "physical"
     ],
+    "family": "ReducedPhysicalDamageTaken",
     "tiers": [
       {
         "tier_name": "of the Underground",
@@ -2877,6 +2954,7 @@
       "armour",
       "evasion"
     ],
+    "family": "IncreasedPhysicalDamageReductionRating",
     "tiers": [
       {
         "tier_name": "Chosen",
@@ -2901,6 +2979,7 @@
       "evasion",
       "energy_shield"
     ],
+    "family": "IncreasedEvasionRating",
     "tiers": [
       {
         "tier_name": "Chosen",
@@ -2924,6 +3003,7 @@
       "life",
       "mana"
     ],
+    "family": "IncreasedLife",
     "tiers": [
       {
         "tier_name": "Chosen",
@@ -2947,6 +3027,7 @@
       "life",
       "mana"
     ],
+    "family": "IncreasedMana",
     "tiers": [
       {
         "tier_name": "Chosen",
@@ -2972,6 +3053,7 @@
       "fire",
       "cold"
     ],
+    "family": "AddedFireAndColdDamage",
     "tiers": [
       {
         "tier_name": "Chosen",
@@ -2997,6 +3079,7 @@
       "fire",
       "lightning"
     ],
+    "family": "AddedFireAndLightningDamage",
     "tiers": [
       {
         "tier_name": "Chosen",
@@ -3022,6 +3105,7 @@
       "cold",
       "lightning"
     ],
+    "family": "AddedColdAndLightningDamage",
     "tiers": [
       {
         "tier_name": "Chosen",
@@ -3044,6 +3128,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Strength",
     "tiers": [
       {
         "tier_name": "of the Order",
@@ -3073,6 +3158,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Dexterity",
     "tiers": [
       {
         "tier_name": "of the Order",
@@ -3097,6 +3183,7 @@
       "caster",
       "speed"
     ],
+    "family": "AttackCastSpeed",
     "tiers": [
       {
         "tier_name": "of the Order",
@@ -3119,6 +3206,7 @@
     "tags": [
       "critical"
     ],
+    "family": "CriticalStrikeChanceIncrease",
     "tiers": [
       {
         "tier_name": "of the Order",
@@ -3158,6 +3246,7 @@
       "chaos",
       "resistance"
     ],
+    "family": "FireAndChaosDamageResistance",
     "tiers": [
       {
         "tier_name": "of the Order",
@@ -3183,6 +3272,7 @@
       "chaos",
       "resistance"
     ],
+    "family": "LightningAndChaosDamageResistance",
     "tiers": [
       {
         "tier_name": "of the Order",
@@ -3208,6 +3298,7 @@
       "chaos",
       "resistance"
     ],
+    "family": "ColdAndChaosDamageResistance",
     "tiers": [
       {
         "tier_name": "of the Order",
@@ -3230,6 +3321,7 @@
     "tags": [
       "life"
     ],
+    "family": "IncreasedLife",
     "tiers": [
       {
         "tier_name": "Upgraded",
@@ -3287,6 +3379,7 @@
     "tags": [
       "mana"
     ],
+    "family": "IncreasedMana",
     "tiers": [
       {
         "tier_name": "Upgraded",
@@ -3346,6 +3439,7 @@
       "elemental",
       "attack"
     ],
+    "family": "IncreasedWeaponElementalDamagePercent",
     "tiers": [
       {
         "tier_name": "Upgraded",
@@ -3377,6 +3471,7 @@
       "physical",
       "attack"
     ],
+    "family": "PhysicalDamage",
     "tiers": [
       {
         "tier_name": "Upgraded",
@@ -3408,6 +3503,7 @@
       "chaos",
       "attack"
     ],
+    "family": "ChaosDamage",
     "tiers": [
       {
         "tier_name": "Upgraded",
@@ -3440,6 +3536,7 @@
       "fire",
       "attack"
     ],
+    "family": "FireDamage",
     "tiers": [
       {
         "tier_name": "Upgraded",
@@ -3472,6 +3569,7 @@
       "cold",
       "attack"
     ],
+    "family": "ColdDamage",
     "tiers": [
       {
         "tier_name": "Upgraded",
@@ -3504,6 +3602,7 @@
       "lightning",
       "attack"
     ],
+    "family": "LightningDamage",
     "tiers": [
       {
         "tier_name": "Upgraded",
@@ -3535,6 +3634,7 @@
       "armour",
       "evasion"
     ],
+    "family": "IncreasedPhysicalDamageReductionRating",
     "tiers": [
       {
         "tier_name": "Upgraded",
@@ -3573,6 +3673,7 @@
       "evasion",
       "energy_shield"
     ],
+    "family": "IncreasedEvasionRating",
     "tiers": [
       {
         "tier_name": "Upgraded",
@@ -3612,6 +3713,7 @@
       "fire",
       "cold"
     ],
+    "family": "AddedFireAndColdDamage",
     "tiers": [
       {
         "tier_name": "Upgraded",
@@ -3651,6 +3753,7 @@
       "fire",
       "lightning"
     ],
+    "family": "AddedFireAndLightningDamage",
     "tiers": [
       {
         "tier_name": "Upgraded",
@@ -3690,6 +3793,7 @@
       "cold",
       "lightning"
     ],
+    "family": "AddedColdAndLightningDamage",
     "tiers": [
       {
         "tier_name": "Upgraded",
@@ -3724,6 +3828,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "ItemGenerationCannotChangeSuffixes",
     "tiers": [
       {
         "tier_name": "Suffixed",
@@ -3748,6 +3853,7 @@
       "fire",
       "resistance"
     ],
+    "family": "FireResistance",
     "tiers": [
       {
         "tier_name": "of Craft",
@@ -3786,6 +3892,7 @@
       "cold",
       "resistance"
     ],
+    "family": "ColdResistance",
     "tiers": [
       {
         "tier_name": "of Craft",
@@ -3824,6 +3931,7 @@
       "lightning",
       "resistance"
     ],
+    "family": "LightningResistance",
     "tiers": [
       {
         "tier_name": "of Craft",
@@ -3860,6 +3968,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Strength",
     "tiers": [
       {
         "tier_name": "of Craft",
@@ -3938,6 +4047,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Dexterity",
     "tiers": [
       {
         "tier_name": "of Craft",
@@ -3995,6 +4105,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Intelligence",
     "tiers": [
       {
         "tier_name": "of Craft",
@@ -4034,6 +4145,7 @@
       "cold",
       "resistance"
     ],
+    "family": "FireAndColdResistance",
     "tiers": [
       {
         "tier_name": "of Craft",
@@ -4073,6 +4185,7 @@
       "lightning",
       "resistance"
     ],
+    "family": "ColdAndLightningResistance",
     "tiers": [
       {
         "tier_name": "of Craft",
@@ -4112,6 +4225,7 @@
       "lightning",
       "resistance"
     ],
+    "family": "FireAndLightningResistance",
     "tiers": [
       {
         "tier_name": "of Craft",
@@ -4148,6 +4262,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "AllAttributes",
     "tiers": [
       {
         "tier_name": "of Craft",
@@ -4179,6 +4294,7 @@
       "physical",
       "attack"
     ],
+    "family": "LifeLeech",
     "tiers": [
       {
         "tier_name": "of Craft",
@@ -4202,6 +4318,7 @@
       "attack",
       "speed"
     ],
+    "family": "IncreasedAttackSpeed",
     "tiers": [
       {
         "tier_name": "of Craft",
@@ -4224,6 +4341,7 @@
     "tags": [
       "attack"
     ],
+    "family": "IncreasedAccuracy",
     "tiers": [
       {
         "tier_name": "of Craft",
@@ -4260,6 +4378,7 @@
     "tags": [
       "critical"
     ],
+    "family": "CriticalStrikeChanceIncrease",
     "tiers": [
       {
         "tier_name": "of Craft",
@@ -4354,6 +4473,7 @@
       "attack",
       "ailment"
     ],
+    "family": "NoExtraBleedDamageWhileMoving",
     "tiers": [
       {
         "tier_name": "of Craft",
@@ -4378,6 +4498,7 @@
       "caster",
       "speed"
     ],
+    "family": "AttackCastSpeed",
     "tiers": [
       {
         "tier_name": "of Craft",
@@ -4417,6 +4538,7 @@
       "chaos",
       "resistance"
     ],
+    "family": "FireAndChaosDamageResistance",
     "tiers": [
       {
         "tier_name": "of Craft",
@@ -4456,6 +4578,7 @@
       "chaos",
       "resistance"
     ],
+    "family": "LightningAndChaosDamageResistance",
     "tiers": [
       {
         "tier_name": "of Craft",
@@ -4495,6 +4618,7 @@
       "chaos",
       "resistance"
     ],
+    "family": "ColdAndChaosDamageResistance",
     "tiers": [
       {
         "tier_name": "of Craft",
@@ -4529,6 +4653,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "ItemGenerationCannotChangePrefixes",
     "tiers": [
       {
         "tier_name": "of Prefixes",
@@ -4549,6 +4674,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "ItemGenerationCanHaveMultipleCraftedMods",
     "tiers": [
       {
         "tier_name": "of Crafting",
@@ -4569,6 +4695,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "ItemGenerationCannotRollAttackAffixes",
     "tiers": [
       {
         "tier_name": "of Spellcraft",
@@ -4589,6 +4716,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "ItemGenerationCannotRollCasterAffixes",
     "tiers": [
       {
         "tier_name": "of Weaponcraft",
@@ -4611,6 +4739,7 @@
     "tags": [
       "damage"
     ],
+    "family": "DamageWithWeaponTypeSkill",
     "tiers": [
       {
         "tier_name": "Whispering Essence of Woe",
@@ -4677,6 +4806,7 @@
       "physical",
       "attack"
     ],
+    "family": "PhysicalDamage",
     "tiers": [
       {
         "tier_name": "Whispering Essence of Contempt",
@@ -4744,6 +4874,7 @@
       "lightning",
       "attack"
     ],
+    "family": "LightningDamage",
     "tiers": [
       {
         "tier_name": "Muttering Essence of Torment",
@@ -4804,6 +4935,7 @@
       "cold",
       "attack"
     ],
+    "family": "ColdDamage",
     "tiers": [
       {
         "tier_name": "Weeping Essence of Suffering",
@@ -4857,6 +4989,7 @@
       "fire",
       "attack"
     ],
+    "family": "FireDamage",
     "tiers": [
       {
         "tier_name": "Wailing Essence of Anguish",
@@ -4902,6 +5035,7 @@
       "chaos",
       "attack"
     ],
+    "family": "ChaosDamage",
     "tiers": [
       {
         "tier_name": "Screaming Essence of Envy",
@@ -4941,6 +5075,7 @@
       "elemental",
       "fire"
     ],
+    "family": "FireDamageAsPortionOfDamage",
     "tiers": [
       {
         "tier_name": "Essence of Hysteria",
@@ -4961,6 +5096,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "Pierce",
     "tiers": [
       {
         "tier_name": "Essence of Insanity",
@@ -4985,6 +5121,7 @@
       "elemental",
       "cold"
     ],
+    "family": "AddedColdDamagePerFrenzyCharge",
     "tiers": [
       {
         "tier_name": "Essence of Horror",
@@ -5009,6 +5146,7 @@
       "cold",
       "resistance"
     ],
+    "family": "ColdResistance",
     "tiers": [
       {
         "tier_name": "Whispering Essence of Hatred",
@@ -5075,6 +5213,7 @@
       "physical",
       "attack"
     ],
+    "family": "LifeLeech",
     "tiers": [
       {
         "tier_name": "Whispering Essence of Greed",
@@ -5139,6 +5278,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Dexterity",
     "tiers": [
       {
         "tier_name": "Muttering Essence of Sorrow",
@@ -5198,6 +5338,7 @@
       "fire",
       "resistance"
     ],
+    "family": "FireResistance",
     "tiers": [
       {
         "tier_name": "Muttering Essence of Anger",
@@ -5256,6 +5397,7 @@
       "speed",
       "minion"
     ],
+    "family": "MinionMovementSpeed",
     "tiers": [
       {
         "tier_name": "Muttering Essence of Fear",
@@ -5313,6 +5455,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Strength",
     "tiers": [
       {
         "tier_name": "Weeping Essence of Rage",
@@ -5365,6 +5508,7 @@
       "lightning",
       "resistance"
     ],
+    "family": "LightningResistance",
     "tiers": [
       {
         "tier_name": "Weeping Essence of Wrath",
@@ -5415,6 +5559,7 @@
     "tags": [
       "attack"
     ],
+    "family": "IncreasedAccuracy",
     "tiers": [
       {
         "tier_name": "Weeping Essence of Doubt",
@@ -5465,6 +5610,7 @@
     "tags": [
       "critical"
     ],
+    "family": "CriticalStrikeChanceIncrease",
     "tiers": [
       {
         "tier_name": "Wailing Essence of Loathing",
@@ -5508,6 +5654,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Intelligence",
     "tiers": [
       {
         "tier_name": "Wailing Essence of Spite",
@@ -5552,6 +5699,7 @@
       "attack",
       "speed"
     ],
+    "family": "IncreasedAttackSpeed",
     "tiers": [
       {
         "tier_name": "Wailing Essence of Zeal",
@@ -5597,6 +5745,7 @@
       "physical",
       "attack"
     ],
+    "family": "ManaLeech",
     "tiers": [
       {
         "tier_name": "Screaming Essence of Misery",
@@ -5633,6 +5782,7 @@
     "tags": [
       "speed"
     ],
+    "family": "ProjectileSpeed",
     "tiers": [
       {
         "tier_name": "Screaming Essence of Dread",
@@ -5670,6 +5820,7 @@
       "damage",
       "critical"
     ],
+    "family": "CriticalStrikeMultiplier",
     "tiers": [
       {
         "tier_name": "Screaming Essence of Scorn",
@@ -5707,6 +5858,7 @@
       "caster",
       "curse"
     ],
+    "family": "CurseEffectiveness",
     "tiers": [
       {
         "tier_name": "Essence of Delirium",
@@ -5727,6 +5879,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "GrantedSkill",
     "tiers": [
       {
         "tier_name": "of Saqawal",
@@ -5799,6 +5952,7 @@
       "caster",
       "curse"
     ],
+    "family": "CurseEffectiveness",
     "tiers": [
       {
         "tier_name": "of the Sentinel",
@@ -5821,6 +5975,7 @@
     "tags": [
       "minion"
     ],
+    "family": "ClonesInheritGloves",
     "tiers": [
       {
         "tier_name": "Infamous",
@@ -5846,6 +6001,7 @@
       "cold",
       "attack"
     ],
+    "family": "AddedColdDamageToBowAttacksCorrupted",
     "tiers": [
       {
         "tier_name": "V2AddedColdDamageToBowAttacksCorrupted1__",
@@ -5885,6 +6041,7 @@
       "fire",
       "attack"
     ],
+    "family": "AddedFireDamageToBowAttacksCorrupted",
     "tiers": [
       {
         "tier_name": "V2AddedFireDamageToBowAttacksCorrupted1__",
@@ -5924,6 +6081,7 @@
       "lightning",
       "attack"
     ],
+    "family": "AddedLightningDamageToBowAttacksCorrupted",
     "tiers": [
       {
         "tier_name": "V2AddedLightningDamageToBowAttacksCorrupted1_",
@@ -5962,6 +6120,7 @@
       "physical",
       "attack"
     ],
+    "family": "AddedPhysicalDamageToBowAttacksCorrupted",
     "tiers": [
       {
         "tier_name": "V2AddedPhysicalDamageToBowAttacksCorrupted1",
@@ -6000,6 +6159,7 @@
       "chaos",
       "attack"
     ],
+    "family": "AddedChaosDamageToBowAttacksCorrupted",
     "tiers": [
       {
         "tier_name": "V2AddedChaosDamageToBowAttacksCorrupted1",
@@ -6022,6 +6182,7 @@
     "tags": [
       "attack"
     ],
+    "family": "AdditionalArrows",
     "tiers": [
       {
         "tier_name": "V2AdditionalArrowsCorrupted",
@@ -6044,6 +6205,7 @@
     "tags": [
       "attack"
     ],
+    "family": "Chain",
     "tiers": [
       {
         "tier_name": "V2AdditionalChainCorrupted",
@@ -6064,6 +6226,7 @@
     "weight": 200,
     "weight_pct": 1.008,
     "tags": [],
+    "family": "ChanceToSuppressSpells",
     "tiers": [
       {
         "tier_name": "V2ChanceToSuppressSpells_",
@@ -6088,6 +6251,7 @@
       "elemental",
       "cold"
     ],
+    "family": "ColdDamageLifeLeech",
     "tiers": [
       {
         "tier_name": "V2ColdDamageLifeLeechPermyriadCorrupted_",
@@ -6112,6 +6276,7 @@
       "elemental",
       "fire"
     ],
+    "family": "FireDamageLifeLeech",
     "tiers": [
       {
         "tier_name": "V2FireDamageLifeLeechPermyriadCorrupted_",
@@ -6134,6 +6299,7 @@
     "tags": [
       "damage"
     ],
+    "family": "IncreasedProjectileDamageForEachChain",
     "tiers": [
       {
         "tier_name": "V2IncreasedProjectileDamageForEachChainCorrupted",
@@ -6156,6 +6322,7 @@
     "tags": [
       "damage"
     ],
+    "family": "ProjectileDamagePerEnemyPierced",
     "tiers": [
       {
         "tier_name": "V2IncreasedProjectileDamageForEachPierceCorrupted",
@@ -6180,6 +6347,7 @@
       "elemental",
       "lightning"
     ],
+    "family": "LightningDamageLifeLeech",
     "tiers": [
       {
         "tier_name": "V2LightningDamageLifeLeechPermyriadCorrupted",
@@ -6205,6 +6373,7 @@
       "elemental",
       "cold"
     ],
+    "family": "ColdDamageAsPortionOfDamage",
     "tiers": [
       {
         "tier_name": "V2PhysicalDamageAddedAsColdCorrupted",
@@ -6230,6 +6399,7 @@
       "elemental",
       "fire"
     ],
+    "family": "FireDamageAsPortionOfDamage",
     "tiers": [
       {
         "tier_name": "V2PhysicalDamageAddedAsFireCorrupted",
@@ -6255,6 +6425,7 @@
       "elemental",
       "lightning"
     ],
+    "family": "LightningDamageAsPortionOfDamage",
     "tiers": [
       {
         "tier_name": "V2PhysicalDamageAddedAsLightningCorrupted",
@@ -6278,6 +6449,7 @@
       "damage",
       "attack"
     ],
+    "family": "Keystone",
     "tiers": [
       {
         "tier_name": "V2PointBlankCorrupted",
@@ -6300,6 +6472,7 @@
     "tags": [
       "life"
     ],
+    "family": "MaximumLifeIncreasePercent",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitPercentLifeTrinket1__",
@@ -6336,6 +6509,7 @@
     "tags": [
       "life"
     ],
+    "family": "LifeRegeneration",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitLifeRegen3",
@@ -6372,6 +6546,7 @@
     "tags": [
       "life"
     ],
+    "family": "LifeGainedFromEnemyDeath",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitLifeOnKill1_",
@@ -6415,6 +6590,7 @@
     "tags": [
       "life"
     ],
+    "family": "MaximumLifeOnKillPercent",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitPercentLifeOnKill1_",
@@ -6437,6 +6613,7 @@
     "tags": [
       "mana"
     ],
+    "family": "IncreasedMana",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitMana3_",
@@ -6473,6 +6650,7 @@
     "tags": [
       "mana"
     ],
+    "family": "MaximumManaIncreasePercent",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitPercentMana2",
@@ -6495,6 +6673,7 @@
     "tags": [
       "mana"
     ],
+    "family": "ManaGainedFromEnemyDeath",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitManaOnKill1_",
@@ -6538,6 +6717,7 @@
     "tags": [
       "mana"
     ],
+    "family": "MaximumManaOnKillPercent",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitPercentManaOnKill1",
@@ -6562,6 +6742,7 @@
       "fire",
       "resistance"
     ],
+    "family": "FireResistance",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitFireResist1",
@@ -6691,6 +6872,7 @@
       "cold",
       "resistance"
     ],
+    "family": "ColdResistance",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitColdResist1",
@@ -6820,6 +7002,7 @@
       "lightning",
       "resistance"
     ],
+    "family": "LightningResistance",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitLightningResist1",
@@ -6948,6 +7131,7 @@
       "chaos",
       "resistance"
     ],
+    "family": "ChaosResistance",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitChaosResist1_",
@@ -7048,6 +7232,7 @@
       "chaos",
       "resistance"
     ],
+    "family": "MaximumResistances",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitMaxChaosResist1",
@@ -7070,6 +7255,7 @@
     "tags": [
       "critical"
     ],
+    "family": "CriticalStrikeChanceIncrease",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitGlobalCritQuiver1",
@@ -7121,6 +7307,7 @@
       "damage",
       "critical"
     ],
+    "family": "CriticalStrikeMultiplier",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitCriticalMultiplier1",
@@ -7171,6 +7358,7 @@
     "tags": [
       "attack"
     ],
+    "family": "AdditionalArrows",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitAdditionalArrow1",
@@ -7193,6 +7381,7 @@
     "tags": [
       "attack"
     ],
+    "family": "ArrowPierce",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitAdditionalArrowPierce1_",
@@ -7227,6 +7416,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "StunDurationIncreasePercent",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitStunDuration1_",
@@ -7254,6 +7444,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "StunThresholdReduction",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitEnemyStunThreshold3",
@@ -7274,6 +7465,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "AreaOfEffectIfStunnedEnemyRecently",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitAreaOfEffectOnStun1",
@@ -7298,6 +7490,7 @@
       "chaos",
       "ailment"
     ],
+    "family": "PoisonDamage",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitPoisonDamage1",
@@ -7335,6 +7528,7 @@
       "chaos",
       "ailment"
     ],
+    "family": "PoisonDuration",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitPoisonDuration1",
@@ -7359,6 +7553,7 @@
       "elemental",
       "fire"
     ],
+    "family": "FireDamagePercentage",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitFireDamage1_",
@@ -7447,6 +7642,7 @@
       "elemental",
       "fire"
     ],
+    "family": "ConvertPhysicalToFire",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitPhysicalConvertedToFire1",
@@ -7472,6 +7668,7 @@
       "elemental",
       "fire"
     ],
+    "family": "PhysicalAddedAsFire",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitPhysicalAddedAsFire2",
@@ -7496,6 +7693,7 @@
       "elemental",
       "cold"
     ],
+    "family": "ColdDamagePercentage",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitColdDamage1",
@@ -7584,6 +7782,7 @@
       "elemental",
       "cold"
     ],
+    "family": "ConvertPhysicalToCold",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitPhysicalConvertedToCold1_",
@@ -7608,6 +7807,7 @@
       "elemental",
       "cold"
     ],
+    "family": "AddedColdDamagePerFrenzyCharge",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitColdDamagePerFrenzyCharge1",
@@ -7632,6 +7832,7 @@
       "elemental",
       "lightning"
     ],
+    "family": "LightningDamagePercentage",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitLightningDamage1",
@@ -7699,6 +7900,7 @@
       "elemental",
       "lightning"
     ],
+    "family": "ConvertPhysicalToLightning",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitPhysicalConvertedToLightning1",
@@ -7722,6 +7924,7 @@
       "damage",
       "physical"
     ],
+    "family": "PhysicalDamagePercent",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitPhysicalDamage1_",
@@ -7773,6 +7976,7 @@
       "damage",
       "chaos"
     ],
+    "family": "IncreasedChaosDamage",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitChaosDamage1",
@@ -7811,6 +8015,7 @@
       "elemental",
       "attack"
     ],
+    "family": "IncreasedWeaponElementalDamagePercent",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitWeaponElementalDamage1_",
@@ -7863,6 +8068,7 @@
       "physical",
       "elemental"
     ],
+    "family": "PhysicalDamageAddedAsRandomElement",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitPhysicalDamageAddedAsRandomElement1",
@@ -7886,6 +8092,7 @@
       "damage",
       "elemental"
     ],
+    "family": "ElementalDamagePercent",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitElementalDamage3",
@@ -7943,6 +8150,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Strength",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitStrength1",
@@ -8063,6 +8271,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "PercentageStrength",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitPercentStrength2_",
@@ -8085,6 +8294,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Dexterity",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitDexterity1",
@@ -8205,6 +8415,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Intelligence",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitIntelligence1",
@@ -8325,6 +8536,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "PercentageIntelligence",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitPercentIntelligence2_",
@@ -8347,6 +8559,7 @@
     "tags": [
       "attack"
     ],
+    "family": "IncreasedAccuracyPercent",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitAccuracy1",
@@ -8391,6 +8604,7 @@
       "defences",
       "armour"
     ],
+    "family": "IncreasedPhysicalDamageReductionRatingPercent",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitGlobalArmour1",
@@ -8428,6 +8642,7 @@
       "defences",
       "evasion"
     ],
+    "family": "EvasionRatingPercent",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitGlobalEvasion1",
@@ -8517,6 +8732,7 @@
       "lightning",
       "ailment"
     ],
+    "family": "AvoidElementalStatusAilments",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitAvoidStatusAilments2",
@@ -8540,6 +8756,7 @@
       "defences",
       "energy_shield"
     ],
+    "family": "EnergyShieldRegeneration",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitEnergyShieldRechargeRate1",
@@ -8584,6 +8801,7 @@
       "defences",
       "energy_shield"
     ],
+    "family": "EnergyShieldLeechPermyriad",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitEnergyShieldLeech1",
@@ -8607,6 +8825,7 @@
       "elemental",
       "fire"
     ],
+    "family": "FireDamageAvoidance",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitAvoidFire1",
@@ -8630,6 +8849,7 @@
       "elemental",
       "cold"
     ],
+    "family": "ColdDamageAvoidance",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitAvoidCold1",
@@ -8653,6 +8873,7 @@
       "elemental",
       "lightning"
     ],
+    "family": "LightningDamageAvoidance",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitAvoidLightning1",
@@ -8675,6 +8896,7 @@
     "tags": [
       "aura"
     ],
+    "family": "IncreasedAuraEffectGraceCorrupted",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitGraceEffect1",
@@ -8697,6 +8919,7 @@
     "tags": [
       "damage"
     ],
+    "family": "DamageWhileLeeching",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitDamageWhileLeechingLife1",
@@ -8755,6 +8978,7 @@
       "speed",
       "minion"
     ],
+    "family": "MinionMovementSpeed",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitMinionMovementSpeed1",
@@ -8789,6 +9013,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "FrenzyChargeOnKillChance",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitFrenzyChargeOnKill1",
@@ -8818,6 +9043,7 @@
     "tags": [
       "speed"
     ],
+    "family": "ProjectileSpeed",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitProjectileSpeed1",
@@ -8869,6 +9095,7 @@
       "attack",
       "speed"
     ],
+    "family": "IncreasedAttackSpeed",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitAttackSpeed1",
@@ -8928,6 +9155,7 @@
       "caster",
       "speed"
     ],
+    "family": "AttackCastSpeed",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitAttackAndCastSpeed2",
@@ -8958,6 +9186,7 @@
       "physical",
       "attack"
     ],
+    "family": "PhysicalAttackDamageTaken",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitPhysicalAttackDamageTaken1_",
@@ -8992,6 +9221,7 @@
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
+    "family": "ReflectDamageTaken",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitReflectDamageTaken1",
@@ -9028,6 +9258,7 @@
     "tags": [
       "critical"
     ],
+    "family": "VaalSkillCriticalStrikeChance",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitVaalSkillCriticalStrikeChance1",
@@ -9057,6 +9288,7 @@
     "tags": [
       "critical"
     ],
+    "family": "LocalCorruptedBonus",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitGlobalCriticalStrikeChanceCorruptedItem1",
@@ -9079,6 +9311,7 @@
     "tags": [
       "critical"
     ],
+    "family": "VaalSkillCriticalStrikeChance",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitVaalSkillCriticalStrikeChance1",
@@ -9101,6 +9334,7 @@
     "tags": [
       "critical"
     ],
+    "family": "LocalCorruptedBonus",
     "tiers": [
       {
         "tier_name": "SynthesisImplicitGlobalCriticalStrikeChanceCorruptedItem1",
@@ -9123,6 +9357,7 @@
     "tags": [
       "life"
     ],
+    "family": "IncreasedLife",
     "tiers": [
       {
         "tier_name": "HellscapeUpsideIncreasedLife1__",
@@ -9166,6 +9401,7 @@
     "tags": [
       "speed"
     ],
+    "family": "ProjectileSpeed",
     "tiers": [
       {
         "tier_name": "HellscapeUpsideProjectileSpeed1",
@@ -9211,6 +9447,7 @@
       "fire",
       "resistance"
     ],
+    "family": "FireResistance",
     "tiers": [
       {
         "tier_name": "HellscapeUpsideFireResistance1",
@@ -9256,6 +9493,7 @@
       "cold",
       "resistance"
     ],
+    "family": "ColdResistance",
     "tiers": [
       {
         "tier_name": "HellscapeUpsideColdResistance1",
@@ -9301,6 +9539,7 @@
       "lightning",
       "resistance"
     ],
+    "family": "LightningResistance",
     "tiers": [
       {
         "tier_name": "HellscapeUpsideLightningResistance1",
@@ -9345,6 +9584,7 @@
       "chaos",
       "resistance"
     ],
+    "family": "ChaosResistance",
     "tiers": [
       {
         "tier_name": "HellscapeUpsideChaosResistance1_",
@@ -9390,6 +9630,7 @@
       "elemental",
       "attack"
     ],
+    "family": "IncreasedWeaponElementalDamagePercent",
     "tiers": [
       {
         "tier_name": "HellscapeUpsideIncreasedWeaponElementalDamagePercent1",
@@ -9434,6 +9675,7 @@
       "attack",
       "critical"
     ],
+    "family": "CriticalStrikeChanceIncrease",
     "tiers": [
       {
         "tier_name": "HellscapeUpsideCriticalStrikeChanceWithBows2",
@@ -9472,6 +9714,7 @@
       "attack",
       "critical"
     ],
+    "family": "CriticalStrikeMultiplier",
     "tiers": [
       {
         "tier_name": "HellscapeUpsideCriticalStrikeMultiplierWithBows2",
@@ -9509,6 +9752,7 @@
       "attack",
       "speed"
     ],
+    "family": "IncreasedAttackSpeed",
     "tiers": [
       {
         "tier_name": "HellscapeUpsideIncreasedAttackSpeed1_",
@@ -9552,6 +9796,7 @@
     "tags": [
       "attack"
     ],
+    "family": "IncreasedAccuracyPercent",
     "tiers": [
       {
         "tier_name": "HellscapeUpsideIncreasedAccuracyPercent2",
@@ -9590,6 +9835,7 @@
       "physical",
       "attack"
     ],
+    "family": "LifeLeech",
     "tiers": [
       {
         "tier_name": "HellscapeUpsideAttackLifeLeech2",
@@ -9628,6 +9874,7 @@
       "physical",
       "attack"
     ],
+    "family": "ManaLeech",
     "tiers": [
       {
         "tier_name": "HellscapeUpsideAttackManaLifeLeech2",
@@ -9662,6 +9909,7 @@
     "weight": 3000,
     "weight_pct": 7.348,
     "tags": [],
+    "family": "StunDurationIncreasePercent",
     "tiers": [
       {
         "tier_name": "HellscapeUpsideStunDuration2",
@@ -9698,6 +9946,7 @@
     "tags": [
       "attribute"
     ],
+    "family": "Dexterity",
     "tiers": [
       {
         "tier_name": "HellscapeUpsideAdditionalDexterity1__",
@@ -9739,6 +9988,7 @@
     "weight": 300,
     "weight_pct": 0.735,
     "tags": [],
+    "family": "ChanceToGainOnslaughtOnKill",
     "tiers": [
       {
         "tier_name": "HellscapeUpsideChanceToGainOnslaughtOnKill2__",
@@ -9773,6 +10023,7 @@
     "weight": 300,
     "weight_pct": 0.735,
     "tags": [],
+    "family": "ChancetoGainPhasingOnKill",
     "tiers": [
       {
         "tier_name": "HellscapeUpsideChanceToGainPhasingOnKill2",
@@ -9807,6 +10058,7 @@
     "weight": 600,
     "weight_pct": 1.47,
     "tags": [],
+    "family": "BlindOnHit",
     "tiers": [
       {
         "tier_name": "HellscapeUpsideChanceToBlindOnHit2_",
@@ -9843,6 +10095,7 @@
     "tags": [
       "attack"
     ],
+    "family": "GlobalMaimOnHit",
     "tiers": [
       {
         "tier_name": "HellscapeUpsideChanceToMaimOnHit2",
@@ -9879,6 +10132,7 @@
     "tags": [
       "attack"
     ],
+    "family": "AdditionalArrows",
     "tiers": [
       {
         "tier_name": "HellscapeUpsideAdditionalArrow1",
@@ -9899,6 +10153,7 @@
     "weight": 5,
     "weight_pct": 0.012,
     "tags": [],
+    "family": "Chain",
     "tiers": [
       {
         "tier_name": "HellscapeUpsideAdditionalChainChance1__",
@@ -9919,6 +10174,7 @@
     "weight": 5,
     "weight_pct": 0.012,
     "tags": [],
+    "family": "Pierce",
     "tiers": [
       {
         "tier_name": "HellscapeUpsideAdditionalPierceChance1__",
@@ -9939,6 +10195,7 @@
     "weight": 5,
     "weight_pct": 0.012,
     "tags": [],
+    "family": "ProjectilesSplitCount",
     "tiers": [
       {
         "tier_name": "HellscapeUpsideAdditionalSplitChance1_",
@@ -9961,6 +10218,7 @@
     "tags": [
       "attack"
     ],
+    "family": "ReturningAttackProjectiles",
     "tiers": [
       {
         "tier_name": "HellscapeUpsideAdditionalReturn1___",
@@ -9981,6 +10239,7 @@
     "weight": 800,
     "weight_pct": 1.96,
     "tags": [],
+    "family": "GrantedSkill",
     "tiers": [
       {
         "tier_name": "HellscapeUpsideGrantsLevel1SnipersMark",
@@ -10022,6 +10281,7 @@
     "weight": 500,
     "weight_pct": 3.165,
     "tags": [],
+    "family": "HellscapeDownsideCannotCrit",
     "tiers": [
       {
         "tier_name": "HellscapeDownsideCannotCrit_",
@@ -10046,6 +10306,7 @@
       "fire",
       "resistance"
     ],
+    "family": "FireResistance",
     "tiers": [
       {
         "tier_name": "HellscapeDownsideReducedFireResistance0",
@@ -10091,6 +10352,7 @@
       "cold",
       "resistance"
     ],
+    "family": "ColdResistance",
     "tiers": [
       {
         "tier_name": "HellscapeDownsideReducedColdResistance0",
@@ -10136,6 +10398,7 @@
       "lightning",
       "resistance"
     ],
+    "family": "LightningResistance",
     "tiers": [
       {
         "tier_name": "HellscapeDownsideReducedLightningResistance0_",
@@ -10180,6 +10443,7 @@
       "chaos",
       "resistance"
     ],
+    "family": "ChaosResistance",
     "tiers": [
       {
         "tier_name": "HellscapeDownsideReducedChaosResistance0_",
@@ -10224,6 +10488,7 @@
       "attack",
       "critical"
     ],
+    "family": "CriticalStrikeChanceIncrease",
     "tiers": [
       {
         "tier_name": "HellscapeDownsideCriticalStrikeChanceWithBows2",
@@ -10255,6 +10520,7 @@
       "attack",
       "critical"
     ],
+    "family": "CriticalStrikeMultiplier",
     "tiers": [
       {
         "tier_name": "HellscapeDownsideCriticalStrikeMultiplierWithBows2",
@@ -10285,6 +10551,7 @@
       "attack",
       "speed"
     ],
+    "family": "IncreasedAttackSpeed",
     "tiers": [
       {
         "tier_name": "HellscapeDownsideAttackSpeed0",
@@ -10328,6 +10595,7 @@
     "tags": [
       "attack"
     ],
+    "family": "IncreasedAccuracyPercent",
     "tiers": [
       {
         "tier_name": "HellscapeDownsideAccuracyPercent2",
@@ -10358,6 +10626,7 @@
       "damage",
       "physical"
     ],
+    "family": "DealNoPhysicalDamage",
     "tiers": [
       {
         "tier_name": "HellscapeDownsideDealNoPhysicalDamage___",
@@ -10378,6 +10647,7 @@
     "weight": 200,
     "weight_pct": 1.266,
     "tags": [],
+    "family": "DealNoFireDamage",
     "tiers": [
       {
         "tier_name": "HellscapeDownsideDealNoFireDamage",
@@ -10402,6 +10672,7 @@
       "elemental",
       "cold"
     ],
+    "family": "DealNoColdDamage",
     "tiers": [
       {
         "tier_name": "HellscapeDownsideDealNoColdDamage_",
@@ -10422,6 +10693,7 @@
     "weight": 200,
     "weight_pct": 1.266,
     "tags": [],
+    "family": "DealNoLightningDamage",
     "tiers": [
       {
         "tier_name": "HellscapeDownsideDealNoLightningDamage",
@@ -10445,6 +10717,7 @@
       "damage",
       "chaos"
     ],
+    "family": "DealNoChaosDamage",
     "tiers": [
       {
         "tier_name": "HellscapeDownsideDealNoChaosDamage_",

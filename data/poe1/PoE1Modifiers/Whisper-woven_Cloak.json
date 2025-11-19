@@ -11,6 +11,7 @@
     "tags": [
       "damage"
     ],
+    "family": "AllDamage",
     "tiers": [
       {
         "tier_name": "Harmful",
@@ -108,6 +109,7 @@
     "weight": 2800,
     "weight_pct": 14.286,
     "tags": [],
+    "family": "HeistContractLockdownTimer",
     "tiers": [
       {
         "tier_name": "Slowing",
@@ -151,6 +153,7 @@
     "tags": [
       "speed"
     ],
+    "family": "HeistContractObjectiveSpeed",
     "tiers": [
       {
         "tier_name": "Practiced",
@@ -192,6 +195,7 @@
     "weight": 2800,
     "weight_pct": 14.286,
     "tags": [],
+    "family": "HeistNPCLevel",
     "tiers": [
       {
         "tier_name": "Capable",
@@ -235,6 +239,7 @@
     "tags": [
       "speed"
     ],
+    "family": "MovementVelocity",
     "tiers": [
       {
         "tier_name": "Tresspassing",
@@ -276,6 +281,7 @@
     "weight": 2800,
     "weight_pct": 15.837,
     "tags": [],
+    "family": "HeistContractNPCCost",
     "tiers": [
       {
         "tier_name": "of Personality",
@@ -317,6 +323,7 @@
     "weight": 2800,
     "weight_pct": 15.837,
     "tags": [],
+    "family": "HeistContractGangCut",
     "tiers": [
       {
         "tier_name": "of Bartering",
@@ -358,6 +365,7 @@
     "weight": 2800,
     "weight_pct": 15.837,
     "tags": [],
+    "family": "HeistContractTravelCost",
     "tiers": [
       {
         "tier_name": "of Efficiency",
@@ -399,6 +407,7 @@
     "weight": 2800,
     "weight_pct": 15.837,
     "tags": [],
+    "family": "HeistContractChestAlertLevel",
     "tiers": [
       {
         "tier_name": "of Muffling",
@@ -440,6 +449,7 @@
     "weight": 700,
     "weight_pct": 3.959,
     "tags": [],
+    "family": "HeistNPCAvoidAlarmChanceChest",
     "tiers": [
       {
         "tier_name": "of Defusing",
@@ -481,6 +491,7 @@
     "weight": 180,
     "weight_pct": 1.018,
     "tags": [],
+    "family": "HeistNPCAvoidBlueprintAlarm",
     "tiers": [
       {
         "tier_name": "of Planning",
@@ -510,6 +521,7 @@
     "tags": [
       "critical"
     ],
+    "family": "CriticalStrikeChanceIncrease",
     "tiers": [
       {
         "tier_name": "of Staggering",
@@ -554,6 +566,7 @@
       "damage",
       "critical"
     ],
+    "family": "CriticalStrikeMultiplier",
     "tiers": [
       {
         "tier_name": "of Advantage",

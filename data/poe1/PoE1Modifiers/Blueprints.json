@@ -9,6 +9,7 @@
     "weight": 1000,
     "weight_pct": 0.847,
     "tags": [],
+    "family": "MapNemesisModOnRares",
     "tiers": [
       {
         "tier_name": "Antagonist's",
@@ -29,6 +30,7 @@
     "weight": 2000,
     "weight_pct": 1.693,
     "tags": [],
+    "family": "MapMonsterChain",
     "tiers": [
       {
         "tier_name": "Chaining",
@@ -56,6 +58,7 @@
     "weight": 1000,
     "weight_pct": 0.847,
     "tags": [],
+    "family": "MapMonsterMultipleProjectiles",
     "tiers": [
       {
         "tier_name": "Splitting",
@@ -78,6 +81,7 @@
     "tags": [
       "speed"
     ],
+    "family": "MapMonstersCantBeSlowedOrTaunted",
     "tiers": [
       {
         "tier_name": "Unstoppable",
@@ -102,6 +106,7 @@
       "fire",
       "ailment"
     ],
+    "family": "MapMonstersAllDamageAlwaysIgnites",
     "tiers": [
       {
         "tier_name": "Conflagrating",
@@ -125,6 +130,7 @@
       "caster",
       "curse"
     ],
+    "family": "MapHexproof",
     "tiers": [
       {
         "tier_name": "Hexproof",
@@ -175,6 +181,7 @@
     "tags": [
       "life"
     ],
+    "family": "MapMonsterCannotBeStunned",
     "tiers": [
       {
         "tier_name": "Unwavering",
@@ -225,6 +232,7 @@
     "tags": [
       "physical"
     ],
+    "family": "MapMonsterPhysicalResistance",
     "tiers": [
       {
         "tier_name": "Armoured",
@@ -275,6 +283,7 @@
     "tags": [
       "life"
     ],
+    "family": "MapMonsterLife",
     "tiers": [
       {
         "tier_name": "Fecund",
@@ -325,6 +334,7 @@
     "tags": [
       "damage"
     ],
+    "family": "MapMonsterDamage",
     "tiers": [
       {
         "tier_name": "Savage",
@@ -378,6 +388,7 @@
       "elemental",
       "fire"
     ],
+    "family": "MapMonsterFireDamage",
     "tiers": [
       {
         "tier_name": "Burning",
@@ -431,6 +442,7 @@
       "elemental",
       "cold"
     ],
+    "family": "MapMonsterColdDamage",
     "tiers": [
       {
         "tier_name": "Freezing",
@@ -484,6 +496,7 @@
       "elemental",
       "lightning"
     ],
+    "family": "MapMonsterLightningDamage",
     "tiers": [
       {
         "tier_name": "Shocking",
@@ -532,6 +545,7 @@
     "weight": 1000,
     "weight_pct": 0.847,
     "tags": [],
+    "family": "MapMonsterChaosDamage",
     "tiers": [
       {
         "tier_name": "Profane",
@@ -563,6 +577,7 @@
       "caster",
       "speed"
     ],
+    "family": "MapMonsterFast",
     "tiers": [
       {
         "tier_name": "Fleet",
@@ -613,6 +628,7 @@
     "tags": [
       "physical"
     ],
+    "family": "MapMonsterPhysicalReflection",
     "tiers": [
       {
         "tier_name": "Punishing",
@@ -649,6 +665,7 @@
     "tags": [
       "elemental"
     ],
+    "family": "MapMonsterElementalReflection",
     "tiers": [
       {
         "tier_name": "Mirrored",
@@ -685,6 +702,7 @@
     "tags": [
       "ailment"
     ],
+    "family": "MapMonstersChanceToInflictStatusAilments",
     "tiers": [
       {
         "tier_name": "Empowered",
@@ -716,6 +734,7 @@
       "chaos",
       "resistance"
     ],
+    "family": "MapMonstersAllResistances",
     "tiers": [
       {
         "tier_name": "Resistant",
@@ -762,6 +781,7 @@
       "attack",
       "ailment"
     ],
+    "family": "MapMonstersAvoidPoisonBleedBlind",
     "tiers": [
       {
         "tier_name": "Impervious",
@@ -796,6 +816,7 @@
     "weight": 3200,
     "weight_pct": 2.71,
     "tags": [],
+    "family": "MapMonstersImpaleOnHit",
     "tiers": [
       {
         "tier_name": "Impaling",
@@ -837,6 +858,7 @@
     "weight": 3200,
     "weight_pct": 2.71,
     "tags": [],
+    "family": "MapMonstersChanceToSuppressSpells",
     "tiers": [
       {
         "tier_name": "Oppressive",
@@ -878,6 +900,7 @@
     "weight": 5000,
     "weight_pct": 4.234,
     "tags": [],
+    "family": "MapMonstersMaximumLifeAddedEnergyShield",
     "tiers": [
       {
         "tier_name": "Buffered",
@@ -926,6 +949,7 @@
     "weight": 4000,
     "weight_pct": 3.387,
     "tags": [],
+    "family": "HeistContractMonsterPatrolAdditionalElite",
     "tiers": [
       {
         "tier_name": "Elite",
@@ -976,6 +1000,7 @@
     "tags": [
       "damage"
     ],
+    "family": "HeistContractMonsterPatrolDamage",
     "tiers": [
       {
         "tier_name": "Secure",
@@ -1024,6 +1049,7 @@
     "weight": 5000,
     "weight_pct": 4.234,
     "tags": [],
+    "family": "HeistContractMonsterPatrolDamageReduction",
     "tiers": [
       {
         "tier_name": "Dutiful",
@@ -1074,6 +1100,7 @@
     "tags": [
       "damage"
     ],
+    "family": "HeistContractMonsterChokepointDamage",
     "tiers": [
       {
         "tier_name": "Tempting",
@@ -1122,6 +1149,7 @@
     "weight": 5000,
     "weight_pct": 4.234,
     "tags": [],
+    "family": "HeistContractMonsterChokepointDamageReduction",
     "tiers": [
       {
         "tier_name": "Inimicable",
@@ -1172,6 +1200,7 @@
     "tags": [
       "damage"
     ],
+    "family": "HeistContractMonsterGuardingDamage",
     "tiers": [
       {
         "tier_name": "Indifferent",
@@ -1220,6 +1249,7 @@
     "weight": 5000,
     "weight_pct": 4.234,
     "tags": [],
+    "family": "HeistContractMonsterGuardingDamageReduction",
     "tiers": [
       {
         "tier_name": "Stoic",
@@ -1268,6 +1298,7 @@
     "weight": 4000,
     "weight_pct": 3.387,
     "tags": [],
+    "family": "HeistContractObjectiveSpeed",
     "tiers": [
       {
         "tier_name": "Impeding",
@@ -1316,6 +1347,7 @@
     "weight": 4000,
     "weight_pct": 3.387,
     "tags": [],
+    "family": "HeistContractSideAreaIncreasedMonsters",
     "tiers": [
       {
         "tier_name": "Deployed",
@@ -1368,6 +1400,7 @@
       "caster",
       "speed"
     ],
+    "family": "HeistContractReinforcementsFast",
     "tiers": [
       {
         "tier_name": "Supplemented",
@@ -1416,6 +1449,7 @@
     "weight": 600,
     "weight_pct": 0.508,
     "tags": [],
+    "family": "HeistContractLockdownInstant",
     "tiers": [
       {
         "tier_name": "Instantaneous",
@@ -1436,6 +1470,7 @@
     "weight": 1000,
     "weight_pct": 1.025,
     "tags": [],
+    "family": "MapBloodlinesModOnMagics",
     "tiers": [
       {
         "tier_name": "of Bloodlines",
@@ -1459,6 +1494,7 @@
       "chaos",
       "ailment"
     ],
+    "family": "MapPoisoning",
     "tiers": [
       {
         "tier_name": "of Venom",
@@ -1482,6 +1518,7 @@
       "damage",
       "elemental"
     ],
+    "family": "MapPlayerElementalEquilibrium",
     "tiers": [
       {
         "tier_name": "of Balance",
@@ -1502,6 +1539,7 @@
     "weight": 1600,
     "weight_pct": 1.64,
     "tags": [],
+    "family": "MapMonstersFrenzyChargeOnHit",
     "tiers": [
       {
         "tier_name": "of Frenzy",
@@ -1529,6 +1567,7 @@
     "weight": 1600,
     "weight_pct": 1.64,
     "tags": [],
+    "family": "MapMonstersEnduranceChargeOnHit",
     "tiers": [
       {
         "tier_name": "of Endurance",
@@ -1556,6 +1595,7 @@
     "weight": 1600,
     "weight_pct": 1.64,
     "tags": [],
+    "family": "MapMonstersPowerChargeOnHit",
     "tiers": [
       {
         "tier_name": "of Power",
@@ -1583,6 +1623,7 @@
     "weight": 4000,
     "weight_pct": 4.1,
     "tags": [],
+    "family": "MapMonsterAreaOfEffect",
     "tiers": [
       {
         "tier_name": "of Giants",
@@ -1634,6 +1675,7 @@
       "damage",
       "critical"
     ],
+    "family": "MapMonsterCriticalStrikesAndDamage",
     "tiers": [
       {
         "tier_name": "of Deadliness",
@@ -1686,6 +1728,7 @@
       "defences",
       "energy_shield"
     ],
+    "family": "MapPlayerReducedRegen",
     "tiers": [
       {
         "tier_name": "of Smothering",
@@ -1794,6 +1837,7 @@
       "elemental",
       "fire"
     ],
+    "family": "MapGroundEffect",
     "tiers": [
       {
         "tier_name": "of Flames",
@@ -1950,6 +1994,7 @@
       "caster",
       "curse"
     ],
+    "family": "MapPlayerElementalWeakness",
     "tiers": [
       {
         "tier_name": "of Elemental Weakness",
@@ -1980,6 +2025,7 @@
       "caster",
       "curse"
     ],
+    "family": "MapPlayerVulnerability",
     "tiers": [
       {
         "tier_name": "of Vulnerability",
@@ -2010,6 +2056,7 @@
       "caster",
       "curse"
     ],
+    "family": "MapPlayerEnfeeblement",
     "tiers": [
       {
         "tier_name": "of Enfeeblement",
@@ -2040,6 +2087,7 @@
       "caster",
       "curse"
     ],
+    "family": "MapPlayerTemporalChains",
     "tiers": [
       {
         "tier_name": "of Temporal Chains",
@@ -2069,6 +2117,7 @@
     "tags": [
       "resistance"
     ],
+    "family": "MapPlayerMaxResists",
     "tiers": [
       {
         "tier_name": "of Exposure",
@@ -2110,6 +2159,7 @@
     "weight": 300,
     "weight_pct": 0.308,
     "tags": [],
+    "family": "MapMonsterLifeLeechImmunity",
     "tiers": [
       {
         "tier_name": "of Congealment",
@@ -2136,6 +2186,7 @@
       "lightning",
       "ailment"
     ],
+    "family": "MapMonsterStatusAilmentImmunity",
     "tiers": [
       {
         "tier_name": "of Insulation",
@@ -2173,6 +2224,7 @@
       "damage",
       "critical"
     ],
+    "family": "MapMonstersBaseSelfCriticalMultiplier",
     "tiers": [
       {
         "tier_name": "of Toughness",
@@ -2221,6 +2273,7 @@
     "weight": 8000,
     "weight_pct": 8.201,
     "tags": [],
+    "family": "MapPlayersGainReducedFlaskCharges",
     "tiers": [
       {
         "tier_name": "of Drought",
@@ -2307,6 +2360,7 @@
       "defences",
       "armour"
     ],
+    "family": "MapPlayersBlockAndArmour",
     "tiers": [
       {
         "tier_name": "of Rust",
@@ -2378,6 +2432,7 @@
     "tags": [
       "attack"
     ],
+    "family": "MapMonsterAccuracyPlayersUnlockyDodge",
     "tiers": [
       {
         "tier_name": "of Miring",
@@ -2447,6 +2502,7 @@
     "weight": 3200,
     "weight_pct": 3.28,
     "tags": [],
+    "family": "MapPlayersAoERadius",
     "tiers": [
       {
         "tier_name": "of Impotence",
@@ -2488,6 +2544,7 @@
     "weight": 650,
     "weight_pct": 0.666,
     "tags": [],
+    "family": "MapMonstersBlindOnHit",
     "tiers": [
       {
         "tier_name": "of Blinding",
@@ -2508,6 +2565,7 @@
     "weight": 600,
     "weight_pct": 0.615,
     "tags": [],
+    "family": "MapMonstersMaimOnHit",
     "tiers": [
       {
         "tier_name": "of Carnage",
@@ -2528,6 +2586,7 @@
     "weight": 600,
     "weight_pct": 0.615,
     "tags": [],
+    "family": "MapMonstersHinderOnHit",
     "tiers": [
       {
         "tier_name": "of Impedance",
@@ -2548,6 +2607,7 @@
     "weight": 800,
     "weight_pct": 0.82,
     "tags": [],
+    "family": "MapMonstersStealChargesOnHit",
     "tiers": [
       {
         "tier_name": "of Enervation",
@@ -2568,6 +2628,7 @@
     "weight": 2600,
     "weight_pct": 2.665,
     "tags": [],
+    "family": "MapPlayerCooldownRecovery",
     "tiers": [
       {
         "tier_name": "of Fatigue",
@@ -2609,6 +2670,7 @@
     "weight": 2600,
     "weight_pct": 2.665,
     "tags": [],
+    "family": "MapPlayerBuffsExpireFaster",
     "tiers": [
       {
         "tier_name": "of Transience",
@@ -2650,6 +2712,7 @@
     "weight": 3200,
     "weight_pct": 3.28,
     "tags": [],
+    "family": "MapPlayerAuraEffect",
     "tiers": [
       {
         "tier_name": "of Doubt",
@@ -2691,6 +2754,7 @@
     "weight": 3200,
     "weight_pct": 3.28,
     "tags": [],
+    "family": "MapPlayerAccuracyRating",
     "tiers": [
       {
         "tier_name": "of Imprecision",
@@ -2732,6 +2796,7 @@
     "weight": 5000,
     "weight_pct": 5.126,
     "tags": [],
+    "family": "HeistContractTotalCost",
     "tiers": [
       {
         "tier_name": "of Expense",
@@ -2780,6 +2845,7 @@
     "weight": 500,
     "weight_pct": 0.513,
     "tags": [],
+    "family": "HeistContractNoGangCut",
     "tiers": [
       {
         "tier_name": "of Selfishness",
@@ -2800,6 +2866,7 @@
     "weight": 500,
     "weight_pct": 0.513,
     "tags": [],
+    "family": "HeistContractNoTravelCost",
     "tiers": [
       {
         "tier_name": "of Proximity",
@@ -2820,6 +2887,7 @@
     "weight": 500,
     "weight_pct": 0.513,
     "tags": [],
+    "family": "HeistContractGainAlertLevelPassive",
     "tiers": [
       {
         "tier_name": "of Paranoia",
@@ -2844,6 +2912,7 @@
       "fire",
       "resistance"
     ],
+    "family": "HeistContractResistAlertLevel",
     "tiers": [
       {
         "tier_name": "of Over-Heating",
