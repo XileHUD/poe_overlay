@@ -19,7 +19,12 @@ export function buildLevelingPopoutHtml(overlayVersion: OverlayVersion = 'poe1')
   <style>
     *{margin:0;padding:0;box-sizing:border-box;}
     :root{--font-size:12px;}
-  html,body{font-family:'Segoe UI',Arial,sans-serif;font-size:var(--font-size);color:#ddd;background:transparent;-webkit-user-select:none;user-select:none;overflow:hidden;width:100%;height:100%;}
+  html,body{font-family:'Segoe UI',Arial,sans-serif;font-size:var(--font-size);color:#ddd;background:transparent;-webkit-user-select:none;user-select:none;overflow:hidden;width:100%;height:100%;
+    /* Force crisp rendering even when window is not focused */
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    text-rendering:optimizeLegibility;
+  }
     
     /* Disable all transitions when applying settings */
     .no-transitions,
@@ -31,12 +36,19 @@ export function buildLevelingPopoutHtml(overlayVersion: OverlayVersion = 'poe1')
     .window-frame{display:flex;flex-direction:column;height:100vh;border:2px solid rgba(254,192,118,0.4);border-radius:12px;box-shadow:0 12px 48px rgba(0,0,0,0.9);background:transparent;overflow:visible;}
     .window-frame.frame-minimal,.window-frame.frame-ultra{border:none!important;border-radius:0!important;box-shadow:none!important;}
     /* Inner content gets zoom applied; remove its own border/shadow */
-    .window{display:flex;flex-direction:column;height:100%;border:none;border-radius:12px;box-shadow:none;}
+    .window{display:flex;flex-direction:column;height:100%;border:none;border-radius:12px;box-shadow:none;
+      /* Force GPU acceleration for crisp rendering */
+      transform:translateZ(0);
+      -webkit-transform:translateZ(0);
+      will-change:transform;
+      backface-visibility:hidden;
+      -webkit-backface-visibility:hidden;
+    }
     
     /* Minimal Mode - slim drag header */
     .window.minimal-mode{pointer-events:none!important;border:none!important;border-radius:0!important;box-shadow:none!important;background:transparent!important;}
     .window.minimal-mode .header{-webkit-app-region:no-drag;pointer-events:none!important;padding:0!important;background:transparent!important;border:none!important;min-height:0!important;height:0!important;overflow:visible!important;}
-    .window.minimal-mode .drag-handle{display:flex!important;flex-direction:column;position:absolute;top:0;left:0;right:0;height:24px;background:rgba(32,36,44,0.85);backdrop-filter:blur(4px);border-bottom:1px solid rgba(74,222,128,0.2);padding:4px 6px;gap:0px;z-index:100;pointer-events:auto!important;-webkit-app-region:drag;}
+    .window.minimal-mode .drag-handle{display:flex!important;flex-direction:column;position:absolute;top:0;left:0;right:0;height:24px;background:rgba(32,36,44,0.95);border-bottom:1px solid rgba(74,222,128,0.2);padding:4px 6px;gap:0px;z-index:100;pointer-events:auto!important;-webkit-app-region:drag;}
     .window.minimal-mode .drag-handle-row{display:flex;align-items:center;gap:4px;width:100%;-webkit-app-region:drag;}
     .window.minimal-mode .drag-handle-icon{font-size:10px;color:rgba(255,255,255,0.3);cursor:move;-webkit-app-region:drag;}
     .window.minimal-mode .drag-handle .minimal-nav{display:flex!important;gap:4px;margin-right:auto;-webkit-app-region:no-drag;}
@@ -72,7 +84,7 @@ export function buildLevelingPopoutHtml(overlayVersion: OverlayVersion = 'poe1')
     /* Ultra Minimal Mode - click-through with no interactivity */
     .window.ultra-minimal-mode{border:none!important;border-radius:0!important;box-shadow:none!important;background:transparent!important;}
     .window.ultra-minimal-mode .header{-webkit-app-region:no-drag;pointer-events:none!important;padding:0!important;background:transparent!important;border:none!important;min-height:0!important;height:0!important;overflow:visible!important;}
-  .window.ultra-minimal-mode .drag-handle{display:flex!important;flex-direction:column;position:absolute;top:0;left:0;right:0;height:auto;background:rgba(32,36,44,0.85);backdrop-filter:blur(4px);border-bottom:1px solid rgba(74,158,255,0.2);padding:4px 6px;gap:2px;z-index:100;pointer-events:auto!important;-webkit-app-region:drag;}
+  .window.ultra-minimal-mode .drag-handle{display:flex!important;flex-direction:column;position:absolute;top:0;left:0;right:0;height:auto;background:rgba(32,36,44,0.95);border-bottom:1px solid rgba(74,158,255,0.2);padding:4px 6px;gap:2px;z-index:100;pointer-events:auto!important;-webkit-app-region:drag;}
     .window.ultra-minimal-mode .ultra-drag-overlay{display:block!important;}
     .window.ultra-minimal-mode #minimalCharacterInfo{pointer-events:none!important;}
     .window.ultra-minimal-mode .drag-handle-row{display:flex;align-items:center;gap:4px;width:100%;position:relative;z-index:10;}

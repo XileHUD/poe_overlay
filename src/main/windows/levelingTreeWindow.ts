@@ -89,6 +89,15 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
       -webkit-app-region: no-drag;
       user-select: none;
       -webkit-user-select: none;
+      /* Force crisp rendering even when window is not focused */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+      will-change: transform;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
     }
 
     #window-container {

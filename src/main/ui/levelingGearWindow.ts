@@ -276,6 +276,15 @@ function buildLevelingGearWindowHtml(itemSets: ItemSet[], overlayVersion: Overla
       border: 1px solid rgba(74, 158, 255, 0.3);
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(74, 158, 255, 0.15);
       border-radius: 8px;
+      /* Force crisp rendering even when window is not focused */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+      will-change: transform;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
     }
     
     .header {
