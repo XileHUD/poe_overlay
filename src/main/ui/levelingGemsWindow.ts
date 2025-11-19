@@ -1685,6 +1685,9 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
   setupGemInfoButtons();
     }
     
+    // Track if global listeners have been set up to avoid duplicates
+    let globalListenersSetUp = false;
+    
     function setupGemInfoButtons() {
       const buttons = document.querySelectorAll('.gem-info-btn');
       console.log('[GemsWindow] Setting up acquisition modals for', buttons.length, 'gems');
@@ -1705,27 +1708,33 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
         });
       });
       
-      // Close modal on overlay click
-      const modalOverlay = document.getElementById('gem-modal-overlay');
-      if (modalOverlay) {
-        modalOverlay.addEventListener('click', (event) => {
-          if (event.target === modalOverlay) {
-            closeGemModal();
+      // Set up global listeners only once
+      if (!globalListenersSetUp) {
+        globalListenersSetUp = true;
+        
+        // Close modal on overlay click
+        const modalOverlay = document.getElementById('gem-modal-overlay');
+        if (modalOverlay) {
+          modalOverlay.addEventListener('click', (event) => {
+            if (event.target === modalOverlay) {
+              closeGemModal();
+            }
+          });
+        }
+        
+        // Handle wiki link clicks (delegated from modal body)
+        // Use event delegation on document to handle dynamically created links
+        document.addEventListener('click', (event) => {
+          const target = event.target;
+          if (target.classList && target.classList.contains('wiki-link')) {
+            event.preventDefault();
+            const wikiUrl = target.getAttribute('data-wiki-url');
+            if (wikiUrl) {
+              require('electron').shell.openExternal(wikiUrl);
+            }
           }
         });
       }
-      
-      // Handle wiki link clicks (delegated from modal body)
-      document.addEventListener('click', (event) => {
-        const target = event.target;
-        if (target.classList && target.classList.contains('wiki-link')) {
-          event.preventDefault();
-          const wikiUrl = target.getAttribute('data-wiki-url');
-          if (wikiUrl) {
-            require('electron').shell.openExternal(wikiUrl);
-          }
-        }
-      });
     }
     
     function changeGemSet() {

@@ -703,7 +703,26 @@ function renderDetail(): void {
   // Extract numeric columns for charting
   const levelProgression = detail.levelProgression || [];
   if (levelProgression.length === 0) {
-    panel.innerHTML = `<div style='color:var(--text-secondary);'>No level progression data available</div>`;
+    // Create a helpful message with a wiki link
+    const gemName = detail.name || 'this gem';
+    const wikiUrl = `https://www.poewiki.net/wiki/${encodeURIComponent(detail.slug || detail.name || '')}`;
+    panel.innerHTML = `
+      <div style='padding:20px;text-align:center;color:var(--text-secondary);'>
+        <div style='margin-bottom:12px;font-size:14px;'>
+          <strong>No level progression data available</strong>
+        </div>
+        <div style='margin-bottom:16px;font-size:12px;opacity:0.8;'>
+          The level progression data for <strong>${gemName}</strong> has not been collected yet.
+        </div>
+        <a href='${wikiUrl}' 
+           target='_blank' 
+           style='color:#4A9EFF;text-decoration:none;font-size:12px;display:inline-flex;align-items:center;gap:6px;'
+           onclick='event.preventDefault();require("electron").shell.openExternal("${wikiUrl}");'>
+          <span style='font-size:14px;'>🌐</span>
+          <span>View ${gemName} on PoE Wiki</span>
+        </a>
+      </div>
+    `;
     return;
   }
 
