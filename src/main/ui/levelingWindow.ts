@@ -542,6 +542,7 @@ export class LevelingWindow {
     
     // Check if zone exists in any act with fuzzy matching
     for (const act of this.zoneRegistry.zonesByAct) {
+      // PoE1 format: act.locations with zoneName
       if (act.locations) {
         for (const location of act.locations) {
           // Check main zone name
@@ -554,13 +555,21 @@ export class LevelingWindow {
           }
         }
       }
+      // PoE2 format: act.zones with name
+      if (act.zones) {
+        for (const zone of act.zones) {
+          if (normalizeZone(zone.name) === normalizedInput) {
+            return true;
+          }
+        }
+      }
     }
     
     return false;
   }
 
   /**
-   * Get zone name from area code (like "1_1_11_1").
+   * Get zone name from area code (like "1_1_11_1" for PoE1 or "g1_1" for PoE2).
    * This is the CORRECT way to detect zones - area codes are unique and reliable.
    * Based on how Exile-UI does zone detection.
    */
@@ -571,11 +580,21 @@ export class LevelingWindow {
 
     // Search through all acts to find the zone with this area code
     for (const act of this.zoneRegistry.zonesByAct) {
+      // PoE1 format: act.locations with zoneKey
       if (act.locations) {
         for (const location of act.locations) {
           // Check if this location has the matching area code (zoneKey)
           if (location.zoneKey === areaCode) {
             return location.zoneName;
+          }
+        }
+      }
+      // PoE2 format: act.zones with id
+      if (act.zones) {
+        for (const zone of act.zones) {
+          // Case-insensitive comparison for PoE2 (client.txt uses uppercase, registry uses lowercase)
+          if (zone.id.toLowerCase() === areaCode.toLowerCase()) {
+            return zone.name;
           }
         }
       }
@@ -595,10 +614,20 @@ export class LevelingWindow {
 
     // Search through all acts to find the zone with this area code
     for (const act of this.zoneRegistry.zonesByAct) {
+      // PoE1 format: act.locations with zoneKey, actId
       if (act.locations) {
         for (const location of act.locations) {
           if (location.zoneKey === areaCode) {
             return act.actId; // Return the act number
+          }
+        }
+      }
+      // PoE2 format: act.zones with id, actNumber
+      if (act.zones) {
+        for (const zone of act.zones) {
+          // Case-insensitive comparison for PoE2 (client.txt uses uppercase, registry uses lowercase)
+          if (zone.id.toLowerCase() === areaCode.toLowerCase()) {
+            return act.actNumber; // Return the act number
           }
         }
       }
@@ -1444,6 +1473,18 @@ export class LevelingWindow {
 
       if (!result.canceled && result.filePaths.length > 0) {
         const selectedPath = result.filePaths[0];
+        
+        // Validate that the selected path matches the current overlay version
+        const selectedDir = path.dirname(path.dirname(selectedPath)); // Go up from logs/Client.txt to game root
+        if (!this.isPathValidForVersion(selectedDir)) {
+          console.warn(`[LevelingWindow] Rejected manually selected path (wrong version):`, selectedPath);
+          return { 
+            success: false, 
+            path: null,
+            error: `The selected Client.txt appears to be from ${this.overlayVersion === 'poe1' ? 'PoE2' : 'PoE1'}. Please select the correct Client.txt file for ${this.overlayVersion.toUpperCase()}.`
+          };
+        }
+        
         this.settingsService.set(this.getClientTxtPathKey(), selectedPath);
         this.settingsService.set(this.getClientTxtAutoDetectedKey(), false);
         this.settingsService.set(this.getClientTxtLastCheckedKey(), Date.now());

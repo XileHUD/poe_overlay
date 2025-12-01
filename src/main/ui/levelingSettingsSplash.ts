@@ -1430,6 +1430,8 @@ function buildLevelingSettingsSplashHtml(
       ipcRenderer.invoke('select-client-txt-path').then(result => {
         if (result.success) {
           document.getElementById('clientPathDisplay').textContent = result.path;
+        } else if (result.error) {
+          alert(result.error);
         }
       });
     }

@@ -2850,6 +2850,12 @@ ipcRenderer.on('zone-entered', (event, data) => {
   
   console.log('[Auto-Detect] Zone entered:', zoneId + ' (' + zoneName + ')', 'Act', actNumber, '| Mode:', state.autoDetectMode);
   
+  // Helper function for case-insensitive zone ID comparison (PoE2 uses uppercase in client.txt, lowercase in registry)
+  const zonesMatch = (id1, id2) => {
+    if (!id1 || !id2) return false;
+    return id1.toLowerCase() === id2.toLowerCase();
+  };
+  
   const act = state.levelingData.acts[state.currentActIndex];
   if (!act) return;
   const allSteps = act.steps;
@@ -2862,7 +2868,7 @@ ipcRenderer.on('zone-entered', (event, data) => {
     // Check if we should auto-advance to next act
     if (state.currentActIndex + 1 < state.levelingData.acts.length) {
       const nextAct = state.levelingData.acts[state.currentActIndex + 1];
-      if (nextAct.steps.length > 0 && nextAct.steps[0].zoneId === zoneId) {
+      if (nextAct.steps.length > 0 && zonesMatch(nextAct.steps[0].zoneId, zoneId)) {
         console.log('[Auto-Detect] Auto-switching to Act ' + (state.currentActIndex + 2));
         state.currentActIndex++;
         render();
@@ -2888,7 +2894,7 @@ ipcRenderer.on('zone-entered', (event, data) => {
     }
     
     // Check SOURCE: Did we come from the current uncompleted step's zone?
-    if (state.lastDetectedZoneId !== firstUncompletedZoneId) {
+    if (!zonesMatch(state.lastDetectedZoneId, firstUncompletedZoneId)) {
       console.log('[Auto-Detect] Source mismatch: came from "' + state.lastDetectedZoneId + '" but expected "' + firstUncompletedZoneId + '". Ignoring.');
       state.lastDetectedZoneId = zoneId;
       return;
@@ -2901,7 +2907,7 @@ ipcRenderer.on('zone-entered', (event, data) => {
       return;
     }
     
-    if (zoneId !== firstUncompletedStep.nextZoneId && !(firstUncompletedStep.alternativeNextZoneId && zoneId === firstUncompletedStep.alternativeNextZoneId)) {
+    if (!zonesMatch(zoneId, firstUncompletedStep.nextZoneId) && !(firstUncompletedStep.alternativeNextZoneId && zonesMatch(zoneId, firstUncompletedStep.alternativeNextZoneId))) {
       console.log('[Auto-Detect] Destination mismatch: entered "' + zoneId + '" but expected "' + firstUncompletedStep.nextZoneId + '". Ignoring.');
       state.lastDetectedZoneId = zoneId;
       return;
@@ -2916,7 +2922,7 @@ ipcRenderer.on('zone-entered', (event, data) => {
     
     for (let i = firstUncompletedIndex; i < allSteps.length; i++) {
       const step = allSteps[i];
-      if (step.zoneId !== currentZoneId) break; // Stop when we reach a different zone
+      if (!zonesMatch(step.zoneId, currentZoneId)) break; // Stop when we reach a different zone
       
       if (!state.completedSteps.has(step.id)) {
         state.completedSteps.add(step.id);
@@ -2950,7 +2956,7 @@ ipcRenderer.on('zone-entered', (event, data) => {
     console.log('[Auto-Detect] TRUST MODE: Checking if zone changed');
     
     // Just check if entered zone is DIFFERENT from current step's zone
-    if (zoneId !== firstUncompletedZoneId) {
+    if (!zonesMatch(zoneId, firstUncompletedZoneId)) {
       console.log('[Auto-Detect] ✅ TRUST: Zone changed from "' + firstUncompletedZoneId + '" to "' + zoneId + '"');
       
       // Complete ALL tasks in the current zone (the whole zone card)
@@ -2959,7 +2965,7 @@ ipcRenderer.on('zone-entered', (event, data) => {
       
       for (let i = firstUncompletedIndex; i < allSteps.length; i++) {
         const step = allSteps[i];
-        if (step.zoneId !== currentZoneId) break; // Stop when we reach a different zone
+        if (!zonesMatch(step.zoneId, currentZoneId)) break; // Stop when we reach a different zone
         
         if (!state.completedSteps.has(step.id)) {
           state.completedSteps.add(step.id);
@@ -2975,7 +2981,7 @@ ipcRenderer.on('zone-entered', (event, data) => {
       const allCompleted = allSteps.every(s => state.completedSteps.has(s.id));
       if (allCompleted && state.currentActIndex + 1 < state.levelingData.acts.length) {
         const nextAct = state.levelingData.acts[state.currentActIndex + 1];
-        if (nextAct.steps.length > 0 && nextAct.steps[0].zoneId === zoneId) {
+        if (nextAct.steps.length > 0 && zonesMatch(nextAct.steps[0].zoneId, zoneId)) {
           console.log('[Auto-Detect] ✅ Act ' + (state.currentActIndex + 1) + ' complete! Auto-switching to Act ' + (state.currentActIndex + 2));
           state.currentActIndex++;
         }
@@ -2999,7 +3005,7 @@ ipcRenderer.on('zone-entered', (event, data) => {
     return;
   }
   
-  if (zoneId === firstUncompletedStep.nextZoneId || (firstUncompletedStep.alternativeNextZoneId && zoneId === firstUncompletedStep.alternativeNextZoneId)) {
+  if (zonesMatch(zoneId, firstUncompletedStep.nextZoneId) || (firstUncompletedStep.alternativeNextZoneId && zonesMatch(zoneId, firstUncompletedStep.alternativeNextZoneId))) {
     console.log('[Auto-Detect] ✅ Entered zone "' + zoneId + '" matches expected next zone!');
     
     // Complete ALL tasks in the current zone (the whole zone card)
@@ -3008,7 +3014,7 @@ ipcRenderer.on('zone-entered', (event, data) => {
     
     for (let i = firstUncompletedIndex; i < allSteps.length; i++) {
       const step = allSteps[i];
-      if (step.zoneId !== currentZoneId) break; // Stop when we reach a different zone
+      if (!zonesMatch(step.zoneId, currentZoneId)) break; // Stop when we reach a different zone
       
       if (!state.completedSteps.has(step.id)) {
         state.completedSteps.add(step.id);
