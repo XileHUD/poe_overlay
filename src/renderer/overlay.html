@@ -3560,6 +3560,15 @@
                                 console.log('Category option not found in dropdown for:', slug);
                             }
                         }
+                        // Set max ilvl filter to item's ilvl if available
+                        if (item.itemLevel && typeof item.itemLevel === 'number' && item.itemLevel > 0) {
+                            const ilvlMaxEl = document.getElementById('ilvl-max');
+                            if (ilvlMaxEl) {
+                                ilvlMaxEl.value = String(item.itemLevel);
+                                console.log('Set ilvl-max filter to copied item ilvl:', item.itemLevel);
+                            }
+                        }
+                        
                         // Render directly with provided modifiers (no need to reload)
                         window.originalData = data;
                         try { window.OverlayModifiers?.mechanicsPostProcess?.(data); } catch {}
