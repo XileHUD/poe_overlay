@@ -1526,6 +1526,31 @@ body:not(.compact-tiers) .tier-badges-compact {
 .history-detail-card .card-header { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px; }
 .history-detail-card .card-title { font-weight:700; font-size:14px; }
 .history-detail-card .card-sub { color:var(--text-secondary); }
+
+/* Delete button styling */
+.history-delete-btn {
+    background: transparent;
+    border: none;
+    padding: 2px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(150, 150, 150, 0.4);
+    opacity: 0.3;
+}
+.history-delete-btn:hover {
+    opacity: 0.7;
+    color: rgba(180, 180, 180, 0.8);
+}
+.history-delete-btn:active {
+    opacity: 1;
+}
+.history-delete-btn svg {
+    display: block;
+}
+
 .history-detail-card .grid { display:grid; grid-template-columns: 128px 1fr; gap:12px; align-items:start; }
 .history-item-icon { width:128px; height:auto; border:1px solid var(--border-color); border-radius:6px; background:#111; object-fit:contain; display:block; margin:0 auto; }
     body.view-history #historyActiveFilters { padding:6px 0 8px 0; }

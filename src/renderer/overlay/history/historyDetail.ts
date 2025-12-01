@@ -8,9 +8,14 @@
  * - Image scaling and fallbacks
  */
 
-import { historyState } from './historyData';
+import { historyState, deleteHistoryEntry } from './historyData';
 import { historyVisible } from './historyView';
 import { normalizeCurrency, escapeHtml } from '../utils';
+import { applyFilters, applySort, renderHistoryActiveFilters } from './historyFilters';
+import { recomputeTotalsFromEntries, renderHistoryTotals } from './historyTotals';
+import { renderHistoryList } from './historyList';
+import { recomputeChartSeriesFromStore, drawHistoryChart, updateHistoryChartFromTotals } from './historyChart';
+import { sendHistoryToPopout } from './historyPopout';
 
 /**
  * Collapse bracketed alternates in mod text.
@@ -409,8 +414,14 @@ export function renderHistoryDetail(idx: number): void {
       <div class="history-detail-card ${rarityClass}">
         <div class="card-header">
           <div class="card-title">${escapeHtml(name)}${qualityValue ? ` <span class=\"quality-badge\" title=\"Quality\">${escapeHtml(qualityValue.replace(/^\+/, ''))}</span>` : ''}</div>
-          <div>
+          <div style="display:flex; align-items:center; gap:8px;">
             <span class="price-badge large ${curClass}" title="Sold price"><span class="amount">${amt}x</span> ${curDisplay}</span>
+            <button class="history-delete-btn" data-idx="${idx}" title="Delete this entry" aria-label="Delete entry">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
           </div>
         </div>
         <div class="grid">
@@ -520,4 +531,71 @@ export function renderHistoryDetail(idx: number): void {
       });
     }
   });
+  
+  // ========== Delete Button Handler ==========
+  const deleteBtn = det.querySelector('.history-delete-btn');
+  if (deleteBtn) {
+    deleteBtn.addEventListener('click', async () => {
+      // Get the idx from the button's data attribute
+      const btnIdx = parseInt((deleteBtn as HTMLElement).dataset.idx || '0', 10);
+      
+      // Show confirmation dialog
+      const item = historyState.items?.[btnIdx];
+      const itemName = item?.item?.name || item?.item?.typeLine || item?.item?.baseType || "this item";
+      
+      // Use a simple confirm dialog (can be enhanced with custom modal later)
+      const confirmed = window.confirm(`Are you sure you want to delete "${itemName}" from your merchant history?\n\nThis action cannot be undone.`);
+      
+      if (!confirmed) return;
+      
+      // Delete the entry
+      const success = await deleteHistoryEntry(btnIdx);
+      
+      if (success) {
+        // Recompute totals
+        recomputeTotalsFromEntries(historyState.store);
+        
+        // Update filtered/sorted items
+        const all = (historyState.store.entries || []).slice().reverse();
+        historyState.items = applySort(applyFilters(all, historyState.filters), historyState.sort);
+        
+        // Adjust selected index if needed
+        if (historyState.selectedIndex >= historyState.items.length) {
+          historyState.selectedIndex = Math.max(0, historyState.items.length - 1);
+        }
+        
+        // Re-render everything
+        renderHistoryList((idx: number) => renderHistoryDetail(idx));
+        renderHistoryDetail(historyState.selectedIndex);
+        renderHistoryTotals(historyState.store, () => historyVisible(), (totals: any) => {
+          try { 
+            updateHistoryChartFromTotals(totals); 
+          } catch {}
+        }, { entries: historyState.items });
+        renderHistoryActiveFilters(historyState, () => historyVisible(), () => {
+          renderHistoryList((idx: number) => renderHistoryDetail(idx));
+          renderHistoryTotals(historyState.store, () => historyVisible(), (totals: any) => {
+            try { 
+              updateHistoryChartFromTotals(totals); 
+            } catch {}
+          }, { entries: historyState.items });
+        });
+        
+        // Update chart
+        try {
+          recomputeChartSeriesFromStore();
+          drawHistoryChart();
+        } catch {}
+        
+        // Send update to popout
+        try {
+          sendHistoryToPopout(historyState);
+        } catch {}
+        
+        console.log('[HistoryDetail] Entry deleted successfully');
+      } else {
+        alert('Failed to delete entry. Please try again.');
+      }
+    });
+  }
 }

@@ -109,6 +109,46 @@ export function keyForRow(r: HistoryEntryRaw): string {
 }
 
 /**
+ * Delete a single entry from history by index
+ * Updates totals, saves to disk, and returns true if successful
+ */
+export async function deleteHistoryEntry(idx: number): Promise<boolean> {
+  try {
+    const entry = historyState.items[idx];
+    if (!entry) return false;
+    
+    // Find the entry in the store (store is in chronological order, items is filtered/sorted)
+    const entryKey = keyForRow(entry);
+    const storeIdx = historyState.store.entries.findIndex(e => keyForRow(e) === entryKey);
+    
+    if (storeIdx === -1) {
+      console.error('[HistoryData] Could not find entry in store to delete');
+      return false;
+    }
+    
+    // Remove from totals
+    const price = entry.price || (entry.amount ? { amount: entry.amount, currency: entry.currency } : undefined);
+    if (price && price.currency && price.amount) {
+      const cur = price.currency.toLowerCase();
+      historyState.store.totals[cur] = Math.max(0, (historyState.store.totals[cur] || 0) - price.amount);
+    }
+    
+    // Remove from store
+    historyState.store.entries.splice(storeIdx, 1);
+    historyState.store.lastSync = Date.now();
+    
+    // Save to disk
+    await (window as any).electronAPI?.historySave?.(historyState.store, historyState.league);
+    
+    console.log(`[HistoryData] Deleted entry at index ${idx} (store index ${storeIdx})`);
+    return true;
+  } catch (e) {
+    console.error('[HistoryData] Error deleting entry:', e);
+    return false;
+  }
+}
+
+/**
  * Initialize history from local storage
  */
 export async function initHistoryFromLocal(
