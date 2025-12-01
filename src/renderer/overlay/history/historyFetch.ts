@@ -185,11 +185,18 @@ export async function refreshHistory(
       // Check if we got a 401 Unauthorized response (expired session)
       const is401 = (res as any)?.status === 401;
       
-      // Update session UI (this will set button to "Login" if session is invalid)
-      const loggedIn = await updateSessionUI();
-      
       // Handle 401 specifically - cookie expired
       if (is401) {
+        // Force button to Login state immediately since we know session is expired
+        const loginBtn = document.getElementById("poeLoginBtn") as HTMLButtonElement | null;
+        if (loginBtn) {
+          loginBtn.disabled = false;
+          loginBtn.textContent = 'Login';
+          loginBtn.title = 'Login to pathofexile.com';
+          loginBtn.classList.remove('logout-state');
+          loginBtn.classList.add('login-state');
+        }
+        
         // Show clear message about expired session
         if (historyState.store.entries && historyState.store.entries.length > 0) {
           // Re-render from cache
@@ -224,6 +231,9 @@ export async function refreshHistory(
         }
       } else {
         // Other errors (not 401)
+        // Update session UI for non-401 errors
+        const loggedIn = await updateSessionUI();
+        
         // If not logged in and no cached data, show login prompt
         if (!loggedIn && (!historyState.items || historyState.items.length === 0)) {
           (histList as HTMLElement).innerHTML = '<div class="no-mods" style="padding:8px;">Please log in to pathofexile.com to view history.</div>';
