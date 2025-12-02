@@ -278,7 +278,8 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
     private poeSession = new PoeSessionHelper(
         () => this.poeAccountName,
         (n) => { this.poeAccountName = n; },
-        () => this.overlayVersion
+        () => this.overlayVersion,
+        () => this.overlayWindow
     );
     private shortcutAwaitingCapture = false; // tracks if current Ctrl+Q press is still waiting for an item
     private pendingCategory: string | null = null; // category queued before overlay loads
@@ -3467,23 +3468,34 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                 return { loggedIn: true, cookiePresent: hasCookie, accountName: this.poeAccountName };
             }
             
-            // For stale/new sessions, verify by checking if we can access the trade page
+            // For stale/new sessions, verify by checking if we can access the trade page.
+            // We intentionally probe the /trade frontend (instead of the history API)
+            // so this check never consumes merchant-history rate limit budget.
             try {
                 const cookies = await session.defaultSession.cookies.get({ domain: 'pathofexile.com' });
                 const cookieStr = cookies.map((c: any) => `${c.name}=${c.value}`).join('; ');
+                const probePaths = ['/trade', '/trade2'];
+                for (const path of probePaths) {
+                    const response = await fetch(`https://www.pathofexile.com${path}`, {
+                        method: 'GET',
+                        headers: {
+                            ...(cookieStr ? { 'Cookie': cookieStr } : {}),
+                            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+                        },
+                        redirect: 'manual' // Don't follow redirects
+                    });
                 
-                const response = await fetch('https://www.pathofexile.com/trade2', {
-                    method: 'GET',
-                    headers: {
-                        'Cookie': cookieStr,
-                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-                    },
-                    redirect: 'manual' // Don't follow redirects
-                });
-                
-                // If we get 200, we're logged in. If 302/redirect, we need to login
-                const loggedIn = response.status === 200;
-                return { loggedIn, cookiePresent: hasCookie, accountName: this.poeAccountName };
+                    // If we get 200, we're logged in. If 302/redirect, we need to login
+                    if (response.status === 200) {
+                        return { loggedIn: true, cookiePresent: hasCookie, accountName: this.poeAccountName };
+                    }
+
+                    if (response.status === 302 || response.status === 401) {
+                        break; // Definitive redirect to login – no need to probe other paths
+                    }
+                }
+
+                return { loggedIn: false, cookiePresent: hasCookie, accountName: this.poeAccountName };
             } catch (e) {
                 console.warn('[Session] Failed to verify login status:', e);
                 // If verification fails but we have a cookie, optimistically assume logged in

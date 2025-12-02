@@ -8,6 +8,40 @@ export interface SessionState {
   accountName?: string | null;
 }
 
+type LoggedOutReason = 'expired' | 'missing';
+
+function showLoggedOutMessaging(reason: LoggedOutReason): void {
+  try {
+    const infoBadge = document.getElementById('historyInfoBadge') as HTMLElement | null;
+    const histList = document.getElementById('historyList') as HTMLElement | null;
+    const historyState = (window as any).OverlayHistory?.historyState;
+    const hasEntries = Array.isArray(historyState?.store?.entries) && historyState.store.entries.length > 0;
+
+    const infoMessage = reason === 'expired'
+      ? 'Session expired • Please login again'
+      : 'Not logged in';
+    const listMessage = reason === 'expired'
+      ? 'Your session has expired. Please log in again to pathofexile.com.'
+      : 'Please log in to pathofexile.com to view history.';
+
+    if (!hasEntries && histList) {
+      histList.innerHTML = `<div class="no-mods" style="padding:8px;">${listMessage}</div>`;
+    }
+
+    if (infoBadge) {
+      infoBadge.textContent = infoMessage;
+      infoBadge.style.display = '';
+      window.setTimeout(() => {
+        if (infoBadge.textContent === infoMessage) {
+          infoBadge.style.display = 'none';
+        }
+      }, 6000);
+    }
+  } catch (err) {
+    console.warn('[Session] Failed to show logged-out messaging', err);
+  }
+}
+
 /**
  * Update session UI based on current login state
  */
@@ -33,8 +67,10 @@ export async function updateSessionUI(): Promise<boolean> {
     loginBtn.title = 'Login to pathofexile.com';
     loginBtn.classList.remove('logout-state');
     loginBtn.classList.add('login-state');
+    showLoggedOutMessaging(session?.cookiePresent ? 'expired' : 'missing');
     return false;
   } catch {
+    showLoggedOutMessaging('expired');
     return false;
   }
 }

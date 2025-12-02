@@ -17,7 +17,8 @@ export class PoeSessionHelper {
   constructor(
     private getAccountName: () => string | null,
     private setAccountName: (n: string | null) => void,
-    private getOverlayVersion: () => OverlayVersion
+    private getOverlayVersion: () => OverlayVersion,
+    private getOverlayWindow?: () => BrowserWindow | null
   ) {}
 
   async hasSession(): Promise<boolean> {
@@ -160,9 +161,53 @@ export class PoeSessionHelper {
 
   openLoginWindow(): Promise<{ loggedIn: boolean; accountName?: string | null }>{
     return new Promise(async (resolve) => {
+      // Calculate position to the right of overlay (or left if not enough space)
+      let x = 100, y = 100;
+      try {
+        const overlayWin = this.getOverlayWindow?.();
+        if (overlayWin && !overlayWin.isDestroyed()) {
+          const { screen } = require('electron');
+          const overlayBounds = overlayWin.getBounds();
+          const display = screen.getDisplayNearestPoint({ x: overlayBounds.x, y: overlayBounds.y });
+          const workArea = display.workArea;
+
+          // Try to position to the right of overlay
+          const loginWidth = 900;
+          const loginHeight = 900;
+          const rightX = overlayBounds.x + overlayBounds.width + 20;
+          
+          if (rightX + loginWidth <= workArea.x + workArea.width) {
+            // Enough space on the right
+            x = rightX;
+            y = overlayBounds.y;
+          } else {
+            // Not enough space on right, try left
+            const leftX = overlayBounds.x - loginWidth - 20;
+            if (leftX >= workArea.x) {
+              x = leftX;
+              y = overlayBounds.y;
+            } else {
+              // No space on either side, center it
+              x = Math.max(workArea.x, overlayBounds.x + (overlayBounds.width - loginWidth) / 2);
+              y = Math.max(workArea.y, overlayBounds.y + 50);
+            }
+          }
+
+          // Clamp to screen bounds
+          x = Math.max(workArea.x, Math.min(x, workArea.x + workArea.width - loginWidth));
+          y = Math.max(workArea.y, Math.min(y, workArea.y + workArea.height - loginHeight));
+        }
+      } catch (e) {
+        console.warn('[PoeSession] Failed to calculate login window position:', e);
+      }
+
       // Always open the window so user can login/logout/manage session
       const loginWin = new BrowserWindow({
-        width: 900, height: 900, title: 'Log in to pathofexile.com',
+        width: 900, 
+        height: 900, 
+        x, 
+        y,
+        title: 'Log in to pathofexile.com',
         webPreferences: { nodeIntegration: false, contextIsolation: true }
       });
       
