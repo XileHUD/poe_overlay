@@ -291,18 +291,21 @@ export class LevelingWindow {
       },
     });
 
-    // Enable F12 to open DevTools
-    this.window.webContents.on('before-input-event', (event, input) => {
-        if (input.key === 'F12' && input.type === 'keyDown') {
-          if (this.window && !this.window.isDestroyed()) {
-            if (this.window.webContents.isDevToolsOpened()) {
-              this.window.webContents.closeDevTools();
-            } else {
-              this.window.webContents.openDevTools({ mode: 'detach' });
-            }
+    // Enable Ctrl+Shift+I to toggle DevTools (global shortcut since window doesn't have focus)
+    try {
+      globalShortcut.register('CommandOrControl+Shift+I', () => {
+        if (this.window && !this.window.isDestroyed()) {
+          if (this.window.webContents.isDevToolsOpened()) {
+            this.window.webContents.closeDevTools();
+          } else {
+            this.window.webContents.openDevTools({ mode: 'detach' });
           }
         }
       });
+      console.log('[LevelingWindow] Registered Ctrl+Shift+I for DevTools');
+    } catch (e) {
+      console.warn('[LevelingWindow] Failed to register DevTools hotkey:', e);
+    }
 
   this.applyIgnoreMouseEvents(false, 'createWindow-init');
 
@@ -351,6 +354,13 @@ export class LevelingWindow {
         unregisterOverlayWindow('leveling');
         this.stopClientTxtWatcher();
         this.stopUltraHoverTracker();
+        
+        // Unregister global shortcuts
+        try {
+          globalShortcut.unregister('CommandOrControl+Shift+I');
+        } catch (e) {
+          console.warn('[LevelingWindow] Failed to unregister DevTools hotkey:', e);
+        }
         
         // Remove IPC listeners
         if (this.setIgnoreMouseEventsListener) {

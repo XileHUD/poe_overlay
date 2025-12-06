@@ -2841,7 +2841,9 @@ ipcRenderer.on('leveling-layout-mode', (event, mode) => {
 });
 
 // Listen for zone entry events from Client.txt watcher
+console.log('[Auto-Detect] Registering zone-entered event listener');
 ipcRenderer.on('zone-entered', (event, data) => {
+  console.log('[Auto-Detect] Event received. levelingData?', !!state.levelingData, 'autoDetectZones?', state.autoDetectZones);
   if (!state.levelingData || !state.autoDetectZones) return;
   
   const zoneId = data.zoneId;
@@ -2893,22 +2895,32 @@ ipcRenderer.on('zone-entered', (event, data) => {
       return;
     }
     
-    // Check SOURCE: Did we come from the current uncompleted step's zone?
-    if (!zonesMatch(state.lastDetectedZoneId, firstUncompletedZoneId)) {
-      console.log('[Auto-Detect] Source mismatch: came from "' + state.lastDetectedZoneId + '" but expected "' + firstUncompletedZoneId + '". Ignoring.');
+    // Find the first uncompleted step that HAS a nextZoneId (navigation steps only)
+    let targetStep = null;
+    for (let i = firstUncompletedIndex; i < allSteps.length; i++) {
+      const step = allSteps[i];
+      if (!state.completedSteps.has(step.id) && step.nextZoneId) {
+        targetStep = step;
+        break;
+      }
+    }
+    
+    if (!targetStep) {
+      console.log('[Auto-Detect] No uncompleted navigation steps with nextZoneId found. Ignoring.');
+      state.lastDetectedZoneId = zoneId;
+      return;
+    }
+    
+    // Check SOURCE: Did we come from the target step's zone?
+    if (!zonesMatch(state.lastDetectedZoneId, targetStep.zoneId)) {
+      console.log('[Auto-Detect] Source mismatch: came from "' + state.lastDetectedZoneId + '" but expected "' + targetStep.zoneId + '". Ignoring.');
       state.lastDetectedZoneId = zoneId;
       return;
     }
     
     // Check DESTINATION: Does entered zone match the nextZoneId?
-    if (!firstUncompletedStep.nextZoneId) {
-      console.log('[Auto-Detect] No nextZoneId on current step. Ignoring.');
-      state.lastDetectedZoneId = zoneId;
-      return;
-    }
-    
-    if (!zonesMatch(zoneId, firstUncompletedStep.nextZoneId) && !(firstUncompletedStep.alternativeNextZoneId && zonesMatch(zoneId, firstUncompletedStep.alternativeNextZoneId))) {
-      console.log('[Auto-Detect] Destination mismatch: entered "' + zoneId + '" but expected "' + firstUncompletedStep.nextZoneId + '". Ignoring.');
+    if (!zonesMatch(zoneId, targetStep.nextZoneId) && !(targetStep.alternativeNextZoneId && zonesMatch(zoneId, targetStep.alternativeNextZoneId))) {
+      console.log('[Auto-Detect] Destination mismatch: entered "' + zoneId + '" but expected "' + targetStep.nextZoneId + '". Ignoring.');
       state.lastDetectedZoneId = zoneId;
       return;
     }
@@ -2917,7 +2929,7 @@ ipcRenderer.on('zone-entered', (event, data) => {
     console.log('[Auto-Detect] ✅ STRICT: Source "' + state.lastDetectedZoneId + '" AND destination "' + zoneId + '" validated!');
     
     // Complete ALL tasks in the current zone (the whole zone card)
-    const currentZoneId = firstUncompletedStep.zoneId;
+    const currentZoneId = targetStep.zoneId;
     let completedCount = 0;
     
     for (let i = firstUncompletedIndex; i < allSteps.length; i++) {
@@ -2931,7 +2943,7 @@ ipcRenderer.on('zone-entered', (event, data) => {
       }
     }
     
-    console.log('[Auto-Detect] STRICT: Completed ' + completedCount + ' step(s) in zone "' + firstUncompletedStep.zone + '"');
+    console.log('[Auto-Detect] STRICT: Completed ' + completedCount + ' step(s) in zone "' + targetStep.zone + '"');
     state.lastDetectedZoneId = zoneId;
     ipcRenderer.invoke('save-leveling-progress', Array.from(state.completedSteps));
     
@@ -2999,13 +3011,33 @@ ipcRenderer.on('zone-entered', (event, data) => {
   // ============================================================================
   console.log('[Auto-Detect] HYBRID MODE: Checking if entered zone matches next expected zone');
   
-  // Simple logic: If entered zoneId matches the first uncompleted step's nextZoneId, complete that zone
-  if (!firstUncompletedStep.nextZoneId) {
-    console.log('[Auto-Detect] First uncompleted step has no nextZoneId (last step in act?). Ignoring.');
+  // Find the first uncompleted step that HAS a nextZoneId (navigation steps only - ignore NPC quests, waypoints, etc.)
+  let targetStep = null;
+  let targetStepIndex = -1;
+  
+  for (let i = firstUncompletedIndex; i < allSteps.length; i++) {
+    const step = allSteps[i];
+    if (!state.completedSteps.has(step.id) && step.nextZoneId) {
+      targetStep = step;
+      targetStepIndex = i;
+      break;
+    }
+  }
+  
+  if (!targetStep) {
+    console.log('[Auto-Detect] No uncompleted navigation steps with nextZoneId found. Ignoring.');
     return;
   }
   
-  if (zonesMatch(zoneId, firstUncompletedStep.nextZoneId) || (firstUncompletedStep.alternativeNextZoneId && zonesMatch(zoneId, firstUncompletedStep.alternativeNextZoneId))) {
+  console.log('[Auto-Detect] Target step:', targetStep.id, '| nextZoneId:', targetStep.nextZoneId);
+  
+  // If still no nextZoneId found, it's likely the last step in the act
+  if (!targetStep.nextZoneId) {
+    console.log('[Auto-Detect] No navigation steps with nextZoneId found (last step in act?). Ignoring.');
+    return;
+  }
+  
+  if (zonesMatch(zoneId, targetStep.nextZoneId) || (targetStep.alternativeNextZoneId && zonesMatch(zoneId, targetStep.alternativeNextZoneId))) {
     console.log('[Auto-Detect] ✅ Entered zone "' + zoneId + '" matches expected next zone!');
     
     // Complete ALL tasks in the current zone (the whole zone card)
