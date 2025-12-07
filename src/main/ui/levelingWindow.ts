@@ -1617,7 +1617,8 @@ export class LevelingWindow {
     const normalizedPath = dirPath.toLowerCase().replace(/\\/g, '/');
     
     if (this.overlayVersion === 'poe1') {
-      // PoE1 should NOT contain "path of exile 2" or similar patterns
+      // PoE1 should NOT contain POE2 markers
+      // This prevents selecting PoE2 paths when in PoE1 mode
       if (normalizedPath.includes('path of exile 2') || 
           normalizedPath.includes('path of exile ii') ||
           normalizedPath.includes('pathofexile2') ||
@@ -1625,17 +1626,22 @@ export class LevelingWindow {
           normalizedPath.includes('poe2')) {
         return false;
       }
-      // Valid if it contains "path of exile" (but not the above)
-      return normalizedPath.includes('path of exile');
+      // Allow any path that doesn't have PoE2 markers
+      // This supports custom installation locations like D:/Games/PoE
+      return true;
     } else {
-      // PoE2 MUST contain "2" or "ii" in the path
-      if (normalizedPath.includes('path of exile 2') || 
-          normalizedPath.includes('path of exile ii') ||
-          normalizedPath.includes('pathofexile2') ||
-          normalizedPath.includes('pathofexileii')) {
-        return true;
+      // PoE2 should NOT contain POE1-only markers
+      // Reject paths that explicitly look like PoE1 (but allow paths with just "poe" or numbers)
+      if ((normalizedPath.includes('path of exile') && 
+           !normalizedPath.includes('path of exile 2') && 
+           !normalizedPath.includes('path of exile ii')) ||
+          (normalizedPath.includes('pathofexile') && 
+           !normalizedPath.includes('pathofexile2') && 
+           !normalizedPath.includes('pathofexileii'))) {
+        return false;
       }
-      return false;
+      // Allow any other path (including custom locations like D:/Games/PoE2)
+      return true;
     }
   }
 
