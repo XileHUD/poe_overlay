@@ -63,6 +63,7 @@ import { autoRefreshManager } from './autoRefresh';
 import { updateSessionUI, attachLoginButtonLogic } from './sessionManager';
 import { attachRefreshButtonLogic } from './refreshButton';
 import { initializeHistoryLeagueControls, initializeHistoryLeagueState, formatLeagueLabel } from './historyLeague';
+import { groupHistoryEntries, getOriginalIndexFromGrouped, findGroupedIndexForOriginal, toggleGroupExpansion, expandGroupsForDisplay } from './historyGrouping';
 
 /**
  * Check if history is disabled for PoE1.
@@ -70,6 +71,90 @@ import { initializeHistoryLeagueControls, initializeHistoryLeagueState, formatLe
  */
 function isHistoryDisabledForPoe1(): boolean {
   return false; // PoE1 merchant history is now enabled!
+}
+
+/**
+ * Apply grouping to current items and update state
+ * Preserves selection by mapping original index to grouped index
+ */
+function applyGrouping(): void {
+  const prevOriginalIndex = historyState.selectedOriginalIndex;
+  
+  // Group the current filtered/sorted items
+  historyState.groupedItems = groupHistoryEntries(historyState.items);
+  
+  // Expand for display (respects isExpanded state)
+  historyState.displayItems = expandGroupsForDisplay(historyState.groupedItems);
+  
+  // Try to maintain selection in grouped view
+  const newGroupedIndex = findGroupedIndexForOriginal(historyState.groupedItems, prevOriginalIndex);
+  historyState.selectedIndex = newGroupedIndex;
+  
+  // Update selectedOriginalIndex to point to the first item in selected group
+  historyState.selectedOriginalIndex = getOriginalIndexFromGrouped(historyState.groupedItems, newGroupedIndex);
+}
+
+/**
+ * Toggle expansion of a group by index
+ */
+export function toggleGroupExpand(groupIndex: number): void {
+  if (!historyVisible()) return;
+  
+  // Find the group in displayItems
+  const displayItem = historyState.displayItems[groupIndex];
+  if (!displayItem || displayItem.isSubItem) return; // Can't expand sub-items
+  
+  const parentIndex = displayItem.parentGroupIndex;
+  if (parentIndex === undefined) return;
+  
+  const wasExpanded = historyState.groupedItems[parentIndex]?.isExpanded;
+  
+  // Toggle expansion in groupedItems
+  historyState.groupedItems = toggleGroupExpansion(historyState.groupedItems, parentIndex);
+  
+  // Re-expand for display
+  historyState.displayItems = expandGroupsForDisplay(historyState.groupedItems);
+  
+  // Find the parent group row in the new displayItems (it will be at a different index after expand/collapse)
+  let newParentIndex = -1;
+  for (let i = 0; i < historyState.displayItems.length; i++) {
+    const item = historyState.displayItems[i];
+    if (item.parentGroupIndex === parentIndex && !item.isSubItem) {
+      newParentIndex = i;
+      break;
+    }
+  }
+  
+  if (newParentIndex === -1) {
+    // Fallback: just re-render
+    renderHistoryList((idx) => renderHistoryDetail(idx));
+    return;
+  }
+  
+  // If we just expanded the group, select the first sub-item
+  if (!wasExpanded) {
+    // Find the first sub-item after the parent row
+    for (let i = newParentIndex + 1; i < historyState.displayItems.length; i++) {
+      const item = historyState.displayItems[i];
+      if (item.parentGroupIndex === parentIndex && item.isSubItem) {
+        historyState.selectedIndex = i;
+        historyState.selectedOriginalIndex = item.originalIndices?.[0] ?? 0;
+        
+        // Re-render list and detail
+        renderHistoryList((idx) => renderHistoryDetail(idx));
+        renderHistoryDetail(historyState.selectedOriginalIndex);
+        return;
+      }
+    }
+  } else {
+    // If collapsing, select the parent group row
+    historyState.selectedIndex = newParentIndex;
+    historyState.selectedOriginalIndex = historyState.displayItems[newParentIndex].originalIndices?.[0] ?? 0;
+    
+    // Re-render list and detail
+    renderHistoryList((idx) => renderHistoryDetail(idx));
+    renderHistoryDetail(historyState.selectedOriginalIndex);
+  }
 }
 
 const renderListWithDetail = (renderDetailCallback: (idx: number) => void) => renderHistoryList(renderDetailCallback);
@@ -230,7 +315,9 @@ async function ensureHistoryAutoRefresh(): Promise<void> {
     () => {
       const all = (historyState.store.entries || []).slice().reverse();
       historyState.items = applySort(applyFilters(all, historyState.filters), historyState.sort);
+      applyGrouping();
       historyState.selectedIndex = 0;
+      historyState.selectedOriginalIndex = 0;
     },
     {
       renderList: () => renderHistoryList((idx) => renderHistoryDetail(idx)),
@@ -322,7 +409,9 @@ async function ensureHistoryAutoRefresh(): Promise<void> {
             () => {
               const all = (historyState.store.entries || []).slice().reverse();
               historyState.items = applySort(applyFilters(all, historyState.filters), historyState.sort);
+              applyGrouping();
               historyState.selectedIndex = 0;
+              historyState.selectedOriginalIndex = 0;
             },
             {
               renderList: () => renderHistoryList((idx) => renderHistoryDetail(idx)),
@@ -366,7 +455,9 @@ async function ensureHistoryAutoRefresh(): Promise<void> {
           () => {
             const all = (historyState.store.entries || []).slice().reverse();
             historyState.items = applySort(applyFilters(all, historyState.filters), historyState.sort);
+            applyGrouping();
             historyState.selectedIndex = 0;
+            historyState.selectedOriginalIndex = 0;
           },
           {
             renderList: () => renderHistoryList((idx) => renderHistoryDetail(idx)),
@@ -403,7 +494,9 @@ export function onFilterChange(): void {
   if (!historyVisible()) return;
   const all = (historyState.store.entries || []).slice().reverse();
   historyState.items = applySort(applyFilters(all, historyState.filters), historyState.sort);
+  applyGrouping(); // Apply grouping after filtering/sorting
   historyState.selectedIndex = 0;
+  historyState.selectedOriginalIndex = 0;
   renderHistoryList((idx) => renderHistoryDetail(idx));
   renderHistoryDetail(0);
   renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
@@ -422,7 +515,9 @@ export function onSortChange(newSort: string): void {
   if (!historyVisible()) return;
   historyState.sort = newSort;
   historyState.items = applySort(historyState.items, historyState.sort);
+  applyGrouping(); // Apply grouping after sorting
   historyState.selectedIndex = 0;
+  historyState.selectedOriginalIndex = 0;
   renderHistoryList((idx) => renderHistoryDetail(idx));
   renderHistoryDetail(0);
   renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
@@ -487,7 +582,9 @@ function _applyAndRenderInternal(): void {
   console.log('[applyAndRender] After sort:', sorted.length);
   
   historyState.items = sorted;
+  applyGrouping(); // Apply grouping after filtering/sorting
   historyState.selectedIndex = 0;
+  historyState.selectedOriginalIndex = 0;
   
   renderHistoryList((idx) => renderHistoryDetail(idx));
   renderHistoryDetail(0);
@@ -643,3 +740,8 @@ export {
 
 // Export time analytics functions
 export { enableTimeMode, disableTimeMode, updateTimeMode } from './historyChart';
+
+// Expose module functions to window for event handlers
+(window as any).__historyModule = {
+  toggleGroupExpand
+};

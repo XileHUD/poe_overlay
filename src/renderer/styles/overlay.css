@@ -491,6 +491,11 @@ body {
 #historyList .history-row.selected {
     background: rgba(61, 116, 201, 0.15);
 }
+#historyList .history-row.grouped {
+    /* Subtle indicator for grouped items */
+    border-left: 2px solid rgba(255, 193, 7, 0.3);
+    padding-left: 6px;
+}
 #historyList .history-row-index {
     display:inline-flex;
     align-items:center;

@@ -41,7 +41,7 @@ let snapTimeout: number | null = null;
  */
 function measureItemHeight(histList: HTMLElement): void {
   // Temporarily render a single item to measure height
-  const tempItem = historyState.items?.[0];
+  const tempItem = historyState.displayItems?.[0];
   if (!tempItem) return;
   
   const tempRow = document.createElement('div');
@@ -80,7 +80,8 @@ export function renderVirtualHistoryList(renderDetailCallback: (idx: number) => 
   const histList = document.getElementById("historyList");
   if (!histList) return;
   
-  const items = historyState.items || [];
+  // Use display items (expanded groups)
+  const items = historyState.displayItems || [];
   const totalItems = items.length;
   
   if (totalItems === 0) {
@@ -123,9 +124,9 @@ export function renderVirtualHistoryList(renderDetailCallback: (idx: number) => 
   
   // Render only visible items
   const visibleItems = items.slice(start, end);
-  const rows = visibleItems.map((it: any, localIdx: number) => {
+  const rows = visibleItems.map((groupedEntry: any, localIdx: number) => {
     const globalIdx = start + localIdx;
-    return renderHistoryRow(it, globalIdx);
+    return renderHistoryRow(groupedEntry, globalIdx);
   }).join('');
   
   // Update DOM
@@ -147,31 +148,71 @@ export function renderVirtualHistoryList(renderDetailCallback: (idx: number) => 
 }
 
 /**
- * Render a single history row
+ * Render a single history row (supports grouped entries with expand/collapse)
  */
-function renderHistoryRow(it: any, idx: number): string {
+function renderHistoryRow(displayItem: any, idx: number): string {
+  // Extract entry and count from display item
+  const it = displayItem.entry || displayItem;
+  const count = displayItem.count || 1;
+  const isGrouped = displayItem.isGrouped || false;
+  const isExpanded = displayItem.isExpanded || false;
+  const isSubItem = displayItem.isSubItem || false;
+  const totalPrice = displayItem.totalPrice || 0;
+  const currency = displayItem.currency || "";
+  
   const rel = toRelativeTime(it?.time || it?.listedAt || it?.date || 0);
   const time = rel || (it?.timeText || "");
-  const amountRaw = it?.price?.amount ?? it?.amount;
-  const currency = normalizeCurrency(it?.price?.currency ?? it?.currency ?? "");
-  const numericAmount = typeof amountRaw === 'number' ? amountRaw : Number(amountRaw);
-  const hasPrice = Number.isFinite(numericAmount) && !!currency;
-  const amount = hasPrice ? numericAmount : "?";
+  
+  // For individual items, show individual price
+  let amountDisplay: string;
+  let hasPrice: boolean;
+  
+  if (isGrouped && !isSubItem) {
+    // Grouped item - show total price
+    hasPrice = Number.isFinite(totalPrice) && totalPrice > 0 && !!currency;
+    amountDisplay = hasPrice ? String(Math.round(totalPrice * 100) / 100) : "?";
+  } else {
+    // Individual item - show individual price
+    const amountRaw = it?.price?.amount ?? it?.amount;
+    const numericAmount = typeof amountRaw === 'number' ? amountRaw : Number(amountRaw);
+    hasPrice = Number.isFinite(numericAmount) && !!currency;
+    amountDisplay = hasPrice ? String(numericAmount) : "?";
+  }
+  
   const curClass = hasPrice ? `currency-${currency}` : "";
   const currencyDisplay = currency ? currency.charAt(0).toUpperCase() + currency.slice(1) : "";
-  const name = it?.item?.name || it?.item?.typeLine || it?.item?.baseType || "Item";
+  const rawName = it?.item?.name || it?.item?.typeLine || it?.item?.baseType || "Item";
+  
+  // Add count prefix if grouped, indent if sub-item
+  let name = rawName;
+  let namePrefix = "";
+  
+  if (isSubItem) {
+    namePrefix = `<span style="color:var(--text-muted); margin-right:4px;">└</span>`;
+  } else if (isGrouped) {
+    name = `${count}× ${rawName}`;
+  }
+  
+  // Expand/collapse icon for grouped items
+  let expandIcon = "";
+  if (isGrouped && !isSubItem) {
+    const icon = isExpanded ? "▼" : "▶";
+    expandIcon = `<span class="group-expand-icon" data-toggle-group="${idx}" style="cursor:pointer; margin-right:4px; user-select:none; color:var(--text-muted);">${icon}</span>`;
+  }
+  
   const indexLabel = idx + 1;
   const isSelected = idx === historyState.selectedIndex;
-  const rowClasses = `history-row${isSelected ? ' selected' : ''}`;
+  const rowClasses = `history-row${isSelected ? ' selected' : ''}${isGrouped && !isSubItem ? ' grouped' : ''}${isSubItem ? ' sub-item' : ''}`;
   
-  return `<div data-idx="${idx}" class="${rowClasses}" style="padding:8px; border-bottom:1px solid var(--border-color); cursor:pointer;">
+  return `<div data-idx="${idx}" class="${rowClasses}" style="padding:8px; ${isSubItem ? 'padding-left:24px;' : ''} border-bottom:1px solid var(--border-color); cursor:pointer;">
     <div style="display:flex; justify-content:space-between; gap:6px; align-items:center;">
       <div style="display:flex; align-items:center; gap:8px; min-width:0; overflow:hidden;">
         <span class="history-row-index" aria-hidden="true">${indexLabel}</span>
-        <div class="history-row-title" title="${escapeHtml(name)}">${escapeHtml(name)}</div>
+        ${expandIcon}
+        ${namePrefix}<div class="history-row-title" title="${escapeHtml(rawName)}">${escapeHtml(name)}</div>
       </div>
       <div style="display:flex; align-items:center; gap:8px; flex-shrink:0; white-space:nowrap;">
-        ${hasPrice ? `<span class="price-badge ${curClass}" style="white-space:nowrap;"><span class="amount">${amount}</span>${currencyDisplay}</span>` : ''}
+        ${hasPrice ? `<span class="price-badge ${curClass}" style="white-space:nowrap;"><span class="amount">${amountDisplay}</span>${currencyDisplay}</span>` : ''}
         <div style="color:var(--text-muted); font-size:11px; white-space:nowrap;">${time}</div>
       </div>
     </div>
@@ -227,7 +268,7 @@ function initializeVirtualScroll(histList: HTMLElement, renderDetailCallback: (i
     if (!historyVisible()) return;
     if (document.activeElement !== histList) return;
     
-    const items = historyState.items || [];
+    const items = historyState.displayItems || [];
     if (items.length === 0) return;
     
     if (e.code === 'ArrowDown' || e.code === 'ArrowUp') {
@@ -254,10 +295,28 @@ function initializeVirtualScroll(histList: HTMLElement, renderDetailCallback: (i
  * Attach click handlers to visible rows
  */
 function attachRowClickHandlers(histList: HTMLElement, renderDetailCallback: (idx: number) => void): void {
+  // Handle row clicks
   histList.querySelectorAll('.history-row').forEach((row) => {
-    row.addEventListener('click', () => {
-      const idx = parseInt((row as HTMLElement).dataset.idx || '0', 10);
-      selectVirtualIndex(idx, histList, renderDetailCallback);
+    row.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      
+      // Check if click was on expand icon
+      if (target.classList.contains('group-expand-icon') || target.hasAttribute('data-toggle-group')) {
+        const displayIdx = parseInt(target.getAttribute('data-toggle-group') || (row as HTMLElement).dataset.idx || '0', 10);
+        e.stopPropagation();
+        
+        // Import the toggle function
+        const module = (window as any).__historyModule;
+        if (module && typeof module.toggleGroupExpand === 'function') {
+          module.toggleGroupExpand(displayIdx);
+        }
+        return;
+      }
+      
+      // Regular row click - select item
+      // The idx is in displayItems, we need to get the original index for detail rendering
+      const displayIdx = parseInt((row as HTMLElement).dataset.idx || '0', 10);
+      selectVirtualIndex(displayIdx, histList, renderDetailCallback);
     });
   });
 }
@@ -266,11 +325,16 @@ function attachRowClickHandlers(histList: HTMLElement, renderDetailCallback: (id
  * Select an item by index in virtual scroll
  */
 export function selectVirtualIndex(idx: number, histList: HTMLElement | null, renderDetailCallback: (idx: number) => void): void {
-  if (!historyState.items || !historyState.items.length) return;
+  if (!historyState.displayItems || !historyState.displayItems.length) return;
   
-  const max = historyState.items.length - 1;
+  // idx is in the displayItems array
+  const max = historyState.displayItems.length - 1;
   const safeIdx = Math.max(0, Math.min(max, idx));
   historyState.selectedIndex = safeIdx;
+  
+  // Get the original index from the display item to show the right details
+  const displayItem = historyState.displayItems[safeIdx];
+  historyState.selectedOriginalIndex = displayItem?.originalIndices?.[0] ?? 0;
   
   // Update selection UI
   if (histList) {
@@ -281,7 +345,8 @@ export function selectVirtualIndex(idx: number, histList: HTMLElement | null, re
     }
   }
   
-  renderDetailCallback(safeIdx);
+  // Render detail for the first item in the display item
+  renderDetailCallback(historyState.selectedOriginalIndex);
 }
 
 /**

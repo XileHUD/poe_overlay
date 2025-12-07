@@ -3,6 +3,8 @@
  * Core state, types, and data utilities
  */
 
+import type { GroupedHistoryEntry } from './historyGrouping';
+
 export type Price = { amount?: number; currency?: string } | undefined;
 
 export interface HistoryEntryRaw {
@@ -26,7 +28,10 @@ export interface HistoryStore {
 
 export interface HistoryState {
   items: HistoryEntryRaw[];
-  selectedIndex: number;
+  groupedItems: GroupedHistoryEntry[]; // Grouped version (collapsed)
+  displayItems: any[]; // Expanded version for rendering (includes expanded groups)
+  selectedIndex: number; // Index in displayItems array
+  selectedOriginalIndex: number; // Corresponding index in original items array
   league: string;
   leagueSource: 'auto' | 'manual';
   leagueExplicitlySet: boolean; // true if user has explicitly selected a league (prevents auto-fetch on first load)
@@ -64,7 +69,10 @@ function getVersionDefaultLeague(): string {
  */
 export const historyState: HistoryState = {
   items: [],
+  groupedItems: [], // Will be populated when items are filtered/sorted
+  displayItems: [], // Expanded version for display
   selectedIndex: 0,
+  selectedOriginalIndex: 0, // Will track the actual index in items array
   league: '', // Will be set by initializeHistoryLeagueState() based on stored preference or overlay version
   leagueSource: 'auto',
   leagueExplicitlySet: false, // Will be set to true when user selects league in Settings or after first successful fetch
