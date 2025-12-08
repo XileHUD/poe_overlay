@@ -1252,6 +1252,25 @@ function buildLevelingSettingsSplashHtml(
           </button>
         </div>
         
+        <div class="setting-item" style="flex-direction: column; align-items: stretch; margin-top: 24px;">
+          <div class="setting-label">
+            <div class="setting-name">Import Mobalytics Build</div>
+            <div class="setting-description">Paste a Mobalytics build URL (works with PoE2 builds)</div>
+          </div>
+          <input 
+            type="text"
+            id="mobalyticsUrlInput" 
+            placeholder="https://mobalytics.gg/poe-2/builds/..." 
+            style="width: 100%; margin-top: 8px; padding: 12px; 
+                   background: var(--bg-tertiary); border: 1px solid var(--border-color); 
+                   border-radius: 6px; color: var(--text-primary); font-family: monospace; 
+                   font-size: 11px;"
+          />
+          <button class="action-btn primary" onclick="importMobalyticsBuild()" style="margin-top: 8px;">
+            🌐 Import from Mobalytics
+          </button>
+        </div>
+        
         <div class="setting-item" style="flex-direction: column; align-items: stretch;">
           <div class="setting-label">
             <div class="setting-name">Saved Builds</div>
@@ -1507,6 +1526,42 @@ function buildLevelingSettingsSplashHtml(
         textarea.disabled = false;
         textarea.placeholder = originalPlaceholder;
         alert(\`❌ Error importing build:\n\n\${err.message}\`);
+      });
+    }
+    
+    function importMobalyticsBuild() {
+      const mobaUrl = document.getElementById('mobalyticsUrlInput').value.trim();
+      if (!mobaUrl) {
+        alert('Please paste a Mobalytics URL first.');
+        return;
+      }
+      
+      // Show importing indicator
+      const input = document.getElementById('mobalyticsUrlInput');
+      const originalPlaceholder = input.placeholder;
+      input.placeholder = 'Fetching from Mobalytics...';
+      input.disabled = true;
+      
+      ipcRenderer.invoke('import-mobalytics-from-settings', mobaUrl).then(result => {
+        input.disabled = false;
+        input.placeholder = originalPlaceholder;
+        
+        if (result.success) {
+          // Clear the input
+          input.value = '';
+          
+          // Refresh the builds list
+          refreshPobBuildsList();
+          
+          // Show success message
+          alert(\`✅ Build imported from Mobalytics!\n\n\${result.build.characterName}\nVariants: \${result.build.variantsCount || 1} | Skills: \${result.build.skillsCount || 0} | Items: \${result.build.itemsCount || 0}\`);
+        } else {
+          alert(\`❌ Failed to import from Mobalytics:\n\n\${result.error || 'Unknown error'}\`);
+        }
+      }).catch(err => {
+        input.disabled = false;
+        input.placeholder = originalPlaceholder;
+        alert(\`❌ Error importing from Mobalytics:\n\n\${err.message}\`);
       });
     }
     

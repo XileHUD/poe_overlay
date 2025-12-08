@@ -16,6 +16,12 @@ function generateBuildId(): string {
  * Generate a default name for a build
  */
 function generateDefaultName(build: StoredPobBuild): string {
+  // For Mobalytics builds, use characterName which already includes the build title and author
+  if (build.characterName && build.characterName.includes('(Mobalytics)')) {
+    return build.characterName;
+  }
+  
+  // For regular PoB builds, use className and ascendancy
   const className = build.className || 'Unknown';
   const ascendancy = build.ascendancyName ? ` ${build.ascendancyName}` : '';
   return `${className}${ascendancy}`;

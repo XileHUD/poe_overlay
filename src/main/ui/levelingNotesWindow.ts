@@ -156,6 +156,8 @@ function buildLevelingNotesWindowHtml(notes: string, overlayVersion: OverlayVers
   const className = pobBuild?.className || 'No Build Loaded';
   const ascendancy = pobBuild?.ascendancyName || '';
   const characterName = pobBuild?.characterName || '';
+  const notesSections = pobBuild?.notesSections || null;
+  const hasMultipleSections = notesSections && notesSections.length > 1;
 
   return `
 <!DOCTYPE html>
@@ -323,6 +325,35 @@ function buildLevelingNotesWindowHtml(notes: string, overlayVersion: OverlayVers
       padding: 15px;
     }
     
+    .section-selector-container {
+      padding: 8px 15px;
+      background: rgba(45, 45, 45, 0.8);
+      border-bottom: 1px solid rgba(74, 158, 255, 0.2);
+      flex-shrink: 0;
+    }
+    
+    .section-selector {
+      width: 100%;
+      padding: 6px 10px;
+      background: rgba(26, 26, 26, 0.9);
+      border: 1px solid rgba(74, 158, 255, 0.3);
+      border-radius: 4px;
+      color: var(--text-primary);
+      font-size: 12px;
+      cursor: pointer;
+      outline: none;
+    }
+    
+    .section-selector:hover {
+      border-color: rgba(74, 158, 255, 0.5);
+      background: rgba(26, 26, 26, 1);
+    }
+    
+    .section-selector option {
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+    }
+    
     .notes-text {
       color: var(--text-primary);
       font-size: 13px;
@@ -332,6 +363,16 @@ function buildLevelingNotesWindowHtml(notes: string, overlayVersion: OverlayVers
       font-family: 'Consolas', 'Monaco', monospace;
       user-select: text;
       -webkit-user-select: text;
+    }
+    
+    .notes-text a {
+      pointer-events: auto;
+      cursor: pointer;
+    }
+    
+    .notes-text a:hover {
+      text-decoration: underline;
+      opacity: 0.8;
     }
     
     .no-notes {
@@ -413,17 +454,29 @@ function buildLevelingNotesWindowHtml(notes: string, overlayVersion: OverlayVers
     </div>
   </div>
   
+  ${hasMultipleSections ? `
+  <div class="section-selector-container">
+    <select id="sectionSelector" onchange="changeSection(this.value)" class="section-selector">
+      ${notesSections.map((section: any, idx: number) => `
+        <option value="${idx}" ${idx === 0 ? 'selected' : ''}>${section.title}</option>
+      `).join('')}
+    </select>
+  </div>
+  ` : ''}
+  
   <div class="content" id="content">
-    ${notes ? `<div class="notes-text" id="notesText">${parsePobNotes(notes)}</div>` : `
+    ${notesSections ? `<div class="notes-text" id="notesText">${parsePobNotes(notesSections[0].content)}</div>` : (notes ? `<div class="notes-text" id="notesText">${parsePobNotes(notes)}</div>` : `
       <div class="no-notes">
         <div class="no-notes-icon">📝</div>
         <div class="no-notes-text">No notes available<br><br>Import a PoB build with notes to see them here</div>
       </div>
-    `}
+    `)}
   </div>
   
   <script>
     const { ipcRenderer } = require('electron');
+    const notesSections = ${notesSections ? JSON.stringify(notesSections) : 'null'};
+    
     // Ensure clicking this window brings it to front above other overlays
     try {
       document.addEventListener('mousedown', () => {
@@ -472,6 +525,14 @@ function buildLevelingNotesWindowHtml(notes: string, overlayVersion: OverlayVers
       ipcRenderer.send('leveling-notes-window-close');
     }
     
+    function changeSection(sectionIndex) {
+      if (!notesSections || !notesSections[sectionIndex]) return;
+      const content = document.getElementById('notesText');
+      if (content) {
+        content.innerHTML = parsePobNotesInBrowser(notesSections[sectionIndex].content);
+      }
+    }
+    
     // Listen for notes updates
     ipcRenderer.on('notes-updated', (event, newNotes) => {
       const content = document.getElementById('content');
@@ -495,6 +556,12 @@ function buildLevelingNotesWindowHtml(notes: string, overlayVersion: OverlayVers
       const div = document.createElement('div');
       div.textContent = text;
       return div.innerHTML;
+    }
+    
+    function linkifyText(text) {
+      // Detect URLs and wrap them in <a> tags
+      const urlRegex = /(https?:\\/\\/[^\\s<>"]+)/g;
+      return text.replace(urlRegex, '<a href="$1" target="_blank" style="color: #4a9eff; text-decoration: underline; cursor: pointer;">$1</a>');
     }
     
     function parsePobNotesInBrowser(text) {
@@ -527,7 +594,9 @@ function buildLevelingNotesWindowHtml(notes: string, overlayVersion: OverlayVers
         if (match.index > lastIndex) {
           const textBefore = escaped.substring(lastIndex, match.index);
           if (textBefore) {
-            parts.push('<span style="color: ' + currentColor + '">' + textBefore + '</span>');
+            // Linkify URLs in the text
+            const linkedText = linkifyText(textBefore);
+            parts.push('<span style="color: ' + currentColor + '">' + linkedText + '</span>');
           }
         }
         
@@ -544,7 +613,9 @@ function buildLevelingNotesWindowHtml(notes: string, overlayVersion: OverlayVers
       if (lastIndex < escaped.length) {
         const remaining = escaped.substring(lastIndex);
         if (remaining) {
-          parts.push('<span style="color: ' + currentColor + '">' + remaining + '</span>');
+          // Linkify URLs in the remaining text
+          const linkedText = linkifyText(remaining);
+          parts.push('<span style="color: ' + currentColor + '">' + linkedText + '</span>');
         }
       }
       
@@ -578,6 +649,12 @@ function decodeHtmlEntities(text: string): string {
     .replace(/&gt;/g, '>')
     .replace(/&quot;/g, '"')
     .replace(/&#0?39;/g, "'");
+}
+
+function linkifyText(text: string): string {
+  // Detect URLs and wrap them in <a> tags
+  const urlRegex = /(https?:\/\/[^\s<>"]+)/g;
+  return text.replace(urlRegex, '<a href="$1" target="_blank" style="color: #4a9eff; text-decoration: underline; cursor: pointer;">$1</a>');
 }
 
 function parsePobNotes(text: string): string {
@@ -618,7 +695,9 @@ function parsePobNotes(text: string): string {
     if (match.index > lastIndex) {
       const textBefore = escaped.substring(lastIndex, match.index);
       if (textBefore) {
-        parts.push(`<span style="color: ${currentColor}">${textBefore}</span>`);
+        // Linkify URLs in the text
+        const linkedText = linkifyText(textBefore);
+        parts.push(`<span style="color: ${currentColor}">${linkedText}</span>`);
       }
     }
     
@@ -638,7 +717,9 @@ function parsePobNotes(text: string): string {
   if (lastIndex < escaped.length) {
     const remaining = escaped.substring(lastIndex);
     if (remaining) {
-      parts.push(`<span style="color: ${currentColor}">${remaining}</span>`);
+      // Linkify URLs in the remaining text
+      const linkedText = linkifyText(remaining);
+      parts.push(`<span style="color: ${currentColor}">${linkedText}</span>`);
     }
   }
   

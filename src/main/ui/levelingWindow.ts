@@ -28,11 +28,17 @@ import {
   getActiveBuild,
   getAllBuilds,
   migrateLegacyBuild,
-  type StoredPobBuild,
-  type GemSocketGroup,
-  type PobBuildsList,
-  type PobBuildEntry
 } from '../../shared/pob/index.js';
+import { fetchMobalyticsBuild, convertMobalyticsToPobBuild } from '../../shared/mobalytics/index.js';
+import type { 
+  StoredPobBuild, 
+  PobBuildsList, 
+  ParsedPobBuild, 
+  GemRequirement, 
+  GemSocketGroup, 
+  TreeSpec,
+  PobBuildEntry
+} from '../../shared/pob/types.js';
 
 export interface LevelingWindowParams {
   settingsService: SettingsService;
@@ -1246,6 +1252,11 @@ export class LevelingWindow {
       return await this.importPobCode(code);
     });
 
+    // Import Mobalytics build from settings splash
+    ipcMain.handle('import-mobalytics-from-settings', async (event, url: string) => {
+      return await this.importMobalyticsUrl(url);
+    });
+
     // Get all POB builds
     ipcMain.handle('get-pob-builds-list', async () => {
       const buildsList = this.getPobBuildsList();
@@ -2087,6 +2098,94 @@ export class LevelingWindow {
         gems: build.gems.length
       });
 
+      return await this.processParsedBuild(build, code);
+    } catch (error: any) {
+      console.error('[PoB Import] Error:', error);
+      return {
+        success: false,
+        error: error.message || 'Failed to import PoB code'
+      };
+    }
+  }
+
+  private async importMobalyticsUrl(url: string): Promise<any> {
+    try {
+      console.log('[Mobalytics Import] Fetching build from URL...');
+      
+      // Fetch and parse the Mobalytics build
+      const mobaBuild = await fetchMobalyticsBuild(url);
+      console.log('[Mobalytics Import] Build fetched:', mobaBuild.title);
+      
+      // Convert to StoredPobBuild format
+      const pobBuild = convertMobalyticsToPobBuild(mobaBuild);
+      
+      // Add to builds list and set as active
+      const currentBuildsList = this.getPobBuildsList();
+      const updatedBuildsList = addBuild(currentBuildsList, pobBuild);
+      this.savePobBuildsList(updatedBuildsList);
+
+      console.log('[Mobalytics Import] Build added to list and set as active');
+
+      // Send update to renderer
+      if (this.window && !this.window.isDestroyed()) {
+        this.window.webContents.send('pob-build-imported', pobBuild);
+      }
+
+      // Get current context for window updates
+      const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
+      const currentActIndex = (currentSettings as any)?.currentActIndex ?? 0;
+      const characterLevel = (currentSettings as any)?.characterLevel || 1;
+      const autoDetectEnabled = (currentSettings as any)?.uiSettings?.autoDetectLevelingSets ?? true;
+      const savedTreeIndex = (currentSettings as any)?.selectedTreeIndex;
+
+      // Open PoB info bar
+      openPobInfoBar({
+        settingsService: this.settingsService,
+        overlayVersion: this.overlayVersion,
+        pobBuild: pobBuild,
+        currentAct: currentActIndex + 1
+      });
+
+      // Update all open windows with the new build
+      if (isGemsWindowOpen()) {
+        updateLevelingGemsWindowBuild(pobBuild, this.overlayVersion, this.settingsService);
+        updateLevelingGemsWindow(currentActIndex + 1, this.overlayVersion, this.settingsService);
+        updateLevelingGemsWindowCharacterLevel(characterLevel);
+      }
+      
+      if (isTreeWindowOpen() && pobBuild.treeSpecs && pobBuild.treeSpecs.length > 0) {
+        sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion);
+      }
+      
+      if (isGearWindowOpen() && pobBuild.itemSets && pobBuild.itemSets.length > 0) {
+        updateGearWindow(pobBuild.itemSets);
+        updateGearWindowContext(currentActIndex + 1, characterLevel);
+      }
+      
+      if (isNotesWindowOpen() && pobBuild.notes) {
+        updateNotesWindow(pobBuild.notes);
+      }
+
+      return {
+        success: true,
+        build: {
+          characterName: pobBuild.characterName,
+          variantsCount: pobBuild.skillSets?.length || 1,
+          skillsCount: pobBuild.gems?.length || 0,
+          itemsCount: pobBuild.itemSets?.length || 0
+        }
+      };
+    } catch (error: any) {
+      console.error('[Mobalytics Import] Error:', error);
+      return {
+        success: false,
+        error: error.message || 'Failed to import Mobalytics build'
+      };
+    }
+  }
+
+  private async processParsedBuild(build: ParsedPobBuild, code: string): Promise<any> {
+    try {
       // Filter out header-only tree specs with no nodes before saving/using
       const hasNodes = (spec: any) => {
         const a = Array.isArray(spec?.parsedUrl?.nodes) ? spec.parsedUrl.nodes : [];

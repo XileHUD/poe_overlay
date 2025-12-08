@@ -24,6 +24,7 @@ interface TreeWindowState {
   height: number;
   ultraMinimal?: boolean;
   pinned?: boolean; // Always on top state
+  simplifiedView?: boolean; // Show only allocated nodes in single color
   viewBox?: {
     x: number;
     y: number;
@@ -32,9 +33,9 @@ interface TreeWindowState {
   };
 }
 
-function saveTreeWindowBounds(bounds: { x: number; y: number; width: number; height: number }, ultraMinimal?: boolean, viewBox?: { x: number; y: number; width: number; height: number }, pinned?: boolean) {
+function saveTreeWindowBounds(bounds: { x: number; y: number; width: number; height: number }, ultraMinimal?: boolean, viewBox?: { x: number; y: number; width: number; height: number }, pinned?: boolean, simplifiedView?: boolean) {
   try {
-    const state: TreeWindowState = { ...bounds, ultraMinimal, pinned, viewBox };
+    const state: TreeWindowState = { ...bounds, ultraMinimal, pinned, viewBox, simplifiedView };
     fs.writeFileSync(TREE_WINDOW_BOUNDS_FILE, JSON.stringify(state), 'utf-8');
   } catch (err) {
     console.error('[Tree Window] Failed to save bounds:', err);
@@ -63,7 +64,7 @@ function loadTreeWindowBounds(): TreeWindowState | null {
   return null;
 }
 
-function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = true): string {
+function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = true, simplifiedView: boolean = false): string {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -93,6 +94,13 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-rendering: optimizeLegibility;
+
+      /* Always allow text selection and typing inside form controls */
+      input, select, textarea, button {
+        user-select: auto;
+        -webkit-user-select: auto;
+        -moz-user-select: auto;
+      }
       transform: translateZ(0);
       -webkit-transform: translateZ(0);
       will-change: transform;
@@ -280,6 +288,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
       height: 100%;
       min-height: 100px;
       cursor: grab;
+      pointer-events: none;
     }
 
     #tree-viewport.panning {
@@ -317,6 +326,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
       align-items: center;
       justify-content: center;
       z-index: 1;
+      pointer-events: auto;
     }
 
     #tree-svg svg {
@@ -352,7 +362,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
     }
 
     svg .ascendancy {
-      opacity: 0.15;
+      opacity: 1;
     }
 
     /* Reduce console output noise */
@@ -366,7 +376,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
       border: 1px solid rgba(58, 58, 58, 0.8);
       border-radius: 6px;
       z-index: 10;
-      pointer-events: none;
+      pointer-events: auto;
       opacity: 1;
       transition: opacity 0.3s ease;
     }
@@ -389,19 +399,26 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
       gap: 6px;
       opacity: 1;
       transition: opacity 0.3s ease;
+      z-index: 20;
+      pointer-events: auto;
     }
 
     #zoom-controls button {
       background: rgba(42, 42, 42, 0.95);
       color: #c8c8c8;
       border: 1px solid #3a3a3a;
-      width: 32px;
-      height: 32px;
+      width: 44px;
+      height: 44px;
+      padding: 0;
       border-radius: 4px;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 18px;
       font-weight: bold;
       transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: auto;
     }
 
     #zoom-controls button:hover {
@@ -409,9 +426,86 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
       border-color: #4a4a4a;
     }
 
+    /* Node Progression Controls */
+    #node-progression-controls {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+      z-index: 20;
+      pointer-events: auto;
+    }
+
+    #node-progression-controls select {
+      background: rgba(42, 42, 42, 0.95);
+      color: #c8c8c8;
+      border: 1px solid #3a3a3a;
+      width: 90px;
+      height: 44px;
+      padding: 0 8px;
+      border-radius: 4px;
+      font-size: 14px;
+      text-align: center;
+      pointer-events: auto;
+      user-select: auto;
+      -webkit-user-select: auto;
+      cursor: pointer;
+      outline: none;
+    }
+
+    #node-progression-controls select:hover {
+      border-color: #4a9eff;
+      background: rgba(52, 52, 52, 0.95);
+    }
+
+    #node-progression-controls select:focus {
+      outline: 2px solid #4a9eff;
+      outline-offset: -1px;
+      border-color: #4a9eff;
+      background: rgba(52, 52, 52, 0.95);
+    }
+    
+    #node-progression-controls select option {
+      background: rgba(45, 45, 45, 1);
+      color: #ffffff;
+    }
+
+    #node-progression-controls button {
+      background: rgba(42, 42, 42, 0.95);
+      color: #c8c8c8;
+      border: 1px solid #3a3a3a;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: auto;
+    }
+
+    #node-progression-controls button:hover {
+      background: #3a3a3a;
+      border-color: #4a4a4a;
+    }
+
+    #node-progression-controls button:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
     /* Auto-hide controls when mouse not over window */
     body.controls-hidden #tree-stats,
     body.controls-hidden #zoom-controls,
+    body.controls-hidden #node-progression-controls,
     body.controls-hidden #navigation,
     body.controls-hidden #header-controls {
       opacity: 0;
@@ -450,6 +544,13 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
         <button onclick="zoomIn()" title="Zoom In">+</button>
         <button onclick="zoomOut()" title="Zoom Out">−</button>
         <button onclick="resetZoom()" style="font-size: 13px;" title="Reset">⊙</button>
+      </div>
+
+      <!-- Node Progression Controls (for Mobalytics/Maxroll builds) -->
+      <div id="node-progression-controls" style="display: none;">
+        <button onclick="prevNode()" title="Previous Node">◄</button>
+        <select id="node-count-select" title="Number of nodes to show"></select>
+        <button onclick="nextNode()" title="Next Node">►</button>
       </div>
     </div>
   </div>
@@ -496,6 +597,18 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
     let isPinned = ${pinned};
     let autoDetectEnabled = true; // Track auto-detect setting
     let viewBoxSaveTimer = null; // Debounce timer for saving viewBox
+    let buildSource = null; // Track build source (mobalytics, maxroll, pob)
+    let nodeProgressionCount = null; // Current node count for progression (null = show all)
+    let maxAvailableNodes = 0; // Maximum nodes available in current tree
+    let simplifiedViewEnabled = ${simplifiedView}; // Show only allocated nodes in single color (saved via IPC)
+    let connectedAllocatedNodes = []; // Connectivity-pruned ordered nodes
+    let lastProgressionEvent = 'manual'; // 'step' when using arrows, 'manual' for typed
+
+    // Initialize simplified view checkbox once DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      const cb = document.getElementById('simplified-view-toggle');
+      if (cb) cb.checked = simplifiedViewEnabled;
+    });
 
     // Debounced function to save viewBox state
     function saveViewBoxState(svgElement) {
@@ -526,7 +639,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
         return;
       }
 
-      const { specs, treeSvg, viewBox, treeData, gameVersion, currentAct, characterLevel, autoDetectEnabled: autoDetectFromPayload, savedTreeIndex, savedViewBox } = payload;
+      const { specs, treeSvg, viewBox, treeData, gameVersion, currentAct, characterLevel, autoDetectEnabled: autoDetectFromPayload, savedTreeIndex, savedViewBox, buildSource: buildSourceFromPayload } = payload;
 
       if (!specs || specs.length === 0) {
         console.error('[Tree Window] No specs received!');
@@ -539,6 +652,19 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
       currentGameVersion = gameVersion || 'poe1'; // Store game version
       currentTreeData = treeData; // Store tree data for connection lookup
       autoDetectEnabled = autoDetectFromPayload ?? true; // Store auto-detect setting (default to true if undefined)
+      buildSource = buildSourceFromPayload || 'pob'; // Store build source (default to 'pob')
+      
+      // Show/hide node progression controls based on whether current tree has ordered nodes
+      const progressionControls = document.getElementById('node-progression-controls');
+      if (progressionControls) {
+        // Show controls if any tree has allocatedNodes array (which preserves order)
+        const hasOrderedNodes = specs.some(spec => spec.allocatedNodes && spec.allocatedNodes.length > 0);
+        if (hasOrderedNodes) {
+          progressionControls.style.display = 'flex';
+        } else {
+          progressionControls.style.display = 'none';
+        }
+      }
       
       // Determine initial spec index: use auto-detect if enabled, otherwise use saved selection
       let initialIndex;
@@ -789,6 +915,8 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
 
     function selectSpec() {
       currentIndex = parseInt(document.getElementById('spec-selector').value);
+      // Reset node progression to full tree when switching specs
+      nodeProgressionCount = null;
       renderTree();
       
       // Save user's manual selection
@@ -800,6 +928,8 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
       if (currentIndex > 0) {
         currentIndex--;
         document.getElementById('spec-selector').value = currentIndex;
+        // Reset node progression to full tree when switching specs
+        nodeProgressionCount = null;
         renderTree();
         // Persist user's manual selection when navigating with prev button
         const { ipcRenderer } = require('electron');
@@ -811,11 +941,245 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
       if (currentIndex < currentSpecs.length - 1) {
         currentIndex++;
         document.getElementById('spec-selector').value = currentIndex;
+        // Reset node progression to full tree when switching specs
+        nodeProgressionCount = null;
         renderTree();
         // Persist user's manual selection when navigating with next button
         const { ipcRenderer } = require('electron');
         ipcRenderer.send('tree-spec-selected', currentIndex);
       }
+    }
+
+    // Node Progression Functions (for Mobalytics/Maxroll builds)
+    function updateNodeProgression() {
+      const select = document.getElementById('node-count-select');
+      const currentSpec = currentSpecs[currentIndex];
+      
+      if (!currentSpec || connectedAllocatedNodes.length === 0) {
+        maxAvailableNodes = 0;
+        nodeProgressionCount = null;
+        return;
+      }
+
+      maxAvailableNodes = connectedAllocatedNodes.length;
+      
+      if (nodeProgressionCount === null || nodeProgressionCount > maxAvailableNodes) {
+        nodeProgressionCount = maxAvailableNodes;
+      }
+
+      // Populate dropdown only if empty (first time) to preserve all entries
+      if (!select || select.options.length === 0) {
+        populateNodeDropdown();
+      } else {
+        // Just update the selected value without regenerating options
+        const currentValue = nodeProgressionCount !== null ? nodeProgressionCount : maxAvailableNodes;
+        
+        // Check if current value exists in options, if not add it
+        let foundOption = false;
+        for (let i = 0; i < select.options.length; i++) {
+          if (parseInt(select.options[i].value) === currentValue) {
+            foundOption = true;
+            break;
+          }
+        }
+        
+        if (!foundOption && currentValue >= 0) {
+          // Add the missing value and re-sort
+          const option = document.createElement('option');
+          option.value = String(currentValue);
+          option.text = String(currentValue);
+          select.add(option);
+          
+          // Re-sort options
+          const options = Array.from(select.options);
+          options.sort((a, b) => parseInt(a.value) - parseInt(b.value));
+          select.innerHTML = '';
+          options.forEach(opt => select.add(opt));
+        }
+        
+        select.value = String(currentValue);
+      }
+    }
+
+    function prevNode() {
+      if (nodeProgressionCount === null) {
+        nodeProgressionCount = maxAvailableNodes;
+      }
+      
+      if (nodeProgressionCount > 0) {
+        nodeProgressionCount--;
+        lastProgressionEvent = 'step';
+        renderTree();
+      }
+    }
+
+    function nextNode() {
+      if (nodeProgressionCount === null) {
+        nodeProgressionCount = 0;
+      }
+      
+      if (nodeProgressionCount < maxAvailableNodes) {
+        nodeProgressionCount++;
+        lastProgressionEvent = 'step';
+        renderTree();
+      }
+    }
+
+    // Populate dropdown options based on total nodes
+    function populateNodeDropdown() {
+      const select = document.getElementById('node-count-select');
+      if (!select) return;
+      
+      const options = [];
+      const targetEntries = 10;
+      const maxNodes = maxAvailableNodes;
+      
+      if (maxNodes <= 0) {
+        options.push(0);
+      } else if (maxNodes <= 10) {
+        // Show each node individually for small trees
+        for (let i = 0; i <= maxNodes; i++) {
+          options.push(i);
+        }
+      } else {
+        // Calculate step size to have ~10 entries
+        const step = Math.ceil(maxNodes / targetEntries);
+        const roundedStep = step <= 5 ? 5 : (step <= 10 ? 10 : (step <= 20 ? 20 : (step <= 50 ? 50 : 100)));
+        
+        for (let i = 0; i <= maxNodes; i += roundedStep) {
+          options.push(i);
+        }
+        
+        // Always include the max if not already included
+        if (options[options.length - 1] !== maxNodes) {
+          options.push(maxNodes);
+        }
+      }
+      
+      const currentValue = nodeProgressionCount !== null ? nodeProgressionCount : maxNodes;
+      
+      // If current value is not in options, add it as a custom option
+      const hasCurrentValue = options.indexOf(currentValue) !== -1;
+      if (!hasCurrentValue && currentValue >= 0 && currentValue <= maxNodes) {
+        options.push(currentValue);
+        options.sort(function(a, b) { return a - b; });
+      }
+      
+      select.innerHTML = options.map(function(val) { 
+        return '<option value="' + val + '" ' + (val === currentValue ? 'selected' : '') + '>' + val + '</option>';
+      }).join('');
+      
+      // Set the value directly to ensure it displays correctly
+      select.value = currentValue;
+    }
+
+    // Handle dropdown change
+    document.addEventListener('DOMContentLoaded', () => {
+      const select = document.getElementById('node-count-select');
+      if (select) {
+        select.addEventListener('change', () => {
+          const value = parseInt(select.value, 10);
+          if (!isNaN(value) && value >= 0 && value <= maxAvailableNodes) {
+            nodeProgressionCount = value;
+            lastProgressionEvent = 'manual';
+            renderTree();
+          }
+        });
+      }
+    });
+
+    // Build adjacency map from tree graph connections for connectivity validation
+    function buildAdjacencyMap() {
+      const adj = new Map();
+      if (!currentTreeData || !currentTreeData.graphs) return adj;
+
+      for (const graph of currentTreeData.graphs) {
+        for (const conn of graph.connections) {
+          const a = String(conn.a);
+          const b = String(conn.b);
+          if (!adj.has(a)) adj.set(a, new Set());
+          if (!adj.has(b)) adj.set(b, new Set());
+          adj.get(a).add(b);
+          adj.get(b).add(a);
+        }
+      }
+      return adj;
+    }
+
+    // Ensure ordered nodes stay connected to the existing kept set
+    function enforceConnectivity(orderedNodes) {
+      if (!orderedNodes || orderedNodes.length === 0) return [];
+
+      const adj = buildAdjacencyMap();
+      const ordered = orderedNodes.map(n => String(n));
+      const selectedSet = new Set(ordered);
+
+      // Anchor set: class start nodes if available, else first node
+      const anchors = new Set();
+      if (currentTreeData?.startNodeId) anchors.add(String(currentTreeData.startNodeId));
+      if (Array.isArray(currentTreeData?.startNodeIds)) {
+        currentTreeData.startNodeIds.forEach((n) => anchors.add(String(n)));
+      }
+      if (currentTreeData?.constants?.startNodeIds) {
+        Object.values(currentTreeData.constants.startNodeIds).forEach((n) => anchors.add(String(n)));
+      }
+      // Always include first ordered node as fallback anchor
+      anchors.add(ordered[0]);
+
+      // Build connected components within the selected set
+      const visited = new Set();
+      const components = [];
+
+      for (const nodeId of ordered) {
+        if (visited.has(nodeId)) continue;
+        const queue = [nodeId];
+        const comp = [];
+        visited.add(nodeId);
+
+        while (queue.length) {
+          const cur = queue.shift();
+          comp.push(cur);
+          const neighbors = adj.get(cur);
+          if (!neighbors) continue;
+          for (const nb of neighbors) {
+            if (selectedSet.has(String(nb)) && !visited.has(String(nb))) {
+              visited.add(String(nb));
+              queue.push(String(nb));
+            }
+          }
+        }
+        components.push(comp);
+      }
+
+      if (components.length === 0) return [];
+
+      // Prefer component that contains any anchor; otherwise largest
+      let keepComp = components.find(c => c.some(n => anchors.has(n)));
+      if (!keepComp) {
+        components.sort((a, b) => b.length - a.length);
+        keepComp = components[0];
+      }
+      const keepSet = new Set(keepComp);
+
+      // Preserve original order but drop nodes not in kept component
+      const kept = ordered.filter(id => keepSet.has(id));
+      const dropped = ordered.filter(id => !keepSet.has(id));
+      if (dropped.length > 0) {
+        console.warn('[Tree] Dropping disconnected nodes (kept size', kept.length, 'dropped', dropped.length, ')');
+      }
+
+      return kept;
+    }
+
+    function toggleSimplifiedView() {
+      simplifiedViewEnabled = !simplifiedViewEnabled;
+      
+      // Save via IPC to main process
+      const { ipcRenderer } = require('electron');
+      ipcRenderer.send('tree-window-simplified-view-changed', simplifiedViewEnabled);
+      
+      // Re-render tree with new setting
+      renderTree();
     }
 
     function updateNavigation() {
@@ -840,8 +1204,119 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
       const currentSpec = currentSpecs[currentIndex];
       const previousSpec = currentIndex > 0 ? currentSpecs[currentIndex - 1] : null;
 
-      const currentNodes = new Set(currentSpec.parsedUrl?.nodes || []);
+      // Track last rendered nodes per spec so we can diff progression steps against the previous render
+      if (!window.__lastRenderedNodes) {
+        window.__lastRenderedNodes = new Set();
+        window.__lastRenderedSpecIndex = -1;
+      }
+
+      // Prepare ordered nodes - use allocated nodes if available
+      const orderedNodes = currentSpec.allocatedNodes && currentSpec.allocatedNodes.length > 0
+        ? currentSpec.allocatedNodes.map(n => String(n))
+        : (currentSpec.parsedUrl?.nodes || []);
+
+      // Identify ascendancy nodes from tree data that are allocated in this spec
+      const ascendancyNodeSet = new Set();
+      const ascAllocated = new Set();
+      if (currentTreeData && currentTreeData.ascendancies && currentTreeData.graphs) {
+        for (const ascData of Object.values(currentTreeData.ascendancies)) {
+          const ascGraph = ascData?.graphIndex != null ? currentTreeData.graphs[ascData.graphIndex] : null;
+          const graphNodes = ascGraph?.nodes ? Object.keys(ascGraph.nodes) : [];
+          graphNodes.forEach(id => ascendancyNodeSet.add(id));
+          // Keep only ascendancy nodes that are allocated in this spec
+          graphNodes.forEach(id => { if (orderedNodes.includes(id)) ascAllocated.add(id); });
+          if (ascData.startNodeId) ascendancyNodeSet.add(String(ascData.startNodeId));
+        }
+        console.log('[Tree] Ascendancy detection: total asc nodes=' + ascendancyNodeSet.size + ', allocated asc=' + ascAllocated.size);
+        if (ascAllocated.size > 0) {
+          console.log('[Tree] Allocated ascendancy nodes:', Array.from(ascAllocated).slice(0, 10));
+        }
+      }
+
+      // Split ordered nodes into ascendancy vs main tree
+      const orderedAsc = orderedNodes.filter(id => ascendancyNodeSet.has(id) || ascAllocated.has(id));
+      const orderedMain = orderedNodes.filter(id => !ascendancyNodeSet.has(id));
+
+      // Enforce connectivity on full main tree first
+      const keptMain = enforceConnectivity(orderedMain);
+
+      if (keptMain.length === 0 && orderedAsc.length === 0) {
+        maxAvailableNodes = 0;
+        nodeProgressionCount = null;
+        updateNodeProgression();
+        return;
+      }
+
+      // Progression applies only to main nodes; ascendancy always shown
+      maxAvailableNodes = keptMain.length;
+      if (nodeProgressionCount === null || nodeProgressionCount > maxAvailableNodes) {
+        nodeProgressionCount = maxAvailableNodes;
+      }
+
+      // Smart island prevention: ensure all nodes stay connected to start
+      const targetCount = nodeProgressionCount ?? maxAvailableNodes;
+      let mainNodesToShow = [...keptMain]; // Start with all connected nodes
+      
+      if (targetCount < keptMain.length) {
+        // Build adjacency for connectivity check
+        const adj = buildAdjacencyMap();
+        
+        // Get start node (first node in the list is guaranteed to be the anchor)
+        const startNode = keptMain[0];
+        
+        // Function to check if all nodes in a list are reachable from start
+        const allReachableFromStart = (nodeList) => {
+          if (nodeList.length === 0) return true;
+          const testSet = new Set(nodeList);
+          if (!testSet.has(startNode)) return false; // Start must always be included
+          
+          const visited = new Set();
+          const queue = [startNode];
+          visited.add(startNode);
+          
+          while (queue.length > 0) {
+            const cur = queue.shift();
+            const neighbors = adj.get(cur) || [];
+            for (const nb of neighbors) {
+              const nbStr = String(nb);
+              if (testSet.has(nbStr) && !visited.has(nbStr)) {
+                visited.add(nbStr);
+                queue.push(nbStr);
+              }
+            }
+          }
+          return visited.size === nodeList.length;
+        };
+        
+        // Try to remove nodes from the end, keeping only those we need to keep
+        // We remove nodes one by one, skipping bridge nodes
+        const toRemove = new Set();
+        for (let i = keptMain.length - 1; i >= 0 && keptMain.length - toRemove.size > targetCount; i--) {
+          const nodeToTest = keptMain[i];
+          if (i === 0) break; // Never remove the start node
+          
+          // Test if we can remove this node
+          const testList = keptMain.filter((n, idx) => idx !== i && !toRemove.has(idx));
+          if (allReachableFromStart(testList)) {
+            // Safe to remove
+            toRemove.add(i);
+          }
+          // If not safe, skip it (it's a bridge node) and try the next one
+        }
+        
+        mainNodesToShow = keptMain.filter((n, idx) => !toRemove.has(idx));
+        console.log('[Tree] Island prevention: target=' + targetCount + ', actual=' + mainNodesToShow.length + ', removed=' + toRemove.size + ' nodes');
+      }
+      
+      const nodesToShow = Array.from(ascAllocated).concat(mainNodesToShow);
+
+      connectedAllocatedNodes = nodesToShow;
+
+      const currentNodes = new Set(nodesToShow);
       const previousNodes = new Set(previousSpec?.parsedUrl?.nodes || []);
+      
+      // Update node progression controls
+      updateNodeProgression();
 
       // Track which nodes are in ascendancy graphs for special styling
       const ascendancyNodes = new Set();
@@ -874,9 +1349,14 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
         }
       }
 
-      const nodesActive = [...previousNodes].filter(id => currentNodes.has(id));
-      const nodesAdded = [...currentNodes].filter(id => !previousNodes.has(id));
-      const nodesRemoved = [...previousNodes].filter(id => !currentNodes.has(id));
+      // Choose diff source: if staying on same spec, diff against last rendered nodes; otherwise diff against prior spec
+      const prevRenderNodes = (window.__lastRenderedSpecIndex === currentIndex)
+        ? window.__lastRenderedNodes
+        : previousNodes;
+
+      const nodesActive = [...prevRenderNodes].filter(id => currentNodes.has(id));
+      const nodesAdded = [...currentNodes].filter(id => !prevRenderNodes.has(id));
+      const nodesRemoved = [...prevRenderNodes].filter(id => !currentNodes.has(id));
 
       console.log(\`[Tree] Delta - Active: \${nodesActive.length}, Added: \${nodesAdded.length}, Removed: \${nodesRemoved.length}\`);
       if (nodesAdded.length > 0) {
@@ -893,13 +1373,32 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
       const addedRegularNodes = nodesAdded.filter(id => !ascendancyNodes.has(id));
       const removedRegularNodes = nodesRemoved.filter(id => !ascendancyNodes.has(id));
       
+      // Get the last added/removed nodes for special highlighting (only in step mode)
+      const lastAddedNode = lastProgressionEvent === 'step' && addedRegularNodes.length > 0 
+        ? addedRegularNodes[addedRegularNodes.length - 1] 
+        : null;
+      const lastRemovedNode = lastProgressionEvent === 'step' && removedRegularNodes.length > 0 
+        ? removedRegularNodes[removedRegularNodes.length - 1] 
+        : null;
+      
+      // For added/removed styles, exclude the last node if in step mode (it gets special highlighting)
+      const addedForStyling = lastAddedNode 
+        ? addedRegularNodes.slice(0, -1) 
+        : addedRegularNodes;
+      const removedForStyling = lastRemovedNode 
+        ? removedRegularNodes.slice(0, -1) 
+        : removedRegularNodes;
+      
       const activeStyles = activeRegularNodes.map(id => \`#n\${id}\`).join(', ');
-      const addedStyles = addedRegularNodes.map(id => \`#n\${id}\`).join(', ');
-      const removedStyles = removedRegularNodes.map(id => \`#n\${id}\`).join(', ');
+      const addedStyles = addedForStyling.map(id => \`#n\${id}\`).join(', ');
+      const removedStyles = removedForStyling.map(id => \`#n\${id}\`).join(', ');
       
       const activeAscStyles = activeAscNodes.map(id => \`#n\${id}\`).join(', ');
       const addedAscStyles = addedAscNodes.map(id => \`#n\${id}\`).join(', ');
       const removedAscStyles = removedAscNodes.map(id => \`#n\${id}\`).join(', ');
+      
+      console.log('[Tree] Last added node:', lastAddedNode, 'lastProgressionEvent:', lastProgressionEvent);
+      console.log('[Tree] Last removed node:', lastRemovedNode, 'lastProgressionEvent:', lastProgressionEvent);
       
       // Build connection ID lists from actual graph connections
       const connectionActiveIds = [];
@@ -942,6 +1441,40 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
       const addedConnStyles = connectionAddedIds.map(id => \`#c\${id}\`).join(', ');
       const removedConnStyles = connectionRemovedIds.map(id => \`#c\${id}\`).join(', ');
 
+      // In simplified view, combine all allocated nodes (active + added) into single orange style
+      let simplifiedNodeStyles = '';
+      let simplifiedConnStyles = '';
+      
+      if (simplifiedViewEnabled) {
+        const allAllocatedNodes = [...new Set([...nodesActive, ...nodesAdded])];
+        const allAllocatedRegularNodes = allAllocatedNodes.filter(id => !ascendancyNodes.has(id));
+        const allAllocatedAscNodes = allAllocatedNodes.filter(id => ascendancyNodes.has(id));
+        
+        simplifiedNodeStyles = allAllocatedRegularNodes.map(id => \`#n\${id}\`).join(', ');
+        const simplifiedAscStyles = allAllocatedAscNodes.map(id => \`#n\${id}\`).join(', ');
+        
+        // Connections: show only between allocated nodes
+        const allAllocatedSet = new Set(allAllocatedNodes);
+        const simplifiedConnIds = [];
+        
+        if (currentTreeData && currentTreeData.graphs) {
+          for (const graph of currentTreeData.graphs) {
+            for (const conn of graph.connections) {
+              if (allAllocatedSet.has(conn.a) && allAllocatedSet.has(conn.b)) {
+                simplifiedConnIds.push(conn.a + '-' + conn.b);
+              }
+            }
+          }
+        }
+        
+        simplifiedConnStyles = simplifiedConnIds.map(id => \`#c\${id}\`).join(', ');
+        
+        // Combine regular and ascendancy node styles
+        if (simplifiedAscStyles) {
+          simplifiedNodeStyles = simplifiedNodeStyles ? \`\${simplifiedNodeStyles}, \${simplifiedAscStyles}\` : simplifiedAscStyles;
+        }
+      }
+
       const dynamicCSS = \`
         <style id="tree-dynamic-css">
           svg .nodes { fill: hsl(215, 15%, 50%); stroke: hsl(215, 15%, 50%); stroke-width: 0; }
@@ -951,6 +1484,11 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
           svg .ascendancy { opacity: 0.15; }
           \${activeAscendancyName ? \`svg .ascendancy.\${activeAscendancyName} { opacity: 1 !important; }\` : ''}
           
+          \${simplifiedViewEnabled ? \`
+          /* Simplified view: single orange color for all allocated nodes */
+          \${simplifiedNodeStyles ? \`svg :is(\${simplifiedNodeStyles}) { fill: hsl(30, 100%, 50%) !important; stroke: hsl(30, 100%, 50%) !important; }\` : ''}
+          \${simplifiedConnStyles ? \`svg :is(\${simplifiedConnStyles}) { stroke: hsl(30, 100%, 40%) !important; stroke-width: 35 !important; }\` : ''}
+          \` : \`
           /* Regular nodes - standard styling */
           \${activeStyles ? \`svg :is(\${activeStyles}) { fill: hsl(200, 80%, 50%) !important; stroke: hsl(200, 80%, 50%) !important; }\` : ''}
           \${addedStyles ? \`svg :is(\${addedStyles}) { fill: hsl(120, 90%, 50%) !important; stroke: hsl(120, 90%, 50%) !important; }\` : ''}
@@ -965,6 +1503,11 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
           \${activeConnStyles ? \`svg :is(\${activeConnStyles}) { stroke: hsl(200, 80%, 40%) !important; stroke-width: 35 !important; }\` : ''}
           \${addedConnStyles ? \`svg :is(\${addedConnStyles}) { stroke: hsl(120, 90%, 40%) !important; stroke-width: 35 !important; }\` : ''}
           \${removedConnStyles ? \`svg :is(\${removedConnStyles}) { stroke: hsl(0, 90%, 40%) !important; stroke-width: 35 !important; }\` : ''}
+          \`}
+          
+          /* Highlight last added/removed node with brighter green/red (works in both modes) */
+          \${lastAddedNode ? \`svg #n\${lastAddedNode} { fill: #0f0 !important; stroke: #0f0 !important; }\` : ''}
+          \${lastRemovedNode ? \`svg #n\${lastRemovedNode} { fill: #f00 !important; stroke: #f00 !important; }\` : ''}
         </style>
       \`;
 
@@ -980,6 +1523,10 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
             <span class="stat-line stat-added">Added: <strong>\${nodesAdded.length}</strong></span>
             <span class="stat-line stat-removed">Removed: <strong>\${nodesRemoved.length}</strong></span>
           </p>
+          <label style="display: flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 12px; cursor: pointer; user-select: none; pointer-events: auto;">
+            <input type="checkbox" id="simplified-view-toggle" onchange="toggleSimplifiedView()" \${simplifiedViewEnabled ? 'checked' : ''} style="width: 18px; height: 18px; cursor: pointer; accent-color: #ff8c00; pointer-events: auto; margin: 0;">
+            <span style="pointer-events: auto;">Simplified View</span>
+          </label>
         </div>
         <div id="tree-svg">
           \${treeSvgData}
@@ -1012,8 +1559,11 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
       let maxY = -Infinity;
       let foundNodes = 0;
 
-      const allNodes = [...nodesAdded, ...nodesActive];
-      allNodes.forEach((nodeId) => {
+      const focusNodes = (lastProgressionEvent === 'step' && (nodesAdded.length > 0 || nodesRemoved.length > 0))
+        ? [...nodesAdded, ...nodesRemoved]
+        : (mainNodesToShow && mainNodesToShow.length > 0 ? mainNodesToShow : [...nodesAdded, ...nodesActive]);
+
+      focusNodes.forEach((nodeId) => {
         const node = svgElement.querySelector('#n' + nodeId);
         if (node) {
           const cx = parseFloat(node.getAttribute('cx') || '0');
@@ -1082,31 +1632,41 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
       var containerRect = (document.getElementById('tree-viewport') || svgWrapper).getBoundingClientRect();
       var containerWidth = containerRect.width;
       var containerHeight = containerRect.height;
-      const padding = 1250;
 
       if (foundNodes > 0 && isFinite(minX)) {
-        // If we have very few nodes in a small area, expand the focus to include more context
+        // For step progression events (arrow clicks), zoom to changed nodes without expansion
+        // For manual input or initial load, show wider area with context
+        const isStepEvent = (lastProgressionEvent === 'step' && (nodesAdded.length > 0 || nodesRemoved.length > 0));
+        
+        // Use moderate padding for step events to avoid over-zooming
+        const padding = isStepEvent ? 2200 : 1250;
+        
         let focusMinX = minX;
         let focusMaxX = maxX;
         let focusMinY = minY;
         let focusMaxY = maxY;
         
-        const nodeSpreadX = maxX - minX;
-        const nodeSpreadY = maxY - minY;
-        const minSpread = 3000;
-        
-        if (nodeSpreadX < minSpread || nodeSpreadY < minSpread) {
-          const treeCenterX = (vbX + vbW / 2);
-          const treeCenterY = (vbY + vbH / 2);
-          const nodeCenterX = (minX + maxX) / 2;
-          const nodeCenterY = (minY + maxY) / 2;
+        // Only expand focus area for non-step events (manual selection, initial load)
+        if (!isStepEvent) {
+          const nodeSpreadX = maxX - minX;
+          const nodeSpreadY = maxY - minY;
+          const minSpread = 3000;
           
-          focusMinX = Math.min(minX, Math.min(nodeCenterX, treeCenterX) - minSpread / 2);
-          focusMaxX = Math.max(maxX, Math.max(nodeCenterX, treeCenterX) + minSpread / 2);
-          focusMinY = Math.min(minY, Math.min(nodeCenterY, treeCenterY) - minSpread / 2);
-          focusMaxY = Math.max(maxY, Math.max(nodeCenterY, treeCenterY) + minSpread / 2);
-          
-          console.log('[Tree] Expanded focus area to include more context');
+          if (nodeSpreadX < minSpread || nodeSpreadY < minSpread) {
+            const treeCenterX = (vbX + vbW / 2);
+            const treeCenterY = (vbY + vbH / 2);
+            const nodeCenterX = (minX + maxX) / 2;
+            const nodeCenterY = (minY + maxY) / 2;
+            
+            focusMinX = Math.min(minX, Math.min(nodeCenterX, treeCenterX) - minSpread / 2);
+            focusMaxX = Math.max(maxX, Math.max(nodeCenterX, treeCenterX) + minSpread / 2);
+            focusMinY = Math.min(minY, Math.min(nodeCenterY, treeCenterY) - minSpread / 2);
+            focusMaxY = Math.max(maxY, Math.max(nodeCenterY, treeCenterY) + minSpread / 2);
+            
+            console.log('[Tree] Expanded focus area to include more context (manual selection)');
+          }
+        } else {
+          console.log('[Tree] Step event - focusing tightly on changed nodes (padding=' + padding + ')');
         }
         
         const focusCenterX = (focusMinX + focusMaxX) / 2;
@@ -1136,6 +1696,10 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
       } else {
         svgElement.setAttribute('viewBox', baseViewBox);
       }
+
+      // Persist render state for next diff
+      window.__lastRenderedNodes = new Set(nodesToShow);
+      window.__lastRenderedSpecIndex = currentIndex;
 
       // Debug: sample node
       const sampleNodeId = nodesAdded[0] || nodesActive[0];
@@ -1441,6 +2005,7 @@ export function createPassiveTreeWindow(): BrowserWindow {
   const bounds = savedBounds || defaultBounds;
   const ultraMinimal = savedBounds?.ultraMinimal || false;
   const pinned = savedBounds?.pinned !== undefined ? savedBounds.pinned : true; // Default to always on top
+  const simplifiedView = savedBounds?.simplifiedView || false;
   currentUltraMinimal = ultraMinimal;
   currentPinned = pinned;
 
@@ -1465,7 +2030,7 @@ export function createPassiveTreeWindow(): BrowserWindow {
   // Register with overlay z-order manager
   try { registerOverlayWindow('tree', treeWindow, pinned, false); } catch {}
 
-  const html = buildTreeWindowHtml(ultraMinimal, pinned);
+  const html = buildTreeWindowHtml(ultraMinimal, pinned, simplifiedView);
   const base64Html = Buffer.from(html, 'utf-8').toString('base64');
   treeWindow.loadURL(`data:text/html;charset=utf-8;base64,${base64Html}`);
 
@@ -1509,7 +2074,8 @@ export function createPassiveTreeWindow(): BrowserWindow {
     currentUltraMinimal = isMinimal;
     // Save the state immediately
     const bounds = treeWindow.getBounds();
-    saveTreeWindowBounds(bounds, currentUltraMinimal, undefined, currentPinned);
+    const savedState = loadTreeWindowBounds();
+    saveTreeWindowBounds(bounds, currentUltraMinimal, savedState?.viewBox, currentPinned, savedState?.simplifiedView);
   });
   
   // Handle pin toggle
@@ -1522,7 +2088,8 @@ export function createPassiveTreeWindow(): BrowserWindow {
     
     // Save the state immediately
     const bounds = treeWindow.getBounds();
-    saveTreeWindowBounds(bounds, currentUltraMinimal, undefined, currentPinned);
+    const savedState = loadTreeWindowBounds();
+    saveTreeWindowBounds(bounds, currentUltraMinimal, savedState?.viewBox, currentPinned, savedState?.simplifiedView);
   });
 
   // Handle viewBox state changes (zoom/pan)
@@ -1530,7 +2097,25 @@ export function createPassiveTreeWindow(): BrowserWindow {
     if (!treeWindow || treeWindow.isDestroyed()) return;
     // Save the viewBox state along with bounds
     const bounds = treeWindow.getBounds();
-    saveTreeWindowBounds(bounds, currentUltraMinimal, viewBox, currentPinned);
+    const savedState = loadTreeWindowBounds();
+    saveTreeWindowBounds(bounds, currentUltraMinimal, viewBox, currentPinned, savedState?.simplifiedView);
+  });
+
+  // Handle simplified view toggle
+  ipcMain.on('tree-window-simplified-view-changed', (event, isSimplified: boolean) => {
+    if (!treeWindow || treeWindow.isDestroyed()) return;
+    // Save the simplified view state along with bounds
+    const bounds = treeWindow.getBounds();
+    const savedState = loadTreeWindowBounds();
+    saveTreeWindowBounds(bounds, currentUltraMinimal, savedState?.viewBox, currentPinned, isSimplified);
+  });
+
+  // Explicit focus request from renderer (e.g., when clicking the node input)
+  ipcMain.on('tree-window-request-focus', () => {
+    if (!treeWindow || treeWindow.isDestroyed()) return;
+    try { bringToFront('tree'); } catch {}
+    treeWindow.focus();
+    treeWindow.webContents.focus();
   });
 
   // Bring window to front when first opened
@@ -1543,7 +2128,7 @@ export function getPassiveTreeWindow(): BrowserWindow | null {
   return treeWindow;
 }
 
-export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'poe1', currentAct: number = 1, characterLevel: number = 1, autoDetectEnabled: boolean = true, savedTreeIndex?: number, treeVersion: string = '3_26'): void {
+export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'poe1', currentAct: number = 1, characterLevel: number = 1, autoDetectEnabled: boolean = true, savedTreeIndex?: number, treeVersion: string = '3_26', buildSource?: 'pob' | 'mobalytics' | 'maxroll'): void {
   if (!treeWindow || treeWindow.isDestroyed()) {
     console.warn('[Tree Window] Cannot send tree data - window not available');
     return;
@@ -1606,6 +2191,7 @@ export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'p
     characterLevel,
     autoDetectEnabled,
     savedTreeIndex,
+    buildSource,
   });
 
   // Load saved viewBox state
@@ -1624,6 +2210,7 @@ export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'p
     autoDetectEnabled,
     savedTreeIndex,
     savedViewBox,
+    buildSource, // Send buildSource to renderer for node progression UI
   });
 }
 

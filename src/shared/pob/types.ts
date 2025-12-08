@@ -18,6 +18,7 @@ export interface ParsedPobBuild {
   itemSets?: ItemSet[];
   treeVersion: string;
   notes?: string; // Build notes from PoB Notes tab
+  notesSections?: Array<{ title: string; content: string }>; // Structured notes sections for dropdown (Mobalytics imports)
 }
 
 export interface ItemSet {
@@ -131,6 +132,8 @@ export interface StoredPobBuild {
   treeVersion: string;
   importedAt: number;
   notes?: string; // Build notes from PoB Notes tab
+  notesSections?: Array<{ title: string; content: string }>; // Structured notes sections for dropdown (Mobalytics imports)
+  buildSource?: 'pob' | 'mobalytics' | 'maxroll'; // Source of the build import (for node progression UI)
 }
 
 /**
