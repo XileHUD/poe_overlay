@@ -3518,7 +3518,7 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
         ipcMain.handle('poe-fetch-history', async (_e, league: string) => {
             // Rate limiter handles ALL timing - no manual interval checks
             const targetLeague = (typeof league === 'string' && league.trim()) ? league.trim() : this.merchantHistoryLeague;
-            const { ok, status, data, headers, error, rateLimited, retryAfter } = await this.fetchPoeHistory(targetLeague);
+            const { ok, status, data, headers, error, rateLimited, retryAfter, leagueEnded } = await this.fetchPoeHistory(targetLeague);
             
             // Only update lastFetchAt on successful requests
             if (ok) {
@@ -3544,6 +3544,7 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                 error, 
                 rateLimited,
                 retryAfter,
+                leagueEnded,
                 accountName: this.poeAccountName, 
                 lastFetchAt: this.lastHistoryFetchAt,
                 league: targetLeague

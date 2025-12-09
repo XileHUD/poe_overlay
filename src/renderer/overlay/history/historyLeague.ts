@@ -40,6 +40,21 @@ export const HARDCORE_LEAGUE = POE2_HARDCORE_LEAGUE;
 export const STANDARD_LEAGUE = POE2_STANDARD_LEAGUE;
 export const LEGACY_HARDCORE_LEAGUE = POE2_LEGACY_HARDCORE_LEAGUE;
 
+// Leagues that have ended and should no longer be fetched from API
+export const ENDED_LEAGUES = [
+  'Rise of the Abyssal',
+  'HC Rise of the Abyssal'
+];
+
+/**
+ * Check if a league has ended and should not be fetched from the API
+ */
+export function isLeagueEnded(league: string): boolean {
+  if (!league) return false;
+  const trimmed = league.trim();
+  return ENDED_LEAGUES.some(ended => ended.toLowerCase() === trimmed.toLowerCase());
+}
+
 const POE1_LEAGUE_OPTIONS: LeagueOption[] = [
   { id: POE1_SOFTCORE_LEAGUE, label: 'Keepers of the Flame', tag: 'Softcore', hint: 'Default trade league' },
   { id: POE1_HARDCORE_LEAGUE, label: 'Hardcore Keepers of the Flame', tag: 'Hardcore', hint: 'Deletes characters on death' },

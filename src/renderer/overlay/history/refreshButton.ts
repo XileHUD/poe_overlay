@@ -143,7 +143,8 @@ export function updateRefreshButtonUI(
   canRefresh: boolean, 
   retryAfter?: number,
   autoRefreshActive?: boolean,
-  rateLimitInfo?: { limits: string; state: string; budget: string }
+  rateLimitInfo?: { limits: string; state: string; budget: string },
+  leagueEnded?: boolean
 ): void {
   const btn = document.getElementById('historyRefreshBtn') as HTMLButtonElement | null;
   if (!btn) return;
@@ -164,6 +165,15 @@ export function updateRefreshButtonUI(
     rateLimitText = `\n\n📊 Current Rate Limits:\n${rateLimitInfo.limits || 'Unknown'}\n\n📈 Usage:\n${rateLimitInfo.state || 'Unknown'}\n\n💰 Budget: ${rateLimitInfo.budget || 'Unknown'}`;
   } else {
     rateLimitText = '\n\n⚠ GGG API limits: 15 requests per 3 hours';
+  }
+
+  // League ended - disable refresh entirely
+  if (leagueEnded) {
+    btn.disabled = true;
+    btn.style.opacity = '0.5';
+    btn.style.cursor = 'not-allowed';
+    btn.title = buildTooltip('🏁 League Ended\n\nThis league has ended and is no longer available for fetching.\nThe new league will be available on launch (update required).');
+    return;
   }
 
   if (!canRefresh && retryAfter) {

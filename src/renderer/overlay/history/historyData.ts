@@ -24,6 +24,7 @@ export interface HistoryStore {
   totals: Record<string, number>;
   lastSync: number;
   lastFetchAt?: number;
+  endedLeague?: string; // Name of the league that ended (from 410 response)
 }
 
 export interface HistoryState {
@@ -180,7 +181,8 @@ export async function initHistoryFromLocal(
   const totals = (saved as any).totals && typeof (saved as any).totals === 'object' ? (saved as any).totals : {};
   const lastSync = Number((saved as any).lastSync || 0) || 0;
   const lastFetchAt = Number((saved as any).lastFetchAt || lastSync || 0) || 0;
-  historyState.store = { entries, totals, lastSync, lastFetchAt } as any;
+  const endedLeague = typeof (saved as any).endedLeague === 'string' ? (saved as any).endedLeague : undefined;
+  historyState.store = { entries, totals, lastSync, lastFetchAt, endedLeague } as any;
       
       // Ensure totals are consistent with entries on load
       try { recomputeTotals(); } catch {}

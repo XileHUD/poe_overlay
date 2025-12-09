@@ -2,6 +2,7 @@ import { BrowserWindow, session } from 'electron';
 import { httpGetRaw } from './http';
 import { rateLimiter } from '../services/rateLimiter';
 import type { OverlayVersion } from '../../types/overlayVersion.js';
+import { POE1_LEAGUE_ENDED, POE2_LEAGUE_ENDED } from '../../shared/leagueStatus.js';
 
 export interface PoeHistoryResponse { 
   ok: boolean; 
@@ -11,6 +12,7 @@ export interface PoeHistoryResponse {
   error?: string;
   rateLimited?: boolean;
   retryAfter?: number;
+  leagueEnded?: boolean; // New flag to indicate league has ended
 }
 
 export class PoeSessionHelper {
@@ -51,7 +53,20 @@ export class PoeSessionHelper {
   }
 
   async fetchHistory(league: string): Promise<PoeHistoryResponse> {
+    // Check global league ended flag (but allow permanent leagues like Standard/Hardcore)
+    const isPermanentLeague = /^(standard|hardcore)$/i.test(league.trim());
     const overlayVersion = this.safeOverlayVersion();
+    const leagueEnded = (overlayVersion === 'poe1' ? POE1_LEAGUE_ENDED : POE2_LEAGUE_ENDED) && !isPermanentLeague;
+    
+    if (leagueEnded) {
+      console.log(`[PoeSession] Global ${overlayVersion === 'poe1' ? 'POE1' : 'POE2'}_LEAGUE_ENDED flag is true, blocking fetch for "${league}"`);
+      return {
+        ok: false,
+        status: 410,
+        error: 'League has ended (global config)',
+        leagueEnded: true
+      };
+    }
     const tradeRoot = overlayVersion === 'poe1' ? 'trade' : 'trade2';
     const apiLeagueName = this.mapLeagueNameForApi(league, overlayVersion);
     const url = `https://www.pathofexile.com/api/${tradeRoot}/history/${encodeURIComponent(apiLeagueName)}`;
@@ -124,6 +139,17 @@ export class PoeSessionHelper {
           rateLimited: true,
           retryAfter,
           headers
+        };
+      }
+
+      if (statusCode === 410) {
+        // League has ended (Gone) - GGG returns 410 for ended leagues
+        console.log(`[PoeSession] League "${league}" returned 410 Gone - league has ended`);
+        return { 
+          ok: false, 
+          status: 410, 
+          error: 'League has ended',
+          leagueEnded: true
         };
       }
 

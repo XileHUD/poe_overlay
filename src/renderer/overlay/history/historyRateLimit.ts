@@ -11,6 +11,7 @@ import { historyState } from './historyData';
 import { historyVisible } from './historyView';
 import { updateRefreshButtonUI } from './refreshButton';
 import { autoRefreshManager } from './autoRefresh';
+import { POE1_LEAGUE_ENDED, POE2_LEAGUE_ENDED } from '../../../shared/leagueStatus';
 
 /**
  * Calculate the next allowed refresh timestamp based on:
@@ -117,14 +118,22 @@ function formatReset(resetSec: number): string {
 export function updateHistoryRefreshButton(): void {
   if (!historyVisible()) return;
   
+  // Check global league ended flag first (but allow permanent leagues)
+  const isPermanentLeague = /^(standard|hardcore)$/i.test(historyState.league.trim());
+  const isPoe1 = ((window as any).__overlayVersionMode || 'poe2') === 'poe1';
+  const globalLeagueEnded = (isPoe1 ? POE1_LEAGUE_ENDED : POE2_LEAGUE_ENDED) && !isPermanentLeague;
+  
+  // Check if current league has ended (either globally or cached 410)
+  const leagueEnded = globalLeagueEnded || (historyState.store.endedLeague === historyState.league);
+  
   const now = Date.now();
   const nextAt = nextAllowedRefreshAt();
   const waitMs = Math.max(0, nextAt - now);
-  const canRefresh = waitMs === 0;
+  const canRefresh = waitMs === 0 && !leagueEnded; // Disable refresh if league ended
   const retryAfterSecs = Math.ceil(waitMs / 1000);
   const autoRefreshActive = autoRefreshManager.isRunning();
   
-  updateRefreshButtonUI(canRefresh, retryAfterSecs, autoRefreshActive, _lastRateLimitInfo || undefined);
+  updateRefreshButtonUI(canRefresh, retryAfterSecs, autoRefreshActive, _lastRateLimitInfo || undefined, leagueEnded);
   
   // Schedule next update if rate limited
   if (waitMs > 0) {

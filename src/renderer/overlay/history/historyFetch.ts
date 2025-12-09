@@ -19,6 +19,7 @@ import { updateSessionUI } from './sessionManager';
 import { sendHistoryToPopout } from './historyPopout';
 import { recomputeChartSeriesFromStore, drawHistoryChart, updateHistoryChartFromTotals } from './historyChart';
 import { getLeaguePreference, setLeaguePreference, showLeaguePrompt, formatLeagueLabel } from './historyLeague';
+import { POE1_LEAGUE_ENDED, POE2_LEAGUE_ENDED, LEAGUE_ENDED_MESSAGE, LEAGUE_ENDED_TOOLTIP } from '../../../shared/leagueStatus';
 
 function isPoe1Mode(): boolean {
   try {
@@ -158,6 +159,84 @@ export async function refreshHistory(
     return;
   }
   
+  // Check global league ended flag first (but allow permanent leagues)
+  const isPermanentLeague = /^(standard|hardcore)$/i.test(historyState.league.trim());
+  const isPoe1 = isPoe1Mode();
+  const globalLeagueEnded = (isPoe1 ? POE1_LEAGUE_ENDED : POE2_LEAGUE_ENDED) && !isPermanentLeague;
+  
+  if (globalLeagueEnded) {
+    console.log(`[History] Global ${isPoe1 ? 'POE1' : 'POE2'}_LEAGUE_ENDED flag is true - skipping fetch for "${historyState.league}"`);
+    
+    // Show cached data if available
+    if (historyState.store.entries && historyState.store.entries.length > 0) {
+      const all = (historyState.store.entries || []).slice().reverse();
+      historyState.items = applySort(applyFilters(all, historyState.filters), historyState.sort);
+      historyState.selectedIndex = 0;
+      renderListCallback(renderDetailCallback);
+      renderDetailCallback(0);
+      renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+        try { updateHistoryChartFromTotals(totals); } catch {}
+      }, { entries: historyState.items });
+      renderHistoryActiveFilters(historyState, () => historyVisible(), () => {
+        renderListCallback(renderDetailCallback);
+        renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+          try { updateHistoryChartFromTotals(totals); } catch {}
+        }, { entries: historyState.items });
+      });
+      try { recomputeChartSeriesFromStore(); drawHistoryChart(); } catch {}
+    } else {
+      (histList as HTMLElement).innerHTML = '<div class="no-mods" style="padding:8px;">This league has ended. No trade history available.</div>';
+    }
+    
+    // Show global league ended badge
+    const info = document.getElementById("historyInfoBadge");
+    if (info) {
+      (info as HTMLElement).style.display = "";
+      (info as HTMLElement).textContent = LEAGUE_ENDED_MESSAGE;
+      (info as HTMLElement).title = LEAGUE_ENDED_TOOLTIP;
+    }
+    
+    try { updateHistoryRefreshButton(); } catch {}
+    return;
+  }
+  
+  // Check if current league matches a league we know has ended (cached from previous 410)
+  if (historyState.store.endedLeague && historyState.store.endedLeague === historyState.league) {
+    console.log(`[History] League "${historyState.league}" already marked as ended - skipping fetch`);
+    
+    // Show cached data if available
+    if (historyState.store.entries && historyState.store.entries.length > 0) {
+      const all = (historyState.store.entries || []).slice().reverse();
+      historyState.items = applySort(applyFilters(all, historyState.filters), historyState.sort);
+      historyState.selectedIndex = 0;
+      renderListCallback(renderDetailCallback);
+      renderDetailCallback(0);
+      renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+        try { updateHistoryChartFromTotals(totals); } catch {}
+      }, { entries: historyState.items });
+      renderHistoryActiveFilters(historyState, () => historyVisible(), () => {
+        renderListCallback(renderDetailCallback);
+        renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+          try { updateHistoryChartFromTotals(totals); } catch {}
+        }, { entries: historyState.items });
+      });
+      try { recomputeChartSeriesFromStore(); drawHistoryChart(); } catch {}
+    } else {
+      (histList as HTMLElement).innerHTML = '<div class="no-mods" style="padding:8px;">This league has ended. No trade history available.</div>';
+    }
+    
+    // Show league ended badge
+    const info = document.getElementById("historyInfoBadge");
+    if (info) {
+      (info as HTMLElement).style.display = "";
+      (info as HTMLElement).textContent = LEAGUE_ENDED_MESSAGE;
+      (info as HTMLElement).title = LEAGUE_ENDED_TOOLTIP;
+    }
+    
+    try { updateHistoryRefreshButton(); } catch {}
+    return;
+  }
+  
   // Show loading state only if we don't already have items displayed
   if (!historyState.items || historyState.items.length === 0) {
     (histList as HTMLElement).innerHTML = '<div class="no-mods" style="padding:8px;">Loading…</div>';
@@ -175,6 +254,55 @@ export async function refreshHistory(
     // ========== Handle Rate Limiting ==========
     if ((res as any)?.rateLimited) {
       await handleRateLimitedResponse(res, histList, renderListCallback, renderDetailCallback);
+      return;
+    }
+    
+    // ========== Handle League Ended ==========
+    if ((res as any)?.leagueEnded) {
+      historyState.lastRefreshAt = Date.now();
+      
+      // Save the name of the league that ended
+      historyState.store.endedLeague = historyState.league;
+      try {
+        await (window as any).electronAPI.historySave(historyState.store, historyState.league);
+        console.log(`[History] League "${historyState.league}" ended - saved to prevent future fetches`);
+      } catch (e) {
+        console.warn('[History] Failed to save endedLeague:', e);
+      }
+      
+      // Show cached data if available
+      if (historyState.store.entries && historyState.store.entries.length > 0) {
+        // Re-render from cache
+        const all = (historyState.store.entries || []).slice().reverse();
+        historyState.items = applySort(applyFilters(all, historyState.filters), historyState.sort);
+        historyState.selectedIndex = 0;
+        renderListCallback(renderDetailCallback);
+        renderDetailCallback(0);
+        renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+          try { updateHistoryChartFromTotals(totals); } catch {}
+        }, { entries: historyState.items });
+        renderHistoryActiveFilters(historyState, () => historyVisible(), () => {
+          renderListCallback(renderDetailCallback);
+          renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
+            try { updateHistoryChartFromTotals(totals); } catch {}
+          }, { entries: historyState.items });
+        });
+        try { recomputeChartSeriesFromStore(); drawHistoryChart(); } catch {}
+      } else {
+        // No cached data
+        (histList as HTMLElement).innerHTML = '<div class="no-mods" style="padding:8px;">This league has ended. No trade history available.</div>';
+      }
+      
+      // Show league ended badge with tooltip
+      const info = document.getElementById("historyInfoBadge");
+      if (info) {
+        (info as HTMLElement).style.display = "";
+        (info as HTMLElement).textContent = LEAGUE_ENDED_MESSAGE;
+        (info as HTMLElement).title = LEAGUE_ENDED_TOOLTIP;
+        // Keep the badge visible permanently for ended leagues
+      }
+      
+      try { updateHistoryRefreshButton(); } catch {}
       return;
     }
     
