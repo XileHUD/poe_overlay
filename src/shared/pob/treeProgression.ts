@@ -6,6 +6,24 @@
 
 import { ActTreeProgression } from './types.js';
 
+// Class starting nodes (approximate positions for sorting by distance)
+const CLASS_STARTING_NODES: Record<string, number> = {
+  'Scion': 26725,
+  'Marauder': 54127,
+  'Ranger': 36634,
+  'Witch': 41263,
+  'Duelist': 6230,
+  'Templar': 2491,
+  'Shadow': 33631,
+  // PoE2 classes
+  'Warrior': 54127,
+  'Sorceress': 41263,
+  'Monk': 33631,
+  'Mercenary': 36634,
+  'Huntress': 6230,
+  'Acolyte': 2491,
+};
+
 // Quest passive point rewards per act (PoE1)
 const QUEST_REWARDS_POE1: Record<number, number> = {
   1: 2,  // Dweller of the Deep + Marooned Mariner
@@ -44,9 +62,41 @@ function getQuestPointsUpToAct(actNumber: number): number {
 
 export function calculateTreeProgressionByAct(
   allNodes: number[],
-  buildLevel: number
+  buildLevel: number,
+  className?: string,
+  nodeLookup?: Record<number, any>
 ): ActTreeProgression[] {
   const progression: ActTreeProgression[] = [];
+
+  // Sort nodes by distance from starting position for more natural progression
+  let sortedNodes = allNodes;
+  if (className && nodeLookup) {
+    const startingNode = CLASS_STARTING_NODES[className];
+    if (startingNode && nodeLookup[startingNode]) {
+      const startPos = nodeLookup[startingNode];
+      
+      // Calculate distance for each node and sort
+      const nodesWithDistance = allNodes.map(nodeId => {
+        const node = nodeLookup[nodeId];
+        if (!node || !startPos) {
+          return { nodeId, distance: Infinity };
+        }
+        
+        // Simple Euclidean distance
+        const dx = (node.x || 0) - (startPos.x || 0);
+        const dy = (node.y || 0) - (startPos.y || 0);
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        return { nodeId, distance };
+      });
+      
+      // Sort by distance (closest to starting node first)
+      nodesWithDistance.sort((a, b) => a.distance - b.distance);
+      sortedNodes = nodesWithDistance.map(item => item.nodeId);
+      
+      console.log('[TreeProgression] Sorted', allNodes.length, 'nodes by distance from', className, 'starting position');
+    }
+  }
 
   for (const range of ACT_LEVEL_RANGES) {
     // Calculate available points at end of this act
@@ -55,8 +105,8 @@ export function calculateTreeProgressionByAct(
     const pointsFromQuests = getQuestPointsUpToAct(range.act);
     const totalAvailable = pointsFromLevels + pointsFromQuests;
 
-    // Take first N nodes from PoB (assumes they're in allocation order)
-    const nodesForThisAct = allNodes.slice(0, Math.min(totalAvailable, allNodes.length));
+    // Take first N nodes from sorted list (now in meaningful order)
+    const nodesForThisAct = sortedNodes.slice(0, Math.min(totalAvailable, sortedNodes.length));
 
     // Find new nodes added in this act
     const previousActNodes = range.act > 1 
@@ -73,7 +123,7 @@ export function calculateTreeProgressionByAct(
     });
 
     // Stop if we've allocated all nodes from the build
-    if (totalAvailable >= allNodes.length) {
+    if (totalAvailable >= sortedNodes.length) {
       break;
     }
   }

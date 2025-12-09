@@ -28,6 +28,9 @@ import {
   setActiveBuild,
   getActiveBuild,
   getAllBuilds,
+  nodeLookup326,
+  nodeLookup327,
+  nodeLookupPoe2,
   migrateLegacyBuild,
 } from '../../shared/pob/index.js';
 import { fetchMobalyticsBuild, convertMobalyticsToPobBuild } from '../../shared/mobalytics/index.js';
@@ -2276,19 +2279,29 @@ export class LevelingWindow {
       if (!firstTreeSpec) {
         return { success: false, error: 'No valid tree specs found in build' };
       }
-      const allocatedNodes = firstTreeSpec.allocatedNodes || [];
+      
+      // Prefer parsedUrl.nodes (from tree URL, preserves allocation order) over allocatedNodes (arbitrary XML order)
+      const allocatedNodes = firstTreeSpec.parsedUrl?.nodes 
+        ? firstTreeSpec.parsedUrl.nodes.map(n => parseInt(n, 10))
+        : firstTreeSpec.allocatedNodes || [];
 
       console.log('[PoB Import] Using tree spec:', firstTreeSpec.title);
       console.log('[PoB Import] Tree specs available:', (treeSpecsToUse || []).map((s: any) => s?.title || 'Untitled').join(', '));
+      console.log('[PoB Import] Using', firstTreeSpec.parsedUrl?.nodes ? 'tree URL nodes (ordered)' : 'XML nodes (unordered)');
+
+      // Get node lookup based on game version
+      const gameVersion = this.overlayVersion;
+      const nodeLookup = gameVersion === 'poe2' ? nodeLookupPoe2 : nodeLookup326;
 
       // Calculate tree progression by act
       // For Maxroll builds with history, use history-based progression to respect allocation order
+      // For PoB builds with tree URL, the nodes are already in allocation order!
       const treeProgression = firstTreeSpec.maxrollHistory
         ? calculateTreeProgressionFromHistory(firstTreeSpec.maxrollHistory, build.level)
-        : calculateTreeProgressionByAct(allocatedNodes, build.level);
+        : calculateTreeProgressionByAct(allocatedNodes, build.level, build.className, nodeLookup);
 
       console.log('[PoB Import] Tree progression calculated for', treeProgression.length, 'acts', 
-        firstTreeSpec.maxrollHistory ? '(using Maxroll history order)' : '(using PoB order)');
+        firstTreeSpec.maxrollHistory ? '(using Maxroll history)' : firstTreeSpec.parsedUrl?.nodes ? '(using PoB URL order)' : '(sorted by distance)');
 
       // Extract unique gems from ALL skill sets (not just first one)
       const allSocketGroups: GemSocketGroup[] = [];

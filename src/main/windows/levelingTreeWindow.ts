@@ -1310,7 +1310,9 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
       
       const nodesToShow = Array.from(ascAllocated).concat(mainNodesToShow);
 
-      connectedAllocatedNodes = nodesToShow;
+      // connectedAllocatedNodes should always be the FULL list of main nodes (not filtered by progression)
+      // This is used by updateNodeProgression to calculate maxAvailableNodes correctly
+      connectedAllocatedNodes = Array.from(ascAllocated).concat(keptMain);
 
       const currentNodes = new Set(nodesToShow);
       const previousNodes = new Set(previousSpec?.parsedUrl?.nodes || []);

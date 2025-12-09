@@ -7,6 +7,7 @@ export { parsePobCode } from './parser.js';
 export { extractUniqueGems, matchGemsToQuestSteps } from './gemMatcher.js';
 export { findGemQuest, matchPobGemsToQuests, getGemsForQuest, formatGemQuestInfo, matchGemsForStep } from './gemQuestMatcher.js';
 export { calculateTreeProgressionByAct, calculateTreeProgressionFromHistory, getRecommendedActForLevel } from './treeProgression.js';
+export { nodeLookup326, nodeLookup327, nodeLookupPoe2 } from './treeLoader.js';
 export {
   createEmptyBuildsList,
   addBuild,
