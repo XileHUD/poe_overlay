@@ -280,8 +280,12 @@ function initializeVirtualScroll(histList: HTMLElement, renderDetailCallback: (i
         : Math.max(0, currentIdx - 1);
       
       if (newIdx !== currentIdx) {
-        selectVirtualIndex(newIdx, histList, renderDetailCallback);
+        // Scroll first to prevent flashing
         scrollToVirtualIndex(newIdx, histList);
+        // Then select and render
+        selectVirtualIndex(newIdx, histList, renderDetailCallback);
+        // Force immediate re-render to show correct item
+        renderVirtualHistoryList(renderDetailCallback);
       }
     }
   });
@@ -351,14 +355,20 @@ export function selectVirtualIndex(idx: number, histList: HTMLElement | null, re
 
 /**
  * Update selection state in virtual list
+ * Works with displayItems (which includes expanded group sub-items)
  */
 function updateSelection(histList: HTMLElement, renderDetailCallback: (idx: number) => void): void {
   const currentIndex = historyState.selectedIndex ?? 0;
-  const items = historyState.items || [];
+  const items = historyState.displayItems || [];
   if (items.length === 0) return;
   
   const safeIdx = Math.max(0, Math.min(items.length - 1, currentIndex));
   historyState.selectedIndex = safeIdx;
+  
+  // Get original index for detail rendering
+  const displayItem = items[safeIdx];
+  const originalIdx = displayItem?.originalIndices?.[0] ?? 0;
+  historyState.selectedOriginalIndex = originalIdx;
   
   // Update UI
   histList.querySelectorAll('.history-row.selected').forEach(el => el.classList.remove('selected'));
@@ -367,7 +377,7 @@ function updateSelection(histList: HTMLElement, renderDetailCallback: (idx: numb
     row.classList.add('selected');
   }
   
-  renderDetailCallback(safeIdx);
+  renderDetailCallback(originalIdx);
 }
 
 /**
@@ -392,11 +402,12 @@ function snapToNearestItem(histList: HTMLElement): void {
 
 /**
  * Scroll to a specific index (useful for keyboard navigation)
+ * Uses displayItems to properly handle expanded groups
  */
 export function scrollToVirtualIndex(idx: number, histList: HTMLElement | null): void {
   if (!histList) return;
   
-  const items = historyState.items || [];
+  const items = historyState.displayItems || [];
   const safeIdx = Math.max(0, Math.min(items.length - 1, idx));
   
   const targetScrollTop = safeIdx * virtualState.itemHeight;
@@ -410,9 +421,14 @@ export function scrollToVirtualIndex(idx: number, histList: HTMLElement | null):
   
   if (targetScrollTop < visibleTop) {
     // Item is above visible area - scroll to show it at top
+    // Use immediate scroll to prevent flashing
     histList.scrollTop = targetScrollTop;
   } else if (itemBottom > visibleBottom) {
     // Item is below visible area - scroll to show it at bottom
+    // Use immediate scroll to prevent flashing
     histList.scrollTop = itemBottom - containerHeight;
   }
+  
+  // Update virtual state to trigger immediate re-render
+  virtualState.scrollTop = histList.scrollTop;
 }

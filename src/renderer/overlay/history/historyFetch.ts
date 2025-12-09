@@ -20,6 +20,7 @@ import { sendHistoryToPopout } from './historyPopout';
 import { recomputeChartSeriesFromStore, drawHistoryChart, updateHistoryChartFromTotals } from './historyChart';
 import { getLeaguePreference, setLeaguePreference, showLeaguePrompt, formatLeagueLabel } from './historyLeague';
 import { POE1_LEAGUE_ENDED, POE2_LEAGUE_ENDED, LEAGUE_ENDED_MESSAGE, LEAGUE_ENDED_TOOLTIP } from '../../../shared/leagueStatus';
+import { groupHistoryEntries, expandGroupsForDisplay } from './historyGrouping';
 
 function isPoe1Mode(): boolean {
   try {
@@ -89,7 +90,13 @@ async function handleRateLimitedResponse(
   if (historyState.store.entries && historyState.store.entries.length > 0) {
     const all = (historyState.store.entries || []).slice().reverse();
     historyState.items = applySort(applyFilters(all, historyState.filters), historyState.sort);
+    
+    // Apply grouping to sync left list
+    historyState.groupedItems = groupHistoryEntries(historyState.items);
+    historyState.displayItems = expandGroupsForDisplay(historyState.groupedItems);
+    
     historyState.selectedIndex = 0;
+    historyState.selectedOriginalIndex = 0;
     renderListCallback(renderDetailCallback);
     renderDetailCallback(0);
     renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
@@ -630,7 +637,13 @@ export async function refreshHistory(
     // ========== Update UI ==========
     historyState.items = (historyState.store.entries || []).slice().reverse();
     historyState.items = applySort(applyFilters(historyState.items, historyState.filters), historyState.sort);
+    
+    // Apply grouping to sync left list with grouped/expanded state
+    historyState.groupedItems = groupHistoryEntries(historyState.items);
+    historyState.displayItems = expandGroupsForDisplay(historyState.groupedItems);
+    
     historyState.selectedIndex = 0;
+    historyState.selectedOriginalIndex = 0;
     
     renderListCallback(renderDetailCallback);
     renderDetailCallback(0);
@@ -727,7 +740,13 @@ export async function refreshHistoryIfAllowed(
     // Rate limited - just re-render from cache
     const all = (historyState.store.entries || []).slice().reverse();
     historyState.items = applySort(applyFilters(all, historyState.filters), historyState.sort);
+    
+    // Apply grouping to sync left list with grouped/expanded state
+    historyState.groupedItems = groupHistoryEntries(historyState.items);
+    historyState.displayItems = expandGroupsForDisplay(historyState.groupedItems);
+    
     historyState.selectedIndex = 0;
+    historyState.selectedOriginalIndex = 0;
     renderListCallback(renderDetailCallback);
     renderDetailCallback(0);
     renderHistoryTotals(historyState.store, () => historyVisible(), (totals) => {
