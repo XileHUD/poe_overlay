@@ -1275,12 +1275,12 @@ function buildLevelingSettingsSplashHtml(
         <div class="setting-item" style="flex-direction: column; align-items: stretch; margin-top: 16px;">
           <div class="setting-label">
             <div class="setting-name">Import Maxroll Build</div>
-            <div class="setting-description">Paste a Maxroll planner URL</div>
+            <div class="setting-description">Paste a Maxroll build guide URL</div>
           </div>
           <input 
             type="text"
             id="maxrollUrlInput" 
-            placeholder="https://maxroll.gg/poe2/planner/..." 
+            placeholder="https://maxroll.gg/poe2/build-guides/..." 
             style="width: 100%; margin-top: 8px; padding: 12px; 
                    background: var(--bg-tertiary); border: 1px solid var(--border-color); 
                    border-radius: 6px; color: var(--text-primary); font-family: monospace; 
