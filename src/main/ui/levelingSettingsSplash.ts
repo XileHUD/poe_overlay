@@ -1252,6 +1252,7 @@ function buildLevelingSettingsSplashHtml(
           </button>
         </div>
         
+        ${overlayVersion === 'poe2' ? `
         <div class="setting-item" style="flex-direction: column; align-items: stretch; margin-top: 24px;">
           <div class="setting-label">
             <div class="setting-name">Import Mobalytics Build</div>
@@ -1289,6 +1290,7 @@ function buildLevelingSettingsSplashHtml(
             🌐 Import from Maxroll
           </button>
         </div>
+        ` : ''}
         
         <div class="setting-item" style="flex-direction: column; align-items: stretch;">
           <div class="setting-label">
