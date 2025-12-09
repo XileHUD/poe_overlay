@@ -16,8 +16,11 @@ function generateBuildId(): string {
  * Generate a default name for a build
  */
 function generateDefaultName(build: StoredPobBuild): string {
-  // For Mobalytics builds, use characterName which already includes the build title and author
-  if (build.characterName && build.characterName.includes('(Mobalytics)')) {
+  // For external imports, keep the full characterName which includes source and author
+  if (build.characterName && (build.characterName.includes('(Mobalytics)') || build.characterName.includes('(Maxroll)'))) {
+    return build.characterName;
+  }
+  if (build.buildSource === 'maxroll' && build.characterName) {
     return build.characterName;
   }
   

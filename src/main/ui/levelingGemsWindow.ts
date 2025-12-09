@@ -241,10 +241,11 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
     }
   }
 
-  // Inject JSON data
-  const gemsJSON = JSON.stringify(gemsData);
-  const gemColoursJSON = JSON.stringify(gemColoursData);
-  const gemAcquisitionJSON = JSON.stringify(filteredAcquisition);
+  // Inject JSON data - escape < and > to prevent script breaking
+  const gemsJSON = JSON.stringify(gemsData).replace(/</g, '\\u003c').replace(/>/g, '\\u003e');
+  const gemColoursJSON = JSON.stringify(gemColoursData).replace(/</g, '\\u003c').replace(/>/g, '\\u003e');
+  const gemAcquisitionJSON = JSON.stringify(filteredAcquisition).replace(/</g, '\\u003c').replace(/>/g, '\\u003e');
+  const pobBuildJSON = JSON.stringify(pobBuild).replace(/</g, '\\u003c').replace(/>/g, '\\u003e');
 
   return `
 <!DOCTYPE html>
@@ -1030,7 +1031,8 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
       });
     } catch {}
     
-    let currentBuild = ${JSON.stringify(pobBuild)};
+    // Initial build data injected from main process
+    let currentBuild = ${pobBuildJSON};
     let currentAct = ${currentAct};
     let characterLevel = ${characterLevel}; // Current character level from client.txt
     let skillSetIndex = 0; // Current skill set index
@@ -1147,9 +1149,14 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
     }
     
   // Helper to get gem image path - aligned with asset layout
-    function getGemImagePath(gemName, isSupport) {
+    function getGemImagePath(gemName, isSupport, gemVersion) {
       // Remove "Support: " prefix
-      const cleanName = gemName.replace(/^Support: /, '');
+      let cleanName = gemName.replace(/^Support: /, '');
+      
+      // For PoE2, also strip trailing " Support" suffix and version number since image files don't include them
+      if (overlayVersion === 'poe2') {
+        cleanName = cleanName.replace(/ \\d+$/, '').replace(/ Support$/i, '');
+      }
       
       // Convert to lowercase and replace spaces/special chars with underscores
       const slug = cleanName
@@ -1160,33 +1167,98 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
         .replace(/[()]/g, '')
         .trim();
       
-  // PoE1 has separate _support images; PoE2 uses the base icon for supports
-  const filename = (overlayVersion === 'poe1' && isSupport) ? (slug + '_support') : slug;
+      // PoE1 has separate _support images; PoE2 uses the base icon for supports
+      let filename = (overlayVersion === 'poe1' && isSupport) ? (slug + '_support') : slug;
+      
+      // For PoE2, add roman numeral suffix based on gem version
+      // Support gems default to version 1 if no version specified
+      if (overlayVersion === 'poe2') {
+        const effectiveVersion = gemVersion || (isSupport ? 1 : undefined);
+        if (effectiveVersion) {
+          const romanSuffix = effectiveVersion === 1 ? '_i' : effectiveVersion === 2 ? '_ii' : effectiveVersion === 3 ? '_iii' : '';
+          if (romanSuffix) {
+            filename = filename + romanSuffix;
+          }
+        }
+      }
       
       // Determine game version folder
       const folder = overlayVersion === 'poe1' ? 'poe1/gems' : 'gems';
       
+      const finalPath = folder + '/' + filename + '.webp';
+      console.log(\`[GemsWindow] getGemImagePath("\${gemName}", isSupport=\${isSupport}, version=\${gemVersion}) -> "\${finalPath}"\`);
+      
       // Return the bundled image path (relative, will be resolved via electronAPI)
-      return folder + '/' + filename + '.webp';
+      return finalPath;
     }
     
-    // Async: resolve gem image via IPC - single path version
-    async function resolveGemImage(img, localPath) {
+    // Async: resolve gem image via IPC with fallback support
+    async function resolveGemImage(img, localPath, oldName, isSupport) {
       if (!localPath) return;
+      
+      // Generate fallback paths by trying different version suffixes
+      const fallbackPaths = [localPath];
+      
+      // If path has a version suffix, also try without it
+      if (/_i{1,3}\.webp$/.test(localPath)) {
+        const withoutVersion = localPath.replace(/_i{1,3}\.webp$/, '.webp');
+        fallbackPaths.push(withoutVersion);
+      }
+      // If path has no version suffix and is in poe2, try with _i suffix
+      else if (localPath.startsWith('gems/') && overlayVersion === 'poe2' && !localPath.includes('_i')) {
+        const withVersion = localPath.replace('.webp', '_i.webp');
+        fallbackPaths.push(withVersion);
+      }
+      
+      // If gem was renamed (has oldName), also try the old name as fallback
+      if (oldName && overlayVersion === 'poe2') {
+        const oldSlug = oldName.toLowerCase()
+          .replace(/[:']/g, '')
+          .replace(/\s+/g, '_')
+          .replace(/-/g, '_')
+          .replace(/[()]/g, '')
+          .trim();
+        
+        const versionMatch = localPath.match(/(_i{1,3})\.webp$/);
+        if (versionMatch) {
+          const versionSuffix = versionMatch[1];
+          const oldPathWithVersion = 'gems/' + oldSlug + versionSuffix + '.webp';
+          fallbackPaths.push(oldPathWithVersion);
+        }
+        const oldPathNoVersion = 'gems/' + oldSlug + '.webp';
+        fallbackPaths.push(oldPathNoVersion);
+      }
+      
+      // Deduplicate to avoid duplicate IPC calls
+      const tried = new Set();
+      const uniquePaths = [];
+      for (const path of fallbackPaths) {
+        const key = path.toLowerCase();
+        if (!tried.has(key)) {
+          tried.add(key);
+          uniquePaths.push(path);
+        }
+      }
+      
       try {
-        const resolvedPath = await (async () => {
-          try { return await ipcRenderer.invoke('get-bundled-image-path', localPath); } catch { return null; }
-        })() || (await (window.electronAPI?.getBundledImagePath?.(localPath)));
-        if (resolvedPath) {
-          img.src = resolvedPath;
-          img.style.display = '';
-          console.log('[GemsWindow] Image resolved:', localPath, '->', resolvedPath);
-        } else {
-          console.warn('[GemsWindow] Image not found:', localPath);
-          img.style.display = 'none';
-          if (img.nextElementSibling) {
-            img.nextElementSibling.style.display = 'inline';
+        for (const path of uniquePaths) {
+          const resolvedPath = await (async () => {
+            try { return await ipcRenderer.invoke('get-bundled-image-path', path); } catch (e) { return null; }
+          })() || (await (window.electronAPI?.getBundledImagePath?.(path)));
+          
+          if (resolvedPath) {
+            img.src = resolvedPath;
+            img.style.display = '';
+            console.log('[GemsWindow] Image resolved:', path, '->', resolvedPath);
+            return;
           }
+        }
+        
+        // No fallback worked
+        console.warn('[GemsWindow] Image not found (tried:', uniquePaths.join(', '), ')');
+        img.style.display = 'none';
+        if (img.nextElementSibling) {
+          img.nextElementSibling.style.display = 'inline';
         }
       } catch (err) {
         console.error('[GemsWindow] Error resolving image:', localPath, err);
@@ -1537,22 +1609,24 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
     }
     
     function renderGems() {
-      const content = document.getElementById('content');
-      
-      // Check if we have skill sets (preferred) or fall back to socket groups
-      const hasSkillSets = currentBuild && currentBuild.skillSets && currentBuild.skillSets.length > 0;
-      const hasSocketGroups = currentBuild && currentBuild.socketGroups && currentBuild.socketGroups.length > 0;
-      
-      if (!hasSkillSets && !hasSocketGroups) {
-        content.innerHTML = \`
-          <div class="no-build">
-            <div class="no-build-icon">💎</div>
-            <div class="no-build-text">No gem setup available</div>
-            <div class="no-build-text" style="font-size: 12px; opacity: 0.7;">Import a PoB build to see your gem links</div>
-          </div>
-        \`;
-        return;
-      }
+      try {
+        console.log('[GemsWindow] renderGems() called');
+        const content = document.getElementById('content');
+        if (!content) {
+          console.error('[GemsWindow] Content element not found!');
+          return;
+        }
+        
+        // Check if we have skill sets (preferred) or fall back to socket groups
+        const hasSkillSets = currentBuild && currentBuild.skillSets && currentBuild.skillSets.length > 0;
+        const hasSocketGroups = currentBuild && currentBuild.socketGroups && currentBuild.socketGroups.length > 0;
+        
+        console.log('[GemsWindow] hasSkillSets:', hasSkillSets, 'hasSocketGroups:', hasSocketGroups);
+        
+        if (!hasSkillSets && !hasSocketGroups) {
+          content.innerHTML = '<div class="no-build"><div class="no-build-icon">💎</div><div class="no-build-text">No gem setup available</div><div class="no-build-text" style="font-size: 12px; opacity: 0.7;">Import a PoB build to see your gem links</div></div>';
+          return;
+        }
       
       // Determine which skill set we're showing using smart matching
       let currentSkillSetTitle = 'Act ' + currentAct;
@@ -1573,18 +1647,23 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
         currentSkillSetTitle = matchedSkillSet.title || ('Set ' + (skillSetIndex + 1));
       }
       
-      let html = \`
-        <div class="act-filter">
-          <div class="act-filter-info">
-            <span class="act-filter-label">Gem Set:</span>
-            <select id="gemSetSelector" onchange="changeGemSet()" class="gem-set-dropdown">
-              \${currentBuild.skillSets.map((set, i) => \`
-                <option value="\${i}" \${i === skillSetIndex ? 'selected' : ''}>\${set.title || 'Set ' + (i + 1)}</option>
-              \`).join('')}
-            </select>
+      let html = '';
+      
+      // Only show dropdown if we have skill sets
+      if (hasSkillSets) {
+        html += \`
+          <div class="act-filter">
+            <div class="act-filter-info">
+              <span class="act-filter-label">Gem Set:</span>
+              <select id="gemSetSelector" onchange="changeGemSet()" class="gem-set-dropdown">
+                \${currentBuild.skillSets.map((set, i) => \`
+                  <option value="\${i}" \${i === skillSetIndex ? 'selected' : ''}>\${set.title || 'Set ' + (i + 1)}</option>
+                \`).join('')}
+              </select>
+            </div>
           </div>
-        </div>
-      \`;
+        \`;
+      }
       
       // Determine which socket groups to use based on matched skill set
       let socketGroupsToShow = [];
@@ -1630,6 +1709,7 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
           const icon = getGemIcon(gemName);
           const level = gem.level || 1;
           const quality = gem.quality || 0;
+          const version = gem.gemVersion || gem.version || gem.metadataVersion;
           
           console.log(\`[GemsWindow] Rendering gem: \${gemName}, colorClass: \${colorClass}\`);
           
@@ -1639,15 +1719,18 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
           
           const displayName = gemName.replace('Support: ', '');
           const acquisitionLookup = resolveAcquisitionEntry(gemName, isSupport);
-          const hasAcquisition = entryHasContent(acquisitionLookup.entry);
+          const hasAcquisition = overlayVersion === 'poe1' && entryHasContent(acquisitionLookup.entry);
 
           // Get gem image path - EXACT same logic as working task list
-          const imagePath = getGemImagePath(gemName, isSupport);
+          const imagePath = getGemImagePath(gemName, isSupport, version);
           const imageClass = overlayVersion === 'poe2' ? 'gem-image poe2' : 'gem-image';
 
           html += '<div class="gem-item ' + colorClass + (isSupport ? ' support' : '') + '">';
           if (imagePath) {
-            html += '<img data-gem-img="' + imagePath + '" class="' + imageClass + '" style="display:none;" />';
+            html += '<img data-gem-img="' + imagePath + '"' + 
+                    (gem.oldName ? ' data-gem-oldname="' + escapeAttr(gem.oldName) + '"' : '') + 
+                    ' data-gem-support="' + (isSupport ? 'true' : 'false') + '"' +
+                    ' class="' + imageClass + '" style="display:none;" />';
           }
           
           html += '<span class="gem-name ' + (isSupport ? 'support' : '') + '">' + displayName + '</span>';
@@ -1676,66 +1759,75 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
       const gemImages = content.querySelectorAll('img[data-gem-img]');
       gemImages.forEach(img => {
         const localPath = img.getAttribute('data-gem-img');
+        const oldName = img.getAttribute('data-gem-oldname');
+        const isSupport = img.getAttribute('data-gem-support') === 'true';
         if (localPath) {
-          resolveGemImage(img, localPath);
+          resolveGemImage(img, localPath, oldName, isSupport);
         }
       });
       
-  // Setup acquisition tooltip handlers
-  setupGemInfoButtons();
+      // Setup acquisition tooltip handlers
+      setupGemInfoButtons();
+    } catch (err) {
+      console.error('[GemsWindow] renderGems error:', err);
+      const content = document.getElementById('content');
+      if (content) {
+        content.innerHTML = '<div class="no-build"><div class="no-build-icon">💎</div><div class="no-build-text">Failed to render gems</div><div class="no-build-text" style="font-size: 12px; opacity: 0.7;">Check import data or restart overlay</div></div>';
+      }
     }
-    
-    // Track if global listeners have been set up to avoid duplicates
-    let globalListenersSetUp = false;
-    
-    function setupGemInfoButtons() {
-      const buttons = document.querySelectorAll('.gem-info-btn');
-      console.log('[GemsWindow] Setting up acquisition modals for', buttons.length, 'gems');
+  }
+  
+  // Track if global listeners have been set up to avoid duplicates
+  let globalListenersSetUp = false;
+  
+  function setupGemInfoButtons() {
+    const buttons = document.querySelectorAll('.gem-info-btn');
+    console.log('[GemsWindow] Setting up acquisition modals for', buttons.length, 'gems');
 
-      buttons.forEach((button) => {
-        const lookupName = button.getAttribute('data-gem-info');
-        const displayName = button.getAttribute('data-gem-display') || lookupName || 'Unknown gem';
-        const entry = lookupName ? gemAcquisition[lookupName] : null;
+    buttons.forEach((button) => {
+      const lookupName = button.getAttribute('data-gem-info');
+      const displayName = button.getAttribute('data-gem-display') || lookupName || 'Unknown gem';
+      const entry = lookupName ? gemAcquisition[lookupName] : null;
 
-        if (!entryHasContent(entry)) {
-          button.style.display = 'none';
-          return;
-        }
+      if (!entryHasContent(entry)) {
+        button.style.display = 'none';
+        return;
+      }
 
-        button.addEventListener('click', (event) => {
-          event.stopPropagation();
-          openGemModal(displayName, lookupName);
-        });
+      button.addEventListener('click', (event) => {
+        event.stopPropagation();
+        openGemModal(displayName, lookupName);
       });
+    });
+    
+    // Set up global listeners only once
+    if (!globalListenersSetUp) {
+      globalListenersSetUp = true;
       
-      // Set up global listeners only once
-      if (!globalListenersSetUp) {
-        globalListenersSetUp = true;
-        
-        // Close modal on overlay click
-        const modalOverlay = document.getElementById('gem-modal-overlay');
-        if (modalOverlay) {
-          modalOverlay.addEventListener('click', (event) => {
-            if (event.target === modalOverlay) {
-              closeGemModal();
-            }
-          });
-        }
-        
-        // Handle wiki link clicks (delegated from modal body)
-        // Use event delegation on document to handle dynamically created links
-        document.addEventListener('click', (event) => {
-          const target = event.target;
-          if (target.classList && target.classList.contains('wiki-link')) {
-            event.preventDefault();
-            const wikiUrl = target.getAttribute('data-wiki-url');
-            if (wikiUrl) {
-              require('electron').shell.openExternal(wikiUrl);
-            }
+      // Close modal on overlay click
+      const modalOverlay = document.getElementById('gem-modal-overlay');
+      if (modalOverlay) {
+        modalOverlay.addEventListener('click', (event) => {
+          if (event.target === modalOverlay) {
+            closeGemModal();
           }
         });
       }
+      
+      // Handle wiki link clicks (delegated from modal body)
+      // Use event delegation on document to handle dynamically created links
+      document.addEventListener('click', (event) => {
+        const target = event.target;
+        if (target.classList && target.classList.contains('wiki-link')) {
+          event.preventDefault();
+          const wikiUrl = target.getAttribute('data-wiki-url');
+          if (wikiUrl) {
+            require('electron').shell.openExternal(wikiUrl);
+          }
+        }
+      });
     }
+  }
     
     function changeGemSet() {
       const selector = document.getElementById('gemSetSelector');
@@ -1803,17 +1895,22 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
           const colorClass = getGemColor(gemName, isSupport);
           const level = gem.level || 1;
           const quality = gem.quality || 0;
+          const version = gem.gemVersion || gem.version || gem.metadataVersion;
           
           const displayName = gemName.replace('Support: ', '');
+          const isMaxrollGem = gem.buildSource === 'maxroll';
           const acquisitionLookup = resolveAcquisitionEntry(gemName, isSupport);
-          const hasAcquisition = entryHasContent(acquisitionLookup.entry);
+          const hasAcquisition = !isMaxrollGem && entryHasContent(acquisitionLookup.entry);
           
-          const imagePath = getGemImagePath(gemName, isSupport);
+          const imagePath = getGemImagePath(gemName, isSupport, version);
           const imageClass = overlayVersion === 'poe2' ? 'gem-image poe2' : 'gem-image';
           
           html += '<div class="gem-item ' + colorClass + (isSupport ? ' support' : '') + '">';
           if (imagePath) {
-            html += '<img data-gem-img="' + imagePath + '" class="' + imageClass + '" style="display:none;" />';
+            html += '<img data-gem-img="' + imagePath + '"' + 
+                    (gem.oldName ? ' data-gem-oldname="' + escapeAttr(gem.oldName) + '"' : '') + 
+                    ' data-gem-support="' + (isSupport ? 'true' : 'false') + '"' +
+                    ' class="' + imageClass + '" style="display:none;" />';
           }
           
           html += '<span class="gem-name ' + (isSupport ? 'support' : '') + '">' + displayName + '</span>';
@@ -1837,8 +1934,10 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
       const gemImages = gemGroupsContainer.querySelectorAll('img[data-gem-img]');
       gemImages.forEach(img => {
         const localPath = img.getAttribute('data-gem-img');
+        const oldName = img.getAttribute('data-gem-oldname');
+        const isSupport = img.getAttribute('data-gem-support') === 'true';
         if (localPath) {
-          resolveGemImage(img, localPath);
+          resolveGemImage(img, localPath, oldName, isSupport);
         }
       });
       
@@ -1926,15 +2025,34 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
     
     // Initialize
     (async () => {
-  await loadGemDatabase();
-  await loadGemColors();
-  await loadGemAcquisition();
-      renderGems();
-      
-      // Apply saved minimal mode state
-      if (isUltraMinimal) {
-        document.body.classList.add('ultra-minimal');
-        document.getElementById('minimalBtn').classList.add('active');
+      try {
+        console.log('[GemsWindow] Initializing...');
+        await loadGemDatabase();
+        console.log('[GemsWindow] Gem database loaded');
+        await loadGemColors();
+        console.log('[GemsWindow] Gem colors loaded');
+        await loadGemAcquisition();
+        console.log('[GemsWindow] Gem acquisition loaded');
+        renderGems();
+        console.log('[GemsWindow] Initial render complete');
+        
+        // Apply saved minimal mode state
+        if (isUltraMinimal) {
+          document.body.classList.add('ultra-minimal');
+          document.getElementById('minimalBtn').classList.add('active');
+        }
+      } catch (err) {
+        console.error('[GemsWindow] Initialization error:', err);
+        const content = document.getElementById('content');
+        if (content) {
+          content.innerHTML = \`
+            <div class="no-build">
+              <div class="no-build-icon">⚠️</div>
+              <div class="no-build-text">Failed to load gems window</div>
+              <div class="no-build-text" style="font-size: 12px; opacity: 0.7;">Error: \${err.message}</div>
+            </div>
+          \`;
+        }
       }
     })();
   </script>
@@ -1942,3 +2060,5 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
 </html>
   `;
 }
+
+export { buildLevelingGemsWindowHtml };

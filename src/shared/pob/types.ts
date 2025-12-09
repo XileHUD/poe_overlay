@@ -51,6 +51,8 @@ export interface TreeSpec {
   nodeCount?: number; // Total number of allocated nodes (for smart naming and fallback detection)
   classId?: number;
   ascendClassId?: number;
+  weaponSets?: Record<number, number>; // For Maxroll imports: nodeId -> set number (1=pink, 2=yellow)
+  maxrollHistory?: any[]; // For Maxroll imports: original progressive history for navigation
   // Parsed URL data
   parsedUrl?: {
     version: number;
@@ -82,6 +84,9 @@ export interface GemInfo {
   skillId?: string;
   supportGem?: boolean; // From PoB XML supportGem attribute
   skillSetTitle?: string; // e.g. "Act 1", "Early maps" - title of the skillSet this gem belongs to
+  buildSource?: 'maxroll' | 'pob'; // Track where gem came from to prevent PoE1 acquisition lookup for Maxroll
+  gemVersion?: number; // For Maxroll: gem version (1, 2, 3) to resolve correct image variant
+  oldName?: string; // Old/metadata name for image fallback (Maxroll renames)
 }
 
 export interface GemRequirement {

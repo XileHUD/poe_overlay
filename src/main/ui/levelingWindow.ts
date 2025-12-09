@@ -20,6 +20,7 @@ import {
   extractUniqueGems, 
   matchGemsToQuestSteps,
   calculateTreeProgressionByAct,
+  calculateTreeProgressionFromHistory,
   createEmptyBuildsList,
   addBuild,
   deleteBuild,
@@ -30,6 +31,7 @@ import {
   migrateLegacyBuild,
 } from '../../shared/pob/index.js';
 import { fetchMobalyticsBuild, convertMobalyticsToPobBuild } from '../../shared/mobalytics/index.js';
+import { fetchMaxrollBuild, convertMaxrollToPobBuild } from '../../shared/maxroll/index.js';
 import type { 
   StoredPobBuild, 
   PobBuildsList, 
@@ -1257,6 +1259,11 @@ export class LevelingWindow {
       return await this.importMobalyticsUrl(url);
     });
 
+    // Import Maxroll build from settings splash
+    ipcMain.handle('import-maxroll-from-settings', async (event, url: string) => {
+      return await this.importMaxrollUrl(url);
+    });
+
     // Get all POB builds
     ipcMain.handle('get-pob-builds-list', async () => {
       const buildsList = this.getPobBuildsList();
@@ -2154,7 +2161,7 @@ export class LevelingWindow {
       }
       
       if (isTreeWindowOpen() && pobBuild.treeSpecs && pobBuild.treeSpecs.length > 0) {
-        sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion);
+        sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion, 'mobalytics');
       }
       
       if (isGearWindowOpen() && pobBuild.itemSets && pobBuild.itemSets.length > 0) {
@@ -2184,6 +2191,75 @@ export class LevelingWindow {
     }
   }
 
+  private async importMaxrollUrl(url: string): Promise<any> {
+    try {
+      console.log('[Maxroll Import] Fetching build from URL...');
+
+      const maxrollBuild = await fetchMaxrollBuild(url);
+      console.log('[Maxroll Import] Build fetched:', maxrollBuild.title);
+
+      const pobBuild = await convertMaxrollToPobBuild(maxrollBuild);
+
+      const currentBuildsList = this.getPobBuildsList();
+      const updatedBuildsList = addBuild(currentBuildsList, pobBuild);
+      this.savePobBuildsList(updatedBuildsList);
+
+      console.log('[Maxroll Import] Build added to list and set as active');
+
+      if (this.window && !this.window.isDestroyed()) {
+        this.window.webContents.send('pob-build-imported', pobBuild);
+      }
+
+      const currentSettings = this.settingsService.get(this.getLevelingWindowKey()) || {};
+      const currentActIndex = (currentSettings as any)?.currentActIndex ?? 0;
+      const characterLevel = (currentSettings as any)?.characterLevel || 1;
+      const autoDetectEnabled = (currentSettings as any)?.uiSettings?.autoDetectLevelingSets ?? true;
+      const savedTreeIndex = (currentSettings as any)?.selectedTreeIndex;
+
+      openPobInfoBar({
+        settingsService: this.settingsService,
+        overlayVersion: this.overlayVersion,
+        pobBuild: pobBuild,
+        currentAct: currentActIndex + 1
+      });
+
+      if (isGemsWindowOpen()) {
+        updateLevelingGemsWindowBuild(pobBuild, this.overlayVersion, this.settingsService);
+        updateLevelingGemsWindow(currentActIndex + 1, this.overlayVersion, this.settingsService);
+        updateLevelingGemsWindowCharacterLevel(characterLevel);
+      }
+
+      if (isTreeWindowOpen() && pobBuild.treeSpecs && pobBuild.treeSpecs.length > 0) {
+        sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion, 'maxroll');
+      }
+
+      if (isGearWindowOpen() && pobBuild.itemSets && pobBuild.itemSets.length > 0) {
+        updateGearWindow(pobBuild.itemSets);
+        updateGearWindowContext(currentActIndex + 1, characterLevel);
+      }
+
+      if (isNotesWindowOpen() && pobBuild.notes) {
+        updateNotesWindow(pobBuild.notes);
+      }
+
+      return {
+        success: true,
+        build: {
+          characterName: pobBuild.characterName,
+          variantsCount: pobBuild.skillSets?.length || 1,
+          skillsCount: pobBuild.gems?.length || 0,
+          itemsCount: pobBuild.itemSets?.length || 0
+        }
+      };
+    } catch (error: any) {
+      console.error('[Maxroll Import] Error:', error);
+      return {
+        success: false,
+        error: error.message || 'Failed to import Maxroll build'
+      };
+    }
+  }
+
   private async processParsedBuild(build: ParsedPobBuild, code: string): Promise<any> {
     try {
       // Filter out header-only tree specs with no nodes before saving/using
@@ -2206,12 +2282,13 @@ export class LevelingWindow {
       console.log('[PoB Import] Tree specs available:', (treeSpecsToUse || []).map((s: any) => s?.title || 'Untitled').join(', '));
 
       // Calculate tree progression by act
-      const treeProgression = calculateTreeProgressionByAct(
-        allocatedNodes,
-        build.level
-      );
+      // For Maxroll builds with history, use history-based progression to respect allocation order
+      const treeProgression = firstTreeSpec.maxrollHistory
+        ? calculateTreeProgressionFromHistory(firstTreeSpec.maxrollHistory, build.level)
+        : calculateTreeProgressionByAct(allocatedNodes, build.level);
 
-      console.log('[PoB Import] Tree progression calculated for', treeProgression.length, 'acts');
+      console.log('[PoB Import] Tree progression calculated for', treeProgression.length, 'acts', 
+        firstTreeSpec.maxrollHistory ? '(using Maxroll history order)' : '(using PoB order)');
 
       // Extract unique gems from ALL skill sets (not just first one)
       const allSocketGroups: GemSocketGroup[] = [];

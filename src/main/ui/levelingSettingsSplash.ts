@@ -1270,6 +1270,25 @@ function buildLevelingSettingsSplashHtml(
             🌐 Import from Mobalytics
           </button>
         </div>
+
+        <div class="setting-item" style="flex-direction: column; align-items: stretch; margin-top: 16px;">
+          <div class="setting-label">
+            <div class="setting-name">Import Maxroll Build</div>
+            <div class="setting-description">Paste a Maxroll planner URL</div>
+          </div>
+          <input 
+            type="text"
+            id="maxrollUrlInput" 
+            placeholder="https://maxroll.gg/poe2/planner/..." 
+            style="width: 100%; margin-top: 8px; padding: 12px; 
+                   background: var(--bg-tertiary); border: 1px solid var(--border-color); 
+                   border-radius: 6px; color: var(--text-primary); font-family: monospace; 
+                   font-size: 11px;"
+          />
+          <button class="action-btn primary" onclick="importMaxrollBuild()" style="margin-top: 8px;">
+            🌐 Import from Maxroll
+          </button>
+        </div>
         
         <div class="setting-item" style="flex-direction: column; align-items: stretch;">
           <div class="setting-label">
@@ -1562,6 +1581,36 @@ function buildLevelingSettingsSplashHtml(
         input.disabled = false;
         input.placeholder = originalPlaceholder;
         alert(\`❌ Error importing from Mobalytics:\n\n\${err.message}\`);
+      });
+    }
+
+    function importMaxrollBuild() {
+      const maxUrl = document.getElementById('maxrollUrlInput').value.trim();
+      if (!maxUrl) {
+        alert('Please paste a Maxroll URL first.');
+        return;
+      }
+
+      const input = document.getElementById('maxrollUrlInput');
+      const originalPlaceholder = input.placeholder;
+      input.placeholder = 'Fetching from Maxroll...';
+      input.disabled = true;
+
+      ipcRenderer.invoke('import-maxroll-from-settings', maxUrl).then(result => {
+        input.disabled = false;
+        input.placeholder = originalPlaceholder;
+
+        if (result.success) {
+          input.value = '';
+          refreshPobBuildsList();
+          alert(\`Build imported from Maxroll!\\n\\n\${result.build.characterName}\\nVariants: \${result.build.variantsCount || 1} | Skills: \${result.build.skillsCount || 0} | Items: \${result.build.itemsCount || 0}\`);
+        } else {
+          alert(\`Failed to import from Maxroll:\\n\\n\${result.error || 'Unknown error'}\`);
+        }
+      }).catch(err => {
+        input.disabled = false;
+        input.placeholder = originalPlaceholder;
+        alert(\`Error importing from Maxroll:\\n\\n\${err.message}\`);
       });
     }
     

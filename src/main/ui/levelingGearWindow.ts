@@ -1035,7 +1035,7 @@ function buildLevelingGearWindowHtml(itemSets: ItemSet[], overlayVersion: Overla
       let displayName = item.name;
       if (rarity === 'unique') {
         // For uniques, show the unique name (first header line) as the main title
-        displayName = item.baseName || item.name;
+        displayName = item.name || item.baseName;
       } else if (item.name === 'New Item' || !item.name) {
         displayName = rarity.charAt(0).toUpperCase() + rarity.slice(1) + ' Item';
       }
@@ -1070,7 +1070,7 @@ function buildLevelingGearWindowHtml(itemSets: ItemSet[], overlayVersion: Overla
       let baseText = item.baseName;
       if (rarity === 'unique') {
         // For uniques, show the base type under the title
-        baseText = item.name || item.baseName;
+        baseText = item.baseName || item.name;
       }
       const baseHtml = baseText ? \`<div class="item-base">\${baseText}</div>\` : '';
       

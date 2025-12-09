@@ -89,3 +89,89 @@ export function getRecommendedActForLevel(level: number): number {
   }
   return 10; // Maps/endgame
 }
+
+/**
+ * Generate tree progression from Maxroll history (respects allocation order).
+ * This ensures that when navigating with arrows, nodes are added/removed in the correct order.
+ */
+export function calculateTreeProgressionFromHistory(
+  history: any[],
+  buildLevel: number
+): ActTreeProgression[] {
+  if (!Array.isArray(history) || history.length === 0) {
+    return [];
+  }
+
+  // Replay history to get allocation order
+  const allocationOrder: number[] = [];
+  const allocated = new Set<number>();
+
+  for (const entry of history) {
+    if (typeof entry === 'number') {
+      if (!allocated.has(entry)) {
+        allocated.add(entry);
+        allocationOrder.push(entry);
+      }
+    } else if (entry && typeof entry === 'object') {
+      if (Array.isArray(entry.add)) {
+        entry.add.forEach((id: any) => {
+          const nodeId = typeof id === 'number' ? id : (id && typeof id === 'object' && typeof id.id === 'number' ? id.id : null);
+          if (nodeId !== null && !allocated.has(nodeId)) {
+            allocated.add(nodeId);
+            allocationOrder.push(nodeId);
+          }
+        });
+      }
+      if (Array.isArray(entry.remove)) {
+        entry.remove.forEach((id: any) => {
+          if (typeof id === 'number' && allocated.has(id)) {
+            allocated.delete(id);
+            // Remove from the LAST occurrence to maintain allocation order
+            const idx = allocationOrder.lastIndexOf(id);
+            if (idx !== -1) {
+              allocationOrder.splice(idx, 1);
+            }
+          }
+        });
+      }
+      if (typeof entry.id === 'number' && entry.set !== undefined) {
+        if (!allocated.has(entry.id)) {
+          allocated.add(entry.id);
+          allocationOrder.push(entry.id);
+        }
+      }
+    }
+  }
+
+  // Now use allocation order instead of arbitrary node order
+  const progression: ActTreeProgression[] = [];
+
+  for (const range of ACT_LEVEL_RANGES) {
+    const levelAtActEnd = Math.min(range.maxLevel, buildLevel);
+    const pointsFromLevels = levelAtActEnd - 1;
+    const pointsFromQuests = getQuestPointsUpToAct(range.act);
+    const totalAvailable = pointsFromLevels + pointsFromQuests;
+
+    // Take first N nodes from ALLOCATION ORDER (not arbitrary sorted order)
+    const nodesForThisAct = allocationOrder.slice(0, Math.min(totalAvailable, allocationOrder.length));
+
+    const previousActNodes = range.act > 1 
+      ? progression[range.act - 2].nodeIds 
+      : [];
+    const newNodes = nodesForThisAct.filter(n => !previousActNodes.includes(n));
+
+    progression.push({
+      actNumber: range.act,
+      recommendedLevel: range.maxLevel,
+      nodeIds: nodesForThisAct,
+      totalPoints: totalAvailable,
+      newNodesFromPreviousAct: newNodes
+    });
+
+    if (totalAvailable >= allocationOrder.length) {
+      break;
+    }
+  }
+
+  return progression;
+}

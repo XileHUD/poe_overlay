@@ -658,10 +658,19 @@ function linkifyText(text: string): string {
 }
 
 function parsePobNotes(text: string): string {
-  // First decode any HTML entities that might have been encoded during parsing
-  let decoded = decodeHtmlEntities(text);
+  // Check if text contains HTML formatting (from Maxroll)
+  const hasHtmlFormatting = /<[bi]>|<code>|<\/[bi]>|<\/code>/.test(text);
   
-  // Then escape HTML to prevent injection
+  if (hasHtmlFormatting) {
+    // For Maxroll notes with HTML formatting, just linkify and preserve line breaks
+    let formatted = text.replace(/\n/g, '<br>');
+    // Linkify URLs
+    formatted = linkifyText(formatted);
+    return formatted;
+  }
+  
+  // For PoB notes, first decode any HTML entities then escape
+  let decoded = decodeHtmlEntities(text);
   let escaped = escapeHtml(decoded);
   
   // Parse PoB color codes

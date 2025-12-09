@@ -1321,6 +1321,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
       // Track which nodes are in ascendancy graphs for special styling
       const ascendancyNodes = new Set();
       let activeAscendancyName = null;
+      let activeAscendancyStartNodeId = null;
       
       // Add ascendancy start node if we have an ascendancy selected
       // This node is implicit and not included in the PoB node list, but needs to be colored
@@ -1335,6 +1336,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
             if (hasNodesInThisAsc) {
               const ascendancyStartNodeId = ascData.startNodeId;
               activeAscendancyName = ascKey;
+              activeAscendancyStartNodeId = ascendancyStartNodeId; // Track for coloring
               console.log('[Tree] Found ascendancy start node:', ascendancyStartNodeId, 'for', ascKey);
               currentNodes.add(ascendancyStartNodeId);
               
@@ -1475,6 +1477,51 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
         }
       }
 
+      // Build weapon set styles (for Maxroll imports with weapon tree nodes)
+      let weaponSet1Styles = '';
+      let weaponSet2Styles = '';
+      let weaponSet1ConnStyles = '';
+      let weaponSet2ConnStyles = '';
+      if (currentSpec.weaponSets && Object.keys(currentSpec.weaponSets).length > 0) {
+        const set1Nodes = [];
+        const set2Nodes = [];
+        for (const [nodeId, setNum] of Object.entries(currentSpec.weaponSets)) {
+          if (setNum === 1) set1Nodes.push(nodeId);
+          else if (setNum === 2) set2Nodes.push(nodeId);
+        }
+        weaponSet1Styles = set1Nodes.map(id => \`#n\${id}\`).join(', ');
+        weaponSet2Styles = set2Nodes.map(id => \`#n\${id}\`).join(', ');
+        
+        // Build connection styles for weapon sets
+        const set1NodeSet = new Set(set1Nodes.map(String));
+        const set2NodeSet = new Set(set2Nodes.map(String));
+        const set1Conns = [];
+        const set2Conns = [];
+        
+        if (currentTreeData && currentTreeData.graphs) {
+          for (const graph of currentTreeData.graphs) {
+            for (const conn of graph.connections) {
+              const aStr = String(conn.a);
+              const bStr = String(conn.b);
+              const id = conn.a + '-' + conn.b;
+              
+              // If both nodes are in set 1, color the connection pink
+              if (set1NodeSet.has(aStr) && set1NodeSet.has(bStr)) {
+                set1Conns.push(id);
+              }
+              // If both nodes are in set 2, color the connection yellow
+              else if (set2NodeSet.has(aStr) && set2NodeSet.has(bStr)) {
+                set2Conns.push(id);
+              }
+            }
+          }
+        }
+        
+        weaponSet1ConnStyles = set1Conns.map(id => \`#c\${id}\`).join(', ');
+        weaponSet2ConnStyles = set2Conns.map(id => \`#c\${id}\`).join(', ');
+        console.log('[Tree] Weapon sets: set 1=' + set1Nodes.length + ' nodes + ' + set1Conns.length + ' conns, set 2=' + set2Nodes.length + ' nodes + ' + set2Conns.length + ' conns');
+      }
+
       const dynamicCSS = \`
         <style id="tree-dynamic-css">
           svg .nodes { fill: hsl(215, 15%, 50%); stroke: hsl(215, 15%, 50%); stroke-width: 0; }
@@ -1504,6 +1551,15 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
           \${addedConnStyles ? \`svg :is(\${addedConnStyles}) { stroke: hsl(120, 90%, 40%) !important; stroke-width: 35 !important; }\` : ''}
           \${removedConnStyles ? \`svg :is(\${removedConnStyles}) { stroke: hsl(0, 90%, 40%) !important; stroke-width: 35 !important; }\` : ''}
           \`}
+          
+          /* Weapon set nodes (Maxroll): pink for set 1, yellow for set 2 (override other colors) */
+          \${weaponSet1Styles ? \`svg :is(\${weaponSet1Styles}) { fill: hsl(330, 100%, 60%) !important; stroke: hsl(330, 100%, 60%) !important; }\` : ''}
+          \${weaponSet2Styles ? \`svg :is(\${weaponSet2Styles}) { fill: hsl(60, 100%, 50%) !important; stroke: hsl(60, 100%, 50%) !important; }\` : ''}
+          \${weaponSet1ConnStyles ? \`svg :is(\${weaponSet1ConnStyles}) { stroke: hsl(330, 100%, 50%) !important; stroke-width: 35 !important; }\` : ''}
+          \${weaponSet2ConnStyles ? \`svg :is(\${weaponSet2ConnStyles}) { stroke: hsl(60, 100%, 40%) !important; stroke-width: 35 !important; }\` : ''}
+          
+          /* Ascendancy start node: distinct purple color */
+          \${activeAscendancyStartNodeId ? \`svg #n\${activeAscendancyStartNodeId} { fill: hsl(280, 80%, 60%) !important; stroke: hsl(280, 80%, 60%) !important; }\` : ''}
           
           /* Highlight last added/removed node with brighter green/red (works in both modes) */
           \${lastAddedNode ? \`svg #n\${lastAddedNode} { fill: #0f0 !important; stroke: #0f0 !important; }\` : ''}
