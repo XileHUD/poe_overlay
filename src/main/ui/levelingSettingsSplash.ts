@@ -853,7 +853,7 @@ function buildLevelingSettingsSplashHtml(
     <button class="tab-button" onclick="switchTab('behavior')">Behavior</button>
     <button class="tab-button" onclick="switchTab('hotkeys')">Hotkeys</button>
     <button class="tab-button" onclick="switchTab('integration')">Integration</button>
-    <button class="tab-button" onclick="switchTab('pob')">PoB Import</button>
+    <button class="tab-button" onclick="switchTab('pob')">Guide Import</button>
     <button class="tab-button" onclick="switchTab('advanced')">Advanced</button>
   </div>
   
@@ -1221,13 +1221,13 @@ function buildLevelingSettingsSplashHtml(
       </div>
     </div>
     
-    <!-- PoB Import Tab -->
+    <!-- Guide Import Tab -->
     <div class="tab-panel" id="tab-pob">
       <div class="setting-group">
-        <h3 class="setting-group-title">Path of Building Integration</h3>
+        <h3 class="setting-group-title">Build Guide Import</h3>
         
         <div class="info-box" style="margin-bottom: 16px;">
-          <strong>ℹ️ About PoB Import:</strong><br/>
+          <strong>ℹ️ About Guide Import:</strong><br/>
           Import builds from Path of Building to see skill gems and passive tree progression while leveling. 
           The overlay will show ${overlayVersion === 'poe1' ? 'which gems to pick up from quest rewards and track' : 'skill gems and'} your passive tree allocation.
           <br/><br/>

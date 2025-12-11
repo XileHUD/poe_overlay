@@ -141,21 +141,19 @@ function convertGearToItemSet(gear: any, variantTitle: string, setId: number): I
 
   // Map Mobalytics slots to PoB slots
   const slotMap: Record<string, string> = {
-    'weapon1': 'Weapon 1',
-    'weapon2': 'Weapon 2',
     'helmet': 'Helmet',
     'body': 'Body Armour',
     'gloves': 'Gloves',
     'boots': 'Boots',
     'amulet': 'Amulet',
-    'ring': 'Ring 1',
-    'ring2': 'Ring 2',
+    'leftRing': 'Ring 1',
+    'rightRing': 'Ring 2',
     'belt': 'Belt',
     'flask1': 'Flask 1',
     'flask2': 'Flask 2',
-    'flask3': 'Flask 3',
-    'flask4': 'Flask 4',
-    'flask5': 'Flask 5',
+    'charm1': 'Charm 1',
+    'charm2': 'Charm 2',
+    'charm3': 'Charm 3',
   };
 
   // Convert each gear slot
@@ -173,6 +171,35 @@ function convertGearToItemSet(gear: any, variantTitle: string, setId: number): I
         implicitMods: (item.implicitDescriptions || []).map((desc: any) => desc.description),
       };
     }
+  }
+
+  // Handle weapon slots (mainHand and offHand) - these have nested set1/set2 structure
+  // mainHand.set1 -> Weapon 1, mainHand.set2 -> Weapon 1 Swap
+  // offHand.set1 -> Weapon 2, offHand.set2 -> Weapon 2 Swap
+  if (gear.mainHand?.set1?.commonItem) {
+    const item = gear.mainHand.set1.commonItem;
+    items['Weapon 1'] = {
+      id: setId * 100 + Object.keys(items).length,
+      rawText: '',
+      name: item.name || '',
+      baseName: item.name || '',
+      rarity: item.isUnique ? 'Unique' : 'Rare',
+      mods: (item.explicitDescriptions || []).map((desc: any) => desc.description),
+      implicitMods: (item.implicitDescriptions || []).map((desc: any) => desc.description),
+    };
+  }
+
+  if (gear.offHand?.set1?.commonItem) {
+    const item = gear.offHand.set1.commonItem;
+    items['Weapon 2'] = {
+      id: setId * 100 + Object.keys(items).length,
+      rawText: '',
+      name: item.name || '',
+      baseName: item.name || '',
+      rarity: item.isUnique ? 'Unique' : 'Rare',
+      mods: (item.explicitDescriptions || []).map((desc: any) => desc.description),
+      implicitMods: (item.implicitDescriptions || []).map((desc: any) => desc.description),
+    };
   }
 
   return {
