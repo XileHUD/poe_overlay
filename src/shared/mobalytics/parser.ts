@@ -78,10 +78,10 @@ function normalizeSelectedSlugs(slugs: any): string[] {
  * Fetch and parse a Mobalytics build from a URL
  */
 export async function fetchMobalyticsBuild(url: string): Promise<MobalyticsBuild> {
-  // Validate URL
-  const urlPattern = /mobalytics\.gg\/poe-2\/builds/i;
+  // Validate URL - accept both builds and profile URLs
+  const urlPattern = /mobalytics\.gg\/poe-2\/(builds|profile)/i;
   if (!urlPattern.test(url)) {
-    throw new Error('Invalid Mobalytics URL. Expected a URL containing "mobalytics.gg/poe-2/builds"');
+    throw new Error('Invalid Mobalytics URL. Expected a URL containing "mobalytics.gg/poe-2/"');
   }
 
   console.log('[Mobalytics Parser] Fetching build from:', url);
