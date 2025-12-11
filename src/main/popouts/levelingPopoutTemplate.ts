@@ -539,10 +539,75 @@ let state = {
     currentAct: 1
   },
   actTimers: {}, // Store completion time for each act: { 1: 1234567, 2: 2345678, ... }
-  globalTakenGems: new Set() // Track gem IDs that have been taken as quest rewards
+  globalTakenGems: new Set(), // Track gem IDs that have been taken as quest rewards
+  currentZoneId: null, // Track current zone for level color coding
+  currentZoneName: null
 };
 
 let timerInterval = null;
+
+// Recommended levels for POE2 zones (based on speedrun data)
+const POE2_ZONE_LEVELS = {
+  // Act 1
+  'g1_1': 1, // The Riverbank
+  'g1_2': 2, // Clearfell
+  'g1_4': 2, // The Grelwood
+  'g1_5': 2, // The Red Vale
+  'g1_6': 4, // The Grim Tangle
+  'g1_7': 5, // Cemetery of the Eternals
+  'g1_9': 6, // Tomb of the Consort
+  'g1_8': 7, // Mausoleum of the Praetor
+  'g1_11': 7, // Hunting Grounds
+  'g1_12': 8, // Freythorn
+  'g1_13_1': 9, // Ogham Farmlands
+  'g1_13_2': 10, // Ogham Village
+  'g1_14': 11, // The Manor Ramparts
+  'g1_15': 12, // Ogham Manor
+  
+  // Act 2
+  'g2_1': 13, // Vastiri Outskirts
+  'g2_10_1': 14, // Mawdun Quarry
+  'g2_10_2': 15.5, // Mawdun Mine
+  'g2_2': 16.5, // Traitor's Passage
+  'g2_3': 17.5, // The Halani Gates
+  'g2_4_1': 18.5, // Keth
+  'g2_4_2': 19, // The Lost City
+  'g2_4_3': 20, // Buried Shrines
+  'g2_5_1': 21, // Mastodon Badlands
+  'g2_5_2': 21.5, // The Bone Pits
+  'g2_6': 22.5, // Valley of the Titans
+  'g2_7': 23.5, // Titan Grotto
+  'g2_8': 24, // Deshar
+  'g2_9_1': 25, // Path of Mourning
+  'g2_9_2': 25, // Spires of Deshar
+  'g2_12_1': 26, // Dreadnought
+  'g2_12_2': 27, // Dreadnought Vanguard
+  
+  // Act 3
+  'g3_1': 28, // Sandswept Marsh
+  'g3_3': 29, // Jungle Ruins
+  'g3_4': 30, // Venom Crypts
+  'g3_2_1': 30, // Infested Barrens
+  'g3_7': 31, // Azak Bog
+  'g3_5': 32, // Chimeral Wetlands
+  'g3_8': 33, // The Drowned City
+  'g3_9': 34, // The Molten Vault
+  'g3_11': 35, // Apex of Filth
+  
+  // Act 4
+  'g4_1_1': 41, // Isle of Kin (Passive Points Island / Kedge Bay)
+  'g4_3_1': 42, // Whakapanu Island
+  'g4_3_2': 42, // Singing Caverns
+  'g4_5_1': 42, // Abandoned Prison
+  'g4_5_2': 42, // Solitary Confinement
+  'g4_7': 43, // Shrike Island
+  'g4_4_1': 44, // Eye of Hinekora
+  'g4_4_2': 44, // Halls of the Dead
+  'g4_8b': 46, // Arastas
+  'g4_10': 46, // The Excavation
+  'g4_11_1b': 47, // Ngakanu
+  'g4_11_2': 47 // Heart of the Tribe
+};
 
 const STEP_TYPES = {
   navigation: { icon: '➜', color: '#E0E0E0', label: 'Navigate' },
@@ -2676,6 +2741,33 @@ function updateCharacterDisplay() {
     displayText = 'Level ' + state.characterLevel;
   }
   
+  // Determine level color based on zone recommendation
+  let levelColor = 'rgba(255, 255, 255, 0.8)'; // Default white
+  let tooltipText = '';
+  
+  if (state.characterLevel !== null && state.currentZoneId) {
+    const recommendedLevel = POE2_ZONE_LEVELS[state.currentZoneId.toLowerCase()];
+    if (recommendedLevel !== undefined) {
+      if (state.characterLevel < recommendedLevel) {
+        levelColor = '#FF5252'; // Red if below recommended
+        const diff = Math.ceil(recommendedLevel - state.characterLevel);
+        tooltipText = 'Below recommended level ' + recommendedLevel + ' (-' + diff + ')';
+      } else {
+        levelColor = '#4ADE80'; // Green if at or above recommended
+        const diff = Math.floor(state.characterLevel - recommendedLevel);
+        if (diff > 0) {
+          tooltipText = 'Above recommended level ' + recommendedLevel + ' (+' + diff + ')';
+        } else {
+          tooltipText = 'At recommended level ' + recommendedLevel;
+        }
+      }
+      
+      if (state.currentZoneName) {
+        tooltipText += ' for ' + state.currentZoneName;
+      }
+    }
+  }
+  
   // Update all character display elements
   const normalDisplay = document.getElementById('characterInfo');
   const minimalDisplay = document.getElementById('minimalCharacterInfo');
@@ -2683,10 +2775,14 @@ function updateCharacterDisplay() {
   if (normalDisplay) {
     normalDisplay.textContent = displayText;
     normalDisplay.style.display = displayText ? 'block' : 'none';
+    normalDisplay.style.color = levelColor;
+    normalDisplay.title = tooltipText;
   }
   if (minimalDisplay) {
     minimalDisplay.textContent = displayText;
     minimalDisplay.style.display = displayText ? 'block' : 'none';
+    minimalDisplay.style.color = levelColor;
+    minimalDisplay.title = tooltipText;
   }
 }
 
@@ -2844,11 +2940,17 @@ ipcRenderer.on('leveling-layout-mode', (event, mode) => {
 console.log('[Auto-Detect] Registering zone-entered event listener');
 ipcRenderer.on('zone-entered', (event, data) => {
   console.log('[Auto-Detect] Event received. levelingData?', !!state.levelingData, 'autoDetectZones?', state.autoDetectZones);
-  if (!state.levelingData || !state.autoDetectZones) return;
   
   const zoneId = data.zoneId;
   const zoneName = data.zoneName;
   const actNumber = data.actNumber;
+  
+  // Always update current zone for level color coding (even if auto-detect is off)
+  state.currentZoneId = zoneId;
+  state.currentZoneName = zoneName;
+  updateCharacterDisplay(); // Update level color based on new zone
+  
+  if (!state.levelingData || !state.autoDetectZones) return;
   
   console.log('[Auto-Detect] Zone entered:', zoneId + ' (' + zoneName + ')', 'Act', actNumber, '| Mode:', state.autoDetectMode);
   
