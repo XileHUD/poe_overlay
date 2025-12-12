@@ -29,8 +29,8 @@ export const POE1_STANDARD_LEAGUE = 'Standard';
 export const POE1_LEGACY_HARDCORE_LEAGUE = 'Hardcore';
 
 // PoE2 leagues
-export const POE2_SOFTCORE_LEAGUE = 'Rise of the Abyssal';
-export const POE2_HARDCORE_LEAGUE = 'HC Rise of the Abyssal';
+export const POE2_SOFTCORE_LEAGUE = 'Fate of the Vaal';
+export const POE2_HARDCORE_LEAGUE = 'HC Fate of the Vaal';
 export const POE2_STANDARD_LEAGUE = 'Standard';
 export const POE2_LEGACY_HARDCORE_LEAGUE = 'Hardcore';
 
@@ -63,8 +63,8 @@ const POE1_LEAGUE_OPTIONS: LeagueOption[] = [
 ];
 
 const POE2_LEAGUE_OPTIONS: LeagueOption[] = [
-  { id: POE2_SOFTCORE_LEAGUE, label: 'Rise of the Abyssal', tag: 'Softcore', hint: 'Default trade league' },
-  { id: POE2_HARDCORE_LEAGUE, label: 'HC Rise of the Abyssal', tag: 'Hardcore', hint: 'Deletes characters on death' },
+  { id: POE2_SOFTCORE_LEAGUE, label: 'Fate of the Vaal', tag: 'Softcore', hint: 'Default trade league' },
+  { id: POE2_HARDCORE_LEAGUE, label: 'HC Fate of the Vaal', tag: 'Hardcore', hint: 'Deletes characters on death' },
   { id: POE2_STANDARD_LEAGUE, label: 'Standard', tag: 'Legacy', hint: 'Permanent league' },
   { id: POE2_LEGACY_HARDCORE_LEAGUE, label: 'Hardcore', tag: 'Legacy HC', hint: 'Legacy hardcore league' }
 ];
@@ -129,9 +129,9 @@ function ensureLeagueValidForMode(mode: 'poe1' | 'poe2'): boolean {
 
 const LEAGUE_LABELS: Record<string, string> = {
   [normalizeLeagueId(POE1_SOFTCORE_LEAGUE)]: 'Softcore • Keepers of the Flame',
-  [normalizeLeagueId(POE2_SOFTCORE_LEAGUE)]: 'Softcore • Rise of the Abyssal',
+  [normalizeLeagueId(POE2_SOFTCORE_LEAGUE)]: 'Softcore • Fate of the Vaal',
   [normalizeLeagueId(POE1_HARDCORE_LEAGUE)]: 'Hardcore • Keepers of the Flame',
-  [normalizeLeagueId(POE2_HARDCORE_LEAGUE)]: 'Hardcore • Rise of the Abyssal',
+  [normalizeLeagueId(POE2_HARDCORE_LEAGUE)]: 'Hardcore • Fate of the Vaal',
   [normalizeLeagueId(POE1_STANDARD_LEAGUE)]: 'Standard',
   [normalizeLeagueId(POE2_STANDARD_LEAGUE)]: 'Standard',
   [normalizeLeagueId(POE1_LEGACY_HARDCORE_LEAGUE)]: 'Hardcore (Legacy)',
@@ -316,8 +316,11 @@ export function formatLeagueLabel(league: string): string {
   const normalized = normalizeLeagueId(trimmed);
   if (LEAGUE_LABELS[normalized]) return LEAGUE_LABELS[normalized];
   if (/^hardcore keepers of the flame$/i.test(trimmed)) return 'Hardcore • Keepers of the Flame';
-  if (/^hardcore rise of the abyssal$/i.test(trimmed)) return 'Hardcore • Rise of the Abyssal';
+  if (/^hardcore fate of the vaal$/i.test(trimmed)) return 'Hardcore • Fate of the Vaal';
+  if (/^hc fate of the vaal$/i.test(trimmed)) return 'Hardcore • Fate of the Vaal';
   if (/^keepers of the flame$/i.test(trimmed)) return 'Softcore • Keepers of the Flame';
+  if (/^fate of the vaal$/i.test(trimmed)) return 'Softcore • Fate of the Vaal';
+  if (/^hardcore rise of the abyssal$/i.test(trimmed)) return 'Hardcore • Rise of the Abyssal';
   if (/^rise of the abyssal$/i.test(trimmed)) return 'Softcore • Rise of the Abyssal';
   if (/^Hardcore/i.test(trimmed)) {
     const rest = trimmed.replace(/^Hardcore\s*/i, '').trim();

@@ -27,7 +27,7 @@ export const POE1_LEAGUE_ENDED = false; // ⚠️ CHANGE THIS when PoE1 league s
  * Set to TRUE when PoE2 league season has ended.
  * Set to FALSE when new PoE2 league launches.
  */
-export const POE2_LEAGUE_ENDED = true; // ⚠️ CHANGE THIS when PoE2 league status changes
+export const POE2_LEAGUE_ENDED = false; // ⚠️ CHANGE THIS when PoE2 league status changes
 
 /**
  * Message shown to users when league has ended

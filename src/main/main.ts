@@ -331,7 +331,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
     }
 
     private getDefaultLeague(): string {
-        return this.overlayVersion === 'poe1' ? 'Keepers of the Flame' : 'Rise of the Abyssal';
+        return this.overlayVersion === 'poe1' ? 'Keepers of the Flame' : 'Fate of the Vaal';
     }
 
     constructor() {
@@ -421,7 +421,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                     if (this.overlayVersion === 'poe1') {
                         leagueIsValid = /Keepers of the Flame|Hardcore Keepers of the Flame|Standard|Hardcore/i.test(trimmedLeague);
                     } else {
-                        leagueIsValid = /Rise of the Abyssal|HC Rise of the Abyssal|Standard|Hardcore/i.test(trimmedLeague);
+                        leagueIsValid = /Fate of the Vaal|HC Fate of the Vaal|Rise of the Abyssal|HC Rise of the Abyssal|Standard|Hardcore/i.test(trimmedLeague);
                     }
                 }
 
@@ -1003,13 +1003,15 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                     });
                 if (entries.length > 0) {
                     if (version === 'poe2') {
+                        const vaal = entries.find((candidate) => /Fate of the Vaal/i.test(candidate));
+                        if (vaal) return vaal;
                         const abyssal = entries.find((candidate) => /Rise of the Abyssal/i.test(candidate));
                         if (abyssal) return abyssal;
                     } else if (version === 'poe1') {
                         // Look for PoE1Modules (items/gems/etc.)
                         const modules = entries.find((candidate) => /PoE1Modules/i.test(candidate));
                         if (modules) return modules;
-                        // Legacy fallback: "Secret" or "Rise of the Abyssal"
+                        // Legacy fallback: "Secret" or old league directories
                         const secret = entries.find((candidate) => /^Secret$/i.test(path.basename(candidate)));
                         if (secret && this.validateDataDirCandidate(secret, version).valid) return secret;
                     }
@@ -1032,7 +1034,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                         return poe1Modules;
                     }
                 }
-                // PoE2 or fallback: prefer the first valid data directory (e.g., "Rise of the Abyssal")
+                // PoE2 or fallback: prefer the first valid data directory (e.g., "Fate of the Vaal")
                 const entries = fs.readdirSync(base)
                     .map((entry) => path.join(base, entry))
                     .filter((fullPath) => {
@@ -3773,7 +3775,7 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                 
                 // Determine which version this league belongs to based on league name
                 const isPoe1League = /Keepers of the Flame|Standard|Hardcore/i.test(trimmedLegacy);
-                const isPoe2League = /Rise of the Abyssal|Standard|Hardcore/i.test(trimmedLegacy);
+                const isPoe2League = /Fate of the Vaal|Rise of the Abyssal|Standard|Hardcore/i.test(trimmedLegacy);
                 
                 // If it's the current version's league, migrate it
                 if (this.overlayVersion === 'poe1' && isPoe1League) {
@@ -3831,7 +3833,7 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                     if (/Keepers_of_the_Flame|HC_Keepers_of_the_Flame/i.test(leaguePart)) {
                         gameVersion = 'poe1';
                     } else {
-                        // Default to poe2 for all other leagues (Rise of the Abyssal, Standard, Hardcore)
+                        // Default to poe2 for all other leagues (Fate of the Vaal, Rise of the Abyssal, Standard, Hardcore)
                         gameVersion = 'poe2';
                     }
                     
