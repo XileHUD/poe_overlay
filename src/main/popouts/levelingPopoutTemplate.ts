@@ -3401,9 +3401,9 @@ try {
   if (updateBadgeBtn) {
     updateBadgeBtn.addEventListener('click', () => {
       try {
-        ipcRenderer.send('open-releases-page');
-      } catch {
-        try { window.open(UPDATE_RELEASE_URL, '_blank', 'noopener'); } catch {}
+        ipcRenderer.send('settings-install-update-now');
+      } catch (err) {
+        console.error('[Leveling] Failed to trigger update installation:', err);
       }
     });
   }

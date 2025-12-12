@@ -2951,13 +2951,9 @@
             });
             if (updateBadgeBtn) updateBadgeBtn.addEventListener('click', ()=>{
                 try {
-                    if (window.electronAPI?.openReleasesPage) {
-                        window.electronAPI.openReleasesPage();
-                    } else {
-                        window.open(UPDATE_RELEASE_URL, '_blank', 'noopener');
-                    }
-                } catch {
-                    try { window.open(UPDATE_RELEASE_URL, '_blank', 'noopener'); } catch {}
+                    ipcRenderer.send('settings-install-update-now');
+                } catch (err) {
+                    console.error('[Overlay] Failed to trigger update installation:', err);
                 }
             });
             
