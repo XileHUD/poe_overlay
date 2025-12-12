@@ -23,6 +23,7 @@ export type BaseItem = {
   properties?: { name: string; value: string }[];
   grants?: { name: string; level?: number }[];
   category?: string;
+  requiredLevel?: number;
   __tags?: string[];
   __sortVal?: number;
 };
@@ -247,8 +248,9 @@ export function render(groups: BaseGroups): void {
   let tagsExpanded = false; // Track Show More/Less state
   // Multi-select defense filters (user can now pick any combination of Armour / Evasion / ES)
   const defenseQuick = new Set<'Armour'|'Evasion'|'ES'>();
-  let sortTag: 'Armour'|'Evasion'|'ES'|'AttackSpeed'|'Crit'|'Physical'|'Fire'|'Cold'|'Lightning'|'Chaos'|'Life'|'Mana'|'Block'|'Move'|'Elemental'|null = null;
+  let sortTag: 'Armour'|'Evasion'|'ES'|'AttackSpeed'|'Crit'|'Physical'|'Fire'|'Cold'|'Lightning'|'Chaos'|'Life'|'Mana'|'Block'|'Move'|'Elemental'|'Level'|null = null;
   let sortDir: 'asc'|'desc' = 'desc';
+  let levelSortCycle: 0|1|2 = 0; // 0=none, 1=asc, 2=desc
 
   panel.innerHTML=`
     <div class='page-inner'>
@@ -338,7 +340,11 @@ export function render(groups: BaseGroups): void {
     const f=(searchEl.value||'').toLowerCase().trim(); listEl.innerHTML='';
     let basesArr: BaseItem[] = cat==='All' ? rawCategoryKeys.flatMap(k=> (state.groups as any)[k]||[]) : ((state.groups as any)[cat]||[]);
     let arr=basesArr.filter(b=>(!f || b.name.toLowerCase().includes(f) || (b.implicitMods||[]).some(m=>m.toLowerCase().includes(f)) || (b.grants||[]).some(g=>g.name.toLowerCase().includes(f))) && baseMatchesTags(b) && matchesDefenseQuick(b));
-    if(sortTag){
+    if(sortTag==='Level'){
+      // Level sort based on requiredLevel
+      arr.forEach(b=>{ (b as any).__sortVal = b.requiredLevel ?? -Infinity; });
+      arr.sort((a,b)=>{ const av=(a as any).__sortVal, bv=(b as any).__sortVal; if(av===bv) return a.name.localeCompare(b.name); return sortDir==='desc'? (bv-av):(av-bv); });
+    } else if(sortTag){
       const propMatchers: Record<string, (p: {name:string; value:string})=>boolean> = {
         Armour:(p)=>/Armour|Armor/i.test(p.name),
         Evasion:(p)=>/Evasion/i.test(p.name),
@@ -402,14 +408,15 @@ export function render(groups: BaseGroups): void {
       }).join('')}</div>` : '';
   const slugCandidates = buildModifierSlugCandidates(b, cat);
       const primarySlug = slugCandidates.length ? slugCandidates[0] : '';
-      const sortBadge = (sortTag && (b as any).__sortVal!==-Infinity)?` <span style='font-size:11px; color:var(--accent-blue);'>(${(b as any).__sortVal})</span>`:'';
+      const sortBadge = (sortTag && sortTag!=='Level' && (b as any).__sortVal!==-Infinity)?` <span style='font-size:11px; color:var(--accent-blue);'>(${(b as any).__sortVal})</span>`:'';
+      const requiredLvl = b.requiredLevel ? ` <span class='req-level-clickable' data-req-level='${b.requiredLevel}' style='font-size:11px; color:var(--text-secondary); cursor:pointer; text-decoration:${sortTag==='Level'?'underline':'none'};' title='Click to sort by level'>(Requires Level ${b.requiredLevel})</span>` : '';
       const safeName = escapeHtml(b.name || '');
       const safeSlug = escapeHtml(primarySlug);
       const modButton = primarySlug
         ? `<button class='base-modifiers-btn' data-mod-cat='${safeSlug}' title='Open modifiers for ${safeName}' aria-label='Open modifiers for ${safeName}' style='border:1px solid var(--border-color); background:var(--bg-tertiary); color:var(--text-secondary); width:26px; height:26px; border-radius:6px; display:inline-flex; align-items:center; justify-content:center; font-size:13px; cursor:pointer; transition:background 0.15s ease;'>✦</button>`
         : '';
       const headerLine = `<div style='display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:6px;'>
-        <div style='font-weight:600; font-size:15px;'>${b.name}${sortBadge}</div>
+        <div style='font-weight:600; font-size:15px;'>${b.name}${requiredLvl}${sortBadge}</div>
         ${modButton}
       </div>`;
       const right = `<div style='flex:1; display:flex; flex-direction:column;'>
@@ -494,6 +501,23 @@ export function render(groups: BaseGroups): void {
         const sortable=['Armour','Evasion','ES','AttackSpeed','Crit','Physical','Fire','Cold','Lightning','Chaos','Elemental','Life','Mana','Block','Move'];
         if(!t || !sortable.includes(t)) return;
         if(sortTag===t as any){ sortTag=null; } else { sortTag=t as any; sortDir='desc'; }
+        levelSortCycle = 0; // reset level sort when using other sorts
+        build();
+        panel.scrollTo({ top:0, behavior:'smooth' });
+      });
+    });
+
+    // Level requirement click handler (tri-state: none -> asc -> desc -> none)
+    listEl.querySelectorAll('.req-level-clickable').forEach(el=>{
+      el.addEventListener('click',(e)=>{
+        e.stopPropagation();
+        levelSortCycle = (levelSortCycle + 1) % 3 as 0|1|2;
+        if(levelSortCycle === 0) {
+          sortTag = null; // no sort
+        } else {
+          sortTag = 'Level';
+          sortDir = levelSortCycle === 1 ? 'asc' : 'desc';
+        }
         build();
         panel.scrollTo({ top:0, behavior:'smooth' });
       });
@@ -502,13 +526,14 @@ export function render(groups: BaseGroups): void {
 
   function renderDefenseQuick(){
     if(!quickWrap) return; quickWrap.innerHTML='';
-    const defs: {k:'Armour'|'Evasion'|'ES'; label:string}[] = [
+    const defs: {k:'Armour'|'Evasion'|'ES'|'Level'; label:string}[] = [
       {k:'Armour',label:'Armour'},
       {k:'Evasion',label:'Evasion'},
-      {k:'ES',label:'Energy Shield'}
+      {k:'ES',label:'Energy Shield'},
+      {k:'Level',label:'Level'}
     ];
     defs.forEach(d=>{
-      const active = defenseQuick.has(d.k);
+      const active = (d.k==='Level') ? (sortTag==='Level') : defenseQuick.has(d.k as any);
       const btn=document.createElement('button');
       btn.textContent=d.label;
       btn.style.padding='4px 10px';
@@ -519,11 +544,23 @@ export function render(groups: BaseGroups): void {
       btn.style.background= active ? 'var(--accent-blue)' : 'var(--bg-tertiary)';
       btn.style.color= active ? '#fff':'var(--text-primary)';
       btn.addEventListener('click',()=>{
-        if(active){ defenseQuick.delete(d.k); }
-        else { defenseQuick.add(d.k); }
-        // Sorting: only auto-apply if a single defense selected; otherwise clear defense-based sort
-        if(defenseQuick.size===1){ const only=[...defenseQuick][0]; sortTag=only as any; sortDir='desc'; }
-        else if(['Armour','Evasion','ES'].includes(sortTag as string)) { sortTag=null; }
+        if(d.k==='Level') {
+          // Tri-state level sort
+          levelSortCycle = (levelSortCycle + 1) % 3 as 0|1|2;
+          if(levelSortCycle === 0) {
+            sortTag = null;
+          } else {
+            sortTag = 'Level';
+            sortDir = levelSortCycle === 1 ? 'asc' : 'desc';
+          }
+        } else {
+          if(active){ defenseQuick.delete(d.k as any); }
+          else { defenseQuick.add(d.k as any); }
+          // Sorting: only auto-apply if a single defense selected; otherwise clear defense-based sort
+          if(defenseQuick.size===1){ const only=[...defenseQuick][0]; sortTag=only as any; sortDir='desc'; }
+          else if(['Armour','Evasion','ES'].includes(sortTag as string)) { sortTag=null; }
+          levelSortCycle = 0; // reset level sort when using defense filters
+        }
         build();
         panel.scrollTo({top:0, behavior:'smooth'});
         renderDefenseQuick();
@@ -553,7 +590,18 @@ export function render(groups: BaseGroups): void {
   }
 
   searchEl.addEventListener('input',()=>build());
-  clearBtn.addEventListener('click',()=>{ searchEl.value=''; build(); searchEl.focus(); });
+  clearBtn.addEventListener('click',()=>{ 
+    // Clear ALL filters
+    searchEl.value=''; 
+    selectedTags.clear(); 
+    defenseQuick.clear(); 
+    sortTag=null; 
+    levelSortCycle=0;
+    build(); 
+    renderTagFilters(); 
+    renderDefenseQuick(); 
+    searchEl.focus(); 
+  });
   selectEl.addEventListener('change',()=>build());
   renderTagFilters();
   renderDefenseQuick();
