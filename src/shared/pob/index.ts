@@ -9,6 +9,12 @@ export { findGemQuest, matchPobGemsToQuests, getGemsForQuest, formatGemQuestInfo
 export { calculateTreeProgressionByAct, calculateTreeProgressionFromHistory, getRecommendedActForLevel } from './treeProgression.js';
 export { nodeLookup326, nodeLookup327, nodeLookupPoe2 } from './treeLoader.js';
 export {
+  extractWeaponType,
+  getCategoryForWeaponType,
+  processWeaponBases,
+  getHighestAvailableBase
+} from './weaponBaseProcessor.js';
+export {
   createEmptyBuildsList,
   addBuild,
   deleteBuild,
@@ -25,6 +31,7 @@ export type {
   GemSocketGroup,
   GemInfo,
   GemRequirement,
+  WeaponBaseProgression,
   ActTreeProgression,
   StoredPobBuild,
   PassiveTreeNode,

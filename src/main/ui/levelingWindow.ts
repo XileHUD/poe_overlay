@@ -32,6 +32,8 @@ import {
   nodeLookup327,
   nodeLookupPoe2,
   migrateLegacyBuild,
+  extractWeaponType,
+  processWeaponBases,
 } from '../../shared/pob/index.js';
 import { fetchMobalyticsBuild, convertMobalyticsToPobBuild } from '../../shared/mobalytics/index.js';
 import { fetchMaxrollBuild, convertMaxrollToPobBuild } from '../../shared/maxroll/index.js';
@@ -778,6 +780,16 @@ export class LevelingWindow {
       }));
       
       return true;
+    });
+
+    // Get current zone from client.txt watcher
+    ipcMain.handle('get-current-zone', async () => {
+      if (this.lastZoneAreaCode && this.clientTxtPath) {
+        const zoneName = this.getZoneNameFromAreaCode(this.lastZoneAreaCode);
+        const actNumber = this.getActNumberFromAreaCode(this.lastZoneAreaCode);
+        return { zoneId: this.lastZoneAreaCode, zoneName, actNumber };
+      }
+      return null;
     });
 
     // Save character info
@@ -2089,6 +2101,82 @@ export class LevelingWindow {
     return getActiveBuild(buildsList);
   }
 
+  /**
+   * Process weapon bases for a build to enable highest available base display in towns
+   */
+  private async processWeaponBasesForBuild(build: ParsedPobBuild): Promise<any> {
+    // Only process for PoE2
+    if (this.overlayVersion !== 'poe2') {
+      console.log('[Weapon Bases] Skipping - not PoE2');
+      return null;
+    }
+    
+    console.log('[Weapon Bases] Processing build, itemSets:', build.itemSets);
+    
+    // Extract weapon type from itemSets
+    const weaponType = extractWeaponType(build.itemSets);
+    if (!weaponType) {
+      console.log('[Weapon Bases] No weapon found in build');
+      return null;
+    }
+
+    console.log('[Weapon Bases] Detected weapon type:', weaponType);
+
+    try {
+      // Load bases using same path logic as main overlay's getDataDir + 'Bases.json'
+      // The data dir for PoE2 is 'Rise of the Abyssal' folder
+      const possiblePaths = [
+        path.join(process.resourcesPath || '', 'data', 'poe2', 'Rise of the Abyssal', 'Bases.json'), // Packaged
+        path.join(app.getAppPath(), 'data', 'poe2', 'Rise of the Abyssal', 'Bases.json'),
+        path.join(process.cwd(), 'data', 'poe2', 'Rise of the Abyssal', 'Bases.json'),
+        path.join(__dirname, '../../data/poe2/Rise of the Abyssal/Bases.json'),
+        path.join(__dirname, '../../../data/poe2/Rise of the Abyssal/Bases.json'),
+      ];
+      
+      let basesResult: any = null;
+      let foundPath: string | null = null;
+      
+      for (const basesPath of possiblePaths) {
+        if (fs.existsSync(basesPath)) {
+          try {
+            const data = JSON.parse(fs.readFileSync(basesPath, 'utf8'));
+            basesResult = data;
+            foundPath = basesPath;
+            break;
+          } catch (err) {
+            console.warn('[Weapon Bases] Failed to read from', basesPath, err);
+          }
+        }
+      }
+      
+      if (!basesResult) {
+        console.error('[Weapon Bases] Bases.json not found in any of the tried paths:', possiblePaths);
+        return null;
+      }
+      
+      console.log('[Weapon Bases] Loaded bases from:', foundPath);
+
+      console.log('[Weapon Bases] Loaded bases data, keys:', Object.keys(basesResult));
+      const basesData = basesResult.bases || {};
+      console.log('[Weapon Bases] Bases categories:', Object.keys(basesData));
+      
+      // Process weapon bases for the detected type
+      const progression = await processWeaponBases(weaponType, basesData);
+      
+      if (progression) {
+        console.log('[Weapon Bases] Processed', progression.bases.length, 'bases for', weaponType);
+        console.log('[Weapon Bases] First few bases:', progression.bases.slice(0, 5));
+      } else {
+        console.log('[Weapon Bases] No progression generated');
+      }
+      
+      return progression;
+    } catch (error) {
+      console.error('[Weapon Bases] Error processing bases:', error);
+      return null;
+    }
+  }
+
 
   private async importPobCode(code: string): Promise<any> {
     try {
@@ -2128,6 +2216,14 @@ export class LevelingWindow {
       
       // Convert to StoredPobBuild format
       const pobBuild = convertMobalyticsToPobBuild(mobaBuild);
+      
+      // Process weapon bases for PoE2 builds
+      if (this.overlayVersion === 'poe2' && pobBuild.itemSets) {
+        const weaponBaseProgression = await this.processWeaponBasesForBuild(pobBuild as any);
+        if (weaponBaseProgression) {
+          pobBuild.weaponBaseProgression = weaponBaseProgression;
+        }
+      }
       
       // Add to builds list and set as active
       const currentBuildsList = this.getPobBuildsList();
@@ -2202,6 +2298,14 @@ export class LevelingWindow {
       console.log('[Maxroll Import] Build fetched:', maxrollBuild.title);
 
       const pobBuild = await convertMaxrollToPobBuild(maxrollBuild);
+
+      // Process weapon bases for PoE2 builds
+      if (this.overlayVersion === 'poe2' && pobBuild.itemSets) {
+        const weaponBaseProgression = await this.processWeaponBasesForBuild(pobBuild as any);
+        if (weaponBaseProgression) {
+          pobBuild.weaponBaseProgression = weaponBaseProgression;
+        }
+      }
 
       const currentBuildsList = this.getPobBuildsList();
       const updatedBuildsList = addBuild(currentBuildsList, pobBuild);
@@ -2364,6 +2468,9 @@ export class LevelingWindow {
       
       console.log('[PoB Import] Stored', allGems.length, 'gems for per-step matching');
 
+      // Process weapon bases for PoE2 builds
+      const weaponBaseProgression = await this.processWeaponBasesForBuild(build);
+
       // Store PoB build in settings
       const pobBuild: StoredPobBuild = {
         code: code,
@@ -2380,7 +2487,8 @@ export class LevelingWindow {
         itemSets: build.itemSets, // Item sets (gear)
         treeVersion: build.treeVersion,
         notes: build.notes, // Notes from PoB Notes tab
-        importedAt: Date.now()
+        importedAt: Date.now(),
+        weaponBaseProgression: weaponBaseProgression || undefined // Pre-processed weapon base data
       };
 
       // Add to builds list and set as active

@@ -75,7 +75,8 @@ export function buildLevelingPopoutHtml(overlayVersion: OverlayVersion = 'poe1')
     .window.minimal-mode .timer-row,
     .window.minimal-mode .minimal-controls{display:none!important;}
     .window.minimal-mode .footer{display:none!important;}
-    .window.minimal-mode .list{padding:70px 1px 1px 1px!important;pointer-events:auto!important;}
+    .window.minimal-mode #weaponBaseInfoNormal{display:none!important;}
+    .window.minimal-mode .list{padding:80px 1px 1px 1px;pointer-events:auto!important;}
     .window.minimal-mode .list::-webkit-scrollbar{display:none!important;}
     .window.minimal-mode .list{scrollbar-width:none!important;-ms-overflow-style:none!important;}
     .window.minimal-mode .leveling-step,
@@ -113,6 +114,7 @@ export function buildLevelingPopoutHtml(overlayVersion: OverlayVersion = 'poe1')
     .window.ultra-minimal-mode .timer-row,
     .window.ultra-minimal-mode .footer,
     .window.ultra-minimal-mode .minimal-controls{display:none!important;}
+    .window.ultra-minimal-mode #weaponBaseInfoNormal{display:none!important;}
     .window.ultra-minimal-mode .step-checkbox,
     .window.ultra-minimal-mode .zone-checkbox,
     .window.ultra-minimal-mode .task-checkbox{display:none!important;}
@@ -120,7 +122,7 @@ export function buildLevelingPopoutHtml(overlayVersion: OverlayVersion = 'poe1')
     .window.ultra-minimal-mode .leveling-step.current{background:rgba(50,54,64,0.9)!important;border-color:rgba(74,158,255,0.3)!important;}
     .window.ultra-minimal-mode .leveling-group{padding:8px;margin-bottom:4px;border-radius:3px;background:rgba(32,36,44,0.85)!important;border:1px solid rgba(74,222,128,0.15)!important;}
     .window.ultra-minimal-mode .leveling-group.current{border-top-left-radius:0 !important;border-top-right-radius:0 !important;background:rgba(40,50,44,0.9)!important;border-color:rgba(74,222,128,0.3)!important;}
-    .window.ultra-minimal-mode .list{padding:68px 1px 0 0!important;pointer-events:none!important;}
+    .window.ultra-minimal-mode .list{padding:80px 1px 0 0;pointer-events:none!important;}
     .window.ultra-minimal-mode .zone-header{margin-bottom:5px;padding-bottom:5px;border:none}
     .window.ultra-minimal-mode .list::-webkit-scrollbar{display:none!important;}
     .window.ultra-minimal-mode .list{scrollbar-width:none!important;-ms-overflow-style:none!important;}
@@ -139,6 +141,8 @@ export function buildLevelingPopoutHtml(overlayVersion: OverlayVersion = 'poe1')
     
     #goToUltraBtn{display:none;}
     #backToNormalBtn{display:none;}
+    #weaponBaseInfo{display:none;}
+    #weaponBaseInfoNormal{display:none;}
     #minimalBtn.active{background:rgba(138,43,226,0.5);border-color:rgba(138,43,226,0.9);color:#fff;}
     #minimalBtn.ultra{background:rgba(255,0,255,0.6);border-color:rgba(255,0,255,1);color:#fff;}
     .minimal-controls{display:none;gap:4px;margin-bottom:4px;align-items:stretch;}
@@ -348,6 +352,7 @@ export function buildLevelingPopoutHtml(overlayVersion: OverlayVersion = 'poe1')
   <div class='drag-handle' id='dragHandle'>
     <div class='ultra-drag-overlay' style='position:absolute;top:0;left:0;right:0;bottom:0;-webkit-app-region:drag;pointer-events:auto;z-index:1;'></div>
     <div id='minimalCharacterInfo' style='font-size:9px;color:rgba(255,255,255,0.85);font-weight:600;text-align:center;padding:2px 6px;background:rgba(0,0,0,0.3);border-radius:3px;margin-bottom:2px;display:none;user-select:none;-webkit-user-select:none;cursor:move;position:relative;z-index:2;'></div>
+    <div id='weaponBaseInfo' style='font-size:8px;color:rgba(254,192,118,0.95);font-weight:600;text-align:center;padding:2px 6px;background:rgba(0,0,0,0.3);border-radius:3px;margin-bottom:2px;display:none;user-select:none;-webkit-user-select:none;cursor:move;position:relative;z-index:2;'></div>
     <div class='drag-handle-row'>
       <span class='drag-handle-icon'>⋮⋮</span>
       <div class='minimal-nav'>
@@ -409,6 +414,7 @@ export function buildLevelingPopoutHtml(overlayVersion: OverlayVersion = 'poe1')
       <button class='timer-btn' id='timerReset' title='Reset timer'>Reset</button>
     </div>
   </div>
+  <div id='weaponBaseInfoNormal' style='font-size:10px;color:rgba(254,192,118,0.95);font-weight:600;padding:4px 8px;background:rgba(40,44,52,0.7);border-top:1px solid rgba(254,192,118,0.2);display:none;text-align:center;'></div>
   <div class='list' id='stepsList'></div>
   
   <!-- Footer with update badge -->
@@ -1259,7 +1265,9 @@ function saveState() {
     groupByZone: state.groupByZone,
     showTreeNodeDetails: state.showTreeNodeDetails,
     autoDetectLevelingSets: state.autoDetectLevelingSets,
-    autoDetectMode: state.autoDetectMode
+    autoDetectMode: state.autoDetectMode,
+    currentZoneId: state.currentZoneId,
+    currentZoneName: state.currentZoneName
   });
 }
 
@@ -1357,6 +1365,8 @@ function updateViewMode() {
   if (state.minimalMode === 'normal') {
     const opacityDecimal = (state.opacity / 100).toFixed(2);
     mainWindow.style.background = \`linear-gradient(135deg,rgba(20,20,28,\${opacityDecimal}),rgba(15,15,22,\${opacityDecimal}))\`;
+    // Clear inline padding when switching to normal mode
+    setTimeout(() => adjustListPadding(), 50);
   } else {
     mainWindow.style.background = 'transparent';
   }
@@ -1369,6 +1379,9 @@ function updateViewMode() {
   // Minimal mode is NOT click-through - window is fully interactable
     ipcRenderer.send('set-ignore-mouse-events', false);
   ipcRenderer.send('ultra-mode-change', { enabled: false });
+    
+    // Dynamically adjust list padding based on drag-handle height
+    setTimeout(() => adjustListPadding(), 50);
     
     // Clean up ultra handlers if switching from ultra
     if (dragHandle && dragHandle._ultraMouseHandlers) {
@@ -1411,6 +1424,9 @@ function updateViewMode() {
 
     // Default to click-through when switching into ultra (main also enforces)
     ipcRenderer.send('set-ignore-mouse-events', true, { forward: true });
+    
+    // Dynamically adjust list padding based on drag-handle height
+    setTimeout(() => adjustListPadding(), 50);
   } else {
     // Normal mode
     ipcRenderer.send('set-ignore-mouse-events', false);
@@ -2163,10 +2179,19 @@ function resolveGemImagesIn(root) {
       }
     }
   });
+  
+  // On first render with build loaded, check if we should show weapon base
+  if (!window._startupWeaponBaseChecked && state.pobBuild && state.pobBuild.weaponBaseProgression) {
+    window._startupWeaponBaseChecked = true;
+    if (state.currentZoneId && state.currentZoneName) {
+      console.log('[RENDER] First render with build, checking weapon base for zone:', state.currentZoneId, state.currentZoneName);
+      updateWeaponBaseDisplay(state.currentZoneId, state.currentZoneName);
+    }
+  }
 }
 
 // Load data and saved progress
-ipcRenderer.invoke('get-leveling-data').then(result => {
+ipcRenderer.invoke('get-leveling-data').then(async (result) => {
   state.levelingData = result.data;
   
   // Debug: Log loaded acts
@@ -2210,6 +2235,8 @@ ipcRenderer.invoke('get-leveling-data').then(result => {
     if (result.settings.showTreeNodeDetails !== undefined) state.showTreeNodeDetails = result.settings.showTreeNodeDetails;
     if (result.settings.autoDetectLevelingSets !== undefined) state.autoDetectLevelingSets = result.settings.autoDetectLevelingSets;
     if (result.settings.autoDetectMode !== undefined) state.autoDetectMode = result.settings.autoDetectMode;
+    if (result.settings.currentZoneId !== undefined) state.currentZoneId = result.settings.currentZoneId;
+    if (result.settings.currentZoneName !== undefined) state.currentZoneName = result.settings.currentZoneName;
     console.log('Loaded UI settings:', result.settings);
   }
   
@@ -2220,11 +2247,13 @@ ipcRenderer.invoke('get-leveling-data').then(result => {
     state.characterLevel = result.characterLevel;
   }
   
-  // Load PoB build after data is loaded
-  loadPobBuild();
+  // Load PoB build after data is loaded (await it so weapon base progression is loaded)
+  await loadPobBuild();
   
   // Update character display
   updateCharacterDisplay();
+  
+  // Weapon base display is now handled inside loadPobBuild() after the build loads
   
   // Listen for settings changes from the settings splash
   ipcRenderer.on('leveling-settings-changed', (event, updates) => {
@@ -2276,6 +2305,7 @@ ipcRenderer.invoke('get-leveling-data').then(result => {
   });
   
   render();
+
 }).catch(err => {
   console.error('Failed to load:', err);
   document.getElementById('stepsList').innerHTML = '<div style="padding:20px;text-align:center;color:#ff6b6b;">Failed to load data</div>';
@@ -2583,7 +2613,9 @@ if (importPobBtn) {
 }
 
 async function loadPobBuild() {
+  console.log('[LOAD POB BUILD] Starting loadPobBuild...');
   const build = await ipcRenderer.invoke('get-pob-build');
+  console.log('[LOAD POB BUILD] get-pob-build returned:', build ? 'BUILD EXISTS' : 'NO BUILD');
   state.pobBuild = build;
   state.globalTakenGems.clear();
   shownGems.clear(); // Clear deduplication tracker
@@ -2735,6 +2767,11 @@ function updateCharacterDisplay() {
   // Format: "Name (Class) Lv.XX" or just level if no name
   let displayText = '';
   
+  // Also update weapon base display when character info changes (includes startup)
+  if (state.currentZoneId && state.currentZoneName) {
+    updateWeaponBaseDisplay(state.currentZoneId, state.currentZoneName);
+  }
+  
   if (state.characterName && state.characterClass && state.characterLevel !== null) {
     displayText = state.characterName + ' (' + state.characterClass + ') Lv.' + state.characterLevel;
   } else if (state.characterLevel !== null) {
@@ -2784,6 +2821,120 @@ function updateCharacterDisplay() {
     minimalDisplay.style.color = levelColor;
     minimalDisplay.title = tooltipText;
   }
+}
+
+function updateWeaponBaseDisplay(zoneId, zoneName) {
+  const weaponBaseInfoEl = document.getElementById('weaponBaseInfo');
+  const weaponBaseInfoNormalEl = document.getElementById('weaponBaseInfoNormal');
+  if (!weaponBaseInfoEl || !weaponBaseInfoNormalEl) {
+    console.log('[Weapon Base Display] Element not found');
+    return;
+  }
+
+  console.log('[Weapon Base Display] Zone:', zoneId, zoneName, 'overlayVersion:', overlayVersion);
+
+  // Only show for PoE2
+  if (overlayVersion !== 'poe2') {
+    console.log('[Weapon Base Display] Not PoE2, hiding');
+    weaponBaseInfoEl.style.display = 'none';
+    weaponBaseInfoNormalEl.style.display = 'none';
+    return;
+  }
+
+  // Check if current zone is a town (zones with "_town" in ID or specific town names)
+  const isTown = zoneId.includes('_town') || /town|encampment|caravan|hideout/i.test(zoneName);
+  console.log('[Weapon Base Display] Is town?', isTown, '| zoneId:', zoneId, '| zoneName:', zoneName);
+  
+  if (!isTown) {
+    console.log('[Weapon Base Display] NOT a town, hiding weapon base display');
+    weaponBaseInfoEl.style.display = 'none';
+    weaponBaseInfoNormalEl.style.display = 'none';
+    // Force list padding adjustment to remove gap
+    setTimeout(() => adjustListPadding(), 10);
+    return;
+  }
+
+  console.log('[Weapon Base Display] Has pobBuild?', !!state.pobBuild);
+  console.log('[Weapon Base Display] Has weaponBaseProgression?', !!state.pobBuild?.weaponBaseProgression);
+  if (state.pobBuild?.weaponBaseProgression) {
+    console.log('[Weapon Base Display] Progression:', state.pobBuild.weaponBaseProgression);
+  }
+
+  // Check if we have a PoB build with weapon base progression
+  if (!state.pobBuild || !state.pobBuild.weaponBaseProgression) {
+    weaponBaseInfoEl.style.display = 'none';
+    weaponBaseInfoNormalEl.style.display = 'none';
+    return;
+  }
+
+  console.log('[Weapon Base Display] Character level:', state.characterLevel);
+
+  // Check if we have character level
+  if (state.characterLevel === null || state.characterLevel === undefined) {
+    weaponBaseInfoEl.style.display = 'none';
+    weaponBaseInfoNormalEl.style.display = 'none';
+    return;
+  }
+
+  const progression = state.pobBuild.weaponBaseProgression;
+  
+  // Find highest available base for current level
+  let currentBase = null;
+  let nextBase = null;
+
+  for (let i = 0; i < progression.bases.length; i++) {
+    const base = progression.bases[i];
+    
+    if (base.requiredLevel <= state.characterLevel) {
+      currentBase = base;
+    } else {
+      // This is the next upgrade (first base above current level)
+      nextBase = base;
+      break;
+    }
+  }
+
+  if (!currentBase) {
+    weaponBaseInfoEl.style.display = 'none';
+    weaponBaseInfoNormalEl.style.display = 'none';
+    return;
+  }
+
+  // Build display text
+  let displayText = '⚔️ Highest base: ' + currentBase.name + ' (Lv.' + currentBase.requiredLevel + ')';
+  if (nextBase) {
+    displayText += ', next Lv.' + nextBase.requiredLevel;
+  }
+
+  weaponBaseInfoEl.textContent = displayText;
+  weaponBaseInfoEl.style.display = 'block';
+  weaponBaseInfoNormalEl.textContent = displayText;
+  weaponBaseInfoNormalEl.style.display = 'block';
+  
+  // Ensure list padding is updated when weapon base info is shown
+  setTimeout(() => {
+    adjustListPadding();
+  }, 50);
+}
+
+
+
+// Function to dynamically adjust list padding based on drag-handle height
+function adjustListPadding() {
+  const dragHandle = document.getElementById('dragHandle');
+  const list = document.getElementById('stepsList');
+  if (!dragHandle || !list) return;
+  
+  // In normal mode, clear inline padding to let CSS take over
+  if (state.minimalMode === 'normal') {
+    list.style.paddingTop = '';
+    return;
+  }
+  
+  const handleHeight = dragHandle.offsetHeight;
+  const newPadding = (handleHeight + 8) + 'px'; // +8px gap to ensure space
+  list.style.paddingTop = newPadding;
+  console.log('[Padding] Adjusted list padding to', newPadding, 'for drag-handle height', handleHeight + 'px');
 }
 
 
@@ -2948,7 +3099,12 @@ ipcRenderer.on('zone-entered', (event, data) => {
   // Always update current zone for level color coding (even if auto-detect is off)
   state.currentZoneId = zoneId;
   state.currentZoneName = zoneName;
+  saveState(); // Persist the current zone
+  
   updateCharacterDisplay(); // Update level color based on new zone
+  
+  console.log('[Auto-Detect] Calling updateWeaponBaseDisplay with zoneId:', zoneId, 'zoneName:', zoneName);
+  updateWeaponBaseDisplay(zoneId, zoneName); // Update weapon base info if in town
   
   if (!state.levelingData || !state.autoDetectZones) return;
   
@@ -3171,6 +3327,8 @@ ipcRenderer.on('zone-entered', (event, data) => {
     }
     
     render();
+    // Adjust padding after render in case mode changed
+    setTimeout(() => adjustListPadding(), 100);
   } else {
     console.log('[Auto-Detect] Entered zone "' + zoneId + '" does NOT match expected next zone "' + firstUncompletedStep.nextZoneId + '". Ignoring.');
   }

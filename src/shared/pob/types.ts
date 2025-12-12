@@ -120,6 +120,15 @@ export interface ActTreeProgression {
   newNodesFromPreviousAct: number[];
 }
 
+export interface WeaponBaseProgression {
+  weaponType: string; // e.g., 'Bow', 'Staff', 'Wand', 'Sword', etc.
+  category: string; // The category key from bases data (e.g., 'Bows', 'Staves')
+  bases: Array<{
+    name: string;
+    requiredLevel: number;
+  }>;
+}
+
 export interface StoredPobBuild {
   code: string;
   className: string;
@@ -139,6 +148,7 @@ export interface StoredPobBuild {
   notes?: string; // Build notes from PoB Notes tab
   notesSections?: Array<{ title: string; content: string }>; // Structured notes sections for dropdown (Mobalytics imports)
   buildSource?: 'pob' | 'mobalytics' | 'maxroll'; // Source of the build import (for node progression UI)
+  weaponBaseProgression?: WeaponBaseProgression; // Pre-processed weapon base data sorted by ilvl
 }
 
 /**
