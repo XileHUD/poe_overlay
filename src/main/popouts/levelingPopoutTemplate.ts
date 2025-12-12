@@ -143,6 +143,9 @@ export function buildLevelingPopoutHtml(overlayVersion: OverlayVersion = 'poe1')
     #backToNormalBtn{display:none;}
     #weaponBaseInfo{display:none;}
     #weaponBaseInfoNormal{display:none;}
+    #weaponBaseTooltip{position:fixed;background:rgba(20,24,32,0.98);border:1px solid rgba(254,192,118,0.3);border-radius:4px;padding:8px 12px;color:#ddd;font-size:11px;z-index:10000;pointer-events:none;display:none;white-space:nowrap;line-height:1.5;box-shadow:0 4px 12px rgba(0,0,0,0.5);min-width:200px;max-width:400px;}
+    .weapon-base-current{color:#4ade80;font-weight:700;}
+    .weapon-base-locked{color:#777;font-style:italic;}
     #minimalBtn.active{background:rgba(138,43,226,0.5);border-color:rgba(138,43,226,0.9);color:#fff;}
     #minimalBtn.ultra{background:rgba(255,0,255,0.6);border-color:rgba(255,0,255,1);color:#fff;}
     .minimal-controls{display:none;gap:4px;margin-bottom:4px;align-items:stretch;}
@@ -426,6 +429,9 @@ export function buildLevelingPopoutHtml(overlayVersion: OverlayVersion = 'poe1')
       <button id='updateBadge' title='New update available'>New Update</button>
     </div>
   </div>
+  
+  <!-- Weapon Base Tooltip -->
+  <div id='weaponBaseTooltip'></div>
   
   <!-- History Modal -->
   <div class='history-modal-overlay' id='historyModal'>
@@ -2878,36 +2884,117 @@ function updateWeaponBaseDisplay(zoneId, zoneName) {
 
   const progression = state.pobBuild.weaponBaseProgression;
   
-  // Find highest available base for current level
-  let currentBase = null;
+  // Find highest available base(s) for current level
+  let currentBases = [];
   let nextBase = null;
+  let highestUsableLevel = 0;
 
   for (let i = 0; i < progression.bases.length; i++) {
     const base = progression.bases[i];
     
     if (base.requiredLevel <= state.characterLevel) {
-      currentBase = base;
-    } else {
+      // Track highest usable level
+      if (base.requiredLevel > highestUsableLevel) {
+        highestUsableLevel = base.requiredLevel;
+        currentBases = [base];
+      } else if (base.requiredLevel === highestUsableLevel) {
+        // Multiple bases at same highest level
+        currentBases.push(base);
+      }
+    } else if (!nextBase) {
       // This is the next upgrade (first base above current level)
       nextBase = base;
-      break;
     }
   }
 
-  if (!currentBase) {
+  if (currentBases.length === 0) {
     weaponBaseInfoEl.style.display = 'none';
     weaponBaseInfoNormalEl.style.display = 'none';
     return;
   }
 
   // Build display text
+  const currentBase = currentBases[0];
   let displayText = '⚔️ Highest base: ' + currentBase.name + ' (Lv.' + currentBase.requiredLevel + ')';
   if (nextBase) {
     displayText += ', next Lv.' + nextBase.requiredLevel;
   }
 
+  // Build tooltip HTML with color highlighting
+  let tooltipHTML = '<div style="color:#fec076;font-weight:600;margin-bottom:8px;">Weapon Type: ' + progression.weaponType + '</div>';
+  tooltipHTML += '<div style="color:#aaa;font-size:10px;margin-bottom:6px;">All Available Bases:</div>';
+  
+  progression.bases.forEach(function(base) {
+    const isUsable = base.requiredLevel <= state.characterLevel;
+    const isHighest = base.requiredLevel === highestUsableLevel;
+    
+    if (isUsable && isHighest) {
+      tooltipHTML += '<div class="weapon-base-current">► ' + base.name + ' (Lv.' + base.requiredLevel + ') - CURRENT</div>';
+    } else if (isUsable) {
+      tooltipHTML += '<div>  ' + base.name + ' (Lv.' + base.requiredLevel + ')</div>';
+    } else {
+      tooltipHTML += '<div class="weapon-base-locked">  ' + base.name + ' (Lv.' + base.requiredLevel + ') - locked</div>';
+    }
+  });
+
+  // Setup tooltip for both elements
+  const tooltipEl = document.getElementById('weaponBaseTooltip');
+  
+  if (tooltipEl) {
+    function showTooltip(event) {
+      tooltipEl.innerHTML = tooltipHTML;
+      tooltipEl.style.display = 'block';
+      positionTooltip(event);
+    }
+    
+    function hideTooltip() {
+      tooltipEl.style.display = 'none';
+    }
+    
+    function positionTooltip(event) {
+      const windowWidth = window.innerWidth;
+      const windowHeight = window.innerHeight;
+      const tooltipRect = tooltipEl.getBoundingClientRect();
+      
+      // Center horizontally
+      const left = (windowWidth - tooltipRect.width) / 2;
+      
+      // Position vertically near the hovered element
+      let top = event.pageY + 20; // 20px below cursor
+      
+      // If tooltip would go off-screen at bottom, position it above cursor
+      if (top + tooltipRect.height > windowHeight) {
+        top = event.pageY - tooltipRect.height - 10;
+      }
+      
+      tooltipEl.style.left = left + 'px';
+      tooltipEl.style.top = top + 'px';
+    }
+    
+    function moveTooltip(event) {
+      // Don't reposition on move to avoid jitter
+    }
+
+    // Remove old event listeners if any
+    weaponBaseInfoEl.onmouseenter = null;
+    weaponBaseInfoEl.onmouseleave = null;
+    weaponBaseInfoEl.onmousemove = null;
+    weaponBaseInfoNormalEl.onmouseenter = null;
+    weaponBaseInfoNormalEl.onmouseleave = null;
+    weaponBaseInfoNormalEl.onmousemove = null;
+    
+    // Add new event listeners
+    weaponBaseInfoEl.addEventListener('mouseenter', showTooltip);
+    weaponBaseInfoEl.addEventListener('mouseleave', hideTooltip);
+    weaponBaseInfoEl.addEventListener('mousemove', moveTooltip);
+    weaponBaseInfoNormalEl.addEventListener('mouseenter', showTooltip);
+    weaponBaseInfoNormalEl.addEventListener('mouseleave', hideTooltip);
+    weaponBaseInfoNormalEl.addEventListener('mousemove', moveTooltip);
+  }
+
   weaponBaseInfoEl.textContent = displayText;
   weaponBaseInfoEl.style.display = 'block';
+  
   weaponBaseInfoNormalEl.textContent = displayText;
   weaponBaseInfoNormalEl.style.display = 'block';
   
