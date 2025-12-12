@@ -5,6 +5,8 @@
  * compatible with the overlay's build system.
  */
 
+import { fetchWithRetry } from '../utils/fetchWithRetry.js';
+
 export interface MaxrollGem {
   id: string;
   displayName?: string; // Display name from Maxroll (e.g., "Multishot" instead of "Scattershot")
@@ -86,10 +88,14 @@ export async function fetchMaxrollBuild(url: string): Promise<MaxrollBuild> {
 }
 
 async function fetchPlannerBuild(plannerUrl: string, uniqueNames?: Record<string, string>, gemNames?: Record<string, string>): Promise<MaxrollBuild> {
-  const response = await fetch(plannerUrl, {
+  const response = await fetchWithRetry(plannerUrl, {
     headers: {
       'User-Agent': UA,
     },
+  }, {
+    maxRetries: 3,
+    initialDelayMs: 1000,
+    logRetries: true,
   });
 
   if (!response.ok) {
@@ -548,7 +554,11 @@ function extractGemNames(html: string): Record<string, string> {
 }
 
 async function fetchHtml(url: string): Promise<string> {
-  const res = await fetch(url, { headers: { 'User-Agent': UA } });
+  const res = await fetchWithRetry(url, { headers: { 'User-Agent': UA } }, {
+    maxRetries: 3,
+    initialDelayMs: 1000,
+    logRetries: true,
+  });
   if (!res.ok) throw new Error(`Failed to fetch ${url}: ${res.status} ${res.statusText}`);
   return res.text();
 }
@@ -902,7 +912,11 @@ function findPlannerWithProfile(root: any): { plannerData: any; profile?: any } 
 }
 
 async function extractPlannerUrlFromGuide(guideUrl: string): Promise<string | null> {
-  const res = await fetch(guideUrl, { headers: { 'User-Agent': UA } });
+  const res = await fetchWithRetry(guideUrl, { headers: { 'User-Agent': UA } }, {
+    maxRetries: 3,
+    initialDelayMs: 1000,
+    logRetries: true,
+  });
   if (!res.ok) return null;
   const html = await res.text();
 

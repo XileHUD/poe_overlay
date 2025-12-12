@@ -1267,7 +1267,7 @@ function buildLevelingSettingsSplashHtml(
                    border-radius: 6px; color: var(--text-primary); font-family: monospace; 
                    font-size: 11px;"
           />
-          <button class="action-btn primary" onclick="importMobalyticsBuild()" style="margin-top: 8px;">
+          <button id="mobalyticsImportBtn" class="action-btn primary" onclick="importMobalyticsBuild()" style="margin-top: 8px;">
             🌐 Import from Mobalytics
           </button>
         </div>
@@ -1286,7 +1286,7 @@ function buildLevelingSettingsSplashHtml(
                    border-radius: 6px; color: var(--text-primary); font-family: monospace; 
                    font-size: 11px;"
           />
-          <button class="action-btn primary" onclick="importMaxrollBuild()" style="margin-top: 8px;">
+          <button id="maxrollImportBtn" class="action-btn primary" onclick="importMaxrollBuild()" style="margin-top: 8px;">
             🌐 Import from Maxroll
           </button>
         </div>
@@ -1559,13 +1559,19 @@ function buildLevelingSettingsSplashHtml(
       
       // Show importing indicator
       const input = document.getElementById('mobalyticsUrlInput');
+      const button = document.getElementById('mobalyticsImportBtn');
       const originalPlaceholder = input.placeholder;
+      const originalButtonText = button.innerHTML;
       input.placeholder = 'Fetching from Mobalytics...';
       input.disabled = true;
+      button.disabled = true;
+      button.innerHTML = '⏳ Importing...';
       
       ipcRenderer.invoke('import-mobalytics-from-settings', mobaUrl).then(result => {
         input.disabled = false;
+        button.disabled = false;
         input.placeholder = originalPlaceholder;
+        button.innerHTML = originalButtonText;
         
         if (result.success) {
           // Clear the input
@@ -1581,7 +1587,9 @@ function buildLevelingSettingsSplashHtml(
         }
       }).catch(err => {
         input.disabled = false;
+        button.disabled = false;
         input.placeholder = originalPlaceholder;
+        button.innerHTML = originalButtonText;
         alert(\`❌ Error importing from Mobalytics:\n\n\${err.message}\`);
       });
     }
@@ -1594,13 +1602,19 @@ function buildLevelingSettingsSplashHtml(
       }
 
       const input = document.getElementById('maxrollUrlInput');
+      const button = document.getElementById('maxrollImportBtn');
       const originalPlaceholder = input.placeholder;
+      const originalButtonText = button.innerHTML;
       input.placeholder = 'Fetching from Maxroll...';
       input.disabled = true;
+      button.disabled = true;
+      button.innerHTML = '⏳ Importing...';
 
       ipcRenderer.invoke('import-maxroll-from-settings', maxUrl).then(result => {
         input.disabled = false;
+        button.disabled = false;
         input.placeholder = originalPlaceholder;
+        button.innerHTML = originalButtonText;
 
         if (result.success) {
           input.value = '';
@@ -1611,7 +1625,9 @@ function buildLevelingSettingsSplashHtml(
         }
       }).catch(err => {
         input.disabled = false;
+        button.disabled = false;
         input.placeholder = originalPlaceholder;
+        button.innerHTML = originalButtonText;
         alert(\`Error importing from Maxroll:\\n\\n\${err.message}\`);
       });
     }

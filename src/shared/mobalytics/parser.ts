@@ -5,6 +5,8 @@
  * compatible with the overlay's build system.
  */
 
+import { fetchWithRetry } from '../utils/fetchWithRetry.js';
+
 export interface MobalyticsGem {
   slug: string | null;
   name: string | null;
@@ -86,8 +88,13 @@ export async function fetchMobalyticsBuild(url: string): Promise<MobalyticsBuild
 
   console.log('[Mobalytics Parser] Fetching build from:', url);
 
-  // Fetch the page
-  const response = await fetch(url);
+  // Fetch the page with retry logic
+  const response = await fetchWithRetry(url, undefined, {
+    maxRetries: 3,
+    initialDelayMs: 1000,
+    logRetries: true,
+  });
+
   if (!response.ok) {
     throw new Error(`Failed to fetch Mobalytics page: ${response.status} ${response.statusText}`);
   }
