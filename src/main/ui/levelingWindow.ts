@@ -1108,14 +1108,14 @@ export class LevelingWindow {
   const savedTreeIndex = (saved as any)?.selectedTreeIndex;
         const onTreeWindowReady = () => {
           console.log('[LevelingWindow] Tree window reported ready, sending data');
-          sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion);
+          sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion, pobBuild.buildSource);
         };
         ipcMain.once('tree-window-ready', onTreeWindowReady);
         const treeWindow = createPassiveTreeWindow();
         if (!treeWindow.webContents.isLoading()) {
           ipcMain.removeListener('tree-window-ready', onTreeWindowReady);
           console.log('[LevelingWindow] Tree window already loaded, sending data immediately');
-          sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion);
+          sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion, pobBuild.buildSource);
         }
       }
     });
@@ -1399,7 +1399,7 @@ export class LevelingWindow {
           
           // Update tree window if open
           if (isTreeWindowOpen() && activeBuild.treeSpecs && activeBuild.treeSpecs.length > 0) {
-            sendTreeData(activeBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, activeBuild.treeVersion);
+            sendTreeData(activeBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, activeBuild.treeVersion, activeBuild.buildSource);
           }
           
           // Update gear window if open
@@ -2260,7 +2260,7 @@ export class LevelingWindow {
       }
       
       if (isTreeWindowOpen() && pobBuild.treeSpecs && pobBuild.treeSpecs.length > 0) {
-        sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion, 'mobalytics');
+        sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion, pobBuild.buildSource);
       }
       
       if (isGearWindowOpen() && pobBuild.itemSets && pobBuild.itemSets.length > 0) {
@@ -2337,7 +2337,7 @@ export class LevelingWindow {
       }
 
       if (isTreeWindowOpen() && pobBuild.treeSpecs && pobBuild.treeSpecs.length > 0) {
-        sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion, 'maxroll');
+        sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion, pobBuild.buildSource);
       }
 
       if (isGearWindowOpen() && pobBuild.itemSets && pobBuild.itemSets.length > 0) {
@@ -2528,7 +2528,7 @@ export class LevelingWindow {
       
       // Update tree window if open
       if (isTreeWindowOpen() && pobBuild.treeSpecs && pobBuild.treeSpecs.length > 0) {
-        sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion);
+        sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion, pobBuild.buildSource);
       }
       
       // Update gear window if open
@@ -2614,13 +2614,13 @@ export class LevelingWindow {
             const savedTreeIndex = (currentSettings as any)?.selectedTreeIndex;
             
             const onTreeWindowReady = () => {
-              sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion);
+              sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion, pobBuild.buildSource);
             };
             ipcMain.once('tree-window-ready', onTreeWindowReady);
             const treeWindow = createPassiveTreeWindow();
             if (!treeWindow.webContents.isLoading()) {
               ipcMain.removeListener('tree-window-ready', onTreeWindowReady);
-              sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion);
+              sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion, pobBuild.buildSource);
             }
           }
         }
@@ -2743,13 +2743,13 @@ export class LevelingWindow {
           setTimeout(() => {
             if (pobBuild.treeSpecs && pobBuild.treeSpecs.length > 0) {
               const onTreeWindowReady = () => {
-                sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion);
+                sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion, pobBuild.buildSource);
               };
               ipcMain.once('tree-window-ready', onTreeWindowReady);
               const treeWindow = createPassiveTreeWindow();
               if (!treeWindow.webContents.isLoading()) {
                 ipcMain.removeListener('tree-window-ready', onTreeWindowReady);
-                sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion);
+                sendTreeData(pobBuild.treeSpecs, this.overlayVersion, currentActIndex + 1, characterLevel, autoDetectEnabled, savedTreeIndex, pobBuild.treeVersion, pobBuild.buildSource);
               }
             }
           }, 50);

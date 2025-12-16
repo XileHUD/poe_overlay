@@ -2201,10 +2201,37 @@ export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'p
     
     // Use appropriate tree based on game version and tree version
     if (gameVersion === 'poe2') {
-      treeSvg = template.poe2Template?.svg || '';
-      viewBox = template.poe2Template?.viewBox || '';
-      treeData = template.skillTreePoe2;
-      console.log('[Tree Window] Using PoE2 tree template');
+      // Detect PoE2 tree version from allocated nodes
+      let useLegacyTree = false;
+      let pobUrlVersion: number | undefined;
+      
+      if (treeSpecs && treeSpecs.length > 0) {
+        const firstSpec = treeSpecs[0];
+        const allocatedNodes = (firstSpec as any)?.allocatedNodes || (firstSpec as any)?.parsedUrl?.nodes || [];
+        
+        // Extract PoB URL version if available
+        if ((firstSpec as any)?.parsedUrl?.version !== undefined) {
+          pobUrlVersion = (firstSpec as any).parsedUrl.version;
+        }
+        
+        if (allocatedNodes.length > 0) {
+          const detected = template.detectPoe2TreeVersion(allocatedNodes, buildSource, pobUrlVersion);
+          useLegacyTree = detected.version === 'legacy';
+          console.log(`[Tree Window] Detected PoE2 tree version: ${detected.version} (source: ${buildSource || 'unknown'})`);
+        }
+      }
+      
+      if (useLegacyTree) {
+        treeSvg = template.poe2TemplateLegacy?.svg || '';
+        viewBox = template.poe2TemplateLegacy?.viewBox || '';
+        treeData = template.skillTreePoe2Legacy;
+        console.log('[Tree Window] Using PoE2 Legacy tree template');
+      } else {
+        treeSvg = template.poe2Templatev44?.svg || '';
+        viewBox = template.poe2Templatev44?.viewBox || '';
+        treeData = template.skillTreePoe2v44;
+        console.log('[Tree Window] Using PoE2 v4.4 tree template');
+      }
     } else {
       // For PoE1, use tree version to select the correct tree
       if (treeVersion === '3_27') {

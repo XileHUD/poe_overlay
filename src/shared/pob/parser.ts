@@ -8,7 +8,7 @@ import { DOMParser } from '@xmldom/xmldom';
 import { ParsedPobBuild, TreeSpec, GemSocketGroup, GemInfo, SkillSet, ItemSet, Item } from './types';
 import { parseTreeUrl } from './treeParser';
 import { decodePobCode } from './decoder.js';
-import { nodeLookup326, nodeLookup327, nodeLookupPoe2 } from './treeLoader';  // Import all lookups
+import { nodeLookup326, nodeLookup327, nodeLookupPoe2, nodeLookupPoe2Legacy, nodeLookupPoe2v44, detectPoe2TreeVersion } from './treeLoader';  // Import all lookups
 
 /**
  * Sanitize string to prevent XSS attacks
@@ -76,8 +76,12 @@ export async function parsePobCode(code: string, gameVersion: 'poe1' | 'poe2' = 
     
     // Select the correct node lookup based on game version and tree version
     let lookup: any;
+    let poe2TreeVersion: 'legacy' | 'v4.4' | undefined;
+    
     if (gameVersion === 'poe2') {
-      lookup = nodeLookupPoe2;
+      // For PoE2, we'll detect version after extracting nodes
+      // Start with the latest as default
+      lookup = nodeLookupPoe2v44;
     } else {
       // For PoE1, use tree version to select lookup
       if (treeVersion === '3_27') {
@@ -91,6 +95,7 @@ export async function parsePobCode(code: string, gameVersion: 'poe1' | 'poe2' = 
 
     // Extract ALL passive tree specs (Early Game, Act 5, End Game, etc.)
     const treeSpecs: TreeSpec[] = [];
+    let pobUrlVersion: number | undefined;
     
     for (let i = 0; i < specElements.length; i++) {
       const spec = specElements[i];
@@ -110,12 +115,24 @@ export async function parsePobCode(code: string, gameVersion: 'poe1' | 'poe2' = 
       if (url) {
         try {
           parsedUrl = parseTreeUrl(url);
+          // Capture PoB URL version from first spec
+          if (pobUrlVersion === undefined) {
+            pobUrlVersion = parsedUrl.version;
+          }
           // Filter nodes to only include ones that exist in the tree
           parsedUrl.nodes = parsedUrl.nodes.filter(nodeId => lookup[nodeId] !== undefined);
           console.log(`[PoB Parser] Parsed tree "${title}": ${parsedUrl.nodes.length} valid nodes (filtered from tree)`);
         } catch (error) {
           console.error(`[PoB Parser] Failed to parse tree URL for "${title}":`, error);
         }
+      }
+      
+      // For PoE2, detect tree version from the first spec with nodes
+      if (gameVersion === 'poe2' && !poe2TreeVersion && allocatedNodes.length > 0) {
+        const detected = detectPoe2TreeVersion(allocatedNodes, 'pob', pobUrlVersion);
+        poe2TreeVersion = detected.version;
+        lookup = detected.nodeLookup;
+        console.log(`[PoB Parser] Detected PoE2 tree version: ${poe2TreeVersion}`);
       }
       
       // Skip header-only specs
