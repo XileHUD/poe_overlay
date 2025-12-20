@@ -1511,7 +1511,9 @@ export function computeWhittling(data: ModifierData): WhittlingResult | null {
       };
       allMods.push(mod);
     });
+    // Filter to only removable mods (exclude fractured, rune, sanctified) for whittling consideration
     const removable = allMods.filter(mod => !mod.isLocked && typeof mod.ilvl === 'number' && Number.isFinite(mod.ilvl));
+    // Find lowest ilvl ONLY among removable mods (fractured mods cannot be whittled)
     const lowestIlvl = removable.length ? removable.reduce((min, mod) => Math.min(min, mod.ilvl as number), Infinity) : null;
     const lowestMods = removable.length && lowestIlvl != null
       ? removable.filter(mod => (mod.ilvl as number) === lowestIlvl)
