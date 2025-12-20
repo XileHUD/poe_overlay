@@ -37,7 +37,7 @@ export function buildQuestPassivesData(): QpModel{
     { id:'a3-aggorat', text:'Aggorat - Kill enemies until you drop Sacrificial Heart; sacrifice it at the altar for +2 passive skill points.', notes:['The Sacrificial Heart can also drop from enemies in Utzaal.'], tags:['Passive Skill','Quest'] },
   ]);
   add('Act 4', t('In Act 4, you acquire +4 passive skill points, +5% maximum mana, 3 choices between attributes and resistances, and a choice between Increased Mana or Life recovery from flasks.'), [
-    { id:'a4-isle', text:'Isle Of Kin - Kill The Blind Beast for +2 passive skill points.', tags:['Passive Skill'] },
+    { id:'a4-journeys-end', text:"Journey's End - Complete the quest Dark Mists by killing Omniphobia, Fear Manifest for +2 passive skill points.", tags:['Passive Skill','Quest'] },
     { id:'a4-hinekora', text:'Eye of Hinekora - Pay your Respects at the Silent Hall for +5% maximum mana.', tags:['Mana'] },
     { id:'a4-halls', text:'Halls of the Dead - Complete 3 Trials to obtain 3 different Tattoos (irreversible choice on each).', notes:["Tawhoa's Test - +5 dexterity or +5 lightning resistance.","Tasalio's Test - +5 intelligence or +5 cold resistance.","Ngamahu's Test - +5 strength or +5 fire resistance."], tags:['Dexterity','Intelligence','Strength','Resistance'] },
     { id:'a4-ancestors', text:'Trial Of The Ancestors - Kill Yama The White and Speak to Hinekora for +2 passive skill points.', tags:['Passive Skill'] },
