@@ -268,7 +268,7 @@ function evaluateSearchTokens(index: SearchIndex, tokens: SearchToken[], rawTerm
 function isAggregatedCategory(): boolean {
   const currentCategory = (window as any).currentModifierCategory;
   if (!currentCategory) return false;
-  const AGGREGATED_CATEGORIES = ['ALL', 'DESECRATED', 'ESSENCE', 'CORRUPTED', 'SOCKETABLES'];
+  const AGGREGATED_CATEGORIES = ['ALL', 'DESECRATED', 'ESSENCE', 'CORRUPTED', 'AUGMENTS'];
   return AGGREGATED_CATEGORIES.includes(currentCategory.toUpperCase());
 }
 
@@ -1798,11 +1798,13 @@ export function renderFilteredContent(data: any){
     domainFilteredSections = baseSections;
   } else {
     domainFilteredSections = baseSections.filter((section:any) => {
+      // Hide unknown domains
+      const sectionDomain = String(section.domain || '').toLowerCase();
+      if (sectionDomain === 'unknown') return false;
+      
       // Filter by domain if a specific domain is selected
       if (activeDomain === 'all') return true;
       if (myModsFilterActive) return true;
-      
-      const sectionDomain = String(section.domain || '').toLowerCase();
       
       // Handle 'base'/'normal' toggle - show non-special domains
       if (activeDomain === 'normal' || activeDomain === 'base') {
@@ -2860,6 +2862,7 @@ export function formatDomainName(domain: string){
   const d = String(domain).toLowerCase();
   if(d==='prefix') return 'Prefix'; if(d==='suffix') return 'Suffix';
   if(d==='local') return 'Local'; if(d==='explicit') return 'Explicit'; if(d==='implicit') return 'Implicit';
+  if(d==='socketable') return 'Augment';
   
   // Handle Eldritch domains
   if(d.includes('eldritch')) {

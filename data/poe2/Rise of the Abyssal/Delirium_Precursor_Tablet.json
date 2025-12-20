@@ -3,7 +3,28 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "none",
-    "text_plain": "Delirium Fog in Map lasts (3–6) additional seconds before dissipating",
+    "text_plain": "Delirious Monsters Killed in Map provide (15—30)% increased Reward Progress",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "DeliriumRewardProgressIncrease",
+    "tiers": [
+      {
+        "tier_name": "of the Pursuit",
+        "tier_level": 1,
+        "text_plain": "1 Delirious Monsters Killed in Map provide (15—30)% increased Reward Progress",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Delirium_Precursor_Tablet",
+    "domain": "normal",
+    "side": "none",
+    "text_plain": "Delirium Fog in Map lasts (3—6) additional seconds before dissipating",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
@@ -14,7 +35,7 @@
       {
         "tier_name": "of Eternity",
         "tier_level": 1,
-        "text_plain": "1 Delirium Fog in Map lasts (3–6) additional seconds before dissipating",
+        "text_plain": "1 Delirium Fog in Map lasts (3—6) additional seconds before dissipating",
         "weight": 0,
         "weight_pct": 0
       }
@@ -23,19 +44,19 @@
   {
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
-    "side": "prefix",
-    "text_plain": "(4–10)% increased Quantity of Items found in Map",
+    "side": "none",
+    "text_plain": "Delirium Encounters in affected Map have (8—24)% chance to generate an additional Reward",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
     "weight_pct": 0,
     "tags": [],
-    "family": "MapDroppedItemQuantityIncrease",
+    "family": "DeliriumAdditionalRewardType",
     "tiers": [
       {
-        "tier_name": "Plundering",
+        "tier_name": "of Envy",
         "tier_level": 1,
-        "text_plain": "1 (4–10)% increased Quantity of Items found in Map",
+        "text_plain": "1 Delirium Encounters in affected Map have (8—24)% chance to generate an additional Reward",
         "weight": 0,
         "weight_pct": 0
       }
@@ -45,7 +66,28 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(10–30)% increased Rarity of Items found in Map",
+    "text_plain": "Monsters have (7—11)% increased Effectiveness",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "MapMonsterEffectiveness",
+    "tiers": [
+      {
+        "tier_name": "Challenger's",
+        "tier_level": 1,
+        "text_plain": "1 Monsters have (7—11)% increased Effectiveness",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Delirium_Precursor_Tablet",
+    "domain": "normal",
+    "side": "prefix",
+    "text_plain": "(18—30)% increased Rarity of Items found in Map",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
@@ -56,7 +98,7 @@
       {
         "tier_name": "Collector's",
         "tier_level": 1,
-        "text_plain": "1 (10–30)% increased Rarity of Items found in Map",
+        "text_plain": "1 (18—30)% increased Rarity of Items found in Map",
         "weight": 0,
         "weight_pct": 0
       }
@@ -66,7 +108,7 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(4–10)% increased Pack Size in Map",
+    "text_plain": "(6—10)% increased Pack Size in Map",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
@@ -77,7 +119,7 @@
       {
         "tier_name": "Breeding",
         "tier_level": 1,
-        "text_plain": "1 (4–10)% increased Pack Size in Map",
+        "text_plain": "1 (6—10)% increased Pack Size in Map",
         "weight": 0,
         "weight_pct": 0
       }
@@ -87,7 +129,7 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Map has (25–70)% increased Magic Monsters",
+    "text_plain": "Map has (50—70)% increased Magic Monsters",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
@@ -98,7 +140,7 @@
       {
         "tier_name": "Teeming",
         "tier_level": 1,
-        "text_plain": "1 Map has (25–70)% increased Magic Monsters",
+        "text_plain": "1 Map has (50—70)% increased Magic Monsters",
         "weight": 0,
         "weight_pct": 0
       }
@@ -108,7 +150,7 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Map has (15–40)% increased number of Rare Monsters",
+    "text_plain": "Map has (25—40)% increased number of Rare Monsters",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
@@ -119,7 +161,7 @@
       {
         "tier_name": "Brimming",
         "tier_level": 1,
-        "text_plain": "1 Map has (15–40)% increased number of Rare Monsters",
+        "text_plain": "1 Map has (25—40)% increased number of Rare Monsters",
         "weight": 0,
         "weight_pct": 0
       }
@@ -129,7 +171,7 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(15–40)% increased Gold found in Map",
+    "text_plain": "(25—40)% increased Gold found in Map",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
@@ -140,7 +182,7 @@
       {
         "tier_name": "Bountiful",
         "tier_level": 1,
-        "text_plain": "1 (15–40)% increased Gold found in Map",
+        "text_plain": "1 (25—40)% increased Gold found in Map",
         "weight": 0,
         "weight_pct": 0
       }
@@ -150,7 +192,7 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "(5–20)% increased Experience gain in Map",
+    "text_plain": "(10—20)% increased Experience gain in Map",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
@@ -161,7 +203,7 @@
       {
         "tier_name": "Elevated",
         "tier_level": 1,
-        "text_plain": "1 (5–20)% increased Experience gain in Map",
+        "text_plain": "1 (10—20)% increased Experience gain in Map",
         "weight": 0,
         "weight_pct": 0
       }
@@ -171,7 +213,7 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Map contains an additional Rare Chest",
+    "text_plain": "Map contains (2—3) additional Rare Chests",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
@@ -182,7 +224,7 @@
       {
         "tier_name": "Treasurer's",
         "tier_level": 1,
-        "text_plain": "1 Map contains an additional Rare Chest",
+        "text_plain": "1 Map contains (2—3) additional Rare Chests",
         "weight": 0,
         "weight_pct": 0
       }
@@ -276,7 +318,7 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "(10–30)% increased Stack size of Simulacrum Splinters found in Map",
+    "text_plain": "(15—30)% increased Stack size of Simulacrum Splinters found in Map",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
@@ -287,7 +329,7 @@
       {
         "tier_name": "of the Simulacrum",
         "tier_level": 1,
-        "text_plain": "1 (10–30)% increased Stack size of Simulacrum Splinters found in Map",
+        "text_plain": "1 (15—30)% increased Stack size of Simulacrum Splinters found in Map",
         "weight": 0,
         "weight_pct": 0
       }
@@ -297,28 +339,7 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Delirious Monsters Killed in Map provide (10–30)% increased Reward Progress",
-    "tier": 1,
-    "ilvl": 1,
-    "weight": 0,
-    "weight_pct": 0,
-    "tags": [],
-    "family": "DeliriumRewardProgressIncrease",
-    "tiers": [
-      {
-        "tier_name": "of the Pursuit",
-        "tier_level": 1,
-        "text_plain": "1 Delirious Monsters Killed in Map provide (10–30)% increased Reward Progress",
-        "weight": 0,
-        "weight_pct": 0
-      }
-    ]
-  },
-  {
-    "category": "Delirium_Precursor_Tablet",
-    "domain": "normal",
-    "side": "suffix",
-    "text_plain": "Delirium Fog in Map lasts (6–12) additional seconds before dissipating",
+    "text_plain": "Delirium Fog in Map lasts (6—12) additional seconds before dissipating",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
@@ -329,7 +350,7 @@
       {
         "tier_name": "of Eternity",
         "tier_level": 1,
-        "text_plain": "1 Delirium Fog in Map lasts (6–12) additional seconds before dissipating",
+        "text_plain": "1 Delirium Fog in Map lasts (6—12) additional seconds before dissipating",
         "weight": 0,
         "weight_pct": 0
       }
@@ -339,7 +360,7 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Delirium Fog in Map dissipates (20–30)% slower",
+    "text_plain": "Delirium Fog in Map dissipates (20—30)% slower",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
@@ -350,7 +371,7 @@
       {
         "tier_name": "of the Unending",
         "tier_level": 1,
-        "text_plain": "1 Delirium Fog in Map dissipates (20–30)% slower",
+        "text_plain": "1 Delirium Fog in Map dissipates (20—30)% slower",
         "weight": 0,
         "weight_pct": 0
       }
@@ -360,7 +381,7 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Delirium in Map increases (10–30)% faster with distance from the mirror",
+    "text_plain": "Delirium in Map increases (15—30)% faster with distance from the mirror",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
@@ -371,7 +392,7 @@
       {
         "tier_name": "of Madness",
         "tier_level": 1,
-        "text_plain": "1 Delirium in Map increases (10–30)% faster with distance from the mirror",
+        "text_plain": "1 Delirium in Map increases (15—30)% faster with distance from the mirror",
         "weight": 0,
         "weight_pct": 0
       }
@@ -381,7 +402,7 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Delirium Monsters in Map have (10–30)% increased Pack Size",
+    "text_plain": "Delirium Monsters in Map have (15—30)% increased Pack Size",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
@@ -392,7 +413,7 @@
       {
         "tier_name": "of Persecution",
         "tier_level": 1,
-        "text_plain": "1 Delirium Monsters in Map have (10–30)% increased Pack Size",
+        "text_plain": "1 Delirium Monsters in Map have (15—30)% increased Pack Size",
         "weight": 0,
         "weight_pct": 0
       }
@@ -402,7 +423,7 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Delirium Fog in Map spawns (10–30)% increased Fracturing Mirrors",
+    "text_plain": "Delirium Fog in Map spawns (15—30)% increased Fracturing Mirrors",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
@@ -413,7 +434,7 @@
       {
         "tier_name": "of Mirrors",
         "tier_level": 1,
-        "text_plain": "1 Delirium Fog in Map spawns (10–30)% increased Fracturing Mirrors",
+        "text_plain": "1 Delirium Fog in Map spawns (15—30)% increased Fracturing Mirrors",
         "weight": 0,
         "weight_pct": 0
       }
@@ -423,7 +444,7 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Slaying Rare Monsters in Map pauses the Delirium Mirror Timer for (2–5) seconds",
+    "text_plain": "Slaying Rare Monsters in Map pauses the Delirium Mirror Timer for (3—5) seconds",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
@@ -434,7 +455,7 @@
       {
         "tier_name": "of Freeze Time",
         "tier_level": 1,
-        "text_plain": "1 Slaying Rare Monsters in Map pauses the Delirium Mirror Timer for (2–5) seconds",
+        "text_plain": "1 Slaying Rare Monsters in Map pauses the Delirium Mirror Timer for (3—5) seconds",
         "weight": 0,
         "weight_pct": 0
       }
@@ -444,7 +465,7 @@
     "category": "Delirium_Precursor_Tablet",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Delirium Encounters in Map are (10–30)% more likely to spawn Unique Bosses",
+    "text_plain": "Delirium Encounters in Map are (15—30)% more likely to spawn Unique Bosses",
     "tier": 1,
     "ilvl": 1,
     "weight": 0,
@@ -455,28 +476,7 @@
       {
         "tier_name": "of Phobia",
         "tier_level": 1,
-        "text_plain": "1 Delirium Encounters in Map are (10–30)% more likely to spawn Unique Bosses",
-        "weight": 0,
-        "weight_pct": 0
-      }
-    ]
-  },
-  {
-    "category": "Delirium_Precursor_Tablet",
-    "domain": "normal",
-    "side": "suffix",
-    "text_plain": "Delirium Encounters in affected Map have (8–24)% chance to generate an additional Reward",
-    "tier": 1,
-    "ilvl": 1,
-    "weight": 0,
-    "weight_pct": 0,
-    "tags": [],
-    "family": "DeliriumAdditionalRewardType",
-    "tiers": [
-      {
-        "tier_name": "of Envy",
-        "tier_level": 1,
-        "text_plain": "1 Delirium Encounters in affected Map have (8–24)% chance to generate an additional Reward",
+        "text_plain": "1 Delirium Encounters in Map are (15—30)% more likely to spawn Unique Bosses",
         "weight": 0,
         "weight_pct": 0
       }

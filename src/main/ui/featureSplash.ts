@@ -456,8 +456,8 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
               <label for="feat-craft-catalysts">Catalysts</label>
             </div>
             <div class="feature-sub">
-              <input type="checkbox" id="feat-craft-socketables" ${checked(safeConfig.crafting.subcategories.socketables)}/>
-              <label for="feat-craft-socketables">Socketables</label>
+              <input type="checkbox" id="feat-craft-augments" ${checked(safeConfig.crafting.subcategories.augments)}/>
+              <label for="feat-craft-augments">Augments</label>
             </div>
           </div>
         </div>
@@ -593,6 +593,10 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
             <div class="feature-sub">
               <input type="checkbox" id="feat-items-bases" ${checked(safeConfig.items.subcategories.bases)}/>
               <label for="feat-items-bases">Bases</label>
+            </div>
+            <div class="feature-sub">
+              <input type="checkbox" id="feat-items-fate" ${checked(safeConfig.items.subcategories.fate)}/>
+              <label for="feat-items-fate">Fate of the Vaal</label>
             </div>
           </div>
         </div>
@@ -750,7 +754,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
       document.getElementById('feat-craft-omens').checked = preset.crafting.subcategories.omens;
       document.getElementById('feat-craft-currency').checked = preset.crafting.subcategories.currency;
       document.getElementById('feat-craft-catalysts').checked = preset.crafting.subcategories.catalysts;
-      document.getElementById('feat-craft-socketables').checked = preset.crafting.subcategories.socketables;
+      document.getElementById('feat-craft-augments').checked = preset.crafting.subcategories.augments;
       
       // PoE1 Crafting
       document.getElementById('feat-poe1-crafting').checked = preset.poe1Crafting.enabled;
@@ -785,6 +789,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
       document.getElementById('feat-items').checked = preset.items.enabled;
       document.getElementById('feat-items-uniques').checked = preset.items.subcategories.uniques;
       document.getElementById('feat-items-bases').checked = preset.items.subcategories.bases;
+      document.getElementById('feat-items-fate').checked = preset.items.subcategories.fate;
       
       // Items (PoE1)
       document.getElementById('feat-poe1-items').checked = preset.poe1Items.enabled;
@@ -846,7 +851,7 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
             omens: document.getElementById('feat-craft-omens').checked,
             currency: document.getElementById('feat-craft-currency').checked,
             catalysts: document.getElementById('feat-craft-catalysts').checked,
-            socketables: document.getElementById('feat-craft-socketables').checked
+            augments: document.getElementById('feat-craft-augments').checked
           }
         },
         poe1Crafting: {
@@ -888,7 +893,8 @@ export function buildFeatureSplashHtml(currentConfig?: FeatureConfig, overlayVer
           enabled: document.getElementById('feat-items').checked,
           subcategories: {
             uniques: document.getElementById('feat-items-uniques').checked,
-            bases: document.getElementById('feat-items-bases').checked
+            bases: document.getElementById('feat-items-bases').checked,
+            fate: document.getElementById('feat-items-fate').checked
           }
         },
         poe1Items: {

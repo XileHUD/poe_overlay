@@ -10,14 +10,6 @@
       "imageLocal": "currency/albino_rhoa_feather.webp"
     },
     {
-      "name": "Alchemy Shard",
-      "slug": "Alchemy_Shard",
-      "stack_current": 1,
-      "stack_max": 10,
-      "explicitMods": [],
-      "imageLocal": "currency/alchemy_shard.webp"
-    },
-    {
       "name": "Ancient Collarbone",
       "slug": "Ancient_Collarbone",
       "stack_current": 1,
@@ -27,6 +19,16 @@
       ],
       "minimum_modifier_level": 40,
       "imageLocal": "currency/ancient_collarbone.webp"
+    },
+    {
+      "name": "Ancient Infuser",
+      "slug": "Ancient_Infuser",
+      "stack_current": 1,
+      "stack_max": 10,
+      "explicitMods": [
+        "Modifies a Precursor Tablet unpredictably, with a chance to destroy it"
+      ],
+      "imageLocal": "currency/ancient_infuser.webp"
     },
     {
       "name": "Ancient Jawbone",
@@ -61,6 +63,16 @@
       "imageLocal": "currency/arcanists_etcher.webp"
     },
     {
+      "name": "Architect's Orb",
+      "slug": "Architects_Orb",
+      "stack_current": 1,
+      "stack_max": 10,
+      "explicitMods": [
+        "Modifies a Corrupted Equipment or Jewel item unpredictably or destroys it"
+      ],
+      "imageLocal": "currency/architects_orb.webp"
+    },
+    {
       "name": "Armourer's Scrap",
       "slug": "Armourers_Scrap",
       "stack_current": 1,
@@ -76,7 +88,7 @@
       "stack_current": 1,
       "stack_max": 20,
       "explicitMods": [
-        "Adds a Rune Socket to a Martial Weapon, wand, staff or Armour"
+        "Adds an Augment Socket to a Martial Weapon, wand, staff or Armour"
       ],
       "imageLocal": "currency/artificers_orb.webp"
     },
@@ -123,16 +135,6 @@
       "imageLocal": "currency/broken_circle_artifact.webp"
     },
     {
-      "name": "Bronze Key",
-      "slug": "Bronze_Key",
-      "stack_current": null,
-      "stack_max": null,
-      "explicitMods": [
-        "Used to open Bronze Caches within the Trials"
-      ],
-      "imageLocal": "currency/bronze_key.webp"
-    },
-    {
       "name": "Chance Shard",
       "slug": "Chance_Shard",
       "stack_current": 1,
@@ -149,6 +151,26 @@
         "Removes a random modifier and augments a Rare item with a new random modifier"
       ],
       "imageLocal": "currency/chaos_orb.webp"
+    },
+    {
+      "name": "Core Destabiliser",
+      "slug": "Core_Destabiliser",
+      "stack_current": 1,
+      "stack_max": 10,
+      "explicitMods": [
+        "Modifies a Soul Core unpredictably, with a chance to destroy it"
+      ],
+      "imageLocal": "currency/core_destabiliser.webp"
+    },
+    {
+      "name": "Crystallised Corruption",
+      "slug": "Crystallised_Corruption",
+      "stack_current": 1,
+      "stack_max": 10,
+      "explicitMods": [
+        "Modifies a Corrupted Skill Gem unpredictably or destroys it"
+      ],
+      "imageLocal": "currency/crystallised_corruption.webp"
     },
     {
       "name": "Divine Orb",
@@ -194,7 +216,7 @@
       "stack_current": 1,
       "stack_max": 20,
       "explicitMods": [
-        "Improves the quality of a skill gem"
+        "Improves the quality of a Skill Gem"
       ],
       "imageLocal": "currency/gemcutters_prism.webp"
     },
@@ -247,24 +269,6 @@
         "Can be spent at Vendors."
       ],
       "imageLocal": "currency/gold.webp"
-    },
-    {
-      "name": "Gold Key",
-      "slug": "Gold_Key",
-      "stack_current": null,
-      "stack_max": null,
-      "explicitMods": [
-        "Used to open Gold Caches within the Trials"
-      ],
-      "imageLocal": "currency/gold_key.webp"
-    },
-    {
-      "name": "Golden Vulture Feather",
-      "slug": "Golden_Vulture_Feather",
-      "stack_current": 1,
-      "stack_max": 10,
-      "explicitMods": [],
-      "imageLocal": "currency/golden_vulture_feather.webp"
     },
     {
       "name": "Greater Chaos Orb",
@@ -342,14 +346,6 @@
       "imageLocal": "currency/hinekoras_lock.webp"
     },
     {
-      "name": "Jade Kiwi Feather",
-      "slug": "Jade_Kiwi_Feather",
-      "stack_current": 1,
-      "stack_max": 10,
-      "explicitMods": [],
-      "imageLocal": "currency/jade_kiwi_feather.webp"
-    },
-    {
       "name": "Lesser Jeweller's Orb",
       "slug": "Lesser_Jewellers_Orb",
       "stack_current": 1,
@@ -375,7 +371,7 @@
       "stack_current": 1,
       "stack_max": 20,
       "explicitMods": [
-        "Upgrades a Normal item to a Rare item with 4 modifiers"
+        "Upgrades a Normal or Magic item to a Rare item with 4 random modifiers"
       ],
       "imageLocal": "currency/orb_of_alchemy.webp"
     },
@@ -408,6 +404,16 @@
         "Unpredictably either upgrades a Normal item to Unique rarity or destroys it"
       ],
       "imageLocal": "currency/orb_of_chance.webp"
+    },
+    {
+      "name": "Orb of Extraction",
+      "slug": "Orb_of_Extraction",
+      "stack_current": 1,
+      "stack_max": 10,
+      "explicitMods": [
+        "Destroys an Equipment item, returning any Augments socketed in it"
+      ],
+      "imageLocal": "currency/orb_of_extraction.webp"
     },
     {
       "name": "Orb of Transmutation",
@@ -551,14 +557,6 @@
       "imageLocal": "currency/preserved_vertebrae.webp"
     },
     {
-      "name": "Rainbow Toucan Feather",
-      "slug": "Rainbow_Toucan_Feather",
-      "stack_current": 1,
-      "stack_max": 10,
-      "explicitMods": [],
-      "imageLocal": "currency/rainbow_toucan_feather.webp"
-    },
-    {
       "name": "Regal Orb",
       "slug": "Regal_Orb",
       "stack_current": 1,
@@ -595,30 +593,12 @@
       "imageLocal": "currency/scroll_of_wisdom.webp"
     },
     {
-      "name": "Silver Key",
-      "slug": "Silver_Key",
-      "stack_current": null,
-      "stack_max": null,
-      "explicitMods": [
-        "Used to open Silver Caches within the Trials"
-      ],
-      "imageLocal": "currency/silver_key.webp"
-    },
-    {
       "name": "Simulacrum Splinter",
       "slug": "Simulacrum_Splinter",
       "stack_current": 1,
       "stack_max": 300,
       "explicitMods": [],
       "imageLocal": "currency/simulacrum_splinter.webp"
-    },
-    {
-      "name": "Stygian Peacock Feather",
-      "slug": "Stygian_Peacock_Feather",
-      "stack_current": 1,
-      "stack_max": 10,
-      "explicitMods": [],
-      "imageLocal": "currency/stygian_peacock_feather.webp"
     },
     {
       "name": "Sun Artifact",
@@ -635,6 +615,26 @@
       "stack_max": 10,
       "explicitMods": [],
       "imageLocal": "currency/transmutation_shard.webp"
+    },
+    {
+      "name": "Vaal Cultivation Orb",
+      "slug": "Vaal_Cultivation_Orb",
+      "stack_current": 1,
+      "stack_max": 10,
+      "explicitMods": [
+        "Replaces up to 2 modifiers on a Corrupted Vaal Unique<br>\nReplaces other Uniques with a Corrupted Unique of the same Item Class"
+      ],
+      "imageLocal": "currency/vaal_cultivation_orb.webp"
+    },
+    {
+      "name": "Vaal Infuser",
+      "slug": "Vaal_Infuser",
+      "stack_current": 1,
+      "stack_max": 10,
+      "explicitMods": [
+        "Improves the quality of a Martial Weapon, Caster Weapon or Armour<br>\nabove 20% with a chance of Corrupting it"
+      ],
+      "imageLocal": "currency/vaal_infuser.webp"
     },
     {
       "name": "Vaal Orb",

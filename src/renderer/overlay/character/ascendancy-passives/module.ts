@@ -71,8 +71,9 @@ function renderFilters(): void {
 	if (!wrap) return;
 	wrap.innerHTML = "";
 	state.classes.forEach(asc => {
+		const ascKey = (asc || "").trim().toLowerCase();
 		const chip = document.createElement("div");
-		const active = state.selectedAscendancies.has(asc);
+		const active = state.selectedAscendancies.has(ascKey);
 		chip.textContent = asc;
 		applyFilterChipChrome(chip, buildPoe2ChipChrome([120, 144, 156], active), {
 			padding: "3px 10px",
@@ -81,9 +82,9 @@ function renderFilters(): void {
 		chip.style.margin = "0 4px 4px 0";
 		chip.addEventListener("click", () => {
 			if (active) {
-				state.selectedAscendancies.delete(asc);
+				state.selectedAscendancies.delete(ascKey);
 			} else {
-				state.selectedAscendancies.add(asc);
+				state.selectedAscendancies.add(ascKey);
 			}
 			renderFilters();
 			applyFilter();
@@ -188,7 +189,7 @@ function createCard(entry: AscendancyPassive): HTMLElement {
 		(entry.explicitMods || []).join(" ")
 	].join(" ").toLowerCase();
 	card.dataset.search = searchBlob;
-	card.dataset.ascendancy = (entry.ascendancy || "").toLowerCase();
+	card.dataset.ascendancy = (entry.ascendancy || "").trim().toLowerCase();
 
 	return card;
 }
@@ -292,7 +293,7 @@ function scheduleFilter(): void {
 
 export function applyFilter(): void {
 	const query = (state.searchInput?.value || "").trim().toLowerCase();
-	const filterAsc = Array.from(state.selectedAscendancies);
+	const filterAsc = Array.from(state.selectedAscendancies).map(a => a.toLowerCase());
 	const wrap = state.cardsWrap;
 	if (!wrap) return;
 

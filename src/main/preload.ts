@@ -38,7 +38,8 @@ contextBridge.exposeInMainWorld('electronAPI', {
     getAnnoints: () => ipcRenderer.invoke('get-annoints'),
     getEssences: () => ipcRenderer.invoke('get-essences'),
     getCatalysts: () => ipcRenderer.invoke('get-catalysts'),
-    getSocketables: () => ipcRenderer.invoke('get-socketables'),
+    getAugments: () => ipcRenderer.invoke('get-augments'),
+    getSocketables: () => ipcRenderer.invoke('get-socketables'), // Legacy alias
     getKeywords: () => ipcRenderer.invoke('get-keywords'),
     getGlossar: () => ipcRenderer.invoke('get-keywords'),
     getUniques: () => ipcRenderer.invoke('get-uniques'),
@@ -172,7 +173,7 @@ try {
     const root = path.join(resPath, 'bundled-images');
     contextBridge.exposeInMainWorld('bundledImages', {
         root: root.replace(/\\/g,'/'),
-        toFileUrl: (rel: string) => 'file:///' + path.join(root, rel).replace(/\\/g,'/')
+        toFileUrl: (rel: string) => 'local-image:///' + rel.replace(/\\/g, '/')
     });
 } catch (e) {
     console.warn('[preload] failed to expose bundledImages helper', e);

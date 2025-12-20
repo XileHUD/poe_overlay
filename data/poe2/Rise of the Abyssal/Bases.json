@@ -1343,7 +1343,7 @@
       {
         "name": "Hook Axe",
         "implicitMods": [
-          "Gain <span class=\"mod-value\">1</span> Rage on Hit"
+          "Grants <span class=\"mod-value\">1</span> Rage on Hit"
         ],
         "properties": [
           {
@@ -1503,7 +1503,7 @@
       {
         "name": "Sacrificial Axe",
         "implicitMods": [
-          "Gain <span class=\"mod-value\">(28—35)</span> Mana per Enemy Killed"
+          "Gain <span class=\"mod-value\">(28—35)</span> Mana per enemy killed"
         ],
         "properties": [
           {
@@ -2713,7 +2713,7 @@
         "properties": [
           {
             "name": "Physical",
-            "value": "7-13"
+            "value": "9-12"
           },
           {
             "name": "Critical Hit",
@@ -2748,7 +2748,7 @@
         "properties": [
           {
             "name": "Physical",
-            "value": "10-18"
+            "value": "10-17"
           },
           {
             "name": "Critical Hit",
@@ -2788,8 +2788,8 @@
             "value": "5%"
           },
           {
-            "name": "1.65",
-            "value": "1.65"
+            "name": "1.7",
+            "value": "1.7"
           },
           {
             "name": "1.5",
@@ -2816,7 +2816,7 @@
         "properties": [
           {
             "name": "Physical",
-            "value": "14-26"
+            "value": "16-27"
           },
           {
             "name": "Critical Hit",
@@ -2849,15 +2849,15 @@
         "properties": [
           {
             "name": "Physical",
-            "value": "17-32"
+            "value": "13-38"
           },
           {
             "name": "Critical Hit",
             "value": "5%"
           },
           {
-            "name": "1.6",
-            "value": "1.6"
+            "name": "1.55",
+            "value": "1.55"
           },
           {
             "name": "1.5",
@@ -2878,7 +2878,9 @@
       },
       {
         "name": "Barbed Spear",
-        "implicitMods": [],
+        "implicitMods": [
+          "Bleeding you inflict deals Damage <span class=\"mod-value\">(10—20)</span>% faster"
+        ],
         "properties": [
           {
             "name": "Physical",
@@ -2886,11 +2888,11 @@
           },
           {
             "name": "Critical Hit",
-            "value": "6.5%"
+            "value": "6%"
           },
           {
-            "name": "1.6",
-            "value": "1.6"
+            "name": "1.5",
+            "value": "1.5"
           },
           {
             "name": "1.5",
@@ -2911,19 +2913,21 @@
       },
       {
         "name": "Broad Spear",
-        "implicitMods": [],
+        "implicitMods": [
+          "<span class=\"mod-value\">25</span>% increased Melee Strike Range with this weapon"
+        ],
         "properties": [
           {
             "name": "Physical",
-            "value": "26-48"
+            "value": "32-48"
           },
           {
             "name": "Critical Hit",
             "value": "5%"
           },
           {
-            "name": "1.5",
-            "value": "1.5"
+            "name": "1.4",
+            "value": "1.4"
           },
           {
             "name": "1.5",
@@ -2944,19 +2948,21 @@
       },
       {
         "name": "Crossblade Spear",
-        "implicitMods": [],
+        "implicitMods": [
+          "Prevent <span class=\"mod-value\">+(3—7)</span>% of Damage from Deflected Hits"
+        ],
         "properties": [
           {
             "name": "Physical",
-            "value": "28-51"
+            "value": "25-52"
           },
           {
             "name": "Critical Hit",
             "value": "5%"
           },
           {
-            "name": "1.55",
-            "value": "1.55"
+            "name": "1.6",
+            "value": "1.6"
           },
           {
             "name": "1.5",
@@ -2981,15 +2987,15 @@
         "properties": [
           {
             "name": "Physical",
-            "value": "31-57"
+            "value": "29-53"
           },
           {
             "name": "Critical Hit",
             "value": "7%"
           },
           {
-            "name": "1.5",
-            "value": "1.5"
+            "name": "1.6",
+            "value": "1.6"
           },
           {
             "name": "1.5",
@@ -3119,7 +3125,7 @@
         "properties": [
           {
             "name": "Physical",
-            "value": "27-50"
+            "value": "33-44"
           },
           {
             "name": "Critical Hit",
@@ -3154,7 +3160,7 @@
         "properties": [
           {
             "name": "Physical",
-            "value": "29-54"
+            "value": "31-52"
           },
           {
             "name": "Critical Hit",
@@ -3189,7 +3195,7 @@
         "properties": [
           {
             "name": "Physical",
-            "value": "28-53"
+            "value": "32-53"
           },
           {
             "name": "Critical Hit",
@@ -3222,15 +3228,15 @@
         "properties": [
           {
             "name": "Physical",
-            "value": "31-58"
+            "value": "23-69"
           },
           {
             "name": "Critical Hit",
             "value": "5%"
           },
           {
-            "name": "1.6",
-            "value": "1.6"
+            "name": "1.55",
+            "value": "1.55"
           },
           {
             "name": "1.5",
@@ -3251,7 +3257,9 @@
       },
       {
         "name": "Jagged Spear",
-        "implicitMods": [],
+        "implicitMods": [
+          "Bleeding you inflict deals Damage <span class=\"mod-value\">(10—20)</span>% faster"
+        ],
         "properties": [
           {
             "name": "Physical",
@@ -3259,11 +3267,11 @@
           },
           {
             "name": "Critical Hit",
-            "value": "6.5%"
+            "value": "6%"
           },
           {
-            "name": "1.6",
-            "value": "1.6"
+            "name": "1.5",
+            "value": "1.5"
           },
           {
             "name": "1.5",
@@ -3284,19 +3292,21 @@
       },
       {
         "name": "Massive Spear",
-        "implicitMods": [],
+        "implicitMods": [
+          "<span class=\"mod-value\">25</span>% increased Melee Strike Range with this weapon"
+        ],
         "properties": [
           {
             "name": "Physical",
-            "value": "38-70"
+            "value": "46-69"
           },
           {
             "name": "Critical Hit",
             "value": "5%"
           },
           {
-            "name": "1.5",
-            "value": "1.5"
+            "name": "1.4",
+            "value": "1.4"
           },
           {
             "name": "1.5",
@@ -3321,7 +3331,7 @@
         "properties": [
           {
             "name": "Physical",
-            "value": "38-70"
+            "value": "46-62"
           },
           {
             "name": "Critical Hit",
@@ -3349,20 +3359,53 @@
         "imageLocal": "bases/spears/orichalcum_spear.webp"
       },
       {
-        "name": "Pronged Spear",
+        "name": "Soaring Spear",
         "implicitMods": [],
         "properties": [
           {
             "name": "Physical",
-            "value": "40-75"
+            "value": "35-65"
           },
           {
             "name": "Critical Hit",
             "value": "5%"
           },
           {
-            "name": "1.6",
-            "value": "1.6"
+            "name": "1.7",
+            "value": "1.7"
+          },
+          {
+            "name": "1.5",
+            "value": "1.5"
+          }
+        ],
+        "grants": [
+          {
+            "type": "skill",
+            "name": "Spear Throw",
+            "level": null,
+            "slug": "/us/Spear_Throw"
+          }
+        ],
+        "category": "Spears",
+        "requiredLevel": 70,
+        "imageLocal": "bases/spears/soaring_spear.webp"
+      },
+      {
+        "name": "Pronged Spear",
+        "implicitMods": [],
+        "properties": [
+          {
+            "name": "Physical",
+            "value": "30-89"
+          },
+          {
+            "name": "Critical Hit",
+            "value": "5%"
+          },
+          {
+            "name": "1.55",
+            "value": "1.55"
           },
           {
             "name": "1.5",
@@ -3389,7 +3432,7 @@
         "properties": [
           {
             "name": "Physical",
-            "value": "44-82"
+            "value": "47-79"
           },
           {
             "name": "Critical Hit",
@@ -3424,7 +3467,7 @@
         "properties": [
           {
             "name": "Physical",
-            "value": "41-76"
+            "value": "46-77"
           },
           {
             "name": "Critical Hit",
@@ -3453,19 +3496,21 @@
       },
       {
         "name": "Grand Spear",
-        "implicitMods": [],
+        "implicitMods": [
+          "<span class=\"mod-value\">25</span>% increased Melee Strike Range with this weapon"
+        ],
         "properties": [
           {
             "name": "Physical",
-            "value": "46-85"
+            "value": "56-84"
           },
           {
             "name": "Critical Hit",
             "value": "5%"
           },
           {
-            "name": "1.5",
-            "value": "1.5"
+            "name": "1.4",
+            "value": "1.4"
           },
           {
             "name": "1.5",
@@ -3486,7 +3531,9 @@
       },
       {
         "name": "Spiked Spear",
-        "implicitMods": [],
+        "implicitMods": [
+          "Bleeding you inflict deals Damage <span class=\"mod-value\">(10—20)</span>% faster"
+        ],
         "properties": [
           {
             "name": "Physical",
@@ -3494,11 +3541,11 @@
           },
           {
             "name": "Critical Hit",
-            "value": "6.5%"
+            "value": "6%"
           },
           {
-            "name": "1.6",
-            "value": "1.6"
+            "name": "1.5",
+            "value": "1.5"
           },
           {
             "name": "1.5",
@@ -3518,20 +3565,55 @@
         "imageLocal": "bases/spears/spiked_spear.webp"
       },
       {
+        "name": "Guardian Spear",
+        "implicitMods": [
+          "Prevent <span class=\"mod-value\">+(3—7)</span>% of Damage from Deflected Hits"
+        ],
+        "properties": [
+          {
+            "name": "Physical",
+            "value": "38-79"
+          },
+          {
+            "name": "Critical Hit",
+            "value": "5%"
+          },
+          {
+            "name": "1.55",
+            "value": "1.55"
+          },
+          {
+            "name": "1.5",
+            "value": "1.5"
+          }
+        ],
+        "grants": [
+          {
+            "type": "skill",
+            "name": "Spear Throw",
+            "level": null,
+            "slug": "/us/Spear_Throw"
+          }
+        ],
+        "category": "Spears",
+        "requiredLevel": 75,
+        "imageLocal": "bases/spears/guardian_spear.webp"
+      },
+      {
         "name": "Akoyan Spear",
         "implicitMods": [],
         "properties": [
           {
             "name": "Physical",
-            "value": "43-80"
+            "value": "39-72"
           },
           {
             "name": "Critical Hit",
             "value": "7%"
           },
           {
-            "name": "1.5",
-            "value": "1.5"
+            "name": "1.6",
+            "value": "1.6"
           },
           {
             "name": "1.5",
@@ -3948,7 +4030,7 @@
         "properties": [
           {
             "name": "Physical",
-            "value": "12-18"
+            "value": "12-20"
           },
           {
             "name": "Critical Hit",
@@ -4011,20 +4093,20 @@
       {
         "name": "Dualstring Bow",
         "implicitMods": [
-          "Bow Attacks fire an additional Arrow"
+          "<span class=\"mod-value\">+50</span>% Surpassing chance to fire an additional Arrow"
         ],
         "properties": [
           {
             "name": "Physical",
-            "value": "16-31"
+            "value": "19-35"
           },
           {
             "name": "Critical Hit",
             "value": "5%"
           },
           {
-            "name": "1.1",
-            "value": "1.1"
+            "name": "1.15",
+            "value": "1.15"
           }
         ],
         "grants": [],
@@ -4035,12 +4117,12 @@
       {
         "name": "Cultist Bow",
         "implicitMods": [
-          "<span class=\"secondary\">local weapon implicit hidden added maximum chaos damage [37]</span><br><span class=\"secondary\">local weapon implicit hidden added minimum chaos damage [19]</span>"
+          "<span class=\"secondary\">local weapon implicit hidden added maximum chaos damage [19]</span><br><span class=\"secondary\">local weapon implicit hidden added minimum chaos damage [7]</span>"
         ],
         "properties": [
           {
             "name": "Physical",
-            "value": "10-17"
+            "value": "22-36"
           },
           {
             "name": "Critical Hit",
@@ -4261,7 +4343,7 @@
       {
         "name": "Twin Bow",
         "implicitMods": [
-          "Bow Attacks fire an additional Arrow"
+          "<span class=\"mod-value\">+50</span>% Surpassing chance to fire an additional Arrow"
         ],
         "properties": [
           {
@@ -4273,8 +4355,8 @@
             "value": "5%"
           },
           {
-            "name": "1.1",
-            "value": "1.1"
+            "name": "1.15",
+            "value": "1.15"
           }
         ],
         "grants": [],
@@ -4285,12 +4367,12 @@
       {
         "name": "Adherent Bow",
         "implicitMods": [
-          "<span class=\"secondary\">local weapon implicit hidden added maximum chaos damage [59]</span><br><span class=\"secondary\">local weapon implicit hidden added minimum chaos damage [31]</span>"
+          "<span class=\"secondary\">local weapon implicit hidden added maximum chaos damage [32]</span><br><span class=\"secondary\">local weapon implicit hidden added minimum chaos damage [14]</span>"
         ],
         "properties": [
           {
             "name": "Physical",
-            "value": "21-34"
+            "value": "35-59"
           },
           {
             "name": "Critical Hit",
@@ -4380,7 +4462,7 @@
         "properties": [
           {
             "name": "Physical",
-            "value": "53-80"
+            "value": "53-88"
           },
           {
             "name": "Critical Hit",
@@ -4399,7 +4481,7 @@
       {
         "name": "Gemini Bow",
         "implicitMods": [
-          "Bow Attacks fire an additional Arrow"
+          "<span class=\"mod-value\">+50</span>% Surpassing chance to fire an additional Arrow"
         ],
         "properties": [
           {
@@ -4411,8 +4493,8 @@
             "value": "5%"
           },
           {
-            "name": "1.1",
-            "value": "1.1"
+            "name": "1.15",
+            "value": "1.15"
           }
         ],
         "grants": [],
@@ -4423,12 +4505,12 @@
       {
         "name": "Fanatic Bow",
         "implicitMods": [
-          "<span class=\"secondary\">local weapon implicit hidden added maximum chaos damage [71]</span><br><span class=\"secondary\">local weapon implicit hidden added minimum chaos damage [43]</span>"
+          "<span class=\"secondary\">local weapon implicit hidden added maximum chaos damage [64]</span><br><span class=\"secondary\">local weapon implicit hidden added minimum chaos damage [28]</span>"
         ],
         "properties": [
           {
             "name": "Physical",
-            "value": "42-70"
+            "value": "47-79"
           },
           {
             "name": "Critical Hit",
@@ -4730,6 +4812,22 @@
         "category": "Staves",
         "requiredLevel": 75,
         "imageLocal": "bases/staves/permafrost_staff.webp"
+      },
+      {
+        "name": "Reflecting Staff",
+        "implicitMods": [],
+        "properties": [],
+        "grants": [
+          {
+            "type": "skill",
+            "name": "Mirror of Refraction",
+            "level": 16,
+            "slug": ""
+          }
+        ],
+        "category": "Staves",
+        "requiredLevel": 70,
+        "imageLocal": "bases/staves/reflecting_staff.webp"
       }
     ],
     "Two_Hand_Swords": [
@@ -5229,7 +5327,7 @@
       {
         "name": "Savage Greataxe",
         "implicitMods": [
-          "Gain <span class=\"mod-value\">(34—43)</span> Life per Enemy Killed"
+          "Gain <span class=\"mod-value\">(34—43)</span> Life per enemy killed"
         ],
         "properties": [
           {
@@ -5472,20 +5570,20 @@
       {
         "name": "Oak Greathammer",
         "implicitMods": [
-          "Causes <span class=\"mod-value\">(30—50)</span>% increased Stun Buildup"
+          "Causes <span class=\"mod-value\">(20—40)</span>% increased Stun Buildup"
         ],
         "properties": [
           {
             "name": "Physical",
-            "value": "14-26"
+            "value": "16-30"
           },
           {
             "name": "Critical Hit",
             "value": "5%"
           },
           {
-            "name": "1.05",
-            "value": "1.05"
+            "name": "1",
+            "value": "1"
           },
           {
             "name": "1.3",
@@ -5499,11 +5597,13 @@
       },
       {
         "name": "Forge Maul",
-        "implicitMods": [],
+        "implicitMods": [
+          "Crushes Enemies on Hit"
+        ],
         "properties": [
           {
             "name": "Physical",
-            "value": "29-39"
+            "value": "26-35"
           },
           {
             "name": "Critical Hit",
@@ -5552,12 +5652,12 @@
       {
         "name": "Cultist Greathammer",
         "implicitMods": [
-          "Strikes deal Splash damage to targets within 1.5 metres"
+          "Strikes deal Splash Damage"
         ],
         "properties": [
           {
             "name": "Physical",
-            "value": "32-43"
+            "value": "36-49"
           },
           {
             "name": "Critical Hit",
@@ -5641,7 +5741,7 @@
           },
           {
             "name": "Critical Hit",
-            "value": "5%"
+            "value": "8%"
           },
           {
             "name": "1.1",
@@ -5686,12 +5786,12 @@
       {
         "name": "Totemic Greatclub",
         "implicitMods": [
-          "Crushes Enemies on Hit"
+          "Warcries Empower an additional Attack"
         ],
         "properties": [
           {
             "name": "Physical",
-            "value": "73-99"
+            "value": "77-105"
           },
           {
             "name": "Critical Hit",
@@ -5792,12 +5892,12 @@
       {
         "name": "Snakewood Greathammer",
         "implicitMods": [
-          "Causes <span class=\"mod-value\">(30—50)</span>% increased Stun Buildup"
+          "Causes <span class=\"mod-value\">(20—40)</span>% increased Stun Buildup"
         ],
         "properties": [
           {
             "name": "Physical",
-            "value": "59-109"
+            "value": "62-115"
           },
           {
             "name": "Critical Hit",
@@ -5819,11 +5919,13 @@
       },
       {
         "name": "Blacksmith Maul",
-        "implicitMods": [],
+        "implicitMods": [
+          "Crushes Enemies on Hit"
+        ],
         "properties": [
           {
             "name": "Physical",
-            "value": "84-113"
+            "value": "75-102"
           },
           {
             "name": "Critical Hit",
@@ -5846,12 +5948,12 @@
       {
         "name": "Zealot Greathammer",
         "implicitMods": [
-          "Strikes deal Splash damage to targets within 1.5 metres"
+          "Strikes deal Splash Damage"
         ],
         "properties": [
           {
             "name": "Physical",
-            "value": "62-83"
+            "value": "70-95"
           },
           {
             "name": "Critical Hit",
@@ -5931,11 +6033,11 @@
         "properties": [
           {
             "name": "Physical",
-            "value": "93-114"
+            "value": "92-112"
           },
           {
             "name": "Critical Hit",
-            "value": "5%"
+            "value": "8%"
           },
           {
             "name": "1.1",
@@ -5953,11 +6055,13 @@
       },
       {
         "name": "Anvil Maul",
-        "implicitMods": [],
+        "implicitMods": [
+          "Crushes Enemies on Hit"
+        ],
         "properties": [
           {
             "name": "Physical",
-            "value": "112-151"
+            "value": "101-136"
           },
           {
             "name": "Critical Hit",
@@ -6011,15 +6115,15 @@
         "properties": [
           {
             "name": "Physical",
-            "value": "94-174"
+            "value": "105-196"
           },
           {
             "name": "Critical Hit",
             "value": "5%"
           },
           {
-            "name": "1.05",
-            "value": "1.05"
+            "name": "1",
+            "value": "1"
           },
           {
             "name": "1.3",
@@ -6034,12 +6138,12 @@
       {
         "name": "Fanatic Greathammer",
         "implicitMods": [
-          "Strikes deal Splash damage to targets within 1.5 metres"
+          "Strikes deal Splash Damage"
         ],
         "properties": [
           {
             "name": "Physical",
-            "value": "89-120"
+            "value": "101-137"
           },
           {
             "name": "Critical Hit",
@@ -6067,11 +6171,11 @@
         "properties": [
           {
             "name": "Physical",
-            "value": "113-138"
+            "value": "104-127"
           },
           {
             "name": "Critical Hit",
-            "value": "5%"
+            "value": "8%"
           },
           {
             "name": "1.1",
@@ -6116,12 +6220,12 @@
       {
         "name": "Tawhoan Greatclub",
         "implicitMods": [
-          "Crushes Enemies on Hit"
+          "Warcries Empower an additional Attack"
         ],
         "properties": [
           {
             "name": "Physical",
-            "value": "107-145"
+            "value": "113-153"
           },
           {
             "name": "Critical Hit",
@@ -6206,7 +6310,7 @@
           },
           {
             "name": "Critical Hit",
-            "value": "11.5%"
+            "value": "12%"
           },
           {
             "name": "1.4",
@@ -6331,12 +6435,12 @@
       {
         "name": "Barrier Quarterstaff",
         "implicitMods": [
-          "<span class=\"mod-value\">+(10—15)</span>% to Block chance"
+          "<span class=\"mod-value\">+(12—18)</span>% to Block chance"
         ],
         "properties": [
           {
             "name": "Physical",
-            "value": "33-55"
+            "value": "35-58"
           },
           {
             "name": "Critical Hit",
@@ -6358,19 +6462,21 @@
       },
       {
         "name": "Hefty Quarterstaff",
-        "implicitMods": [],
+        "implicitMods": [
+          "<span class=\"mod-value\">(20—50)</span>% chance to Daze on Hit"
+        ],
         "properties": [
           {
             "name": "Physical",
-            "value": "39-80"
+            "value": "39-81"
           },
           {
             "name": "Critical Hit",
             "value": "10%"
           },
           {
-            "name": "1.35",
-            "value": "1.35"
+            "name": "1.3",
+            "value": "1.3"
           },
           {
             "name": "1.3",
@@ -6388,7 +6494,7 @@
         "properties": [
           {
             "name": "Physical",
-            "value": "64-87"
+            "value": "59-79"
           },
           {
             "name": "Critical Hit",
@@ -6520,11 +6626,11 @@
         "properties": [
           {
             "name": "Physical",
-            "value": "43-72"
+            "value": "42-71"
           },
           {
             "name": "Critical Hit",
-            "value": "11.5%"
+            "value": "12%"
           },
           {
             "name": "1.4",
@@ -6623,12 +6729,12 @@
       {
         "name": "Guardian Quarterstaff",
         "implicitMods": [
-          "<span class=\"mod-value\">+(10—15)</span>% to Block chance"
+          "<span class=\"mod-value\">+(12—18)</span>% to Block chance"
         ],
         "properties": [
           {
             "name": "Physical",
-            "value": "49-82"
+            "value": "52-86"
           },
           {
             "name": "Critical Hit",
@@ -6654,11 +6760,11 @@
         "properties": [
           {
             "name": "Physical",
-            "value": "55-92"
+            "value": "55-91"
           },
           {
             "name": "Critical Hit",
-            "value": "11.5%"
+            "value": "12%"
           },
           {
             "name": "1.4",
@@ -6759,7 +6865,7 @@
       {
         "name": "Aegis Quarterstaff",
         "implicitMods": [
-          "<span class=\"mod-value\">+(10—15)</span>% to Block chance"
+          "<span class=\"mod-value\">+(12—18)</span>% to Block chance"
         ],
         "properties": [
           {
@@ -6809,6 +6915,34 @@
         "category": "Quarterstaves",
         "requiredLevel": 77,
         "imageLocal": "bases/quarterstaves/razor_quarterstaff.webp"
+      },
+      {
+        "name": "Skullcrusher Quarterstaff",
+        "implicitMods": [
+          "<span class=\"mod-value\">(20—50)</span>% chance to Daze on Hit"
+        ],
+        "properties": [
+          {
+            "name": "Physical",
+            "value": "59-122"
+          },
+          {
+            "name": "Critical Hit",
+            "value": "10%"
+          },
+          {
+            "name": "1.3",
+            "value": "1.3"
+          },
+          {
+            "name": "1.3",
+            "value": "1.3"
+          }
+        ],
+        "grants": [],
+        "category": "Quarterstaves",
+        "requiredLevel": 75,
+        "imageLocal": "bases/quarterstaves/skullcrusher_quarterstaff.webp"
       },
       {
         "name": "Dreaming Quarterstaff",
@@ -10819,7 +10953,7 @@
         "properties": [
           {
             "name": "Energy Shield",
-            "value": "50"
+            "value": "53"
           }
         ],
         "grants": [],
@@ -10833,7 +10967,7 @@
         "properties": [
           {
             "name": "Energy Shield",
-            "value": "52"
+            "value": "58"
           }
         ],
         "grants": [],
@@ -10847,7 +10981,7 @@
         "properties": [
           {
             "name": "Energy Shield",
-            "value": "58"
+            "value": "66"
           }
         ],
         "grants": [],
@@ -10861,7 +10995,7 @@
         "properties": [
           {
             "name": "Energy Shield",
-            "value": "63"
+            "value": "75"
           }
         ],
         "grants": [],
@@ -10875,7 +11009,7 @@
         "properties": [
           {
             "name": "Energy Shield",
-            "value": "68"
+            "value": "85"
           }
         ],
         "grants": [],
@@ -12288,6 +12422,25 @@
         "category": "Gloves",
         "requiredLevel": 80,
         "imageLocal": "bases/gloves/secured_wraps.webp"
+      },
+      {
+        "name": "[DNT-UNUSED] Hand Wraps",
+        "implicitMods": [
+          "[DNT-UNUSED] <span class=\"mod-value\">+5</span> to Evasion Rating per level<br><span class=\"secondary\">local energy shield per level [5]</span>"
+        ],
+        "properties": [
+          {
+            "name": "Evasion Rating",
+            "value": "7"
+          },
+          {
+            "name": "Energy Shield",
+            "value": "7"
+          }
+        ],
+        "grants": [],
+        "category": "Gloves",
+        "imageLocal": "bases/gloves/dnt_unused_hand_wraps.webp"
       }
     ],
     "Boots": [
@@ -15450,6 +15603,34 @@
         "imageLocal": "bases/body_armours/grand_regalia.webp"
       },
       {
+        "name": "Sacrificial Regalia",
+        "implicitMods": [
+          "<span class=\"mod-value\">+1</span> to Level of all Corrupted Skill Gems"
+        ],
+        "properties": [
+          {
+            "name": "Armour",
+            "value": "269"
+          },
+          {
+            "name": "Evasion Rating",
+            "value": "245"
+          },
+          {
+            "name": "Energy Shield",
+            "value": "93"
+          },
+          {
+            "name": "-0.03",
+            "value": "-0.03"
+          }
+        ],
+        "grants": [],
+        "category": "Body_Armours",
+        "requiredLevel": 65,
+        "imageLocal": "bases/body_armours/sacrificial_regalia.webp"
+      },
+      {
         "name": "Golden Plate",
         "implicitMods": [],
         "properties": [
@@ -16299,7 +16480,7 @@
       {
         "name": "Corsair Coat",
         "implicitMods": [
-          "<span class=\"mod-value\">(10—20)</span>% reduced Movement Speed Penalty from using Skills while moving"
+          "<span class=\"mod-value\">5</span>% increased Movement Speed"
         ],
         "properties": [
           {

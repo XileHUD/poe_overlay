@@ -419,7 +419,7 @@ export class ModifierDatabase {
                 console.log('Corrupted file not found, falling back to live aggregation');
                 return this.getDomainAggregated('corrupted');
             }
-            if (norm === 'SOCKETABLE' || norm === 'SOCKETABLES') {
+            if (norm === 'SOCKETABLE' || norm === 'SOCKETABLES' || norm === 'AUGMENT' || norm === 'AUGMENTS') {
                 console.log('Loading pre-generated Socketable aggregate');
                 const data = this.jsonCache.get('Socketable');
                 if (data && Array.isArray(data)) {
@@ -910,7 +910,7 @@ export class ModifierDatabase {
                     
                     // Skip special format files (Essences, Socketables, etc.)
                     if (cat === 'Essences' || 
-                        cat === 'Socketables' ||
+                        cat === 'Augments' ||
                         cat === 'Bases' ||
                         cat === 'Gems' ||
                         cat === 'Liquid_Emotions' ||
@@ -931,7 +931,9 @@ export class ModifierDatabase {
 
                 const relicSubs = cats.filter(c => /_Relic$/i.test(c));
                 if (relicSubs.length && !out.includes('Relics')) out.push('Relics');
-            }            return out;
+            }
+            
+            return out;
         }
 
         return [];

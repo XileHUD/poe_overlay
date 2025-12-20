@@ -7,7 +7,7 @@ import { FeatureConfig, DEFAULT_FEATURES, CraftingSubcategories, CharacterSubcat
 import { SettingsService } from './settingsService.js';
 
 const MODIFIER_CATEGORY_PATTERNS = [
-  'Amulets', 'Rings', 'Belts',
+  'Amulets', 'Rings', 'Belts', 'Talismans',
   'Body_Armours_*', 'Helmets_*', 'Gloves_*', 'Boots_*', 'Shields_*',
   'Bows', 'Crossbows', 'Wands', 'Daggers', 'Claws', 'Flails', 'Foci',
   'One_Hand_Swords', 'Two_Hand_Swords',
@@ -55,7 +55,7 @@ const CRAFTING_CATEGORY_MAP: Record<string, keyof CraftingSubcategories> = {
   Omens: 'omens',
   Currency: 'currency',
   Catalysts: 'catalysts',
-  Socketables: 'socketables'
+  Augments: 'augments'
 };
 
 const CHARACTER_CATEGORY_MAP: Record<string, keyof CharacterSubcategories> = {
@@ -383,7 +383,7 @@ export class FeatureService {
           omens: false,
           currency: false,
           catalysts: false,
-          socketables: false
+          augments: false
         }
       };
     } else if (config.crafting?.enabled) {
@@ -471,7 +471,8 @@ export class FeatureService {
         enabled: false,
         subcategories: {
           uniques: false,
-          bases: false
+          bases: false,
+          fate: false
         }
       };
     }

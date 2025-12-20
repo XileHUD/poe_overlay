@@ -55,11 +55,11 @@ const POE2_CONFIG: VersionConfig = {
     desecrated: { name: 'Desecrated', color: '#9C27B0' },
     essence: { name: 'Essence', color: '#00BCD4' },
     corrupted: { name: 'Corrupted', color: '#F44336' },
-    socketable: { name: 'Socketable', color: '#FF9800' },
+    socketable: { name: 'Augment', color: '#FF9800' },
     mymods: { name: 'My Mods', color: '#F0AD4E', description: 'Modifiers currently on your clipboard item' }
   },
   
-  virtualCategories: ['ALL', 'DESECRATED', 'ESSENCE', 'CORRUPTED', 'SOCKETABLES'],
+  virtualCategories: ['ALL', 'DESECRATED', 'ESSENCE', 'CORRUPTED', 'AUGMENTS'],
   
   excludedCategories: ['Bases'],
   

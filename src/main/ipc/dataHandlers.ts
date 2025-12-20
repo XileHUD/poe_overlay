@@ -264,7 +264,8 @@ export function registerDataIpc(deps: DataIpcDeps) {
   simpleJsonHandler('get-annoints', 'Annoints.json');
   simpleJsonHandler('get-essences', 'Essences.json');
   simpleJsonHandler('get-catalysts', 'Catalysts.json');
-  simpleJsonHandler('get-socketables', 'Socketables.json');
+  simpleJsonHandler('get-augments', 'Augments.json');
+  simpleJsonHandler('get-socketables', 'Augments.json'); // Legacy alias
   simpleJsonHandler('get-keywords', 'Keywords.json');
   simpleJsonHandler('get-uniques', 'Uniques.json', {
     cache: true,

@@ -192,7 +192,7 @@ export class ItemParser {
         // New PoE2 item classes
         'Uncut Skill Gems': 'Gems',
         'Uncut Spirit Gems': 'Gems',
-        'Socketable': 'Socketables'
+        'Socketable': 'Augments'
     };
     // Extend mapping at runtime for Jewels if not present
     constructor(game: GameVersion = 'poe2') {
@@ -939,9 +939,9 @@ export class ItemParser {
 
     private determineCategory(itemClass: string, attributeType: string, baseType: string, name: string): string {
         // Special-case early exits before unknown check
-        // Socketables (Runes / Soul Cores)
+        // Augments (Runes / Soul Cores / Idols / Thesis)
         if (/^Socketable$/i.test(itemClass)) {
-            return 'Socketables';
+            return 'Augments';
         }
         if (/^Divination Cards?$/i.test(itemClass)) {
             return 'Divination_Cards';

@@ -1,0 +1,4483 @@
+[
+  {
+    "category": "Talismans",
+    "domain": "normal",
+    "side": "prefix",
+    "text_plain": "Adds # to # Physical Damage",
+    "tier": 9,
+    "ilvl": 75,
+    "weight": 9,
+    "weight_pct": 12.857,
+    "tags": [
+      "damage",
+      "physical",
+      "attack"
+    ],
+    "family": "PhysicalDamage",
+    "tiers": [
+      {
+        "tier_name": "Glinting",
+        "tier_level": 1,
+        "text_plain": "1 Adds (2—3) to (5—7) Physical Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Burnished",
+        "tier_level": 8,
+        "text_plain": "8 Adds (5—8) to (10—15) Physical Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Polished",
+        "tier_level": 16,
+        "text_plain": "16 Adds (8—12) to (15—22) Physical Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Honed",
+        "tier_level": 33,
+        "text_plain": "33 Adds (11—17) to (20—30) Physical Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Gleaming",
+        "tier_level": 46,
+        "text_plain": "46 Adds (14—21) to (25—37) Physical Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Annealed",
+        "tier_level": 54,
+        "text_plain": "54 Adds (19—29) to (33—49) Physical Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Razor-sharp",
+        "tier_level": 60,
+        "text_plain": "60 Adds (23—35) to (39—59) Physical Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Tempered",
+        "tier_level": 65,
+        "text_plain": "65 Adds (29—44) to (50—75) Physical Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Flaring",
+        "tier_level": 75,
+        "text_plain": "75 Adds (37—55) to (63—94) Physical Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "normal",
+    "side": "prefix",
+    "text_plain": "Adds # to # Fire Damage",
+    "tier": 10,
+    "ilvl": 81,
+    "weight": 10,
+    "weight_pct": 14.286,
+    "tags": [
+      "damage",
+      "elemental",
+      "fire",
+      "attack"
+    ],
+    "family": "FireDamage",
+    "tiers": [
+      {
+        "tier_name": "Heated",
+        "tier_level": 1,
+        "text_plain": "1 Adds (2—4) to (5—7) Fire Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Smouldering",
+        "tier_level": 8,
+        "text_plain": "8 Adds (6—9) to (10—16) Fire Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Smoking",
+        "tier_level": 16,
+        "text_plain": "16 Adds (11—17) to (19—28) Fire Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Burning",
+        "tier_level": 33,
+        "text_plain": "33 Adds (19—27) to (30—42) Fire Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Flaming",
+        "tier_level": 46,
+        "text_plain": "46 Adds (30—37) to (45—56) Fire Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Scorching",
+        "tier_level": 54,
+        "text_plain": "54 Adds (39—53) to (59—80) Fire Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Incinerating",
+        "tier_level": 60,
+        "text_plain": "60 Adds (56—70) to (84—107) Fire Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Blasting",
+        "tier_level": 65,
+        "text_plain": "65 Adds (73—97) to (112—149) Fire Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Cremating",
+        "tier_level": 75,
+        "text_plain": "75 Adds (102—130) to (155—198) Fire Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Carbonising",
+        "tier_level": 81,
+        "text_plain": "81 Adds (135—156) to (205—236) Fire Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "normal",
+    "side": "prefix",
+    "text_plain": "Adds # to # Cold Damage",
+    "tier": 10,
+    "ilvl": 81,
+    "weight": 10,
+    "weight_pct": 14.286,
+    "tags": [
+      "damage",
+      "elemental",
+      "cold",
+      "attack"
+    ],
+    "family": "ColdDamage",
+    "tiers": [
+      {
+        "tier_name": "Frosted",
+        "tier_level": 1,
+        "text_plain": "1 Adds (2—3) to (4—6) Cold Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Chilled",
+        "tier_level": 8,
+        "text_plain": "8 Adds (5—8) to (9—14) Cold Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Icy",
+        "tier_level": 16,
+        "text_plain": "16 Adds (10—14) to (15—23) Cold Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Frigid",
+        "tier_level": 33,
+        "text_plain": "33 Adds (16—23) to (25—35) Cold Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Freezing",
+        "tier_level": 46,
+        "text_plain": "46 Adds (25—30) to (38—46) Cold Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Frozen",
+        "tier_level": 54,
+        "text_plain": "54 Adds (32—43) to (49—66) Cold Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Glaciated",
+        "tier_level": 60,
+        "text_plain": "60 Adds (46—57) to (70—88) Cold Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Polar",
+        "tier_level": 65,
+        "text_plain": "65 Adds (60—80) to (92—121) Cold Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Entombing",
+        "tier_level": 75,
+        "text_plain": "75 Adds (84—107) to (126—161) Cold Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Crystalising",
+        "tier_level": 81,
+        "text_plain": "81 Adds (112—124) to (168—189) Cold Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "normal",
+    "side": "prefix",
+    "text_plain": "Adds # to # Lightning Damage",
+    "tier": 10,
+    "ilvl": 81,
+    "weight": 10,
+    "weight_pct": 14.286,
+    "tags": [
+      "damage",
+      "elemental",
+      "lightning",
+      "attack"
+    ],
+    "family": "LightningDamage",
+    "tiers": [
+      {
+        "tier_name": "Humming",
+        "tier_level": 1,
+        "text_plain": "1 Adds 1 to (7—10) Lightning Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Buzzing",
+        "tier_level": 8,
+        "text_plain": "8 Adds (1—2) to (19—27) Lightning Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Snapping",
+        "tier_level": 16,
+        "text_plain": "16 Adds (1—3) to (31—43) Lightning Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Crackling",
+        "tier_level": 33,
+        "text_plain": "33 Adds (1—4) to (53—76) Lightning Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Sparking",
+        "tier_level": 46,
+        "text_plain": "46 Adds (1—4) to (80—88) Lightning Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Arcing",
+        "tier_level": 54,
+        "text_plain": "54 Adds (1—6) to (93—122) Lightning Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Shocking",
+        "tier_level": 60,
+        "text_plain": "60 Adds (1—8) to (128—162) Lightning Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Discharging",
+        "tier_level": 65,
+        "text_plain": "65 Adds (1—13) to (168—231) Lightning Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Electrocuting",
+        "tier_level": 75,
+        "text_plain": "75 Adds (1—16) to (239—300) Lightning Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Vapourising",
+        "tier_level": 81,
+        "text_plain": "81 Adds (1—19) to (310—358) Lightning Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "normal",
+    "side": "prefix",
+    "text_plain": "#% increased Physical Damage",
+    "tier": 8,
+    "ilvl": 82,
+    "weight": 8,
+    "weight_pct": 11.429,
+    "tags": [
+      "damage",
+      "physical",
+      "attack"
+    ],
+    "family": "LocalPhysicalDamagePercent",
+    "tiers": [
+      {
+        "tier_name": "Heavy",
+        "tier_level": 1,
+        "text_plain": "1 (40—49)% increased Physical Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Serrated",
+        "tier_level": 8,
+        "text_plain": "8 (50—64)% increased Physical Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Wicked",
+        "tier_level": 16,
+        "text_plain": "16 (65—84)% increased Physical Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Vicious",
+        "tier_level": 33,
+        "text_plain": "33 (85—109)% increased Physical Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Bloodthirsty",
+        "tier_level": 46,
+        "text_plain": "46 (110—134)% increased Physical Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Cruel",
+        "tier_level": 60,
+        "text_plain": "60 (135—154)% increased Physical Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Tyrannical",
+        "tier_level": 75,
+        "text_plain": "75 (155—169)% increased Physical Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Merciless",
+        "tier_level": 82,
+        "text_plain": "82 (170—179)% increased Physical Damage",
+        "weight": 1,
+        "weight_pct": 1.429
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "normal",
+    "side": "prefix",
+    "text_plain": "#% increased Physical Damage# to Accuracy Rating",
+    "tier": 8,
+    "ilvl": 81,
+    "weight": 8,
+    "weight_pct": 11.429,
+    "tags": [
+      "damage",
+      "physical",
+      "attack"
+    ],
+    "family": "LocalIncreasedPhysicalDamagePercentAndAccuracyRating",
+    "tiers": [
+      {
+        "tier_name": "Squire's",
+        "tier_level": 1,
+        "text_plain": "1 (15—19)% increased Physical Damage+(16—20) to Accuracy Rating",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Journeyman's",
+        "tier_level": 11,
+        "text_plain": "11 (20—24)% increased Physical Damage+(21—46) to Accuracy Rating",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Reaver's",
+        "tier_level": 23,
+        "text_plain": "23 (25—34)% increased Physical Damage+(47—72) to Accuracy Rating",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Mercenary's",
+        "tier_level": 38,
+        "text_plain": "38 (35—44)% increased Physical Damage+(73—97) to Accuracy Rating",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Champion's",
+        "tier_level": 54,
+        "text_plain": "54 (45—54)% increased Physical Damage+(98—123) to Accuracy Rating",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Conqueror's",
+        "tier_level": 65,
+        "text_plain": "65 (55—64)% increased Physical Damage+(124—149) to Accuracy Rating",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Emperor's",
+        "tier_level": 70,
+        "text_plain": "70 (65—74)% increased Physical Damage+(150—174) to Accuracy Rating",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Dictator's",
+        "tier_level": 81,
+        "text_plain": "81 (75—79)% increased Physical Damage+(175—200) to Accuracy Rating",
+        "weight": 1,
+        "weight_pct": 1.429
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "normal",
+    "side": "prefix",
+    "text_plain": "# to Accuracy Rating",
+    "tier": 9,
+    "ilvl": 76,
+    "weight": 9,
+    "weight_pct": 12.857,
+    "tags": [
+      "attack"
+    ],
+    "family": "IncreasedAccuracy",
+    "tiers": [
+      {
+        "tier_name": "Precise",
+        "tier_level": 1,
+        "text_plain": "1 +(11—32) to Accuracy Rating",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Reliable",
+        "tier_level": 11,
+        "text_plain": "11 +(33—60) to Accuracy Rating",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Focused",
+        "tier_level": 18,
+        "text_plain": "18 +(61—84) to Accuracy Rating",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Deliberate",
+        "tier_level": 26,
+        "text_plain": "26 +(85—123) to Accuracy Rating",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Consistent",
+        "tier_level": 36,
+        "text_plain": "36 +(124—167) to Accuracy Rating",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Steady",
+        "tier_level": 48,
+        "text_plain": "48 +(168—236) to Accuracy Rating",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Hunter's",
+        "tier_level": 58,
+        "text_plain": "58 +(237—346) to Accuracy Rating",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Ranger's",
+        "tier_level": 67,
+        "text_plain": "67 +(347—450) to Accuracy Rating",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Amazon's",
+        "tier_level": 76,
+        "text_plain": "76 +(451—550) to Accuracy Rating",
+        "weight": 1,
+        "weight_pct": 1.429
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "normal",
+    "side": "prefix",
+    "text_plain": "#% increased Elemental Damage with Attacks",
+    "tier": 6,
+    "ilvl": 81,
+    "weight": 6,
+    "weight_pct": 8.571,
+    "tags": [
+      "damage",
+      "elemental",
+      "attack"
+    ],
+    "family": "IncreasedWeaponElementalDamagePercent",
+    "tiers": [
+      {
+        "tier_name": "Catalysing",
+        "tier_level": 4,
+        "text_plain": "4 (34—47)% increased Elemental Damage with Attacks",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Infusing",
+        "tier_level": 16,
+        "text_plain": "16 (48—71)% increased Elemental Damage with Attacks",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Empowering",
+        "tier_level": 33,
+        "text_plain": "33 (72—85)% increased Elemental Damage with Attacks",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Unleashed",
+        "tier_level": 46,
+        "text_plain": "46 (86—99)% increased Elemental Damage with Attacks",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Overpowering",
+        "tier_level": 60,
+        "text_plain": "60 (100—119)% increased Elemental Damage with Attacks",
+        "weight": 1,
+        "weight_pct": 1.429
+      },
+      {
+        "tier_name": "Devastating",
+        "tier_level": 81,
+        "text_plain": "81 (120—139)% increased Elemental Damage with Attacks",
+        "weight": 1,
+        "weight_pct": 1.429
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "# to Strength",
+    "tier": 8,
+    "ilvl": 74,
+    "weight": 8,
+    "weight_pct": 8.791,
+    "tags": [
+      "attribute"
+    ],
+    "family": "Strength",
+    "tiers": [
+      {
+        "tier_name": "of the Brute",
+        "tier_level": 1,
+        "text_plain": "1 +(5—8) to Strength",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Wrestler",
+        "tier_level": 11,
+        "text_plain": "11 +(9—12) to Strength",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Bear",
+        "tier_level": 22,
+        "text_plain": "22 +(13—16) to Strength",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Lion",
+        "tier_level": 33,
+        "text_plain": "33 +(17—20) to Strength",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Gorilla",
+        "tier_level": 44,
+        "text_plain": "44 +(21—24) to Strength",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Goliath",
+        "tier_level": 55,
+        "text_plain": "55 +(25—27) to Strength",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Leviathan",
+        "tier_level": 66,
+        "text_plain": "66 +(28—30) to Strength",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Titan",
+        "tier_level": 74,
+        "text_plain": "74 +(31—33) to Strength",
+        "weight": 1,
+        "weight_pct": 1.099
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "# to Intelligence",
+    "tier": 8,
+    "ilvl": 74,
+    "weight": 8,
+    "weight_pct": 8.791,
+    "tags": [
+      "attribute"
+    ],
+    "family": "Intelligence",
+    "tiers": [
+      {
+        "tier_name": "of the Pupil",
+        "tier_level": 1,
+        "text_plain": "1 +(5—8) to Intelligence",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Student",
+        "tier_level": 11,
+        "text_plain": "11 +(9—12) to Intelligence",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Prodigy",
+        "tier_level": 22,
+        "text_plain": "22 +(13—16) to Intelligence",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Augur",
+        "tier_level": 33,
+        "text_plain": "33 +(17—20) to Intelligence",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Philosopher",
+        "tier_level": 44,
+        "text_plain": "44 +(21—24) to Intelligence",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Sage",
+        "tier_level": 55,
+        "text_plain": "55 +(25—27) to Intelligence",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Savant",
+        "tier_level": 66,
+        "text_plain": "66 +(28—30) to Intelligence",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Virtuoso",
+        "tier_level": 74,
+        "text_plain": "74 +(31—33) to Intelligence",
+        "weight": 1,
+        "weight_pct": 1.099
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "#% reduced Attribute Requirements",
+    "tier": 5,
+    "ilvl": 60,
+    "weight": 5,
+    "weight_pct": 5.495,
+    "tags": [],
+    "family": "LocalAttributeRequirements",
+    "tiers": [
+      {
+        "tier_name": "of the Worthy",
+        "tier_level": 24,
+        "text_plain": "24 15% reduced Attribute Requirements",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Apt",
+        "tier_level": 32,
+        "text_plain": "32 20% reduced Attribute Requirements",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Talented",
+        "tier_level": 40,
+        "text_plain": "40 25% reduced Attribute Requirements",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Skilled",
+        "tier_level": 52,
+        "text_plain": "52 30% reduced Attribute Requirements",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Proficient",
+        "tier_level": 60,
+        "text_plain": "60 35% reduced Attribute Requirements",
+        "weight": 1,
+        "weight_pct": 1.099
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "# to Level of all Melee Skills",
+    "tier": 5,
+    "ilvl": 81,
+    "weight": 5,
+    "weight_pct": 5.495,
+    "tags": [
+      "attack"
+    ],
+    "family": "IncreaseSocketedGemLevel",
+    "tiers": [
+      {
+        "tier_name": "of Combat",
+        "tier_level": 2,
+        "text_plain": "2 +2 to Level of all Melee Skills",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Dueling",
+        "tier_level": 18,
+        "text_plain": "18 +3 to Level of all Melee Skills",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Conflict",
+        "tier_level": 36,
+        "text_plain": "36 +4 to Level of all Melee Skills",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Battle",
+        "tier_level": 55,
+        "text_plain": "55 +(5—6) to Level of all Melee Skills",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of War",
+        "tier_level": 81,
+        "text_plain": "81 +7 to Level of all Melee Skills",
+        "weight": 1,
+        "weight_pct": 1.099
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "Leeches #% of Physical Damage as Life",
+    "tier": 5,
+    "ilvl": 81,
+    "weight": 5,
+    "weight_pct": 5.495,
+    "tags": [
+      "life",
+      "physical",
+      "attack"
+    ],
+    "family": "LifeLeech",
+    "tiers": [
+      {
+        "tier_name": "of the Parasite",
+        "tier_level": 21,
+        "text_plain": "21 Leeches (5—5.9)% of Physical Damage as Life",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Locust",
+        "tier_level": 38,
+        "text_plain": "38 Leeches (6—6.9)% of Physical Damage as Life",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Remora",
+        "tier_level": 54,
+        "text_plain": "54 Leeches (7—7.9)% of Physical Damage as Life",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Lamprey",
+        "tier_level": 68,
+        "text_plain": "68 Leeches (8—8.9)% of Physical Damage as Life",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Vampire",
+        "tier_level": 81,
+        "text_plain": "81 Leeches (9—9.9)% of Physical Damage as Life",
+        "weight": 1,
+        "weight_pct": 1.099
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "Leeches #% of Physical Damage as Mana",
+    "tier": 5,
+    "ilvl": 81,
+    "weight": 5,
+    "weight_pct": 5.495,
+    "tags": [
+      "mana",
+      "physical",
+      "attack"
+    ],
+    "family": "ManaLeech",
+    "tiers": [
+      {
+        "tier_name": "of the Thirsty",
+        "tier_level": 21,
+        "text_plain": "21 Leeches (4—4.9)% of Physical Damage as Mana",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Parched",
+        "tier_level": 38,
+        "text_plain": "38 Leeches (5—5.9)% of Physical Damage as Mana",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Arid",
+        "tier_level": 54,
+        "text_plain": "54 Leeches (6—6.9)% of Physical Damage as Mana",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Drought",
+        "tier_level": 68,
+        "text_plain": "68 Leeches (7—7.9)% of Physical Damage as Mana",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Desperate",
+        "tier_level": 81,
+        "text_plain": "81 Leeches (8—8.9)% of Physical Damage as Mana",
+        "weight": 1,
+        "weight_pct": 1.099
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "Gain # Life per enemy killed",
+    "tier": 8,
+    "ilvl": 77,
+    "weight": 8,
+    "weight_pct": 8.791,
+    "tags": [
+      "life"
+    ],
+    "family": "LifeGainedFromEnemyDeath",
+    "tiers": [
+      {
+        "tier_name": "of Success",
+        "tier_level": 1,
+        "text_plain": "1 Gain (4—6) Life per enemy killed",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Victory",
+        "tier_level": 11,
+        "text_plain": "11 Gain (7—9) Life per enemy killed",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Triumph",
+        "tier_level": 22,
+        "text_plain": "22 Gain (10—18) Life per enemy killed",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Conquest",
+        "tier_level": 33,
+        "text_plain": "33 Gain (19—28) Life per enemy killed",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Vanquishing",
+        "tier_level": 44,
+        "text_plain": "44 Gain (29—40) Life per enemy killed",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Valour",
+        "tier_level": 55,
+        "text_plain": "55 Gain (41—53) Life per enemy killed",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Glory",
+        "tier_level": 66,
+        "text_plain": "66 Gain (54—68) Life per enemy killed",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Legend",
+        "tier_level": 77,
+        "text_plain": "77 Gain (69—84) Life per enemy killed",
+        "weight": 1,
+        "weight_pct": 1.099
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "Gain # Mana per enemy killed",
+    "tier": 8,
+    "ilvl": 78,
+    "weight": 8,
+    "weight_pct": 8.791,
+    "tags": [
+      "mana"
+    ],
+    "family": "ManaGainedFromEnemyDeath",
+    "tiers": [
+      {
+        "tier_name": "of Absorption",
+        "tier_level": 1,
+        "text_plain": "1 Gain (2—3) Mana per enemy killed",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Osmosis",
+        "tier_level": 12,
+        "text_plain": "12 Gain (4—5) Mana per enemy killed",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Infusion",
+        "tier_level": 23,
+        "text_plain": "23 Gain (6—9) Mana per enemy killed",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Enveloping",
+        "tier_level": 34,
+        "text_plain": "34 Gain (10—14) Mana per enemy killed",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Consumption",
+        "tier_level": 45,
+        "text_plain": "45 Gain (15—20) Mana per enemy killed",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Siphoning",
+        "tier_level": 56,
+        "text_plain": "56 Gain (21—27) Mana per enemy killed",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Devouring",
+        "tier_level": 67,
+        "text_plain": "67 Gain (28—35) Mana per enemy killed",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Assimilation",
+        "tier_level": 78,
+        "text_plain": "78 Gain (36—45) Mana per enemy killed",
+        "weight": 1,
+        "weight_pct": 1.099
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "Grants # Life per Enemy Hit",
+    "tier": 4,
+    "ilvl": 40,
+    "weight": 4,
+    "weight_pct": 4.396,
+    "tags": [
+      "life",
+      "attack"
+    ],
+    "family": "LifeGainPerTarget",
+    "tiers": [
+      {
+        "tier_name": "of Rejuvenation",
+        "tier_level": 8,
+        "text_plain": "8 Grants 2 Life per Enemy Hit",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Restoration",
+        "tier_level": 20,
+        "text_plain": "20 Grants 3 Life per Enemy Hit",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Regrowth",
+        "tier_level": 30,
+        "text_plain": "30 Grants 4 Life per Enemy Hit",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Nourishment",
+        "tier_level": 40,
+        "text_plain": "40 Grants 5 Life per Enemy Hit",
+        "weight": 1,
+        "weight_pct": 1.099
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "#% increased Attack Speed",
+    "tier": 8,
+    "ilvl": 77,
+    "weight": 8,
+    "weight_pct": 8.791,
+    "tags": [
+      "attack",
+      "speed"
+    ],
+    "family": "IncreasedAttackSpeed",
+    "tiers": [
+      {
+        "tier_name": "of Skill",
+        "tier_level": 1,
+        "text_plain": "1 (5—7)% increased Attack Speed",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Ease",
+        "tier_level": 11,
+        "text_plain": "11 (8—10)% increased Attack Speed",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Mastery",
+        "tier_level": 22,
+        "text_plain": "22 (11—13)% increased Attack Speed",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Renown",
+        "tier_level": 30,
+        "text_plain": "30 (14—16)% increased Attack Speed",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Acclaim",
+        "tier_level": 37,
+        "text_plain": "37 (17—19)% increased Attack Speed",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Fame",
+        "tier_level": 45,
+        "text_plain": "45 (20—22)% increased Attack Speed",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Infamy",
+        "tier_level": 60,
+        "text_plain": "60 (23—25)% increased Attack Speed",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Celebration",
+        "tier_level": 77,
+        "text_plain": "77 (26—28)% increased Attack Speed",
+        "weight": 1,
+        "weight_pct": 1.099
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "#% to Critical Hit Chance",
+    "tier": 6,
+    "ilvl": 73,
+    "weight": 6,
+    "weight_pct": 6.593,
+    "tags": [
+      "attack",
+      "critical"
+    ],
+    "family": "CriticalStrikeChanceIncrease",
+    "tiers": [
+      {
+        "tier_name": "of Menace",
+        "tier_level": 1,
+        "text_plain": "1 +(1.01—1.5)% to Critical Hit Chance",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Havoc",
+        "tier_level": 20,
+        "text_plain": "20 +(1.51—2.1)% to Critical Hit Chance",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Disaster",
+        "tier_level": 30,
+        "text_plain": "30 +(2.11—2.7)% to Critical Hit Chance",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Calamity",
+        "tier_level": 44,
+        "text_plain": "44 +(3.11—3.8)% to Critical Hit Chance",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Ruin",
+        "tier_level": 59,
+        "text_plain": "59 +(3.81—4.4)% to Critical Hit Chance",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Unmaking",
+        "tier_level": 73,
+        "text_plain": "73 +(4.41—5)% to Critical Hit Chance",
+        "weight": 1,
+        "weight_pct": 1.099
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "#% to Critical Damage Bonus",
+    "tier": 6,
+    "ilvl": 73,
+    "weight": 6,
+    "weight_pct": 6.593,
+    "tags": [
+      "damage",
+      "attack",
+      "critical"
+    ],
+    "family": "CriticalStrikeMultiplier",
+    "tiers": [
+      {
+        "tier_name": "of Ire",
+        "tier_level": 8,
+        "text_plain": "8 +(10—11)% to Critical Damage Bonus",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Anger",
+        "tier_level": 21,
+        "text_plain": "21 +(12—13)% to Critical Damage Bonus",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Rage",
+        "tier_level": 30,
+        "text_plain": "30 +(14—16)% to Critical Damage Bonus",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Fury",
+        "tier_level": 44,
+        "text_plain": "44 +(17—19)% to Critical Damage Bonus",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Ferocity",
+        "tier_level": 59,
+        "text_plain": "59 +(20—22)% to Critical Damage Bonus",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Destruction",
+        "tier_level": 73,
+        "text_plain": "73 +(23—25)% to Critical Damage Bonus",
+        "weight": 1,
+        "weight_pct": 1.099
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "# to Accuracy Rating#% increased Light Radius",
+    "tier": 3,
+    "ilvl": 30,
+    "weight": 3,
+    "weight_pct": 3.297,
+    "tags": [
+      "attack"
+    ],
+    "family": "LightRadiusAndAccuracy",
+    "tiers": [
+      {
+        "tier_name": "of Shining",
+        "tier_level": 8,
+        "text_plain": "8 +(10—20) to Accuracy Rating5% increased Light Radius",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Light",
+        "tier_level": 15,
+        "text_plain": "15 +(21—40) to Accuracy Rating10% increased Light Radius",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Radiance",
+        "tier_level": 30,
+        "text_plain": "30 +(41—60) to Accuracy Rating15% increased Light Radius",
+        "weight": 1,
+        "weight_pct": 1.099
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "#% increased Stun Duration",
+    "tier": 6,
+    "ilvl": 71,
+    "weight": 6,
+    "weight_pct": 6.593,
+    "tags": [],
+    "family": "StunDurationIncreasePercent",
+    "tiers": [
+      {
+        "tier_name": "of Impact",
+        "tier_level": 5,
+        "text_plain": "5 (11—13)% increased Stun Duration",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Dazing",
+        "tier_level": 18,
+        "text_plain": "18 (14—16)% increased Stun Duration",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Stunning",
+        "tier_level": 30,
+        "text_plain": "30 (17—19)% increased Stun Duration",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Slamming",
+        "tier_level": 44,
+        "text_plain": "44 (20—22)% increased Stun Duration",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of Staggering",
+        "tier_level": 58,
+        "text_plain": "58 (23—26)% increased Stun Duration",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Concussion",
+        "tier_level": 71,
+        "text_plain": "71 (27—30)% increased Stun Duration",
+        "weight": 1,
+        "weight_pct": 1.099
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "Causes #% increased Stun Buildup",
+    "tier": 6,
+    "ilvl": 74,
+    "weight": 6,
+    "weight_pct": 6.593,
+    "tags": [],
+    "family": "StunDamageIncrease",
+    "tiers": [
+      {
+        "tier_name": "of the Pugilist",
+        "tier_level": 5,
+        "text_plain": "5 Causes (21—30)% increased Stun Buildup",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Brawler",
+        "tier_level": 20,
+        "text_plain": "20 Causes (31—40)% increased Stun Buildup",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Boxer",
+        "tier_level": 30,
+        "text_plain": "30 Causes (41—50)% increased Stun Buildup",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Combatant",
+        "tier_level": 44,
+        "text_plain": "44 Causes (51—60)% increased Stun Buildup",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Gladiator",
+        "tier_level": 58,
+        "text_plain": "58 Causes (61—70)% increased Stun Buildup",
+        "weight": 1,
+        "weight_pct": 1.099
+      },
+      {
+        "tier_name": "of the Champion",
+        "tier_level": 74,
+        "text_plain": "74 Causes (71—80)% increased Stun Buildup",
+        "weight": 1,
+        "weight_pct": 1.099
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "desecrated",
+    "side": "prefix",
+    "text_plain": "Minions deal (60—79)% increased Damage if you've Hit Recently",
+    "tier": 1,
+    "ilvl": 65,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "amanamu_mod",
+      "damage",
+      "minion"
+    ],
+    "family": "IncreasedMinionDamageIfYouHitEnemy",
+    "tiers": [
+      {
+        "tier_name": "Amanamu's",
+        "tier_level": 65,
+        "text_plain": "65 Minions deal (60—79)% increased Damage if you've Hit Recently",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "desecrated",
+    "side": "prefix",
+    "text_plain": "Attacks with this Weapon Penetrate (15—25)% Fire Resistance",
+    "tier": 1,
+    "ilvl": 65,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "amanamu_mod",
+      "damage",
+      "elemental",
+      "fire",
+      "attack"
+    ],
+    "family": "FireResistancePenetration",
+    "tiers": [
+      {
+        "tier_name": "Amanamu's",
+        "tier_level": 65,
+        "text_plain": "65 Attacks with this Weapon Penetrate (15—25)% Fire Resistance",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "desecrated",
+    "side": "prefix",
+    "text_plain": "Companions deal (40—59)% increased Damage(40—59)% increased Damage while your Companion is in your Presence",
+    "tier": 1,
+    "ilvl": 65,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "amanamu_mod"
+    ],
+    "family": "CompanionDamage",
+    "tiers": [
+      {
+        "tier_name": "Amanamu's",
+        "tier_level": 65,
+        "text_plain": "65 Companions deal (40—59)% increased Damage(40—59)% increased Damage while your Companion is in your Presence",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "desecrated",
+    "side": "prefix",
+    "text_plain": "Empowered Attacks deal (86—99)% increased Damage",
+    "tier": 1,
+    "ilvl": 65,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "kurgal_mod",
+      "damage",
+      "attack"
+    ],
+    "family": "ExertedAttackDamage",
+    "tiers": [
+      {
+        "tier_name": "Kurgal's",
+        "tier_level": 65,
+        "text_plain": "65 Empowered Attacks deal (86—99)% increased Damage",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "desecrated",
+    "side": "prefix",
+    "text_plain": "Warcries Empower an additional Attack",
+    "tier": 1,
+    "ilvl": 65,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "kurgal_mod",
+      "attack"
+    ],
+    "family": "WarcriesExertAnAdditionalAttack",
+    "tiers": [
+      {
+        "tier_name": "Kurgal's",
+        "tier_level": 65,
+        "text_plain": "65 Warcries Empower an additional Attack",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "desecrated",
+    "side": "prefix",
+    "text_plain": "Attacks with this Weapon Penetrate (15—25)% Cold Resistance",
+    "tier": 1,
+    "ilvl": 65,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "kurgal_mod",
+      "damage",
+      "elemental",
+      "cold",
+      "attack"
+    ],
+    "family": "ColdResistancePenetration",
+    "tiers": [
+      {
+        "tier_name": "Kurgal's",
+        "tier_level": 65,
+        "text_plain": "65 Attacks with this Weapon Penetrate (15—25)% Cold Resistance",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "desecrated",
+    "side": "prefix",
+    "text_plain": "Melee Attack Skills have +1 to maximum number of Summoned Totems",
+    "tier": 1,
+    "ilvl": 65,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "ulaman_mod"
+    ],
+    "family": "AdditionalTotems",
+    "tiers": [
+      {
+        "tier_name": "Ulaman's",
+        "tier_level": 65,
+        "text_plain": "65 Melee Attack Skills have +1 to maximum number of Summoned Totems",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "desecrated",
+    "side": "prefix",
+    "text_plain": "(86—99)% increased Damage while you have a Totem",
+    "tier": 1,
+    "ilvl": 65,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "ulaman_mod",
+      "damage"
+    ],
+    "family": "TotemDamage",
+    "tiers": [
+      {
+        "tier_name": "Ulaman's",
+        "tier_level": 65,
+        "text_plain": "65 (86—99)% increased Damage while you have a Totem",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "desecrated",
+    "side": "prefix",
+    "text_plain": "Attacks with this Weapon Penetrate (15—25)% Lightning Resistance",
+    "tier": 1,
+    "ilvl": 65,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "ulaman_mod",
+      "damage",
+      "elemental",
+      "lightning",
+      "attack"
+    ],
+    "family": "LightningResistancePenetration",
+    "tiers": [
+      {
+        "tier_name": "Ulaman's",
+        "tier_level": 65,
+        "text_plain": "65 Attacks with this Weapon Penetrate (15—25)% Lightning Resistance",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "desecrated",
+    "side": "suffix",
+    "text_plain": "(12—18)% increased Attack SpeedCompanions have (12—18)% increased Attack Speed",
+    "tier": 1,
+    "ilvl": 65,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "amanamu_mod"
+    ],
+    "family": "CompanionAttackSpeed",
+    "tiers": [
+      {
+        "tier_name": "of Amanamu",
+        "tier_level": 65,
+        "text_plain": "65 (12—18)% increased Attack SpeedCompanions have (12—18)% increased Attack Speed",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "desecrated",
+    "side": "suffix",
+    "text_plain": "(5—10)% increased Spirit Reservation Efficiency of Skills",
+    "tier": 1,
+    "ilvl": 65,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "amanamu_mod"
+    ],
+    "family": "SpiritReservationEfficiency",
+    "tiers": [
+      {
+        "tier_name": "of Amanamu",
+        "tier_level": 65,
+        "text_plain": "65 (5—10)% increased Spirit Reservation Efficiency of Skills",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "desecrated",
+    "side": "suffix",
+    "text_plain": "Skills which create Fissures have a (25—31)% chance to create an additional Fissure",
+    "tier": 1,
+    "ilvl": 65,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "amanamu_mod",
+      "attack"
+    ],
+    "family": "FissureChance",
+    "tiers": [
+      {
+        "tier_name": "of Amanamu",
+        "tier_level": 65,
+        "text_plain": "65 Skills which create Fissures have a (25—31)% chance to create an additional Fissure",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "desecrated",
+    "side": "suffix",
+    "text_plain": "(8—15)% increased Cost Efficiency of Attacks",
+    "tier": 1,
+    "ilvl": 65,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "kurgal_mod",
+      "attack"
+    ],
+    "family": "ManaCostEfficiency",
+    "tiers": [
+      {
+        "tier_name": "of Kurgal",
+        "tier_level": 65,
+        "text_plain": "65 (8—15)% increased Cost Efficiency of Attacks",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "desecrated",
+    "side": "suffix",
+    "text_plain": "(25—31)% increased Warcry Cooldown Recovery Rate",
+    "tier": 1,
+    "ilvl": 65,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "kurgal_mod"
+    ],
+    "family": "WarcryCooldownSpeed",
+    "tiers": [
+      {
+        "tier_name": "of Kurgal",
+        "tier_level": 65,
+        "text_plain": "65 (25—31)% increased Warcry Cooldown Recovery Rate",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "desecrated",
+    "side": "suffix",
+    "text_plain": "(39—51)% increased Critical Hit Chance against Marked Enemies",
+    "tier": 1,
+    "ilvl": 65,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "kurgal_mod",
+      "critical"
+    ],
+    "family": "MarkCritical",
+    "tiers": [
+      {
+        "tier_name": "of Kurgal",
+        "tier_level": 65,
+        "text_plain": "65 (39—51)% increased Critical Hit Chance against Marked Enemies",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "desecrated",
+    "side": "suffix",
+    "text_plain": "(25—31)% increased Totem Placement speed",
+    "tier": 1,
+    "ilvl": 65,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "ulaman_mod",
+      "speed"
+    ],
+    "family": "SummonTotemCastSpeed",
+    "tiers": [
+      {
+        "tier_name": "of Ulaman",
+        "tier_level": 65,
+        "text_plain": "65 (25—31)% increased Totem Placement speed",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "desecrated",
+    "side": "suffix",
+    "text_plain": "(15—20)% of Skill Mana Costs Converted to Life Costs",
+    "tier": 1,
+    "ilvl": 65,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "ulaman_mod",
+      "life"
+    ],
+    "family": "LifeCost",
+    "tiers": [
+      {
+        "tier_name": "of Ulaman",
+        "tier_level": 65,
+        "text_plain": "65 (15—20)% of Skill Mana Costs Converted to Life Costs",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "essence",
+    "side": "prefix",
+    "text_plain": "Adds # to # Physical Damage",
+    "tier": 3,
+    "ilvl": 60,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "damage",
+      "physical",
+      "attack"
+    ],
+    "family": "PhysicalDamage",
+    "tiers": [
+      {
+        "tier_name": "Lesser Essence of Abrasion",
+        "tier_level": 8,
+        "text_plain": "8 Adds (5—8) to (10—15) Physical Damage",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Essence of Abrasion",
+        "tier_level": 46,
+        "text_plain": "46 Adds (14—21) to (25—37) Physical Damage",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Essence of Abrasion",
+        "tier_level": 60,
+        "text_plain": "60 Adds (23—35) to (39—59) Physical Damage",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "essence",
+    "side": "prefix",
+    "text_plain": "Adds # to # Fire Damage",
+    "tier": 3,
+    "ilvl": 60,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "damage",
+      "elemental",
+      "fire",
+      "attack"
+    ],
+    "family": "FireDamage",
+    "tiers": [
+      {
+        "tier_name": "Lesser Essence of Flames",
+        "tier_level": 8,
+        "text_plain": "8 Adds (6—9) to (10—16) Fire Damage",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Essence of Flames",
+        "tier_level": 46,
+        "text_plain": "46 Adds (30—37) to (45—56) Fire Damage",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Essence of Flames",
+        "tier_level": 60,
+        "text_plain": "60 Adds (56—70) to (84—107) Fire Damage",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "essence",
+    "side": "prefix",
+    "text_plain": "Adds # to # Cold Damage",
+    "tier": 3,
+    "ilvl": 60,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "damage",
+      "elemental",
+      "cold",
+      "attack"
+    ],
+    "family": "ColdDamage",
+    "tiers": [
+      {
+        "tier_name": "Lesser Essence of Ice",
+        "tier_level": 8,
+        "text_plain": "8 Adds (5—8) to (9—14) Cold Damage",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Essence of Ice",
+        "tier_level": 46,
+        "text_plain": "46 Adds (25—30) to (38—46) Cold Damage",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Essence of Ice",
+        "tier_level": 60,
+        "text_plain": "60 Adds (46—57) to (70—88) Cold Damage",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "essence",
+    "side": "prefix",
+    "text_plain": "Adds # to # Lightning Damage",
+    "tier": 3,
+    "ilvl": 60,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "damage",
+      "elemental",
+      "lightning",
+      "attack"
+    ],
+    "family": "LightningDamage",
+    "tiers": [
+      {
+        "tier_name": "Lesser Essence of Electricity",
+        "tier_level": 8,
+        "text_plain": "8 Adds (1—2) to (19—27) Lightning Damage",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Essence of Electricity",
+        "tier_level": 46,
+        "text_plain": "46 Adds (1—4) to (80—88) Lightning Damage",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Essence of Electricity",
+        "tier_level": 60,
+        "text_plain": "60 Adds (1—8) to (128—162) Lightning Damage",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "essence",
+    "side": "prefix",
+    "text_plain": "# to Accuracy Rating",
+    "tier": 4,
+    "ilvl": 58,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "attack"
+    ],
+    "family": "IncreasedAccuracy",
+    "tiers": [
+      {
+        "tier_name": "Lesser Essence of Battle",
+        "tier_level": 18,
+        "text_plain": "18 +(61—84) to Accuracy Rating",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Essence of Battle",
+        "tier_level": 36,
+        "text_plain": "36 +(124—167) to Accuracy Rating",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Essence of Battle",
+        "tier_level": 58,
+        "text_plain": "58 +(237—346) to Accuracy Rating",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Essence of Battle",
+        "tier_level": 58,
+        "text_plain": "58 +(237—346) to Accuracy Rating",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "essence",
+    "side": "prefix",
+    "text_plain": "Gain #% of Damage as Extra Physical DamageGain #% of Damage as Extra Fire DamageGain #% of Damage as Extra Cold DamageGain #% of Damage as Extra Lightning Damage",
+    "tier": 4,
+    "ilvl": 72,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "damage",
+      "physical"
+    ],
+    "family": "MartialWeaponGainedDamage",
+    "tiers": [
+      {
+        "tier_name": "Perfect Essence of Abrasion",
+        "tier_level": 72,
+        "text_plain": "72 Gain (25—33)% of Damage as Extra Physical Damage",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Perfect Essence of Flames",
+        "tier_level": 72,
+        "text_plain": "72 Gain (25—33)% of Damage as Extra Fire Damage",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Perfect Essence of Ice",
+        "tier_level": 72,
+        "text_plain": "72 Gain (25—33)% of Damage as Extra Cold Damage",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Perfect Essence of Electricity",
+        "tier_level": 72,
+        "text_plain": "72 Gain (25—33)% of Damage as Extra Lightning Damage",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "essence",
+    "side": "prefix",
+    "text_plain": "Mark of the Abyssal Lord",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "EssenceAbyss",
+    "tiers": [
+      {
+        "tier_name": "Essence of the Abyss",
+        "tier_level": 1,
+        "text_plain": "1 Mark of the Abyssal Lord",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "essence",
+    "side": "suffix",
+    "text_plain": "#% increased Attack Speed",
+    "tier": 3,
+    "ilvl": 60,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "attack",
+      "speed"
+    ],
+    "family": "IncreasedAttackSpeed",
+    "tiers": [
+      {
+        "tier_name": "Lesser Essence of Haste",
+        "tier_level": 22,
+        "text_plain": "22 (11—13)% increased Attack Speed",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Essence of Haste",
+        "tier_level": 37,
+        "text_plain": "37 (17—19)% increased Attack Speed",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Essence of Haste",
+        "tier_level": 60,
+        "text_plain": "60 (23—25)% increased Attack Speed",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "essence",
+    "side": "suffix",
+    "text_plain": "# to Strength, Dexterity or Intelligence",
+    "tier": 3,
+    "ilvl": 55,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "attribute"
+    ],
+    "family": "Strength",
+    "tiers": [
+      {
+        "tier_name": "Lesser Essence of the Infinite",
+        "tier_level": 11,
+        "text_plain": "11 +(9—12) to Strength, Dexterity or Intelligence",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Essence of the Infinite",
+        "tier_level": 33,
+        "text_plain": "33 +(17—20) to Strength, Dexterity or Intelligence",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Essence of the Infinite",
+        "tier_level": 55,
+        "text_plain": "55 +(25—27) to Strength, Dexterity or Intelligence",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "essence",
+    "side": "suffix",
+    "text_plain": "# to Strength, Dexterity or Intelligence",
+    "tier": 3,
+    "ilvl": 55,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "attribute"
+    ],
+    "family": "Dexterity",
+    "tiers": [
+      {
+        "tier_name": "Lesser Essence of the Infinite",
+        "tier_level": 11,
+        "text_plain": "11 +(9—12) to Strength, Dexterity or Intelligence",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Essence of the Infinite",
+        "tier_level": 33,
+        "text_plain": "33 +(17—20) to Strength, Dexterity or Intelligence",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Essence of the Infinite",
+        "tier_level": 55,
+        "text_plain": "55 +(25—27) to Strength, Dexterity or Intelligence",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "essence",
+    "side": "suffix",
+    "text_plain": "# to Strength, Dexterity or Intelligence",
+    "tier": 3,
+    "ilvl": 55,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "attribute"
+    ],
+    "family": "Intelligence",
+    "tiers": [
+      {
+        "tier_name": "Lesser Essence of the Infinite",
+        "tier_level": 11,
+        "text_plain": "11 +(9—12) to Strength, Dexterity or Intelligence",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Essence of the Infinite",
+        "tier_level": 33,
+        "text_plain": "33 +(17—20) to Strength, Dexterity or Intelligence",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Essence of the Infinite",
+        "tier_level": 55,
+        "text_plain": "55 +(25—27) to Strength, Dexterity or Intelligence",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "essence",
+    "side": "suffix",
+    "text_plain": "+5 to Level of all Attack Skills",
+    "tier": 1,
+    "ilvl": 72,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "attack"
+    ],
+    "family": "IncreaseSocketedGemLevel",
+    "tiers": [
+      {
+        "tier_name": "Perfect Essence of Battle",
+        "tier_level": 72,
+        "text_plain": "72 +5 to Level of all Attack Skills",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "essence",
+    "side": "suffix",
+    "text_plain": "(20—25)% chance to gain Onslaught on Killing Hits with this Weapon",
+    "tier": 1,
+    "ilvl": 72,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "speed"
+    ],
+    "family": "Onslaught",
+    "tiers": [
+      {
+        "tier_name": "Perfect Essence of Haste",
+        "tier_level": 72,
+        "text_plain": "72 (20—25)% chance to gain Onslaught on Killing Hits with this Weapon",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "essence",
+    "side": "suffix",
+    "text_plain": "#% to Critical Hit Chance",
+    "tier": 3,
+    "ilvl": 44,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [
+      "attack",
+      "critical"
+    ],
+    "family": "CriticalStrikeChanceIncrease",
+    "tiers": [
+      {
+        "tier_name": "Lesser Essence of Seeking",
+        "tier_level": 20,
+        "text_plain": "20 +(1.51—2.1)% to Critical Hit Chance",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Essence of Seeking",
+        "tier_level": 30,
+        "text_plain": "30 +(2.11—2.7)% to Critical Hit Chance",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Essence of Seeking",
+        "tier_level": 44,
+        "text_plain": "44 +(3.11—3.8)% to Critical Hit Chance",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "essence",
+    "side": "suffix",
+    "text_plain": "Mark of the Abyssal Lord",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "EssenceAbyss",
+    "tiers": [
+      {
+        "tier_name": "Essence of the Abyss",
+        "tier_level": 1,
+        "text_plain": "1 Mark of the Abyssal Lord",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "Adds # to # Fire Damage",
+    "tier": 3,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "DesertRune",
+    "tiers": [
+      {
+        "tier_name": "Lesser Desert Rune",
+        "tier_level": 1,
+        "text_plain": "1 Adds 4 to 6 Fire Damage",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Desert Rune",
+        "tier_level": 1,
+        "text_plain": "1 Adds 7 to 11 Fire Damage",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Desert Rune",
+        "tier_level": 1,
+        "text_plain": "1 Adds 13 to 16 Fire Damage",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "Adds # to # Cold Damage",
+    "tier": 3,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "GlacialRune",
+    "tiers": [
+      {
+        "tier_name": "Lesser Glacial Rune",
+        "tier_level": 1,
+        "text_plain": "1 Adds 3 to 5 Cold Damage",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Glacial Rune",
+        "tier_level": 1,
+        "text_plain": "1 Adds 6 to 10 Cold Damage",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Glacial Rune",
+        "tier_level": 1,
+        "text_plain": "1 Adds 9 to 15 Cold Damage",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "Adds # to # Lightning Damage",
+    "tier": 3,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "StormRune",
+    "tiers": [
+      {
+        "tier_name": "Lesser Storm Rune",
+        "tier_level": 1,
+        "text_plain": "1 Adds 1 to 10 Lightning Damage",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Storm Rune",
+        "tier_level": 1,
+        "text_plain": "1 Adds 1 to 20 Lightning Damage",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Storm Rune",
+        "tier_level": 1,
+        "text_plain": "1 Adds 1 to 30 Lightning Damage",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "#% increased Physical Damage",
+    "tier": 3,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "IronRune",
+    "tiers": [
+      {
+        "tier_name": "Lesser Iron Rune",
+        "tier_level": 1,
+        "text_plain": "1 14% increased Physical Damage",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Iron Rune",
+        "tier_level": 1,
+        "text_plain": "1 16% increased Physical Damage",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Iron Rune",
+        "tier_level": 1,
+        "text_plain": "1 18% increased Physical Damage",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "Leeches #% of Physical Damage as Life",
+    "tier": 3,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "BodyRune",
+    "tiers": [
+      {
+        "tier_name": "Lesser Body Rune",
+        "tier_level": 1,
+        "text_plain": "1 Leeches 2% of Physical Damage as Life",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Body Rune",
+        "tier_level": 1,
+        "text_plain": "1 Leeches 2.5% of Physical Damage as Life",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Body Rune",
+        "tier_level": 1,
+        "text_plain": "1 Leeches 3% of Physical Damage as Life",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "Leeches #% of Physical Damage as Mana",
+    "tier": 3,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "MindRune",
+    "tiers": [
+      {
+        "tier_name": "Lesser Mind Rune",
+        "tier_level": 1,
+        "text_plain": "1 Leeches 1.5% of Physical Damage as Mana",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Mind Rune",
+        "tier_level": 1,
+        "text_plain": "1 Leeches 2% of Physical Damage as Mana",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Mind Rune",
+        "tier_level": 1,
+        "text_plain": "1 Leeches 2.5% of Physical Damage as Mana",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "Gain # Life per enemy killed",
+    "tier": 3,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "RebirthRune",
+    "tiers": [
+      {
+        "tier_name": "Lesser Rebirth Rune",
+        "tier_level": 1,
+        "text_plain": "1 Gain 10 Life per enemy killed",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Rebirth Rune",
+        "tier_level": 1,
+        "text_plain": "1 Gain 20 Life per enemy killed",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Rebirth Rune",
+        "tier_level": 1,
+        "text_plain": "1 Gain 30 Life per enemy killed",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "Gain # Mana per enemy killed",
+    "tier": 3,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "InspirationRune",
+    "tiers": [
+      {
+        "tier_name": "Lesser Inspiration Rune",
+        "tier_level": 1,
+        "text_plain": "1 Gain 8 Mana per enemy killed",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Inspiration Rune",
+        "tier_level": 1,
+        "text_plain": "1 Gain 16 Mana per enemy killed",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Inspiration Rune",
+        "tier_level": 1,
+        "text_plain": "1 Gain 24 Mana per enemy killed",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "Causes #% increased Stun Buildup",
+    "tier": 3,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "StoneRune",
+    "tiers": [
+      {
+        "tier_name": "Lesser Stone Rune",
+        "tier_level": 1,
+        "text_plain": "1 Causes 20% increased Stun Buildup",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Stone Rune",
+        "tier_level": 1,
+        "text_plain": "1 Causes 25% increased Stun Buildup",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Stone Rune",
+        "tier_level": 1,
+        "text_plain": "1 Causes 30% increased Stun Buildup",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "# to Accuracy Rating",
+    "tier": 3,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "VisionRune",
+    "tiers": [
+      {
+        "tier_name": "Lesser Vision Rune",
+        "tier_level": 1,
+        "text_plain": "1 +50 to Accuracy Rating",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Vision Rune",
+        "tier_level": 1,
+        "text_plain": "1 +80 to Accuracy Rating",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Vision Rune",
+        "tier_level": 1,
+        "text_plain": "1 +110 to Accuracy Rating",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "15% chance to Poison on Hit with this weapon",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "SoulCoreofTacati",
+    "tiers": [
+      {
+        "tier_name": "Soul Core of Tacati",
+        "tier_level": 1,
+        "text_plain": "1 15% chance to Poison on Hit with this weapon",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "15% chance to cause Bleeding on Hit",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "SoulCoreofOpiloti",
+    "tiers": [
+      {
+        "tier_name": "Soul Core of Opiloti",
+        "tier_level": 1,
+        "text_plain": "1 15% chance to cause Bleeding on Hit",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "Recover 2% of maximum Life on Kill",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "SoulCoreofJiquani",
+    "tiers": [
+      {
+        "tier_name": "Soul Core of Jiquani",
+        "tier_level": 1,
+        "text_plain": "1 Recover 2% of maximum Life on Kill",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "Recover 2% of maximum Mana on Kill",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "SoulCoreofZalatl",
+    "tiers": [
+      {
+        "tier_name": "Soul Core of Zalatl",
+        "tier_level": 1,
+        "text_plain": "1 Recover 2% of maximum Mana on Kill",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "30% increased Elemental Damage with Attacks",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "SoulCoreofCitaqualotl",
+    "tiers": [
+      {
+        "tier_name": "Soul Core of Citaqualotl",
+        "tier_level": 1,
+        "text_plain": "1 30% increased Elemental Damage with Attacks",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "30% increased Flammability Magnitude",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "SoulCoreofPuhuarte",
+    "tiers": [
+      {
+        "tier_name": "Soul Core of Puhuarte",
+        "tier_level": 1,
+        "text_plain": "1 30% increased Flammability Magnitude",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "30% increased Freeze Buildup",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "SoulCoreofTzamoto",
+    "tiers": [
+      {
+        "tier_name": "Soul Core of Tzamoto",
+        "tier_level": 1,
+        "text_plain": "1 30% increased Freeze Buildup",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "30% increased chance to Shock",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "SoulCoreofXopec",
+    "tiers": [
+      {
+        "tier_name": "Soul Core of Xopec",
+        "tier_level": 1,
+        "text_plain": "1 30% increased chance to Shock",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "+15 to Spirit",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "SoulCoreofAzcapa",
+    "tiers": [
+      {
+        "tier_name": "Soul Core of Azcapa",
+        "tier_level": 1,
+        "text_plain": "1 +15 to Spirit",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "Attacks with this Weapon Penetrate 15% Elemental Resistances",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "SoulCoreofTopotante",
+    "tiers": [
+      {
+        "tier_name": "Soul Core of Topotante",
+        "tier_level": 1,
+        "text_plain": "1 Attacks with this Weapon Penetrate 15% Elemental Resistances",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "5% increased Attack Speed",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "SoulCoreofQuipolatl",
+    "tiers": [
+      {
+        "tier_name": "Soul Core of Quipolatl",
+        "tier_level": 1,
+        "text_plain": "1 5% increased Attack Speed",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "+5% to Critical Damage Bonus",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "SoulCoreofTicaba",
+    "tiers": [
+      {
+        "tier_name": "Soul Core of Ticaba",
+        "tier_level": 1,
+        "text_plain": "1 +5% to Critical Damage Bonus",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "Convert 20% of Requirements to Strength",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "SoulCoreofAtmohua",
+    "tiers": [
+      {
+        "tier_name": "Soul Core of Atmohua",
+        "tier_level": 1,
+        "text_plain": "1 Convert 20% of Requirements to Strength",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "Convert 20% of Requirements to Dexterity",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "SoulCoreofCholotl",
+    "tiers": [
+      {
+        "tier_name": "Soul Core of Cholotl",
+        "tier_level": 1,
+        "text_plain": "1 Convert 20% of Requirements to Dexterity",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "Convert 20% of Requirements to Intelligence",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "SoulCoreofZantipi",
+    "tiers": [
+      {
+        "tier_name": "Soul Core of Zantipi",
+        "tier_level": 1,
+        "text_plain": "1 Convert 20% of Requirements to Intelligence",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "Minions gain 10% of their Physical Damage as Extra Lightning Damage",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "RuneofLeadership",
+    "tiers": [
+      {
+        "tier_name": "Greater Rune of Leadership",
+        "tier_level": 1,
+        "text_plain": "1 Minions gain 10% of their Physical Damage as Extra Lightning Damage",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "Meta Skills gain 10% increased Energy",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "RuneofTithing",
+    "tiers": [
+      {
+        "tier_name": "Greater Rune of Tithing",
+        "tier_level": 1,
+        "text_plain": "1 Meta Skills gain 10% increased Energy",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "8% increased Skill Speed",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "RuneofAlacrity",
+    "tiers": [
+      {
+        "tier_name": "Greater Rune of Alacrity",
+        "tier_level": 1,
+        "text_plain": "1 8% increased Skill Speed",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "Attacks with this Weapon have 10% chance to inflict Exposure",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "RuneofNobility",
+    "tiers": [
+      {
+        "tier_name": "Greater Rune of Nobility",
+        "tier_level": 1,
+        "text_plain": "1 Attacks with this Weapon have 10% chance to inflict Exposure",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "# to Strength",
+    "tier": 3,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "RobustRune",
+    "tiers": [
+      {
+        "tier_name": "Lesser Robust Rune",
+        "tier_level": 1,
+        "text_plain": "1 +6 to Strength",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Robust Rune",
+        "tier_level": 1,
+        "text_plain": "1 +8 to Strength",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Robust Rune",
+        "tier_level": 1,
+        "text_plain": "1 +10 to Strength",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "# to Dexterity",
+    "tier": 3,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "AdeptRune",
+    "tiers": [
+      {
+        "tier_name": "Lesser Adept Rune",
+        "tier_level": 1,
+        "text_plain": "1 +6 to Dexterity",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Adept Rune",
+        "tier_level": 1,
+        "text_plain": "1 +8 to Dexterity",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Adept Rune",
+        "tier_level": 1,
+        "text_plain": "1 +10 to Dexterity",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "# to Intelligence",
+    "tier": 3,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "ResolveRune",
+    "tiers": [
+      {
+        "tier_name": "Lesser Resolve Rune",
+        "tier_level": 1,
+        "text_plain": "1 +6 to Intelligence",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Resolve Rune",
+        "tier_level": 1,
+        "text_plain": "1 +8 to Intelligence",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Resolve Rune",
+        "tier_level": 1,
+        "text_plain": "1 +10 to Intelligence",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "Adds # to # Physical Damage",
+    "tier": 3,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "TemperedRune",
+    "tiers": [
+      {
+        "tier_name": "Lesser Tempered Rune",
+        "tier_level": 1,
+        "text_plain": "1 Adds 3 to 4 Physical Damage",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Tempered Rune",
+        "tier_level": 1,
+        "text_plain": "1 Adds 6 to 9 Physical Damage",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Tempered Rune",
+        "tier_level": 1,
+        "text_plain": "1 Adds 9 to 12 Physical Damage",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "Gain 5% of Damage as Extra Damage of all Elements",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "SaqawalsRuneoftheSky",
+    "tiers": [
+      {
+        "tier_name": "Saqawal's Rune of the Sky",
+        "tier_level": 1,
+        "text_plain": "1 Gain 5% of Damage as Extra Damage of all Elements",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "Gain 13% of Damage as Extra Chaos Damage",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "FenumusRuneofAgony",
+    "tiers": [
+      {
+        "tier_name": "Fenumus' Rune of Agony",
+        "tier_level": 1,
+        "text_plain": "1 Gain 13% of Damage as Extra Chaos Damage",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "50% increased Attack Damage against Rare or Unique Enemies",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "FarrulsRuneoftheHunt",
+    "tiers": [
+      {
+        "tier_name": "Farrul's Rune of the Hunt",
+        "tier_level": 1,
+        "text_plain": "1 50% increased Attack Damage against Rare or Unique Enemies",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "Adds 23 to 34 Fire Damage",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "ThaneMyrksRuneofSummer",
+    "tiers": [
+      {
+        "tier_name": "Thane Myrk's Rune of Summer",
+        "tier_level": 1,
+        "text_plain": "1 Adds 23 to 34 Fire Damage",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "Adds 19 to 28 Cold Damage",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "LadyHestrasRuneofWinter",
+    "tiers": [
+      {
+        "tier_name": "Lady Hestra's Rune of Winter",
+        "tier_level": 1,
+        "text_plain": "1 Adds 19 to 28 Cold Damage",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "Adds 1 to 60 Lightning Damage",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "ThaneLeldsRuneofSpring",
+    "tiers": [
+      {
+        "tier_name": "Thane Leld's Rune of Spring",
+        "tier_level": 1,
+        "text_plain": "1 Adds 1 to 60 Lightning Damage",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "25% reduced Poison DurationTargets can be affected by +1 of your Poisons at the same time",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "IdolofThruldana",
+    "tiers": [
+      {
+        "tier_name": "Idol of Thruldana",
+        "tier_level": 1,
+        "text_plain": "1 25% reduced Poison DurationTargets can be affected by +1 of your Poisons at the same time",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "50% chance when you gain a Frenzy Charge to gain an additional Frenzy Charge",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "OpilotisSoulCoreofAssault",
+    "tiers": [
+      {
+        "tier_name": "Opiloti's Soul Core of Assault",
+        "tier_level": 1,
+        "text_plain": "1 50% chance when you gain a Frenzy Charge to gain an additional Frenzy Charge",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "50% chance when you gain an Endurance Charge to gain an additional Endurance Charge",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "GuatelitzisSoulCoreofEndurance",
+    "tiers": [
+      {
+        "tier_name": "Guatelitzi's Soul Core of Endurance",
+        "tier_level": 1,
+        "text_plain": "1 50% chance when you gain an Endurance Charge to gain an additional Endurance Charge",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "50% chance when you gain a Power Charge to gain an additional Power Charge",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "XopecsSoulCoreofPower",
+    "tiers": [
+      {
+        "tier_name": "Xopec's Soul Core of Power",
+        "tier_level": 1,
+        "text_plain": "1 50% chance when you gain a Power Charge to gain an additional Power Charge",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "socketable",
+    "side": "none",
+    "text_plain": "Adds 19 to 29 Chaos damage",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "CitaqualotlsSoulCoreofFoulness",
+    "tiers": [
+      {
+        "tier_name": "Citaqualotl's Soul Core of Foulness",
+        "tier_level": 1,
+        "text_plain": "1 Adds 19 to 29 Chaos damage",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "unknown",
+    "side": "none",
+    "text_plain": "#% increased Ignite Magnitude",
+    "tier": 3,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "DesertRune",
+    "tiers": [
+      {
+        "tier_name": "Lesser Desert Rune",
+        "tier_level": 1,
+        "text_plain": "1 25% increased Ignite Magnitude",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Desert Rune",
+        "tier_level": 1,
+        "text_plain": "1 25% increased Ignite Magnitude",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Desert Rune",
+        "tier_level": 1,
+        "text_plain": "1 25% increased Ignite Magnitude",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "unknown",
+    "side": "none",
+    "text_plain": "#% increased Freeze Buildup",
+    "tier": 3,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "GlacialRune",
+    "tiers": [
+      {
+        "tier_name": "Lesser Glacial Rune",
+        "tier_level": 1,
+        "text_plain": "1 30% increased Freeze Buildup",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Glacial Rune",
+        "tier_level": 1,
+        "text_plain": "1 30% increased Freeze Buildup",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Glacial Rune",
+        "tier_level": 1,
+        "text_plain": "1 30% increased Freeze Buildup",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "unknown",
+    "side": "none",
+    "text_plain": "#% increased Magnitude of Shock you inflict",
+    "tier": 3,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "StormRune",
+    "tiers": [
+      {
+        "tier_name": "Lesser Storm Rune",
+        "tier_level": 1,
+        "text_plain": "1 30% increased Magnitude of Shock you inflict",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Storm Rune",
+        "tier_level": 1,
+        "text_plain": "1 30% increased Magnitude of Shock you inflict",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Storm Rune",
+        "tier_level": 1,
+        "text_plain": "1 30% increased Magnitude of Shock you inflict",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "unknown",
+    "side": "none",
+    "text_plain": "#% increased effect of Fully Broken Armour",
+    "tier": 3,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "IronRune",
+    "tiers": [
+      {
+        "tier_name": "Lesser Iron Rune",
+        "tier_level": 1,
+        "text_plain": "1 20% increased effect of Fully Broken Armour",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Iron Rune",
+        "tier_level": 1,
+        "text_plain": "1 20% increased effect of Fully Broken Armour",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Iron Rune",
+        "tier_level": 1,
+        "text_plain": "1 20% increased effect of Fully Broken Armour",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "unknown",
+    "side": "none",
+    "text_plain": "#% increased maximum Life",
+    "tier": 3,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "BodyRune",
+    "tiers": [
+      {
+        "tier_name": "Lesser Body Rune",
+        "tier_level": 1,
+        "text_plain": "1 5% increased maximum Life",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Body Rune",
+        "tier_level": 1,
+        "text_plain": "1 5% increased maximum Life",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Body Rune",
+        "tier_level": 1,
+        "text_plain": "1 5% increased maximum Life",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "unknown",
+    "side": "none",
+    "text_plain": "#% increased maximum Mana",
+    "tier": 3,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "MindRune",
+    "tiers": [
+      {
+        "tier_name": "Lesser Mind Rune",
+        "tier_level": 1,
+        "text_plain": "1 5% increased maximum Mana",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Mind Rune",
+        "tier_level": 1,
+        "text_plain": "1 5% increased maximum Mana",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Mind Rune",
+        "tier_level": 1,
+        "text_plain": "1 5% increased maximum Mana",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "unknown",
+    "side": "none",
+    "text_plain": "Regenerate #% of maximum Life per second",
+    "tier": 3,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "RebirthRune",
+    "tiers": [
+      {
+        "tier_name": "Lesser Rebirth Rune",
+        "tier_level": 1,
+        "text_plain": "1 Regenerate 0.4% of maximum Life per second",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Rebirth Rune",
+        "tier_level": 1,
+        "text_plain": "1 Regenerate 0.4% of maximum Life per second",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Rebirth Rune",
+        "tier_level": 1,
+        "text_plain": "1 Regenerate 0.4% of maximum Life per second",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "unknown",
+    "side": "none",
+    "text_plain": "#% of Skill Mana Costs Converted to Life Costs",
+    "tier": 3,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "InspirationRune",
+    "tiers": [
+      {
+        "tier_name": "Lesser Inspiration Rune",
+        "tier_level": 1,
+        "text_plain": "1 12% of Skill Mana Costs Converted to Life Costs",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Inspiration Rune",
+        "tier_level": 1,
+        "text_plain": "1 12% of Skill Mana Costs Converted to Life Costs",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Inspiration Rune",
+        "tier_level": 1,
+        "text_plain": "1 12% of Skill Mana Costs Converted to Life Costs",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "unknown",
+    "side": "none",
+    "text_plain": "#% increased Damage against Immobilised Enemies",
+    "tier": 3,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "StoneRune",
+    "tiers": [
+      {
+        "tier_name": "Lesser Stone Rune",
+        "tier_level": 1,
+        "text_plain": "1 40% increased Damage against Immobilised Enemies",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Stone Rune",
+        "tier_level": 1,
+        "text_plain": "1 40% increased Damage against Immobilised Enemies",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Stone Rune",
+        "tier_level": 1,
+        "text_plain": "1 40% increased Damage against Immobilised Enemies",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "unknown",
+    "side": "none",
+    "text_plain": "Attacks have #% to Critical Hit Chance",
+    "tier": 3,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "VisionRune",
+    "tiers": [
+      {
+        "tier_name": "Lesser Vision Rune",
+        "tier_level": 1,
+        "text_plain": "1 Attacks have +1% to Critical Hit Chance",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Vision Rune",
+        "tier_level": 1,
+        "text_plain": "1 Attacks have +1% to Critical Hit Chance",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Vision Rune",
+        "tier_level": 1,
+        "text_plain": "1 Attacks have +1% to Critical Hit Chance",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "unknown",
+    "side": "none",
+    "text_plain": "Minions deal 20% increased Damage",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "RuneofLeadership",
+    "tiers": [
+      {
+        "tier_name": "Greater Rune of Leadership",
+        "tier_level": 1,
+        "text_plain": "1 Minions deal 20% increased Damage",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "unknown",
+    "side": "none",
+    "text_plain": "Invocated Spells have 25% chance to consume half as much Energy",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "RuneofTithing",
+    "tiers": [
+      {
+        "tier_name": "Greater Rune of Tithing",
+        "tier_level": 1,
+        "text_plain": "1 Invocated Spells have 25% chance to consume half as much Energy",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "unknown",
+    "side": "none",
+    "text_plain": "15% increased Reservation Efficiency of Herald Skills",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "RuneofAlacrity",
+    "tiers": [
+      {
+        "tier_name": "Greater Rune of Alacrity",
+        "tier_level": 1,
+        "text_plain": "1 15% increased Reservation Efficiency of Herald Skills",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "unknown",
+    "side": "none",
+    "text_plain": "20% increased Exposure Effect",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "RuneofNobility",
+    "tiers": [
+      {
+        "tier_name": "Greater Rune of Nobility",
+        "tier_level": 1,
+        "text_plain": "1 20% increased Exposure Effect",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "unknown",
+    "side": "none",
+    "text_plain": "Adds # to # Physical Damage to AttacksAdds # to # Fire damage to Attacks",
+    "tier": 3,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "RobustRune",
+    "tiers": [
+      {
+        "tier_name": "Lesser Robust Rune",
+        "tier_level": 1,
+        "text_plain": "1 Adds 6 to 10 Physical Damage to AttacksAdds 6 to 10 Fire damage to Attacks",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Robust Rune",
+        "tier_level": 1,
+        "text_plain": "1 Adds 6 to 10 Physical Damage to AttacksAdds 6 to 10 Fire damage to Attacks",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Robust Rune",
+        "tier_level": 1,
+        "text_plain": "1 Adds 6 to 10 Physical Damage to AttacksAdds 6 to 10 Fire damage to Attacks",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "unknown",
+    "side": "none",
+    "text_plain": "Adds # to # Physical Damage to AttacksAdds # to # Lightning damage to Attacks",
+    "tier": 3,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "AdeptRune",
+    "tiers": [
+      {
+        "tier_name": "Lesser Adept Rune",
+        "tier_level": 1,
+        "text_plain": "1 Adds 6 to 10 Physical Damage to AttacksAdds 1 to 16 Lightning damage to Attacks",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Adept Rune",
+        "tier_level": 1,
+        "text_plain": "1 Adds 6 to 10 Physical Damage to AttacksAdds 1 to 16 Lightning damage to Attacks",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Adept Rune",
+        "tier_level": 1,
+        "text_plain": "1 Adds 6 to 10 Physical Damage to AttacksAdds 1 to 16 Lightning damage to Attacks",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "unknown",
+    "side": "none",
+    "text_plain": "Adds # to # Physical Damage to AttacksAdds # to # Cold damage to Attacks",
+    "tier": 3,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "ResolveRune",
+    "tiers": [
+      {
+        "tier_name": "Lesser Resolve Rune",
+        "tier_level": 1,
+        "text_plain": "1 Adds 6 to 10 Physical Damage to AttacksAdds 5 to 8 Cold damage to Attacks",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Resolve Rune",
+        "tier_level": 1,
+        "text_plain": "1 Adds 6 to 10 Physical Damage to AttacksAdds 5 to 8 Cold damage to Attacks",
+        "weight": 0,
+        "weight_pct": 0
+      },
+      {
+        "tier_name": "Greater Resolve Rune",
+        "tier_level": 1,
+        "text_plain": "1 Adds 6 to 10 Physical Damage to AttacksAdds 5 to 8 Cold damage to Attacks",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "unknown",
+    "side": "none",
+    "text_plain": "8% chance to gain an additional random Charge when you gain a Charge",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "SaqawalsRuneoftheSky",
+    "tiers": [
+      {
+        "tier_name": "Saqawal's Rune of the Sky",
+        "tier_level": 1,
+        "text_plain": "1 8% chance to gain an additional random Charge when you gain a Charge",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "unknown",
+    "side": "none",
+    "text_plain": "Gain 8% of Damage as Extra Physical Damage",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "FenumusRuneofAgony",
+    "tiers": [
+      {
+        "tier_name": "Fenumus' Rune of Agony",
+        "tier_level": 1,
+        "text_plain": "1 Gain 8% of Damage as Extra Physical Damage",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "unknown",
+    "side": "none",
+    "text_plain": "+1 to Level of all Attack Skills",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "FarrulsRuneoftheHunt",
+    "tiers": [
+      {
+        "tier_name": "Farrul's Rune of the Hunt",
+        "tier_level": 1,
+        "text_plain": "1 +1 to Level of all Attack Skills",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "unknown",
+    "side": "none",
+    "text_plain": "+2% to Maximum Fire Resistance",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "ThaneMyrksRuneofSummer",
+    "tiers": [
+      {
+        "tier_name": "Thane Myrk's Rune of Summer",
+        "tier_level": 1,
+        "text_plain": "1 +2% to Maximum Fire Resistance",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "unknown",
+    "side": "none",
+    "text_plain": "+2% to Maximum Cold Resistance",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "LadyHestrasRuneofWinter",
+    "tiers": [
+      {
+        "tier_name": "Lady Hestra's Rune of Winter",
+        "tier_level": 1,
+        "text_plain": "1 +2% to Maximum Cold Resistance",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "unknown",
+    "side": "none",
+    "text_plain": "+2% to Maximum Lightning Resistance",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "ThaneLeldsRuneofSpring",
+    "tiers": [
+      {
+        "tier_name": "Thane Leld's Rune of Spring",
+        "tier_level": 1,
+        "text_plain": "1 +2% to Maximum Lightning Resistance",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "unknown",
+    "side": "none",
+    "text_plain": "Gain 13% of Elemental Damage as Extra Chaos Damage",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 0,
+    "weight_pct": 0,
+    "tags": [],
+    "family": "IdolofThruldana",
+    "tiers": [
+      {
+        "tier_name": "Idol of Thruldana",
+        "tier_level": 1,
+        "text_plain": "1 Gain 13% of Elemental Damage as Extra Chaos Damage",
+        "weight": 0,
+        "weight_pct": 0
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "corrupted",
+    "side": "none",
+    "text_plain": "(10—20)% reduced Attribute Requirements",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 1,
+    "weight_pct": 11.111,
+    "tags": [],
+    "family": "LocalAttributeRequirements",
+    "tiers": [
+      {
+        "tier_name": "CorruptionReducedLocalAttributeRequirements1",
+        "tier_level": 1,
+        "text_plain": "1 (10—20)% reduced Attribute Requirements",
+        "weight": 1,
+        "weight_pct": 11.111
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "corrupted",
+    "side": "none",
+    "text_plain": "(15—25)% increased Physical Damage",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 1,
+    "weight_pct": 11.111,
+    "tags": [
+      "damage",
+      "physical",
+      "attack"
+    ],
+    "family": "LocalPhysicalDamagePercent",
+    "tiers": [
+      {
+        "tier_name": "CorruptionLocalIncreasedPhysicalDamagePercent1",
+        "tier_level": 1,
+        "text_plain": "1 (15—25)% increased Physical Damage",
+        "weight": 1,
+        "weight_pct": 11.111
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "corrupted",
+    "side": "none",
+    "text_plain": "Adds (13—20) to (21—31) Fire Damage",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 1,
+    "weight_pct": 11.111,
+    "tags": [
+      "damage",
+      "elemental",
+      "fire",
+      "attack"
+    ],
+    "family": "FireDamage",
+    "tiers": [
+      {
+        "tier_name": "CorruptionLocalAddedFireDamageTwoHand1",
+        "tier_level": 1,
+        "text_plain": "1 Adds (13—20) to (21—31) Fire Damage",
+        "weight": 1,
+        "weight_pct": 11.111
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "corrupted",
+    "side": "none",
+    "text_plain": "Adds (11—17) to (18—26) Cold Damage",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 1,
+    "weight_pct": 11.111,
+    "tags": [
+      "damage",
+      "elemental",
+      "cold",
+      "attack"
+    ],
+    "family": "ColdDamage",
+    "tiers": [
+      {
+        "tier_name": "CorruptionLocalAddedColdDamageTwoHand1",
+        "tier_level": 1,
+        "text_plain": "1 Adds (11—17) to (18—26) Cold Damage",
+        "weight": 1,
+        "weight_pct": 11.111
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "corrupted",
+    "side": "none",
+    "text_plain": "Adds (1—3) to (41—61) Lightning Damage",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 1,
+    "weight_pct": 11.111,
+    "tags": [
+      "damage",
+      "elemental",
+      "lightning",
+      "attack"
+    ],
+    "family": "LightningDamage",
+    "tiers": [
+      {
+        "tier_name": "CorruptionLocalAddedLightningDamageTwoHand1",
+        "tier_level": 1,
+        "text_plain": "1 Adds (1—3) to (41—61) Lightning Damage",
+        "weight": 1,
+        "weight_pct": 11.111
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "corrupted",
+    "side": "none",
+    "text_plain": "Adds (10—16) to (17—25) Chaos damage",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 1,
+    "weight_pct": 11.111,
+    "tags": [
+      "damage",
+      "chaos",
+      "attack"
+    ],
+    "family": "LocalChaosDamage",
+    "tiers": [
+      {
+        "tier_name": "CorruptionLocalAddedChaosDamageTwoHand1",
+        "tier_level": 1,
+        "text_plain": "1 Adds (10—16) to (17—25) Chaos damage",
+        "weight": 1,
+        "weight_pct": 11.111
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "corrupted",
+    "side": "none",
+    "text_plain": "(6—8)% increased Attack Speed",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 1,
+    "weight_pct": 11.111,
+    "tags": [
+      "attack",
+      "speed"
+    ],
+    "family": "IncreasedAttackSpeed",
+    "tiers": [
+      {
+        "tier_name": "CorruptionLocalIncreasedAttackSpeed1",
+        "tier_level": 1,
+        "text_plain": "1 (6—8)% increased Attack Speed",
+        "weight": 1,
+        "weight_pct": 11.111
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "corrupted",
+    "side": "none",
+    "text_plain": "+(5—10)% to Critical Damage Bonus",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 1,
+    "weight_pct": 11.111,
+    "tags": [
+      "damage",
+      "attack",
+      "critical"
+    ],
+    "family": "CriticalStrikeMultiplier",
+    "tiers": [
+      {
+        "tier_name": "CorruptionLocalCriticalStrikeMultiplier1",
+        "tier_level": 1,
+        "text_plain": "1 +(5—10)% to Critical Damage Bonus",
+        "weight": 1,
+        "weight_pct": 11.111
+      }
+    ]
+  },
+  {
+    "category": "Talismans",
+    "domain": "corrupted",
+    "side": "none",
+    "text_plain": "(40—50)% increased Elemental Damage with Attacks",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 1,
+    "weight_pct": 11.111,
+    "tags": [
+      "damage",
+      "elemental",
+      "attack"
+    ],
+    "family": "IncreasedWeaponElementalDamagePercent",
+    "tiers": [
+      {
+        "tier_name": "CorruptionWeaponElementalDamageTwoHand1",
+        "tier_level": 1,
+        "text_plain": "1 (40—50)% increased Elemental Damage with Attacks",
+        "weight": 1,
+        "weight_pct": 11.111
+      }
+    ]
+  }
+]

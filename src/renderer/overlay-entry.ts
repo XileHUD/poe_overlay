@@ -11,7 +11,7 @@ import './overlay/history/globals';
 import './overlay/crafting/liquid/globals';
 import './overlay/crafting/essences/globals';
 import './overlay/crafting/catalysts/globals';
-import './overlay/crafting/socketables/globals';
+import './overlay/crafting/augments/globals';
 import './overlay/crafting/omens/globals';
 import './overlay/crafting/currency/globals';
 

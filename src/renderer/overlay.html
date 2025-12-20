@@ -352,9 +352,9 @@
                         <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 5-3 5-3-5 3-5z"/><path d="M5 19h14"/><path d="M5 15h14"/></svg></span>
                         <span>Catalysts</span>
                     </div>
-                    <div class="crafting-menu-item poe2-only" data-action="socketables" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
+                    <div class="crafting-menu-item poe2-only" data-action="augments" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
                         <span class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="7" height="8" rx="1"/><rect x="14" y="5" width="7" height="14" rx="1"/></svg></span>
-                        <span>Socketables</span>
+                        <span>Augments</span>
                     </div>
                     <!-- PoE1 Crafting Items -->
                     <div class="crafting-menu-item poe1-only" data-action="poe1-scarabs" style="padding:6px 8px; font-size:12px; white-space:nowrap; cursor:pointer; display:flex; align-items:center; gap:6px;">
@@ -1117,7 +1117,7 @@
     if (key === 'omens') { markCraftingAction('omens'); return; }
     if (key === 'currency') { markCraftingAction('currency'); return; }
     if (key === 'catalysts') { markCraftingAction('catalysts'); return; }
-    if (key === 'socketables') { markCraftingAction('socketables'); return; }
+    if (key === 'augments') { markCraftingAction('augments'); return; }
     if (key === 'poe1 runegrafts' || key === 'runegrafts') { markCraftingAction('poe1-runegrafts'); return; }
     if (key === 'poe1 horticrafting' || key === 'horticrafting') { markCraftingAction('poe1-horticrafting'); return; }
     if (key === 'poe1 bestiary' || key === 'bestiary') { markCraftingAction('poe1-bestiary'); return; }
@@ -1177,7 +1177,7 @@
                 if (key === 'omens') { await showOmens(); setHeader('Omens'); recordHeaderAction('Omens'); return true; }
                 if (key === 'currency') { await showCurrency(); setHeader('Currency'); recordHeaderAction('Currency'); return true; }
                 if (key === 'catalysts') { await showCatalysts(); setHeader('Catalysts'); recordHeaderAction('Catalysts'); return true; }
-                if (key === 'socketables') { await showSocketables(); setHeader('Socketables'); recordHeaderAction('Socketables'); return true; }
+                if (key === 'augments') { await showAugments(); setHeader('Augments'); recordHeaderAction('Augments'); return true; }
                 // PoE1 Crafting actions
                 if (key === 'poe1-runegrafts') { await showPoe1Runegrafts(); setHeader('Runegrafts'); recordHeaderAction('Runegrafts'); return true; }
                 if (key === 'poe1-horticrafting') { await showPoe1Horticrafting(); setHeader('Horticrafting'); recordHeaderAction('Horticrafting'); return true; }
@@ -1413,7 +1413,7 @@
         }
 
         if (featureAvailability.crafting) {
-            const craftingActions = ['liquid-emotions', 'essences', 'omens', 'currency', 'catalysts', 'socketables', 'poe1-runegrafts', 'poe1-horticrafting', 'poe1-bestiary', 'poe1-scarabs', 'poe1-currency', 'poe1-essences', 'poe1-fossils', 'poe1-embers'];
+            const craftingActions = ['liquid-emotions', 'essences', 'omens', 'currency', 'catalysts', 'augments', 'poe1-runegrafts', 'poe1-horticrafting', 'poe1-bestiary', 'poe1-scarabs', 'poe1-currency', 'poe1-essences', 'poe1-fossils', 'poe1-embers'];
             for (const key of craftingActions) {
                 if (await runStoredAction(`crafting:${key}`)) return true;
             }
@@ -1454,11 +1454,11 @@
     let currentData = null;
     let allSections = [];
     // ===== Delegations only; implementations live in TS modules via window.Overlay* facades =====
-    // Catalysts, Socketables, Omens
+    // Catalysts, AUGMENTs, Omens
     async function showCatalysts(){ if (window.OverlayCatalysts && window.OverlayCatalysts.show) { try { return await window.OverlayCatalysts.show(); } catch {} } }
     function renderCatalysts(list){ if (window.OverlayCatalysts && window.OverlayCatalysts.render) { try { return window.OverlayCatalysts.render(list); } catch {} } }
-    async function showSocketables(){ if (window.OverlaySocketables && window.OverlaySocketables.show) { try { return await window.OverlaySocketables.show(); } catch {} } }
-    function renderSocketables(list){ if (window.OverlaySocketables && window.OverlaySocketables.render) { try { return window.OverlaySocketables.render(list); } catch {} } }
+    async function showAugments(){ if (window.OverlayAugments && window.OverlayAugments.show) { try { return await window.OverlayAugments.show(); } catch {} } }
+    function renderAugments(list){ if (window.OverlayAugments && window.OverlayAugments.render) { try { return window.OverlayAugments.render(list); } catch {} } }
     async function showOmens(){ if (window.OverlayOmens && window.OverlayOmens.show) { try { return await window.OverlayOmens.show(); } catch {} } }
     function renderOmens(list){ if (window.OverlayOmens && window.OverlayOmens.render) { try { return window.OverlayOmens.render(list); } catch {} } }
     async function showCurrency(){ if (window.OverlayCurrency && window.OverlayCurrency.show) { try { return await window.OverlayCurrency.show(); } catch {} } }
@@ -1596,8 +1596,8 @@
         DESECRATED: 'aggregated',
         ESSENCE: 'aggregated',
         CORRUPTED: 'aggregated',
-        SOCKETABLE: 'aggregated',
-        SOCKETABLES: 'aggregated',
+        AUGMENT: 'aggregated',
+        AUGMENTS: 'aggregated',
         RELICS: 'relic',
         BODY_ARMOURS: 'body',
         HELMETS: 'helmet',
@@ -1605,6 +1605,7 @@
         BOOTS: 'boots',
         RINGS: 'ring',
         AMULETS: 'amulet',
+        TALISMANS: 'talisman',
         BELTS: 'belt',
         BUCKLERS: 'shield',
         SHIELDS: 'shield',
@@ -1672,6 +1673,8 @@
         life_flask: { gradient: 'linear-gradient(120deg, rgba(220,38,38,0.28) 0%, rgba(220,38,38,0.08) 100%)', textColor: 'var(--text-primary)' },
         mana_flask: { gradient: 'linear-gradient(120deg, rgba(59,130,246,0.28) 0%, rgba(59,130,246,0.08) 100%)', textColor: 'var(--text-primary)' },
         charms: { gradient: 'linear-gradient(120deg, rgba(168,85,247,0.28) 0%, rgba(168,85,247,0.08) 100%)', textColor: 'var(--text-primary)' },
+        // Talismans (corrupted magic)
+        talismans: { gradient: 'linear-gradient(120deg, rgba(168,85,247,0.28) 0%, rgba(220,38,38,0.18) 100%)', textColor: 'var(--text-primary)' },
         // Waystones
         waystone_low: { gradient: 'linear-gradient(120deg, rgba(120,120,120,0.28) 0%, rgba(120,120,120,0.08) 100%)', textColor: 'var(--text-primary)' },
         waystone_mid: { gradient: 'linear-gradient(120deg, rgba(234,179,8,0.28) 0%, rgba(234,179,8,0.08) 100%)', textColor: 'var(--text-primary)' },
@@ -1679,7 +1682,7 @@
         // Aggregated
         corrupted: { gradient: 'linear-gradient(120deg, rgba(220,38,38,0.28) 0%, rgba(220,38,38,0.08) 100%)', textColor: 'var(--text-primary)' },
         essence: { gradient: 'linear-gradient(120deg, rgba(59,130,246,0.28) 0%, rgba(59,130,246,0.08) 100%)', textColor: 'var(--text-primary)' },
-        socketables: { gradient: 'linear-gradient(120deg, rgba(34,197,94,0.28) 0%, rgba(34,197,94,0.08) 100%)', textColor: 'var(--text-primary)' },
+        AUGMENTS: { gradient: 'linear-gradient(120deg, rgba(34,197,94,0.28) 0%, rgba(34,197,94,0.08) 100%)', textColor: 'var(--text-primary)' },
         desecrated: { gradient: 'linear-gradient(120deg, rgba(21,128,61,0.28) 0%, rgba(21,128,61,0.08) 100%)', textColor: 'var(--text-primary)' }
     };
 
@@ -2185,7 +2188,7 @@
         else if (baseKey === 'CHARMS') inferredAttr = 'charms';
         else if (baseKey === 'CORRUPTED') inferredAttr = 'corrupted';
         else if (baseKey === 'ESSENCE') inferredAttr = 'essence';
-        else if (baseKey === 'SOCKETABLES' || baseKey === 'SOCKETABLE') inferredAttr = 'socketables';
+        else if (baseKey === 'AUGMENTS' || baseKey === 'AUGMENT') inferredAttr = 'augments';
         else if (baseKey === 'DESECRATED') inferredAttr = 'desecrated';
         else if (baseKey.startsWith('WAYSTONES_')) {
             // Extract tier from waystone category
@@ -2258,7 +2261,7 @@
                 const categories = (rawCategories || []).filter((entry) => String(entry || '').toUpperCase() !== 'ALL');
         
         // Version-specific aggregated categories
-        const POE2_AGGREGATED = ['DESECRATED','ESSENCE','CORRUPTED','SOCKETABLE','SOCKETABLES'];
+        const POE2_AGGREGATED = ['DESECRATED','ESSENCE','CORRUPTED','AUGMENT','augments'];
         const POE1_AGGREGATED = ['INFLUENCE','ELDRITCH','MASTER_CRAFTING','CORRUPTED','SYNTHESISED','VEILED'];
         const POE1_INFLUENCES = ['SHAPER','ELDER','CRUSADER','REDEEMER','HUNTER','WARLORD'];
         const POE1_ELDRITCH = ['ELDRITCH_EATER','ELDRITCH_SEARING'];
@@ -2328,7 +2331,7 @@
                 const buckets = overlayVersionMode === 'poe1' ? poe1Buckets : poe2Buckets;
                 
                 const nonModifierCats = new Set([
-                    'LIQUID_EMOTIONS','ANNOINTS','ESSENCES','OMENS','CATALYSTS','SOCKETABLES','SOCKETABLE','GEMS','KEYSTONES','ASCENDANCY_PASSIVES','ATLAS_NODES','KEYWORDS','UNIQUES','BASES','CURRENCY','GEAR','UNIQUE_MAPS','UNIQUE MAPS'
+                    'LIQUID_EMOTIONS','ANNOINTS','ESSENCES','OMENS','CATALYSTS','augments','AUGMENT','GEMS','KEYSTONES','ASCENDANCY_PASSIVES','ATLAS_NODES','KEYWORDS','UNIQUES','BASES','CURRENCY','GEAR','UNIQUE_MAPS','UNIQUE MAPS'
                 ]);
                 // First, put all aggregated explicitly into the aggregated bucket (preserve our preferred order)
                 const aggregatedAdded = new Set();
@@ -2588,7 +2591,7 @@
                                 if (action === 'omens' && !poe1Mode && subs.omens) shouldShow = true;
                                 if (action === 'currency' && !poe1Mode && subs.currency) shouldShow = true;
                                 if (action === 'catalysts' && !poe1Mode && subs.catalysts) shouldShow = true;
-                                if (action === 'socketables' && !poe1Mode && subs.socketables) shouldShow = true;
+                                if (action === 'augments' && !poe1Mode && subs.AUGMENTs) shouldShow = true;
                                 
                                 // PoE1 crafting items - only show in PoE1 mode
                                 if (action === 'poe1-scarabs' && poe1Mode && subs.scarabs) shouldShow = true;
@@ -3204,8 +3207,8 @@
                                             (/essence/i.test(name) || /essence/i.test(baseType) || /essences?/i.test(blob)));
                         const isOmen = /omen/i.test(blob);
                         const isCatalyst = /catalyst/i.test(blob);
-                        // Socketables exclude Waystones now; handle Waystones separately so they stay in Modifiers
-                        const isSocketable = /socketable|socketables/i.test(blob);
+                        // AUGMENTs exclude Waystones now; handle Waystones separately so they stay in Modifiers
+                        const isAUGMENT = /AUGMENT|AUGMENTs/i.test(blob);
                         const isWaystone = /waystone|waystones/i.test(blob) || /^Waystones?_?/i.test(category || '');
                         // Fix: Liquid Emotions detection - check category first, then fallback to name/baseType containing "liquid"
                         const isEmotion = normalizedCategory === 'liquid_emotions' || /liquid/i.test(name) || /liquid/i.test(baseType);
@@ -3330,16 +3333,16 @@
                             return;
                         }
 
-                        if (isSocketable) {
-                            // Socketables page is PoE2-only
+                        if (isAUGMENT) {
+                            // AUGMENTs page is PoE2-only
                             if (overlayVersionMode === 'poe2') {
-                                prepareCrafting('Socketables');
+                                prepareCrafting('augments');
                                 retryShow(
-                                    () => !!(window.OverlaySocketables && typeof window.OverlaySocketables.show === 'function'),
-                                    async () => { try { await showSocketables(); } catch {} }
+                                    () => !!(window.OverlayAugments && typeof window.OverlayAugments.show === 'function'),
+                                    async () => { try { await showAugments(); } catch {} }
                                 );
                             } else {
-                                console.log('Socketable copied in PoE1 mode - opening on last page');
+                                console.log('AUGMENT copied in PoE1 mode - opening on last page');
                                 setActiveTab('tabModifier');
                                 setView('modifiers');
                                 setHeader('Modifier');
@@ -4778,7 +4781,7 @@ window.openModifiersCategory = openModifiersCategory;
 
 // ===== Catalysts delegated to module =====
 
-// ===== Socketables delegated to module =====
+// ===== AUGMENTs delegated to module =====
 
 // ===== Uniques (Items tab) now delegated to module (see top-level wrappers) =====
 
@@ -4892,12 +4895,12 @@ window.openModifiersCategory = openModifiersCategory;
                                     const histBtn = document.getElementById('tabHistory');
                                     histBtn?.click?.();
                                 }
-                                if (action === 'socketables') {
+                                if (action === 'augments') {
                                     try {
                                         closeAllMenus(); // Close the crafting dropdown menu
-                                        if (window.OverlaySocketables?.show) { 
-                                            window.OverlaySocketables.show(); 
-                                            setHeader('Socketables'); 
+                                        if (window.OverlayAugments?.show) { 
+                                            window.OverlayAugments.show(); 
+                                            setHeader('Augments'); 
                                         } 
                                     } catch {}
                                 }
@@ -4925,13 +4928,13 @@ window.openModifiersCategory = openModifiersCategory;
                             window.electronAPI.onSetActiveCategory?.(async (cat)=>{
                                 try {
                                     const normalized = String(cat || '').toLowerCase();
-                                    if (normalized === 'socketables') {
+                                    if (normalized === 'augments') {
                                         closeAllMenus();
                                         setActiveTab('craftingTab');
                                         setView('crafting');
-                                        try { await showSocketables(); } catch {}
-                                        setHeader('Socketables');
-                                        recordHeaderAction('Socketables');
+                                        try { await showAugments(); } catch {}
+                                        setHeader('Augments');
+                                        recordHeaderAction('Augments');
                                         return;
                                     }
                                     const select = document.getElementById('categorySelect');

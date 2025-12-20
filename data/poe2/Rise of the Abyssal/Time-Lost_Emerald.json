@@ -7,7 +7,7 @@
     "tier": 2,
     "ilvl": 1,
     "weight": 2,
-    "weight_pct": 5.263,
+    "weight_pct": 6.25,
     "tags": [],
     "family": "JewelRadiusLargerRadius",
     "tiers": [
@@ -16,14 +16,14 @@
         "tier_level": 1,
         "text_plain": "1 Upgrades Radius to Mediumlocal jewel effect base radius [150]",
         "weight": 1,
-        "weight_pct": 2.632
+        "weight_pct": 3.125
       },
       {
         "tier_name": "Grand",
         "tier_level": 1,
         "text_plain": "1 Upgrades Radius to Largelocal jewel effect base radius [300]",
         "weight": 1,
-        "weight_pct": 2.632
+        "weight_pct": 3.125
       }
     ]
   },
@@ -31,11 +31,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Small Passive Skills in Radius also grant (1–2)% increased Accuracy Rating",
+    "text_plain": "Small Passive Skills in Radius also grant (1—2)% increased Accuracy Rating",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 2.632,
+    "weight_pct": 3.125,
     "tags": [
       "attack"
     ],
@@ -44,9 +44,9 @@
       {
         "tier_name": "Accurate",
         "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (1–2)% increased Accuracy Rating",
+        "text_plain": "1 Small Passive Skills in Radius also grant (1—2)% increased Accuracy Rating",
         "weight": 1,
-        "weight_pct": 2.632
+        "weight_pct": 3.125
       }
     ]
   },
@@ -54,11 +54,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Notable Passive Skills in Radius also grant (3–7)% increased Magnitude of Ailments you inflict",
+    "text_plain": "Notable Passive Skills in Radius also grant (3—7)% increased Magnitude of Ailments you inflict",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 2.632,
+    "weight_pct": 3.125,
     "tags": [
       "damage",
       "ailment"
@@ -68,9 +68,9 @@
       {
         "tier_name": "Acrimonious",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (3–7)% increased Magnitude of Ailments you inflict",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (3—7)% increased Magnitude of Ailments you inflict",
         "weight": 1,
-        "weight_pct": 2.632
+        "weight_pct": 3.125
       }
     ]
   },
@@ -78,11 +78,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Small Passive Skills in Radius also grant (1–2)% increased Attack Damage",
+    "text_plain": "Small Passive Skills in Radius also grant (1—2)% increased Attack Damage",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 2.632,
+    "weight_pct": 3.125,
     "tags": [
       "damage",
       "attack"
@@ -92,9 +92,9 @@
       {
         "tier_name": "Combat",
         "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (1–2)% increased Attack Damage",
+        "text_plain": "1 Small Passive Skills in Radius also grant (1—2)% increased Attack Damage",
         "weight": 1,
-        "weight_pct": 2.632
+        "weight_pct": 3.125
       }
     ]
   },
@@ -102,72 +102,20 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Small Passive Skills in Radius also grant #% increased Damage with AxesSmall Passive Skills in Radius also grant #% increased Damage with BowsSmall Passive Skills in Radius also grant #% increased Damage with DaggersSmall Passive Skills in Radius also grant #% increased Damage with QuarterstavesSmall Passive Skills in Radius also grant #% increased Damage with Swords",
-    "tier": 5,
-    "ilvl": 1,
-    "weight": 5,
-    "weight_pct": 13.158,
-    "tags": [
-      "damage",
-      "attack"
-    ],
-    "family": "SpecificWeaponDamage",
-    "tiers": [
-      {
-        "tier_name": "Sinister",
-        "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (2–3)% increased Damage with Axes",
-        "weight": 1,
-        "weight_pct": 2.632
-      },
-      {
-        "tier_name": "Perforating",
-        "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (2–3)% increased Damage with Bows",
-        "weight": 1,
-        "weight_pct": 2.632
-      },
-      {
-        "tier_name": "Lethal",
-        "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (2–3)% increased Damage with Daggers",
-        "weight": 1,
-        "weight_pct": 2.632
-      },
-      {
-        "tier_name": "Monk's",
-        "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (1–2)% increased Damage with Quarterstaves",
-        "weight": 1,
-        "weight_pct": 2.632
-      },
-      {
-        "tier_name": "Vicious",
-        "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (1–2)% increased Damage with Swords",
-        "weight": 1,
-        "weight_pct": 2.632
-      }
-    ]
-  },
-  {
-    "category": "Time-Lost_Emerald",
-    "domain": "normal",
-    "side": "prefix",
-    "text_plain": "Notable Passive Skills in Radius also grant (3–5)% increased Blind Effect",
+    "text_plain": "Notable Passive Skills in Radius also grant (3—5)% increased Blind Effect",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 2.632,
+    "weight_pct": 3.125,
     "tags": [],
     "family": "BlindEffect",
     "tiers": [
       {
         "tier_name": "Stifling",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (3–5)% increased Blind Effect",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (3—5)% increased Blind Effect",
         "weight": 1,
-        "weight_pct": 2.632
+        "weight_pct": 3.125
       }
     ]
   },
@@ -175,11 +123,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Small Passive Skills in Radius also grant (2–3)% increased Damage with Hits against Rare and Unique Enemies",
+    "text_plain": "Small Passive Skills in Radius also grant (2—3)% increased Damage with Hits against Rare and Unique Enemies",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 2.632,
+    "weight_pct": 3.125,
     "tags": [
       "damage"
     ],
@@ -188,9 +136,9 @@
       {
         "tier_name": "Slaying",
         "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (2–3)% increased Damage with Hits against Rare and Unique Enemies",
+        "text_plain": "1 Small Passive Skills in Radius also grant (2—3)% increased Damage with Hits against Rare and Unique Enemies",
         "weight": 1,
-        "weight_pct": 2.632
+        "weight_pct": 3.125
       }
     ]
   },
@@ -198,11 +146,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Small Passive Skills in Radius also grant (1–2)% increased Accuracy Rating with Bows",
+    "text_plain": "Small Passive Skills in Radius also grant (1—2)% increased Accuracy Rating with Bows",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 2.632,
+    "weight_pct": 3.125,
     "tags": [
       "attack"
     ],
@@ -211,9 +159,9 @@
       {
         "tier_name": "Precise",
         "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (1–2)% increased Accuracy Rating with Bows",
+        "text_plain": "1 Small Passive Skills in Radius also grant (1—2)% increased Accuracy Rating with Bows",
         "weight": 1,
-        "weight_pct": 2.632
+        "weight_pct": 3.125
       }
     ]
   },
@@ -221,20 +169,51 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Small Passive Skills in Radius also grant (2–3)% increased Damage while you have an active Charm",
+    "text_plain": "Small Passive Skills in Radius also grant #% increased Damage with BowsSmall Passive Skills in Radius also grant #% increased Damage with Quarterstaves",
+    "tier": 2,
+    "ilvl": 1,
+    "weight": 2,
+    "weight_pct": 6.25,
+    "tags": [
+      "damage",
+      "attack"
+    ],
+    "family": "SpecificWeaponDamage",
+    "tiers": [
+      {
+        "tier_name": "Perforating",
+        "tier_level": 1,
+        "text_plain": "1 Small Passive Skills in Radius also grant (2—3)% increased Damage with Bows",
+        "weight": 1,
+        "weight_pct": 3.125
+      },
+      {
+        "tier_name": "Monk's",
+        "tier_level": 1,
+        "text_plain": "1 Small Passive Skills in Radius also grant (1—2)% increased Damage with Quarterstaves",
+        "weight": 1,
+        "weight_pct": 3.125
+      }
+    ]
+  },
+  {
+    "category": "Time-Lost_Emerald",
+    "domain": "normal",
+    "side": "prefix",
+    "text_plain": "Small Passive Skills in Radius also grant (2—3)% increased Damage while you have an active Charm",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 2.632,
+    "weight_pct": 3.125,
     "tags": [],
     "family": "CharmDamageWhileUsing",
     "tiers": [
       {
         "tier_name": "Verdant",
         "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (2–3)% increased Damage while you have an active Charm",
+        "text_plain": "1 Small Passive Skills in Radius also grant (2—3)% increased Damage while you have an active Charm",
         "weight": 1,
-        "weight_pct": 2.632
+        "weight_pct": 3.125
       }
     ]
   },
@@ -242,11 +221,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Notable Passive Skills in Radius also grant (5–10)% increased Magnitude of Damaging Ailments you inflict with Critical Hits",
+    "text_plain": "Notable Passive Skills in Radius also grant (5—10)% increased Magnitude of Damaging Ailments you inflict with Critical Hits",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 2.632,
+    "weight_pct": 3.125,
     "tags": [
       "damage",
       "critical",
@@ -257,9 +236,9 @@
       {
         "tier_name": "Rancorous",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (5–10)% increased Magnitude of Damaging Ailments you inflict with Critical Hits",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (5—10)% increased Magnitude of Damaging Ailments you inflict with Critical Hits",
         "weight": 1,
-        "weight_pct": 2.632
+        "weight_pct": 3.125
       }
     ]
   },
@@ -267,11 +246,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Small Passive Skills in Radius also grant (2–3)% increased Damage with Crossbows",
+    "text_plain": "Small Passive Skills in Radius also grant (2—3)% increased Damage with Crossbows",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 2.632,
+    "weight_pct": 3.125,
     "tags": [
       "damage",
       "attack"
@@ -281,9 +260,9 @@
       {
         "tier_name": "Bolting",
         "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (2–3)% increased Damage with Crossbows",
+        "text_plain": "1 Small Passive Skills in Radius also grant (2—3)% increased Damage with Crossbows",
         "weight": 1,
-        "weight_pct": 2.632
+        "weight_pct": 3.125
       }
     ]
   },
@@ -291,11 +270,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Small Passive Skills in Radius also grant (1–2)% increased Elemental Damage",
+    "text_plain": "Small Passive Skills in Radius also grant (1—2)% increased Elemental Damage",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 2.632,
+    "weight_pct": 3.125,
     "tags": [
       "damage",
       "elemental"
@@ -305,9 +284,9 @@
       {
         "tier_name": "Prismatic",
         "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (1–2)% increased Elemental Damage",
+        "text_plain": "1 Small Passive Skills in Radius also grant (1—2)% increased Elemental Damage",
         "weight": 1,
-        "weight_pct": 2.632
+        "weight_pct": 3.125
       }
     ]
   },
@@ -315,11 +294,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Small Passive Skills in Radius also grant (2–3)% increased Evasion Rating",
+    "text_plain": "Small Passive Skills in Radius also grant (2—3)% increased Evasion Rating",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 2.632,
+    "weight_pct": 3.125,
     "tags": [
       "defences"
     ],
@@ -328,9 +307,9 @@
       {
         "tier_name": "Evasive",
         "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (2–3)% increased Evasion Rating",
+        "text_plain": "1 Small Passive Skills in Radius also grant (2—3)% increased Evasion Rating",
         "weight": 1,
-        "weight_pct": 2.632
+        "weight_pct": 3.125
       }
     ]
   },
@@ -338,44 +317,20 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Small Passive Skills in Radius also grant (1–2)% increased Damage with Flails",
+    "text_plain": "Small Passive Skills in Radius also grant Herald Skills deal (2—4)% increased Damage",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 2.632,
-    "tags": [
-      "damage",
-      "attack"
-    ],
-    "family": "FlailDamage",
-    "tiers": [
-      {
-        "tier_name": "Flailing",
-        "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (1–2)% increased Damage with Flails",
-        "weight": 1,
-        "weight_pct": 2.632
-      }
-    ]
-  },
-  {
-    "category": "Time-Lost_Emerald",
-    "domain": "normal",
-    "side": "prefix",
-    "text_plain": "Small Passive Skills in Radius also grant Herald Skills deal (2–4)% increased Damage",
-    "tier": 1,
-    "ilvl": 1,
-    "weight": 1,
-    "weight_pct": 2.632,
+    "weight_pct": 3.125,
     "tags": [],
     "family": "HeraldDamage",
     "tiers": [
       {
         "tier_name": "Heralding",
         "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant Herald Skills deal (2–4)% increased Damage",
+        "text_plain": "1 Small Passive Skills in Radius also grant Herald Skills deal (2—4)% increased Damage",
         "weight": 1,
-        "weight_pct": 2.632
+        "weight_pct": 3.125
       }
     ]
   },
@@ -383,11 +338,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Small Passive Skills in Radius also grant (1–2)% increased Lightning Damage",
+    "text_plain": "Small Passive Skills in Radius also grant (1—2)% increased Lightning Damage",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 2.632,
+    "weight_pct": 3.125,
     "tags": [
       "damage",
       "elemental",
@@ -398,9 +353,9 @@
       {
         "tier_name": "Humming",
         "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (1–2)% increased Lightning Damage",
+        "text_plain": "1 Small Passive Skills in Radius also grant (1—2)% increased Lightning Damage",
         "weight": 1,
-        "weight_pct": 2.632
+        "weight_pct": 3.125
       }
     ]
   },
@@ -408,11 +363,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Small Passive Skills in Radius also grant Damage Penetrates (1–2)% Lightning Resistance",
+    "text_plain": "Small Passive Skills in Radius also grant Damage Penetrates (1—2)% Lightning Resistance",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 2.632,
+    "weight_pct": 3.125,
     "tags": [
       "damage",
       "elemental",
@@ -423,9 +378,9 @@
       {
         "tier_name": "Surging",
         "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant Damage Penetrates (1–2)% Lightning Resistance",
+        "text_plain": "1 Small Passive Skills in Radius also grant Damage Penetrates (1—2)% Lightning Resistance",
         "weight": 1,
-        "weight_pct": 2.632
+        "weight_pct": 3.125
       }
     ]
   },
@@ -433,11 +388,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Notable Passive Skills in Radius also grant (2–3)% increased Effect of your Mark Skills",
+    "text_plain": "Notable Passive Skills in Radius also grant (2—3)% increased Effect of your Mark Skills",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 2.632,
+    "weight_pct": 3.125,
     "tags": [
       "caster",
       "curse"
@@ -447,9 +402,9 @@
       {
         "tier_name": "Marking",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (2–3)% increased Effect of your Mark Skills",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (2—3)% increased Effect of your Mark Skills",
         "weight": 1,
-        "weight_pct": 2.632
+        "weight_pct": 3.125
       }
     ]
   },
@@ -457,35 +412,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Small Passive Skills in Radius also grant (2–3)% increased Minion Accuracy Rating",
+    "text_plain": "Notable Passive Skills in Radius also grant (3—7)% increased Magnitude of Poison you inflict",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 2.632,
-    "tags": [
-      "attack",
-      "minion"
-    ],
-    "family": "MinionAccuracyRating",
-    "tiers": [
-      {
-        "tier_name": "Training",
-        "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (2–3)% increased Minion Accuracy Rating",
-        "weight": 1,
-        "weight_pct": 2.632
-      }
-    ]
-  },
-  {
-    "category": "Time-Lost_Emerald",
-    "domain": "normal",
-    "side": "prefix",
-    "text_plain": "Notable Passive Skills in Radius also grant (3–7)% increased Magnitude of Poison you inflict",
-    "tier": 1,
-    "ilvl": 1,
-    "weight": 1,
-    "weight_pct": 2.632,
+    "weight_pct": 3.125,
     "tags": [
       "damage",
       "ailment"
@@ -495,9 +426,9 @@
       {
         "tier_name": "Venomous",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (3–7)% increased Magnitude of Poison you inflict",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (3—7)% increased Magnitude of Poison you inflict",
         "weight": 1,
-        "weight_pct": 2.632
+        "weight_pct": 3.125
       }
     ]
   },
@@ -505,11 +436,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Small Passive Skills in Radius also grant (1–2)% increased Projectile Damage",
+    "text_plain": "Small Passive Skills in Radius also grant (1—2)% increased Projectile Damage",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 2.632,
+    "weight_pct": 3.125,
     "tags": [
       "damage"
     ],
@@ -518,9 +449,9 @@
       {
         "tier_name": "Archer's",
         "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (1–2)% increased Projectile Damage",
+        "text_plain": "1 Small Passive Skills in Radius also grant (1—2)% increased Projectile Damage",
         "weight": 1,
-        "weight_pct": 2.632
+        "weight_pct": 3.125
       }
     ]
   },
@@ -528,11 +459,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Notable Passive Skills in Radius also grant (2–3)% increased Projectile Speed",
+    "text_plain": "Notable Passive Skills in Radius also grant (2—3)% increased Projectile Speed",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 2.632,
+    "weight_pct": 3.125,
     "tags": [
       "speed"
     ],
@@ -541,9 +472,9 @@
       {
         "tier_name": "Soaring",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (2–3)% increased Projectile Speed",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (2—3)% increased Projectile Speed",
         "weight": 1,
-        "weight_pct": 2.632
+        "weight_pct": 3.125
       }
     ]
   },
@@ -551,20 +482,20 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Notable Passive Skills in Radius also grant (2–3)% increased bonuses gained from Equipped Quiver",
+    "text_plain": "Notable Passive Skills in Radius also grant (2—3)% increased bonuses gained from Equipped Quiver",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 2.632,
+    "weight_pct": 3.125,
     "tags": [],
     "family": "EquipmentModifierEffect",
     "tiers": [
       {
         "tier_name": "Fletching",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (2–3)% increased bonuses gained from Equipped Quiver",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (2—3)% increased bonuses gained from Equipped Quiver",
         "weight": 1,
-        "weight_pct": 2.632
+        "weight_pct": 3.125
       }
     ]
   },
@@ -572,11 +503,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Notable Passive Skills in Radius also grant (5–7)% increased Magnitude of Shock you inflict",
+    "text_plain": "Notable Passive Skills in Radius also grant (5—7)% increased Magnitude of Shock you inflict",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 2.632,
+    "weight_pct": 3.125,
     "tags": [
       "elemental",
       "lightning",
@@ -587,9 +518,9 @@
       {
         "tier_name": "Jolting",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (5–7)% increased Magnitude of Shock you inflict",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (5—7)% increased Magnitude of Shock you inflict",
         "weight": 1,
-        "weight_pct": 2.632
+        "weight_pct": 3.125
       }
     ]
   },
@@ -597,11 +528,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Small Passive Skills in Radius also grant (1–2)% increased Damage with Spears",
+    "text_plain": "Small Passive Skills in Radius also grant (1—2)% increased Damage with Spears",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 2.632,
+    "weight_pct": 3.125,
     "tags": [
       "damage",
       "attack"
@@ -611,9 +542,9 @@
       {
         "tier_name": "Spearheaded",
         "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (1–2)% increased Damage with Spears",
+        "text_plain": "1 Small Passive Skills in Radius also grant (1—2)% increased Damage with Spears",
         "weight": 1,
-        "weight_pct": 2.632
+        "weight_pct": 3.125
       }
     ]
   },
@@ -621,58 +552,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Small Passive Skills in Radius also grant (1–2)% increased Trap Damage",
+    "text_plain": "Small Passive Skills in Radius also grant (2—3)% increased Projectile Damage if you've dealt a Melee Hit in the past eight seconds",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 2.632,
-    "tags": [
-      "damage"
-    ],
-    "family": "TrapDamage",
-    "tiers": [
-      {
-        "tier_name": "Trapping",
-        "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (1–2)% increased Trap Damage",
-        "weight": 1,
-        "weight_pct": 2.632
-      }
-    ]
-  },
-  {
-    "category": "Time-Lost_Emerald",
-    "domain": "normal",
-    "side": "prefix",
-    "text_plain": "Small Passive Skills in Radius also grant (1–2)% increased Damage with Unarmed Attacks",
-    "tier": 1,
-    "ilvl": 1,
-    "weight": 1,
-    "weight_pct": 2.632,
-    "tags": [
-      "damage",
-      "attack"
-    ],
-    "family": "UnarmedDamage",
-    "tiers": [
-      {
-        "tier_name": "Punching",
-        "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (1–2)% increased Damage with Unarmed Attacks",
-        "weight": 1,
-        "weight_pct": 2.632
-      }
-    ]
-  },
-  {
-    "category": "Time-Lost_Emerald",
-    "domain": "normal",
-    "side": "prefix",
-    "text_plain": "Small Passive Skills in Radius also grant (2–3)% increased Projectile Damage if you've dealt a Melee Hit in the past eight seconds",
-    "tier": 1,
-    "ilvl": 1,
-    "weight": 1,
-    "weight_pct": 2.632,
+    "weight_pct": 3.125,
     "tags": [
       "damage",
       "attack"
@@ -682,9 +566,9 @@
       {
         "tier_name": "Retreating",
         "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (2–3)% increased Projectile Damage if you've dealt a Melee Hit in the past eight seconds",
+        "text_plain": "1 Small Passive Skills in Radius also grant (2—3)% increased Projectile Damage if you've dealt a Melee Hit in the past eight seconds",
         "weight": 1,
-        "weight_pct": 2.632
+        "weight_pct": 3.125
       }
     ]
   },
@@ -692,11 +576,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Small Passive Skills in Radius also grant (2–3)% increased Melee Damage if you've dealt a Projectile Attack Hit in the past eight seconds",
+    "text_plain": "Small Passive Skills in Radius also grant (2—3)% increased Melee Damage if you've dealt a Projectile Attack Hit in the past eight seconds",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 2.632,
+    "weight_pct": 3.125,
     "tags": [
       "damage",
       "attack"
@@ -706,9 +590,9 @@
       {
         "tier_name": "Engaging",
         "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (2–3)% increased Melee Damage if you've dealt a Projectile Attack Hit in the past eight seconds",
+        "text_plain": "1 Small Passive Skills in Radius also grant (2—3)% increased Melee Damage if you've dealt a Projectile Attack Hit in the past eight seconds",
         "weight": 1,
-        "weight_pct": 2.632
+        "weight_pct": 3.125
       }
     ]
   },
@@ -716,20 +600,20 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Small Passive Skills in Radius also grant (2–3)% increased Parry Damage",
+    "text_plain": "Small Passive Skills in Radius also grant (2—3)% increased Parry Damage",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 2.632,
+    "weight_pct": 3.125,
     "tags": [],
     "family": "AllDamage",
     "tiers": [
       {
         "tier_name": "Parrying",
         "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (2–3)% increased Parry Damage",
+        "text_plain": "1 Small Passive Skills in Radius also grant (2—3)% increased Parry Damage",
         "weight": 1,
-        "weight_pct": 2.632
+        "weight_pct": 3.125
       }
     ]
   },
@@ -737,11 +621,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Small Passive Skills in Radius also grant Companions deal (2–3)% increased Damage",
+    "text_plain": "Small Passive Skills in Radius also grant Companions deal (2—3)% increased Damage",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 2.632,
+    "weight_pct": 3.125,
     "tags": [
       "damage",
       "minion"
@@ -751,9 +635,9 @@
       {
         "tier_name": "Kinship",
         "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant Companions deal (2–3)% increased Damage",
+        "text_plain": "1 Small Passive Skills in Radius also grant Companions deal (2—3)% increased Damage",
         "weight": 1,
-        "weight_pct": 2.632
+        "weight_pct": 3.125
       }
     ]
   },
@@ -761,11 +645,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Small Passive Skills in Radius also grant Companions have (2–3)% increased maximum Life",
+    "text_plain": "Small Passive Skills in Radius also grant Companions have (2—3)% increased maximum Life",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 2.632,
+    "weight_pct": 3.125,
     "tags": [
       "life",
       "minion"
@@ -775,9 +659,9 @@
       {
         "tier_name": "Kindred",
         "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant Companions have (2–3)% increased maximum Life",
+        "text_plain": "1 Small Passive Skills in Radius also grant Companions have (2—3)% increased maximum Life",
         "weight": 1,
-        "weight_pct": 2.632
+        "weight_pct": 3.125
       }
     ]
   },
@@ -785,11 +669,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "prefix",
-    "text_plain": "Small Passive Skills in Radius also grant (2–3)% increased Hazard Damage",
+    "text_plain": "Small Passive Skills in Radius also grant (2—3)% increased Hazard Damage",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 2.632,
+    "weight_pct": 3.125,
     "tags": [
       "damage"
     ],
@@ -798,9 +682,32 @@
       {
         "tier_name": "Hazardous",
         "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (2–3)% increased Hazard Damage",
+        "text_plain": "1 Small Passive Skills in Radius also grant (2—3)% increased Hazard Damage",
         "weight": 1,
-        "weight_pct": 2.632
+        "weight_pct": 3.125
+      }
+    ]
+  },
+  {
+    "category": "Time-Lost_Emerald",
+    "domain": "normal",
+    "side": "prefix",
+    "text_plain": "Small Passive Skills in Radius also grant (1—2)% increased Damage with Plant Skills",
+    "tier": 1,
+    "ilvl": 1,
+    "weight": 1,
+    "weight_pct": 3.125,
+    "tags": [
+      "damage"
+    ],
+    "family": "DamageForm",
+    "tiers": [
+      {
+        "tier_name": "Overgrown",
+        "tier_level": 1,
+        "text_plain": "1 Small Passive Skills in Radius also grant (1—2)% increased Damage with Plant Skills",
+        "weight": 1,
+        "weight_pct": 3.125
       }
     ]
   },
@@ -808,27 +715,20 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "#% increased Effect of Small Passive Skills in Radius",
-    "tier": 2,
+    "text_plain": "(15—25)% increased Effect of Small Passive Skills in Radius",
+    "tier": 1,
     "ilvl": 1,
-    "weight": 2,
-    "weight_pct": 3.704,
+    "weight": 1,
+    "weight_pct": 2.222,
     "tags": [],
     "family": "JewelRadiusSmallNodeEffect",
     "tiers": [
       {
         "tier_name": "of Potency",
         "tier_level": 1,
-        "text_plain": "1 (15–25)% increased Effect of Small Passive Skills in Radius",
+        "text_plain": "1 (15—25)% increased Effect of Small Passive Skills in Radius",
         "weight": 1,
-        "weight_pct": 1.852
-      },
-      {
-        "tier_name": "of Influence",
-        "tier_level": 1,
-        "text_plain": "1 (15–25)% increased Effect of Small Passive Skills in Radius",
-        "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -836,20 +736,20 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "(15–25)% increased Effect of Notable Passive Skills in Radius",
+    "text_plain": "(15—25)% increased Effect of Notable Passive Skills in Radius",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [],
     "family": "JewelRadiusNotableEffect",
     "tiers": [
       {
         "tier_name": "of Supremacy",
         "tier_level": 1,
-        "text_plain": "1 (15–25)% increased Effect of Notable Passive Skills in Radius",
+        "text_plain": "1 (15—25)% increased Effect of Notable Passive Skills in Radius",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -857,11 +757,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Notable Passive Skills in Radius also grant (3–7)% increased chance to inflict Ailments",
+    "text_plain": "Notable Passive Skills in Radius also grant (3—7)% increased chance to inflict Ailments",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [
       "ailment"
     ],
@@ -870,9 +770,9 @@
       {
         "tier_name": "of Ailing",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (3–7)% increased chance to inflict Ailments",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (3—7)% increased chance to inflict Ailments",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -880,20 +780,20 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Small Passive Skills in Radius also grant (2–3)% increased Elemental Ailment Threshold",
+    "text_plain": "Small Passive Skills in Radius also grant (2—3)% increased Elemental Ailment Threshold",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [],
     "family": "AilmentThreshold",
     "tiers": [
       {
         "tier_name": "of Enduring",
         "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (2–3)% increased Elemental Ailment Threshold",
+        "text_plain": "1 Small Passive Skills in Radius also grant (2—3)% increased Elemental Ailment Threshold",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -901,11 +801,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Notable Passive Skills in Radius also grant (3–7)% increased Critical Hit Chance for Attacks",
+    "text_plain": "Notable Passive Skills in Radius also grant (3—7)% increased Critical Hit Chance for Attacks",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [
       "attack",
       "critical"
@@ -915,9 +815,9 @@
       {
         "tier_name": "of Deadliness",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (3–7)% increased Critical Hit Chance for Attacks",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (3—7)% increased Critical Hit Chance for Attacks",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -925,11 +825,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Notable Passive Skills in Radius also grant (5–10)% increased Critical Damage Bonus for Attack Damage",
+    "text_plain": "Notable Passive Skills in Radius also grant (5—10)% increased Critical Damage Bonus for Attack Damage",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [
       "attack",
       "critical"
@@ -939,9 +839,9 @@
       {
         "tier_name": "of Demolishing",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (5–10)% increased Critical Damage Bonus for Attack Damage",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (5—10)% increased Critical Damage Bonus for Attack Damage",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -949,11 +849,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Notable Passive Skills in Radius also grant (1–2)% increased Attack Speed",
+    "text_plain": "Notable Passive Skills in Radius also grant (1—2)% increased Attack Speed",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [
       "attack",
       "speed"
@@ -963,61 +863,9 @@
       {
         "tier_name": "of Alacrity",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (1–2)% increased Attack Speed",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (1—2)% increased Attack Speed",
         "weight": 1,
-        "weight_pct": 1.852
-      }
-    ]
-  },
-  {
-    "category": "Time-Lost_Emerald",
-    "domain": "normal",
-    "side": "suffix",
-    "text_plain": "Notable Passive Skills in Radius also grant #% increased Attack Speed with AxesNotable Passive Skills in Radius also grant #% increased Attack Speed with BowsNotable Passive Skills in Radius also grant #% increased Attack Speed with DaggersNotable Passive Skills in Radius also grant #% increased Attack Speed with QuarterstavesNotable Passive Skills in Radius also grant #% increased Attack Speed with Swords",
-    "tier": 5,
-    "ilvl": 1,
-    "weight": 5,
-    "weight_pct": 9.259,
-    "tags": [
-      "attack",
-      "speed"
-    ],
-    "family": "SpecificWeaponSpeed",
-    "tiers": [
-      {
-        "tier_name": "of Cleaving",
-        "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (1–2)% increased Attack Speed with Axes",
-        "weight": 1,
-        "weight_pct": 1.852
-      },
-      {
-        "tier_name": "of Nocking",
-        "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (1–2)% increased Attack Speed with Bows",
-        "weight": 1,
-        "weight_pct": 1.852
-      },
-      {
-        "tier_name": "of Slicing",
-        "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (1–2)% increased Attack Speed with Daggers",
-        "weight": 1,
-        "weight_pct": 1.852
-      },
-      {
-        "tier_name": "of Sequencing",
-        "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (1–2)% increased Attack Speed with Quarterstaves",
-        "weight": 1,
-        "weight_pct": 1.852
-      },
-      {
-        "tier_name": "of Fencing",
-        "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (1–2)% increased Attack Speed with Swords",
-        "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1029,7 +877,7 @@
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [
       "attack"
     ],
@@ -1040,7 +888,7 @@
         "tier_level": 1,
         "text_plain": "1 Small Passive Skills in Radius also grant 1% chance to Blind Enemies on Hit with Attacks",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1048,20 +896,51 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Notable Passive Skills in Radius also grant Projectiles have (1–2)% chance to Chain an additional time from terrain",
+    "text_plain": "Notable Passive Skills in Radius also grant #% increased Attack Speed with BowsNotable Passive Skills in Radius also grant #% increased Attack Speed with Quarterstaves",
+    "tier": 2,
+    "ilvl": 1,
+    "weight": 2,
+    "weight_pct": 4.444,
+    "tags": [
+      "attack",
+      "speed"
+    ],
+    "family": "SpecificWeaponSpeed",
+    "tiers": [
+      {
+        "tier_name": "of Nocking",
+        "tier_level": 1,
+        "text_plain": "1 Notable Passive Skills in Radius also grant (1—2)% increased Attack Speed with Bows",
+        "weight": 1,
+        "weight_pct": 2.222
+      },
+      {
+        "tier_name": "of Sequencing",
+        "tier_level": 1,
+        "text_plain": "1 Notable Passive Skills in Radius also grant (1—2)% increased Attack Speed with Quarterstaves",
+        "weight": 1,
+        "weight_pct": 2.222
+      }
+    ]
+  },
+  {
+    "category": "Time-Lost_Emerald",
+    "domain": "normal",
+    "side": "suffix",
+    "text_plain": "Notable Passive Skills in Radius also grant Projectiles have (1—2)% chance to Chain an additional time from terrain",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [],
     "family": "ChainFromTerrain",
     "tiers": [
       {
         "tier_name": "of Chaining",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant Projectiles have (1–2)% chance to Chain an additional time from terrain",
+        "text_plain": "1 Notable Passive Skills in Radius also grant Projectiles have (1—2)% chance to Chain an additional time from terrain",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1069,20 +948,20 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Small Passive Skills in Radius also grant (1–2)% increased Charm Effect Duration",
+    "text_plain": "Small Passive Skills in Radius also grant (1—2)% increased Charm Effect Duration",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [],
     "family": "CharmDuration",
     "tiers": [
       {
         "tier_name": "of the Woodland",
         "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (1–2)% increased Charm Effect Duration",
+        "text_plain": "1 Small Passive Skills in Radius also grant (1—2)% increased Charm Effect Duration",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1090,20 +969,20 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Notable Passive Skills in Radius also grant (3–7)% increased Charm Charges gained",
+    "text_plain": "Notable Passive Skills in Radius also grant (3—7)% increased Charm Charges gained",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [],
     "family": "CharmChargesGained",
     "tiers": [
       {
         "tier_name": "of the Thicker",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (3–7)% increased Charm Charges gained",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (3—7)% increased Charm Charges gained",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1111,20 +990,20 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Notable Passive Skills in Radius also grant (1–3)% increased Cooldown Recovery Rate",
+    "text_plain": "Notable Passive Skills in Radius also grant (1—3)% increased Cooldown Recovery Rate",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [],
     "family": "CooldownRecovery",
     "tiers": [
       {
         "tier_name": "of Chronomancy",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (1–3)% increased Cooldown Recovery Rate",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (1—3)% increased Cooldown Recovery Rate",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1132,11 +1011,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Notable Passive Skills in Radius also grant (5–7)% increased Crossbow Reload Speed",
+    "text_plain": "Notable Passive Skills in Radius also grant (5—7)% increased Crossbow Reload Speed",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [
       "attack",
       "speed"
@@ -1146,9 +1025,9 @@
       {
         "tier_name": "of Reloading",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (5–7)% increased Crossbow Reload Speed",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (5—7)% increased Crossbow Reload Speed",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1156,11 +1035,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Notable Passive Skills in Radius also grant (1–2)% increased Attack Speed with Crossbows",
+    "text_plain": "Notable Passive Skills in Radius also grant (1—2)% increased Attack Speed with Crossbows",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [
       "attack",
       "speed"
@@ -1170,9 +1049,9 @@
       {
         "tier_name": "of Rapidity",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (1–2)% increased Attack Speed with Crossbows",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (1—2)% increased Attack Speed with Crossbows",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1180,35 +1059,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Notable Passive Skills in Radius also grant (3–7)% increased Critical Hit Chance with Daggers",
+    "text_plain": "Notable Passive Skills in Radius also grant (3—5)% increased Duration of Damaging Ailments on Enemies",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
-    "tags": [
-      "attack",
-      "critical"
-    ],
-    "family": "SpecificWeaponCritChance",
-    "tiers": [
-      {
-        "tier_name": "of Backstabbing",
-        "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (3–7)% increased Critical Hit Chance with Daggers",
-        "weight": 1,
-        "weight_pct": 1.852
-      }
-    ]
-  },
-  {
-    "category": "Time-Lost_Emerald",
-    "domain": "normal",
-    "side": "suffix",
-    "text_plain": "Notable Passive Skills in Radius also grant (3–5)% increased Duration of Damaging Ailments on Enemies",
-    "tier": 1,
-    "ilvl": 1,
-    "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [
       "ailment"
     ],
@@ -1217,9 +1072,9 @@
       {
         "tier_name": "of Suffusion",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (3–5)% increased Duration of Damaging Ailments on Enemies",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (3—5)% increased Duration of Damaging Ailments on Enemies",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1231,7 +1086,7 @@
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [],
     "family": "DazeBuildup",
     "tiers": [
@@ -1240,7 +1095,7 @@
         "tier_level": 1,
         "text_plain": "1 Small Passive Skills in Radius also grant 1% chance to Daze on Hit",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1248,20 +1103,20 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Notable Passive Skills in Radius also grant Debuffs on you expire (3–5)% faster",
+    "text_plain": "Notable Passive Skills in Radius also grant Debuffs on you expire (3—5)% faster",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [],
     "family": "DebuffTime",
     "tiers": [
       {
         "tier_name": "of Diminishing",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant Debuffs on you expire (3–5)% faster",
+        "text_plain": "1 Notable Passive Skills in Radius also grant Debuffs on you expire (3—5)% faster",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1269,11 +1124,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Notable Passive Skills in Radius also grant (3–5)% increased Duration of Ignite, Shock and Chill on Enemies",
+    "text_plain": "Notable Passive Skills in Radius also grant (3—5)% increased Duration of Ignite, Shock and Chill on Enemies",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [
       "elemental",
       "ailment"
@@ -1283,9 +1138,9 @@
       {
         "tier_name": "of Suffering",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (3–5)% increased Duration of Ignite, Shock and Chill on Enemies",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (3—5)% increased Duration of Ignite, Shock and Chill on Enemies",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1293,11 +1148,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Notable Passive Skills in Radius also grant Damaging Ailments deal damage (2–3)% faster",
+    "text_plain": "Notable Passive Skills in Radius also grant Damaging Ailments deal damage (2—3)% faster",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [
       "ailment"
     ],
@@ -1306,9 +1161,9 @@
       {
         "tier_name": "of Decrepifying",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant Damaging Ailments deal damage (2–3)% faster",
+        "text_plain": "1 Notable Passive Skills in Radius also grant Damaging Ailments deal damage (2—3)% faster",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1316,44 +1171,20 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Notable Passive Skills in Radius also grant (3–7)% increased Critical Hit Chance with Flails",
+    "text_plain": "Notable Passive Skills in Radius also grant (3—5)% increased Flask Charges gained",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
-    "tags": [
-      "attack",
-      "critical"
-    ],
-    "family": "FlailCriticalChance",
-    "tiers": [
-      {
-        "tier_name": "of Thrashing",
-        "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (3–7)% increased Critical Hit Chance with Flails",
-        "weight": 1,
-        "weight_pct": 1.852
-      }
-    ]
-  },
-  {
-    "category": "Time-Lost_Emerald",
-    "domain": "normal",
-    "side": "suffix",
-    "text_plain": "Notable Passive Skills in Radius also grant (3–5)% increased Flask Charges gained",
-    "tier": 1,
-    "ilvl": 1,
-    "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [],
     "family": "BeltFlaskChargesGained",
     "tiers": [
       {
         "tier_name": "of Gathering",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (3–5)% increased Flask Charges gained",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (3—5)% increased Flask Charges gained",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1361,20 +1192,20 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Small Passive Skills in Radius also grant (1–2)% increased Flask Effect Duration",
+    "text_plain": "Small Passive Skills in Radius also grant (1—2)% increased Flask Effect Duration",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [],
     "family": "FlaskDuration",
     "tiers": [
       {
         "tier_name": "of Prolonging",
         "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (1–2)% increased Flask Effect Duration",
+        "text_plain": "1 Small Passive Skills in Radius also grant (1—2)% increased Flask Effect Duration",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1382,20 +1213,20 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Notable Passive Skills in Radius also grant Projectiles have (5–7)% chance for an additional Projectile when Forking",
+    "text_plain": "Notable Passive Skills in Radius also grant Projectiles have (5—7)% chance for an additional Projectile when Forking",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [],
     "family": "ForkingProjectiles",
     "tiers": [
       {
         "tier_name": "of Forking",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant Projectiles have (5–7)% chance for an additional Projectile when Forking",
+        "text_plain": "1 Notable Passive Skills in Radius also grant Projectiles have (5—7)% chance for an additional Projectile when Forking",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1403,11 +1234,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Small Passive Skills in Radius also grant (2–3)% increased Life Recovery from Flasks",
+    "text_plain": "Small Passive Skills in Radius also grant (2—3)% increased Life Recovery from Flasks",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [
       "life"
     ],
@@ -1416,9 +1247,9 @@
       {
         "tier_name": "of Recovery",
         "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (2–3)% increased Life Recovery from Flasks",
+        "text_plain": "1 Small Passive Skills in Radius also grant (2—3)% increased Life Recovery from Flasks",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1430,23 +1261,23 @@
     "tier": 2,
     "ilvl": 1,
     "weight": 2,
-    "weight_pct": 3.704,
+    "weight_pct": 4.444,
     "tags": [],
     "family": "FlaskChargeGenerationPercent",
     "tiers": [
       {
         "tier_name": "of Pathfinding",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (5–10)% increased Life Flask Charges gained",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (5—10)% increased Life Flask Charges gained",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       },
       {
         "tier_name": "of Fountains",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (5–10)% increased Mana Flask Charges gained",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (5—10)% increased Mana Flask Charges gained",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1454,11 +1285,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Small Passive Skills in Radius also grant (1–2)% increased Mana Recovery from Flasks",
+    "text_plain": "Small Passive Skills in Radius also grant (1—2)% increased Mana Recovery from Flasks",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [
       "mana"
     ],
@@ -1467,9 +1298,9 @@
       {
         "tier_name": "of Quenching",
         "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (1–2)% increased Mana Recovery from Flasks",
+        "text_plain": "1 Small Passive Skills in Radius also grant (1—2)% increased Mana Recovery from Flasks",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1477,11 +1308,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Small Passive Skills in Radius also grant (1–2)% increased amount of Mana Leeched",
+    "text_plain": "Small Passive Skills in Radius also grant (1—2)% increased amount of Mana Leeched",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [
       "mana"
     ],
@@ -1490,9 +1321,9 @@
       {
         "tier_name": "of Thirsting",
         "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (1–2)% increased amount of Mana Leeched",
+        "text_plain": "1 Small Passive Skills in Radius also grant (1—2)% increased amount of Mana Leeched",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1500,11 +1331,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Small Passive Skills in Radius also grant Mark Skills have (2–3)% increased Use Speed",
+    "text_plain": "Small Passive Skills in Radius also grant Mark Skills have (2—3)% increased Use Speed",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [
       "speed",
       "curse"
@@ -1514,9 +1345,9 @@
       {
         "tier_name": "of Targeting",
         "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant Mark Skills have (2–3)% increased Use Speed",
+        "text_plain": "1 Small Passive Skills in Radius also grant Mark Skills have (2—3)% increased Use Speed",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1524,43 +1355,20 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Small Passive Skills in Radius also grant Mark Skills have (3–4)% increased Skill Effect Duration",
+    "text_plain": "Small Passive Skills in Radius also grant Mark Skills have (3—4)% increased Skill Effect Duration",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [],
     "family": "MarkDuration",
     "tiers": [
       {
         "tier_name": "of Tracking",
         "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant Mark Skills have (3–4)% increased Skill Effect Duration",
+        "text_plain": "1 Small Passive Skills in Radius also grant Mark Skills have (3—4)% increased Skill Effect Duration",
         "weight": 1,
-        "weight_pct": 1.852
-      }
-    ]
-  },
-  {
-    "category": "Time-Lost_Emerald",
-    "domain": "normal",
-    "side": "suffix",
-    "text_plain": "Notable Passive Skills in Radius also grant Minions Revive (3–7)% faster",
-    "tier": 1,
-    "ilvl": 1,
-    "weight": 1,
-    "weight_pct": 1.852,
-    "tags": [
-      "minion"
-    ],
-    "family": "MinionReviveSpeed",
-    "tiers": [
-      {
-        "tier_name": "of Revival",
-        "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant Minions Revive (3–7)% faster",
-        "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1572,7 +1380,7 @@
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [
       "speed"
     ],
@@ -1583,7 +1391,7 @@
         "tier_level": 1,
         "text_plain": "1 Notable Passive Skills in Radius also grant 1% increased Movement Speed",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1591,20 +1399,20 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Notable Passive Skills in Radius also grant (5–10)% chance to Pierce an Enemy",
+    "text_plain": "Notable Passive Skills in Radius also grant (5—10)% chance to Pierce an Enemy",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [],
     "family": "ChanceToPierce",
     "tiers": [
       {
         "tier_name": "of Piercing",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (5–10)% chance to Pierce an Enemy",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (5—10)% chance to Pierce an Enemy",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1612,20 +1420,20 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Notable Passive Skills in Radius also grant (5–10)% increased Pin Buildup",
+    "text_plain": "Notable Passive Skills in Radius also grant (5—10)% increased Pin Buildup",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [],
     "family": "PinBuildup",
     "tiers": [
       {
         "tier_name": "of Pinning",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (5–10)% increased Pin Buildup",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (5—10)% increased Pin Buildup",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1637,7 +1445,7 @@
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [],
     "family": "PoisonChanceIncrease",
     "tiers": [
@@ -1646,7 +1454,7 @@
         "tier_level": 1,
         "text_plain": "1 Small Passive Skills in Radius also grant 1% chance to Poison on Hit",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1654,11 +1462,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Notable Passive Skills in Radius also grant (3–7)% increased Poison Duration",
+    "text_plain": "Notable Passive Skills in Radius also grant (3—7)% increased Poison Duration",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [
       "chaos",
       "ailment"
@@ -1668,9 +1476,9 @@
       {
         "tier_name": "of Infection",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (3–7)% increased Poison Duration",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (3—7)% increased Poison Duration",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1678,20 +1486,20 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Notable Passive Skills in Radius also grant (5–10)% increased Freeze Buildup with Quarterstaves",
+    "text_plain": "Notable Passive Skills in Radius also grant (5—10)% increased Freeze Buildup with Quarterstaves",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [],
     "family": "QuarterstaffFreezeBuildup",
     "tiers": [
       {
         "tier_name": "of Glaciers",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (5–10)% increased Freeze Buildup with Quarterstaves",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (5—10)% increased Freeze Buildup with Quarterstaves",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1699,20 +1507,20 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Small Passive Skills in Radius also grant (2–3)% increased chance to Shock",
+    "text_plain": "Small Passive Skills in Radius also grant (2—3)% increased chance to Shock",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [],
     "family": "ShockChanceIncrease",
     "tiers": [
       {
         "tier_name": "of Shocking",
         "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (2–3)% increased chance to Shock",
+        "text_plain": "1 Small Passive Skills in Radius also grant (2—3)% increased chance to Shock",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1720,11 +1528,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Small Passive Skills in Radius also grant (2–3)% increased Shock Duration",
+    "text_plain": "Small Passive Skills in Radius also grant (2—3)% increased Shock Duration",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [
       "elemental",
       "lightning",
@@ -1735,9 +1543,9 @@
       {
         "tier_name": "of Paralyzing",
         "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (2–3)% increased Shock Duration",
+        "text_plain": "1 Small Passive Skills in Radius also grant (2—3)% increased Shock Duration",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1745,20 +1553,20 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Notable Passive Skills in Radius also grant (2–5)% reduced Slowing Potency of Debuffs on You",
+    "text_plain": "Notable Passive Skills in Radius also grant (2—5)% reduced Slowing Potency of Debuffs on You",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [],
     "family": "SlowPotency",
     "tiers": [
       {
         "tier_name": "of Hastening",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (2–5)% reduced Slowing Potency of Debuffs on You",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (2—5)% reduced Slowing Potency of Debuffs on You",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1766,11 +1574,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Notable Passive Skills in Radius also grant (1–2)% increased Attack Speed with Spears",
+    "text_plain": "Notable Passive Skills in Radius also grant (1—2)% increased Attack Speed with Spears",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [
       "attack",
       "speed"
@@ -1780,9 +1588,9 @@
       {
         "tier_name": "of Spearing",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (1–2)% increased Attack Speed with Spears",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (1—2)% increased Attack Speed with Spears",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1790,11 +1598,11 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Notable Passive Skills in Radius also grant (5–10)% increased Critical Damage Bonus with Spears",
+    "text_plain": "Notable Passive Skills in Radius also grant (5—10)% increased Critical Damage Bonus with Spears",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [
       "attack",
       "critical"
@@ -1804,9 +1612,9 @@
       {
         "tier_name": "of Hunting",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (5–10)% increased Critical Damage Bonus with Spears",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (5—10)% increased Critical Damage Bonus with Spears",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1814,20 +1622,20 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Small Passive Skills in Radius also grant (2–3)% increased Stun Threshold if you haven't been Stunned Recently",
+    "text_plain": "Small Passive Skills in Radius also grant (2—3)% increased Stun Threshold if you haven't been Stunned Recently",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [],
     "family": "IncreasedStunThresholdIfNoRecentStun",
     "tiers": [
       {
         "tier_name": "of Stoutness",
         "tier_level": 1,
-        "text_plain": "1 Small Passive Skills in Radius also grant (2–3)% increased Stun Threshold if you haven't been Stunned Recently",
+        "text_plain": "1 Small Passive Skills in Radius also grant (2—3)% increased Stun Threshold if you haven't been Stunned Recently",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1835,67 +1643,20 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Notable Passive Skills in Radius also grant (2–4)% increased Trap Throwing Speed",
+    "text_plain": "Notable Passive Skills in Radius also grant (5—10)% increased Parried Debuff Duration",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
-    "tags": [
-      "speed"
-    ],
-    "family": "TrapAndMineThrowSpeed",
-    "tiers": [
-      {
-        "tier_name": "of Preparation",
-        "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (2–4)% increased Trap Throwing Speed",
-        "weight": 1,
-        "weight_pct": 1.852
-      }
-    ]
-  },
-  {
-    "category": "Time-Lost_Emerald",
-    "domain": "normal",
-    "side": "suffix",
-    "text_plain": "Notable Passive Skills in Radius also grant (1–2)% increased Unarmed Attack Speed",
-    "tier": 1,
-    "ilvl": 1,
-    "weight": 1,
-    "weight_pct": 1.852,
-    "tags": [
-      "attack",
-      "speed"
-    ],
-    "family": "UnarmedAttackSpeed",
-    "tiers": [
-      {
-        "tier_name": "of Jabbing",
-        "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (1–2)% increased Unarmed Attack Speed",
-        "weight": 1,
-        "weight_pct": 1.852
-      }
-    ]
-  },
-  {
-    "category": "Time-Lost_Emerald",
-    "domain": "normal",
-    "side": "suffix",
-    "text_plain": "Notable Passive Skills in Radius also grant (5–10)% increased Parried Debuff Duration",
-    "tier": 1,
-    "ilvl": 1,
-    "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [],
     "family": "ParriedDebuff",
     "tiers": [
       {
         "tier_name": "of Unsettling",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (5–10)% increased Parried Debuff Duration",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (5—10)% increased Parried Debuff Duration",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1903,20 +1664,20 @@
     "category": "Time-Lost_Emerald",
     "domain": "normal",
     "side": "suffix",
-    "text_plain": "Notable Passive Skills in Radius also grant (8–12)% increased Stun Threshold while Parrying",
+    "text_plain": "Notable Passive Skills in Radius also grant (8—12)% increased Stun Threshold while Parrying",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
-    "weight_pct": 1.852,
+    "weight_pct": 2.222,
     "tags": [],
     "family": "StunThresholdDuringParry",
     "tiers": [
       {
         "tier_name": "of Biding",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (8–12)% increased Stun Threshold while Parrying",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (8—12)% increased Stun Threshold while Parrying",
         "weight": 1,
-        "weight_pct": 1.852
+        "weight_pct": 2.222
       }
     ]
   },
@@ -1956,7 +1717,7 @@
       {
         "tier_name": "Lightless",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (2–3)% increased Global Defences",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (2—3)% increased Global Defences",
         "weight": 0,
         "weight_pct": 0
       },
@@ -2005,7 +1766,7 @@
       {
         "tier_name": "Lightless",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant (2–3)% increased Mana Cost Efficiency",
+        "text_plain": "1 Notable Passive Skills in Radius also grant (2—3)% increased Mana Cost Efficiency",
         "weight": 0,
         "weight_pct": 0
       },
@@ -2019,14 +1780,14 @@
       {
         "tier_name": "Lightless",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant Hits have (3–5)% reduced Critical Hit Chance against you",
+        "text_plain": "1 Notable Passive Skills in Radius also grant Hits have (3—5)% reduced Critical Hit Chance against you",
         "weight": 0,
         "weight_pct": 0
       },
       {
         "tier_name": "Lightless",
         "tier_level": 1,
-        "text_plain": "1 Notable Passive Skills in Radius also grant Regenerate (0.03–0.07)% of maximum Life per second",
+        "text_plain": "1 Notable Passive Skills in Radius also grant Regenerate (0.03—0.07)% of maximum Life per second",
         "weight": 0,
         "weight_pct": 0
       }
@@ -2036,7 +1797,7 @@
     "category": "Time-Lost_Emerald",
     "domain": "corrupted",
     "side": "none",
-    "text_plain": "+(4–6) to Strength",
+    "text_plain": "+(4—6) to Strength",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -2049,7 +1810,7 @@
       {
         "tier_name": "CorruptionJewelStrength1",
         "tier_level": 1,
-        "text_plain": "1 +(4–6) to Strength",
+        "text_plain": "1 +(4—6) to Strength",
         "weight": 1,
         "weight_pct": 9.091
       }
@@ -2059,7 +1820,7 @@
     "category": "Time-Lost_Emerald",
     "domain": "corrupted",
     "side": "none",
-    "text_plain": "+(4–6) to Dexterity",
+    "text_plain": "+(4—6) to Dexterity",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -2072,7 +1833,7 @@
       {
         "tier_name": "CorruptionJewelDexterity1",
         "tier_level": 1,
-        "text_plain": "1 +(4–6) to Dexterity",
+        "text_plain": "1 +(4—6) to Dexterity",
         "weight": 1,
         "weight_pct": 9.091
       }
@@ -2082,7 +1843,7 @@
     "category": "Time-Lost_Emerald",
     "domain": "corrupted",
     "side": "none",
-    "text_plain": "+(4–6) to Intelligence",
+    "text_plain": "+(4—6) to Intelligence",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -2095,7 +1856,7 @@
       {
         "tier_name": "CorruptionJewelIntelligence1",
         "tier_level": 1,
-        "text_plain": "1 +(4–6) to Intelligence",
+        "text_plain": "1 +(4—6) to Intelligence",
         "weight": 1,
         "weight_pct": 9.091
       }
@@ -2105,7 +1866,7 @@
     "category": "Time-Lost_Emerald",
     "domain": "corrupted",
     "side": "none",
-    "text_plain": "+(5–10)% to Fire Resistance",
+    "text_plain": "+(5—10)% to Fire Resistance",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -2120,7 +1881,7 @@
       {
         "tier_name": "CorruptionJewelFireResist1",
         "tier_level": 1,
-        "text_plain": "1 +(5–10)% to Fire Resistance",
+        "text_plain": "1 +(5—10)% to Fire Resistance",
         "weight": 1,
         "weight_pct": 9.091
       }
@@ -2130,7 +1891,7 @@
     "category": "Time-Lost_Emerald",
     "domain": "corrupted",
     "side": "none",
-    "text_plain": "+(5–10)% to Cold Resistance",
+    "text_plain": "+(5—10)% to Cold Resistance",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -2145,7 +1906,7 @@
       {
         "tier_name": "CorruptionJewelColdResist1",
         "tier_level": 1,
-        "text_plain": "1 +(5–10)% to Cold Resistance",
+        "text_plain": "1 +(5—10)% to Cold Resistance",
         "weight": 1,
         "weight_pct": 9.091
       }
@@ -2155,7 +1916,7 @@
     "category": "Time-Lost_Emerald",
     "domain": "corrupted",
     "side": "none",
-    "text_plain": "+(5–10)% to Lightning Resistance",
+    "text_plain": "+(5—10)% to Lightning Resistance",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -2170,7 +1931,7 @@
       {
         "tier_name": "CorruptionJewelLightningResist1",
         "tier_level": 1,
-        "text_plain": "1 +(5–10)% to Lightning Resistance",
+        "text_plain": "1 +(5—10)% to Lightning Resistance",
         "weight": 1,
         "weight_pct": 9.091
       }
@@ -2180,7 +1941,7 @@
     "category": "Time-Lost_Emerald",
     "domain": "corrupted",
     "side": "none",
-    "text_plain": "+(3–7)% to Chaos Resistance",
+    "text_plain": "+(3—7)% to Chaos Resistance",
     "tier": 1,
     "ilvl": 1,
     "weight": 1,
@@ -2194,7 +1955,7 @@
       {
         "tier_name": "CorruptionJewelChaosResist1",
         "tier_level": 1,
-        "text_plain": "1 +(3–7)% to Chaos Resistance",
+        "text_plain": "1 +(3—7)% to Chaos Resistance",
         "weight": 1,
         "weight_pct": 9.091
       }

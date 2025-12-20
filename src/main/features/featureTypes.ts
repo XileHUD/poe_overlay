@@ -9,7 +9,7 @@ export interface CraftingSubcategories {
   omens: boolean;
   currency: boolean;
   catalysts: boolean;
-  socketables: boolean;
+  augments: boolean;
 }
 
 export interface Poe1CraftingSubcategories {
@@ -44,6 +44,7 @@ export interface Poe1CharacterSubcategories {
 export interface ItemsSubcategories {
   uniques: boolean;
   bases: boolean;
+  fate: boolean;
 }
 
 export interface Poe1ItemsSubcategories {
@@ -109,7 +110,7 @@ export const DEFAULT_FEATURES: FeatureConfig = {
       omens: true,
       currency: true,
       catalysts: true,
-      socketables: true
+      augments: true
     }
   },
   poe1Crafting: {
@@ -151,7 +152,8 @@ export const DEFAULT_FEATURES: FeatureConfig = {
     enabled: true,
     subcategories: {
       uniques: true,
-      bases: true
+      bases: true,
+      fate: true
     }
   },
   poe1Items: {
@@ -190,7 +192,7 @@ export const MINIMAL_FEATURES: FeatureConfig = {
       omens: false,
       currency: false,
       catalysts: false,
-      socketables: false
+      augments: false
     }
   },
   poe1Crafting: {
@@ -232,7 +234,8 @@ export const MINIMAL_FEATURES: FeatureConfig = {
     enabled: false,
     subcategories: {
       uniques: false,
-      bases: false
+      bases: false,
+      fate: false
     }
   },
   poe1Items: {
@@ -270,7 +273,7 @@ export const ALL_FEATURES: FeatureConfig = {
       omens: true,
       currency: true,
       catalysts: true,
-      socketables: true
+      augments: true
     }
   },
   poe1Crafting: {
@@ -312,7 +315,8 @@ export const ALL_FEATURES: FeatureConfig = {
     enabled: true,
     subcategories: {
       uniques: true,
-      bases: true
+      bases: true,
+      fate: true
     }
   },
   poe1Items: {

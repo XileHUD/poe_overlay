@@ -23,7 +23,7 @@
       "character": "Monk",
       "explicitMods": [
         "Physical Damage Reduction from Armour is based on your combined Armour and Evasion Rating",
-        "<span class=\"mod-value\">50</span>% less Evasion Rating"
+        "<span class=\"mod-value\">35</span>% less Evasion Rating"
       ],
       "imageLocal": "ascendancy/and_protect_me_from_harm.webp"
     },
@@ -73,7 +73,7 @@
       "character": "Mercenary",
       "explicitMods": [
         "Grants Thaumaturgical Dynamism",
-        "<span class=\"secondary\">gain random charge every X ms from total socketed gem attribute requirements [8000]</span>"
+        "<span class=\"secondary\">gain random charge every X ms from total socketed gem attribute requirements [5000]</span>"
       ],
       "imageLocal": "ascendancy/advanced_thaumaturgy.webp"
     },
@@ -167,6 +167,22 @@
       "imageLocal": "ascendancy/as_the_whispers_demand.webp"
     },
     {
+      "name": "Avatar of Evolution",
+      "slug": "Avatar_of_Evolution",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Shaman",
+      "character": "Druid",
+      "explicitMods": [
+        "<span class=\"mod-value\">5</span>% of Physical Damage taken as Lightning Damage",
+        "<span class=\"mod-value\">5</span>% of Physical Damage taken as Cold Damage",
+        "<span class=\"mod-value\">5</span>% of Physical Damage taken as Fire Damage",
+        "Adaptations have a duration of <span class=\"mod-value\">5</span> seconds",
+        "Double Adaptation Effect"
+      ],
+      "imageLocal": "ascendancy/avatar_of_evolution.webp"
+    },
+    {
       "name": "Avidity",
       "slug": "Avidity",
       "stack_current": null,
@@ -189,6 +205,55 @@
         "Life Flasks also recover Mana<br>Mana Flasks also recover Life"
       ],
       "imageLocal": "ascendancy/azmeri_brew.webp"
+    },
+    {
+      "name": "Barya of Kelari",
+      "slug": "Barya_of_Kelari",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Disciple of Varashta",
+      "character": "Sorceress",
+      "explicitMods": [
+        "<img loading=\"lazy\" src=\"https://cdn.poe2db.tw/image/Art/2DArt/SkillIcons/SorceressSummonSandDjinn.webp\" class=\"grantsSkill\"> Grants Skill: Kelari, the Tainted Sands"
+      ],
+      "imageLocal": "ascendancy/barya_of_kelari.webp"
+    },
+    {
+      "name": "Barya of Navira",
+      "slug": "Barya_of_Navira",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Disciple of Varashta",
+      "character": "Sorceress",
+      "explicitMods": [
+        "<img loading=\"lazy\" src=\"https://cdn.poe2db.tw/image/Art/2DArt/SkillIcons/SorceressSummonWaterDjinn.webp\" class=\"grantsSkill\"> Grants Skill: Navira, the Last Mirage"
+      ],
+      "imageLocal": "ascendancy/barya_of_navira.webp"
+    },
+    {
+      "name": "Barya of Ruzhan",
+      "slug": "Barya_of_Ruzhan",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Disciple of Varashta",
+      "character": "Sorceress",
+      "explicitMods": [
+        "<img loading=\"lazy\" src=\"https://cdn.poe2db.tw/image/Art/2DArt/SkillIcons/SorceressSummonFireDjinn.webp\" class=\"grantsSkill\"> Grants Skill: Ruzhan, the Blazing Sword",
+        "[DNT] Fire Djinn will use Flame Slice on Enemies you target with Damaging Skills"
+      ],
+      "imageLocal": "ascendancy/barya_of_ruzhan.webp"
+    },
+    {
+      "name": "Baryanic Leylines",
+      "slug": "Baryanic_Leylines",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Disciple of Varashta",
+      "character": "Sorceress",
+      "explicitMods": [
+        "Non-Unique Time-Lost Jewels have <span class=\"mod-value\">40</span>% increased radius"
+      ],
+      "imageLocal": "ascendancy/baryanic_leylines.webp"
     },
     {
       "name": "Beidat's Gaze",
@@ -267,6 +332,18 @@
       "imageLocal": "ascendancy/bringer_of_flame.webp"
     },
     {
+      "name": "Bringer of the Apocalypse",
+      "slug": "Bringer_of_the_Apocalypse",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Shaman",
+      "character": "Druid",
+      "explicitMods": [
+        "<img loading=\"lazy\" src=\"https://cdn.poe2db.tw/image/Art/2DArt/SkillIcons/DruidShamanUnleashtheElementsSkill.webp\" class=\"grantsSkill\"> Grants Skill: Apocalypse"
+      ],
+      "imageLocal": "ascendancy/bringer_of_the_apocalypse.webp"
+    },
+    {
       "name": "Bullseye",
       "slug": "Bullseye",
       "stack_current": null,
@@ -274,7 +351,7 @@
       "ascendancy": "Deadeye",
       "character": "Ranger",
       "explicitMods": [
-        "Apply <span class=\"mod-value\">5</span> Critical Weakness to Enemies when Consuming a Mark on them"
+        "Apply <span class=\"mod-value\">10</span> Critical Weakness to Enemies when Consuming a Mark on them"
       ],
       "imageLocal": "ascendancy/bullseye.webp"
     },
@@ -292,7 +369,7 @@
     },
     {
       "name": "Cannons, Ready!",
-      "slug": "Cannons%2C_Ready%21",
+      "slug": "Cannons%2C_Ready",
       "stack_current": null,
       "stack_max": null,
       "ascendancy": "Tactician",
@@ -313,8 +390,7 @@
       "ascendancy": "Witchhunter",
       "character": "Mercenary",
       "explicitMods": [
-        "<span class=\"mod-value\">50</span>% increased effect of Sorcery Ward",
-        "Sorcery Ward recovers <span class=\"mod-value\">50</span>% faster"
+        "Sorcery Ward's Barrier can also take Physical and Chaos Damage from Hits"
       ],
       "imageLocal": "ascendancy/ceremonial_ablution.webp"
     },
@@ -368,16 +444,16 @@
       "imageLocal": "ascendancy/constant_gale.webp"
     },
     {
-      "name": "Contagious Contamination",
-      "slug": "Contagious_Contamination",
+      "name": "Converging Paths",
+      "slug": "Converging_Paths",
       "stack_current": null,
       "stack_max": null,
-      "ascendancy": "Pathfinder",
-      "character": "Ranger",
+      "ascendancy": "Oracle",
+      "character": "Druid",
       "explicitMods": [
-        "The most Damaging Poison on Enemies you Kill is Spread to other Enemies within <span class=\"mod-value\">1.5</span> metres"
+        "<img loading=\"lazy\" src=\"https://cdn.poe2db.tw/image/Art/2DArt/SkillIcons/passives/DruidOracleRipFromTimeSkill.webp\" class=\"grantsSkill\"> Grants Skill: Moment of Vulnerability"
       ],
-      "imageLocal": "ascendancy/contagious_contamination.webp"
+      "imageLocal": "ascendancy/converging_paths.webp"
     },
     {
       "name": "Corrupted Lifeforce",
@@ -387,7 +463,8 @@
       "ascendancy": "Ritualist",
       "character": "Huntress",
       "explicitMods": [
-        "<img loading=\"lazy\" src=\"https://cdn.poe2db.tw/image/Art/2DArt/SkillIcons/PrimalistBloodBoilsSkillIcon.webp\" class=\"grantsSkill\"> Grants Skill: Blood Boil"
+        "<img loading=\"lazy\" src=\"https://cdn.poe2db.tw/image/Art/2DArt/SkillIcons/PrimalistBloodBoilsSkillIcon.webp\" class=\"grantsSkill\"> Grants Skill: Blood Boil",
+        "<span class=\"mod-value\">15</span>% more Damage against Enemies affected by Blood Boils"
       ],
       "imageLocal": "ascendancy/corrupted_lifeforce.webp"
     },
@@ -423,6 +500,7 @@
       "ascendancy": "Titan",
       "character": "Warrior",
       "explicitMods": [
+        "<span class=\"mod-value\">25</span>% more Damage against Heavy Stunned Enemies",
         "Your Hits are Crushing Blows"
       ],
       "imageLocal": "ascendancy/crushing_impacts.webp"
@@ -461,7 +539,8 @@
       "ascendancy": "Smith of Kitava",
       "character": "Warrior",
       "explicitMods": [
-        "Body Armour grants +100% of Armour also applies to Chaos Damage"
+        "Body Armour grants +100% of Armour also applies to Chaos Damage",
+        "<span class=\"secondary\">base physical damage reduction rating no display [200]</span>"
       ],
       "imageLocal": "ascendancy/dedication_to_kitava.webp"
     },
@@ -491,6 +570,18 @@
       "imageLocal": "ascendancy/demonic_possession.webp"
     },
     {
+      "name": "Druidic Champion",
+      "slug": "Druidic_Champion",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Shaman",
+      "character": "Druid",
+      "explicitMods": [
+        "Every 2 Rage also grants <span class=\"mod-value\">1</span>% more Spell damage"
+      ],
+      "imageLocal": "ascendancy/druidic_champion.webp"
+    },
+    {
       "name": "Earthbreaker",
       "slug": "Earthbreaker",
       "stack_current": null,
@@ -498,7 +589,7 @@
       "ascendancy": "Titan",
       "character": "Warrior",
       "explicitMods": [
-        "<span class=\"mod-value\">25</span>% chance for Slam Skills you use yourself to cause Aftershocks"
+        "<span class=\"mod-value\">25</span>% chance for Slam Skills you use yourself to cause an additional Aftershock"
       ],
       "imageLocal": "ascendancy/earthbreaker.webp"
     },
@@ -511,8 +602,8 @@
       "character": "Witch",
       "explicitMods": [
         "Spells deal <span class=\"mod-value\">30</span>% more Damage when Sacrificing Energy Shield",
-        "Sacrificing Energy Shield does not interrupt Recharge",
-        "Sacrifice <span class=\"mod-value\">5</span>% of maximum Energy Shield when you Cast a Spell"
+        "Sacrifice <span class=\"mod-value\">5</span>% of maximum Energy Shield when you Cast a Spell",
+        "Sacrificing Energy Shield does not interrupt Recharge"
       ],
       "imageLocal": "ascendancy/eldritch_empowerment.webp"
     },
@@ -525,9 +616,7 @@
       "character": "Huntress",
       "explicitMods": [
         "<img loading=\"lazy\" src=\"https://cdn.poe2db.tw/image/Art/2DArt/SkillIcons/AmazonElementalInfusionSkillIcon.webp\" class=\"grantsSkill\"> Grants Skill: Elemental Surge",
-        "When you Consume a Power Charge Trigger Elemental Surge to gain <span class=\"mod-value\">3</span> Cold Surges",
-        "When you Consume an Endurance Charge Trigger Elemental Surge to gain <span class=\"mod-value\">3</span> Fire Surges",
-        "When you Consume a Frenzy Charge Trigger Elemental Surge to gain <span class=\"mod-value\">3</span> Lightning Surges"
+        "When you Consume a Charge, Trigger Elemental Surge to gain <span class=\"mod-value\">3</span> Lightning Surges"
       ],
       "imageLocal": "ascendancy/elemental_surge.webp"
     },
@@ -539,9 +628,9 @@
       "ascendancy": "Acolyte of Chayula",
       "character": "Monk",
       "explicitMods": [
-        "Darkness Reservation lasts for <span class=\"mod-value\">5</span> seconds",
         "You have no Spirit<br>Base Maximum Darkness is <span class=\"mod-value\">100</span><br>Damage taken is Reserved from Darkness before being taken from Life or Energy Shield",
-        "<span class=\"mod-value\">+8</span> to Maximum Darkness per Level"
+        "Darkness Reservation lasts for <span class=\"mod-value\">5</span> seconds",
+        "<span class=\"mod-value\">+10</span> to Maximum Darkness per Level"
       ],
       "imageLocal": "ascendancy/embrace_the_darkness.webp"
     },
@@ -577,10 +666,22 @@
       "ascendancy": "Gemling Legionnaire",
       "character": "Mercenary",
       "explicitMods": [
-        "<span class=\"mod-value\">20</span>% less Attributes",
-        "Inherent bonuses gained from Attributes are doubled"
+        "Inherent bonuses gained from Attributes are doubled",
+        "<span class=\"mod-value\">20</span>% less Attributes"
       ],
       "imageLocal": "ascendancy/enhanced_effectiveness.webp"
+    },
+    {
+      "name": "Entwined Realities",
+      "slug": "Entwined_Realities",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Oracle",
+      "character": "Druid",
+      "explicitMods": [
+        "Non-Keystone Passive Skills in Medium Radius of allocated Keystone Passive Skills can be allocated without being connected to your tree"
+      ],
+      "imageLocal": "ascendancy/entwined_realities.webp"
     },
     {
       "name": "Eternal Life",
@@ -607,6 +708,18 @@
       "imageLocal": "ascendancy/faith_is_a_choice.webp"
     },
     {
+      "name": "Fateful Vision",
+      "slug": "Fateful_Vision",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Oracle",
+      "character": "Druid",
+      "explicitMods": [
+        "<img loading=\"lazy\" src=\"https://cdn.poe2db.tw/image/Art/2DArt/SkillIcons/DruidOracleSpellfluxSkill.webp\" class=\"grantsSkill\"> Grants Skill: Align Fate"
+      ],
+      "imageLocal": "ascendancy/fateful_vision.webp"
+    },
+    {
       "name": "Flowing Metal",
       "slug": "Flowing_Metal",
       "stack_current": null,
@@ -614,7 +727,8 @@
       "ascendancy": "Smith of Kitava",
       "character": "Warrior",
       "explicitMods": [
-        "Body Armour grants <span class=\"mod-value\">+50</span>% of Armour also applies to Elemental Damage"
+        "Body Armour grants <span class=\"mod-value\">+50</span>% of Armour also applies to Elemental Damage",
+        "<span class=\"secondary\">base physical damage reduction rating no display [200]</span>"
       ],
       "imageLocal": "ascendancy/flowing_metal.webp"
     },
@@ -644,6 +758,18 @@
       "imageLocal": "ascendancy/force_of_will.webp"
     },
     {
+      "name": "Forced Outcome",
+      "slug": "Forced_Outcome",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Oracle",
+      "character": "Druid",
+      "explicitMods": [
+        "Inevitable Critical Hits"
+      ],
+      "imageLocal": "ascendancy/forced_outcome.webp"
+    },
+    {
       "name": "Forged in Flame",
       "slug": "Forged_in_Flame",
       "stack_current": null,
@@ -654,6 +780,22 @@
         "Modifiers to Maximum Fire Resistance also grant Maximum Cold and Lightning Resistance"
       ],
       "imageLocal": "ascendancy/forged_in_flame.webp"
+    },
+    {
+      "name": "Furious Wellspring",
+      "slug": "Furious_Wellspring",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Shaman",
+      "character": "Druid",
+      "explicitMods": [
+        "No Inherent loss of Rage",
+        "Regenerate <span class=\"mod-value\">6</span>% of your maximum Rage per second",
+        "Increases and Reductions to Mana Regeneration Rate also apply to Rage Regeneration Rate",
+        "Skills have <span class=\"mod-value\">+5</span> to Rage cost",
+        "<span class=\"mod-value\">+7</span> to Maximum Rage"
+      ],
+      "imageLocal": "ascendancy/furious_wellspring.webp"
     },
     {
       "name": "Gathering Winds",
@@ -688,7 +830,7 @@
       "ascendancy": "Blood Mage",
       "character": "Witch",
       "explicitMods": [
-        "1% increased Critical Damage Bonus per <span class=\"mod-value\">50</span> Life"
+        "1% increased Critical Damage Bonus per <span class=\"mod-value\">50</span> current Life"
       ],
       "imageLocal": "ascendancy/gore_spike.webp"
     },
@@ -730,6 +872,20 @@
       "imageLocal": "ascendancy/grinning_immolation.webp"
     },
     {
+      "name": "Harmony Within",
+      "slug": "Harmony_Within",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Oracle",
+      "character": "Druid",
+      "explicitMods": [
+        "Hit damage is taken from Mana before Life if your current Mana is higher than your current Life",
+        "<span class=\"mod-value\">15</span>% less maximum Life",
+        "<span class=\"mod-value\">15</span>% less maximum Mana"
+      ],
+      "imageLocal": "ascendancy/harmony_within.webp"
+    },
+    {
       "name": "Heat of the Forge",
       "slug": "Heat_of_the_Forge",
       "stack_current": null,
@@ -749,21 +905,10 @@
       "ascendancy": "Smith of Kitava",
       "character": "Warrior",
       "explicitMods": [
-        "Body Armour grants Unaffected by Ignite"
+        "Body Armour grants Unaffected by Damaging Ailments",
+        "<span class=\"secondary\">base physical damage reduction rating no display [200]</span>"
       ],
       "imageLocal": "ascendancy/heatproofing.webp"
-    },
-    {
-      "name": "Heavy Bracing",
-      "slug": "Heavy_Bracing",
-      "stack_current": null,
-      "stack_max": null,
-      "ascendancy": "Smith of Kitava",
-      "character": "Warrior",
-      "explicitMods": [
-        "Body Armour grants <span class=\"mod-value\">100</span>% increased Stun Threshold"
-      ],
-      "imageLocal": "ascendancy/heavy_bracing.webp"
     },
     {
       "name": "Heavy Snows",
@@ -825,6 +970,7 @@
       "ascendancy": "Warbringer",
       "character": "Warrior",
       "explicitMods": [
+        "Fully Broken Armour you inflict increases all Damage Taken from Hits instead",
         "You can Break Enemy Armour to below 0"
       ],
       "imageLocal": "ascendancy/imploding_impacts.webp"
@@ -875,10 +1021,23 @@
       "ascendancy": "Acolyte of Chayula",
       "character": "Monk",
       "explicitMods": [
-        "Gain <span class=\"mod-value\">1</span> Volatility on inflicting an Elemental Ailment",
-        "Take no Damage from Volatility"
+        "Take no Damage from Volatility",
+        "Gain <span class=\"mod-value\">1</span> Volatility on inflicting an Elemental Ailment"
       ],
       "imageLocal": "ascendancy/inner_turmoil.webp"
+    },
+    {
+      "name": "Instruments of Power",
+      "slug": "Instruments_of_Power",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Disciple of Varashta",
+      "character": "Sorceress",
+      "explicitMods": [
+        "You can equip a Focus while wielding a Staff",
+        "<span class=\"mod-value\">50</span>% reduced bonuses gained from Equipped Focus"
+      ],
+      "imageLocal": "ascendancy/instruments_of_power.webp"
     },
     {
       "name": "Integrated Efficiency",
@@ -888,9 +1047,9 @@
       "ascendancy": "Gemling Legionnaire",
       "character": "Mercenary",
       "explicitMods": [
-        "Skills deal <span class=\"mod-value\">20</span>% increased Damage per [ConnectedGem|Connected] red Support Gem",
-        "Skills have <span class=\"mod-value\">6</span>% increased Skill Speed per [ConnectedGem|Connected] green Support Gem",
-        "Skills have <span class=\"mod-value\">20</span>% increased Critical Hit Chance per [ConnectedGem|Connected] blue Support Gem"
+        "Skills deal <span class=\"mod-value\">20</span>% increased Damage per Connected Red Support Gem",
+        "Skills have <span class=\"mod-value\">6</span>% increased Skill Speed per Connected Green Support Gem",
+        "Skills have <span class=\"mod-value\">20</span>% increased Critical Hit Chance per Connected Blue Support Gem"
       ],
       "imageLocal": "ascendancy/integrated_efficiency.webp"
     },
@@ -902,7 +1061,8 @@
       "ascendancy": "Smith of Kitava",
       "character": "Warrior",
       "explicitMods": [
-        "Body Armour grants Hits against you have <span class=\"mod-value\">50</span>% reduced Critical Damage Bonus"
+        "Body Armour grants Hits against you have <span class=\"mod-value\">100</span>% reduced Critical Damage Bonus",
+        "<span class=\"secondary\">base physical damage reduction rating no display [200]</span>"
       ],
       "imageLocal": "ascendancy/internal_layer.webp"
     },
@@ -947,6 +1107,42 @@
       "imageLocal": "ascendancy/judge_jury_and_executioner.webp"
     },
     {
+      "name": "Kelari's Deception",
+      "slug": "Kelaris_Deception",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Disciple of Varashta",
+      "character": "Sorceress",
+      "explicitMods": [
+        "<img loading=\"lazy\" src=\"https://cdn.poe2db.tw/image/Art/2DArt/SkillIcons/Rolldodge.webp\" class=\"grantsSkill\"> Grants Skill: Kelari's Deception"
+      ],
+      "imageLocal": "ascendancy/kelaris_deception.webp"
+    },
+    {
+      "name": "Kelari's Judgment",
+      "slug": "Kelaris_Judgment",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Disciple of Varashta",
+      "character": "Sorceress",
+      "explicitMods": [
+        "<img loading=\"lazy\" src=\"https://cdn.poe2db.tw/image/Art/2DArt/SkillIcons/Rolldodge.webp\" class=\"grantsSkill\"> Grants Skill: Kelari's Judgment"
+      ],
+      "imageLocal": "ascendancy/kelaris_judgment.webp"
+    },
+    {
+      "name": "Kelari's Malediction",
+      "slug": "Kelaris_Malediction",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Disciple of Varashta",
+      "character": "Sorceress",
+      "explicitMods": [
+        "<img loading=\"lazy\" src=\"https://cdn.poe2db.tw/image/Art/2DArt/SkillIcons/SorceressSandDjinnCorpseBeetles.webp\" class=\"grantsSkill\"> Grants Skill: Kelari's Malediction"
+      ],
+      "imageLocal": "ascendancy/kelaris_malediction.webp"
+    },
+    {
       "name": "Kitavan Engraving",
       "slug": "Kitavan_Engraving",
       "stack_current": null,
@@ -954,21 +1150,23 @@
       "ascendancy": "Smith of Kitava",
       "character": "Warrior",
       "explicitMods": [
-        "Body Armour grants <span class=\"mod-value\">15</span>% increased maximum Life"
+        "Body Armour grants <span class=\"mod-value\">15</span>% increased maximum Life",
+        "<span class=\"secondary\">base physical damage reduction rating no display [200]</span>"
       ],
       "imageLocal": "ascendancy/kitavan_engraving.webp"
     },
     {
-      "name": "Lead Lining",
-      "slug": "Lead_Lining",
+      "name": "Kitavan Imprint",
+      "slug": "Kitavan_Imprint",
       "stack_current": null,
       "stack_max": null,
       "ascendancy": "Smith of Kitava",
       "character": "Warrior",
       "explicitMods": [
-        "Body Armour grants <span class=\"mod-value\">+75</span>% to Lightning Resistance"
+        "Body Armour grants <span class=\"mod-value\">60</span>% increased Glory generation",
+        "<span class=\"secondary\">base physical damage reduction rating no display [200]</span>"
       ],
-      "imageLocal": "ascendancy/lead_lining.webp"
+      "imageLocal": "ascendancy/kitavan_imprint.webp"
     },
     {
       "name": "Lead me through Grace...",
@@ -992,7 +1190,8 @@
       "ascendancy": "Smith of Kitava",
       "character": "Warrior",
       "explicitMods": [
-        "Body Armour grants regenerate <span class=\"mod-value\">3</span>% of maximum Life per second"
+        "Body Armour grants regenerate <span class=\"mod-value\">3</span>% of maximum Life per second",
+        "<span class=\"secondary\">base physical damage reduction rating no display [200]</span>"
       ],
       "imageLocal": "ascendancy/leather_bindings.webp"
     },
@@ -1046,6 +1245,18 @@
       "imageLocal": "ascendancy/mind_phylacteries.webp"
     },
     {
+      "name": "Mirage Deadeye",
+      "slug": "Mirage_Deadeye",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Deadeye",
+      "character": "Ranger",
+      "explicitMods": [
+        "<img loading=\"lazy\" src=\"https://cdn.poe2db.tw/image/Art/2DArt/SkillIcons/RangerDeadeyeMirageSkill.webp\" class=\"grantsSkill\"> Grants Skill: Mirage Deadeye"
+      ],
+      "imageLocal": "ascendancy/mirage_deadeye.webp"
+    },
+    {
       "name": "Molten Symbol",
       "slug": "Molten_Symbol",
       "stack_current": null,
@@ -1053,9 +1264,22 @@
       "ascendancy": "Smith of Kitava",
       "character": "Warrior",
       "explicitMods": [
-        "Body Armour grants <span class=\"mod-value\">25</span>% of Physical Damage from Hits taken as Fire Damage"
+        "Body Armour grants <span class=\"mod-value\">25</span>% of Physical Damage from Hits taken as Fire Damage",
+        "<span class=\"secondary\">base physical damage reduction rating no display [200]</span>"
       ],
       "imageLocal": "ascendancy/molten_symbol.webp"
+    },
+    {
+      "name": "Mountain Splitter",
+      "slug": "Mountain_Splitter",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Titan",
+      "character": "Warrior",
+      "explicitMods": [
+        "Every Third Slam skill that doesn't create Fissures which you use yourself causes <span class=\"mod-value\">3</span> additional Aftershocks ahead and to each side of the initial area"
+      ],
+      "imageLocal": "ascendancy/mountain_splitter.webp"
     },
     {
       "name": "Multiplying Squalls",
@@ -1065,7 +1289,7 @@
       "ascendancy": "Stormweaver",
       "character": "Sorceress",
       "explicitMods": [
-        "<span class=\"mod-value\">+1</span> to Limit for Elemental Skills"
+        "<span class=\"mod-value\">+2</span> to Limit for Elemental Skills"
       ],
       "imageLocal": "ascendancy/multiplying_squalls.webp"
     },
@@ -1104,6 +1328,42 @@
         "Life Leech recovers based on your Elemental damage as well as Physical damage"
       ],
       "imageLocal": "ascendancy/mystic_harvest.webp"
+    },
+    {
+      "name": "Navira's Fracturing",
+      "slug": "Naviras_Fracturing",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Disciple of Varashta",
+      "character": "Sorceress",
+      "explicitMods": [
+        "<img loading=\"lazy\" src=\"https://cdn.poe2db.tw/image/Art/2DArt/SkillIcons/Rolldodge.webp\" class=\"grantsSkill\"> Grants Skill: Navira's Fracturing"
+      ],
+      "imageLocal": "ascendancy/naviras_fracturing.webp"
+    },
+    {
+      "name": "Navira's Oasis",
+      "slug": "Naviras_Oasis",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Disciple of Varashta",
+      "character": "Sorceress",
+      "explicitMods": [
+        "<img loading=\"lazy\" src=\"https://cdn.poe2db.tw/image/Art/2DArt/SkillIcons/Rolldodge.webp\" class=\"grantsSkill\"> Grants Skill: Navira's Oasis"
+      ],
+      "imageLocal": "ascendancy/naviras_oasis.webp"
+    },
+    {
+      "name": "Navira's Well",
+      "slug": "Naviras_Well",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Disciple of Varashta",
+      "character": "Sorceress",
+      "explicitMods": [
+        "<img loading=\"lazy\" src=\"https://cdn.poe2db.tw/image/Art/2DArt/SkillIcons/Rolldodge.webp\" class=\"grantsSkill\"> Grants Skill: Navira's Well"
+      ],
+      "imageLocal": "ascendancy/naviras_well.webp"
     },
     {
       "name": "Necromantic Conduit",
@@ -1167,18 +1427,6 @@
         "<span class=\"mod-value\">35</span>% less Poison Duration"
       ],
       "imageLocal": "ascendancy/overwhelming_toxicity.webp"
-    },
-    {
-      "name": "Padded Plates",
-      "slug": "Padded_Plates",
-      "stack_current": null,
-      "stack_max": null,
-      "ascendancy": "Smith of Kitava",
-      "character": "Warrior",
-      "explicitMods": [
-        "Body Armour grants <span class=\"mod-value\">+75</span>% to Cold Resistance"
-      ],
-      "imageLocal": "ascendancy/padded_plates.webp"
     },
     {
       "name": "Penetrate",
@@ -1270,6 +1518,21 @@
       "imageLocal": "ascendancy/quicksand_hourglass.webp"
     },
     {
+      "name": "Reactive Growth",
+      "slug": "Reactive_Growth",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Shaman",
+      "character": "Druid",
+      "explicitMods": [
+        "<span class=\"mod-value\">10</span>% less Elemental Damage taken",
+        "Adapt to the highest Elemental Damage Type of each Hit you take",
+        "<span class=\"mod-value\">10</span>% less Damage taken of each Elemental Damage Type per matching Adaptation",
+        "<span class=\"secondary\">base max adaptations [3]</span>"
+      ],
+      "imageLocal": "ascendancy/reactive_growth.webp"
+    },
+    {
       "name": "Refracted Infusion",
       "slug": "Refracted_Infusion",
       "stack_current": null,
@@ -1277,7 +1540,7 @@
       "ascendancy": "Stormweaver",
       "character": "Sorceress",
       "explicitMods": [
-        "<span class=\"mod-value\">50</span>% chance when collecting an Elemental Infusion to gain another different Elemental Infusion"
+        "When collecting an Elemental Infusion, gain another different Elemental Infusion"
       ],
       "imageLocal": "ascendancy/refracted_infusion.webp"
     },
@@ -1326,6 +1589,7 @@
       "ascendancy": "Pathfinder",
       "character": "Ranger",
       "explicitMods": [
+        "Cannot be Heavy Stunned while Sprinting",
         "<span class=\"mod-value\">50</span>% less Movement Speed Penalty from using Skills while moving"
       ],
       "imageLocal": "ascendancy/running_assault.webp"
@@ -1338,9 +1602,69 @@
       "ascendancy": "Lich",
       "character": "Witch",
       "explicitMods": [
-        "Cursed Enemies Killed by you, or by Allies in your Presence, have a <span class=\"mod-value\">33</span>% chance to Explode, dealing a quarter of their maximum Life as Chaos Damage"
+        "Cursed Enemies killed by you, or by Allies in your Presence, have a <span class=\"mod-value\">33</span>% chance to explode, dealing a quarter of their maximum Life as Chaos damage"
       ],
       "imageLocal": "ascendancy/rupture_the_soul.webp"
+    },
+    {
+      "name": "Ruzhan's Fury",
+      "slug": "Ruzhans_Fury",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Disciple of Varashta",
+      "character": "Sorceress",
+      "explicitMods": [
+        "<img loading=\"lazy\" src=\"https://cdn.poe2db.tw/image/Art/2DArt/SkillIcons/Rolldodge.webp\" class=\"grantsSkill\"> Grants Skill: Ruzhan's Fury"
+      ],
+      "imageLocal": "ascendancy/ruzhans_fury.webp"
+    },
+    {
+      "name": "Ruzhan's Reckoning",
+      "slug": "Ruzhans_Reckoning",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Disciple of Varashta",
+      "character": "Sorceress",
+      "explicitMods": [
+        "<img loading=\"lazy\" src=\"https://cdn.poe2db.tw/image/Art/2DArt/SkillIcons/Rolldodge.webp\" class=\"grantsSkill\"> Grants Skill: Ruzhan's Reckoning"
+      ],
+      "imageLocal": "ascendancy/ruzhans_reckoning.webp"
+    },
+    {
+      "name": "Ruzhan's Trap",
+      "slug": "Ruzhans_Trap",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Disciple of Varashta",
+      "character": "Sorceress",
+      "explicitMods": [
+        "<img loading=\"lazy\" src=\"https://cdn.poe2db.tw/image/Art/2DArt/SkillIcons/Rolldodge.webp\" class=\"grantsSkill\"> Grants Skill: Ruzhan's Trap"
+      ],
+      "imageLocal": "ascendancy/ruzhans_trap.webp"
+    },
+    {
+      "name": "Sacred Flow",
+      "slug": "Sacred_Flow",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Shaman",
+      "character": "Druid",
+      "explicitMods": [
+        "<span class=\"mod-value\">+40</span> to Spirit for each of your empty Charm slots"
+      ],
+      "imageLocal": "ascendancy/sacred_flow.webp"
+    },
+    {
+      "name": "Sacred Rituals",
+      "slug": "Sacred_Rituals",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Disciple of Varashta",
+      "character": "Sorceress",
+      "explicitMods": [
+        "<span class=\"mod-value\">60</span>% of your current Energy Shield is added to your Armour for<br>determining your Physical Damage Reduction from Armour"
+      ],
+      "imageLocal": "ascendancy/sacred_rituals.webp"
     },
     {
       "name": "Sanguimancy",
@@ -1390,7 +1714,9 @@
       "ascendancy": "Infernalist",
       "character": "Witch",
       "explicitMods": [
-        "While on High Infernal Flame, you and Allies in your<br>Presence Gain <span class=\"mod-value\">50</span>% of Damage as Fire Damage"
+        "Gain Elemental Archon when you cast a Spell while on High Infernal Flame",
+        "Elemental Archon does not expire while on High Infernal Flame",
+        "Lose Elemental Archon on reaching maximum Infernal Flame"
       ],
       "imageLocal": "ascendancy/seething_body.webp"
     },
@@ -1426,7 +1752,8 @@
       "ascendancy": "Smith of Kitava",
       "character": "Warrior",
       "explicitMods": [
-        "Can only use a Normal Body Armour"
+        "Can only use a Normal Body Armour",
+        "+<span class=\"mod-value\">200</span> to Armour for each Connected Notable Passive Skill Allocated"
       ],
       "imageLocal": "ascendancy/smiths_masterwork.webp"
     },
@@ -1443,6 +1770,19 @@
         "Regenerate Mana equal to <span class=\"mod-value\">6</span>% of maximum Life per second"
       ],
       "imageLocal": "ascendancy/soulless_form.webp"
+    },
+    {
+      "name": "Spiked Plates",
+      "slug": "Spiked_Plates",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Smith of Kitava",
+      "character": "Warrior",
+      "explicitMods": [
+        "Body Armour grants <span class=\"mod-value\">100</span>% increased Thorns damage",
+        "<span class=\"secondary\">base physical damage reduction rating no display [200]</span>"
+      ],
+      "imageLocal": "ascendancy/spiked_plates.webp"
     },
     {
       "name": "Stalking Panther",
@@ -1492,6 +1832,7 @@
       "ascendancy": "Stormweaver",
       "character": "Sorceress",
       "explicitMods": [
+        "Remnants can be collected from <span class=\"mod-value\">50</span>% further away",
         "Remnants you create reappear once, <span class=\"mod-value\">3</span> seconds after being collected"
       ],
       "imageLocal": "ascendancy/storms_recollection.webp"
@@ -1553,7 +1894,8 @@
       "ascendancy": "Smith of Kitava",
       "character": "Warrior",
       "explicitMods": [
-        "Body Armour grants <span class=\"mod-value\">20</span>% increased Strength"
+        "Body Armour grants <span class=\"mod-value\">20</span>% increased Strength",
+        "<span class=\"secondary\">base physical damage reduction rating no display [200]</span>"
       ],
       "imageLocal": "ascendancy/support_straps.webp"
     },
@@ -1577,21 +1919,11 @@
       "ascendancy": "Amazon",
       "character": "Huntress",
       "explicitMods": [
-        "<span class=\"mod-value\">50</span>% chance for Surges to suffuse your Projectiles without being Consumed"
+        "When you Consume a Charge, Trigger Elemental Surge to gain <span class=\"mod-value\">2</span> Fire Surges",
+        "When you Consume a Charge, Trigger Elemental Surge to gain <span class=\"mod-value\">2</span> Cold Surges",
+        "Gain <span class=\"mod-value\">1</span> fewer Lightning Surge from Triggering Elemental Surge"
       ],
       "imageLocal": "ascendancy/surging_avatar.webp"
-    },
-    {
-      "name": "Surprising Strength",
-      "slug": "Surprising_Strength",
-      "stack_current": null,
-      "stack_max": null,
-      "ascendancy": "Titan",
-      "character": "Warrior",
-      "explicitMods": [
-        "<span class=\"mod-value\">50</span>% more Damage against Heavy Stunned Enemies"
-      ],
-      "imageLocal": "ascendancy/surprising_strength.webp"
     },
     {
       "name": "Sustainable Practices",
@@ -1613,7 +1945,8 @@
       "ascendancy": "Smith of Kitava",
       "character": "Warrior",
       "explicitMods": [
-        "Body Armour grants <span class=\"mod-value\">+75</span>% to Fire Resistance"
+        "Body Armour grants <span class=\"mod-value\">+75</span>% to Fire Resistance",
+        "<span class=\"secondary\">base physical damage reduction rating no display [200]</span>"
       ],
       "imageLocal": "ascendancy/tantalum_alloy.webp"
     },
@@ -1638,11 +1971,37 @@
       "ascendancy": "Gemling Legionnaire",
       "character": "Mercenary",
       "explicitMods": [
-        "+1% to Maximum Cold Resistance per <span class=\"mod-value\">4</span> Blue Support Gems Socketed",
-        "+1% to Maximum Fire Resistance per <span class=\"mod-value\">4</span> Red Support Gems Socketed",
-        "+1% to Maximum Lightning Resistance per <span class=\"mod-value\">4</span> Green Support Gems Socketed"
+        "+1% to Maximum Cold Resistance per <span class=\"mod-value\">3</span> Blue Support Gems Socketed",
+        "+1% to Maximum Fire Resistance per <span class=\"mod-value\">3</span> Red Support Gems Socketed",
+        "+1% to Maximum Lightning Resistance per <span class=\"mod-value\">3</span> Green Support Gems Socketed"
       ],
       "imageLocal": "ascendancy/thaumaturgical_infusion.webp"
+    },
+    {
+      "name": "The Fourth Teaching",
+      "slug": "The_Fourth_Teaching",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Disciple of Varashta",
+      "character": "Sorceress",
+      "explicitMods": [
+        "-<span class=\"mod-value\">1</span> second to base Energy Shield Recharge delay",
+        "<span class=\"mod-value\">40</span>% more Energy Shield Recharge Rate while on Low Energy Shield"
+      ],
+      "imageLocal": "ascendancy/the_fourth_teaching.webp"
+    },
+    {
+      "name": "The Lesser Harm",
+      "slug": "The_Lesser_Harm",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Oracle",
+      "character": "Druid",
+      "explicitMods": [
+        "Enemy Critical Hit Chance against you is Unlucky",
+        "Damage of Enemies Hitting you is Unlucky"
+      ],
+      "imageLocal": "ascendancy/the_lesser_harm.webp"
     },
     {
       "name": "The Rapid River",
@@ -1664,9 +2023,22 @@
       "ascendancy": "Invoker",
       "character": "Monk",
       "explicitMods": [
-        "Meta Skills gain <span class=\"mod-value\">35</span>% more Energy"
+        "Meta Skills gain <span class=\"mod-value\">35</span>% more Energy",
+        "Meta Skills have <span class=\"mod-value\">50</span>% increased Reservation Efficiency"
       ],
       "imageLocal": "ascendancy/the_soul_springs_eternal.webp"
+    },
+    {
+      "name": "The Unseen Path",
+      "slug": "The_Unseen_Path",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Oracle",
+      "character": "Druid",
+      "explicitMods": [
+        "Walk the Paths Not Taken"
+      ],
+      "imageLocal": "ascendancy/the_unseen_path.webp"
     },
     {
       "name": "Thrilling Chase",
@@ -1679,6 +2051,44 @@
         "Benefits from consuming Frenzy Charges for your Skills have <span class=\"mod-value\">50</span>% chance to be doubled"
       ],
       "imageLocal": "ascendancy/thrilling_chase.webp"
+    },
+    {
+      "name": "Traveller's Wisdom",
+      "slug": "Travellers_Wisdom",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Pathfinder",
+      "character": "Ranger",
+      "explicitMods": [
+        "Attribute Passive Skills can instead grant 5% increased Damage<br>Attribute Passive Skills can instead grant 5% increased Defences<br>Attribute Passive Skills can instead grant 5% increased Cost Efficiency"
+      ],
+      "imageLocal": "ascendancy/travellers_wisdom.webp"
+    },
+    {
+      "name": "Tribute to Utula",
+      "slug": "Tribute_to_Utula",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Smith of Kitava",
+      "character": "Warrior",
+      "explicitMods": [
+        "Body Armour grants <span class=\"mod-value\">30</span>% increased Spirit",
+        "<span class=\"secondary\">base physical damage reduction rating no display [200]</span>"
+      ],
+      "imageLocal": "ascendancy/tribute_to_utula.webp"
+    },
+    {
+      "name": "Turning of the Seasons",
+      "slug": "Turning_of_the_Seasons",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Shaman",
+      "character": "Druid",
+      "explicitMods": [
+        "Enemies in your Presence have Exposure",
+        "Gain <span class=\"mod-value\">10</span>% of Damage as Extra Damage of a random Element"
+      ],
+      "imageLocal": "ascendancy/turning_of_the_seasons.webp"
     },
     {
       "name": "Turtle Charm",
@@ -1731,7 +2141,7 @@
     },
     {
       "name": "Unleash Hell!",
-      "slug": "Unleash_Hell%21",
+      "slug": "Unleash_Hell",
       "stack_current": null,
       "stack_max": null,
       "ascendancy": "Tactician",
@@ -1740,6 +2150,19 @@
         "<img loading=\"lazy\" src=\"https://cdn.poe2db.tw/image/Art/2DArt/SkillIcons/TacticianDeathFromAboveSkillIcon.webp\" class=\"grantsSkill\"> Grants Skill: Supporting Fire"
       ],
       "imageLocal": "ascendancy/unleash_hell.webp"
+    },
+    {
+      "name": "Unnamed Heartwood",
+      "slug": "Unnamed_Heartwood",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Oracle",
+      "character": "Druid",
+      "explicitMods": [
+        "<span class=\"mod-value\">+1</span> to maximum number of Summoned Totems",
+        "Totems die <span class=\"mod-value\">6</span> seconds after their Life is reduced to 0"
+      ],
+      "imageLocal": "ascendancy/unnamed_heartwood.webp"
     },
     {
       "name": "Unravelling",
@@ -1752,6 +2175,18 @@
         "Grants Unravelling"
       ],
       "imageLocal": "ascendancy/unravelling.webp"
+    },
+    {
+      "name": "Varashta's Intuition",
+      "slug": "Varashtas_Intuition",
+      "stack_current": null,
+      "stack_max": null,
+      "ascendancy": "Disciple of Varashta",
+      "character": "Sorceress",
+      "explicitMods": [
+        "<span class=\"mod-value\">100</span>% of Elemental Damage is taken from Mana before Life"
+      ],
+      "imageLocal": "ascendancy/varashtas_intuition.webp"
     },
     {
       "name": "Vitality Siphon",
@@ -1815,18 +2250,6 @@
       "imageLocal": "ascendancy/weapon_master.webp"
     },
     {
-      "name": "Weapon Set Skill Points",
-      "slug": "Weapon_Set_Passive_Skill_Points",
-      "stack_current": null,
-      "stack_max": null,
-      "ascendancy": "Witchhunter",
-      "character": "Mercenary",
-      "explicitMods": [
-        "100 Passive Skill Points become Weapon Set Skill Points"
-      ],
-      "imageLocal": "ascendancy/weapon_set_skill_points.webp"
-    },
-    {
       "name": "Whispers of the Flesh",
       "slug": "Whispers_of_the_Flesh",
       "stack_current": null,
@@ -1834,7 +2257,8 @@
       "ascendancy": "Blood Mage",
       "character": "Witch",
       "explicitMods": [
-        "Enemies you Curse have at least <span class=\"mod-value\">15</span>% of Life Reserved"
+        "Targets Cursed by you have <span class=\"mod-value\">100</span>% reduced Life Regeneration Rate",
+        "Targets Cursed by you have at least <span class=\"mod-value\">15</span>% of Life Reserved"
       ],
       "imageLocal": "ascendancy/whispers_of_the_flesh.webp"
     },
@@ -1864,16 +2288,16 @@
       "imageLocal": "ascendancy/wildwood_persistence.webp"
     },
     {
-      "name": "Wind Ward",
-      "slug": "Wind_Ward",
+      "name": "Wisdom of the Maji",
+      "slug": "Wisdom_of_the_Maji",
       "stack_current": null,
       "stack_max": null,
-      "ascendancy": "Deadeye",
-      "character": "Ranger",
+      "ascendancy": "Shaman",
+      "character": "Druid",
       "explicitMods": [
-        "<span class=\"mod-value\">3</span>% less Damage taken per Tailwind"
+        "Gain the benefits of Bonded modifiers on Runes and Idols"
       ],
-      "imageLocal": "ascendancy/wind_ward.webp"
+      "imageLocal": "ascendancy/wisdom_of_the_maji.webp"
     },
     {
       "name": "Witchbane",
@@ -1883,7 +2307,7 @@
       "ascendancy": "Witchhunter",
       "character": "Mercenary",
       "explicitMods": [
-        "Enemies have Maximum Concentration equal to <span class=\"mod-value\">40</span>% of their Maximum Life",
+        "Enemies have Maximum Concentration equal to <span class=\"mod-value\">30</span>% of their Maximum Life",
         "Break enemy Concentration on Hit equal to <span class=\"mod-value\">100</span>% of Damage Dealt",
         "Enemies regain <span class=\"mod-value\">10</span>% of Concentration every second if they haven't lost Concentration in the past 5 seconds",
         "<span class=\"secondary\">focus decay delay ms [5000]</span>"

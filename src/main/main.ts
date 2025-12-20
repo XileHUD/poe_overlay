@@ -336,6 +336,59 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
 
     constructor() {
         app.whenReady().then(async () => {
+            // Register local-image:// protocol handler for bundled images
+            const { protocol } = await import('electron');
+            const resPath = (process as any).resourcesPath || path.join(__dirname, '..', '..');
+            const resolveRoots = () => {
+                const roots: string[] = [];
+                const seen = new Set<string>();
+                const pushRoot = (candidate: string | null | undefined) => {
+                    if (!candidate) return;
+                    const resolved = path.resolve(candidate);
+                    if (seen.has(resolved)) return;
+                    seen.add(resolved);
+                    roots.push(resolved);
+                };
+
+                pushRoot(path.join(resPath, 'bundled-images'));
+                pushRoot(app.getAppPath ? path.join(app.getAppPath(), 'bundled-images') : undefined);
+                pushRoot(path.join(__dirname, '../../bundled-images'));
+                pushRoot(path.join(__dirname, '../../../bundled-images'));
+                pushRoot(path.join(process.cwd(), 'bundled-images'));
+                pushRoot(path.join(process.cwd(), '..', 'bundled-images'));
+                pushRoot(path.join(process.cwd(), '../..', 'bundled-images'));
+
+                const dataDir = typeof this.getDataDir === 'function' ? this.getDataDir() : null;
+                pushRoot(dataDir);
+                pushRoot(dataDir ? path.join(dataDir, 'images') : undefined);
+                if (dataDir) {
+                    pushRoot(path.join(path.dirname(dataDir), 'images'));
+                }
+
+                const collectorTmp = path.join(process.cwd(), 'tmp', 'collector-images', this.overlayVersion === 'poe1' ? 'poe1' : 'poe2');
+                pushRoot(collectorTmp);
+
+                return roots;
+            };
+            
+            protocol.handle('local-image', async (request) => {
+                try {
+                    const rel = request.url.replace('local-image:///', '').replace(/^\/+/, '');
+                    const roots = resolveRoots();
+                    for (const root of roots) {
+                        const filePath = path.join(root, rel);
+                        if (fs.existsSync(filePath)) {
+                            const { net } = await import('electron');
+                            return net.fetch(pathToFileURL(filePath).toString());
+                        }
+                    }
+                    throw new Error('not_found');
+                } catch (error) {
+                    console.error('[local-image protocol] Failed to load:', request.url, error);
+                    return new Response('Not found', { status: 404 });
+                }
+            });
+            
             // Set app user model ID for Windows tray balloons
             try {
                 if (process.platform === 'win32') {
@@ -935,7 +988,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                         return { valid: false, reason: 'poe2_missing_json_files' };
                     }
 
-                    const coreFiles = new Set(['uniques.json', 'liquid_emotions.json', 'essences.json', 'socketables.json']);
+                    const coreFiles = new Set(['uniques.json', 'liquid_emotions.json', 'essences.json', 'augments.json']);
                     const hasCoreFile = jsonFiles.some(f => coreFiles.has(f.toLowerCase()));
                     if (!hasCoreFile && jsonFiles.length < 10) {
                         return { valid: false, reason: 'poe2_missing_core_files' };
@@ -1311,7 +1364,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                     omens: false,
                     currency: false,
                     catalysts: false,
-                    socketables: false
+                    augments: false
                 }
             },
             poe1Crafting: {
@@ -1353,7 +1406,8 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 enabled: false,
                 subcategories: {
                     uniques: false,
-                    bases: false
+                    bases: false,
+                    fate: false
                 }
             },
             poe1Items: {
