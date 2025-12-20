@@ -35,6 +35,16 @@ type TotalsOverflowState = {
 
 let totalsOverflowState: TotalsOverflowState | null = null;
 
+function setMoreButtonVisible(btn: HTMLButtonElement, visible: boolean): void {
+  // Some CSS rules can override the `hidden` attribute; enforce visibility with display:none!important.
+  btn.hidden = !visible;
+  if (visible) {
+    btn.style.removeProperty("display");
+  } else {
+    btn.style.setProperty("display", "none", "important");
+  }
+}
+
 function ensureTotalsOverflowState(wrap: HTMLElement): TotalsOverflowState {
   if (totalsOverflowState && totalsOverflowState.wrap === wrap) {
     return totalsOverflowState;
@@ -50,7 +60,7 @@ function ensureTotalsOverflowState(wrap: HTMLElement): TotalsOverflowState {
   const moreBtn = document.createElement("button");
   moreBtn.type = "button";
   moreBtn.className = "price-badge totals-more";
-  moreBtn.hidden = true;
+  setMoreButtonVisible(moreBtn, false);
   moreBtn.setAttribute("aria-expanded", "false");
 
   const state: TotalsOverflowState = {
@@ -70,7 +80,7 @@ function ensureTotalsOverflowState(wrap: HTMLElement): TotalsOverflowState {
     if (state.expanded) {
       state.items.forEach((item) => item.classList.remove("totals-condensed"));
       if (state.items.length) {
-        moreBtn.hidden = false;
+        setMoreButtonVisible(moreBtn, true);
         moreBtn.textContent = "Show less";
         moreBtn.title = "Hide additional currencies";
       }
@@ -103,18 +113,36 @@ function scheduleTotalsOverflow(state: TotalsOverflowState) {
 
 function applyTotalsOverflow(state: TotalsOverflowState) {
   const { wrap, items, moreBtn } = state;
+
+  // Fast-path: with 0 or 1 currency chips there's nothing to hide/show
+  if (items.length <= 1) {
+    items.forEach((item) => item.classList.remove("totals-condensed"));
+    setMoreButtonVisible(moreBtn, false);
+    moreBtn.textContent = "";
+    moreBtn.title = "";
+    return;
+  }
+
   items.forEach((item) => item.classList.remove("totals-condensed"));
-  moreBtn.hidden = true;
+  setMoreButtonVisible(moreBtn, false);
   moreBtn.title = "";
   delete moreBtn.dataset.tooltip;
 
   if (state.expanded) {
-    if (items.length) {
-      moreBtn.hidden = false;
+    // Calculate if there would be any hidden items when collapsed
+    const baseHidden = items.filter((item) => item.dataset.defaultCondensed === "1");
+    baseHidden.forEach((item) => item.classList.add("totals-condensed"));
+    const wouldOverflow = wrap.scrollWidth > wrap.clientWidth + 1;
+    items.forEach((item) => item.classList.remove("totals-condensed"));
+    
+    // Only show "Show less" if there are items that would be hidden when collapsed
+    if (baseHidden.length > 0 || wouldOverflow) {
+      setMoreButtonVisible(moreBtn, true);
       moreBtn.textContent = "Show less";
       moreBtn.title = "Hide additional currencies";
     } else {
-      moreBtn.hidden = true;
+      setMoreButtonVisible(moreBtn, false);
+      state.expanded = false; // Auto-collapse if nothing to hide
     }
     return;
   }
@@ -153,9 +181,12 @@ function applyTotalsOverflow(state: TotalsOverflowState) {
     }
   }
 
-  if (!hiddenCount) {
-    moreBtn.hidden = true;
+  // Double-check: only show button if we actually hid something
+  const actuallyHidden = items.filter(item => item.classList.contains("totals-condensed")).length;
+  if (actuallyHidden === 0) {
+    setMoreButtonVisible(moreBtn, false);
     moreBtn.textContent = "";
+    moreBtn.title = "";
     return;
   }
 
@@ -164,8 +195,8 @@ function applyTotalsOverflow(state: TotalsOverflowState) {
     .filter(Boolean)
     .join("\n");
 
-  moreBtn.hidden = false;
-  moreBtn.textContent = `+${hiddenCount} more`;
+  setMoreButtonVisible(moreBtn, true);
+  moreBtn.textContent = actuallyHidden === 1 ? "Show more" : `Show more (${actuallyHidden})`;
   moreBtn.title = tooltip;
   moreBtn.dataset.tooltip = tooltip;
 }
@@ -273,7 +304,22 @@ export function renderHistoryTotals(
     items.push(chip);
   }
 
-  (wrap as HTMLElement).replaceChildren(...items, state.moreBtn);
+  // Only attach the "more" button when it could ever be useful.
+  // If we attach it while hidden and CSS overrides `hidden`, it can show up as an empty oval.
+  const hasNonMainCurrency = items.some((el) => el.dataset.defaultCondensed === "1");
+  const shouldAttachMoreBtn = items.length > 1 && hasNonMainCurrency;
+
+  if (shouldAttachMoreBtn) {
+    (wrap as HTMLElement).replaceChildren(...items, state.moreBtn);
+  } else {
+    (wrap as HTMLElement).replaceChildren(...items);
+    // Ensure the button stays forcibly hidden even if something else toggles it.
+    setMoreButtonVisible(state.moreBtn, false);
+    state.moreBtn.textContent = "";
+    state.moreBtn.title = "";
+    state.expanded = false;
+    state.moreBtn.setAttribute("aria-expanded", "false");
+  }
   state.items = items;
   if (!items.length && state.expanded) {
     state.expanded = false;
@@ -281,16 +327,20 @@ export function renderHistoryTotals(
   }
 
   if (state.expanded) {
-    state.moreBtn.hidden = !state.items.length;
+    setMoreButtonVisible(state.moreBtn, !!state.items.length);
     state.moreBtn.textContent = state.items.length ? "Show less" : "";
     state.moreBtn.title = state.items.length ? "Hide additional currencies" : "";
   } else {
-    state.moreBtn.hidden = true;
+    // When collapsed, hide button by default - applyTotalsOverflow will show it if needed
+    setMoreButtonVisible(state.moreBtn, false);
     state.moreBtn.textContent = "";
     state.moreBtn.title = "";
   }
+  // When collapsed, let applyTotalsOverflow handle button visibility and text
 
-  scheduleTotalsOverflow(state);
+  if (shouldAttachMoreBtn) {
+    scheduleTotalsOverflow(state);
+  }
   
   // Update trade count
   const cntEl = document.getElementById("historyTradeCount");

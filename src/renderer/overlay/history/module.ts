@@ -235,6 +235,23 @@ export { historyState };
 
 // Re-export view lifecycle
 export function onEnterView(): void {
+  // Re-sync historyState.items from store to pick up any background updates
+  // This ensures the list shows fresh data when returning to the view
+  if (historyState.store.entries && historyState.store.entries.length > 0) {
+    const all = (historyState.store.entries || []).slice().reverse();
+    historyState.items = applySort(applyFilters(all, historyState.filters), historyState.sort);
+    
+    // Apply grouping to sync left list with grouped/expanded state
+    historyState.groupedItems = groupHistoryEntries(historyState.items);
+    historyState.displayItems = expandGroupsForDisplay(historyState.groupedItems);
+    
+    // Preserve selection if possible, otherwise reset to first item
+    if (historyState.selectedIndex >= historyState.displayItems.length) {
+      historyState.selectedIndex = 0;
+      historyState.selectedOriginalIndex = 0;
+    }
+  }
+  
   viewOnEnter(
     {
       renderTotals: () => {

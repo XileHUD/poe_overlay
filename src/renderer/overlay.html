@@ -3694,6 +3694,8 @@
                     // Use strong view gate
                     setView('history');
                     markHistoryAction();
+                    // Call onEnterView to properly refresh the list and re-render
+                    try { window.OverlayHistory?.onEnterView?.(); } catch {}
                     // ensure history UI readiness
                     try { updateSessionUI(); } catch {}
                     try { if (typeof refreshHistoryIfAllowed === 'function') refreshHistoryIfAllowed('nav'); } catch {}
