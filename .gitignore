@@ -15,6 +15,9 @@ Thumbs.db
 **/config/
 # But allow source config files that are part of the codebase
 !src/main/config/
+
+# Auto-generated category files (should not be committed)
+**/_categories.json
 # User data (Electron stores under %APPDATA%/XileHUD/overlay) – not in repo
 # Nothing to ignore here; just a note.
 

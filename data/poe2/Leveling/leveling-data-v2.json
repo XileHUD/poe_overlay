@@ -1887,18 +1887,135 @@
           "id": "poe2_a4_town1_1",
           "type": "npc_quest",
           "zone": "Kingsmarch",
-          "description": "Talk to Doryani, talk to Alva (Book Charter), talk to Makoru - Sail to Isle of Kin",
+          "description": "Talk to Doryani, talk to Alva (Book Charter), talk to Makoru - Sail to Kedge Bay",
           "checkable": true,
           "zoneId": "g4_town",
+          "nextZoneId": "g4_2_1"
+        },
+        {
+          "id": "poe2_a4_kedge_1",
+          "type": "waypoint",
+          "zone": "Kedge Bay",
+          "description": "Tag Waypoint, explore optionals",
+          "hint": "Optional: Jeweller in Abandoned Ship checkpoint | Exalted/Map in Stash checkpoint",
+          "checkable": true,
+          "zoneId": "g4_2_1"
+        },
+        {
+          "id": "poe2_a4_kedge_2",
+          "type": "navigation",
+          "zone": "Kedge Bay",
+          "description": "Enter Journey's End",
+          "checkable": true,
+          "zoneId": "g4_2_1",
+          "nextZoneId": "g4_2_2"
+        },
+        {
+          "id": "poe2_a4_journeys_end_1",
+          "type": "waypoint",
+          "zone": "Journey's End",
+          "description": "Tag Waypoint, talk to Tujen",
+          "hint": "Optional: Alchemy Orb from league mechanic",
+          "checkable": true,
+          "zoneId": "g4_2_2"
+        },
+        {
+          "id": "poe2_a4_journeys_end_2",
+          "type": "quest_item",
+          "zone": "Journey's End",
+          "description": "Kill Hartlin for Verisium, portal to Kingsmarch",
+          "checkable": true,
+          "zoneId": "g4_2_2",
+          "nextZoneId": "g4_town"
+        },
+        {
+          "id": "poe2_a4_town2_1",
+          "type": "npc_quest",
+          "zone": "Kingsmarch",
+          "description": "Talk to Dannig (Verisium Spikes), waypoint back to Journey's End",
+          "checkable": true,
+          "zoneId": "g4_town",
+          "nextZoneId": "g4_2_2"
+        },
+        {
+          "id": "poe2_a4_journeys_end_3",
+          "type": "kill_boss",
+          "zone": "Journey's End",
+          "description": "Talk to Freya, kill Omniphobia (Dark Mists quest)",
+          "reward": "2 Skill Points",
+          "checkable": true,
+          "zoneId": "g4_2_2"
+        },
+        {
+          "id": "poe2_a4_journeys_end_4",
+          "type": "town",
+          "zone": "Journey's End",
+          "description": "Portal to Kingsmarch, talk to Tujen (Skill Gem & Book), sail to Whakapanu Island",
+          "checkable": true,
+          "zoneId": "g4_2_2",
+          "nextZoneId": "g4_3_1"
+        },
+        {
+          "id": "poe2_a4_whakapanu_1",
+          "type": "waypoint",
+          "zone": "Whakapanu Island",
+          "description": "Explore optionals, enter Singing Caverns",
+          "hint": "Optional: Artificer (league) | Support gem in Cavern | Shark Fin from Arena (hand in at Ngakanu) | Map piece from Pirate",
+          "checkable": true,
+          "zoneId": "g4_3_1",
+          "nextZoneId": "g4_3_2"
+        },
+        {
+          "id": "poe2_a4_caverns_1",
+          "type": "kill_boss",
+          "zone": "Singing Caverns",
+          "description": "Find & kill Diamora",
+          "hint": "Optional: All-res Amulet - find Pearl in Clam checkpoint, then portal to talk to Rog",
+          "checkable": true,
+          "zoneId": "g4_3_2"
+        },
+        {
+          "id": "poe2_a4_caverns_2",
+          "type": "town",
+          "zone": "Singing Caverns",
+          "description": "Return to Ship, sail to Abandoned Prison",
+          "checkable": true,
+          "zoneId": "g4_3_2",
+          "nextZoneId": "g4_5_1"
+        },
+        {
+          "id": "poe2_a4_prison_1",
+          "type": "quest_item",
+          "zone": "Abandoned Prison",
+          "description": "Kill Necromancers for Chapel Key, find & activate Chapel Statue",
+          "hint": "Optional: Exalted from league mechanic | Buff: 30% inc. flask recovery (swappable)",
+          "checkable": true,
+          "zoneId": "g4_5_1"
+        },
+        {
+          "id": "poe2_a4_prison_2",
+          "type": "navigation",
+          "zone": "Abandoned Prison",
+          "description": "Enter Solitary Confinement",
+          "checkable": true,
+          "zoneId": "g4_5_1",
+          "nextZoneId": "g4_5_2"
+        },
+        {
+          "id": "poe2_a4_confinement_1",
+          "type": "kill_boss",
+          "zone": "Solitary Confinement",
+          "description": "Kill The Prisoner, return to Ship, sail to Isle of Kin",
+          "checkable": true,
+          "zoneId": "g4_5_2",
           "nextZoneId": "g4_1_1"
         },
         {
           "id": "poe2_a4_kin_1",
-          "type": "kill_boss",
+          "type": "waypoint",
           "zone": "Isle of Kin",
-          "description": "Kill The Blind Beast",
-          "reward": "2 Skill Points",
-          "hint": "Optional: Jeweller in Delve Site (edge) | Skill/Support in Beast Pen",
+          "description": "Tag Waypoint, explore optionals",
+          "hint": "Optional: GCP (league) | Skill/Support in Beast Pen | Jeweller in Delve | Greater Rune from Blind Beast arena | Map piece from Sailor",
           "checkable": true,
           "zoneId": "g4_1_1"
         },
