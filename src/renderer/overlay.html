@@ -2591,7 +2591,8 @@
                                 if (action === 'omens' && !poe1Mode && subs.omens) shouldShow = true;
                                 if (action === 'currency' && !poe1Mode && subs.currency) shouldShow = true;
                                 if (action === 'catalysts' && !poe1Mode && subs.catalysts) shouldShow = true;
-                                if (action === 'augments' && !poe1Mode && subs.AUGMENTs) shouldShow = true;
+                                const augmentsEnabled = subs.augments ?? subs.AUGMENTs ?? true; // tolerate legacy casing and default-on
+                                if (action === 'augments' && !poe1Mode && augmentsEnabled) shouldShow = true;
                                 
                                 // PoE1 crafting items - only show in PoE1 mode
                                 if (action === 'poe1-scarabs' && poe1Mode && subs.scarabs) shouldShow = true;
