@@ -766,7 +766,7 @@
         const isPoe1 = overlayVersionMode === 'poe1';
         const primaryToggles = isPoe1 ? POE1_PRIMARY_TOGGLES : POE2_TOGGLES;
         const overflowToggles = isPoe1 ? POE1_OVERFLOW_TOGGLES : [];
-        const preferredDefaultId = isPoe1 ? 'toggleNormal' : 'toggleBase';
+        const preferredDefaultId = isPoe1 ? 'toggleNormal' : 'toggleAll';
         const defaultToggleId = primaryToggles.some(toggle => toggle.id === preferredDefaultId)
             ? preferredDefaultId
             : (primaryToggles[0]?.id || '');
@@ -3139,8 +3139,8 @@
             if (clear) clear.addEventListener('click', () => {
                 const s = document.getElementById('search-input'); if (s) s.value = '';
                 try { window.OverlayModifiers?.clearAllFilters?.(); } catch {}
-                // Auto-select default domain toggle (Normal/Base)
-                const preferredDefaultId = overlayVersionMode === 'poe1' ? 'toggleNormal' : 'toggleBase';
+                // Auto-select default domain toggle (Normal for PoE1, All for PoE2)
+                const preferredDefaultId = overlayVersionMode === 'poe1' ? 'toggleNormal' : 'toggleAll';
                 const defaultId = allDomainButtonIds.includes(preferredDefaultId) ? preferredDefaultId : 'toggleAll';
                 const defaultBtn = document.getElementById(defaultId) || document.getElementById('toggleAll');
                 if (defaultBtn && !defaultBtn.classList.contains('active')) {

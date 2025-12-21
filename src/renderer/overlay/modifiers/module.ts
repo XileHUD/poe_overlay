@@ -2827,7 +2827,7 @@ export function clearAllFilters(){
   // Clear domain filters - reset to "All" using version-aware config
   const gameVersion = currentOverlayVersionMode;
   const allToggles = getDomainToggles(gameVersion);
-  const preferredDefaultId = gameVersion === 'poe1' ? 'toggleNormal' : 'toggleBase';
+  const preferredDefaultId = gameVersion === 'poe1' ? 'toggleNormal' : 'toggleAll';
   const defaultToggleId = allToggles.some(toggle => toggle.id === preferredDefaultId)
     ? preferredDefaultId
     : 'toggleAll';
