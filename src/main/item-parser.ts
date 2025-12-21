@@ -451,8 +451,16 @@ export class ItemParser {
         const looksLikeMod = (s: string) => {
             const lc = s.toLowerCase();
             // typical modifier cues
-            return /[%+]/.test(s) ||
-                   /(increased|reduced|to maximum|to all|adds|gain|regenerate|chance|while|during|on kill|per second|additional)/.test(lc);
+            if (/[%+]/.test(s) ||
+                /(increased|reduced|to maximum|to all|adds|gain|regenerate|chance|while|during|on kill|per second|additional)/.test(lc)) {
+                return true;
+            }
+            // keep veiled/desecrated/sanctified prefix/suffix lines (these have no numbers/keywords)
+            if (/\bveiled\b/.test(lc)) return true;
+            if (/\bveiled\s+(prefix|suffix)\b/.test(lc)) return true;
+            if (/\bdesecrated\s+(prefix|suffix)\b/.test(lc)) return true;
+            if (/\bsanctified\s+(prefix|suffix)\b/.test(lc)) return true;
+            return false;
         };
         const isModHeader = (s: string) => {
             // Headers like: { Prefix Modifier "Coursing" (Tier: 3) — Damage, Elemental, Lightning }

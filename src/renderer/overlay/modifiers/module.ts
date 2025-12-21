@@ -676,6 +676,7 @@ type ParsedItemMod = {
   isRune?: boolean;
   isDesecrated?: boolean;
   isSanctified?: boolean;
+  isVeiled?: boolean;
 };
 
 type TierCandidate = {
@@ -710,6 +711,7 @@ type WhittlingMod = {
   isRune: boolean;
   isDesecrated: boolean;
   isSanctified: boolean;
+  isVeiled: boolean;
   isLocked: boolean;
 };
 
@@ -986,10 +988,11 @@ function parseHeaderInfo(header: string | null | undefined): {
   side: string | null;
   isFractured: boolean;
   isRune: boolean;
+  isVeiled: boolean;
   skip: boolean;
 } {
   if (!header) {
-    return { tierName: null, tierNumber: null, side: null, isFractured: false, isRune: false, skip: false };
+    return { tierName: null, tierNumber: null, side: null, isFractured: false, isRune: false, isVeiled: false, skip: false };
   }
   const tierNameMatch = header.match(/["“”'‘’]([^"“”'‘’]+)["“”'‘’]/);
   const tierName = tierNameMatch ? tierNameMatch[1] : null;
@@ -999,8 +1002,9 @@ function parseHeaderInfo(header: string | null | undefined): {
   const side = lower.includes('suffix modifier') ? 'suffix' : (lower.includes('prefix modifier') ? 'prefix' : null);
   const isFractured = lower.includes('fractured');
   const isRune = lower.includes('rune');
+  const isVeiled = lower.includes('veiled') || (tierName !== null && tierName.toLowerCase() === 'veiled');
   const skip = lower.includes('implicit modifier') || lower.includes(' implicit ') || lower.includes('enchant');
-  return { tierName, tierNumber, side, isFractured, isRune, skip };
+  return { tierName, tierNumber, side, isFractured, isRune, isVeiled, skip };
 }
 
 function parseValueMarkers(value: string): {
@@ -1008,14 +1012,16 @@ function parseValueMarkers(value: string): {
   isRune: boolean;
   isDesecrated: boolean;
   isSanctified: boolean;
+  isVeiled: boolean;
   skip: boolean;
 } {
   const isFractured = /\(fractured\)/i.test(value);
   const isRune = /\(rune\)/i.test(value);
   const isDesecrated = /\(desecrated\)/i.test(value);
   const isSanctified = /\(sanctified\)/i.test(value) || /\bsanctified\b/i.test(value);
+  const isVeiled = /\b(desecrated|consecrated|veiled)\s+(prefix|suffix)\b/i.test(value);
   const skip = /\(crafted\)/i.test(value) || /\(implicit\)/i.test(value) || /\(enchant(?:ed)?\)/i.test(value) || /\(corrupted\)/i.test(value);
-  return { isFractured, isRune, isDesecrated, isSanctified, skip };
+  return { isFractured, isRune, isDesecrated, isSanctified, isVeiled, skip };
 }
 
 function isLikelyBasePropertyLine(value: string): boolean {
@@ -1076,10 +1082,14 @@ function isLikelyBasePropertyLine(value: string): boolean {
 function createParsedMod(header: string | null, value: string): ParsedItemMod | null {
   const headerInfo = parseHeaderInfo(header);
   const markerInfo = parseValueMarkers(value);
-  if (headerInfo.skip) return null;
-  if (markerInfo.skip) return null;
-  if (headerInfo.isRune || markerInfo.isRune) return null;
-  if (isLikelyBasePropertyLine(value)) return null;
+  // Allow veiled mods through even if they would normally be skipped
+  const isVeiled = headerInfo.isVeiled || markerInfo.isVeiled;
+  if (!isVeiled) {
+    if (headerInfo.skip) return null;
+    if (markerInfo.skip) return null;
+    if (headerInfo.isRune || markerInfo.isRune) return null;
+    if (isLikelyBasePropertyLine(value)) return null;
+  }
   return {
     header,
     value,
@@ -1089,7 +1099,8 @@ function createParsedMod(header: string | null, value: string): ParsedItemMod | 
     isFractured: headerInfo.isFractured || markerInfo.isFractured,
     isRune: headerInfo.isRune || markerInfo.isRune,
     isDesecrated: markerInfo.isDesecrated,
-    isSanctified: markerInfo.isSanctified
+    isSanctified: markerInfo.isSanctified,
+    isVeiled: isVeiled
   };
 }
 
@@ -1138,6 +1149,7 @@ function mergeHybridEntries(entries: ParsedItemMod[]): ParsedItemMod[] {
       combined.isRune = Boolean(combined.isRune || next.isRune);
       combined.isDesecrated = Boolean(combined.isDesecrated || next.isDesecrated);
       combined.isSanctified = Boolean(combined.isSanctified || next.isSanctified);
+      combined.isVeiled = Boolean(combined.isVeiled || next.isVeiled);
       i++;
     }
     merged.push(combined);
@@ -1305,6 +1317,7 @@ function buildWhittlingMeta(mod: WhittlingMod): string {
   if (typeof mod.ilvl === 'number' && Number.isFinite(mod.ilvl)) meta.push(`iLvl ${mod.ilvl}`);
   if (mod.side && mod.side !== 'none') meta.push(titleCase(mod.side));
   if (mod.domain && mod.domain !== 'normal' && mod.domain !== 'none') meta.push(titleCase(mod.domain.replace(/_/g, ' ')));
+  if (mod.isVeiled) meta.push('Veiled');
   if (mod.isDesecrated) meta.push('Desecrated');
   if (mod.isSanctified) meta.push('Sanctified');
   if (mod.isFractured) meta.push('Fractured');
@@ -1314,7 +1327,12 @@ function buildWhittlingMeta(mod: WhittlingMod): string {
 
 function buildWhittlingBadge(result: WhittlingResult): string {
   let summary: string;
-  if (result.blockedReason) {
+  // Check if any of the lowest mods are veiled
+  const hasVeiledTarget = result.lowestMods.some(mod => mod.isVeiled);
+  if (hasVeiledTarget) {
+    const modCount = result.lowestMods.length === 1 ? '1 mod' : `${result.lowestMods.length} mods`;
+    summary = `VEILED · ${modCount}`;
+  } else if (result.blockedReason) {
     const reasonText = result.blockedReason === 'fractured' ? 'FRACTURED' : result.blockedReason.toUpperCase();
     if (result.blockedReason === 'corrupted' || result.blockedReason === 'sanctified') {
       summary = reasonText;
@@ -1464,7 +1482,7 @@ export function computeWhittling(data: ModifierData): WhittlingResult | null {
     const tierIndex = buildTierIndex(data.modifiers as any[]);
     const allMods: WhittlingMod[] = [];
     entries.forEach((entry, index) => {
-      const headerDetails = entry.header ? parseHeaderInfo(entry.header) : { tierName: null, tierNumber: null, side: null, isFractured: false, isRune: false, skip: false };
+      const headerDetails = entry.header ? parseHeaderInfo(entry.header) : { tierName: null, tierNumber: null, side: null, isFractured: false, isRune: false, isVeiled: false, skip: false };
       console.log('[Whittling] Entry', index, 'header:', entry.header, '→ tierNumber:', headerDetails.tierNumber);
       const canonical = canonicalizeItemText(entry.value);
       let candidate = selectCandidate(entry, canonical, tierIndex);
@@ -1507,10 +1525,22 @@ export function computeWhittling(data: ModifierData): WhittlingResult | null {
         isRune: Boolean(headerDetails.isRune || entry.isRune),
         isDesecrated: Boolean(entry.isDesecrated),
         isSanctified: Boolean(entry.isSanctified),
+        isVeiled: Boolean(headerDetails.isVeiled || entry.isVeiled),
         isLocked: Boolean(entry.isFractured || entry.isRune || entry.isSanctified)
       };
       allMods.push(mod);
     });
+    // Check for veiled mods first - they should always be whittled if present
+    const veiledMods = allMods.filter(mod => mod.isVeiled);
+    if (veiledMods.length > 0) {
+      // Veiled mods are always the whittling target
+      return {
+        lowestIlvl: null,
+        lowestMods: veiledMods,
+        allMods,
+        blockedReason: null
+      };
+    }
     // Filter to only removable mods (exclude fractured, rune, sanctified) for whittling consideration
     const removable = allMods.filter(mod => !mod.isLocked && typeof mod.ilvl === 'number' && Number.isFinite(mod.ilvl));
     // Find lowest ilvl ONLY among removable mods (fractured mods cannot be whittled)
