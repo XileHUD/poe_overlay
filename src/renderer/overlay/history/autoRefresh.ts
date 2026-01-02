@@ -52,16 +52,6 @@ export class HistoryAutoRefresh {
   private scheduleNextRun(): void {
     if (!this.refreshCallback) return;
 
-    // Check if league has ended - stop auto-refresh
-    try {
-      const historyState = (window as any).historyState;
-      if (historyState?.store?.endedLeague === historyState?.league) {
-        console.log('[Auto-refresh] League has ended - stopping auto-refresh');
-        this.stopAutoRefresh();
-        return;
-      }
-    } catch {}
-
     const now = Date.now();
     let delay = this.AUTO_REFRESH_INTERVAL_MS;
 

@@ -21,8 +21,8 @@ interface LeagueOption {
 }
 
 const POE2_LEAGUES: LeagueOption[] = [
-  { value: 'Rise of the Abyssal', label: 'Rise of the Abyssal (Softcore)' },
-  { value: 'HC Rise of the Abyssal', label: 'HC Rise of the Abyssal' },
+  { value: 'Fate of the Vaal', label: 'Fate of the Vaal (Softcore)' },
+  { value: 'HC Fate of the Vaal', label: 'HC Fate of the Vaal' },
   { value: 'Standard', label: 'Standard (Legacy)' },
   { value: 'Hardcore', label: 'Hardcore (Legacy)' }
 ];
@@ -294,7 +294,27 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
   const trimmedStoredLeague = typeof storedMerchantLeague === 'string' ? storedMerchantLeague.trim() : '';
   const hasManualStoredLeague = storedMerchantLeagueSource === 'manual' && trimmedStoredLeague.length > 0;
 
-  let merchantHistoryLeague = trimmedStoredLeague || defaultLeague;
+  // Migrate PoE2 legacy league selections (Rise of the Abyssal -> Fate of the Vaal)
+  let migratedStoredLeague = trimmedStoredLeague;
+  if (currentOverlayVersion === 'poe2' && migratedStoredLeague) {
+    if (/^hc\s*rise of the abyssal$/i.test(migratedStoredLeague)) {
+      migratedStoredLeague = 'HC Fate of the Vaal';
+    } else if (/^rise of the abyssal$/i.test(migratedStoredLeague)) {
+      migratedStoredLeague = 'Fate of the Vaal';
+    }
+    if (migratedStoredLeague !== trimmedStoredLeague) {
+      try {
+        settingsService.set(leagueKey, migratedStoredLeague);
+        if (storedMerchantLeagueSource === 'manual') {
+          settingsService.set(sourceKey, 'manual');
+        }
+      } catch (err) {
+        console.warn('[Settings] Failed to migrate PoE2 league preference:', err);
+      }
+    }
+  }
+
+  let merchantHistoryLeague = migratedStoredLeague || defaultLeague;
   const displayLeagueOptions: LeagueOption[] = [...leagueOptions];
 
   if (merchantHistoryLeague && !displayLeagueOptions.some((option) => option.value === merchantHistoryLeague)) {

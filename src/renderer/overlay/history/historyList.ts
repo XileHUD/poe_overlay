@@ -52,8 +52,6 @@ export function toRelativeTime(ts: number | string): string {
  * Renders callback from historyView.ts when view is active.
  */
 export function renderHistoryList(renderDetailCallback: (idx: number) => void): void {
-  if (!historyVisible()) return;
-  
   const histList = document.getElementById("historyList");
   if (!histList) return;
   if (!histList.hasAttribute('tabindex')) {

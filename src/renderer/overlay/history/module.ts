@@ -62,7 +62,7 @@ import {
 import { autoRefreshManager } from './autoRefresh';
 import { updateSessionUI, attachLoginButtonLogic } from './sessionManager';
 import { attachRefreshButtonLogic } from './refreshButton';
-import { initializeHistoryLeagueControls, initializeHistoryLeagueState, formatLeagueLabel } from './historyLeague';
+import { initializeHistoryLeagueControls, initializeHistoryLeagueState, formatLeagueLabel, setLeaguePreference } from './historyLeague';
 import { groupHistoryEntries, getOriginalIndexFromGrouped, findGroupedIndexForOriginal, toggleGroupExpansion, expandGroupsForDisplay } from './historyGrouping';
 
 /**
@@ -192,9 +192,21 @@ function startAutoRefreshLoop(): void {
   }
   autoRefreshManager.startAutoRefresh(
     async () => {
-      await performGuardedRefresh('auto-refresh');
+      // Call the SAME wrapper that tab-switching uses
+      // This ensures consistent behavior between manual and auto refresh
+      try {
+        const globalRefresh = (window as any).refreshHistoryIfAllowed;
+        if (typeof globalRefresh === 'function') {
+          await globalRefresh('auto-refresh');
+        } else {
+          console.warn('[Auto-refresh] Global refreshHistoryIfAllowed not available');
+        }
+      } catch (e) {
+        console.error('[Auto-refresh] Failed:', e);
+      }
     },
-    () => nextAllowedRefreshAt()
+    // Keep fixed cadence; server-side rate limits will gate fetches
+    () => Date.now()
   );
 }
 
@@ -695,29 +707,40 @@ export function addToTotalsWrapper(price?: Price): void {
  */
 export async function handleLeagueChangeFromSettings(league: string, source: 'auto' | 'manual'): Promise<void> {
   console.log('[History] Handling league change from settings:', league, source);
-  
-  // Update the history state
-  historyState.league = league;
-  historyState.leagueSource = source;
-  historyState.leagueExplicitlySet = true;
 
-  // Clear existing data
-  historyState.items = [];
-  historyState.selectedIndex = 0;
-  historyState.store = {
-    entries: [],
-    totals: {},
-    lastSync: Date.now()
-  };
+  // Use the shared league preference logic so invalid legacy leagues can't be applied.
+  try {
+    await setLeaguePreference(league, source === 'manual' ? 'manual' : 'auto', {
+      persist: false,
+      resetStore: true,
+      reason: 'sync'
+    });
+  } catch (err) {
+    console.warn('[History] Failed to apply league preference from settings; falling back to direct assignment', err);
+    historyState.league = league;
+    historyState.leagueSource = source;
+    historyState.leagueExplicitlySet = true;
+    historyState.items = [];
+    historyState.selectedIndex = 0;
+    historyState.store = {
+      entries: [],
+      totals: {},
+      lastSync: Date.now()
+    };
+  }
 
   // Update UI
-  prepareUiForManualLeagueChange(league);
+  prepareUiForManualLeagueChange(historyState.league);
 
   // Update league button/controls
   const leagueButton = document.getElementById('historyLeagueBtn') as HTMLButtonElement | null;
   if (leagueButton) {
-    leagueButton.textContent = `League: ${formatLeagueLabel(league)}`;
-    leagueButton.classList.add('is-manual');
+    leagueButton.textContent = `League: ${formatLeagueLabel(historyState.league)}`;
+    if (source === 'manual') {
+      leagueButton.classList.add('is-manual');
+    } else {
+      leagueButton.classList.remove('is-manual');
+    }
   }
 
   // Refresh history with new league

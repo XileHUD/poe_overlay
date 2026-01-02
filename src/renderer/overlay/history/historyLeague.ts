@@ -407,23 +407,39 @@ export async function initializeHistoryLeagueState(): Promise<void> {
     if (hasStoredPreference) {
       const rawLeague = typeof pref?.league === 'string' ? pref.league.trim() : '';
       const leagueIsValid = rawLeague ? isLeagueValidForMode(mode, rawLeague) : false;
-      const leagueToApply = leagueIsValid ? rawLeague : fallback;
-      const source: LeagueSource = leagueIsValid && pref?.source === 'manual' ? 'manual' : 'auto';
+      // Migration: If user has old "Rise of the Abyssal" league, switch them to "Fate of the Vaal"
+      // Each league has its own JSON file, so no data migration needed - just switch the preference
+      let leagueToApply = leagueIsValid ? rawLeague : fallback;
+      let source: LeagueSource = leagueIsValid && pref?.source === 'manual' ? 'manual' : 'auto';
+      let needsMigration = false;
+      
+      if (rawLeague && /^(rise of the abyssal|hc rise of the abyssal)$/i.test(rawLeague.trim())) {
+        console.log(`[HistoryLeague] Migrating from old league "${rawLeague}" to current league`);
+        leagueToApply = fallback;
+        source = 'auto';
+        needsMigration = true;
+      }
 
       await setLeaguePreference(leagueToApply, source, { persist: false, resetStore: false, reason: 'init', skipButtonUpdate: true });
 
-      if (!leagueIsValid) {
+      if (!leagueIsValid || needsMigration) {
         historyState.leagueExplicitlySet = false;
-        console.log(`[HistoryLeague] Stored league "${rawLeague}" is not valid for ${mode}; using default ${leagueToApply}`);
+        if (needsMigration) {
+          console.log(`[HistoryLeague] Migrated to new league: ${leagueToApply} (old data remains in separate file)`);
+        } else {
+          console.log(`[HistoryLeague] Stored league "${rawLeague}" is not valid for ${mode}; using default ${leagueToApply}`);
+        }
         try {
           getElectronAPI().historySetLeaguePreference?.({ league: leagueToApply, source: 'auto' });
         } catch (err) {
           console.warn('[HistoryLeague] Failed to persist fallback league after validation', err);
         }
-        queuePrompt('manual-open', {
-          message: 'Pick the trade league you want to track before refreshing history.',
-          highlight: historyState.league
-        });
+        if (!needsMigration) {
+          queuePrompt('manual-open', {
+            message: 'Pick the trade league you want to track before refreshing history.',
+            highlight: historyState.league
+          });
+        }
       } else {
         historyState.leagueExplicitlySet = source === 'manual';
         console.log('[HistoryLeague] Loaded stored league preference:', leagueToApply, '(source:', source, ')');

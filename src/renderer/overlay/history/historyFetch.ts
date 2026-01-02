@@ -59,6 +59,9 @@ async function handleRateLimitedResponse(
   renderListCallback: (renderDetailCallback: (idx: number) => void) => void,
   renderDetailCallback: (idx: number) => void
 ): Promise<void> {
+  // Treat rate-limit responses as a refresh attempt for timestamp purposes
+  historyState.lastRefreshAt = Date.now();
+
   const retryAfter = Number((res as any)?.retryAfter || 0) || 0;
   if (retryAfter > 0) {
     const until = Date.now() + (retryAfter * 1000);
@@ -731,12 +734,12 @@ export async function refreshHistoryIfAllowed(
       return; 
     }
   } catch {}
-  if (!historyVisible()) return;
   
+  const isAutoRefresh = origin === 'auto-refresh';
   const now = Date.now();
   const nextAt = nextAllowedRefreshAt();
   
-  if (now < nextAt) {
+  if (!isAutoRefresh && now < nextAt) {
     // Rate limited - just re-render from cache
     const all = (historyState.store.entries || []).slice().reverse();
     historyState.items = applySort(applyFilters(all, historyState.filters), historyState.sort);

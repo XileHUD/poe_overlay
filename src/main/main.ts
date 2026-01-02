@@ -464,8 +464,29 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 const sourceKey = this.getLeagueSourceSettingKey();
                 const storedLeagueRaw = this.settingsService.get(leagueKey);
                 const storedSource = this.settingsService.get(sourceKey);
-                const trimmedLeague = typeof storedLeagueRaw === 'string' ? storedLeagueRaw.trim() : '';
+                let trimmedLeague = typeof storedLeagueRaw === 'string' ? storedLeagueRaw.trim() : '';
                 const hasManualPreference = storedSource === 'manual' && trimmedLeague.length > 0;
+
+                // Migrate legacy PoE2 league selections (Rise of the Abyssal -> Fate of the Vaal)
+                if (this.overlayVersion === 'poe2' && trimmedLeague) {
+                    let migratedLeague: string | null = null;
+                    if (/^hc\s*rise of the abyssal$/i.test(trimmedLeague)) {
+                        migratedLeague = 'HC Fate of the Vaal';
+                    }
+                    else if (/^rise of the abyssal$/i.test(trimmedLeague)) {
+                        migratedLeague = 'Fate of the Vaal';
+                    }
+
+                    if (migratedLeague && migratedLeague !== trimmedLeague) {
+                        console.log(`[Init] Migrating PoE2 merchant history league "${trimmedLeague}" -> "${migratedLeague}"`);
+                        trimmedLeague = migratedLeague;
+                        try { this.settingsService.set(leagueKey, migratedLeague); } catch {}
+                        // Preserve source if it was manual so the user doesn't get re-prompted.
+                        if (storedSource === 'manual') {
+                            try { this.settingsService.set(sourceKey, 'manual'); } catch {}
+                        }
+                    }
+                }
 
                 // Validate that the stored league matches the current game version
                 const defaultLeague = this.getDefaultLeague();
@@ -474,7 +495,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                     if (this.overlayVersion === 'poe1') {
                         leagueIsValid = /Keepers of the Flame|Hardcore Keepers of the Flame|Standard|Hardcore/i.test(trimmedLeague);
                     } else {
-                        leagueIsValid = /Fate of the Vaal|HC Fate of the Vaal|Rise of the Abyssal|HC Rise of the Abyssal|Standard|Hardcore/i.test(trimmedLeague);
+                        leagueIsValid = /Fate of the Vaal|HC Fate of the Vaal|Standard|Hardcore/i.test(trimmedLeague);
                     }
                 }
 
@@ -1740,7 +1761,11 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
             webPreferences: {
                 nodeIntegration: false,
                 contextIsolation: true,
-                preload: path.join(__dirname, 'preload.js')
+                preload: path.join(__dirname, 'preload.js'),
+                // Keep renderer timers running even when the overlay is not focused.
+                // Without this, Chromium may heavily throttle setTimeout/setInterval in the overlay,
+                // which breaks the merchant-history auto-refresh until the user interacts.
+                backgroundThrottling: false
             },
             frame: false,
             alwaysOnTop: true,
