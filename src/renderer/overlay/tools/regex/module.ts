@@ -114,23 +114,33 @@ function buildIncludeExclude(): { include: string; exclude: string } {
   };
 }
 
-// Simple >= min range pattern (optimized for 0-99 range actually used here)
 function numRangePattern(min: number): string {
-  if (min <= 0) return '\\d+'; // everything
-  if (min < 10) return `[${min}-9]\\d?`; // 5 -> 5-9 OR 50-59 etc (good enough for our domain)
-  if (min >= 100) return `${min}|[1-9]\\d{2,}`; // coarse fallback if ever needed
-  const tens = Math.floor(min/10);
+  if (min <= 0) return "\\d+";
+  
+  // Handle 3-digit numbers (100-999)
+  if (min >= 100) {
+    const hundreds = Math.floor(min / 100);
+    const remainder = min % 100;
+    const tens = Math.floor(remainder / 10);
+    const ones = remainder % 10;
+
+    // Pattern for numbers in the same hundred (e.g., 125 -> 12[5-9] | 1[3-9]\d)
+    const sameHundred = `${hundreds}(${tens}[${ones}-9]|[${tens + 1}-9]\\d)`;
+    // Pattern for all numbers in higher hundreds (e.g., 125 -> [2-9]\d{2,})
+    const higherHundreds = `[${hundreds + 1}-9]\\d{2,}`;
+    
+    return `${sameHundred}|${higherHundreds}`;
+  }
+
+  // Original logic for 0-99
+  if (min < 10) return `[${min}-9]\\d?|[1-9]\\d{2,}`; 
+  const tens = Math.floor(min / 10);
   const ones = min % 10;
-  if (ones === 0) {
-    // 40 -> [4-9]\\d  (40-99)
-    return `[${tens}-9]\\d`;
-  }
-  if (tens === 9) {
-    // 95 -> 95-99
-    return `9[${ones}-9]`;
-  }
-  // 27 -> 27|2[8-9]|[3-9]\\d  (keep short: 2[7-9]|[3-9]\\d)
-  return `${tens}[${ones}-9]|[${tens+1}-9]\\d`;
+  
+  if (ones === 0) return `[${tens}-9]\\d|[1-9]\\d{2,}`;
+  
+  // e.g. 27 -> 2[7-9]|[3-9]\d|1\d{2,}
+  return `${tens}[${ones}-9]|[${tens + 1}-9]\\d|[1-9]\\d{2,}`;
 }
 
 function buildMinTokens(): { includeTokens: string[]; excludeTokens: string[] } {
@@ -218,11 +228,6 @@ function render(): void {
             <div class='poe2-filter-section'>
               <div class='poe2-section-title'>Waystone Filters</div>
               <div class='poe2-filter-grid'>
-                <label class='poe2-filter-label'>Waystone %</label>
-                <select id='waystonePct' class='poe2-filter-input' style='width:100px;'>
-                  <option value=''>--</option>
-                  ${[100,200,300,400,500,600,700,800].map(v=>`<option value='${v}' ${state.waystoneChance===v?"selected":""}>${v}%+</option>`).join('')}
-                </select>
                 <label class='poe2-filter-label'>Delir %</label>
                 <input id='delirPct' type='number' min='0' value='${state.deliriousPct??''}' placeholder='N' class='poe2-filter-input' style='width:100px;'>
               </div>
@@ -239,6 +244,9 @@ function render(): void {
                 <input id='baseMagic' type='number' min='0' value='${state.baseMagicPct??''}' placeholder='—' class='poe2-filter-input'>
                 <label class='poe2-filter-label'>Rare %</label>
                 <input id='baseRare' type='number' min='0' value='${state.baseRarePct??''}' placeholder='—' class='poe2-filter-input'>
+                <label class='poe2-filter-label'>Waystone %</label>
+                <input id='waystonePct' type='number' min='0' value='${state.waystoneChance??''}' placeholder='—' class='poe2-filter-input'>
+
                 <label class='poe2-filter-label'>Corruption</label>
                 <select id='corrFilter' class='poe2-filter-input'>
                   <option value=''>Any</option>
