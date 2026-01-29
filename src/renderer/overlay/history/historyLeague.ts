@@ -25,6 +25,8 @@ export type LeaguePromptReason = 'manual-open' | 'auto-hardcore' | 'empty-data';
 // PoE1 leagues
 export const POE1_SOFTCORE_LEAGUE = 'Keepers of the Flame';
 export const POE1_HARDCORE_LEAGUE = 'Hardcore Keepers of the Flame';
+export const POE1_PHRECIA_LEAGUE = 'Phrecia 2.0';
+export const POE1_HARDCORE_PHRECIA_LEAGUE = 'Hardcore Phrecia 2.0';
 export const POE1_STANDARD_LEAGUE = 'Standard';
 export const POE1_LEGACY_HARDCORE_LEAGUE = 'Hardcore';
 
@@ -58,6 +60,8 @@ export function isLeagueEnded(league: string): boolean {
 const POE1_LEAGUE_OPTIONS: LeagueOption[] = [
   { id: POE1_SOFTCORE_LEAGUE, label: 'Keepers of the Flame', tag: 'Softcore', hint: 'Default trade league' },
   { id: POE1_HARDCORE_LEAGUE, label: 'Hardcore Keepers of the Flame', tag: 'Hardcore', hint: 'Deletes characters on death' },
+  { id: POE1_PHRECIA_LEAGUE, label: 'Phrecia 2.0', tag: 'Event', hint: 'Event league' },
+  { id: POE1_HARDCORE_PHRECIA_LEAGUE, label: 'Hardcore Phrecia 2.0', tag: 'Event HC', hint: 'Hardcore event league' },
   { id: POE1_STANDARD_LEAGUE, label: 'Standard', tag: 'Legacy', hint: 'Permanent league' },
   { id: POE1_LEGACY_HARDCORE_LEAGUE, label: 'Hardcore', tag: 'Legacy HC', hint: 'Legacy hardcore league' }
 ];
@@ -132,6 +136,8 @@ const LEAGUE_LABELS: Record<string, string> = {
   [normalizeLeagueId(POE2_SOFTCORE_LEAGUE)]: 'Softcore • Fate of the Vaal',
   [normalizeLeagueId(POE1_HARDCORE_LEAGUE)]: 'Hardcore • Keepers of the Flame',
   [normalizeLeagueId(POE2_HARDCORE_LEAGUE)]: 'Hardcore • Fate of the Vaal',
+  [normalizeLeagueId(POE1_PHRECIA_LEAGUE)]: 'Event • Phrecia 2.0',
+  [normalizeLeagueId(POE1_HARDCORE_PHRECIA_LEAGUE)]: 'Event HC • Phrecia 2.0',
   [normalizeLeagueId(POE1_STANDARD_LEAGUE)]: 'Standard',
   [normalizeLeagueId(POE2_STANDARD_LEAGUE)]: 'Standard',
   [normalizeLeagueId(POE1_LEGACY_HARDCORE_LEAGUE)]: 'Hardcore (Legacy)',

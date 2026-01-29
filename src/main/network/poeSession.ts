@@ -45,6 +45,8 @@ export class PoeSessionHelper {
       'Keepers of the Flame': 'Keepers',
       'Hardcore Keepers of the Flame': 'Hardcore Keepers',
       'HC Keepers of the Flame': 'Hardcore Keepers',
+      'Phrecia 2.0': 'Phrecia 2.0',
+      'Hardcore Phrecia 2.0': 'Hardcore Phrecia 2.0',
       'Standard': 'Standard',
       'Hardcore': 'Hardcore'
     };
