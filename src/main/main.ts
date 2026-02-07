@@ -493,7 +493,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 let leagueIsValid = false;
                 if (trimmedLeague) {
                     if (this.overlayVersion === 'poe1') {
-                        leagueIsValid = /Keepers of the Flame|Hardcore Keepers of the Flame|Standard|Hardcore/i.test(trimmedLeague);
+                        leagueIsValid = /Keepers of the Flame|Hardcore Keepers of the Flame|Phrecia 2\.0|Hardcore Phrecia 2\.0|Standard|Hardcore/i.test(trimmedLeague);
                     } else {
                         leagueIsValid = /Fate of the Vaal|HC Fate of the Vaal|Standard|Hardcore/i.test(trimmedLeague);
                     }
@@ -3853,7 +3853,7 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                 const trimmedLegacy = legacyLeague.trim();
                 
                 // Determine which version this league belongs to based on league name
-                const isPoe1League = /Keepers of the Flame|Standard|Hardcore/i.test(trimmedLegacy);
+                const isPoe1League = /Keepers of the Flame|Phrecia 2\.0|Standard|Hardcore/i.test(trimmedLegacy);
                 const isPoe2League = /Fate of the Vaal|Rise of the Abyssal|Standard|Hardcore/i.test(trimmedLegacy);
                 
                 // If it's the current version's league, migrate it
@@ -3909,7 +3909,7 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                     
                     // Determine which game version this league belongs to
                     let gameVersion: 'poe1' | 'poe2';
-                    if (/Keepers_of_the_Flame|HC_Keepers_of_the_Flame/i.test(leaguePart)) {
+                    if (/Keepers_of_the_Flame|HC_Keepers_of_the_Flame|Phrecia|HC_Phrecia/i.test(leaguePart)) {
                         gameVersion = 'poe1';
                     } else {
                         // Default to poe2 for all other leagues (Fate of the Vaal, Rise of the Abyssal, Standard, Hardcore)
