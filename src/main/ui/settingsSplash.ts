@@ -5,6 +5,8 @@
 
 import { BrowserWindow, ipcMain, screen, shell, dialog, app } from 'electron';
 import { createPassiveTreeWindow, sendTreeData, closeTreeWindow, isTreeWindowOpen } from '../windows/levelingTreeWindow.js';
+import { passiveTreeDiff327to328 } from '../../data/leveling-data/trees/passiveTreeDiff.js';
+import { atlasTreeDiff327to328 } from '../../data/leveling-data/trees/atlasTreeDiff.js';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import * as https from 'https';
@@ -712,6 +714,16 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
       }
     });
 
+    // Handle tree diff request (3.27 -> 3.28) — static precomputed diff
+    ipcMain.on('settings-open-tree-diff', (event) => {
+      event.reply('settings-tree-diff-result', passiveTreeDiff327to328);
+    });
+
+    // Handle atlas diff request (3.27 -> 3.28) — static precomputed diff
+    ipcMain.on('settings-open-atlas-diff', (event) => {
+      event.reply('settings-atlas-diff-result', atlasTreeDiff327to328);
+    });
+
     window.on('closed', () => {
       // Close tree window if it was opened by settings preview
       if (treeOpenedFromSettings && isTreeWindowOpen()) {
@@ -736,10 +748,14 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
       ipcMain.removeAllListeners('settings-save-my-mods-enabled');
       ipcMain.removeAllListeners('settings-save-auto-update');
       ipcMain.removeAllListeners('settings-open-tree-preview');
+      ipcMain.removeAllListeners('settings-open-tree-diff');
+      ipcMain.removeAllListeners('settings-open-atlas-diff');
       resolve();
     });
   });
 }
+
+
 
 /**
  * Build HTML for settings splash
@@ -1830,7 +1846,49 @@ function buildSettingsSplashHtml(
           <span class="setting-label-text">Skill Tree Preview</span>
           <span class="setting-label-desc">Open the latest ${normalizedOverlayVersion === 'poe1' ? '3.28 Mirage' : '0.4 Fate of the Vaal'} passive tree in the leveling overlay window</span>
         </div>
-        <button class="btn btn-secondary" id="previewTreeBtn">Open Tree</button>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button class="btn btn-secondary" id="previewTreeBtn">Open Tree</button>
+          ${normalizedOverlayVersion === 'poe1' ? '<button class="btn btn-secondary" id="treeDiffBtn">3.27&#x2192;3.28 Diff</button>' : ''}
+          ${normalizedOverlayVersion === 'poe1' ? '<button class="btn btn-secondary" id="atlasDiffBtn">Atlas 3.27&#x2192;3.28 Diff</button>' : ''}
+        </div>
+      </div>
+    </div>
+
+    <!-- Tree Diff Modal -->
+    <div id="treeDiffModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.82); z-index:9999; align-items:center; justify-content:center; padding:24px; box-sizing:border-box;">
+      <div style="background:#1c1c1c; border:1px solid #444; border-radius:8px; width:100%; max-width:760px; max-height:82vh; display:flex; flex-direction:column; box-shadow:0 8px 32px rgba(0,0,0,0.6);">
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; border-bottom:1px solid #333; flex-shrink:0;">
+          <span style="font-weight:600; font-size:14px; color:#d4d4d4;">3.27 &#x2192; 3.28 Passive Tree Diff (Mirage)</span>
+          <button id="closeDiffModal" style="background:none; border:none; color:#888; font-size:22px; cursor:pointer; line-height:1; padding:0 4px;" title="Close">&times;</button>
+        </div>
+        <div style="padding:6px 16px; border-bottom:1px solid #2a2a2a; display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <input id="diffSearchInput" type="text" placeholder="Search diff..." autocomplete="off" spellcheck="false"
+            style="background:rgba(255,255,255,0.07); border:1px solid #3a3a3a; color:#d4d4d4; font-size:12px; padding:4px 8px; border-radius:4px; outline:none; flex:1; font-family:inherit; -webkit-user-select:auto; user-select:auto;">
+          <span id="diffSearchCount" style="font-size:11px; color:#888; white-space:nowrap; min-width:64px; text-align:right;"></span>
+        </div>
+        <pre id="treeDiffContent" style="flex:1; overflow-y:auto; padding:16px; font-family:'Consolas','Courier New',monospace; font-size:12px; color:#ccc; white-space:pre-wrap; word-break:break-word; margin:0; line-height:1.6; background:transparent;"></pre>
+        <div style="padding:10px 16px; border-top:1px solid #333; text-align:right; flex-shrink:0;">
+          <button id="copyDiffBtn" class="btn btn-secondary" style="font-size:12px; padding:4px 12px;">Copy to Clipboard</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Atlas Diff Modal -->
+    <div id="atlasDiffModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.82); z-index:9999; align-items:center; justify-content:center; padding:24px; box-sizing:border-box;">
+      <div style="background:#1c1c1c; border:1px solid #444; border-radius:8px; width:100%; max-width:760px; max-height:82vh; display:flex; flex-direction:column; box-shadow:0 8px 32px rgba(0,0,0,0.6);">
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; border-bottom:1px solid #333; flex-shrink:0;">
+          <span style="font-weight:600; font-size:14px; color:#d4d4d4;">3.27 &#x2192; 3.28 Atlas Passive Tree Diff (Mirage)</span>
+          <button id="closeAtlasDiffModal" style="background:none; border:none; color:#888; font-size:22px; cursor:pointer; line-height:1; padding:0 4px;" title="Close">&times;</button>
+        </div>
+        <div style="padding:6px 16px; border-bottom:1px solid #2a2a2a; display:flex; align-items:center; gap:8px; flex-shrink:0;">
+          <input id="atlasDiffSearchInput" type="text" placeholder="Search atlas diff..." autocomplete="off" spellcheck="false"
+            style="background:rgba(255,255,255,0.07); border:1px solid #3a3a3a; color:#d4d4d4; font-size:12px; padding:4px 8px; border-radius:4px; outline:none; flex:1; font-family:inherit; -webkit-user-select:auto; user-select:auto;">
+          <span id="atlasDiffSearchCount" style="font-size:11px; color:#888; white-space:nowrap; min-width:64px; text-align:right;"></span>
+        </div>
+        <pre id="atlasDiffContent" style="flex:1; overflow-y:auto; padding:16px; font-family:'Consolas','Courier New',monospace; font-size:12px; color:#ccc; white-space:pre-wrap; word-break:break-word; margin:0; line-height:1.6; background:transparent;"></pre>
+        <div style="padding:10px 16px; border-top:1px solid #333; text-align:right; flex-shrink:0;">
+          <button id="copyAtlasDiffBtn" class="btn btn-secondary" style="font-size:12px; padding:4px 12px;">Copy to Clipboard</button>
+        </div>
       </div>
     </div>
 
@@ -2372,7 +2430,127 @@ function buildSettingsSplashHtml(
           });
         });
       }
-      
+
+      // Experimental: Tree Diff Modal
+      const treeDiffBtn = document.getElementById('treeDiffBtn');
+      const treeDiffModal = document.getElementById('treeDiffModal');
+      const treeDiffContent = document.getElementById('treeDiffContent');
+      const closeDiffModal = document.getElementById('closeDiffModal');
+      const copyDiffBtn = document.getElementById('copyDiffBtn');
+      if (treeDiffBtn && treeDiffModal) {
+        let diffOriginalText = '';
+        const diffSearchInput = document.getElementById('diffSearchInput');
+        const diffSearchCount = document.getElementById('diffSearchCount');
+        function applyDiffSearch() {
+          const q = diffSearchInput ? diffSearchInput.value.trim() : '';
+          if (!q || !diffOriginalText) {
+            treeDiffContent.textContent = diffOriginalText;
+            if (diffSearchCount) diffSearchCount.textContent = '';
+            return;
+          }
+          const esc = diffOriginalText.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+          const re = new RegExp('(' + q + ')', 'gi');
+          const hits = (esc.match(re) || []).length;
+          if (diffSearchCount) diffSearchCount.textContent = hits > 0 ? hits + ' found' : 'No match';
+          treeDiffContent.innerHTML = esc.replace(re, '<mark style="background:hsl(55,100%,38%);color:#111;border-radius:2px;padding:0 1px;">$1</mark>');
+        }
+        if (diffSearchInput) {
+          diffSearchInput.addEventListener('input', applyDiffSearch);
+          diffSearchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') { diffSearchInput.value = ''; applyDiffSearch(); }
+          });
+        }
+        treeDiffBtn.addEventListener('click', () => {
+          treeDiffBtn.disabled = true;
+          treeDiffBtn.textContent = 'Loading...';
+          ipcRenderer.once('settings-tree-diff-result', (_, text) => {
+            diffOriginalText = text;
+            if (diffSearchInput) diffSearchInput.value = '';
+            if (diffSearchCount) diffSearchCount.textContent = '';
+            treeDiffContent.textContent = text;
+            treeDiffModal.style.display = 'flex';
+            setTimeout(() => diffSearchInput && diffSearchInput.focus(), 60);
+            treeDiffBtn.disabled = false;
+            treeDiffBtn.textContent = '3.27\u21923.28 Diff';
+          });
+          ipcRenderer.send('settings-open-tree-diff');
+        });
+        const closeModal = () => {
+          treeDiffModal.style.display = 'none';
+          if (diffSearchInput) { diffSearchInput.value = ''; applyDiffSearch(); }
+        };
+        closeDiffModal.addEventListener('click', closeModal);
+        treeDiffModal.addEventListener('click', (e) => { if (e.target === treeDiffModal) closeModal(); });
+        if (copyDiffBtn) {
+          copyDiffBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(diffOriginalText || '').then(() => {
+              copyDiffBtn.textContent = 'Copied!';
+              setTimeout(() => { copyDiffBtn.textContent = 'Copy to Clipboard'; }, 2000);
+            });
+          });
+        }
+      }
+
+      // Experimental: Atlas Diff Modal
+      const atlasDiffBtn = document.getElementById('atlasDiffBtn');
+      const atlasDiffModal = document.getElementById('atlasDiffModal');
+      const atlasDiffContent = document.getElementById('atlasDiffContent');
+      const closeAtlasDiffModal = document.getElementById('closeAtlasDiffModal');
+      const copyAtlasDiffBtn = document.getElementById('copyAtlasDiffBtn');
+      if (atlasDiffBtn && atlasDiffModal) {
+        let atlasOriginalText = '';
+        const atlasSearchInput = document.getElementById('atlasDiffSearchInput');
+        const atlasSearchCount = document.getElementById('atlasDiffSearchCount');
+        function applyAtlasSearch() {
+          const q = atlasSearchInput ? atlasSearchInput.value.trim() : '';
+          if (!q || !atlasOriginalText) {
+            atlasDiffContent.textContent = atlasOriginalText;
+            if (atlasSearchCount) atlasSearchCount.textContent = '';
+            return;
+          }
+          const esc = atlasOriginalText.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+          const re = new RegExp('(' + q + ')', 'gi');
+          const hits = (esc.match(re) || []).length;
+          if (atlasSearchCount) atlasSearchCount.textContent = hits > 0 ? hits + ' found' : 'No match';
+          atlasDiffContent.innerHTML = esc.replace(re, '<mark style="background:hsl(55,100%,38%);color:#111;border-radius:2px;padding:0 1px;">$1</mark>');
+        }
+        if (atlasSearchInput) {
+          atlasSearchInput.addEventListener('input', applyAtlasSearch);
+          atlasSearchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') { atlasSearchInput.value = ''; applyAtlasSearch(); }
+          });
+        }
+        atlasDiffBtn.addEventListener('click', () => {
+          atlasDiffBtn.disabled = true;
+          atlasDiffBtn.textContent = 'Loading...';
+          ipcRenderer.once('settings-atlas-diff-result', (_, text) => {
+            atlasOriginalText = text;
+            if (atlasSearchInput) atlasSearchInput.value = '';
+            if (atlasSearchCount) atlasSearchCount.textContent = '';
+            atlasDiffContent.textContent = text;
+            atlasDiffModal.style.display = 'flex';
+            setTimeout(() => atlasSearchInput && atlasSearchInput.focus(), 60);
+            atlasDiffBtn.disabled = false;
+            atlasDiffBtn.textContent = 'Atlas 3.27\u21923.28 Diff';
+          });
+          ipcRenderer.send('settings-open-atlas-diff');
+        });
+        const closeAtlasModal = () => {
+          atlasDiffModal.style.display = 'none';
+          if (atlasSearchInput) { atlasSearchInput.value = ''; applyAtlasSearch(); }
+        };
+        closeAtlasDiffModal.addEventListener('click', closeAtlasModal);
+        atlasDiffModal.addEventListener('click', (e) => { if (e.target === atlasDiffModal) closeAtlasModal(); });
+        if (copyAtlasDiffBtn) {
+          copyAtlasDiffBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(atlasOriginalText || '').then(() => {
+              copyAtlasDiffBtn.textContent = 'Copied!';
+              setTimeout(() => { copyAtlasDiffBtn.textContent = 'Copy to Clipboard'; }, 2000);
+            });
+          });
+        }
+      }
+
       // My Mods Feature Toggle
       const myModsEnabledToggle = document.getElementById('myModsEnabledToggle');
       const saveMyModsSettingBtn = document.getElementById('saveMyModsSettingBtn');
