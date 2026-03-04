@@ -20,13 +20,15 @@ function sanitizeString(str: string | null | undefined, maxLength: number = 1000
   // Convert to string and limit length
   let sanitized = String(str).substring(0, maxLength);
   
-  // Convert basic HTML entities to prevent XSS
+  // Strip characters that could cause HTML injection (<, >, ")
+  // Note: do NOT encode apostrophes (') here — these strings are used as data keys
+  // (gem name lookups, image path slugs) before HTML rendering. The escapeHtml()
+  // function at render time handles all necessary HTML encoding. Encoding apostrophes
+  // here breaks gems like "Sniper's Mark" whose names contain apostrophes.
   sanitized = sanitized
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
+    .replace(/>/g, '&gt;');
   
   return sanitized.trim();
 }
