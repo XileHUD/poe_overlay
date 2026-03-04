@@ -4,6 +4,7 @@
  */
 
 import { BrowserWindow, ipcMain, screen, shell, dialog, app } from 'electron';
+import { createPassiveTreeWindow, sendTreeData, closeTreeWindow, isTreeWindowOpen } from '../windows/levelingTreeWindow.js';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import * as https from 'https';
@@ -677,7 +678,46 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
       }
     });
 
+    // Handle tree preview from settings
+    let treeOpenedFromSettings = false;
+    ipcMain.on('settings-open-tree-preview', (event) => {
+      const gameVer: 'poe1' | 'poe2' = currentOverlayVersion === 'poe1' ? 'poe1' : 'poe2';
+      const treeVer = gameVer === 'poe1' ? '3_28' : '3_28'; // poe2 ignores this
+      const previewSpec = {
+        title: gameVer === 'poe1' ? '3.28 Mirage Preview' : '0.4 Fate of the Vaal Preview',
+        preview: true,
+        allocatedNodes: [],
+        parsedUrl: { nodes: [], version: 5, treeVersion: treeVer },
+      };
+      const dispatchPreview = () => {
+        sendTreeData([previewSpec], gameVer, 1, 1, false, 0, treeVer);
+      };
+      if (!isTreeWindowOpen()) {
+        treeOpenedFromSettings = true;
+        const treeWin = createPassiveTreeWindow();
+        const onReady = () => {
+          dispatchPreview();
+          event.reply('settings-tree-preview-opened');
+        };
+        ipcMain.once('tree-window-ready', onReady);
+        if (!treeWin.webContents.isLoading()) {
+          ipcMain.removeListener('tree-window-ready', onReady);
+          dispatchPreview();
+          event.reply('settings-tree-preview-opened');
+        }
+      } else {
+        // Tree is already open - just update its data
+        dispatchPreview();
+        event.reply('settings-tree-preview-opened');
+      }
+    });
+
     window.on('closed', () => {
+      // Close tree window if it was opened by settings preview
+      if (treeOpenedFromSettings && isTreeWindowOpen()) {
+        closeTreeWindow();
+      }
+
       // Clear the active settings window reference
       activeSettingsWindow = null;
       
@@ -695,6 +735,7 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
       ipcMain.removeAllListeners('settings-save-merchant-history-config');
       ipcMain.removeAllListeners('settings-save-my-mods-enabled');
       ipcMain.removeAllListeners('settings-save-auto-update');
+      ipcMain.removeAllListeners('settings-open-tree-preview');
       resolve();
     });
   });
@@ -1780,6 +1821,19 @@ function buildSettingsSplashHtml(
     <div id="dataReloadStatus" class="data-reload-status"></div>
   </div>
       
+    <!-- Experimental Section -->
+    <div class="section">
+      <div class="section-title">🧪 Experimental</div>
+      <div class="section-desc">Features under testing — not part of normal workflow</div>
+      <div class="setting-item">
+        <div class="setting-label">
+          <span class="setting-label-text">Skill Tree Preview</span>
+          <span class="setting-label-desc">Open the latest ${normalizedOverlayVersion === 'poe1' ? '3.28 Mirage' : '0.4 Fate of the Vaal'} passive tree in the leveling overlay window</span>
+        </div>
+        <button class="btn btn-secondary" id="previewTreeBtn">Open Tree</button>
+      </div>
+    </div>
+
     </div><!-- End Data Tab -->
     
     <!-- ABOUT TAB -->
@@ -2304,6 +2358,20 @@ function buildSettingsSplashHtml(
       document.getElementById('openFolderBtn').addEventListener('click', () => {
         ipcRenderer.send('settings-open-folder');
       });
+
+      // Experimental: Skill Tree Preview
+      const previewTreeBtn = document.getElementById('previewTreeBtn');
+      if (previewTreeBtn) {
+        previewTreeBtn.addEventListener('click', () => {
+          previewTreeBtn.disabled = true;
+          previewTreeBtn.textContent = 'Opening...';
+          ipcRenderer.send('settings-open-tree-preview');
+          ipcRenderer.once('settings-tree-preview-opened', () => {
+            previewTreeBtn.disabled = false;
+            previewTreeBtn.textContent = 'Open Tree';
+          });
+        });
+      }
       
       // My Mods Feature Toggle
       const myModsEnabledToggle = document.getElementById('myModsEnabledToggle');

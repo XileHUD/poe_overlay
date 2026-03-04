@@ -1240,11 +1240,11 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
       // Enforce connectivity on full main tree first
       const keptMain = enforceConnectivity(orderedMain);
 
+      // If no nodes at all, render the tree SVG without any highlights (e.g. preview mode)
       if (keptMain.length === 0 && orderedAsc.length === 0) {
         maxAvailableNodes = 0;
         nodeProgressionCount = null;
-        updateNodeProgression();
-        return;
+        // Fall through to render the tree - just no nodes will be highlighted
       }
 
       // Progression applies only to main nodes; ascendancy always shown
@@ -2234,17 +2234,27 @@ export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'p
       }
     } else {
       // For PoE1, use tree version to select the correct tree
-      if (treeVersion === '3_27') {
+      if (treeVersion === '3_28') {
+        treeSvg = template.template328?.svg || '';
+        viewBox = template.template328?.viewBox || '';
+        treeData = template.skillTree328;
+        console.log('[Tree Window] Using PoE1 3.28 tree template');
+      } else if (treeVersion === '3_27') {
         treeSvg = template.template327?.svg || '';
         viewBox = template.template327?.viewBox || '';
         treeData = template.skillTree327;
         console.log('[Tree Window] Using PoE1 3.27 tree template');
-      } else {
-        // Default to 3.26
+      } else if (treeVersion === '3_26') {
         treeSvg = template.template326?.svg || '';
         viewBox = template.template326?.viewBox || '';
         treeData = template.skillTree326;
         console.log('[Tree Window] Using PoE1 3.26 tree template');
+      } else {
+        // Default to latest (3.28)
+        treeSvg = template.template328?.svg || '';
+        viewBox = template.template328?.viewBox || '';
+        treeData = template.skillTree328;
+        console.log('[Tree Window] Using PoE1 3.28 tree template (default)');
       }
     }
     
@@ -2260,7 +2270,9 @@ export function sendTreeData(treeSpecs: any[], gameVersion: 'poe1' | 'poe2' = 'p
   }
 
   // Filter out empty header-style specs (no allocated nodes)
+  // Exception: specs marked as preview always pass through
   const filteredSpecs = Array.isArray(treeSpecs) ? treeSpecs.filter((spec) => {
+    if ((spec as any)?.preview) return true;
     const a = (spec as any)?.parsedUrl?.nodes;
     const b = (spec as any)?.allocatedNodes;
     const hasNodes = (Array.isArray(a) && a.length > 0) || (Array.isArray(b) && b.length > 0);

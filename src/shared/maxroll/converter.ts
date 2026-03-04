@@ -67,7 +67,7 @@ export async function convertMaxrollToPobBuild(build: MaxrollBuild): Promise<Sto
     socketGroups,
     skillSets,
     itemSets,
-    treeVersion: '3_26',
+    treeVersion: '3_28',
     importedAt: Date.now(),
     notes: notesSections && notesSections.length > 0 
       ? `${notesSections.length} sections available - use dropdown to browse`

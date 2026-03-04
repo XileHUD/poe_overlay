@@ -8,7 +8,7 @@ import { DOMParser } from '@xmldom/xmldom';
 import { ParsedPobBuild, TreeSpec, GemSocketGroup, GemInfo, SkillSet, ItemSet, Item } from './types';
 import { parseTreeUrl } from './treeParser';
 import { decodePobCode } from './decoder.js';
-import { nodeLookup326, nodeLookup327, nodeLookupPoe2, nodeLookupPoe2Legacy, nodeLookupPoe2v44, detectPoe2TreeVersion } from './treeLoader';  // Import all lookups
+import { nodeLookup326, nodeLookup327, nodeLookup328, nodeLookupPoe2, nodeLookupPoe2Legacy, nodeLookupPoe2v44, detectPoe2TreeVersion } from './treeLoader';  // Import all lookups
 
 /**
  * Sanitize string to prevent XSS attacks
@@ -84,7 +84,10 @@ export async function parsePobCode(code: string, gameVersion: 'poe1' | 'poe2' = 
       lookup = nodeLookupPoe2v44;
     } else {
       // For PoE1, use tree version to select lookup
-      if (treeVersion === '3_27') {
+      if (treeVersion === '3_28') {
+        lookup = nodeLookup328;
+        console.log('[PoB Parser] Using 3.28 tree lookup');
+      } else if (treeVersion === '3_27') {
         lookup = nodeLookup327;
         console.log('[PoB Parser] Using 3.27 tree lookup');
       } else {
