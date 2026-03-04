@@ -31,10 +31,8 @@ const POE2_LEAGUES: LeagueOption[] = [
 ];
 
 const POE1_LEAGUES: LeagueOption[] = [
-  { value: 'Keepers of the Flame', label: 'Keepers of the Flame (Softcore)' },
-  { value: 'Hardcore Keepers of the Flame', label: 'Hardcore Keepers of the Flame' },
-  { value: 'Phrecia 2.0', label: 'Phrecia 2.0 (Event)' },
-  { value: 'Hardcore Phrecia 2.0', label: 'Hardcore Phrecia 2.0 (Event)' },
+  { value: 'Mirage', label: 'Mirage (Softcore)' },
+  { value: 'Hardcore Mirage', label: 'Hardcore Mirage' },
   { value: 'Standard', label: 'Standard' },
   { value: 'Hardcore', label: 'Hardcore' }
 ];
