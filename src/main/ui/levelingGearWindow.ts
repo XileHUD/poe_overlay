@@ -754,9 +754,6 @@ function buildLevelingGearWindowHtml(itemSets: ItemSet[], overlayVersion: Overla
       document.addEventListener('mousedown', () => {
         try { ipcRenderer.send('overlay-window-focus', 'gear'); } catch {}
       }, { capture: true });
-      window.addEventListener('focus', () => {
-        try { ipcRenderer.send('overlay-window-focus', 'gear'); } catch {}
-      });
     } catch {}
     
     let isUltraMinimal = ${ultraMinimal};

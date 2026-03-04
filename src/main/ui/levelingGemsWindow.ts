@@ -1026,9 +1026,6 @@ function buildLevelingGemsWindowHtml(pobBuild: any, currentAct: number, characte
       document.addEventListener('mousedown', () => {
         try { ipcRenderer.send('overlay-window-focus', 'gems'); } catch {}
       }, { capture: true });
-      window.addEventListener('focus', () => {
-        try { ipcRenderer.send('overlay-window-focus', 'gems'); } catch {}
-      });
     } catch {}
     
     // Initial build data injected from main process

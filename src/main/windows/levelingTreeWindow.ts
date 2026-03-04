@@ -133,6 +133,49 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
       min-height: 20px;
     }
 
+    #tree-search-wrap {
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      z-index: 100;
+      pointer-events: auto;
+    }
+
+    #tree-search {
+      background: rgba(20,20,20,0.85);
+      border: 1px solid #444;
+      color: #d4d4d4;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      outline: none;
+      width: 180px;
+      transition: border-color 0.2s, background 0.2s;
+      user-select: auto;
+      -webkit-user-select: auto;
+      pointer-events: auto;
+      cursor: text;
+    }
+
+    #tree-search:focus { border-color: hsl(55,100%,50%); background: rgba(30,30,30,0.95); }
+    #tree-search::placeholder { color: #555; }
+
+    #tree-search-count {
+      font-size: 10px;
+      color: #888;
+      margin-left: 6px;
+      white-space: nowrap;
+      min-width: 50px;
+    }
+
+    @keyframes node-search-pulse {
+      0%, 100% { fill: hsl(55,100%,55%) !important; stroke: hsl(55,100%,65%) !important; }
+      50%       { fill: hsl(55,100%,82%) !important; stroke: hsl(55,100%,92%) !important; }
+    }
+
     #header-controls {
       display: flex;
       gap: 4px;
@@ -528,6 +571,11 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
     </div>
 
     <div id="viewport-container">
+      <style id="search-hl-style"></style>
+      <div id="tree-search-wrap">
+        <input id="tree-search" type="text" placeholder="Search nodes..." autocomplete="off" spellcheck="false">
+        <span id="tree-search-count"></span>
+      </div>
       <div id="tree-viewport">
         <div id="tree-content"></div>
       </div>
@@ -562,9 +610,6 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
       document.addEventListener('mousedown', () => {
         try { ipcRenderer.send('overlay-window-focus', 'tree'); } catch {}
       }, { capture: true });
-      window.addEventListener('focus', () => {
-        try { ipcRenderer.send('overlay-window-focus', 'tree'); } catch {}
-      });
     } catch {}
     
     // Auto-hide controls when mouse leaves window
@@ -603,11 +648,54 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
     let simplifiedViewEnabled = ${simplifiedView}; // Show only allocated nodes in single color (saved via IPC)
     let connectedAllocatedNodes = []; // Connectivity-pruned ordered nodes
     let lastProgressionEvent = 'manual'; // 'step' when using arrows, 'manual' for typed
+    let searchQuery = '';
+
+    function applyNodeSearch() {
+      const q = searchQuery.toLowerCase().trim();
+      const styleEl = document.getElementById('search-hl-style');
+      const countEl = document.getElementById('tree-search-count');
+      if (!q || !currentTreeData) {
+        if (styleEl) styleEl.textContent = '';
+        if (countEl) countEl.textContent = '';
+        return;
+      }
+      const matchIds = [];
+      for (const graph of currentTreeData.graphs) {
+        for (const [id, node] of Object.entries(graph.nodes)) {
+          const name = (node.text || '').toLowerCase();
+          const stats = (node.stats || []).join(' ').toLowerCase();
+          if (name.includes(q) || stats.includes(q)) matchIds.push(id);
+        }
+      }
+      if (countEl) countEl.textContent = matchIds.length > 0 ? matchIds.length + ' found' : 'No match';
+      if (styleEl) {
+        if (matchIds.length === 0) {
+          styleEl.textContent = '';
+        } else {
+          const sel = matchIds.map(id => '#n' + id).join(', ');
+          styleEl.textContent = 'svg :is(' + sel + ') { fill: hsl(55,100%,55%) !important; stroke: hsl(55,100%,65%) !important; animation: node-search-pulse 1.2s ease-in-out infinite; }';
+        }
+      }
+    }
 
     // Initialize simplified view checkbox once DOM is ready
     document.addEventListener('DOMContentLoaded', () => {
       const cb = document.getElementById('simplified-view-toggle');
       if (cb) cb.checked = simplifiedViewEnabled;
+      const searchInput = document.getElementById('tree-search');
+      if (searchInput) {
+        searchInput.addEventListener('mousedown', (e) => { e.stopPropagation(); });
+        searchInput.addEventListener('input', () => { searchQuery = searchInput.value; applyNodeSearch(); });
+        searchInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            searchInput.value = '';
+            searchQuery = '';
+            applyNodeSearch();
+            searchInput.blur();
+          }
+          e.stopPropagation();
+        });
+      }
     });
 
     // Debounced function to save viewBox state
@@ -1858,6 +1946,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
     const viewport = document.getElementById('tree-viewport');
     
     viewport.addEventListener('mousedown', (e) => {
+      if (e.target && e.target.closest && e.target.closest('#tree-search-wrap')) return;
       isPanning = true;
       lastPanPosition = { x: e.clientX, y: e.clientY };
       viewport.classList.add('panning');
@@ -1894,6 +1983,7 @@ function buildTreeWindowHtml(ultraMinimal: boolean = false, pinned: boolean = tr
     });
 
     viewport.addEventListener('wheel', (e) => {
+      if (e.target && e.target.closest && e.target.closest('#tree-search-wrap')) return;
       e.preventDefault();
       
       const svgElement = document.querySelector('#tree-svg svg');
@@ -2085,8 +2175,9 @@ export function createPassiveTreeWindow(): BrowserWindow {
 
   treeWindow.setIgnoreMouseEvents(false);
 
-  // Register with overlay z-order manager
-  try { registerOverlayWindow('tree', treeWindow, pinned, false); } catch {}
+  // Register with overlay z-order manager.
+  // Keep non-focusable by default; temporarily enabled only while search input is focused.
+  try { registerOverlayWindow('tree', treeWindow, pinned, true); } catch {}
 
   const html = buildTreeWindowHtml(ultraMinimal, pinned, simplifiedView);
   const base64Html = Buffer.from(html, 'utf-8').toString('base64');
@@ -2142,7 +2233,7 @@ export function createPassiveTreeWindow(): BrowserWindow {
     currentPinned = isPinned;
     
     // Update via windowZManager instead of setting directly
-    try { registerOverlayWindow('tree', treeWindow, isPinned, false); } catch {}
+    try { registerOverlayWindow('tree', treeWindow, isPinned, true); } catch {}
     
     // Save the state immediately
     const bounds = treeWindow.getBounds();

@@ -1,14 +1,26 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
 
-// Improved overlay window manager
-// Key: Use setFocusable(false) to prevent focus fighting while keeping windows interactive
-// Windows stay always-on-top and clickable, but don't steal focus from the game
+// ═══════════════════════════════════════════════════════════════════════════════
+// Overlay Window Z-Order Manager
+// ═══════════════════════════════════════════════════════════════════════════════
+//
+// STRATEGY:  Use setAlwaysOnTop relativeLevel to control stacking.
+//   - All pinned overlays sit at 'screen-saver' level (above borderless games).
+//   - The ACTIVE (last-clicked) overlay gets relativeLevel = 2.
+//   - All other overlays get relativeLevel = 1.
+//   - This guarantees the active window is always on top of other overlays.
+//   - NO blur(), NO moveTop() between overlays → no focus jitter → search works.
+//
+// The browser-window-blur handler ONLY fires when focus leaves the Electron app
+// entirely (e.g. user clicks the game).  It re-asserts the always-on-top levels
+// so the game can't permanently steal the topmost band.
+// ═══════════════════════════════════════════════════════════════════════════════
 
-type WinEntry = { 
-  name: string; 
-  win: BrowserWindow; 
+type WinEntry = {
+  name: string;
+  win: BrowserWindow;
   pinned?: boolean;
-  allowFocus?: boolean; // For windows that need text input (settings)
+  allowFocus?: boolean;
 };
 
 const windows = new Map<string, WinEntry>();
@@ -21,32 +33,25 @@ function safe(fn: () => void) {
   try { fn(); } catch { /* noop */ }
 }
 
+/** Level used by the OS to keep windows above the game. */
+const TOP_LEVEL = process.platform === 'win32' ? 'screen-saver' as const : 'pop-up-menu' as const;
+
+/** Apply base overlay settings (skip-taskbar, focusable, initial always-on-top). */
 export function configureOverlayWindow(win: BrowserWindow, pinned: boolean = true, allowFocus: boolean = false) {
   if (!win || win.isDestroyed()) return;
 
   safe(() => win.setSkipTaskbar(true));
   safe(() => win.setFullScreenable(false));
-  // Keep visible even when game is fullscreen
   safe(() => (win as any).setVisibleOnAllWorkspaces?.(true, { visibleOnFullScreen: true }));
-  
-  // CRITICAL: Non-focusable windows to prevent focus fighting
-  // Exception: Settings window needs focus for text inputs
+
+  // Non-focusable prevents the window from stealing OS focus from the game.
+  // Exception: windows that need keyboard input (settings, tree search, notes).
   if (!allowFocus && typeof (win as any).setFocusable === 'function') {
     safe(() => (win as any).setFocusable(false));
   }
-  
-  // DO NOT set clickthrough - users need to interact with windows!
-  // Only the main overlay uses clickthrough
-  
-  // Only set always-on-top if pinned
+
   if (pinned) {
-    // Baseline on-top level for all overlay windows
-    if (process.platform === 'win32') {
-      // Windows: use screen-saver level to sit reliably above borderless games
-      safe(() => win.setAlwaysOnTop(true, 'screen-saver', 1));
-    } else {
-      safe(() => win.setAlwaysOnTop(true, 'pop-up-menu', 1));
-    }
+    safe(() => win.setAlwaysOnTop(true, TOP_LEVEL, 1));
   } else {
     safe(() => win.setAlwaysOnTop(false));
   }
@@ -57,31 +62,15 @@ export function registerOverlayWindow(name: string, win: BrowserWindow, pinned: 
   windows.set(name, { name, win, pinned, allowFocus });
   configureOverlayWindow(win, pinned, allowFocus);
 
-  // Track drag start to prevent z-order changes during drag
-  win.on('will-move', () => {
-    windowBeingDragged = name;
-  });
+  // ── drag tracking (prevent z-order changes while dragging) ─────────────
+  win.on('will-move', () => { windowBeingDragged = name; });
+  win.on('moved', () => { setTimeout(() => { windowBeingDragged = null; }, 100); });
+  win.on('closed', () => { windows.delete(name); if (windowBeingDragged === name) windowBeingDragged = null; });
 
-  // Track drag end
-  win.on('moved', () => {
-    // Small delay to ensure drag is complete before re-enabling z-order changes
-    setTimeout(() => {
-      windowBeingDragged = null;
-    }, 100);
-  });
-
-  win.on('closed', () => {
-    windows.delete(name);
-    if (windowBeingDragged === name) {
-      windowBeingDragged = null;
-    }
-  });
-
-  // Install IPC once to allow renderer to request focus changes
+  // ── IPC: renderer asks to bring a window to front ──────────────────────
   if (!ipcInstalled) {
     ipcInstalled = true;
     try {
-      // Bring window to front on mousedown (z-order only, no focus change)
       ipcMain.on('overlay-window-focus', (_event, winName: string) => {
         if (typeof winName === 'string' && !windowBeingDragged) {
           setActiveWindow(winName);
@@ -90,32 +79,28 @@ export function registerOverlayWindow(name: string, win: BrowserWindow, pinned: 
     } catch {}
   }
 
-  // Install app-level hooks (Windows): when our app loses focus to the game, re-assert topmost
+  // ── App-level hook: re-assert topmost when the GAME steals focus ───────
   if (process.platform === 'win32' && !appHooksInstalled) {
     appHooksInstalled = true;
     try {
       app.on('browser-window-blur', () => {
-        // Don't interfere if a window is being dragged
         if (windowBeingDragged) return;
-        
-        // Defer a bit to let the game assert z-order, then move overlays above it.
+
+        // Wait a tick, then check whether focus is still inside our app.
+        // If it is (user clicked a different overlay), do nothing.
+        // If it left (game got focus), re-assert the always-on-top levels.
         setTimeout(() => {
-          // Re-assert topmost for all pinned overlays
-          for (const entry of windows.values()) {
-            if (!entry || !entry.pinned) continue; // Only re-bump if pinned
-            const w = entry.win;
-            if (!w || w.isDestroyed() || !w.isVisible()) continue;
-            safe(() => w.setAlwaysOnTop(true, 'screen-saver', 1));
-            safe(() => w.moveTop());
-          }
-          // Ensure last active overlay is on top among overlays
-          if (lastActiveName) {
-            const activeEntry = windows.get(lastActiveName);
-            if (activeEntry && activeEntry.win && !activeEntry.win.isDestroyed()) {
-              safe(() => activeEntry.win.moveTop());
+          const focused = BrowserWindow.getFocusedWindow();
+          if (focused && !focused.isDestroyed()) {
+            // Focus is still on one of our windows — nothing to do.
+            for (const entry of windows.values()) {
+              if (entry.win === focused) return;
             }
           }
-        }, 100);
+
+          // Focus left the app → re-assert always-on-top for all pinned overlays.
+          reassertLevels();
+        }, 150);
       });
     } catch {}
   }
@@ -128,28 +113,38 @@ export function unregisterOverlayWindow(name: string) {
 export function updateOverlayWindowPinned(name: string, pinned: boolean, allowFocus: boolean = false) {
   const entry = windows.get(name);
   if (!entry) return;
-  
   entry.pinned = pinned;
   configureOverlayWindow(entry.win, pinned, allowFocus);
 }
 
+/**
+ * Mark a window as the active (topmost) overlay.
+ * Uses relativeLevel to guarantee z-order — no blur/focus manipulation.
+ */
 export function setActiveWindow(name: string) {
-  // Don't change z-order while a window is being dragged
   if (windowBeingDragged) return;
-  
   const activeEntry = windows.get(name);
-  if (!activeEntry) return;
-  const active = activeEntry.win;
-  if (!active || active.isDestroyed()) return;
+  if (!activeEntry?.win || activeEntry.win.isDestroyed()) return;
   lastActiveName = name;
-
-  // Move the active window to top regardless of pinned status
-  // This ensures the window appears in front when opened or clicked
-  safe(() => active.moveTop());
+  reassertLevels();
 }
 
-// Convenience to bring any known window to front explicitly
+/** Convenience alias. */
 export function bringToFront(name: string) {
   setActiveWindow(name);
+}
+
+/**
+ * Set relativeLevel = 2 on the active window, 1 on all others.
+ * Only touches pinned, visible, non-destroyed windows.
+ */
+function reassertLevels() {
+  for (const entry of windows.values()) {
+    if (!entry.pinned) continue;
+    const w = entry.win;
+    if (!w || w.isDestroyed() || !w.isVisible()) continue;
+    const level = (entry.name === lastActiveName) ? 2 : 1;
+    safe(() => w.setAlwaysOnTop(true, TOP_LEVEL, level));
+  }
 }
 

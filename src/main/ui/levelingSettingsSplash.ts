@@ -1357,9 +1357,6 @@ function buildLevelingSettingsSplashHtml(
       document.addEventListener('mousedown', () => {
         try { ipcRenderer.send('overlay-window-focus', 'levelingSettings'); } catch {}
       }, { capture: true });
-      window.addEventListener('focus', () => {
-        try { ipcRenderer.send('overlay-window-focus', 'levelingSettings'); } catch {}
-      });
     } catch {}
     
     function switchTab(tabName) {

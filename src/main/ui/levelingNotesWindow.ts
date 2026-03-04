@@ -482,9 +482,6 @@ function buildLevelingNotesWindowHtml(notes: string, overlayVersion: OverlayVers
       document.addEventListener('mousedown', () => {
         try { ipcRenderer.send('overlay-window-focus', 'notes'); } catch {}
       }, { capture: true });
-      window.addEventListener('focus', () => {
-        try { ipcRenderer.send('overlay-window-focus', 'notes'); } catch {}
-      });
     } catch {}
     
     let isUltraMinimal = ${ultraMinimal};
