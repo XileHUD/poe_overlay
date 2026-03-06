@@ -111,6 +111,7 @@ export interface UserSettings {
       pobBar?: string; // Toggle the PoB Info Bar
       leveling?: string; // Toggle the main leveling window
       logout?: string; // Quick logout via /exit command
+      autoGemRegex?: string; // Auto Gem Regex: Ctrl+F and paste regex for next gem task
     };
     customHotkeys?: CustomHotkey[]; // User-defined hotkeys for clipboard paste actions
   };
@@ -180,6 +181,7 @@ export interface UserSettings {
       pobBar?: string; // Toggle the PoB Info Bar
       leveling?: string; // Toggle the main leveling window
       logout?: string; // Quick logout via /exit command
+      autoGemRegex?: string; // Auto Gem Regex: Ctrl+F and paste regex for next gem task
     };
     customHotkeys?: CustomHotkey[]; // User-defined hotkeys for clipboard paste actions
   };

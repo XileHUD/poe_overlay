@@ -169,6 +169,7 @@ function buildLevelingSettingsSplashHtml(
   const hotkeyPobBar = hotkeys.pobBar || 'Not Set';
   const hotkeyLeveling = hotkeys.leveling || 'Not Set';
   const hotkeyLogout = hotkeys.logout || 'Not Set';
+  const hotkeyAutoGemRegex = hotkeys.autoGemRegex || 'Not Set';
   
   // Extract custom hotkeys with default examples if not present
   const customHotkeys = currentSettings.customHotkeys || [
@@ -1099,6 +1100,17 @@ function buildLevelingSettingsSplashHtml(
           <div style="display: flex; align-items: center;">
             <div class="hotkey-input" id="hotkey-logout" onclick="captureHotkey('logout')">${hotkeyLogout}</div>
             <button class="hotkey-clear" onclick="clearHotkey('logout')">Clear</button>
+          </div>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-label">
+            <div class="setting-name">Auto Gem Regex</div>
+            <div class="setting-description">Open stash search (Ctrl+F) and paste a regex for the next gems you need to pick up</div>
+          </div>
+          <div style="display: flex; align-items: center;">
+            <div class="hotkey-input" id="hotkey-autoGemRegex" onclick="captureHotkey('autoGemRegex')">${hotkeyAutoGemRegex}</div>
+            <button class="hotkey-clear" onclick="clearHotkey('autoGemRegex')">Clear</button>
           </div>
         </div>
       </div>

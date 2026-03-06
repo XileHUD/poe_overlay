@@ -9,7 +9,7 @@ import { openLevelingNotesWindow, updateNotesWindow, closeNotesWindow, isNotesWi
 import { openLevelingGearWindow, updateGearWindow, updateGearWindowContext, closeGearWindow, isGearWindowOpen } from './levelingGearWindow.js';
 import { createPassiveTreeWindow, sendTreeData, updateTreeWindowContext, isTreeWindowOpen, closeTreeWindow } from '../windows/levelingTreeWindow.js';
 import { levelingHotkeyManager } from '../hotkeys/levelingHotkeyManager.js';
-import { executeLogout, typeInChat } from '../utils/chatCommand.js';
+import { executeLogout, typeInChat, typeInStashSearch } from '../utils/chatCommand.js';
 import fs from 'fs';
 import path from 'path';
 import { app } from 'electron';
@@ -1031,6 +1031,35 @@ export class LevelingWindow {
         this.window.webContents.send('leveling-settings-changed', updates);
       }
     });
+
+    // Handle auto gem regex result from renderer.
+    // Guard against duplicate registrations (setup may be called more than once).
+    if (!ipcMain.listenerCount('auto-gem-regex-result')) {
+      ipcMain.on('auto-gem-regex-result', (_event, rawRegex: string) => {
+        const incoming = String(rawRegex || '').trim();
+        if (!incoming) return;
+
+        let regex = incoming;
+
+        // Defensive cleanup for previously logged/debug payloads that may be sent by stale handlers.
+        // Example bad payload: "Pasting regex into stash search: Rolling Magma|Arcane Surge Support"
+        const marker = 'Pasting regex into stash search:';
+        const markerIndex = regex.indexOf(marker);
+        if (markerIndex !== -1) {
+          regex = regex.slice(markerIndex + marker.length).trim();
+        }
+
+        // Reject clearly invalid payloads
+        if (!regex || regex === marker) return;
+
+        // PoE stash search expects quoted regex string
+        if (!(regex.startsWith('"') && regex.endsWith('"'))) {
+          regex = `"${regex}"`;
+        }
+
+        typeInStashSearch(regex);
+      });
+    }
 
     // Handle hotkey updates from settings splash
     ipcMain.on('leveling-hotkey-update', (event, { hotkeyName, accelerator }) => {
@@ -2830,6 +2859,19 @@ export class LevelingWindow {
       const accel = (hotkeys as any).logout as string;
       const success = levelingHotkeyManager.register('logout', accel, async () => {
         await executeLogout();
+      });
+      if (success) {
+        this.registeredHotkeys.push(accel);
+      }
+    }
+
+    // Register Auto Gem Regex hotkey
+    if ((hotkeys as any).autoGemRegex) {
+      const accel = (hotkeys as any).autoGemRegex as string;
+      const success = levelingHotkeyManager.register('autoGemRegex', accel, () => {
+        if (this.window && !this.window.isDestroyed()) {
+          this.window.webContents.send('hotkey-action', 'autoGemRegex');
+        }
       });
       if (success) {
         this.registeredHotkeys.push(accel);

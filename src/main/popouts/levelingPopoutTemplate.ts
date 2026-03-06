@@ -1222,6 +1222,62 @@ function getGemCost(gem) {
   return '';
 }
 
+// Build a PoE stash-search regex from the next unchecked gem task.
+// Iterates steps in the current act starting from the first unchecked step.
+// Finds the first step that has cached gems (stepGemCache). If the first
+// unchecked step has no gems, keeps looking forward until one is found.
+// Collects gem names from that single step only (not all future steps).
+// Caps at 10 gems and returns them joined with "|" (regex OR).
+// Returns null if no gems are found.
+function buildAutoGemRegex() {
+  if (!state.levelingData || !state.pobBuild) return null;
+
+  const act = state.levelingData.acts[state.currentActIndex];
+  if (!act) return null;
+
+  let allSteps = act.steps;
+  if (!state.showOptional) {
+    allSteps = allSteps.filter(s => s.type !== 'optional' && s.hidden !== 'optional');
+  }
+
+  // Find the first unchecked step index
+  let startIndex = -1;
+  for (let i = 0; i < allSteps.length; i++) {
+    if (!state.completedSteps.has(allSteps[i].id)) {
+      startIndex = i;
+      break;
+    }
+  }
+
+  if (startIndex === -1) {
+    // All steps completed in current act — no gems to search for
+    return null;
+  }
+
+  // From the first unchecked step onward, find the first step with gems
+  for (let i = startIndex; i < allSteps.length; i++) {
+    const step = allSteps[i];
+    const stepIndex = act.steps.findIndex(s => s.id === step.id);
+    const cacheKey = act.actNumber + '-' + stepIndex;
+    const cachedGems = stepGemCache.get(cacheKey);
+
+    if (cachedGems && cachedGems.length > 0) {
+      // Found a step with gems — build regex from this step only
+      const MAX_GEMS = 10;
+      const gemNames = cachedGems
+        .slice(0, MAX_GEMS)
+        .map(g => g.name);
+
+      if (gemNames.length > 0) {
+        // Use "|" OR regex — works in PoE stash search
+        return gemNames.join('|');
+      }
+    }
+  }
+
+  return null;
+}
+
 function groupStepsByZone(steps) {
   if (!state.groupByZone) return steps.map(s => ({zone:s.zone,zoneId:s.zoneId,steps:[s],allChecked:state.completedSteps.has(s.id),layoutTip:s.layoutTip}));
   
@@ -3444,6 +3500,15 @@ ipcRenderer.on('hotkey-action', (event, action) => {
       nextBtn.click();
     } else if (minimalNextBtn && minimalNextBtn.offsetParent !== null) {
       minimalNextBtn.click();
+    }
+  } else if (action === 'autoGemRegex') {
+    // Find the next unchecked step (or future step) with gems and build a regex
+    const regex = buildAutoGemRegex();
+    if (regex) {
+      console.log('[Auto Gem Regex] Sending regex to main process:', regex);
+      ipcRenderer.send('auto-gem-regex-result', regex);
+    } else {
+      console.log('[Auto Gem Regex] No gems found for regex');
     }
   }
 });

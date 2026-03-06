@@ -72,3 +72,47 @@ export async function executeLogout(): Promise<void> {
   console.log('[Chat Command] Executing logout via /exit command');
   await typeInChat('/exit');
 }
+
+/**
+ * Type a regex pattern into the PoE stash search box.
+ *
+ * Opens the search box with Ctrl+F, selects all existing text with Ctrl+A,
+ * then pastes the provided pattern. All key taps are queued synchronously into
+ * the OS input queue so ordering is guaranteed — no async delay needed.
+ * The previous clipboard content is restored after 500 ms.
+ *
+ * @param regex - The regex pattern to paste into the stash search
+ */
+export function typeInStashSearch(regex: string): void {
+  // Save current clipboard content
+  let previousClipboard = '';
+  try {
+    previousClipboard = clipboard.readText();
+  } catch (err) {
+    console.warn('[Chat Command] Failed to read clipboard:', err);
+  }
+
+  // Write regex to clipboard BEFORE any key taps
+  clipboard.writeText(regex);
+
+  // Stage key taps with short delays for reliability:
+  // 1) Ctrl+F opens/focuses search input
+  // 2) Ctrl+A selects existing text
+  // 3) Ctrl+V pastes regex from clipboard
+  uIOhook.keyTap(UiohookKey.F, [UiohookKey.Ctrl]);
+  setTimeout(() => {
+    uIOhook.keyTap(UiohookKey.A, [UiohookKey.Ctrl]);
+  }, 70);
+  setTimeout(() => {
+    uIOhook.keyTap(UiohookKey.V, [UiohookKey.Ctrl]);
+  }, 120);
+
+  // Restore clipboard after a longer delay so paste always uses our regex.
+  setTimeout(() => {
+    try {
+      clipboard.writeText(previousClipboard);
+    } catch (err) {
+      console.warn('[Chat Command] Failed to restore clipboard:', err);
+    }
+  }, 1800);
+}
