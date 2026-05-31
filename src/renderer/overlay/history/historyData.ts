@@ -60,7 +60,7 @@ export interface HistoryState {
  */
 function getVersionDefaultLeague(): string {
   const mode = (window as any).__overlayVersionMode;
-  return mode === 'poe1' ? 'Keepers of the Flame' : 'Fate of the Vaal';
+  return mode === 'poe1' ? 'Keepers of the Flame' : 'Runes of Aldur';
 }
 
 /**
