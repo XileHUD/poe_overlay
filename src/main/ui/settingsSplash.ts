@@ -684,7 +684,7 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
       const gameVer: 'poe1' | 'poe2' = currentOverlayVersion === 'poe1' ? 'poe1' : 'poe2';
       const treeVer = gameVer === 'poe1' ? '3_28' : '3_28'; // poe2 ignores this
       const previewSpec = {
-        title: gameVer === 'poe1' ? '3.28 Mirage Preview' : '0.4 Runes of Aldur Preview',
+        title: gameVer === 'poe1' ? '3.28 Mirage Preview' : '0.5 Runes of Aldur Preview',
         preview: true,
         allocatedNodes: [],
         parsedUrl: { nodes: [], version: 5, treeVersion: treeVer },
@@ -1842,7 +1842,7 @@ function buildSettingsSplashHtml(
       <div class="setting-item">
         <div class="setting-label">
           <span class="setting-label-text">Skill Tree Preview</span>
-          <span class="setting-label-desc">Open the latest ${normalizedOverlayVersion === 'poe1' ? '3.28 Mirage' : '0.4 Runes of Aldur'} passive tree in the leveling overlay window</span>
+          <span class="setting-label-desc">Open the latest ${normalizedOverlayVersion === 'poe1' ? '3.28 Mirage' : '0.5 Runes of Aldur'} passive tree in the leveling overlay window</span>
         </div>
         <div style="display:flex; gap:8px; flex-wrap:wrap;">
           <button class="btn btn-secondary" id="previewTreeBtn">Open Tree</button>
