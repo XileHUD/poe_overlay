@@ -24,8 +24,8 @@ interface LeagueOption {
 }
 
 const POE2_LEAGUES: LeagueOption[] = [
-  { value: 'Fate of the Vaal', label: 'Fate of the Vaal (Softcore)' },
-  { value: 'HC Fate of the Vaal', label: 'HC Fate of the Vaal' },
+  { value: 'Runes of Aldur', label: 'Runes of Aldur (Softcore)' },
+  { value: 'HC Runes of Aldur', label: 'HC Runes of Aldur' },
   { value: 'Standard', label: 'Standard (Legacy)' },
   { value: 'Hardcore', label: 'Hardcore (Legacy)' }
 ];
@@ -297,13 +297,13 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
   const trimmedStoredLeague = typeof storedMerchantLeague === 'string' ? storedMerchantLeague.trim() : '';
   const hasManualStoredLeague = storedMerchantLeagueSource === 'manual' && trimmedStoredLeague.length > 0;
 
-  // Migrate PoE2 legacy league selections (Rise of the Abyssal -> Fate of the Vaal)
+  // Migrate PoE2 legacy league selections (Legacy of the Vaal -> Runes of Aldur)
   let migratedStoredLeague = trimmedStoredLeague;
   if (currentOverlayVersion === 'poe2' && migratedStoredLeague) {
-    if (/^hc\s*rise of the abyssal$/i.test(migratedStoredLeague)) {
-      migratedStoredLeague = 'HC Fate of the Vaal';
-    } else if (/^rise of the abyssal$/i.test(migratedStoredLeague)) {
-      migratedStoredLeague = 'Fate of the Vaal';
+    if (/^hc\s*legacy of the vaal$/i.test(migratedStoredLeague)) {
+      migratedStoredLeague = 'HC Runes of Aldur';
+    } else if (/^legacy of the vaal$/i.test(migratedStoredLeague)) {
+      migratedStoredLeague = 'Runes of Aldur';
     }
     if (migratedStoredLeague !== trimmedStoredLeague) {
       try {
@@ -684,7 +684,7 @@ export async function showSettingsSplash(params: SettingsSplashParams): Promise<
       const gameVer: 'poe1' | 'poe2' = currentOverlayVersion === 'poe1' ? 'poe1' : 'poe2';
       const treeVer = gameVer === 'poe1' ? '3_28' : '3_28'; // poe2 ignores this
       const previewSpec = {
-        title: gameVer === 'poe1' ? '3.28 Mirage Preview' : '0.4 Fate of the Vaal Preview',
+        title: gameVer === 'poe1' ? '3.28 Mirage Preview' : '0.5 Runes of Aldur Preview',
         preview: true,
         allocatedNodes: [],
         parsedUrl: { nodes: [], version: 5, treeVersion: treeVer },
@@ -1842,7 +1842,7 @@ function buildSettingsSplashHtml(
       <div class="setting-item">
         <div class="setting-label">
           <span class="setting-label-text">Skill Tree Preview</span>
-          <span class="setting-label-desc">Open the latest ${normalizedOverlayVersion === 'poe1' ? '3.28 Mirage' : '0.4 Fate of the Vaal'} passive tree in the leveling overlay window</span>
+          <span class="setting-label-desc">Open the latest ${normalizedOverlayVersion === 'poe1' ? '3.28 Mirage' : '0.5 Runes of Aldur'} passive tree in the leveling overlay window</span>
         </div>
         <div style="display:flex; gap:8px; flex-wrap:wrap;">
           <button class="btn btn-secondary" id="previewTreeBtn">Open Tree</button>

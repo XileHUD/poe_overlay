@@ -31,8 +31,8 @@ export const POE1_STANDARD_LEAGUE = 'Standard';
 export const POE1_LEGACY_HARDCORE_LEAGUE = 'Hardcore';
 
 // PoE2 leagues
-export const POE2_SOFTCORE_LEAGUE = 'Fate of the Vaal';
-export const POE2_HARDCORE_LEAGUE = 'HC Fate of the Vaal';
+export const POE2_SOFTCORE_LEAGUE = 'Runes of Aldur';
+export const POE2_HARDCORE_LEAGUE = 'HC Runes of Aldur';
 export const POE2_STANDARD_LEAGUE = 'Standard';
 export const POE2_LEGACY_HARDCORE_LEAGUE = 'Hardcore';
 
@@ -44,6 +44,8 @@ export const LEGACY_HARDCORE_LEAGUE = POE2_LEGACY_HARDCORE_LEAGUE;
 
 // Leagues that have ended and should no longer be fetched from API
 export const ENDED_LEAGUES = [
+  'Fate of the Vaal',
+  'HC Fate of the Vaal',
   'Rise of the Abyssal',
   'HC Rise of the Abyssal',
   'Keepers of the Flame',
@@ -69,8 +71,8 @@ const POE1_LEAGUE_OPTIONS: LeagueOption[] = [
 ];
 
 const POE2_LEAGUE_OPTIONS: LeagueOption[] = [
-  { id: POE2_SOFTCORE_LEAGUE, label: 'Fate of the Vaal', tag: 'Softcore', hint: 'Default trade league' },
-  { id: POE2_HARDCORE_LEAGUE, label: 'HC Fate of the Vaal', tag: 'Hardcore', hint: 'Deletes characters on death' },
+  { id: POE2_SOFTCORE_LEAGUE, label: 'Runes of Aldur', tag: 'Softcore', hint: 'Default trade league' },
+  { id: POE2_HARDCORE_LEAGUE, label: 'HC Runes of Aldur', tag: 'Hardcore', hint: 'Deletes characters on death' },
   { id: POE2_STANDARD_LEAGUE, label: 'Standard', tag: 'Legacy', hint: 'Permanent league' },
   { id: POE2_LEGACY_HARDCORE_LEAGUE, label: 'Hardcore', tag: 'Legacy HC', hint: 'Legacy hardcore league' }
 ];
@@ -135,9 +137,9 @@ function ensureLeagueValidForMode(mode: 'poe1' | 'poe2'): boolean {
 
 const LEAGUE_LABELS: Record<string, string> = {
   [normalizeLeagueId(POE1_SOFTCORE_LEAGUE)]: 'Softcore • Mirage',
-  [normalizeLeagueId(POE2_SOFTCORE_LEAGUE)]: 'Softcore • Fate of the Vaal',
+  [normalizeLeagueId(POE2_SOFTCORE_LEAGUE)]: 'Softcore • Runes of Aldur',
   [normalizeLeagueId(POE1_HARDCORE_LEAGUE)]: 'Hardcore • Mirage',
-  [normalizeLeagueId(POE2_HARDCORE_LEAGUE)]: 'Hardcore • Fate of the Vaal',
+  [normalizeLeagueId(POE2_HARDCORE_LEAGUE)]: 'Hardcore • Runes of Aldur',
   [normalizeLeagueId(POE1_KEEPERS_LEAGUE)]: 'Legacy • Keepers of the Flame',
   [normalizeLeagueId(POE1_HARDCORE_KEEPERS_LEAGUE)]: 'Legacy HC • Keepers of the Flame',
   [normalizeLeagueId(POE1_STANDARD_LEAGUE)]: 'Standard',
@@ -323,9 +325,12 @@ export function formatLeagueLabel(league: string): string {
   if (!trimmed) return 'Unknown';
   const normalized = normalizeLeagueId(trimmed);
   if (LEAGUE_LABELS[normalized]) return LEAGUE_LABELS[normalized];
+  if (/^hc runes of aldur$/i.test(trimmed)) return 'Hardcore • Runes of Aldur'; //using hc and hardcore here just incase some part of code uses hc instead of hc since there is another instance of "hc" below
+  if (/^hardcore runes of aldur$/i.test(trimmed)) return 'Hardcore • Runes of Aldur';
   if (/^hardcore keepers of the flame$/i.test(trimmed)) return 'Hardcore • Keepers of the Flame';
   if (/^hardcore fate of the vaal$/i.test(trimmed)) return 'Hardcore • Fate of the Vaal';
   if (/^hc fate of the vaal$/i.test(trimmed)) return 'Hardcore • Fate of the Vaal';
+  if (/^runes of aldur$/i.test(trimmed)) return 'Softcore • Runes of Aldur';
   if (/^keepers of the flame$/i.test(trimmed)) return 'Softcore • Keepers of the Flame';
   if (/^fate of the vaal$/i.test(trimmed)) return 'Softcore • Fate of the Vaal';
   if (/^hardcore rise of the abyssal$/i.test(trimmed)) return 'Hardcore • Rise of the Abyssal';
@@ -415,13 +420,13 @@ export async function initializeHistoryLeagueState(): Promise<void> {
     if (hasStoredPreference) {
       const rawLeague = typeof pref?.league === 'string' ? pref.league.trim() : '';
       const leagueIsValid = rawLeague ? isLeagueValidForMode(mode, rawLeague) : false;
-      // Migration: If user has old "Rise of the Abyssal" league, switch them to "Fate of the Vaal"
+      // Migration: If user has old "Fate of the Vaal" league, switch them to "Runes of Aldur"
       // Each league has its own JSON file, so no data migration needed - just switch the preference
       let leagueToApply = leagueIsValid ? rawLeague : fallback;
       let source: LeagueSource = leagueIsValid && pref?.source === 'manual' ? 'manual' : 'auto';
       let needsMigration = false;
       
-      if (rawLeague && /^(rise of the abyssal|hc rise of the abyssal)$/i.test(rawLeague.trim())) {
+      if (rawLeague && /^(fate of the vaal|hc fate of the vaal)$/i.test(rawLeague.trim())) {
         console.log(`[HistoryLeague] Migrating from old league "${rawLeague}" to current league`);
         leagueToApply = fallback;
         source = 'auto';
