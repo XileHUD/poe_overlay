@@ -331,7 +331,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
     }
 
     private getDefaultLeague(): string {
-        return this.overlayVersion === 'poe1' ? 'Mirage' : 'Runes of Aldur';
+        return this.overlayVersion === 'poe1' ? 'Allflame' : 'Runes of Aldur';
     }
 
     constructor() {
@@ -493,7 +493,7 @@ if ($hwnd -eq [System.IntPtr]::Zero) {
                 let leagueIsValid = false;
                 if (trimmedLeague) {
                     if (this.overlayVersion === 'poe1') {
-                        leagueIsValid = /Mirage|Hardcore Mirage|Keepers of the Flame|Hardcore Keepers of the Flame|Standard|Hardcore/i.test(trimmedLeague);
+                        leagueIsValid = /Allflame|Hardcore Allflame|Keepers of the Flame|Hardcore Keepers of the Flame|Standard|Hardcore/i.test(trimmedLeague);
                     } else {
                         leagueIsValid = /Runes of Aldur|HC Runes of Aldur|Standard|Hardcore/i.test(trimmedLeague);
                     }
@@ -3853,7 +3853,7 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                 const trimmedLegacy = legacyLeague.trim();
                 
                 // Determine which version this league belongs to based on league name
-                const isPoe1League = /Mirage|Hardcore Mirage|Keepers of the Flame|Standard|Hardcore/i.test(trimmedLegacy);
+                const isPoe1League = /Allflame|Hardcore Allflame|Mirage|Hardcore Mirage|Keepers of the Flame|Standard|Hardcore/i.test(trimmedLegacy);
                 const isPoe2League = /Runes of Aldur|Fate of the Vaal|Standard|Hardcore/i.test(trimmedLegacy);
                 
                 // If it's the current version's league, migrate it
@@ -3909,7 +3909,7 @@ if ([ForegroundWindowHelper]::IsIconic($ptr)) {
                     
                     // Determine which game version this league belongs to
                     let gameVersion: 'poe1' | 'poe2';
-                    if (/Mirage|Hardcore_Mirage|Keepers_of_the_Flame|HC_Keepers_of_the_Flame/i.test(leaguePart)) {
+                    if (/Allflame|Hardcore_Allflame|Mirage|Hardcore_Mirage|Keepers_of_the_Flame|HC_Keepers_of_the_Flame/i.test(leaguePart)) {
                         gameVersion = 'poe1';
                     } else {
                         // Default to poe2 for all other leagues (Runes of Aldur, Fate of the Vaal, Standard, Hardcore)

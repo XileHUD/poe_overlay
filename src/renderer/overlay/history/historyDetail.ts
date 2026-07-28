@@ -17,13 +17,110 @@ import { renderHistoryList } from './historyList';
 import { recomputeChartSeriesFromStore, drawHistoryChart, updateHistoryChartFromTotals } from './historyChart';
 import { sendHistoryToPopout } from './historyPopout';
 
+function isLikelyItem(value: any): boolean {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return false;
+  return !!(
+    value.name ||
+    value.typeLine ||
+    value.baseType ||
+    value.ilvl ||
+    value.itemLevel ||
+    value.icon ||
+    value.iconUrl ||
+    value.explicitMods ||
+    value.implicitMods ||
+    value.properties ||
+    value.sockets ||
+    value.frameType != null ||
+    value.rarity ||
+    value.flags ||
+    value.extended ||
+    value.notableProperties ||
+    value.corrupted
+  );
+}
+
+function resolveItemPayload(entry: any): any {
+  if (!entry || typeof entry !== 'object') return undefined;
+
+  if (isLikelyItem(entry)) return entry;
+
+  const seen = new Set<any>();
+  let current: any = entry;
+
+  for (let depth = 0; depth < 5; depth++) {
+    if (!current || typeof current !== 'object' || Array.isArray(current) || seen.has(current)) break;
+    seen.add(current);
+
+    const candidates = [
+      current.item,
+      current.data?.item,
+      current.item?.item,
+      current.data?.item?.item,
+      current.item?.data?.item,
+      current.item?.data,
+    ];
+
+    for (const candidate of candidates) {
+      if (isLikelyItem(candidate)) return candidate;
+    }
+
+    if (current.item && typeof current.item === 'object' && !Array.isArray(current.item) && current.item !== current) {
+      current = current.item;
+      continue;
+    }
+
+    if (current.data && typeof current.data === 'object' && current.data.item && current.data.item !== current) {
+      current = current.data.item;
+      continue;
+    }
+
+    break;
+  }
+
+  return undefined;
+}
+
+/**
+ * Normalize mod text from either a string or an object payload.
+ * Some trade responses return mods as objects like { description: '...' }.
+ */
+function normalizeModText(value: any): string {
+  if (value == null) return '';
+  if (typeof value === 'string') return value;
+  if (typeof value === 'number' || typeof value === 'boolean') return String(value);
+  if (Array.isArray(value)) {
+    for (const item of value) {
+      const text = normalizeModText(item);
+      if (text) return text;
+    }
+    return '';
+  }
+  if (typeof value === 'object') {
+    const candidates = [
+      value.description,
+      value.text,
+      value.line,
+      value.mod,
+      value.name,
+      value.value,
+    ];
+    for (const candidate of candidates) {
+      const text = normalizeModText(candidate);
+      if (text) return text;
+    }
+  }
+  return '';
+}
+
 /**
  * Collapse bracketed alternates in mod text.
  * Example: "[10|20|30]" -> "10"
  */
-function collapseBracketAlternates(str: string): string {
-  if (!str) return str;
-  return str.replace(/\[([^\]]+?)\]/g, (_m: string, inner: string) => {
+function collapseBracketAlternates(str: any): string {
+  const text = normalizeModText(str);
+  if (!text) return '';
+  return text.replace(/\[([^\]]+?)\]/g, (_m: string, inner: string) => {
     if (!inner) return "";
     const parts = inner.split("|").map((s: string) => s.trim()).filter(Boolean);
     if (!parts.length) return "";
@@ -68,19 +165,50 @@ function normalizeTier(rawTier: any, lvl?: number): string {
  * @param idx - Index in filtered/sorted items array
  */
 export function renderHistoryDetail(idx: number): void {
-  if (!historyVisible()) return;
-  
   const det = document.getElementById("historyDetail");
   if (!det) return;
-  
-  const it: any = historyState.items?.[idx];
+
+  const maxIndex = Math.max(0, (historyState.items?.length || 1) - 1);
+  const safeIdx = Number.isFinite(idx) ? Math.max(0, Math.min(Math.floor(idx), maxIndex)) : Math.max(0, Math.min(historyState.selectedOriginalIndex || 0, maxIndex));
+  const displayItem = historyState.displayItems?.[historyState.selectedIndex] || historyState.displayItems?.[safeIdx] || null;
+  const fallbackEntry = displayItem?.entry || displayItem || null;
+  const it: any = historyState.items?.[safeIdx] || fallbackEntry || historyState.items?.[0] || null;
   if (!it) {
     (det as HTMLElement).innerHTML = '<div class="no-mods">No selection</div>';
     return;
   }
+
+  const fallbackName = it?.item?.name || it?.item?.typeLine || it?.item?.baseType || it?.name || it?.typeLine || it?.baseType || 'Item';
+  const fallbackBase = it?.item?.baseType || it?.item?.typeLine || it?.baseType || it?.typeLine || '';
+  const fallbackAmount = it?.price?.amount ?? it?.amount ?? '';
+  const fallbackCurrency = normalizeCurrency(it?.price?.currency ?? it?.currency ?? '');
+  const renderFallbackCard = () => {
+    const currencyLabel = fallbackCurrency ? fallbackCurrency.charAt(0).toUpperCase() + fallbackCurrency.slice(1) : '';
+    (det as HTMLElement).innerHTML = `
+      <div style="width:100%; max-width:820px;">
+        <div class="history-detail-card">
+          <div class="card-header">
+            <div class="card-title">${escapeHtml(fallbackName)}</div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span class="price-badge large" title="Sold price"><span class="amount">${fallbackAmount}</span> ${currencyLabel}</span>
+            </div>
+          </div>
+          <div class="grid">
+            <div>
+              <div class="no-mods" style="padding:8px 0;">Unable to parse item details for this trade. The entry is still available in history.</div>
+            </div>
+            <div>
+              <div class="card-sub">${escapeHtml(fallbackBase || fallbackName)}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  };
   
+  try {
   // ========== Extract Item Data ==========
-  const item = it.item || it?.data?.item || {};
+  const item = resolveItemPayload(it) || {};
   const properties: any[] = Array.isArray(item?.properties) ? item.properties : [];
   
   const explicitDetails: any[] = Array.isArray(item?.extended?.mods?.explicit) ? item.extended.mods.explicit : [];
@@ -88,10 +216,10 @@ export function renderHistoryDetail(idx: number): void {
   const desecratedDetails: any[] = Array.isArray(item?.extended?.mods?.desecrated) ? item.extended.mods.desecrated : [];
   
   const icon = item?.icon || item?.iconUrl || "";
-  const name = item?.name || item?.typeLine || item?.baseType || "Item";
-  const base = item?.baseType || item?.typeLine || "";
-  const ilvl = item?.ilvl || item?.itemLevel || "";
-  const corrupted = !!(item?.corrupted || (item?.flags && item.flags.corrupted));
+  const name = item?.name || item?.typeLine || item?.baseType || it?.name || it?.typeLine || it?.baseType || "Item";
+  const base = item?.baseType || item?.typeLine || it?.baseType || it?.typeLine || "";
+  const ilvl = item?.ilvl || item?.itemLevel || it?.ilvl || it?.itemLevel || "";
+  const corrupted = !!(item?.corrupted || (item?.flags && item.flags.corrupted) || (it?.flags && it.flags.corrupted));
   
   // Check if this is an incomplete "ITEM" entry
   const isIncompleteItem = name === "Item" || name === "ITEM";
@@ -103,23 +231,41 @@ export function renderHistoryDetail(idx: number): void {
   const rarityClass = `rarity-${rarity.toLowerCase()}`;
   
   const note = it?.note || it?.price?.raw || (it?.price ? `~b/o ${it.price.amount} ${it.price.currency}` : "");
+  const fallbackSummary = [
+    item?.baseType,
+    item?.typeLine,
+    it?.baseType,
+    it?.typeLine,
+    item?.name,
+    it?.name,
+  ].filter(Boolean).join(' • ');
   
   // Mods
   const explicits = Array.isArray(item?.explicitMods)
-    ? item.explicitMods
+    ? item.explicitMods.map((entry: any) => normalizeModText(entry)).filter(Boolean)
     : Array.isArray(item?.mods?.explicit)
-    ? item.mods.explicit
+    ? item.mods.explicit.map((entry: any) => normalizeModText(entry)).filter(Boolean)
     : [];
-  const fractured = Array.isArray(item?.fracturedMods) ? item.fracturedMods : [];
-  const desecrated = Array.isArray(item?.desecratedMods) ? item.desecratedMods : [];
-  const mutated = Array.isArray(item?.mutatedMods) ? item.mutatedMods : [];
+  const fractured = Array.isArray(item?.fracturedMods)
+    ? item.fracturedMods.map((entry: any) => normalizeModText(entry)).filter(Boolean)
+    : [];
+  const desecrated = Array.isArray(item?.desecratedMods)
+    ? item.desecratedMods.map((entry: any) => normalizeModText(entry)).filter(Boolean)
+    : [];
+  const mutated = Array.isArray(item?.mutatedMods)
+    ? item.mutatedMods.map((entry: any) => normalizeModText(entry)).filter(Boolean)
+    : [];
   const implicits = Array.isArray(item?.implicitMods)
-    ? item.implicitMods
+    ? item.implicitMods.map((entry: any) => normalizeModText(entry)).filter(Boolean)
     : Array.isArray(item?.mods?.implicit)
-    ? item.mods.implicit
+    ? item.mods.implicit.map((entry: any) => normalizeModText(entry)).filter(Boolean)
     : [];
-  const enchantMods = Array.isArray(item?.enchantMods) ? item.enchantMods : [];
-  const corruptedMods = Array.isArray(item?.corruptedMods) ? item.corruptedMods : [];
+  const enchantMods = Array.isArray(item?.enchantMods)
+    ? item.enchantMods.map((entry: any) => normalizeModText(entry)).filter(Boolean)
+    : [];
+  const corruptedMods = Array.isArray(item?.corruptedMods)
+    ? item.corruptedMods.map((entry: any) => normalizeModText(entry)).filter(Boolean)
+    : [];
   
   // Notable properties (e.g. Megalomaniac style jewels)
   const notablePropsRaw: any[] = Array.isArray(item?.notableProperties) ? item.notableProperties : [];
@@ -138,7 +284,9 @@ export function renderHistoryDetail(idx: number): void {
   } catch {}
   
   // Rune mods (from socketed runes / talismans / tablets)
-  const runeMods = Array.isArray(item?.runeMods) ? item.runeMods : [];
+  const runeMods = Array.isArray(item?.runeMods)
+    ? item.runeMods.map((entry: any) => normalizeModText(entry)).filter(Boolean)
+    : [];
 
   const defenseTags: string[] = [];
   const parseNumeric = (val: any): number | undefined => {
@@ -416,7 +564,7 @@ export function renderHistoryDetail(idx: number): void {
           <div class="card-title">${escapeHtml(name)}${qualityValue ? ` <span class=\"quality-badge\" title=\"Quality\">${escapeHtml(qualityValue.replace(/^\+/, ''))}</span>` : ''}</div>
           <div style="display:flex; align-items:center; gap:8px;">
             <span class="price-badge large ${curClass}" title="Sold price"><span class="amount">${amt}x</span> ${curDisplay}</span>
-            <button class="history-delete-btn" data-idx="${idx}" title="Delete this entry" aria-label="Delete entry">
+            <button class="history-delete-btn" data-idx="${safeIdx}" title="Delete this entry" aria-label="Delete entry">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="18" y1="6" x2="6" y2="18"></line>
                 <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -429,7 +577,7 @@ export function renderHistoryDetail(idx: number): void {
             ${icon ? `<img src="${icon}" alt="icon" class="history-item-icon" loading="lazy" decoding="async"/>` : ""}
           </div>
           <div>
-            <div class="card-sub">${escapeHtml(base)}${ilvl ? ` • iLvl ${ilvl}` : ""}${rarity ? ` • <span class="rarity-label ${rarityClass}">${escapeHtml(rarity)}</span>` : ""}${
+            <div class="card-sub">${escapeHtml(base || fallbackSummary)}${ilvl ? ` • iLvl ${ilvl}` : ""}${rarity ? ` • <span class="rarity-label ${rarityClass}">${escapeHtml(rarity)}</span>` : ""}${
     corrupted ? ` <span class="badge-corrupted">Corrupted</span>` : ""
   }</div>
             ${metaStackHtml}
@@ -531,6 +679,11 @@ export function renderHistoryDetail(idx: number): void {
       });
     }
   });
+  
+  } catch (error) {
+    console.warn('[HistoryDetail] Detail render failed, showing fallback card', error);
+    renderFallbackCard();
+  }
   
   // ========== Delete Button Handler ==========
   const deleteBtn = det.querySelector('.history-delete-btn');

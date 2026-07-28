@@ -23,8 +23,8 @@ export interface LeagueOption {
 export type LeaguePromptReason = 'manual-open' | 'auto-hardcore' | 'empty-data';
 
 // PoE1 leagues
-export const POE1_SOFTCORE_LEAGUE = 'Mirage';
-export const POE1_HARDCORE_LEAGUE = 'Hardcore Mirage';
+export const POE1_SOFTCORE_LEAGUE = 'Allflame';
+export const POE1_HARDCORE_LEAGUE = 'Hardcore Allflame';
 export const POE1_KEEPERS_LEAGUE = 'Keepers of the Flame';
 export const POE1_HARDCORE_KEEPERS_LEAGUE = 'Hardcore Keepers of the Flame';
 export const POE1_STANDARD_LEAGUE = 'Standard';
@@ -64,8 +64,8 @@ export function isLeagueEnded(league: string): boolean {
 }
 
 const POE1_LEAGUE_OPTIONS: LeagueOption[] = [
-  { id: POE1_SOFTCORE_LEAGUE, label: 'Mirage', tag: 'Softcore', hint: 'Default trade league' },
-  { id: POE1_HARDCORE_LEAGUE, label: 'Hardcore Mirage', tag: 'Hardcore', hint: 'Deletes characters on death' },
+  { id: POE1_SOFTCORE_LEAGUE, label: 'Allflame', tag: 'Softcore', hint: 'Default trade league' },
+  { id: POE1_HARDCORE_LEAGUE, label: 'Hardcore Allflame', tag: 'Hardcore', hint: 'Deletes characters on death' },
   { id: POE1_STANDARD_LEAGUE, label: 'Standard', tag: 'Standard', hint: 'Permanent league' },
   { id: POE1_LEGACY_HARDCORE_LEAGUE, label: 'Hardcore', tag: 'Hardcore', hint: 'Legacy hardcore league' }
 ];
@@ -136,9 +136,9 @@ function ensureLeagueValidForMode(mode: 'poe1' | 'poe2'): boolean {
 }
 
 const LEAGUE_LABELS: Record<string, string> = {
-  [normalizeLeagueId(POE1_SOFTCORE_LEAGUE)]: 'Softcore • Mirage',
+  [normalizeLeagueId(POE1_SOFTCORE_LEAGUE)]: 'Softcore • Allflame',
   [normalizeLeagueId(POE2_SOFTCORE_LEAGUE)]: 'Softcore • Runes of Aldur',
-  [normalizeLeagueId(POE1_HARDCORE_LEAGUE)]: 'Hardcore • Mirage',
+  [normalizeLeagueId(POE1_HARDCORE_LEAGUE)]: 'Hardcore • Allflame',
   [normalizeLeagueId(POE2_HARDCORE_LEAGUE)]: 'Hardcore • Runes of Aldur',
   [normalizeLeagueId(POE1_KEEPERS_LEAGUE)]: 'Legacy • Keepers of the Flame',
   [normalizeLeagueId(POE1_HARDCORE_KEEPERS_LEAGUE)]: 'Legacy HC • Keepers of the Flame',

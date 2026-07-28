@@ -31,8 +31,8 @@ const POE2_LEAGUES: LeagueOption[] = [
 ];
 
 const POE1_LEAGUES: LeagueOption[] = [
-  { value: 'Mirage', label: 'Mirage (Softcore)' },
-  { value: 'Hardcore Mirage', label: 'Hardcore Mirage' },
+  { value: 'Allflame', label: 'Allflame (Softcore)' },
+  { value: 'Hardcore Allflame', label: 'Hardcore Allflame' },
   { value: 'Standard', label: 'Standard' },
   { value: 'Hardcore', label: 'Hardcore' }
 ];
